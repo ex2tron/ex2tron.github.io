@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ex2tron&#39;s Blog</title>
+  <subtitle>Excelsior!</subtitle>
+  <link href="/atom.xaml" rel="self"/>
+  
+  <link href="https://ex2tron.github.io/"/>
+  <updated>2017-09-13T14:23:43.600Z</updated>
+  <id>https://ex2tron.github.io/</id>
+  
+  <author>
+    <name>Tony Wong</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo+Github Pages轻松搭博客(2)——在Github上部署</title>
+    <link href="https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-2-%E2%80%94%E2%80%94%E5%9C%A8Github%E4%B8%8A%E9%83%A8%E7%BD%B2/"/>
+    <id>https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2-——在Github上部署/</id>
+    <published>2017-09-13T12:15:47.000Z</published>
+    <updated>2017-09-13T14:23:43.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！<a id="more"></a></p>
+<p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<figure class="highlight plain"><figcaption><span>```下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">## 关联Github</div><div class="line"></div><div class="line">首先登陆[Github](https://github.com/)，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，**username必须与你的账户名相同**，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。**新建时注意勾选&quot;*Initialize this repository with a README*&quot;**，因为这个仓库必须不能为空。</div><div class="line"></div><div class="line">&gt; 如果你是git新用户的话，推荐看：[廖雪峰的Git教程-远程仓库](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000)</div><div class="line"></div><div class="line">![create_github_pages_repository](http://pic.ex2tron.xin/create_github_pages_repository.png-webpic)</div><div class="line"></div><div class="line">接下来打开博客目录下的``` _config.yml ```配置文件，定位到最后的deploy选项，修改如下：</div><div class="line">``` </div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:ex2tron/ex2tron.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>注意冒号后面有个空格，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io">https://ex2tron.github.io</a>）就可以访问你的博客了，简单快速高效！</p>
+<h2 id="常出现的问题"><a href="#常出现的问题" class="headerlink" title="常出现的问题"></a>常出现的问题</h2><ol>
+<li><p>在<figure class="highlight plain"><figcaption><span>d ```进行部署时，如果出现``` ERROR Deployer not found: git ```的问题，可以先用下面的命令修复：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">``` </div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>如果你没配置过ssh导致部署失败（可以通过<code>ssh -T username@example.com</code>来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Blog" scheme="https://ex2tron.github.io/tags/Blog/"/>
+    
+      <category term="Hexo" scheme="https://ex2tron.github.io/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://ex2tron.github.io/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Github-Pages轻松搭博客(1)</title>
+    <link href="https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-1/"/>
+    <id>https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-1/</id>
+    <published>2017-09-13T08:07:06.000Z</published>
+    <updated>2017-09-13T14:23:05.405Z</updated>
+    
+    <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
+<blockquote>
+<p>废话区域：我在接触Hexo（可以读作Hack So）之前，绝对没少尝试建立一个完全自由、自己说了算的独立博客：WordPress定位重量级，功能强大，生成的是动态网站，依赖数据库……太繁琐了，放弃~而Jekyll和Hexo都是静态建站工具，但Jekyll的依赖项也很多，也不简约，不想用~最后才是名气相对不高的Hexo，相信我，熟练的情况下，10分钟就可以搭出来：</p>
+</blockquote>
+<hr>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是一个免费的静态Blog生成工具。简单来说，就是把你写的Markdown博客文件生成静态网页，把这个网页放在Github或者你自己的服务器上就可以快速访问了。软件界，从来不缺自动化工具(ง •_•)ง</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官网文档：<a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo Docs</a></p>
+<p>Hexo安装前，你的电脑上需要先有下面这两个东西：</p>
+<ul>
+<li><a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></li>
+</ul>
+<p>如果已经安装了的话，命令行下一句话就好啦：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<h2 id="初始化博客目录"><a href="#初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录</h2><p>在你的本地新建一个存放博客的目录，比如”<em>D:\MyHexoBlog</em>“，然后在这个目录右键，选择”<em>Git Bash Here</em>“，输入下面两条命令进行初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p>初始化完成之后，你的目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── source</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure></p>
+<p>如果没有出错的话，继续执行下面的指令启动服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g </div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
+<p>启动之后，在浏览器中访问：<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>，是不是看到了漂亮的Hexo博客页面了。不过目前这个博客还是运行在你本机上的，下篇我们看一下怎么样让别人也能访问这个博客。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/default_hexo_theme.png" alt="default_hexo_index" title="">
+                </div>
+                <div class="image-caption">default_hexo_index</div>
+            </figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo Docs</a></li>
+<li><a href="http://blog.csdn.net/cl534854121/article/details/76121066" target="_blank" rel="external">Hexo+Github搭建个人博客(一)——开始搭建 </a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【利器篇】用VS Code写Markdown</title>
+    <link href="https://ex2tron.github.io/2017/09/11/%E3%80%90%E5%88%A9%E5%99%A8%E7%AF%87%E3%80%91%E7%94%A8VSCode%E5%86%99Markdown/"/>
+    <id>https://ex2tron.github.io/2017/09/11/【利器篇】用VSCode写Markdown/</id>
+    <published>2017-09-11T07:11:22.000Z</published>
+    <updated>2017-09-12T03:00:19.476Z</updated>
+    
+    <content type="html"><![CDATA[<p>Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客<a id="more"></a>。关于Markdown相较富文本的优势，我就不细说了。</p>
+<h2 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h2><p>支持Markdown的工具有很多，大家可以参考网上，如这篇文章：<a href="https://sspai.com/post/32483" target="_blank" rel="external">码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点</a>。就我自己目前在Windows上使用的而言有：<a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a>、<a href="http://note.youdao.com/" target="_blank" rel="external">有道云笔记</a>、<a href="https://www.typora.io/#windows" target="_blank" rel="external">Typora</a>、<a href="https://code.visualstudio.com" target="_blank" rel="external">VSCode</a></p>
+<p>简书本身就是一个博客平台，有道云笔记是类似OneNote和印象笔迹的应用。如果你已经在使用这两个平台的话，就不用多说了。但如果只是想用一个单纯的Markdown编辑器的话，推荐极致简洁的Typora。虽说界面简洁，但功能强大，不仅内置了常见的一些Markdown样式，还支持PDF/HTML等多种格式导出：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/markdown_in_typora.png" alt="markdown_in_typora" title="">
+                </div>
+                <div class="image-caption">markdown_in_typora</div>
+            </figure>
+<p>你是一枚文青的话，千万不要错过这款编辑器。不过，对于程序猿来说，VSCode才显得更有味道。</p>
+<h2 id="用VSCode写Markdown"><a href="#用VSCode写Markdown" class="headerlink" title="用VSCode写Markdown"></a>用VSCode写Markdown</h2><p>VSCode就不过多介绍了，我之前也写过关于它的介绍：</p>
+<ul>
+<li><p><a href="http://ex2tron.lofter.com/post/1d7338a1_86f8f92" target="_blank" rel="external">Visual Studio Code Preview初体验</a></p>
+</li>
+<li><p><a href="http://ex2tron.lofter.com/post/1d7338a1_870beb7" target="_blank" rel="external">Visual Studio Code Preview深度体验、使用技巧</a></p>
+</li>
+</ul>
+<p>现在版本的VSCode默认已经支持Markdown预览，不需要下载插件。用VSCode打开md文件或将当前文件更改为Markdown格式就可以开始书写了：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/markdown_in_vscode.png" alt="markdown_in_vscode" title="">
+                </div>
+                <div class="image-caption">markdown_in_vscode</div>
+            </figure>
+<p>VSCode支持两种预览方式：</p>
+<ul>
+<li>按下Ctrl+K V，像上图一样左右同步实时预览</li>
+<li>按下Ctrl+Shift+V，只预览最终渲染结果</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/editor_preview_Synchronization.gif" alt="editor_preview_Synchronization" title="">
+                </div>
+                <div class="image-caption">editor_preview_Synchronization</div>
+            </figure>
+<p>如上图，编写和预览界面是实时同步的，不需要的话，可以按下Ctrl+,组合键，添加如下两条设置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">"markdown.preview.scrollEditorWithPreview": false,</div><div class="line">"markdown.preview.scrollPreviewWithEditorSelection": false</div></pre></td></tr></table></figure>
+<p>另外，目前VSCode预览样式中，中文的显示很别扭，这里推荐下载<a href="https://github.com/ex2tron/MyLibsAndSamples/blob/master/Configs/VSCode/markdown-github.css" target="_blank" rel="external">Github风格的CSS</a></p>
+<p>下载完成后，配置css文件的设置如下即可：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"markdown.styles": [</div><div class="line">    <span class="string">"file:///D:/markdown-github.css"</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<p>另外，VSCode中有很多Markdown相关的插件，如”Markdown All in One”和”Markdown Theme Kit”等，大家可以下载下来尝试一下哈！</p>
+<blockquote>
+<p>参考资料：<a href="https://code.visualstudio.com/docs/languages/markdown" target="_blank" rel="external">Markdown editing with Visual Studio Code</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Markdown" scheme="https://ex2tron.github.io/tags/Markdown/"/>
+    
+      <category term="VSCode" scheme="https://ex2tron.github.io/tags/VSCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【利器篇】MyCLI——自动补全和语法高亮的MySQL命令行工具</title>
+    <link href="https://ex2tron.github.io/2017/09/11/%E3%80%90%E5%88%A9%E5%99%A8%E7%AF%87%E3%80%91MyCLI%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E5%92%8C%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E7%9A%84MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/"/>
+    <id>https://ex2tron.github.io/2017/09/11/【利器篇】MyCLI——自动补全和语法高亮的MySQL命令行工具/</id>
+    <published>2017-09-11T06:32:14.000Z</published>
+    <updated>2017-09-12T02:20:33.309Z</updated>
+    
+    <content type="html"><![CDATA[<p>mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看下面的动图你就知道了：<a id="more"></a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/mycli_demo.gif" alt="mycli_demo" title="">
+                </div>
+                <div class="image-caption">mycli_demo</div>
+            </figure>
+<p>mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。</p>
+<p>官网：<a href="http://www.mycli.net/" target="_blank" rel="external">MyCLI</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>其实mycli是一个Python的包，所以你已经安装了Python(pip)的话，用下面一条指令就好了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; pip install mycli</div></pre></td></tr></table></figure>
+<p>如果出现问题，可以参考<a href="http://www.mycli.net/" target="_blank" rel="external">官网</a>，有详细的说明。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/install_mycli.png" alt="install_mycli" title="">
+                </div>
+                <div class="image-caption">install_mycli</div>
+            </figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装好之后，在cmd下，将以往登陆MySQL用的mysql换成mycli就可以了：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/login_with_mycli.png" alt="login_with_mycli" title="">
+                </div>
+                <div class="image-caption">login_with_mycli</div>
+            </figure>
+<p>好了，大家觉得好用的话，欢迎扩散噢！</p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看下面的动图你就知道了：
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="MyCLI" scheme="https://ex2tron.github.io/tags/MyCLI/"/>
+    
+      <category term="MySQL" scheme="https://ex2tron.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客新篇章！Brave New World</title>
+    <link href="https://ex2tron.github.io/2017/09/11/%E5%8D%9A%E5%AE%A2%E6%96%B0%E7%AF%87%E7%AB%A0%EF%BC%81/"/>
+    <id>https://ex2tron.github.io/2017/09/11/博客新篇章！/</id>
+    <published>2017-09-11T03:34:20.326Z</published>
+    <updated>2017-08-28T09:50:40.458Z</updated>
+    
+    <content type="html"><![CDATA[<p>从2014/08/23开始在lofter上写我的<a href="http://ex2tron.lofter.com/post/1d7338a1_86b724e" target="_blank" rel="external">第一篇博客</a>开始，已经过去了整整三年……<a id="more"></a></p>
+<h2 id="再见，lofter"><a href="#再见，lofter" class="headerlink" title="再见，lofter"></a>再见，lofter</h2><p>lofter是一个非常不错的轻博客平台，我喜欢它的设计和定位。但lofter终究不适合程序猿，长久以来不支持markdown也让我很头痛。现在，终于还是要说再见了!</p>
+<blockquote>
+<p><a href="http://ex2tron.lofter.com" target="_blank" rel="external">http://ex2tron.lofter.com</a></p>
+</blockquote>
+<h2 id="旧的66篇博客"><a href="#旧的66篇博客" class="headerlink" title="旧的66篇博客"></a>旧的66篇博客</h2><h3 id="【Code-编程-开发】"><a href="#【Code-编程-开发】" class="headerlink" title="【Code/编程/开发】"></a>【Code/编程/开发】</h3><p><a href="http://www.lofter.com/lpost/1d7338a1_f50d92d" target="_blank" rel="external">构建法、单点控制</a></p>
+<p><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">构建法、表驱动法</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f0c9638" target="_blank" rel="external">【云端漫步】一起上“阿里云”（1）、购买学生党套餐</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_fea154c" target="_blank" rel="external">【云端漫步】一起上“阿里云”（2）、远程登陆服务器</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_ffa2f60" target="_blank" rel="external">【云端漫步】一起上“阿里云”（3）、LAMP环境搭建</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_ffad954" target="_blank" rel="external">【云端漫步】一起上“阿里云”（4）、搭建Git服务器</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_10171f1e" target="_blank" rel="external">【云端漫步】一起上“阿里云”（5）、域名购买和解析</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f59f87a" target="_blank" rel="external">Python多字节二进制文件读取</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_eaa8b0d" target="_blank" rel="external">C#中集合List的深浅拷贝</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_eb8cdad" target="_blank" rel="external">C#中常用的集合List去重方法</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f59ed25" target="_blank" rel="external">C#多字节二进制文件读取</a></p>
+<p><a href="http://www.lofter.com/lpost/1d7338a1_da4b787" target="_blank" rel="external">深入理解C#（01）：堆栈、值类型和引用类型、值传递和引用传递</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bee8" target="_blank" rel="external">宽字符</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c86dd" target="_blank" rel="external">编程命名法</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8b70ad4" target="_blank" rel="external">编程字体推荐</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a9009ce" target="_blank" rel="external">Json序列化与反序列化（1）-JavaScriptSerializer</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cb8b36b" target="_blank" rel="external">Json序列化与反序列化（2）-Json.Net</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cc1a00c" target="_blank" rel="external">Json序列化与反序列化（3）-DataContractJsonSerializer</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86b7467" target="_blank" rel="external">CR与LF（操作系统“下一行”的不同）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86f8f92" target="_blank" rel="external">Visual Studio Code Preview初体验</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870beb7" target="_blank" rel="external">Visual Studio Code Preview深度体验、使用技巧</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_ca1a61f" target="_blank" rel="external">Brand7-品牌漆上架商店啦！</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c388b82" target="_blank" rel="external">UWP应用Brand7开发小记（1）、判断App是否是第一次启动</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c665a5c" target="_blank" rel="external">UWP应用Brand7开发小记（2）、用Excel和Json初始化本地数据源Part1</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c66b082" target="_blank" rel="external">UWP应用Brand7开发小记（2）、用Excel和Json初始化本地数据源Part2</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c7ae2f8" target="_blank" rel="external">UWP 应用Brand7开发小记（3）、判断GridView的滚动方向</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c7f56c1" target="_blank" rel="external">UWP应用Brand7开发小记（4）、集合控件的虚拟化问题</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cccfc2d" target="_blank" rel="external">UWP 应用Brand7开发小记（5）、控件嵌入标题栏</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cc38035" target="_blank" rel="external">MySQL学习小记（1）-不能启动MySQL服务</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cca3bd7" target="_blank" rel="external">MySQL学习小记（2）-添加远程访问权限详解</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_d3d0794" target="_blank" rel="external">MySQL学习小记（3）-外键的使用</a></p>
+<p><a href="http://www.lofter.com/lpost/1d7338a1_d5494fc" target="_blank" rel="external">MySQL学习小记（4）-最大连接数</a></p>
+<p><a href="http://www.lofter.com/lpost/1d7338a1_10c4cf02" target="_blank" rel="external">MySQL学习小记（5）-主从服务器同步</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dd19e" target="_blank" rel="external">VS至强插件ReSharper指南01、安装入门</a></p>
+<h3 id="【视觉与图像】"><a href="#【视觉与图像】" class="headerlink" title="【视觉与图像】"></a>【视觉与图像】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_fa820b3" target="_blank" rel="external">【视觉与图像】摄像头篇（1）、CCD靶面尺寸</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_fad34dc" target="_blank" rel="external">【视觉与图像】摄像头篇（2）、焦距和视角</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_10bc7d39" target="_blank" rel="external">CMake编译OpenCV3.2（Qt平台）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_10bc7e4e" target="_blank" rel="external">Qt+OpenCV环境搭建</a></p>
+<h3 id="【Design-演示-设计】"><a href="#【Design-演示-设计】" class="headerlink" title="【Design/演示/设计】"></a>【Design/演示/设计】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c7385" target="_blank" rel="external">玩转PPT放映第一篇、演示者视图</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dc94e" target="_blank" rel="external">玩转PPT放映第二篇、快捷键</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bc93" target="_blank" rel="external">玩转PPT放映第三篇、自定义放映</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86d9038" target="_blank" rel="external">【PPT动画】钟摆效果</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_87060ac" target="_blank" rel="external">【PPT动画】模糊渐变切换效果</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c72ce" target="_blank" rel="external">【PPT动画】制作左、右浮入效果</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8700201" target="_blank" rel="external">PPT制作画中画效果</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bdfa" target="_blank" rel="external">PPT绘制长阴影图标</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c9304" target="_blank" rel="external">PPT三维立体图形绘制</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dd125" target="_blank" rel="external">PPT巧用矩形等分区域（黄金分割线）</a></p>
+<h3 id="【Lens-摄影-影视】"><a href="#【Lens-摄影-影视】" class="headerlink" title="【Lens/摄影/影视】"></a>【Lens/摄影/影视】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_eaa874a" target="_blank" rel="external">家乡 | 黑白 | PENTAX K-50 | 看见不一样</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dc98c" target="_blank" rel="external">看见，时光（延时摄影短片）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a483017" target="_blank" rel="external">我那时的“计量”（一），黑白质感</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a526318" target="_blank" rel="external">我那时的“计量”（二），迎新色彩</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a1952f4" target="_blank" rel="external">Lumia 1520 by iPhone6s</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a93fda1" target="_blank" rel="external">历届奥斯卡最佳动画长片下载（1）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a9207ea" target="_blank" rel="external">历届奥斯卡最佳动画长片下载（2）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8bc8efc" target="_blank" rel="external">「精品」皮克斯15部动画长片下载</a></p>
+<h3 id="【Other-科普-发现】"><a href="#【Other-科普-发现】" class="headerlink" title="【Other/科普/发现】"></a>【Other/科普/发现】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_86b724e" target="_blank" rel="external">PPI与DPI</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_87060f2" target="_blank" rel="external">USB接口类型（2.0概述）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f078121" target="_blank" rel="external">Type-C和USB3.0（3.1）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_dda20a4" target="_blank" rel="external">发现Win10 Bug两枚（均得微软官方确认，一枚已解决）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_9f2bdda" target="_blank" rel="external">再战之后，这场旅途，只属于我</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a1b9c49" target="_blank" rel="external">Win8以上系统安装PL2303驱动</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86f6444" target="_blank" rel="external">硬盘容量计算的差别</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8700192" target="_blank" rel="external">硬盘整数分区原理及计算（附工具下载）</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870619b" target="_blank" rel="external">详解Windows运行组件第一篇、原理篇</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bd17" target="_blank" rel="external">详解Windows运行组件第二篇、自定义运行指令</a></p>
+<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dd0c5" target="_blank" rel="external">Windows 10技术预览版体验视频</a></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从2014/08/23开始在lofter上写我的&lt;a href=&quot;http://ex2tron.lofter.com/post/1d7338a1_86b724e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;第一篇博客&lt;/a&gt;开始，已经过去了整整三年……
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
