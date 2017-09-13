@@ -56,7 +56,7 @@
     <link href="https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-1/"/>
     <id>https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
-    <updated>2017-09-13T14:23:05.405Z</updated>
+    <updated>2017-09-13T14:25:56.191Z</updated>
     
     <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
 <blockquote>
@@ -95,6 +95,14 @@
     
     </summary>
     
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Blog" scheme="https://ex2tron.github.io/tags/Blog/"/>
+    
+      <category term="Hexo" scheme="https://ex2tron.github.io/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://ex2tron.github.io/tags/Github/"/>
     
   </entry>
   
