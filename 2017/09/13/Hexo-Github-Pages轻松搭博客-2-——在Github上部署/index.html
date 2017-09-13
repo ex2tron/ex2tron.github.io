@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-13T14:23:43.600Z">
+<meta property="og:image" content="http://pic.ex2tron.xin/create_github_pages_repository.png-webpic">
+<meta property="og:updated_time" content="2017-09-13T14:29:03.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(2)——在Github上部署">
 <meta name="twitter:description" content="使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！">
+<meta name="twitter:image" content="http://pic.ex2tron.xin/create_github_pages_repository.png-webpic">
     
         <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
     
@@ -143,7 +145,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常出现的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">常出现的问题</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关联Github"><span class="post-toc-number">1.</span> <span class="post-toc-text">关联Github</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常出现的问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">常出现的问题</span></a></li></ol>
         </nav>
     </aside>
     
@@ -167,13 +169,27 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！<a id="more"></a></p>
-<p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<figure class="highlight plain"><figcaption><span>```下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">## 关联Github</div><div class="line"></div><div class="line">首先登陆[Github](https://github.com/)，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，**username必须与你的账户名相同**，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。**新建时注意勾选&quot;*Initialize this repository with a README*&quot;**，因为这个仓库必须不能为空。</div><div class="line"></div><div class="line">&gt; 如果你是git新用户的话，推荐看：[廖雪峰的Git教程-远程仓库](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000)</div><div class="line"></div><div class="line">![create_github_pages_repository](http://pic.ex2tron.xin/create_github_pages_repository.png-webpic)</div><div class="line"></div><div class="line">接下来打开博客目录下的``` _config.yml ```配置文件，定位到最后的deploy选项，修改如下：</div><div class="line">``` </div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:ex2tron/ex2tron.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<em>/var/www/html/</em>下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</p>
+<hr>
+<h2 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h2><p>首先登陆<a href="https://github.com/" target="_blank" rel="external">Github</a>，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，<strong>username必须与你的账户名相同</strong>，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。<strong>新建时注意勾选”<em>Initialize this repository with a README</em>“</strong>，因为这个仓库必须不能为空。</p>
+<blockquote>
+<p>如果你是git新用户的话，推荐看：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="external">廖雪峰的Git教程-远程仓库</a></p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/create_github_pages_repository.png-webpic" alt="create_github_pages_repository" title="">
+                </div>
+                <div class="image-caption">create_github_pages_repository</div>
+            </figure>
+<p>接下来打开博客目录下的_config.yml配置文件，定位到最后的deploy选项，修改如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:ex2tron/ex2tron.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
 <p>注意冒号后面有个空格，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
 <p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io">https://ex2tron.github.io</a>）就可以访问你的博客了，简单快速高效！</p>
 <h2 id="常出现的问题"><a href="#常出现的问题" class="headerlink" title="常出现的问题"></a>常出现的问题</h2><ol>
-<li><p>在<figure class="highlight plain"><figcaption><span>d ```进行部署时，如果出现``` ERROR Deployer not found: git ```的问题，可以先用下面的命令修复：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">``` </div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<li><p>在hexo d进行部署时，如果出现ERROR Deployer not found: git的问题，可以先用下面的命令修复：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 </li>
-<li><p>如果你没配置过ssh导致部署失败（可以通过<code>ssh -T username@example.com</code>来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
+<li><p>如果你没配置过ssh导致部署失败（可以通过ssh -T username@example.com来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
 </li>
 </ol>
 
@@ -183,7 +199,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-09-13T14:23:43.600Z" itemprop="dateUpdated">2017-09-13 22:23:43</time>
+    Last updated: <time datetime="2017-09-13T14:29:03.147Z" itemprop="dateUpdated">2017-09-13 22:29:03</time>
 </span><br>
 
 
@@ -270,7 +286,7 @@
     <div class="waves-block waves-effect next">
       <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-1/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Hexo-Github-Pages轻松搭博客(1)</h4>
+        <h4 class="title">Hexo+Github Pages轻松搭博客(1)</h4>
       </a>
     </div>
   
