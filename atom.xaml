@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-09-14T08:48:05.647Z</updated>
+  <updated>2017-09-18T11:56:47.981Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -16,11 +16,127 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【利器篇】七牛云——用做每月免费10G的图床</title>
+    <link href="https://ex2tron.github.io/2017/09/18/%E3%80%90%E5%88%A9%E5%99%A8%E7%AF%87%E3%80%91%E4%B8%83%E7%89%9B%E4%BA%91%E2%80%94%E2%80%94%E7%94%A8%E5%81%9A%E6%AF%8F%E6%9C%88%E5%85%8D%E8%B4%B910G%E7%9A%84%E5%9B%BE%E5%BA%8A/"/>
+    <id>https://ex2tron.github.io/2017/09/18/【利器篇】七牛云——用做每月免费10G的图床/</id>
+    <published>2017-09-18T11:55:38.000Z</published>
+    <updated>2017-09-18T11:56:47.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。<a id="more"></a></p>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>在<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>之前，我使用过国外的<a href="https://www.getcloudapp.com/" target="_blank" rel="external">Cloud App</a>和<a href="https://www.aliyun.com/product/oss?utm_content=se_877546" target="_blank" rel="external">阿里云的oss对象存储</a>。</p>
+<ol>
+<li><p>首先，国外的东西在国内稳定性和速度都是相对较差的，我试着在阿里云和Cloud App上上传同一张图片并生成外链，Cloud App要比阿里的加载速度延迟1-2s，阿里基本秒开。</p>
+</li>
+<li><p>阿里的oss对象存储虽然很稳定，但是并不提供免费的空间。相对来说，七牛云提供的每月10G免费流量，对于博客来说，绰绰有余了。</p>
+</li>
+<li><p>另外，七牛云提供了诸多的图片处理接口，如水印、格式转换、缩放等，很实用，很强大。</p>
+</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>注册并登陆<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>，在七牛云的产品列表中，添加一个<code>对象存储</code>，如这里取名为<code>picblog</code>：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/create_new_bucket.png" alt="create_new_bucket" title="">
+                </div>
+                <div class="image-caption">create_new_bucket</div>
+            </figure>
+<p>创建好之后，七牛云会自动生成一个测试域名：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/test_domain_name.png" alt="test_domain_name" title="">
+                </div>
+                <div class="image-caption">test_domain_name</div>
+            </figure>
+<p>这个域名就是你文件的前缀了。比如，我们点击<code>内容管理</code>，点击<code>上传文件</code>，选择一幅图片上传。上传完成后，复制该文件的外链地址：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/copy_file_link.png" alt="copy_file_link" title="">
+                </div>
+                <div class="image-caption">copy_file_link</div>
+            </figure>
+<p>这个地址就是你的图片地址辣，你可以在浏览器中访问该地址，比如你可以访问我的这个：<a href="http://pic.ex2tron.xin/mycli_demo.gif" target="_blank" rel="external">mysql_demo</a></p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><h3 id="添加二级域名"><a href="#添加二级域名" class="headerlink" title="添加二级域名"></a>添加二级域名</h3><p>如同前面那张图上所说，七牛云默认的测试域名有很多限制。所以，你如果已经购买了域名的话，可以在这里绑定自己的二级域名，这样既好记又方便管理。</p>
+<p>比如，这里我已经在万网上购买了<code>ex2tron.xin</code>的域名，这里我演示如何将七牛云的存储空间绑定<code>pic.ex2tron.xin</code>这个域名。</p>
+<p>在七牛云的存储空间页面，点击<code>绑定域名</code>，只需要在加速域名处填写要绑定的域名，其他项保持默认即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">加速域名： pic.ex2tron.xin</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/bucket_binding_domain_name.png" alt="bucket_binding_domain_name" title="">
+                </div>
+                <div class="image-caption">bucket_binding_domain_name</div>
+            </figure>
+<p>创建后，系统会配置一段时间，等待处理完成，会显示一个诸如<code>xxx.qiniudns.com</code>的CNAME记录值，记下此值，后面要用到。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/cname_for_binding.png" alt="cname_for_binding" title="">
+                </div>
+                <div class="image-caption">cname_for_binding</div>
+            </figure>
+<h3 id="添加域名解析"><a href="#添加域名解析" class="headerlink" title="添加域名解析"></a>添加域名解析</h3><p>打开万网的域名控制台，添加一条CNAME的解析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">记录类型：CNAME</div><div class="line">主机记录：pic</div><div class="line">记录值：xxx.qiniudns.com</div><div class="line"># 其他选型保持默认</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/add_dns_for_qiniu.png" alt="add_dns_for_qiniu" title="">
+                </div>
+                <div class="image-caption">add_dns_for_qiniu</div>
+            </figure>
+<p>这样，你上传的图片外链就是：<code>http://pic.ex2tron.xin/filename.png</code>之类的了。</p>
+<h2 id="添加图片样式"><a href="#添加图片样式" class="headerlink" title="添加图片样式"></a>添加图片样式</h2><p>利用七牛云做图床的另外一个强大之处在于丰富的图片样式。点击<code>图片样式</code>-<code>新建图片样式</code>，七牛云提供了如下很多种场景：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/api_for_image_process.png" alt="api_for_image_process" title="">
+                </div>
+                <div class="image-caption">api_for_image_process</div>
+            </figure>
+<p>比如，这里我们选择<code>指定宽高，强行缩放+打图片水印</code>，然后添加一个文字水印，可以调整文字的字体样式，位置等等：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/add_water_mark_api.png" alt="add_water_mark_api" title="">
+                </div>
+                <div class="image-caption">add_water_mark_api</div>
+            </figure>
+<p>调整好之后，为样式取个名称，如<code>webpic</code>，这样，只要在原来外链的后面添加<code>-webpic</code>就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://pic.ex2tron.xin/filename.png-webpic</div></pre></td></tr></table></figure>
+<p>其中<code>-</code>这个连接符可以通过存储空间控制面板的<code>样式分隔符设置</code>中进行修改。</p>
+<h2 id="图床工具"><a href="#图床工具" class="headerlink" title="图床工具"></a>图床工具</h2><p>对于七牛云，每张图片都在网页端上传还是比较麻烦的，所以用一些图床客户端工具会更加快速。</p>
+<p>这里推荐使用<a href="http://mpic.lzhaofu.cn/" target="_blank" rel="external">MPic</a>图床神器。打开软件后，设置好自己的AK和SK（可在七牛云的个人中心-密钥管理中看到）。MPic支持文件拖拽上传，点击复制就可以复制外链，非常方便：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.xin/mpic_qiniu.png" alt="mpic_qiniu" title="">
+                </div>
+                <div class="image-caption">mpic_qiniu</div>
+            </figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。
+    
+    </summary>
+    
+    
+      <category term="code" scheme="https://ex2tron.github.io/tags/code/"/>
+    
+      <category term="qiniu" scheme="https://ex2tron.github.io/tags/qiniu/"/>
+    
+      <category term="七牛云" scheme="https://ex2tron.github.io/tags/%E4%B8%83%E7%89%9B%E4%BA%91/"/>
+    
+      <category term="图床" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo+Github Pages轻松搭博客(2)——在Github上部署</title>
     <link href="https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-2-%E2%80%94%E2%80%94%E5%9C%A8Github%E4%B8%8A%E9%83%A8%E7%BD%B2/"/>
     <id>https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2-——在Github上部署/</id>
     <published>2017-09-13T12:15:47.000Z</published>
-    <updated>2017-09-14T08:48:05.647Z</updated>
+    <updated>2017-09-18T11:59:15.928Z</updated>
     
     <content type="html"><![CDATA[<p>使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！<a id="more"></a></p>
 <p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<em>/var/www/html/</em>下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</p>
@@ -36,15 +152,16 @@
                 </div>
                 <div class="image-caption">create_github_pages_repository</div>
             </figure>
-<p>接下来打开博客目录下的_config.yml配置文件，定位到最后的deploy选项，修改如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:ex2tron/ex2tron.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>注意冒号后面有个空格，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<p>接下来打开博客目录下的_config.yml配置文件，定位到最后的deploy选项，修改如下：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:ex2tron/ex2tron.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure></p>
+<p>注意冒号后面有个空格，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
 <p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io">https://ex2tron.github.io</a>）就可以访问你的博客了，简单快速高效！</p>
-<h2 id="发布新博客"><a href="#发布新博客" class="headerlink" title="发布新博客"></a>发布新博客</h2><p>博客搭建起来之后，就可以用Markdown写博客辣，使用下面的命令，创建新博客（如名为：我的第一篇博客）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &apos;我的第一篇博客&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="发布新博客"><a href="#发布新博客" class="headerlink" title="发布新博客"></a>发布新博客</h2><p>博客搭建起来之后，就可以用Markdown写博客辣，使用下面的命令，创建新博客（如名为：我的第一篇博客）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">'我的第一篇博客'</span></div></pre></td></tr></table></figure></p>
 <p>此命令会在博客目录\source_posts\h下生成“我的第一篇博客.md”文件，这就是你的博客源文件啦，文件开头如下，记得冒号后面有空格噢，不然会出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 我的第一篇博客</div><div class="line">date: 2017-09-13 20:15:47</div><div class="line">tags: #文章标签，格式：[1,2,3]</div><div class="line">---</div></pre></td></tr></table></figure></p>
-<p>不熟悉Markdown语法的可以看：<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown 语法说明</a>。写完之后依然使用之前的三条命令发布：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<p>不熟悉Markdown语法的可以看：<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown 语法说明</a>。写完之后依然使用之前的三条命令发布：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<p>后面两条指令也可以简化为一条：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g -d</div></pre></td></tr></table></figure></p>
 <h2 id="常出现的问题"><a href="#常出现的问题" class="headerlink" title="常出现的问题"></a>常出现的问题</h2><ol>
 <li><p>在hexo d进行部署时，如果出现ERROR Deployer not found: git的问题，可以先用下面的命令修复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 </li>
 <li><p>如果你没配置过ssh导致部署失败（可以通过ssh -T username@example.com来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
 </li>
@@ -60,8 +177,6 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
-      <category term="Blog" scheme="https://ex2tron.github.io/tags/Blog/"/>
-    
       <category term="Hexo" scheme="https://ex2tron.github.io/tags/Hexo/"/>
     
       <category term="Github" scheme="https://ex2tron.github.io/tags/Github/"/>
@@ -73,7 +188,7 @@
     <link href="https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-1/"/>
     <id>https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
-    <updated>2017-09-13T14:29:18.594Z</updated>
+    <updated>2017-09-18T11:59:03.354Z</updated>
     
     <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
 <blockquote>
@@ -114,8 +229,6 @@
     
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
-    
-      <category term="Blog" scheme="https://ex2tron.github.io/tags/Blog/"/>
     
       <category term="Hexo" scheme="https://ex2tron.github.io/tags/Hexo/"/>
     
