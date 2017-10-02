@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-10-02T13:28:49.016Z</updated>
+  <updated>2017-10-02T13:29:52.729Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="https://ex2tron.github.io/2017/10/02/%E5%B0%8F%E7%99%BD%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9Alogistic%E5%9B%9E%E5%BD%92/"/>
     <id>https://ex2tron.github.io/2017/10/02/小白深度学习笔记1：logistic回归/</id>
     <published>2017-10-02T13:06:32.000Z</published>
-    <updated>2017-10-02T13:28:49.016Z</updated>
+    <updated>2017-10-02T13:29:52.729Z</updated>
     
     <content type="html"><![CDATA[<p>开启神经网络与深度学习之坑！<a id="more"></a>本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。</p>
 <blockquote>
-<p><em>When life ends up breathtakingly fucked, you can generally trace it back to one big, bad decision.</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《DeadPool<br>》</a><br><em>当你的生活变成一坨屎的时候，通常都是因为你当时做的傻逼决定。</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《死侍》</a></p>
+<p><em>When life ends up breathtakingly fucked, you can generally trace it back to one big, bad decision.</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《DeadPool》</a><br><em>当你的生活变成一坨屎的时候，通常都是因为你当时做的傻逼决定。</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《死侍》</a></p>
 </blockquote>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
