@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-10-05T09:39:14.579Z</updated>
+  <updated>2017-10-05T09:42:42.530Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -16,13 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【利器篇】GitKraken——顶级酷炫Git图像化工具</title>
+    <title>【利器篇】GitKraken——顶级酷炫Git图像化客户端</title>
     <link href="https://ex2tron.github.io/2017/10/05/%E3%80%90%E5%88%A9%E5%99%A8%E7%AF%87%E3%80%91GitKraken%E2%80%94%E2%80%94%E9%A1%B6%E7%BA%A7%E9%85%B7%E7%82%ABGit%E5%9B%BE%E5%83%8F%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     <id>https://ex2tron.github.io/2017/10/05/【利器篇】GitKraken——顶级酷炫Git图像化工具/</id>
     <published>2017-10-05T09:33:20.000Z</published>
-    <updated>2017-10-05T09:39:14.579Z</updated>
+    <updated>2017-10-05T09:42:42.530Z</updated>
     
-    <content type="html"><![CDATA[<p>不喜欢敲命令，那么这款酷炫的Git客户端让你逼格满满！<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>不喜欢敲命令？那么这款酷炫的Git客户端让你逼格满满！<a id="more"></a></p>
 <blockquote>
 <p><em>真正的忘记是不需要努力的。</em>——<a href="https://movie.douban.com/subject/5045678/" target="_blank" rel="external">《大鱼海棠》</a></p>
 </blockquote>
@@ -82,12 +82,12 @@
     
     <summary type="html">
     
-      &lt;p&gt;不喜欢敲命令，那么这款酷炫的Git客户端让你逼格满满！
+      &lt;p&gt;不喜欢敲命令？那么这款酷炫的Git客户端让你逼格满满！
     
     </summary>
     
     
-      <category term="code" scheme="https://ex2tron.github.io/tags/code/"/>
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
       <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
@@ -102,7 +102,7 @@
     <link href="https://ex2tron.github.io/2017/10/02/%E5%B0%8F%E7%99%BD%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9Alogistic%E5%9B%9E%E5%BD%92/"/>
     <id>https://ex2tron.github.io/2017/10/02/小白深度学习笔记1：logistic回归/</id>
     <published>2017-10-02T13:06:32.000Z</published>
-    <updated>2017-10-03T06:44:01.663Z</updated>
+    <updated>2017-10-05T09:43:23.336Z</updated>
     
     <content type="html"><![CDATA[<p>开启神经网络与深度学习之坑！<a id="more"></a>本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。</p>
 <blockquote>
@@ -164,7 +164,7 @@
     </summary>
     
     
-      <category term="code" scheme="https://ex2tron.github.io/tags/code/"/>
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
       <category term="神经网络" scheme="https://ex2tron.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
@@ -179,7 +179,7 @@
     <link href="https://ex2tron.github.io/2017/09/29/%E3%80%90%E7%AE%97%E6%B3%95%E8%B4%B4%E3%80%91%E4%B8%89%E7%82%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/"/>
     <id>https://ex2tron.github.io/2017/09/29/【算法贴】三点定位算法/</id>
     <published>2017-09-29T10:58:31.000Z</published>
-    <updated>2017-09-29T12:04:19.107Z</updated>
+    <updated>2017-10-05T09:43:06.834Z</updated>
     
     <content type="html"><![CDATA[<p>已知三个点的坐标和未知点到这三个点的距离，求未知点？<a id="more"></a></p>
 <blockquote>
@@ -216,7 +216,7 @@
     </summary>
     
     
-      <category term="code" scheme="https://ex2tron.github.io/tags/code/"/>
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
       <category term="算法" scheme="https://ex2tron.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
@@ -229,7 +229,7 @@
     <link href="https://ex2tron.github.io/2017/09/28/%E6%9E%84%E5%BB%BA%E6%B3%95%E3%80%81%E6%9D%80%E6%AD%BB%E5%8F%98%E9%87%8F/"/>
     <id>https://ex2tron.github.io/2017/09/28/构建法、杀死变量/</id>
     <published>2017-09-28T13:23:45.000Z</published>
-    <updated>2017-09-28T13:31:14.714Z</updated>
+    <updated>2017-10-05T09:43:18.673Z</updated>
     
     <content type="html"><![CDATA[<p>如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。<a id="more"></a></p>
 <blockquote>
@@ -272,7 +272,7 @@
     </summary>
     
     
-      <category term="code" scheme="https://ex2tron.github.io/tags/code/"/>
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
       <category term="构建法" scheme="https://ex2tron.github.io/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
     
@@ -377,7 +377,7 @@
     <link href="https://ex2tron.github.io/2017/09/18/%E3%80%90%E5%88%A9%E5%99%A8%E7%AF%87%E3%80%91%E4%B8%83%E7%89%9B%E4%BA%91%E2%80%94%E2%80%94%E7%94%A8%E5%81%9A%E6%AF%8F%E6%9C%88%E5%85%8D%E8%B4%B910G%E7%9A%84%E5%9B%BE%E5%BA%8A/"/>
     <id>https://ex2tron.github.io/2017/09/18/【利器篇】七牛云——用做每月免费10G的图床/</id>
     <published>2017-09-18T11:55:38.000Z</published>
-    <updated>2017-09-25T12:26:16.857Z</updated>
+    <updated>2017-10-05T09:42:58.291Z</updated>
     
     <content type="html"><![CDATA[<p>随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。<a id="more"></a></p>
 <h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>在<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>之前，我使用过国外的<a href="https://www.getcloudapp.com/" target="_blank" rel="external">Cloud App</a>和<a href="https://www.aliyun.com/product/oss?utm_content=se_877546" target="_blank" rel="external">阿里云的oss对象存储</a>。</p>
@@ -478,7 +478,7 @@
     </summary>
     
     
-      <category term="code" scheme="https://ex2tron.github.io/tags/code/"/>
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
       <category term="qiniu" scheme="https://ex2tron.github.io/tags/qiniu/"/>
     
