@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/rgb_convert_input_x.png">
 <meta property="og:image" content="http://pic.ex2tron.top/sigmoid_function_graph.png">
 <meta property="og:image" content="http://pic.ex2tron.top/cost_function_graph.png">
-<meta property="og:updated_time" content="2017-10-02T13:29:52.729Z">
+<meta property="og:updated_time" content="2017-10-03T06:44:01.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小白深度学习笔记1：logistic回归">
 <meta name="twitter:description" content="开启神经网络与深度学习之坑！">
@@ -188,7 +188,7 @@
             </figure>
 <p>那么当有m个样本时，X就是一个(nx,m)，即nx行、m列的矩阵，而输出Y的形状（形状就是指矩阵的行数和列数）是(1,m)。</p>
 <h2 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h2><p>logistic回归（<a href="https://baike.baidu.com/item/Logistic%E6%A8%A1%E5%9E%8B?fromtitle=Logistic+regression&amp;fromid=18080373" target="_blank" rel="external">Logistic Regression</a>）就是一个用于二类分类的学习算法：假定给出输入的特征向量\(x_1\)（如一张图片），我们希望程序给出一个预测值\(\hat{y}\)，它指出这张图片中有猫还是没猫的概率，即：<br>$$\hat{y}=P(y=1\ or\ 0\mid x)$$</p>
-<p>既然\(\hat{y}\)是一个概率，那么\(\hat{y}\in[0,1]\)。如果按照线性回归，输出值应该是：\(\hat{y}=w^Tx+b\)，但是这个值可能远比1大或者出现负数，所以，需要用一个sigmoid函数做限定，最终输出为：<br>$$\hat{y}=\sigma(w^Tx+b)$$</p>
+<p>既然\(\hat{y}\)是一个概率，那么\(\hat{y}\in[0,1]\)。如果按照线性回归，输出值应该是：\(\hat{y}=w^Tx+b\)，w形状是(nx,1)，b形状是(1,1)，但是这个值可能远比1大或者出现负数，所以，需要用一个sigmoid函数做限定，最终输出为：<br>$$\hat{y}=\sigma(w^Tx+b)$$</p>
 <p>观察sigmoid函数\(\sigma(z)=\frac{1}{1+e^{-z}}\)的曲线图：</p>
 <p>\(z\rightarrow\infty,\sigma(z)\rightarrow1;z\rightarrow-\infty,\sigma(z)\rightarrow0;z=0,\sigma(z)=0.5\)</p>
 <figure class="image-bubble">
@@ -228,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-02T13:29:52.729Z" itemprop="dateUpdated">2017-10-02 21:29:52</time>
+    Last updated: <time datetime="2017-10-03T06:44:01.663Z" itemprop="dateUpdated">2017-10-03 14:44:01</time>
 </span><br>
 
 
@@ -308,7 +308,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/05/【利器篇】GitKraken——顶级酷炫Git图像化工具/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【利器篇】GitKraken——顶级酷炫Git图像化工具</h4>
+      </a>
+    </div>
   
 
   
