@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>小白深度学习笔记2：Python实现logistic回归 | ex2tron&#39;s Blog | Excelsior!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Code,神经网络,深度学习,logistic回归">
+    <meta name="description" content="上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！">
+<meta name="keywords" content="Code,神经网络,深度学习,logistic回归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白深度学习笔记2：Python实现logistic回归">
+<meta property="og:url" content="https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/logistic_forward_backword_propagation.png">
+<meta property="og:updated_time" content="2017-10-09T03:13:17.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小白深度学习笔记2：Python实现logistic回归">
+<meta name="twitter:description" content="上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！">
+<meta name="twitter:image" content="http://pic.ex2tron.top/logistic_forward_backword_propagation.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
+    
+    <link rel="shortcut icon" href="/ic_select_all.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Tony Wong</h5>
+          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ex2tron" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">小白深度学习笔记2：Python实现logistic回归</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">小白深度学习笔记2：Python实现logistic回归</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-09T01:52:11.000Z" itemprop="datePublished" class="page-time">
+  2017-10-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导入包"><span class="post-toc-number">1.</span> <span class="post-toc-text">导入包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#得到样本集"><span class="post-toc-number">2.</span> <span class="post-toc-text">得到样本集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编写各个模块"><span class="post-toc-number">3.</span> <span class="post-toc-text">编写各个模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sigmoid函数"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">sigmoid函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化w和b"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">初始化w和b</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#正-反向传播"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">正/反向传播</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优化器"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">优化器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预测函数"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">预测函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分类模型"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">分类模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证和分析结果"><span class="post-toc-number">4.</span> <span class="post-toc-text">验证和分析结果</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-小白深度学习笔记2：Python实现logistic回归"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">小白深度学习笔记2：Python实现logistic回归</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-09 09:52:11" datetime="2017-10-09T01:52:11.000Z"  itemprop="datePublished">2017-10-09</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！<a id="more"></a></p>
+<p>本文是我在观看吴恩达老师的<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="external">《神经网络和深度学习》</a>视频课程时，相关的笔记整理，大佬勿喷！</p>
+<blockquote>
+<p><em>You’re not worried？ Would it help？</em>  ——<a href="https://movie.douban.com/subject/25908051/" target="_blank" rel="external">《Bridge of Spies》</a><br><br><em>你不担心吗？有用吗？</em>——<a href="https://movie.douban.com/subject/25908051/" target="_blank" rel="external">《间谍之桥》</a></p>
+</blockquote>
+<hr>
+<p>首先，回顾一下，logistic回归其实就相当于只有一层的最简单的神经网络，如下图，正向传播计算出预测值和成本函数，而反向传播计算出的dw和db：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/logistic_forward_backword_propagation.png" alt="logistic_forward_backword_propagation" title="">
+                </div>
+                <div class="image-caption">logistic_forward_backword_propagation</div>
+            </figure>
+<p>p.s.本文其实是吴恩达老师<a href="http://pic.ex2tron.top/Logistic-Regression-with-a-Neural-Network-mindset.mhtml" target="_blank" rel="external">第二周教程的作业</a>，没答案，这里提供我写的，仅供参考！</p>
+<h2 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h2><p>首先import我们要使用的包，其中lr_utils和数据样本点<a href="http://pic.ex2tron.top/l1w2_datasets_lr_utils.rar" target="_blank" rel="external">此处</a>下载：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> h5py</div><div class="line"><span class="keyword">import</span> scipy</div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> ndimage</div><div class="line"><span class="keyword">from</span> lr_utils <span class="keyword">import</span> load_dataset</div></pre></td></tr></table></figure>
+<h2 id="得到样本集"><a href="#得到样本集" class="headerlink" title="得到样本集"></a>得到样本集</h2><p>我们的训练样本和测试样本都在前面下载的文件中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 加载样本</span></div><div class="line">train_set_x_orig,train_set_y,test_set_x_orig,test_set_y,classes = load_dataset()</div></pre></td></tr></table></figure>
+<p>因为我们直接加载的样本集还需要进行处理，所以变量名上加了<code>_orig</code>。此时，train_set_x_orig中的每一个元素就是一副图片，可以用下面的方式让它显示出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 显示第11张图片</span></div><div class="line">plt.figure()</div><div class="line">plt.imshow(train_set_x_orig[<span class="number">10</span>])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>如果打印出train_set_x_orig的形状，结果为：(209,64,64,3)。可知训练样本的个数m_train=209，图片的宽和高都是num_px=64。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(train_set_x_orig.shape)</div></pre></td></tr></table></figure>
+<p>还记得上一篇中提到如果把图片量化吗？如果图片的维数是(num_px,num_px,3)，我们要变成(num_px*num_px*3,1)的形状。也就是说要把形状为(a,b,c,d)的矩阵变成形状数组为(b*c*d,a)的矩阵数组，这里可以用下面的一个小技巧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">X_flatten = X.reshape(X.shape[<span class="number">0</span>], <span class="number">-1</span>).T</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[<span class="number">0</span>],<span class="number">-1</span>).T</div><div class="line">test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[<span class="number">0</span>],<span class="number">-1</span>).T</div></pre></td></tr></table></figure>
+<p>编写神经网络的代码中经常出现的错误便是把矩阵的维数搞错，所以随时可以通过shape属性进行检查，经过上面的语句后，train_set_x_flatten的形状应该是(12288,209)，test_set_x_flatten的形状应该是(12288,50)。</p>
+<p>因为像素值最大是255，为了避免数据过大，可以将数据归一化得到最终的训练/测试集样本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">train_set_x = train_set_x_flatten/<span class="number">255</span></div><div class="line">test_set_x = test_set_x_flatten/<span class="number">255</span></div></pre></td></tr></table></figure>
+<h2 id="编写各个模块"><a href="#编写各个模块" class="headerlink" title="编写各个模块"></a>编写各个模块</h2><h3 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h3><p>这里注意python自带math模块中的exp函数和numpy中的exp函数的区别，math.exp是没有<a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="external">广播</a>功能的，不适合此处的矩阵运算。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></div><div class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-x))</div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure></p>
+<p>测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(sigmoid(np.array([<span class="number">0</span>,<span class="number">2</span>])))</div></pre></td></tr></table></figure></p>
+<p>结果应为<code>[0.5         0.88079708]</code></p>
+<h3 id="初始化w和b"><a href="#初始化w和b" class="headerlink" title="初始化w和b"></a>初始化w和b</h3><p>因为logistic回归相当于只有一个输出层的神经网络，根据上一篇的分析，w的形状是(nx,1)，b的形状是(1,1)，这里我们统一初始化为0：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">initialize_with_zeros</span><span class="params">(dim)</span>:</span></div><div class="line">    w = np.zeros([dim,<span class="number">1</span>])</div><div class="line">    b = <span class="number">0.</span></div><div class="line">    <span class="keyword">return</span> w, b</div></pre></td></tr></table></figure></p>
+<h3 id="正-反向传播"><a href="#正-反向传播" class="headerlink" title="正/反向传播"></a>正/反向传播</h3><p>这里的函数就是本文开头那张图上显示的正向传播和反向传播：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">propagate</span><span class="params">(w, b, X, Y)</span>:</span></div><div class="line">    m = X.shape[<span class="number">1</span>]</div><div class="line">    <span class="comment"># 正向传播</span></div><div class="line">    A = sigmoid(np.dot(w.T,X)+b)</div><div class="line">    <span class="comment"># 成本函数</span></div><div class="line">    cost = -np.sum(Y*np.log(A)+(<span class="number">1</span>-Y)*np.log(<span class="number">1</span>-A),axis=<span class="number">1</span>)/m</div><div class="line">    cost = np.squeeze(cost)</div><div class="line"></div><div class="line">    <span class="comment"># 反向传播</span></div><div class="line">    dw = np.dot(X,(A-Y).T)/m</div><div class="line">    db = np.sum(A-Y,axis=<span class="number">1</span>)/m</div><div class="line"></div><div class="line">    grads = &#123;<span class="string">"dw"</span>:dw,<span class="string">"db"</span>:db&#125;</div><div class="line">    <span class="keyword">return</span> cost,grads</div></pre></td></tr></table></figure></p>
+<p>测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">w,b,X,Y = np.array([[<span class="number">1</span>],[<span class="number">2</span>]]),<span class="number">2</span>,np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]]),np.array([[<span class="number">1</span>,<span class="number">0</span>]])</div><div class="line">cost,grads = propagate(w,b,X,Y)</div><div class="line">print(cost,grads)</div></pre></td></tr></table></figure></p>
+<p>结果应为：<code>6.000064773192205 {&#39;dw&#39;: array([[0.99993216], [ 1.99980262]]), &#39;db&#39;: array([0.49993523])}</code></p>
+<h3 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h3><p>反向传播完，我们需要更新w，b的值，即应用梯度下降法进行优化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">optimize</span><span class="params">(w,b,X,Y,num_iterations,learning_rate,print_cost=False)</span>:</span></div><div class="line">    costs = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations):</div><div class="line">        cost,grads = propagate(w,b,X,Y)</div><div class="line">        dw = grads[<span class="string">'dw'</span>]</div><div class="line">        db = grads[<span class="string">'db'</span>]</div><div class="line">        <span class="comment"># 更新w和b的值</span></div><div class="line">        w = w-learning_rate*dw</div><div class="line">        b = b-learning_rate*db</div><div class="line">        <span class="comment"># 每隔100次，记录下成本函数的值</span></div><div class="line">        <span class="keyword">if</span>(i%<span class="number">100</span> == <span class="number">0</span>):</div><div class="line">            costs.append(cost)</div><div class="line">            <span class="keyword">if</span>(print_cost):</div><div class="line">                print(<span class="string">"cost after iteration %i:%f"</span>%(i,cost))</div><div class="line">    </div><div class="line">    params=&#123;<span class="string">'w'</span>:w,<span class="string">'b'</span>:b&#125;</div><div class="line">    grads=&#123;<span class="string">'dw'</span>:dw,<span class="string">'db'</span>:db&#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> params,grads,costs</div></pre></td></tr></table></figure>
+<p>测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">params, grads, costs = optimize(w, b, X, Y, num_iterations= <span class="number">100</span>, learning_rate = <span class="number">0.009</span>, print_cost = <span class="keyword">False</span>)</div><div class="line">print(params,grads,costs)</div></pre></td></tr></table></figure></p>
+<p>结果应为<code>{&#39;w&#39;: array([[0.1124579 ],[0.23106775]]), &#39;b&#39;: array([ 1.55930492])} {&#39;dw&#39;: array([[ 0.90158428],[1.76250842]]), &#39;db&#39;: array([ 0.43046207])} [array(6.000064773192205)]</code></p>
+<h3 id="预测函数"><a href="#预测函数" class="headerlink" title="预测函数"></a>预测函数</h3><p>通过优化器得到w和b参数之后，就可以用这两个参数预测X了，如果预测值&gt;=0.5，那结果就为1，即是一张有猫的图片，反之，结果为0，是一张没有猫的图片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(w,b,X)</span>:</span></div><div class="line">    m = X.shape[<span class="number">1</span>]</div><div class="line">    Y_predictions = np.zeros([<span class="number">1</span>,m])</div><div class="line">    A = sigmoid(np.dot(w.T,X)+b)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(A.shape[<span class="number">1</span>]):</div><div class="line">        Y_predictions[<span class="number">0</span>,i] = <span class="number">1</span> <span class="keyword">if</span> A[<span class="number">0</span>,i]&gt;=<span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> Y_predictions</div></pre></td></tr></table></figure>
+<h3 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h3><p>这样我们就编写好了所有的模块了，最后，把它们整合在一起，就是logistic回归的二类分类模型了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(X_train,Y_train,X_test,Y_test,num_iterations=<span class="number">2000</span>,learning_rate=<span class="number">0.5</span>,print_cost=False)</span>:</span></div><div class="line">    w,b = initialize_with_zeros(X_train.shape[<span class="number">0</span>])</div><div class="line">    params,grads,costs = optimize(w,b,X_train,Y_train,num_iterations,learning_rate,print_cost)</div><div class="line"></div><div class="line">    w = params[<span class="string">'w'</span>]</div><div class="line">    b = params[<span class="string">'b'</span>]</div><div class="line"></div><div class="line">    Y_prediction_test = predict(w,b,X_test)</div><div class="line">    Y_prediction_train = predict(w,b,X_train)</div><div class="line"></div><div class="line">    print(<span class="string">"train accuracy:&#123;&#125; %"</span>.format(<span class="number">100</span>-np.mean(np.abs(Y_prediction_train-Y_train))*<span class="number">100</span>))</div><div class="line">    print(<span class="string">"test accuracy:&#123;&#125; %"</span>.format(<span class="number">100</span>-np.mean(np.abs(Y_prediction_test-Y_test))*<span class="number">100</span>))</div><div class="line"></div><div class="line">    d = &#123;<span class="string">"costs"</span>: costs,</div><div class="line">        <span class="string">"Y_prediction_test"</span>: Y_prediction_test, </div><div class="line">        <span class="string">"Y_prediction_train"</span> : Y_prediction_train, </div><div class="line">        <span class="string">"w"</span> : w, </div><div class="line">        <span class="string">"b"</span> : b,</div><div class="line">        <span class="string">"learning_rate"</span> : learning_rate,</div><div class="line">        <span class="string">"num_iterations"</span>: num_iterations&#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure></p>
+<p>现在，可以把我们真正的样本数据传入这个模型，看它最后训练的结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = <span class="number">2000</span>, learning_rate = <span class="number">0.005</span>, print_cost = <span class="keyword">True</span>)</div></pre></td></tr></table></figure></p>
+<p>如果一切正常，会打印出最后模型在训练集和测试集上的准确率：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">train accuracy:99.04306220095694 %</div><div class="line">test accuracy:70.0 %</div></pre></td></tr></table></figure></p>
+<h2 id="验证和分析结果"><a href="#验证和分析结果" class="headerlink" title="验证和分析结果"></a>验证和分析结果</h2><p>可以看到当前的训练结果其实是过拟合的，测试集上的准确率并不高，但暂时足够了。我们可以显示和打印出真实的图片结果进行对比。比如说这里我们打开测试集上的第5张图片，并将学习率曲线画出来：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">index = <span class="number">4</span></div><div class="line">plt.imshow(test_set_x[:,index].reshape([num_px,num_px,<span class="number">3</span>]))</div><div class="line">print(<span class="string">"real result = "</span>+str(test_set_y[<span class="number">0</span>,index])+<span class="string">" and your predict = "</span>+str(d[<span class="string">'Y_prediction_test'</span>][<span class="number">0</span>,index]))</div><div class="line">plt.figure()</div><div class="line">plt.plot(np.squeeze(d[<span class="string">'costs'</span>]))</div><div class="line">plt.ylabel(<span class="string">'cost'</span>)</div><div class="line">plt.xlabel(<span class="string">'iterations(per hundreds)'</span>)</div><div class="line">plt.title(<span class="string">"learning rate = "</span>+str(d[<span class="string">'learning_rate'</span>]))</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<p>最后，源代码中包含了一段针对不同的学习率得到不同的训练结果的代码，大家可以参考下噢！~ o(<em>￣▽￣</em>)o</p>
+<p>本文源代码：<a href="https://github.com/ex2tron/BlogCode/blob/master/python_implement_logistic_regression.py" target="_blank" rel="external">python_implement_logistic_regression.py</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-09T03:13:17.501Z" itemprop="dateUpdated">2017-10-09 11:13:17</time>
+</span><br>
+
+
+        
+        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        
+    </div>
+    <footer>
+        <a href="https://ex2tron.github.io">
+            <img src="/img/avatar.jpg" alt="Tony Wong">
+            Tony Wong
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic回归/">logistic回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/&title=《小白深度学习笔记2：Python实现logistic回归》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/&title=《小白深度学习笔记2：Python实现logistic回归》 — ex2tron's Blog&source=上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《小白深度学习笔记2：Python实现logistic回归》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/05/【利器篇】GitKraken——顶级酷炫Git图像化工具/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【利器篇】GitKraken——顶级酷炫Git图像化客户端</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢支持，我会更加✊~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Tony Wong &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/&title=《小白深度学习笔记2：Python实现logistic回归》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/&title=《小白深度学习笔记2：Python实现logistic回归》 — ex2tron's Blog&source=上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《小白深度学习笔记2：Python实现logistic回归》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
