@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>numpy中几种矩阵的乘法 | ex2tron&#39;s Blog | Excelsior!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Code,numpy,Python,矩阵">
+    <meta name="description" content="最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。">
+<meta name="keywords" content="Code,numpy,Python,矩阵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy中几种矩阵的乘法">
+<meta property="og:url" content="https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-10-11T02:34:06.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="numpy中几种矩阵的乘法">
+<meta name="twitter:description" content="最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。">
+    
+        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
+    
+    <link rel="shortcut icon" href="/ic_select_all.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Tony Wong</h5>
+          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ex2tron" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">numpy中几种矩阵的乘法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">numpy中几种矩阵的乘法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-11T02:26:09.000Z" itemprop="datePublished" class="page-time">
+  2017-10-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#np-dot"><span class="post-toc-number">1.</span> <span class="post-toc-text">np.dot</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#np-multiply"><span class="post-toc-number">2.</span> <span class="post-toc-text">np.multiply</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#np-inner"><span class="post-toc-number">3.</span> <span class="post-toc-text">np.inner</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#np-outer"><span class="post-toc-number">4.</span> <span class="post-toc-text">np.outer</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-numpy中几种矩阵的乘法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">numpy中几种矩阵的乘法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-11 10:26:09" datetime="2017-10-11T02:26:09.000Z"  itemprop="datePublished">2017-10-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。<a id="more"></a></p>
+<blockquote>
+<p><em>With great power comes great responsibility</em>  ——<a href="https://movie.douban.com/subject/1306612/" target="_blank" rel="external">《Spider-Man》</a><br><br><em>能力越大，责任越大。</em>——<a href="https://movie.douban.com/subject/1306612/" target="_blank" rel="external">《蜘蛛侠》</a></p>
+</blockquote>
+<hr>
+<p>首先，这里规定一下，我们用numpy定义矩阵时全部采用标准的形式，举例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 不推荐的方式</span></div><div class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div><div class="line">print(a.shape)</div><div class="line"><span class="comment"># 推荐的方式</span></div><div class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">print(b.shape)</div></pre></td></tr></table></figure>
+<p>上面代码a的形状是<code>(3,)</code>，b的形状<code>(1,3)</code>，即1行3列的一个矩阵。</p>
+<h2 id="np-dot"><a href="#np-dot" class="headerlink" title="np.dot"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html" target="_blank" rel="external">np.dot</a></h2><p><code>np.dot(A,B)</code>就是实现同线性代数里面的矩阵乘法，也就是说，A的列数要等于B的行数才可以相乘：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">b = np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>]])</div><div class="line">print(np.dot(a,b))</div></pre></td></tr></table></figure>
+<p>a是<code>(2,3)</code>，b是<code>(3,1)</code>，所以输出结果是：[[14], [32]]。</p>
+<h2 id="np-multiply"><a href="#np-multiply" class="headerlink" title="np.multiply"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.multiply.html" target="_blank" rel="external">np.multiply</a></h2><p>np.multiply(A,B)和A*B效果一样，实现对应位置元素相乘。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 示例一</span></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">b = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">print(a*b)</div><div class="line">print(np.multiply(a,b))</div><div class="line"></div><div class="line"><span class="comment"># 示例二</span></div><div class="line">c = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">d = np.array([[<span class="number">1</span>],[<span class="number">2</span>]])</div><div class="line">print(c*d)</div><div class="line">print(np.multiply(c,d))</div></pre></td></tr></table></figure>
+<p>示例一输出结果是<code>[[4 10 18]]</code>，即<code>[[1*4 2*5 3*6]]</code>。<br>示例二输出结果是<code>[[1  2  3], [8 10 12]]</code>，这里涉及到一个numpy中<a href="http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="external">广播</a>的概念：因为c是(2,3)，而d是(2,1)，为了实现对应元素相乘，numpy会把d的列复制扩展成(2,3)，于是就有了上面的结果。</p>
+<h2 id="np-inner"><a href="#np-inner" class="headerlink" title="np.inner"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.inner.html#numpy.inner" target="_blank" rel="external">np.inner</a></h2><p>np.inner(A,B) 实现A,B的内积，要求A,B矩阵最后一维是相同的，如果是2维矩阵，即A,B矩阵的列数要相同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">b = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">print(np.inner(a,b))</div></pre></td></tr></table></figure>
+<p>结果为<code>[[32]]</code>，即<code>1*4 + 2*10 + 3*6</code>。</p>
+<h2 id="np-outer"><a href="#np-outer" class="headerlink" title="np.outer"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.outer.html#numpy.outer" target="_blank" rel="external">np.outer</a></h2><p>np.outer(A,B)即A,B的外积：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">b = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">print(np.outer(a,b))</div></pre></td></tr></table></figure>
+<p>结果为<code>[[4  5  6], [8 10 12], [12 15 18]]</code>，即<code>[[1*4 1*5 1*6], [2*4 2*5 2*6], [3*4 3*5 3*6]]</code>。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-11T02:34:06.948Z" itemprop="dateUpdated">2017-10-11 10:34:06</time>
+</span><br>
+
+
+        
+        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        
+    </div>
+    <footer>
+        <a href="https://ex2tron.github.io">
+            <img src="/img/avatar.jpg" alt="Tony Wong">
+            Tony Wong
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵/">矩阵</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/&title=《numpy中几种矩阵的乘法》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/&title=《numpy中几种矩阵的乘法》 — ex2tron's Blog&source=最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《numpy中几种矩阵的乘法》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">小白深度学习笔记2：Python实现logistic回归</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢支持，我会更加✊~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Tony Wong &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/&title=《numpy中几种矩阵的乘法》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/&title=《numpy中几种矩阵的乘法》 — ex2tron's Blog&source=最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《numpy中几种矩阵的乘法》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/10/11/numpy中几种矩阵的乘法/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
