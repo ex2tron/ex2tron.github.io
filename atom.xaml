@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-10-11T02:34:06.948Z</updated>
+  <updated>2017-10-13T07:41:24.743Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -14,6 +14,94 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小白深度学习笔记3：浅层神经网络</title>
+    <link href="https://ex2tron.github.io/2017/10/13/%E5%B0%8F%E7%99%BD%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E6%B5%85%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <id>https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/</id>
+    <published>2017-10-13T07:15:18.000Z</published>
+    <updated>2017-10-13T07:41:24.743Z</updated>
+    
+    <content type="html"><![CDATA[<p>logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？<a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<blockquote>
+<p><em>因为国民不富裕就不能受法律保护，就不能享受民主，这种说法我是无法接受的。</em>  ——<a href="https://movie.douban.com/subject/21937445/" target="_blank" rel="external">《辩护人》</a></p>
+</blockquote>
+<p>本文是我在观看吴恩达老师的<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="external">《神经网络和深度学习》</a>视频课程时，相关的笔记整理，大佬勿喷！</p>
+<hr>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p>前面学习了logistic回归，可以把logistic看作只有1层1个神经元的神经网络，如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/logistic_regression_singal_neural_network_sample.jpg" alt="logistic_regression_singal_neural_network_sample" title="">
+                </div>
+                <div class="image-caption">logistic_regression_singal_neural_network_sample</div>
+            </figure>
+<p>这个神经元做两个操作：</p>
+<ol>
+<li>计算\(z=w^Tx+b\)</li>
+<li>计算\(\hat{y}=a=\sigma(z)\)</li>
+</ol>
+<p>而一般的神经网路包括输入层、隐藏层和输出层。如下图所示，是一个两层神经网络。层数从隐藏层(Hidden Layer)开始算，也就是这个图中，第1层是隐藏层，第2层是输出层(Output Layer)。可以把输入层(Input Layer)称为第0层。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/two_layers_neural_network_samples.jpg" alt="two_layers_neural_network_samples" title="">
+                </div>
+                <div class="image-caption">two_layers_neural_network_samples</div>
+            </figure>
+<p>浅层神经网络是相较于深层神经网络而言的，深层神经网络中，隐藏层的个数&gt;=2，层数越多，也就越深。</p>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>如果把2层的神经网络看作是logistic回归的堆叠的话，那么这个神经网络的正向传播应该是下面这样的公式：</p>
+<p>$$z^{[1]}=W^{[1]}x+b^{[1]}\tag{1}$$<br>$$a^{[1]}=\sigma(z^{[1]})\tag{2}$$<br>$$z^{[2]}=W^{[2]}x+b^{[2]}\tag{3}$$<br>$$a^{[2]}=\sigma(z^{[2]})\tag{4}$$</p>
+<p>其中，sigmoid函数就是激活函数(Activation Function)。激活函数不一定是sigmoid函数，有的非线性函数要比sigmoid函数更好，这里介绍两种：tanh和ReLU。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/common_activation_functions.jpg" alt="common_activation_functions" title="">
+                </div>
+                <div class="image-caption">common_activation_functions</div>
+            </figure>
+<h3 id="tanh"><a href="#tanh" class="headerlink" title="tanh"></a>tanh</h3><p><a href="https://baike.baidu.com/item/tanh" target="_blank" rel="external">tanh</a>(Hyperbolic Tangent Function)双曲正切函数，\(a=tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}\)。tanh往往比sigmoid表现更好，从上图中可以看出，这个激活函数的平均值更接近于0。但是输出层如果是二类分类的话，结果要么是0要么是1，那么我们预测值应该介于0~1之间，所以这种情况下，输出层的激活函数依然用sigmoid函数。</p>
+<h3 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h3><p>如果仔细观察sigmoid和tanh函数曲线的话，就会发现，自变量z比较大或比较小时，这个函数的斜率就会很小，接近于0，这样会拖慢梯度下降法的速度。所以，另外一个经常使用到的激活函数是<a href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0" target="_blank" rel="external">ReLU</a>(Rectified Linear Unit)。\(a=max(0,z)\)，z为正时，导数为1，z为负时，导数为0。</p>
+<p>所以，总结三种激活函数，</p>
+<ul>
+<li>一般不使用sigmoid做激活函数，除非是二类分类，可用在输出层</li>
+<li>tanh普遍效果要比sigmoid更好</li>
+<li>最常用的默认激活函数是ReLU</li>
+</ul>
+<h2 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h2><p>如果我们选择tanh作为激活函数的话，开头那个2层神经网络的正向传播就是：</p>
+<p>$$Z^{[1]}=W^{[1]}X+b^{[1]}\tag{1}$$<br>$$A^{[1]}=tanh(Z^{[1]})\tag{2}$$<br>$$Z^{[2]}=W^{[2]}X+b^{[2]}\tag{3}$$<br>$$A^{[2]}=tanh(Z^{[2]})\tag{4}$$</p>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2><p>反向传播的推导跟logistic回归一样，只不过进行两次：</p>
+<p>$$dZ^{[2]}=A^{[2]}-Y\tag{1}$$<br>$$dW^{[2]}=\frac{1}{m}dZ^{[2]}A^{[1]^T}\tag{2}$$<br>$$db^{[2]}=\frac{1}{m}np.sum(dZ^{[2]},axis=1,keepdims=True)\tag{3}$$<br>$$dZ^{[1]}=W^{[2]^T}dZ^{[2]}*tanh^{’[1]}(Z^{[1]})\tag{4}$$<br>$$dW^{[1]}=\frac{1}{m}dZ^{[1]}X^T\tag{5}$$<br>$$db^{[1]}=\frac{1}{m}np.sum(dZ^{[1]},axis=1,keepdims=True)\tag{6}$$</p>
+<h2 id="随机初始化"><a href="#随机初始化" class="headerlink" title="随机初始化"></a>随机初始化</h2><p>之前在logistic回归中，我们可以将权重W初始化为0，但是对于神经网络而言，W都初始化为0的话，是无效的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/no_zero_initialized_sample.jpg" alt="no_zero_initialized_sample" title="">
+                </div>
+                <div class="image-caption">no_zero_initialized_sample</div>
+            </figure>
+<p>举例来说，对于上图中的神经网络，隐藏层神经元个数是2，如果W全部初始化为0的话，那么：</p>
+<p>$$<br>    W^{[1]}=<br>    \begin{bmatrix}<br>    0 &amp; 0 \newline<br>    0 &amp; 0<br>    \end{bmatrix}<br>$$</p>
+<p>因为\(z^{[1]}=W^{[1]}x+b\)，这样的话\(z_1^{[1]}=z_2^{[1]}\)，\(a_1^{[1]}=a_2^{[1]}\)，也就是说，两个神经元的功能完全一样，计算相同的值，这样1个神经元和n个神经元对神经网络的作用是一样的，其他n-1个是多余的。</p>
+<p>所以，在神经网络的参数初始化中，权重W是不能全部初始化为0的，b的话无所谓，都可以。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="神经网络" scheme="https://ex2tron.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="深度学习" scheme="https://ex2tron.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>numpy中几种矩阵的乘法</title>

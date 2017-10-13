@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>小白深度学习笔记3：浅层神经网络 | ex2tron&#39;s Blog | Excelsior!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Code,神经网络,深度学习">
+    <meta name="description" content="logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？">
+<meta name="keywords" content="Code,神经网络,深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白深度学习笔记3：浅层神经网络">
+<meta property="og:url" content="https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/logistic_regression_singal_neural_network_sample.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/two_layers_neural_network_samples.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/common_activation_functions.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/no_zero_initialized_sample.jpg">
+<meta property="og:updated_time" content="2017-10-13T07:41:24.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小白深度学习笔记3：浅层神经网络">
+<meta name="twitter:description" content="logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？">
+<meta name="twitter:image" content="http://pic.ex2tron.top/logistic_regression_singal_neural_network_sample.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
+    
+    <link rel="shortcut icon" href="/ic_select_all.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Tony Wong</h5>
+          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ex2tron" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">小白深度学习笔记3：浅层神经网络</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">小白深度学习笔记3：浅层神经网络</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-13T07:15:18.000Z" itemprop="datePublished" class="page-time">
+  2017-10-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#神经网络"><span class="post-toc-number">1.</span> <span class="post-toc-text">神经网络</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#激活函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">激活函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tanh"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">tanh</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ReLU"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ReLU</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正向传播"><span class="post-toc-number">3.</span> <span class="post-toc-text">正向传播</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向传播"><span class="post-toc-number">4.</span> <span class="post-toc-text">反向传播</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#随机初始化"><span class="post-toc-number">5.</span> <span class="post-toc-text">随机初始化</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-小白深度学习笔记3：浅层神经网络"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">小白深度学习笔记3：浅层神经网络</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-13 15:15:18" datetime="2017-10-13T07:15:18.000Z"  itemprop="datePublished">2017-10-13</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？<a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<blockquote>
+<p><em>因为国民不富裕就不能受法律保护，就不能享受民主，这种说法我是无法接受的。</em>  ——<a href="https://movie.douban.com/subject/21937445/" target="_blank" rel="external">《辩护人》</a></p>
+</blockquote>
+<p>本文是我在观看吴恩达老师的<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="external">《神经网络和深度学习》</a>视频课程时，相关的笔记整理，大佬勿喷！</p>
+<hr>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p>前面学习了logistic回归，可以把logistic看作只有1层1个神经元的神经网络，如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/logistic_regression_singal_neural_network_sample.jpg" alt="logistic_regression_singal_neural_network_sample" title="">
+                </div>
+                <div class="image-caption">logistic_regression_singal_neural_network_sample</div>
+            </figure>
+<p>这个神经元做两个操作：</p>
+<ol>
+<li>计算\(z=w^Tx+b\)</li>
+<li>计算\(\hat{y}=a=\sigma(z)\)</li>
+</ol>
+<p>而一般的神经网路包括输入层、隐藏层和输出层。如下图所示，是一个两层神经网络。层数从隐藏层(Hidden Layer)开始算，也就是这个图中，第1层是隐藏层，第2层是输出层(Output Layer)。可以把输入层(Input Layer)称为第0层。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/two_layers_neural_network_samples.jpg" alt="two_layers_neural_network_samples" title="">
+                </div>
+                <div class="image-caption">two_layers_neural_network_samples</div>
+            </figure>
+<p>浅层神经网络是相较于深层神经网络而言的，深层神经网络中，隐藏层的个数&gt;=2，层数越多，也就越深。</p>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>如果把2层的神经网络看作是logistic回归的堆叠的话，那么这个神经网络的正向传播应该是下面这样的公式：</p>
+<p>$$z^{[1]}=W^{[1]}x+b^{[1]}\tag{1}$$<br>$$a^{[1]}=\sigma(z^{[1]})\tag{2}$$<br>$$z^{[2]}=W^{[2]}x+b^{[2]}\tag{3}$$<br>$$a^{[2]}=\sigma(z^{[2]})\tag{4}$$</p>
+<p>其中，sigmoid函数就是激活函数(Activation Function)。激活函数不一定是sigmoid函数，有的非线性函数要比sigmoid函数更好，这里介绍两种：tanh和ReLU。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/common_activation_functions.jpg" alt="common_activation_functions" title="">
+                </div>
+                <div class="image-caption">common_activation_functions</div>
+            </figure>
+<h3 id="tanh"><a href="#tanh" class="headerlink" title="tanh"></a>tanh</h3><p><a href="https://baike.baidu.com/item/tanh" target="_blank" rel="external">tanh</a>(Hyperbolic Tangent Function)双曲正切函数，\(a=tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}\)。tanh往往比sigmoid表现更好，从上图中可以看出，这个激活函数的平均值更接近于0。但是输出层如果是二类分类的话，结果要么是0要么是1，那么我们预测值应该介于0~1之间，所以这种情况下，输出层的激活函数依然用sigmoid函数。</p>
+<h3 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h3><p>如果仔细观察sigmoid和tanh函数曲线的话，就会发现，自变量z比较大或比较小时，这个函数的斜率就会很小，接近于0，这样会拖慢梯度下降法的速度。所以，另外一个经常使用到的激活函数是<a href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E6%95%B4%E6%B5%81%E5%87%BD%E6%95%B0" target="_blank" rel="external">ReLU</a>(Rectified Linear Unit)。\(a=max(0,z)\)，z为正时，导数为1，z为负时，导数为0。</p>
+<p>所以，总结三种激活函数，</p>
+<ul>
+<li>一般不使用sigmoid做激活函数，除非是二类分类，可用在输出层</li>
+<li>tanh普遍效果要比sigmoid更好</li>
+<li>最常用的默认激活函数是ReLU</li>
+</ul>
+<h2 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h2><p>如果我们选择tanh作为激活函数的话，开头那个2层神经网络的正向传播就是：</p>
+<p>$$Z^{[1]}=W^{[1]}X+b^{[1]}\tag{1}$$<br>$$A^{[1]}=tanh(Z^{[1]})\tag{2}$$<br>$$Z^{[2]}=W^{[2]}X+b^{[2]}\tag{3}$$<br>$$A^{[2]}=tanh(Z^{[2]})\tag{4}$$</p>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2><p>反向传播的推导跟logistic回归一样，只不过进行两次：</p>
+<p>$$dZ^{[2]}=A^{[2]}-Y\tag{1}$$<br>$$dW^{[2]}=\frac{1}{m}dZ^{[2]}A^{[1]^T}\tag{2}$$<br>$$db^{[2]}=\frac{1}{m}np.sum(dZ^{[2]},axis=1,keepdims=True)\tag{3}$$<br>$$dZ^{[1]}=W^{[2]^T}dZ^{[2]}*tanh^{’[1]}(Z^{[1]})\tag{4}$$<br>$$dW^{[1]}=\frac{1}{m}dZ^{[1]}X^T\tag{5}$$<br>$$db^{[1]}=\frac{1}{m}np.sum(dZ^{[1]},axis=1,keepdims=True)\tag{6}$$</p>
+<h2 id="随机初始化"><a href="#随机初始化" class="headerlink" title="随机初始化"></a>随机初始化</h2><p>之前在logistic回归中，我们可以将权重W初始化为0，但是对于神经网络而言，W都初始化为0的话，是无效的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/no_zero_initialized_sample.jpg" alt="no_zero_initialized_sample" title="">
+                </div>
+                <div class="image-caption">no_zero_initialized_sample</div>
+            </figure>
+<p>举例来说，对于上图中的神经网络，隐藏层神经元个数是2，如果W全部初始化为0的话，那么：</p>
+<p>$$<br>    W^{[1]}=<br>    \begin{bmatrix}<br>    0 &amp; 0 \newline<br>    0 &amp; 0<br>    \end{bmatrix}<br>$$</p>
+<p>因为\(z^{[1]}=W^{[1]}x+b\)，这样的话\(z_1^{[1]}=z_2^{[1]}\)，\(a_1^{[1]}=a_2^{[1]}\)，也就是说，两个神经元的功能完全一样，计算相同的值，这样1个神经元和n个神经元对神经网络的作用是一样的，其他n-1个是多余的。</p>
+<p>所以，在神经网络的参数初始化中，权重W是不能全部初始化为0的，b的话无所谓，都可以。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-13T07:41:24.743Z" itemprop="dateUpdated">2017-10-13 15:41:24</time>
+</span><br>
+
+
+        
+        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        
+    </div>
+    <footer>
+        <a href="https://ex2tron.github.io">
+            <img src="/img/avatar.jpg" alt="Tony Wong">
+            Tony Wong
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/&title=《小白深度学习笔记3：浅层神经网络》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/&title=《小白深度学习笔记3：浅层神经网络》 — ex2tron's Blog&source=logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《小白深度学习笔记3：浅层神经网络》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/11/numpy中几种矩阵的乘法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">numpy中几种矩阵的乘法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢支持，我会更加✊~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Tony Wong &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/&title=《小白深度学习笔记3：浅层神经网络》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/&title=《小白深度学习笔记3：浅层神经网络》 — ex2tron's Blog&source=logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《小白深度学习笔记3：浅层神经网络》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/10/13/小白深度学习笔记3：浅层神经网络/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
