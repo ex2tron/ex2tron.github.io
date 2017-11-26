@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-11-19T12:36:05.553Z</updated>
+  <updated>2017-11-26T11:07:47.956Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -16,11 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Brand7 2.0更名&quot;品牌漆&quot;正式上架咯！</title>
+    <link href="https://ex2tron.github.io/2017/11/26/Brand7-2-0%E6%9B%B4%E5%90%8D%E5%93%81%E7%89%8C%E6%BC%86%E6%AD%A3%E5%BC%8F%E4%B8%8A%E6%9E%B6%E5%92%AF%EF%BC%81/"/>
+    <id>https://ex2tron.github.io/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/</id>
+    <published>2017-11-26T11:04:32.000Z</published>
+    <updated>2017-11-26T11:07:47.956Z</updated>
+    
+    <content type="html"><![CDATA[<p>隔了一年更新，良心都有点痛了( ╯□╰ )<a id="more"></a></p>
+<blockquote>
+<p><em>示威的人做的不对的话，引起示威的人呢？</em>  ——<a href="https://movie.douban.com/subject/21937445/" target="_blank" rel="external">《辩护人》</a></p>
+</blockquote>
+<p>当初Brand7写完的时候，一直想写一个关于电影的APP，甚至做出了雏形：MovieBackdrops，可惜，时间不多，事情却很多。前段时间闭关，摸着自己的良心，终于把Brand7更新了一把，来看看更新内容吧：</p>
+<p><strong><a href="https://www.microsoft.com/store/productId/9NBLGGH546QC" target="_blank" rel="external">品牌漆</a>（Brand7）是一款Win10 UWP猜品牌的小游戏，里面涵盖了汽车、娱乐、时尚、生活、餐饮、科技、旅游七个类别的550个品牌。Ver2.0.1更新日志如下：</strong></p>
+<ol>
+<li><p>更名“品牌漆”</p>
+</li>
+<li><p>全新Logo</p>
+</li>
+<li><p>全新启动界面</p>
+</li>
+<li><p>新增50个品牌，现共550个品牌</p>
+</li>
+<li><p>全面中文版（英文被很多人吐槽看不懂( ╯□╰ )）</p>
+</li>
+<li><p>界面UI调整</p>
+</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/brand7_v2_comparation.jpg" alt="新旧版对比：中文版" title="">
+                </div>
+                <div class="image-caption">新旧版对比：中文版</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/brand7_v2_ui.jpg" alt="完成界面" title="">
+                </div>
+                <div class="image-caption">完成界面</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/brand7_v2_startui.jpg" alt="新的启动界面" title="">
+                </div>
+                <div class="image-caption">新的启动界面</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/brand7_v2_share.jpg" alt="分享界面" title="">
+                </div>
+                <div class="image-caption">分享界面</div>
+            </figure>
+<p>可以在Win10应用商店中搜索“品牌漆”进行下载，或<a href="https://www.microsoft.com/store/productId/9NBLGGH546QC" target="_blank" rel="external">点击此处</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;隔了一年更新，良心都有点痛了( ╯□╰ )
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Brand7" scheme="https://ex2tron.github.io/tags/Brand7/"/>
+    
+      <category term="品牌漆" scheme="https://ex2tron.github.io/tags/%E5%93%81%E7%89%8C%E6%BC%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>软件+影视汁源贴(updating...)</title>
     <link href="https://ex2tron.github.io/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>https://ex2tron.github.io/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2017-11-19T12:36:05.553Z</updated>
+    <updated>2017-11-24T06:15:38.186Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -76,7 +149,7 @@
 <h3 id="媒体"><a href="#媒体" class="headerlink" title="媒体"></a>媒体</h3><ul>
 <li>Adobe CC 2017：<a href="http://pan.baidu.com/s/1eRNym9W" target="_blank" rel="external">精简版 密码：f7yt</a></li>
 </ul>
-<h2 id="影视汁源"><a href="#影视汁源" class="headerlink" title="影视汁源"></a><strong>影视汁源</strong></h2><ul>
+<h3 id="实用工具"><a href="#实用工具" class="headerlink" title="实用工具"></a>实用工具</h3><h2 id="影视汁源"><a href="#影视汁源" class="headerlink" title="影视汁源"></a><strong>影视汁源</strong></h2><ul>
 <li><p><a href="http://6vhao.com/" target="_blank" rel="external">6v电影网</a></p>
 </li>
 <li><p><a href="http://www.zimuzu.tv/" target="_blank" rel="external">字幕组（原人人影视）</a></p>
@@ -881,13 +954,13 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
-      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
-    
       <category term="qiniu" scheme="https://ex2tron.github.io/tags/qiniu/"/>
     
       <category term="七牛云" scheme="https://ex2tron.github.io/tags/%E4%B8%83%E7%89%9B%E4%BA%91/"/>
     
       <category term="图床" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
   </entry>
   
