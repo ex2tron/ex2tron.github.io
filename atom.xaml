@@ -93,7 +93,7 @@
     <link href="https://ex2tron.github.io/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>https://ex2tron.github.io/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2017-11-24T06:15:38.186Z</updated>
+    <updated>2017-11-29T03:28:38.371Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -143,6 +143,12 @@
 <li><p>MySQL：<a href="https://www.mysql.com/" target="_blank" rel="external">官网</a>、<a href="https://cdn.mysql.com//Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi" target="_blank" rel="external">MySQL Installer 5.7.20</a></p>
 <ul>
 <li>WampServer：<a href="http://www.wampserver.com/en/" target="_blank" rel="external">官网</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x64.exe" target="_blank" rel="external">3.1.0 x64</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x86.exe" target="_blank" rel="external">3.1.0 x86</a></li>
+</ul>
+</li>
+<li><p>开发组件：</p>
+<ul>
+<li>protobuf：<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">官网(需翻墙)</a></li>
+<li>ffmpeg：<a href="http://ffmpeg.org/download.html" target="_blank" rel="external">官网</a></li>
 </ul>
 </li>
 </ul>
@@ -954,13 +960,13 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
+      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+    
       <category term="qiniu" scheme="https://ex2tron.github.io/tags/qiniu/"/>
     
       <category term="七牛云" scheme="https://ex2tron.github.io/tags/%E4%B8%83%E7%89%9B%E4%BA%91/"/>
     
       <category term="图床" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%BA%8A/"/>
-    
-      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
   </entry>
   
