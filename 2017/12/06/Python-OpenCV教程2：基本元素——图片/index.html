@@ -18,7 +18,7 @@
     
     
     
-    <title>Python+OpenCV教程2：开始使用图片 | ex2tron&#39;s Blog | Excelsior!</title>
+    <title>Python+OpenCV教程2：基本元素——图片 | ex2tron&#39;s Blog | Excelsior!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#355876">
@@ -28,15 +28,15 @@
     <meta name="description" content="学习如何加载图片，显示并保存图片。">
 <meta name="keywords" content="Code,Python,OpenCV,图像处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+OpenCV教程2：开始使用图片">
-<meta property="og:url" content="https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/index.html">
+<meta property="og:title" content="Python+OpenCV教程2：基本元素——图片">
+<meta property="og:url" content="https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何加载图片，显示并保存图片。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_show_lena_gray.jpg">
-<meta property="og:updated_time" content="2017-12-06T08:21:35.199Z">
+<meta property="og:updated_time" content="2017-12-06T14:19:12.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程2：开始使用图片">
+<meta name="twitter:title" content="Python+OpenCV教程2：基本元素——图片">
 <meta name="twitter:description" content="学习如何加载图片，显示并保存图片。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_show_lena_gray.jpg">
     
@@ -105,7 +105,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Python+OpenCV教程2：开始使用图片</div>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程2：基本元素——图片</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -127,7 +127,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Python+OpenCV教程2：开始使用图片</h1>
+        <h1 class="title">Python+OpenCV教程2：基本元素——图片</h1>
         <h5 class="subtitle">
             
                 <time datetime="2017-12-06T07:52:06.000Z" itemprop="datePublished" class="page-time">
@@ -154,11 +154,11 @@
         </nav>
     </aside>
     
-<article id="post-Python-OpenCV教程2：开始使用图片"
+<article id="post-Python-OpenCV教程2：基本元素——图片"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Python+OpenCV教程2：开始使用图片</h1>
+        <h1 class="post-card-title">Python+OpenCV教程2：基本元素——图片</h1>
         <div class="post-meta">
             <time class="post-time" title="2017-12-06 15:52:06" datetime="2017-12-06T07:52:06.000Z"  itemprop="datePublished">2017-12-06</time>
 
@@ -171,33 +171,29 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>学习如何加载图片，显示并保存图片。<a id="more"></a></p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li><p>加载图片，显示图片，保存图片</p>
-</li>
-<li><p>OpenCV函数：cv2.imread()、cv2.imshow()、cv2.imwrite()</p>
-</li>
+<li>加载图片，显示图片，保存图片</li>
+<li>OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 灰度图加载</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 <ul>
-<li><p>参数一是图片的文件名：</p>
+<li><p>参数1是图片的文件名：</p>
 <ul>
-<li><p>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</p>
-</li>
-<li><p>否则，需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’</p>
-</li>
+<li>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</li>
+<li>否则，需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’</li>
 </ul>
 </li>
-<li><p>参数二是图片的读入方式，省略即采用默认值：</p>
+<li><p>参数2是图片的读入方式，省略即采用默认值：</p>
 <ul>
-<li><p>cv2.IMREAD_COLOR：忽略透明通道的彩色图，默认值(1)</p>
-</li>
-<li><p>cv2.IMREAD_GRAYSCALE：灰度图加载(0)</p>
-</li>
-<li><p>cv2.IMREAD_UNCHANGED：包含透明通道的彩色图(-1)</p>
-</li>
+<li>cv2.IMREAD_COLOR：忽略透明通道的彩色图，默认值(1)</li>
+<li>cv2.IMREAD_GRAYSCALE：灰度图加载(0)</li>
+<li>cv2.IMREAD_UNCHANGED：包含透明通道的彩色图(-1)</li>
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>经验之谈：图片如果没有加载成功的话是不会报错的，而是img=None，后面处理才会报错，算是个小坑。</p>
+</blockquote>
 <h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>结果应该如下：</p>
@@ -209,9 +205,11 @@
                 <div class="image-caption">lena灰度图显示</div>
             </figure>
 <ul>
-<li>参数一是窗口的名字，参数二是要显示的图片。</li>
+<li>参数1是窗口的名字，参数2是要显示的图片。</li>
 </ul>
 <p><code>cv2.waitKey()</code>是让程序暂停等待按键的函数。参数是等待时间（单位：毫秒ms），时间一到，会继续执行接下来的程序，传入0的话代表一直等待。按键可通过<code>k = cv2.waitKey(0)</code>获取（<a href="#练习">练习1</a>）。</p>
+<p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片。参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，代表窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，来调整窗口大小：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先定义窗口，后显示图片</span></div><div class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</div><div class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><p>使用<code>cv2.imwrite()</code>保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.imread()读入图片、cv2.imshow()显示图片、cv2.imwrite()保存图片</p>
@@ -221,7 +219,7 @@
 <li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="http://ex2tron.top/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/" target="_blank" rel="external">Matplotlib显示图像</a> </p>
 </li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></p>
 <p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></p>
 
         </div>
@@ -230,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-06T08:21:35.199Z" itemprop="dateUpdated">2017-12-06 16:21:35</time>
+    Last updated: <time datetime="2017-12-06T14:19:12.957Z" itemprop="dateUpdated">2017-12-06 22:19:12</time>
 </span><br>
 
 
@@ -265,7 +263,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/&title=《Python+OpenCV教程2：开始使用图片》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/&title=《Python+OpenCV教程2：基本元素——图片》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -275,22 +273,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/&title=《Python+OpenCV教程2：开始使用图片》 — ex2tron's Blog&source=学习如何加载图片，显示并保存图片。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/&title=《Python+OpenCV教程2：基本元素——图片》 — ex2tron's Blog&source=学习如何加载图片，显示并保存图片。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程2：开始使用图片》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程2：基本元素——图片》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/&via=https://ex2tron.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -409,7 +407,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/&title=《Python+OpenCV教程2：开始使用图片》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/&title=《Python+OpenCV教程2：基本元素——图片》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -419,22 +417,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/&title=《Python+OpenCV教程2：开始使用图片》 — ex2tron's Blog&source=学习如何加载图片，显示并保存图片。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/&title=《Python+OpenCV教程2：基本元素——图片》 — ex2tron's Blog&source=学习如何加载图片，显示并保存图片。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程2：开始使用图片》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程2：基本元素——图片》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/&via=https://ex2tron.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -445,7 +443,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/" alt="微信分享二维码">
 </div>
 
 
