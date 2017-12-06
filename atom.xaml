@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-05T14:48:43.314Z</updated>
+  <updated>2017-12-06T08:18:43.265Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -14,6 +14,187 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python+OpenCV教程番外篇1：Matplotlib显示图像</title>
+    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
+    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/</id>
+    <published>2017-12-06T07:55:15.000Z</published>
+    <updated>2017-12-06T08:18:43.265Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
+<p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
+<h2 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/blob/master/Python%2BOpenCV/2.%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/cv2_using_matplotlib_show_image.py" target="_blank" rel="external">本节源码</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何使用Matplotlib显示OpenCV图像。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Matplotlib" scheme="https://ex2tron.github.io/tags/Matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python+OpenCV教程2：开始使用图片</title>
+    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/"/>
+    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：开始使用图片/</id>
+    <published>2017-12-06T07:52:06.000Z</published>
+    <updated>2017-12-06T08:21:35.199Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a></p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li><p>加载图片，显示图片，保存图片</p>
+</li>
+<li><p>OpenCV函数：cv2.imread()、cv2.imshow()、cv2.imwrite()</p>
+</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 灰度图加载</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>参数一是图片的文件名：</p>
+<ul>
+<li><p>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</p>
+</li>
+<li><p>否则，需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’</p>
+</li>
+</ul>
+</li>
+<li><p>参数二是图片的读入方式，省略即采用默认值：</p>
+<ul>
+<li><p>cv2.IMREAD_COLOR：忽略透明通道的彩色图，默认值(1)</p>
+</li>
+<li><p>cv2.IMREAD_GRAYSCALE：灰度图加载(0)</p>
+</li>
+<li><p>cv2.IMREAD_UNCHANGED：包含透明通道的彩色图(-1)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>结果应该如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_show_lena_gray.jpg" alt="lena灰度图显示" title="">
+                </div>
+                <div class="image-caption">lena灰度图显示</div>
+            </figure>
+<ul>
+<li>参数一是窗口的名字，参数二是要显示的图片。</li>
+</ul>
+<p><code>cv2.waitKey()</code>是让程序暂停等待按键的函数。参数是等待时间（单位：毫秒ms），时间一到，会继续执行接下来的程序，传入0的话代表一直等待。按键可通过<code>k = cv2.waitKey(0)</code>获取（<a href="#练习">练习1</a>）。</p>
+<h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><p>使用<code>cv2.imwrite()</code>保存图片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.imread()读入图片、cv2.imshow()显示图片、cv2.imwrite()保存图片</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li><p>打开lena.jpg图片并显示，显示时如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
+</li>
+<li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="http://ex2tron.top/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/" target="_blank" rel="external">Matplotlib显示图像</a> </p>
+</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何加载图片，显示并保存图片。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python+OpenCV教程1：简介</title>
+    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
+    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/</id>
+    <published>2017-12-06T07:50:59.000Z</published>
+    <updated>2017-12-06T08:22:44.349Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python+OpenCV搞图像处理与C/C++一样快！<a id="more"></a></p>
+<p>首先本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！其次，我相信<strong>大多数人的疑问在<a href="https://baike.baidu.com/item/Python/" target="_blank" rel="external">Python</a>调用<a href="https://baike.baidu.com/item/opencv" target="_blank" rel="external">OpenCV</a>进行图像处理的性能上面</strong>，所以这里我们主要说下这个。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_python_opencv_poster.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>其实，你英文Ok的话，推荐你看<a href="#引用">官方教程</a>。我写的大部分也是照搬，只不过用我的理解翻译了一下。</p>
+<hr>
+<h2 id="Python照样快"><a href="#Python照样快" class="headerlink" title="Python照样快"></a>Python照样快</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++慢很多。然而Python还有个重要的特性：它是一个胶水语言！Python可以很容易地扩展C/C++。</p>
+<p>OpenCV-Python就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以，代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
+<p>另外，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">numpy</a>，为矩阵操作、科学计算提供了极大的便利性。所以，<strong>扔掉你的C/C++，开始OpenCV-Python吧！！！</strong></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本教程使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
+<p>如果你还没安装Python，我强烈推荐你安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，后期不用我们一个个安装。即使你已经装了Python也没有影响，Anaconda中自带Python，互不干扰。</p>
+<p>Anaconda装好之后，打开cmd，输入：<code>pip install opencv-python</code>，等待安装完成即可。</p>
+<ol>
+<li><p>如果识别不了<code>pip</code>，说明没有将pip的目录添加到环境变量。找到pip的安装目录，添加到用户变量（或系统变量）的path中。</p>
+</li>
+<li><p>如果下载速度很慢，可以<a href="https://pypi.python.org/pypi?%3Aaction=search&amp;term=opencv-python&amp;submit=search" target="_blank" rel="external">点击此处</a>下载离线版。下载完成后，cmd切换到下载的目录，输入<code>pip install 文件名</code>安装。</p>
+</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
+<p><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python+OpenCV搞图像处理与C/C++一样快！
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>【片单】漫威宇宙电影合集</title>
@@ -527,9 +708,9 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
-      <category term="numpy" scheme="https://ex2tron.github.io/tags/numpy/"/>
-    
       <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="numpy" scheme="https://ex2tron.github.io/tags/numpy/"/>
     
       <category term="矩阵" scheme="https://ex2tron.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
     
@@ -1314,11 +1495,11 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
-      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
-    
       <category term="MyCLI" scheme="https://ex2tron.github.io/tags/MyCLI/"/>
     
       <category term="MySQL" scheme="https://ex2tron.github.io/tags/MySQL/"/>
+    
+      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
   </entry>
   
