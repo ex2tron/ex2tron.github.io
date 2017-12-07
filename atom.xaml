@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-06T14:17:18.081Z</updated>
+  <updated>2017-12-07T11:33:45.500Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -16,13 +16,176 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python+OpenCV教程5：颜色空间转换</title>
+    <link href="https://ex2tron.github.io/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B5%EF%BC%9A%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2/"/>
+    <id>https://ex2tron.github.io/2017/12/07/Python-OpenCV教程5：颜色空间转换/</id>
+    <published>2017-12-07T07:21:19.000Z</published>
+    <updated>2017-12-07T11:33:45.500Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>颜色空间转换，如BGR↔Gray，BGR↔HSV等</li>
+<li>追踪视频中特定颜色的物体</li>
+<li>OpenCV函数：cv2.cvtColor(),cv2.inRange()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 转换为灰度图</span></div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.imshow(<span class="string">'gray'</span>, img_gray), cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><code>cv2.cvtColor()</code>用来进行颜色模型转换，参数1是要转换的图片，参数2是转换模式，<code>COLOR_BGR2GRAY</code>表示BGR→Gray，可用下面的代码显示所有的转换模式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">flags = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> i.startswith(<span class="string">'COLOR_'</span>)]</div><div class="line">print(flags)</div></pre></td></tr></table></figure>
+<h3 id="视频中特定颜色物体追踪"><a href="#视频中特定颜色物体追踪" class="headerlink" title="视频中特定颜色物体追踪"></a>视频中特定颜色物体追踪</h3><p><a href="https://baike.baidu.com/item/HSV/547122" target="_blank" rel="external">HSV</a>是一个常用于颜色识别的模型，相比BGR更易区分颜色，转换模式用<code>COLOR_BGR2HSV</code>表示。</p>
+<blockquote>
+<p>经验之谈：OpenCV中色调H范围为[0,179]，饱和度S是[0,255]，明度V是[0,255]。<br>其他软件可能使用不同的尺度表示，所以同其他软件使用时，记得归一化。</p>
+</blockquote>
+<p>现在，我们实现一个使用HSV来只显示视频中蓝色物体的例子，步骤如下：</p>
+<ol>
+<li>捕获视频中的一帧</li>
+<li>从BGR转换到HSV</li>
+<li>提取蓝色范围的物体</li>
+<li>只显示蓝色物体</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_blue_object_tracking.jpg" alt="跟踪视频中的蓝色物体" title="">
+                </div>
+                <div class="image-caption">跟踪视频中的蓝色物体</div>
+            </figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></div><div class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">110</span>, <span class="number">110</span>])</div><div class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 1.捕获视频中的一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="comment"># 2.从BGR转换到HSV</span></div><div class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</div><div class="line"></div><div class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></div><div class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</div><div class="line"></div><div class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></div><div class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</div><div class="line">    cv2.imshow(<span class="string">'res'</span>, res)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>其中，bitwise_and()函数暂时不用管，后面会讲到。那蓝色的HSV值的lower和upper范围是怎么得到的呢？其实很简单，我们先把标准蓝色的值用cvtColor()转换下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">blue = np.uint8([[[<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>]]])</div><div class="line">hsv_blue = cv2.cvtColor(blue, cv2.COLOR_BGR2HSV)</div><div class="line">print(hsv_blue)  <span class="comment"># [[[120 255 255]]]</span></div></pre></td></tr></table></figure>
+<p>结果是[120, 255, 255]，所以，我们把蓝色的范围调整成了上面代码那样。</p>
+<blockquote>
+<p>经验之谈：<a href="https://baike.baidu.com/item/Lab/1514615" target="_blank" rel="external">Lab</a>颜色空间也经常用来做颜色识别，有兴趣的同学可以了解下。</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.cvtColor()函数用来进行颜色空间转换，常用BGR↔Gray，BGR↔HSV。</p>
+<p>HSV/Lab颜色模型常用于颜色识别。要想知道某种颜色在HSV下的值，可以将它的BGR值用cvtColor()转换得到。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>尝试在视频中同时提取红色、蓝色、绿色的物体。（效果如下）</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" alt="同时追踪3种颜色" title="">
+                </div>
+                <div class="image-caption">同时追踪3种颜色</div>
+            </figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/5.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="external">Changing Colorspaces</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="HSV" scheme="https://ex2tron.github.io/tags/HSV/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python+OpenCV教程4：图像基本操作</title>
+    <link href="https://ex2tron.github.io/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B4%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://ex2tron.github.io/2017/12/07/Python-OpenCV教程4：图像基本操作/</id>
+    <published>2017-12-07T04:13:15.000Z</published>
+    <updated>2017-12-07T07:13:43.720Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>访问和修改图片像素点的值</li>
+<li>获取图片的宽、高、通道数等属性</li>
+<li>了解感兴趣区域ROI</li>
+<li>分离和合并图像通道</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="获取和修改像素点值"><a href="#获取和修改像素点值" class="headerlink" title="获取和修改像素点值"></a>获取和修改像素点值</h3><p>我们先读入一张图片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div></pre></td></tr></table></figure>
+<p>通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R三个值的列表，对于灰度图，只有一个值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">px = img[<span class="number">100</span>, <span class="number">100</span>]</div><div class="line">print(px)  <span class="comment"># [119 108 201]</span></div><div class="line"></div><div class="line"><span class="comment"># 只获取蓝色blue通道的值</span></div><div class="line">px_blue = img[<span class="number">100</span>, <span class="number">100</span>, <span class="number">0</span>]</div><div class="line">print(px_blue)  <span class="comment"># 119</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，行列坐标是img[y,x]，如下图，本教程不再赘述图像处理的基本理论，只做简单提及。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" alt="图像坐标和通道" title="">
+                </div>
+                <div class="image-caption">图像坐标和通道</div>
+            </figure>
+<p>修改像素的值也是同样的方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img[<span class="number">100</span>, <span class="number">100</span>] = [<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>]</div><div class="line">print(img[<span class="number">100</span>, <span class="number">100</span>])  <span class="comment"># [255 255 255]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：还记得之前说过OpenCV-Python原生支持numpy吗？numpy是针对矩阵运算优化的，所以像上面的操作性能较差，更推荐的方式是：<br>获取：img.item(100,100,0)，修改：img.itemset((100,100,0),255)，但这种方式只能B,G,R逐一进行。</p>
+</blockquote>
+<h3 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h3><p><code>img.shape</code>获取图像的形状，图片是彩色的话，返回一个包含高度、宽度和通道数的元组，灰度图只返回高度和宽度：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(img.shape)  <span class="comment"># (263, 263, 3)</span></div><div class="line"><span class="comment"># 形状中包括高度、宽度和通道数</span></div><div class="line">height, width, channels = img.shape</div><div class="line"><span class="comment"># img是灰度图的话：height, width = img.shape</span></div></pre></td></tr></table></figure>
+<p><code>img.dtype</code>获取图像数据类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.dtype)  <span class="comment"># uint8</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码需要对这个属性加以判断。</p>
+</blockquote>
+<p><code>img.size</code>获取图像总像素数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*263*3=207507</span></div></pre></td></tr></table></figure>
+<h3 id="ROI"><a href="#ROI" class="headerlink" title="ROI"></a>ROI</h3><p><a href="https://baike.baidu.com/item/ROI/1125333#viewPageContent" target="_blank" rel="external">ROI</a>：region of interest，感兴趣区域。什么意思呢？比如我们要检测眼睛，因为眼睛肯定在脸上，所以我们感兴趣的只有脸这部分，其他不需要关注，这样就可以大大节省计算量，提高运行速度。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" alt="只关注脸( ╯□╰ )" title="">
+                </div>
+                <div class="image-caption">只关注脸( ╯□╰ )</div>
+            </figure>
+<p>截取ROI非常简单，指定图片的范围即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 截取脸部ROI</span></div><div class="line">face = img[<span class="number">100</span>:<span class="number">200</span>, <span class="number">115</span>:<span class="number">188</span>]</div><div class="line">cv2.imshow(<span class="string">'face'</span>, face)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h3 id="通道分割与合并"><a href="#通道分割与合并" class="headerlink" title="通道分割与合并"></a>通道分割与合并</h3><p>彩色图的BGR三个通道是可以分开单独访问的，也可以将单独的三个通道合并成一副图像。分别使用<code>cv2.split()</code>和<code>cv2.merge()</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">b, g, r = cv2.split(img)</div><div class="line">img = cv2.merge((b, g, r))</div></pre></td></tr></table></figure>
+<p>split()函数比较耗时，<strong>更高效的方式是用numpy的索引</strong>，如提取B通道：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = img[:, :, <span class="number">0</span>]</div><div class="line">cv2.imshow(<span class="string">'blue'</span>, b)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>img[y,x]获取/设置像素点值，img.shape：图片的形状（高度、宽度、通道数）,img.dtype：图像的数据类型。</p>
+<p>img[y1:y2,x1:x2]进行ROI截取，cv2.split()/cv2.merge()通道分割/合并。更推荐的获取单通道方式：b = img[:, :, 0]。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>打开lena.jpg，将帽子部分（高：25~120，宽：50~220）的红色通道截取出来并显示。</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/4.%20图像基本操作" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops" target="_blank" rel="external">Basic Operations on Images</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="ROI" scheme="https://ex2tron.github.io/tags/ROI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程3：打开摄像头</title>
     <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B3%EF%BC%9A%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4/"/>
     <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程3：打开摄像头/</id>
     <published>2017-12-06T08:38:02.000Z</published>
-    <updated>2017-12-06T14:17:18.081Z</updated>
+    <updated>2017-12-07T06:43:08.695Z</updated>
     
-    <content type="html"><![CDATA[<p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a>视频等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>打开摄像头并捕获照片</li>
 <li>播放本地视频，录制视频</li>
@@ -47,6 +210,9 @@
 </ul>
 <p>FourCC是用来指定视频编码方式的四字节码，所有的编码可参考<a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs</a>。如MJPG编码可以这样写：<code>cv2.VideoWriter_fourcc(*&#39;MJPG&#39;)</code>或<code>cv2.VideoWriter_fourcc(&#39;M&#39;,&#39;J&#39;,&#39;P&#39;,&#39;G&#39;)</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 定义编码方式并创建VideoWriter对象</span></div><div class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">'MJPG'</span>)</div><div class="line">outfile = cv2.VideoWriter(<span class="string">'output.avi'</span>, fourcc, <span class="number">25.</span>, (<span class="number">640</span>, <span class="number">480</span>))</div><div class="line"></div><div class="line"><span class="keyword">while</span>(capture.isOpened()):</div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ret:</div><div class="line">        <span class="comment"># 写入文件</span></div><div class="line">        outfile.write(frame)</div><div class="line"></div><div class="line">        cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>使用cv2.VideoCapture()创建视频对象，然后在循环中一帧帧显示图像。参数传入数字时，代表打开摄像头，传入本地视频地址时，代表播放本地视频。</p>
+<p>cap.get(propId)获取视频属性，cap.set(propId,value)设置视频属性。</p>
+<p>cv2.VideoWriter()创建视频写入对象，用来录制/保存视频，四位FOURCC码表示视频编码方式。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></p>
 <p><a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs by FOURCC</a></p>
 <p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html" target="_blank" rel="external">Getting Started with Videos</a></p>
@@ -124,9 +290,10 @@
     <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/"/>
     <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2017-12-06T14:19:12.957Z</updated>
+    <updated>2017-12-07T06:43:17.880Z</updated>
     
-    <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>加载图片，显示图片，保存图片</li>
 <li>OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()</li>
@@ -171,7 +338,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.imread()读入图片、cv2.imshow()显示图片、cv2.imwrite()保存图片</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li><p>打开lena.jpg图片并显示，显示时如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
+<li><p>打开lena.jpg并显示，显示时如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
 </li>
 <li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="http://ex2tron.top/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/" target="_blank" rel="external">Matplotlib显示图像</a> </p>
 </li>
@@ -202,7 +369,7 @@
     <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
     <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2017-12-06T13:04:03.939Z</updated>
+    <updated>2017-12-07T07:17:45.466Z</updated>
     
     <content type="html"><![CDATA[<p>Python+OpenCV搞图像处理与C/C++一样快！<a id="more"></a></p>
 <p>首先本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！其次，我相信<strong>大多数人的疑问在<a href="https://baike.baidu.com/item/Python/" target="_blank" rel="external">Python</a>调用<a href="https://baike.baidu.com/item/opencv" target="_blank" rel="external">OpenCV</a>进行图像处理的性能上面</strong>，所以这里我们主要说下这个。</p>
@@ -213,7 +380,7 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<p>其实，你英文Ok的话，推荐你看<a href="#引用">官方教程</a>。我写的大部分也是照搬，只不过用我的理解翻译了一下。</p>
+<p>其实，你英文Ok的话，推荐你看<a href="#引用">官方教程</a>。我写的大部分也是照搬，但官方是按照OpenCV中的组件顺序讲的，大部分功能并不常用，所以我按照使用度和难易程度重写了一遍。</p>
 <hr>
 <h2 id="Python照样快"><a href="#Python照样快" class="headerlink" title="Python照样快"></a>Python照样快</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++慢很多。然而Python还有个重要的特性：它是一个胶水语言！Python可以很容易地扩展C/C++。</p>
 <p>OpenCV-Python就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以，代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
