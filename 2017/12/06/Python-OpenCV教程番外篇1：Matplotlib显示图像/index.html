@@ -35,7 +35,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg">
-<meta property="og:updated_time" content="2017-12-06T08:18:43.265Z">
+<meta property="og:updated_time" content="2017-12-09T03:21:24.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇1：Matplotlib显示图像">
 <meta name="twitter:description" content="学习如何使用Matplotlib显示OpenCV图像。">
@@ -183,6 +183,9 @@
             </figure>
 <h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注解：img[:,:,0]代表拷贝图片的蓝色通道，熟悉Python的同学应该知道，对一个字符串s进行翻转用的是s[::-1]，同样img[:,:,::-1]就表示BGR通道翻转，变成RGB。</p>
+</blockquote>
 <p>结果如下：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -199,7 +202,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-06T08:18:43.265Z" itemprop="dateUpdated">2017-12-06 16:18:43</time>
+    Last updated: <time datetime="2017-12-09T03:21:24.909Z" itemprop="dateUpdated">2017-12-09 11:21:24</time>
 </span><br>
 
 

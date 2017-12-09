@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-08T04:54:42.360Z</updated>
+  <updated>2017-12-09T03:14:49.458Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -14,6 +14,109 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python+OpenCV教程7：图像几何变换</title>
+    <link href="https://ex2tron.github.io/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B7%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
+    <id>https://ex2tron.github.io/2017/12/08/Python-OpenCV教程7：图像几何变换/</id>
+    <published>2017-12-08T06:36:53.000Z</published>
+    <updated>2017-12-09T03:14:49.458Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何旋转、平移和缩放图片，了解仿射/透视变换。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>实现旋转、平移和缩放图片</li>
+<li>了解仿射变换和透视变换</li>
+<li>OpenCV函数：cv2.resize(), cv2.warpAffine(), cv2.warpPerspective()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="缩放图片"><a href="#缩放图片" class="headerlink" title="缩放图片"></a>缩放图片</h3><p>缩放就是调整图片的大小，使用<code>cv2.resize()</code>函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 按照指定的宽度、高度缩放图片</span></div><div class="line">res = cv2.resize(img, (<span class="number">132</span>, <span class="number">150</span>))</div><div class="line"><span class="comment"># 按照比例缩放，如x,y轴均放大一倍</span></div><div class="line">res2 = cv2.resize(img, <span class="keyword">None</span>, fx=<span class="number">2</span>, fy=<span class="number">2</span>, interpolation=cv2.INTER_LINEAR)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shrink'</span>, res), cv2.imshow(<span class="string">'zoom'</span>, res2)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/3.3.1/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
+<h2 id="平移图片"><a href="#平移图片" class="headerlink" title="平移图片"></a>平移图片</h2><p>这里涉及到<a href="https://baike.baidu.com/item/仿射变换" target="_blank" rel="external">仿射变换</a>的概念，大家不用知道它的意思，只需要了解下面三点：</p>
+<ul>
+<li>仿射变换后，原图中平行的线依然平行</li>
+<li>用<code>cv2.warpAffine()</code>实现仿射变换</li>
+<li>仿射变换需要定义一个2*3维的变换矩阵</li>
+</ul>
+<p>要平移图片，我们需要定义下面这样一个矩阵，tx,ty是向x和y方向平移的距离：</p>
+<p>$$<br> M = \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; tx \newline<br>   0 &amp; 1 &amp; ty<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 平移图片</span></div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 定义平移矩阵，需要是numpy的float32类型</span></div><div class="line"><span class="comment"># x轴平移100，y轴平移50</span></div><div class="line">M = np.float32([[<span class="number">1</span>, <span class="number">0</span>, <span class="number">100</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>]])</div><div class="line"><span class="comment"># 用仿射变换实现平移</span></div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shift'</span>, dst)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>再次强调一下：图片的高度（y方向）是rows，宽度（x方向）是cols，请勿混淆。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_translation_100_50.jpg" alt="平移图片" title="">
+                </div>
+                <div class="image-caption">平移图片</div>
+            </figure>
+<h3 id="旋转图片"><a href="#旋转图片" class="headerlink" title="旋转图片"></a>旋转图片</h3><p>旋转同平移一样，也需要定义一个变换矩阵。OpenCV直接提供了<code>cv2.getRotationMatrix2D()</code>函数用来生成这个矩阵，对这个矩阵的形式感兴趣的童鞋可以去<a href="#引用">引用</a>查看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 45°旋转图片并缩小一半</span></div><div class="line">M = cv2.getRotationMatrix2D((cols / <span class="number">2</span>, rows / <span class="number">2</span>), <span class="number">45</span>, <span class="number">0.5</span>)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'rotation'</span>, dst)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><code>cv2.getRotationMatrix2D()</code>函数有三个参数：</p>
+<ul>
+<li>参数1：图片的旋转中心</li>
+<li>参数2：旋转角度</li>
+<li>参数3：缩放比例，该例中0.5表示我们缩小一半</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_rotation_45_degree.jpg" alt="旋转45°并缩放" title="">
+                </div>
+                <div class="image-caption">旋转45°并缩放</div>
+            </figure>
+<h3 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h3><p>除了平移和旋转，如何实现任意的图像变换呢？同样的道理，我们需要一个变换矩阵。</p>
+<p>要生成这个变换矩阵，需要定义变换前后的三个点，比如说：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 变换前的三个点</span></div><div class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</div><div class="line"><span class="comment"># 变换后的三个点</span></div><div class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成变换矩阵</span></div><div class="line">M = cv2.getAffineTransform(pts1, pts2)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>变换前后的三个点我已经标记出来了。用<code>cv2.getAffineTransform()</code>生成变换矩阵，接下来再用<code>cv2.warpAffine()</code>实现变换。大家可以修改下变换后的三个点坐标看看效果：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_affine_transformation_drawing.jpg" alt="仿射变换前后对比图" title="">
+                </div>
+                <div class="image-caption">仿射变换前后对比图</div>
+            </figure>
+<h3 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h3><p><a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>绝对是一项很酷的功能。我们经常会用手机去拍身份证和文件，无论你怎么拍，貌似都拍不正或者有边框。如果你使用过手机上面一些扫描类软件，比如”<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8B" target="_blank" rel="external">扫描全能王</a>“，”<a href="https://baike.baidu.com/item/Office%20Lens" target="_blank" rel="external">Office Lens</a>“，它们能很好地矫正图片。这些软件就是应用透视变换实现的，跟仿射变换一样，我们不用知道它的具体原理。</p>
+<p>透视变换后，原图中的直线依旧是直线。如下图，我们实现这个功能：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" alt="矫正一鸣的卡片" title="">
+                </div>
+                <div class="image-caption">矫正一鸣的卡片</div>
+            </figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'card.jpg'</span>)</div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 原图中卡片的四个角点</span></div><div class="line">pts1 = np.float32([[<span class="number">148</span>, <span class="number">80</span>], [<span class="number">437</span>, <span class="number">114</span>], [<span class="number">94</span>, <span class="number">247</span>], [<span class="number">423</span>, <span class="number">288</span>]])</div><div class="line"><span class="comment"># 变换后分别在左上、右上、左下、右下四个点</span></div><div class="line">pts2 = np.float32([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">320</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">178</span>], [<span class="number">320</span>, <span class="number">178</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成透视变换矩阵</span></div><div class="line">M = cv2.getPerspectiveTransform(pts1, pts2)</div><div class="line"><span class="comment"># 进行透视变换</span></div><div class="line">dst = cv2.warpPerspective(img, M, (<span class="number">320</span>, <span class="number">178</span>))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>透视变换需要前后四个点来生成3*3的变换矩阵，用<code>cv2.getPerspectiveTransform()</code>实现。然后再用<code>cv2.warpPerspective()</code>进行变换。代码中有个<code>img[:, :, ::-1]</code>还记得吗？忘记的话，请看<a href="#练习">练习</a>。</p>
+<p>是不是很简单？当然，我们后面学习了特征提取之后，就可以自动识别角点了。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.resize()缩放图片，可以按指定大小缩放，亦可以按比例缩放。</p>
+<p>平移和旋转是靠cv2.warpAffine()仿射变换实现的，也可以自己定义变换前后的点，实现任意变换。</p>
+<p>透视变换常用于矫正图片，是一个很酷的功能。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>透视变换代码中有个<code>img[:, :, ::-1]</code>，还记得吗？请复习：<a href="http://ex2tron.top/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/" target="_blank" rel="external">Matplotlib显示图像</a> </li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/7.%20%E5%9B%BE%E5%83%8F%E9%9B%86%E5%90%88%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html" target="_blank" rel="external">Geometric Transformations of Images</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何旋转、平移和缩放图片，了解仿射/透视变换。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="几何变换" scheme="https://ex2tron.github.io/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇2：Otsu阈值法</title>
@@ -74,7 +177,7 @@
     <link href="https://ex2tron.github.io/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/"/>
     <id>https://ex2tron.github.io/2017/12/07/Python-OpenCV教程6：阈值分割/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2017-12-08T04:55:43.904Z</updated>
+    <updated>2017-12-08T06:31:36.057Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -118,7 +221,7 @@
                 <div class="image-caption"></div>
             </figure>
 <h3 id="自适应阈值"><a href="#自适应阈值" class="headerlink" title="自适应阈值"></a>自适应阈值</h3><p>看得出来固定阈值是在整幅图片上应用一个阈值进行分割，<em>它并不适用于明暗分布不均的图片</em>。<code>cv2.adaptiveThreshold()</code>自适应阈值会每次取图片的一小部分计算阈值，这样图片不同区域的阈值就不尽相同。它有5个参数，其实很好理解，先看下效果：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自适应阈值对比固定阈值</span></div><div class="line">img = cv2.imread(<span class="string">'dave.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 固定阈值</span></div><div class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line"><span class="comment"># 自适应阈值</span></div><div class="line">th2 = cv2.adaptiveThreshold(</div><div class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="number">11</span>, <span class="number">4</span>)</div><div class="line">th3 = cv2.adaptiveThreshold(</div><div class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="number">17</span>, <span class="number">6</span>)</div><div class="line"></div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Global(v = 127)'</span>, <span class="string">'Adaptive Mean'</span>, <span class="string">'Adaptive Gaussian'</span>]</div><div class="line">images = [img, th1, th2, th3]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, i + <span class="number">1</span>), plt.imshow(images[i], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自适应阈值对比固定阈值</span></div><div class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 固定阈值</span></div><div class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line"><span class="comment"># 自适应阈值</span></div><div class="line">th2 = cv2.adaptiveThreshold(</div><div class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="number">11</span>, <span class="number">4</span>)</div><div class="line">th3 = cv2.adaptiveThreshold(</div><div class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="number">17</span>, <span class="number">6</span>)</div><div class="line"></div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Global(v = 127)'</span>, <span class="string">'Adaptive Mean'</span>, <span class="string">'Adaptive Gaussian'</span>]</div><div class="line">images = [img, th1, th2, th3]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, i + <span class="number">1</span>), plt.imshow(images[i], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -394,7 +497,7 @@
     <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
     <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2017-12-06T08:18:43.265Z</updated>
+    <updated>2017-12-09T03:21:24.909Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
@@ -409,6 +512,9 @@
             </figure>
 <h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注解：img[:,:,0]代表拷贝图片的蓝色通道，熟悉Python的同学应该知道，对一个字符串s进行翻转用的是s[::-1]，同样img[:,:,::-1]就表示BGR通道翻转，变成RGB。</p>
+</blockquote>
 <p>结果如下：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
