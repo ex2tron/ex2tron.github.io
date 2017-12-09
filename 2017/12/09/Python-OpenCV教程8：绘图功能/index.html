@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?ex2tron"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Python+OpenCV教程8：绘图功能 | ex2tron&#39;s Blog | Excelsior!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#355876">
+    
+    
+    <meta name="keywords" content="Code,Python,OpenCV,图像处理,绘图">
+    <meta name="description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
+<meta name="keywords" content="Code,Python,OpenCV,图像处理,绘图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+OpenCV教程8：绘图功能">
+<meta property="og:url" content="https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg">
+<meta property="og:updated_time" content="2017-12-09T06:17:54.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python+OpenCV教程8：绘图功能">
+<meta name="twitter:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
+    
+    <link rel="shortcut icon" href="/ic_select_all.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Tony Wong</h5>
+          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ex2tron" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程8：绘图功能</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Python+OpenCV教程8：绘图功能</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-09T03:29:48.000Z" itemprop="datePublished" class="page-time">
+  2017-12-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数说明"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">参数说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画线"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">画线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画矩形"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">画矩形</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画圆"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">画圆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画椭圆"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">画椭圆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画多边形"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">画多边形</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加文字"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">添加文字</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">3.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#练习"><span class="post-toc-number">4.</span> <span class="post-toc-text">练习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">5.</span> <span class="post-toc-text">引用</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python-OpenCV教程8：绘图功能"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Python+OpenCV教程8：绘图功能</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-09 11:29:48" datetime="2017-12-09T03:29:48.000Z"  itemprop="datePublished">2017-12-09</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>绘制各种几何形状、添加文字</li>
+<li>OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.putText()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>绘制形状的函数有一些共同的参数，提前在此说明一下：</p>
+<ul>
+<li>img：要绘制形状的图片</li>
+<li>color：绘制的颜色，彩色（BGR）的话，传入一个元组，如(255,0,0)。灰度图，传入一个值就行</li>
+<li>thickness：线宽，默认为1。对于矩形/圆之类的封闭形状而言，传入-1的话，代表填充</li>
+</ul>
+<p>p.s.此节及之后的教程，为节约篇幅，显示图片的代码，我会省略掉：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" alt="绘制各种几何形状" title="">
+                </div>
+                <div class="image-caption">绘制各种几何形状</div>
+            </figure>
+<p>上图就是本教程代码绘制的最终效果，下面一步步来看：</p>
+<h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画线只需知道起点和终点的坐标就行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 创建一副黑色的图片</span></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></div><div class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：绘图函数会直接影响到原图片，这点要注意。</p>
+</blockquote>
+<h3 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h3><p>画矩形需要知道左上角和右下角的坐标：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个绿色边框的矩形，参数2：左上角坐标，参数3：右下角坐标</span></div><div class="line">cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</div></pre></td></tr></table></figure>
+<h3 id="画圆"><a href="#画圆" class="headerlink" title="画圆"></a>画圆</h3><p>画圆需要指定圆心和半径，注意下面的例子中线宽=-1代表填充：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个填充红色的圆，参数2：圆心坐标，参数3：半径</span></div><div class="line">cv2.circle(img, (<span class="number">447</span>, <span class="number">63</span>), <span class="number">63</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
+<h3 id="画椭圆"><a href="#画椭圆" class="headerlink" title="画椭圆"></a>画椭圆</h3><p>画椭圆需要的参数比较多，请对照后面的代码理解这几个参数：</p>
+<ul>
+<li>参数2：椭圆中心(x,y)</li>
+<li>参数3：x/y轴的长度</li>
+<li>参数4：angle–椭圆的旋转角度</li>
+<li>参数5：startAngle–椭圆的起始角度</li>
+<li>参数6：endAngle–椭圆的结束角度</li>
+</ul>
+<blockquote>
+<p>经验之谈：这里的角度是以顺时针方向计算的。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在图中心画一个填充的半圆</span></div><div class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
+<h3 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h3><p>画多边形需要指定一系列多边形的顶点坐标，相当于从第一个点到第二个点画直线，再从第二个点到第三个点画直线….</p>
+<p>多边形的顶点坐标需要变成”顶点数×1×2”维的矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义四个顶点坐标</span></div><div class="line">pts = np.array([[<span class="number">10</span>, <span class="number">5</span>],  [<span class="number">50</span>, <span class="number">10</span>], [<span class="number">70</span>, <span class="number">20</span>], [<span class="number">20</span>, <span class="number">30</span>]], np.int32)</div><div class="line"><span class="comment"># 顶点个数：4，矩阵变成4*1*2维</span></div><div class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">img = cv2.polylines(img, [pts], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<p><code>cv2.polylines()</code>的参数3如果是False的话，多边形就不闭合。</p>
+<blockquote>
+<p>经验之谈：如果需要绘制多条直线，使用cv2.polylines()要比cv2.line()高效很多，例如：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用cv2.polylines()画多条直线</span></div><div class="line">line1 = np.array([[<span class="number">100</span>, <span class="number">20</span>],  [<span class="number">300</span>, <span class="number">20</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line2 = np.array([[<span class="number">100</span>, <span class="number">60</span>],  [<span class="number">300</span>, <span class="number">60</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line3 = np.array([[<span class="number">100</span>, <span class="number">100</span>],  [<span class="number">300</span>, <span class="number">100</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">img = cv2.polylines(img, [line1, line2, line3], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<h3 id="添加文字"><a href="#添加文字" class="headerlink" title="添加文字"></a>添加文字</h3><p>使用<code>cv2.putText()</code>添加文字，它的参数也比较多，同样请对照后面的代码理解这几个参数：</p>
+<ul>
+<li>参数2：要添加的文本</li>
+<li>参数3：文字的起始坐标（左下角为起点）</li>
+<li>参数4：字体</li>
+<li>参数5：文字大小（缩放比例）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加文字</span></div><div class="line">font = cv2.FONT_HERSHEY_SIMPLEX</div><div class="line">cv2.putText(img, <span class="string">'ex2tron'</span>, (<span class="number">10</span>, <span class="number">500</span>), font,</div><div class="line">            <span class="number">4</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">2</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
+<p>这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">此表</a></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.line()画直线，cv2.circle()画圆，cv2.rectangle()画矩形，cv2.ellipse()画椭圆，cv2.polylines()画多边形，cv2.putText()添加文字。</p>
+<p>画多条直线时，cv2.polylines()要比cv2.line()高效很多。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>你能用已学的绘图功能画出OpenCV的logo吗？(提示：椭圆和圆)</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg" alt="OpenCV logo" title="">
+                </div>
+                <div class="image-caption">OpenCV logo</div>
+            </figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/8.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></p>
+<p><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_drawing_functions/py_drawing_functions.html" target="_blank" rel="external">Drawing Functions in OpenCV</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-09T06:17:54.976Z" itemprop="dateUpdated">2017-12-09 14:17:54</time>
+</span><br>
+
+
+        
+        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        
+    </div>
+    <footer>
+        <a href="https://ex2tron.github.io">
+            <img src="/img/avatar.jpg" alt="Tony Wong">
+            Tony Wong
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/&title=《Python+OpenCV教程8：绘图功能》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/&title=《Python+OpenCV教程8：绘图功能》 — ex2tron's Blog&source=学习画线、圆和矩形等多种几何形状，给图片添加文字。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程8：绘图功能》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/08/Python-OpenCV教程7：图像几何变换/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python+OpenCV教程7：图像几何变换</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢支持，我会更加✊~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Tony Wong &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/&title=《Python+OpenCV教程8：绘图功能》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/&title=《Python+OpenCV教程8：绘图功能》 — ex2tron's Blog&source=学习画线、圆和矩形等多种几何形状，给图片添加文字。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程8：绘图功能》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程8：绘图功能/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
