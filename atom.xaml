@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-09T06:17:54.976Z</updated>
+  <updated>2017-12-09T13:38:13.474Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -14,6 +14,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python+OpenCV教程9：鼠标绘图</title>
+    <link href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/"/>
+    <id>https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/</id>
+    <published>2017-12-09T09:28:34.000Z</published>
+    <updated>2017-12-09T13:38:13.474Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何用鼠标实时绘图。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>捕获鼠标事件</li>
+<li>OpenCV函数：cv2.setMouseCallback()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="知道鼠标在哪儿"><a href="#知道鼠标在哪儿" class="headerlink" title="知道鼠标在哪儿"></a>知道鼠标在哪儿</h3><p>OpenCV中，我们需要创建一个鼠标的回调函数来知道鼠标当前的位置，当前的事件如左键按下、左键释放或是右键单击等等，然后执行相应的功能。</p>
+<p>使用<code>cv2.setMouseCallback()</code>来创建鼠标的回调函数，比如我们在左键单击的时候，打印出当前鼠标的位置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 鼠标的回调函数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mouse_event</span><span class="params">(event, x, y, flags, param)</span>:</span></div><div class="line">    <span class="comment"># 通过flags判断具体是什么事件，这里是左键按下</span></div><div class="line">    <span class="keyword">if</span> flags == cv2.EVENT_LBUTTONDOWN:</div><div class="line">        print((x, y))</div><div class="line"></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line"><span class="comment"># 定义鼠标的回调函数</span></div><div class="line">cv2.setMouseCallback(<span class="string">'image'</span>, mouse_event)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="comment"># 按下ESC键退出</span></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">20</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>上面的代码先定义鼠标的回调函数<code>mouse_event()</code>，然后在回调函数中判断是否是左键单击事件<code>EVENT_LBUTTONDOWN</code>，是的话就打印出坐标。需要注意的是，回调函数的参数格式是固定的，不要随意更改。</p>
+<p>那除了左键单击之外，还有哪些事件呢？可以用下面的代码打印出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取所有的事件</span></div><div class="line">events = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> <span class="string">'EVENT'</span> <span class="keyword">in</span> i]</div><div class="line">print(events)</div></pre></td></tr></table></figure>
+<h3 id="综合实例"><a href="#综合实例" class="headerlink" title="综合实例"></a>综合实例</h3><p>现在我们来实现一个综合的例子，这个实例会帮助你理解图像交互的一些思想：</p>
+<p>在图像上用鼠标画图，可以画圆或矩形，按m键在两种模式下切换。左键按下时开始画图，移动到哪儿画到哪儿，左键释放时结束画图。听上去很复杂，是吗？一步步分析下：</p>
+<ul>
+<li>用鼠标画图：需要定义鼠标的回调函数mouse_event</li>
+<li>画圆或矩形：需要定义一个画图的模式mode</li>
+<li>左键单击、移动、释放：需要捕获三个不同的事件</li>
+<li>开始画图，结束画图：需要定义一个画图的标记位drawing</li>
+</ul>
+<p>好，开始coding吧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">drawing = <span class="keyword">False</span>  <span class="comment"># 是否开始画图</span></div><div class="line">mode = <span class="keyword">True</span>  <span class="comment"># True：画矩形，False：画圆</span></div><div class="line">start = (<span class="number">-1</span>, <span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mouse_event</span><span class="params">(event, x, y, flags, param)</span>:</span></div><div class="line">    <span class="keyword">global</span> start, drawing, mode</div><div class="line"></div><div class="line">    <span class="comment"># 左键按下：开始画图</span></div><div class="line">    <span class="keyword">if</span> event == cv2.EVENT_LBUTTONDOWN:</div><div class="line">        drawing = <span class="keyword">True</span></div><div class="line">        start = (x, y)</div><div class="line">    <span class="comment"># 鼠标移动，画图</span></div><div class="line">    <span class="keyword">elif</span> event == cv2.EVENT_MOUSEMOVE:</div><div class="line">        <span class="keyword">if</span> drawing:</div><div class="line">            <span class="keyword">if</span> mode:</div><div class="line">                cv2.rectangle(img, start, (x, y), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                cv2.circle(img, (x, y), <span class="number">5</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line">    <span class="comment"># 左键释放：结束画图</span></div><div class="line">    <span class="keyword">elif</span> event == cv2.EVENT_LBUTTONUP:</div><div class="line">        drawing = <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> mode:</div><div class="line">            cv2.rectangle(img, start, (x, y), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            cv2.circle(img, (x, y), <span class="number">5</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line">cv2.setMouseCallback(<span class="string">'image'</span>, mouse_event)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="comment"># 按下m切换模式</span></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'m'</span>):</div><div class="line">        mode = <span class="keyword">not</span> mode</div><div class="line">    <span class="keyword">elif</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>效果应该如下图所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_mouse_drawing_rectangle_circle.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>要用鼠标绘图，需要用cv2.setMouseCallback()定义回调函数，然后在回调函数中根据不同的flags事件，执行不同的功能。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>（选做）实现用鼠标画矩形，跟实例差不多，但只实时画一个，类似下面动图：</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif" alt="实时画一个矩形" title="">
+                </div>
+                <div class="image-caption">实时画一个矩形</div>
+            </figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html" target="_blank" rel="external">Mouse as a Paint-Brush</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何用鼠标实时绘图。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="绘图" scheme="https://ex2tron.github.io/tags/%E7%BB%98%E5%9B%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>Python+OpenCV教程8：绘图功能</title>

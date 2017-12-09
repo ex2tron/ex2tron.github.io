@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?ex2tron"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Python+OpenCV教程9：鼠标绘图 | ex2tron&#39;s Blog | Excelsior!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#355876">
+    
+    
+    <meta name="keywords" content="Code,Python,OpenCV,图像处理,绘图">
+    <meta name="description" content="学习如何用鼠标实时绘图。">
+<meta name="keywords" content="Code,Python,OpenCV,图像处理,绘图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+OpenCV教程9：鼠标绘图">
+<meta property="og:url" content="https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="学习如何用鼠标实时绘图。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_mouse_drawing_rectangle_circle.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif">
+<meta property="og:updated_time" content="2017-12-09T13:38:13.474Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python+OpenCV教程9：鼠标绘图">
+<meta name="twitter:description" content="学习如何用鼠标实时绘图。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_mouse_drawing_rectangle_circle.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
+    
+    <link rel="shortcut icon" href="/ic_select_all.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Tony Wong</h5>
+          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ex2tron" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程9：鼠标绘图</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Python+OpenCV教程9：鼠标绘图</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-09T09:28:34.000Z" itemprop="datePublished" class="page-time">
+  2017-12-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#知道鼠标在哪儿"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">知道鼠标在哪儿</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#综合实例"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">综合实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">3.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#练习"><span class="post-toc-number">4.</span> <span class="post-toc-text">练习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">5.</span> <span class="post-toc-text">引用</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python-OpenCV教程9：鼠标绘图"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Python+OpenCV教程9：鼠标绘图</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-09 17:28:34" datetime="2017-12-09T09:28:34.000Z"  itemprop="datePublished">2017-12-09</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>学习如何用鼠标实时绘图。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>捕获鼠标事件</li>
+<li>OpenCV函数：cv2.setMouseCallback()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="知道鼠标在哪儿"><a href="#知道鼠标在哪儿" class="headerlink" title="知道鼠标在哪儿"></a>知道鼠标在哪儿</h3><p>OpenCV中，我们需要创建一个鼠标的回调函数来知道鼠标当前的位置，当前的事件如左键按下、左键释放或是右键单击等等，然后执行相应的功能。</p>
+<p>使用<code>cv2.setMouseCallback()</code>来创建鼠标的回调函数，比如我们在左键单击的时候，打印出当前鼠标的位置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 鼠标的回调函数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mouse_event</span><span class="params">(event, x, y, flags, param)</span>:</span></div><div class="line">    <span class="comment"># 通过flags判断具体是什么事件，这里是左键按下</span></div><div class="line">    <span class="keyword">if</span> flags == cv2.EVENT_LBUTTONDOWN:</div><div class="line">        print((x, y))</div><div class="line"></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line"><span class="comment"># 定义鼠标的回调函数</span></div><div class="line">cv2.setMouseCallback(<span class="string">'image'</span>, mouse_event)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="comment"># 按下ESC键退出</span></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">20</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>上面的代码先定义鼠标的回调函数<code>mouse_event()</code>，然后在回调函数中判断是否是左键单击事件<code>EVENT_LBUTTONDOWN</code>，是的话就打印出坐标。需要注意的是，回调函数的参数格式是固定的，不要随意更改。</p>
+<p>那除了左键单击之外，还有哪些事件呢？可以用下面的代码打印出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取所有的事件</span></div><div class="line">events = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> <span class="string">'EVENT'</span> <span class="keyword">in</span> i]</div><div class="line">print(events)</div></pre></td></tr></table></figure>
+<h3 id="综合实例"><a href="#综合实例" class="headerlink" title="综合实例"></a>综合实例</h3><p>现在我们来实现一个综合的例子，这个实例会帮助你理解图像交互的一些思想：</p>
+<p>在图像上用鼠标画图，可以画圆或矩形，按m键在两种模式下切换。左键按下时开始画图，移动到哪儿画到哪儿，左键释放时结束画图。听上去很复杂，是吗？一步步分析下：</p>
+<ul>
+<li>用鼠标画图：需要定义鼠标的回调函数mouse_event</li>
+<li>画圆或矩形：需要定义一个画图的模式mode</li>
+<li>左键单击、移动、释放：需要捕获三个不同的事件</li>
+<li>开始画图，结束画图：需要定义一个画图的标记位drawing</li>
+</ul>
+<p>好，开始coding吧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">drawing = <span class="keyword">False</span>  <span class="comment"># 是否开始画图</span></div><div class="line">mode = <span class="keyword">True</span>  <span class="comment"># True：画矩形，False：画圆</span></div><div class="line">start = (<span class="number">-1</span>, <span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mouse_event</span><span class="params">(event, x, y, flags, param)</span>:</span></div><div class="line">    <span class="keyword">global</span> start, drawing, mode</div><div class="line"></div><div class="line">    <span class="comment"># 左键按下：开始画图</span></div><div class="line">    <span class="keyword">if</span> event == cv2.EVENT_LBUTTONDOWN:</div><div class="line">        drawing = <span class="keyword">True</span></div><div class="line">        start = (x, y)</div><div class="line">    <span class="comment"># 鼠标移动，画图</span></div><div class="line">    <span class="keyword">elif</span> event == cv2.EVENT_MOUSEMOVE:</div><div class="line">        <span class="keyword">if</span> drawing:</div><div class="line">            <span class="keyword">if</span> mode:</div><div class="line">                cv2.rectangle(img, start, (x, y), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                cv2.circle(img, (x, y), <span class="number">5</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line">    <span class="comment"># 左键释放：结束画图</span></div><div class="line">    <span class="keyword">elif</span> event == cv2.EVENT_LBUTTONUP:</div><div class="line">        drawing = <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> mode:</div><div class="line">            cv2.rectangle(img, start, (x, y), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            cv2.circle(img, (x, y), <span class="number">5</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line">cv2.setMouseCallback(<span class="string">'image'</span>, mouse_event)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="comment"># 按下m切换模式</span></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'m'</span>):</div><div class="line">        mode = <span class="keyword">not</span> mode</div><div class="line">    <span class="keyword">elif</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>效果应该如下图所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_mouse_drawing_rectangle_circle.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>要用鼠标绘图，需要用cv2.setMouseCallback()定义回调函数，然后在回调函数中根据不同的flags事件，执行不同的功能。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>（选做）实现用鼠标画矩形，跟实例差不多，但只实时画一个，类似下面动图：</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif" alt="实时画一个矩形" title="">
+                </div>
+                <div class="image-caption">实时画一个矩形</div>
+            </figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html" target="_blank" rel="external">Mouse as a Paint-Brush</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-09T13:38:13.474Z" itemprop="dateUpdated">2017-12-09 21:38:13</time>
+</span><br>
+
+
+        
+        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        
+    </div>
+    <footer>
+        <a href="https://ex2tron.github.io">
+            <img src="/img/avatar.jpg" alt="Tony Wong">
+            Tony Wong
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/&title=《Python+OpenCV教程9：鼠标绘图》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/&title=《Python+OpenCV教程9：鼠标绘图》 — ex2tron's Blog&source=学习如何用鼠标实时绘图。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程9：鼠标绘图》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/09/Python-OpenCV教程8：绘图功能/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python+OpenCV教程8：绘图功能</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢支持，我会更加✊~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Tony Wong &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/&title=《Python+OpenCV教程9：鼠标绘图》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/&title=《Python+OpenCV教程9：鼠标绘图》 — ex2tron's Blog&source=学习如何用鼠标实时绘图。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程9：鼠标绘图》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/&via=https://ex2tron.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/09/Python-OpenCV教程9：鼠标绘图/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
