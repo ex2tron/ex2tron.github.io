@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-11T12:54:21.830Z</updated>
+  <updated>2017-12-11T13:01:31.119Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://ex2tron.github.io/2017/12/11/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     <id>https://ex2tron.github.io/2017/12/11/Python-OpenCV教程12：亮度与对比度/</id>
     <published>2017-12-11T12:05:10.000Z</published>
-    <updated>2017-12-11T12:54:21.830Z</updated>
+    <updated>2017-12-11T13:01:31.119Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何调整图片的亮度和对比度。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -33,7 +33,7 @@
 <blockquote>
 <p>经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：<a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 此处需注意，请参考后面的解释</span></div><div class="line">res = np.uint8(np.clip((<span class="number">1.5</span> * img + <span class="number">10</span>), <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并（便于对比显示）</span></div><div class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 此处需注意，请参考后面的解释</span></div><div class="line">res = np.uint8(np.clip((<span class="number">1.5</span> * img + <span class="number">10</span>), <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并（便于对比显示）</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>还记得上一节numpy中数据溢出的取模处理吗？<code>250+10 = 260 =&gt; 260%256=4</code>，它并不适用于我们的图像处理，所以用<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">np.clip()</a>函数将数据限定：<code>a&lt;0 =&gt; a=0, a&gt;255 =&gt; a=255</code></p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="image-caption">亮度与对比度调整</div>
             </figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>对比度阿尔法/亮度β，通过公式g(x) = αf(x) + β来计算。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>对比度α/亮度β，通过公式g(x) = αf(x) + β来计算。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li><p>创建两个滑动条分别调整对比度和亮度（对比度范围：0~0.3，亮度：0~100）。提示：因为滑动条没有小数，所以可以设置为0~300，然后乘以0.01。</p>
 </li>
