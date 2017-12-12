@@ -478,11 +478,11 @@
   </entry>
   
   <entry>
-    <title>Python+OpenCV教程番外篇2：Otsu阈值法</title>
-    <link href="https://ex2tron.github.io/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/"/>
-    <id>https://ex2tron.github.io/2017/12/08/Python-OpenCV教程番外篇2：Otsu阈值法/</id>
+    <title>Python+OpenCV教程番外篇3：Otsu阈值法</title>
+    <link href="https://ex2tron.github.io/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/"/>
+    <id>https://ex2tron.github.io/2017/12/08/Python-OpenCV教程番外篇3：Otsu阈值法/</id>
     <published>2017-12-08T04:48:05.000Z</published>
-    <updated>2017-12-08T04:54:42.360Z</updated>
+    <updated>2017-12-12T06:43:32.331Z</updated>
     
     <content type="html"><![CDATA[<p>大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。<a id="more"></a></p>
 <p><a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？</p>
@@ -536,7 +536,7 @@
     <link href="https://ex2tron.github.io/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/"/>
     <id>https://ex2tron.github.io/2017/12/07/Python-OpenCV教程6：阈值分割/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2017-12-08T06:31:36.057Z</updated>
+    <updated>2017-12-12T09:34:39.053Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -606,7 +606,7 @@
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.threshold()用来进行固定阈值分割。固定阈值不适用于光线不均匀的图片，所以用cv2.adaptiveThreshold()进行自适应阈值分割。</p>
 <p>二值化跟阈值分割并不等同。针对不同的图片，可以采用不同的阈值方法。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>Otsu阈值是一种高效的二值化算法，请尝试阅读<a href="http://ex2tron.top/2017/12/08/Python-OpenCV教程番外篇2：Otsu阈值法/" target="_blank" rel="external">番外篇2：Otsu阈值法</a>。</li>
+<li>Otsu阈值是一种高效的二值化算法，请尝试阅读<a href="http://ex2tron.top/2017/12/08/Python-OpenCV教程番外篇3：Otsu阈值法/" target="_blank" rel="external">番外篇2：Otsu阈值法</a>。</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20阈值分割" target="_blank" rel="external">本节源码</a></p>
 <p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></p>
@@ -852,11 +852,11 @@
   </entry>
   
   <entry>
-    <title>Python+OpenCV教程番外篇1：Matplotlib显示图像</title>
-    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
-    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/</id>
+    <title>Python+OpenCV教程番外篇2：Matplotlib显示图像</title>
+    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
+    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2017-12-09T03:21:24.909Z</updated>
+    <updated>2017-12-12T06:43:22.334Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
@@ -909,7 +909,7 @@
     <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/"/>
     <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2017-12-07T06:43:17.880Z</updated>
+    <updated>2017-12-12T09:35:39.054Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -959,7 +959,7 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li><p>打开lena.jpg并显示，显示时如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
 </li>
-<li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="http://ex2tron.top/2017/12/06/Python-OpenCV教程番外篇1：Matplotlib显示图像/" target="_blank" rel="external">Matplotlib显示图像</a> </p>
+<li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="http://ex2tron.top/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/" target="_blank" rel="external">Matplotlib显示图像</a> </p>
 </li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></p>
@@ -984,11 +984,64 @@
   </entry>
   
   <entry>
+    <title>Python+OpenCV教程番外篇1：代码性能优化</title>
+    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/</id>
+    <published>2017-12-06T07:51:52.000Z</published>
+    <updated>2017-12-12T09:36:02.503Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
+<p>完成一项任务很重要，高效地完成更重要。图像处理是对图像的操作，数据量巨大，如果代码写的不好，性能差距将很大，所以这节我们来了解下如何测量和提升代码性能。</p>
+<h2 id="测量代码运行时间"><a href="#测量代码运行时间" class="headerlink" title="测量代码运行时间"></a>测量代码运行时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">start = cv2.getTickCount()</div><div class="line"><span class="comment"># 这里写要测量的代码...</span></div><div class="line">end = cv2.getTickCount()</div><div class="line">print((end - start) / cv2.getTickFrequency())</div></pre></td></tr></table></figure>
+<p>这段代码就是用来测量程序运行时间的（单位：s），其中<code>cv2.getTickCount()</code>函数得到电脑启动以来的时钟周期数，<code>cv2.getTickFrequency()</code>返回你电脑的主频，前后相减再除以主频就是你代码的运行时间（这样解释并不完全准确，但能理解就行）。另外，也可以用Python中的time模块计时：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">start = time.clock()</div><div class="line"><span class="comment"># 这里写要测量的代码...</span></div><div class="line">end = time.clock()</div><div class="line">print(end - start)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：如果你使用的是<a href="https://baike.baidu.com/item/ipython" target="_blank" rel="external">IPython</a>或<a href="https://baike.baidu.com/item/Jupyter" target="_blank" rel="external">Jupyter Notebook</a>开发环境，性能分析将会非常方便，详情请参考：<a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
+</blockquote>
+<h2 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h2><ol>
+<li>数据元素少时用Python本身格式，数据元素多时用numpy：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10</span></div><div class="line">z = np.uint8([<span class="number">10</span>])</div><div class="line"></div><div class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></div><div class="line">y = x * x * x   <span class="comment"># 最快 (1.6410249677846285e-06)</span></div><div class="line">y = x**<span class="number">3</span>        <span class="comment"># 次之 (2.461537451676943e-06)</span></div><div class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></div></pre></td></tr></table></figure>
+<p>所以numpy的运行速度并不一定比Python本身格式快，元素数量较少时，请用Python本身格式。</p>
+<ol>
+<li><p>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</p>
+</li>
+<li><p>优先使用OpenCV/numpy中封装好的函数</p>
+</li>
+<li><p>尽量将数据向量化，变成numpy的数据格式</p>
+</li>
+<li><p>尽量避免数组的复制操作</p>
+</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></p>
+<p><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></p>
+<p><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
+<p><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="external">Advanced Numpy</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何评估和优化代码性能。（本节还没更新完…………）
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程1：简介</title>
     <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
     <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2017-12-12T05:15:23.875Z</updated>
+    <updated>2017-12-12T07:47:32.199Z</updated>
     
     <content type="html"><![CDATA[<p>Python+OpenCV搞图像处理与C/C++一样快！<a id="more"></a></p>
 <p>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</p>
@@ -1016,7 +1069,7 @@
 <p>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！另外，得益于OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">numpy</a>，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请注意，本教程使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
 <p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，后期不用我们一个个安装。即使你已经装了Python也没有影响，Anaconda中自带Python，互不干扰。</p>
-<p>Anaconda装好之后，打开cmd，输入：<code>pip install opencv-python</code>，等待安装完成即可。</p>
+<p>Anaconda装好之后，打开cmd，输入：<code>pip install opencv-python</code>，等待安装完成就好了。要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。</p>
 <ol>
 <li>如果识别不了<code>pip</code>，说明没有将pip的目录添加到环境变量。找到pip的安装目录，添加到用户变量（或系统变量）的path中。</li>
 <li>如果下载速度很慢，可以<a href="https://pypi.python.org/pypi?%3Aaction=search&amp;term=opencv-python&amp;submit=search" target="_blank" rel="external">点击此处</a>下载离线版。下载完成后，cmd切换到下载的目录，输入<code>pip install 文件名</code>安装。</li>

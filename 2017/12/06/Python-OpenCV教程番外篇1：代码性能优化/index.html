@@ -18,28 +18,25 @@
     
     
     
-    <title>Python+OpenCV教程1：简介 | ex2tron&#39;s Blog | Excelsior!</title>
+    <title>Python+OpenCV教程番外篇1：代码性能优化 | ex2tron&#39;s Blog | Excelsior!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#355876">
     
     
     <meta name="keywords" content="Code,Python,OpenCV,图像处理">
-    <meta name="description" content="Python+OpenCV搞图像处理与C/C++一样快！">
+    <meta name="description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
 <meta name="keywords" content="Code,Python,OpenCV,图像处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+OpenCV教程1：简介">
-<meta property="og:url" content="https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/index.html">
+<meta property="og:title" content="Python+OpenCV教程番外篇1：代码性能优化">
+<meta property="og:url" content="https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="Python+OpenCV搞图像处理与C/C++一样快！">
+<meta property="og:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_python_opencv_poster.png">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_python_vs_cplus_time.jpg">
-<meta property="og:updated_time" content="2017-12-12T07:47:32.199Z">
+<meta property="og:updated_time" content="2017-12-12T09:36:02.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程1：简介">
-<meta name="twitter:description" content="Python+OpenCV搞图像处理与C/C++一样快！">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_python_opencv_poster.png">
+<meta name="twitter:title" content="Python+OpenCV教程番外篇1：代码性能优化">
+<meta name="twitter:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
     
         <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
     
@@ -106,7 +103,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Python+OpenCV教程1：简介</div>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程番外篇1：代码性能优化</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -128,10 +125,10 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Python+OpenCV教程1：简介</h1>
+        <h1 class="title">Python+OpenCV教程番外篇1：代码性能优化</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-12-06T07:50:59.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2017-12-06T07:51:52.000Z" itemprop="datePublished" class="page-time">
   2017-12-06
 </time>
 
@@ -151,17 +148,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python照样快！"><span class="post-toc-number">1.</span> <span class="post-toc-text">Python照样快！</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">3.</span> <span class="post-toc-text">引用</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测量代码运行时间"><span class="post-toc-number">1.</span> <span class="post-toc-text">测量代码运行时间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化原则"><span class="post-toc-number">2.</span> <span class="post-toc-text">优化原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">3.</span> <span class="post-toc-text">引用</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-Python-OpenCV教程1：简介"
+<article id="post-Python-OpenCV教程番外篇1：代码性能优化"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Python+OpenCV教程1：简介</h1>
+        <h1 class="post-card-title">Python+OpenCV教程番外篇1：代码性能优化</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-12-06 15:50:59" datetime="2017-12-06T07:50:59.000Z"  itemprop="datePublished">2017-12-06</time>
+            <time class="post-time" title="2017-12-06 15:51:52" datetime="2017-12-06T07:51:52.000Z"  itemprop="datePublished">2017-12-06</time>
 
             
 
@@ -170,41 +167,33 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>Python+OpenCV搞图像处理与C/C++一样快！<a id="more"></a></p>
-<p>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</p>
-<p><strong>我相信绝大多数人用Python进行图像处理的疑问是：它快吗？( ╯□╰ )</strong>，下面我来为你解答这个问题：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_python_opencv_poster.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+            <p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
+<p>完成一项任务很重要，高效地完成更重要。图像处理是对图像的操作，数据量巨大，如果代码写的不好，性能差距将很大，所以这节我们来了解下如何测量和提升代码性能。</p>
+<h2 id="测量代码运行时间"><a href="#测量代码运行时间" class="headerlink" title="测量代码运行时间"></a>测量代码运行时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">start = cv2.getTickCount()</div><div class="line"><span class="comment"># 这里写要测量的代码...</span></div><div class="line">end = cv2.getTickCount()</div><div class="line">print((end - start) / cv2.getTickFrequency())</div></pre></td></tr></table></figure>
+<p>这段代码就是用来测量程序运行时间的（单位：s），其中<code>cv2.getTickCount()</code>函数得到电脑启动以来的时钟周期数，<code>cv2.getTickFrequency()</code>返回你电脑的主频，前后相减再除以主频就是你代码的运行时间（这样解释并不完全准确，但能理解就行）。另外，也可以用Python中的time模块计时：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">start = time.clock()</div><div class="line"><span class="comment"># 这里写要测量的代码...</span></div><div class="line">end = time.clock()</div><div class="line">print(end - start)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>p.s.你英文Ok的话，推荐你看<a href="#引用">官方教程</a>。我写的大部分也是照搬，但官方是按照OpenCV中的组件顺序讲的，大部分功能并不常用，所以我按照使用度和难易程度重写翻译了一遍。</p>
+<p>经验之谈：如果你使用的是<a href="https://baike.baidu.com/item/ipython" target="_blank" rel="external">IPython</a>或<a href="https://baike.baidu.com/item/Jupyter" target="_blank" rel="external">Jupyter Notebook</a>开发环境，性能分析将会非常方便，详情请参考：<a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
 </blockquote>
-<hr>
-<h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要特性：它是一门胶水语言！Python可以很容易地扩展C/C++。OpenCV-Python就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
-<p>下面我们举两个简单的例子来对比下Python和C++的运行时间：一个是读入图片，另一个是调整图片的对比度和亮度（代码可到<a href="#引用">引用</a>本节源码处下载）：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_python_vs_cplus_time.jpg" alt="Python vs C++" title="">
-                </div>
-                <div class="image-caption">Python vs C++</div>
-            </figure>
-<p>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！另外，得益于OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">numpy</a>，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请注意，本教程使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
-<p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，后期不用我们一个个安装。即使你已经装了Python也没有影响，Anaconda中自带Python，互不干扰。</p>
-<p>Anaconda装好之后，打开cmd，输入：<code>pip install opencv-python</code>，等待安装完成就好了。要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。</p>
+<h2 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h2><ol>
+<li>数据元素少时用Python本身格式，数据元素多时用numpy：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10</span></div><div class="line">z = np.uint8([<span class="number">10</span>])</div><div class="line"></div><div class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></div><div class="line">y = x * x * x   <span class="comment"># 最快 (1.6410249677846285e-06)</span></div><div class="line">y = x**<span class="number">3</span>        <span class="comment"># 次之 (2.461537451676943e-06)</span></div><div class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></div></pre></td></tr></table></figure>
+<p>所以numpy的运行速度并不一定比Python本身格式快，元素数量较少时，请用Python本身格式。</p>
 <ol>
-<li>如果识别不了<code>pip</code>，说明没有将pip的目录添加到环境变量。找到pip的安装目录，添加到用户变量（或系统变量）的path中。</li>
-<li>如果下载速度很慢，可以<a href="https://pypi.python.org/pypi?%3Aaction=search&amp;term=opencv-python&amp;submit=search" target="_blank" rel="external">点击此处</a>下载离线版。下载完成后，cmd切换到下载的目录，输入<code>pip install 文件名</code>安装。</li>
+<li><p>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</p>
+</li>
+<li><p>优先使用OpenCV/numpy中封装好的函数</p>
+</li>
+<li><p>尽量将数据向量化，变成numpy的数据格式</p>
+</li>
+<li><p>尽量避免数组的复制操作</p>
+</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
-<p><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></p>
-<p><a href="https://docs.opencv.org/" target="_blank" rel="external">OpenCV Docs</a></p>
+<p><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></p>
+<p><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
+<p><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="external">Advanced Numpy</a></p>
 
         </div>
 
@@ -212,7 +201,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-12T07:47:32.199Z" itemprop="dateUpdated">2017-12-12 15:47:32</time>
+    Last updated: <time datetime="2017-12-12T09:36:02.503Z" itemprop="dateUpdated">2017-12-12 17:36:02</time>
 </span><br>
 
 
@@ -247,7 +236,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/&title=《Python+OpenCV教程1：简介》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/&title=《Python+OpenCV教程番外篇1：代码性能优化》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -257,22 +246,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/&title=《Python+OpenCV教程1：简介》 — ex2tron's Blog&source=Python+OpenCV搞图像处理与C/C++一样快！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/&title=《Python+OpenCV教程番外篇1：代码性能优化》 — ex2tron's Blog&source=学习如何评估和优化代码性能。（本节还没更新完…………）" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程1：简介》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程番外篇1：代码性能优化》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/&via=https://ex2tron.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -295,18 +284,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" id="post-prev" class="post-nav-link">
+      <a href="/2017/12/06/Python-OpenCV教程2：基本元素——图片/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Python+OpenCV教程番外篇1：代码性能优化</h4>
+        <h4 class="title">Python+OpenCV教程2：基本元素——图片</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/12/05/【片单】漫威宇宙电影合集/" id="post-next" class="post-nav-link">
+      <a href="/2017/12/06/Python-OpenCV教程1：简介/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">【片单】漫威宇宙电影合集</h4>
+        <h4 class="title">Python+OpenCV教程1：简介</h4>
       </a>
     </div>
   
@@ -391,7 +380,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/&title=《Python+OpenCV教程1：简介》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/&title=《Python+OpenCV教程番外篇1：代码性能优化》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -401,22 +390,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/&title=《Python+OpenCV教程1：简介》 — ex2tron's Blog&source=Python+OpenCV搞图像处理与C/C++一样快！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/&title=《Python+OpenCV教程番外篇1：代码性能优化》 — ex2tron's Blog&source=学习如何评估和优化代码性能。（本节还没更新完…………）" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程1：简介》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程番外篇1：代码性能优化》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/&via=https://ex2tron.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -427,7 +416,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程1：简介/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" alt="微信分享二维码">
 </div>
 
 
