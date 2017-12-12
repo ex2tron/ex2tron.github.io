@@ -33,7 +33,7 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-12T09:36:02.503Z">
+<meta property="og:updated_time" content="2017-12-12T09:49:04.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇1：代码性能优化">
 <meta name="twitter:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
@@ -178,7 +178,7 @@
 <h2 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h2><ol>
 <li>数据元素少时用Python本身格式，数据元素多时用numpy：</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10</span></div><div class="line">z = np.uint8([<span class="number">10</span>])</div><div class="line"></div><div class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></div><div class="line">y = x * x * x   <span class="comment"># 最快 (1.6410249677846285e-06)</span></div><div class="line">y = x**<span class="number">3</span>        <span class="comment"># 次之 (2.461537451676943e-06)</span></div><div class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10</span></div><div class="line">z = np.uint8([<span class="number">10</span>])</div><div class="line"></div><div class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></div><div class="line">y = x * x * x   <span class="comment"># (1.6410249677846285e-06)</span></div><div class="line">y = x**<span class="number">3</span>        <span class="comment"># (2.461537451676943e-06)</span></div><div class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></div></pre></td></tr></table></figure>
 <p>所以numpy的运行速度并不一定比Python本身格式快，元素数量较少时，请用Python本身格式。</p>
 <ol>
 <li><p>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</p>
@@ -201,7 +201,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-12T09:36:02.503Z" itemprop="dateUpdated">2017-12-12 17:36:02</time>
+    Last updated: <time datetime="2017-12-12T09:49:04.234Z" itemprop="dateUpdated">2017-12-12 17:49:04</time>
 </span><br>
 
 
