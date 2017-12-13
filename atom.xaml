@@ -1325,7 +1325,7 @@
     <link href="https://ex2tron.github.io/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>https://ex2tron.github.io/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2017-12-05T14:52:17.458Z</updated>
+    <updated>2017-12-13T10:38:18.012Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -1334,7 +1334,9 @@
 <hr>
 <h2 id="软件汁源"><a href="#软件汁源" class="headerlink" title="软件汁源"></a><strong>软件汁源</strong></h2><p>首先列出一些常用网站，后面我只列出常用的软件和官网，<strong>请大家优先选择官网进行下载</strong>，因为官网版本一般都是最新的，也比较安全。官网进不去，可以<strong>点击</strong>我给出的版本下载：</p>
 <h3 id="常用资源站"><a href="#常用资源站" class="headerlink" title="常用资源站"></a>常用资源站</h3><ul>
-<li><p><a href="https://www.ithome.com/bibei/" target="_blank" rel="external">Windows装机必备</a>、<a href="http://mirrors.163.com/" target="_blank" rel="external">网易开源镜像站</a></p>
+<li><p><a href="https://www.ithome.com/bibei/" target="_blank" rel="external">Windows装机必备</a></p>
+</li>
+<li><p><a href="http://mirrors.163.com/" target="_blank" rel="external">网易开源镜像站</a>、<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝 NPM 镜像站</a></p>
 </li>
 <li><p><a href="https://xbeta.info/" target="_blank" rel="external">善用佳软</a>、<a href="https://www.portablesoft.org/" target="_blank" rel="external">精品绿色便携软件</a></p>
 </li>
@@ -1387,13 +1389,18 @@
 </li>
 <li><p>protobuf：<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">官网(需翻墙)</a>  ffmpeg：<a href="http://ffmpeg.org/download.html" target="_blank" rel="external">官网</a></p>
 </li>
+<li><p>WebDriver：<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="external">Firefox geckodriver</a>、<a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/" target="_blank" rel="external">MicrosoftWebDriver</a>、ChromeDriver：<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="external">官网(需翻墙)</a>、<a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="external">国内镜像站</a>、<a href="http://blog.csdn.net/cz9025/article/details/70160273" target="_blank" rel="external">各版本对照表</a></p>
+</li>
 </ul>
 </li>
 </ul>
 <h3 id="媒体"><a href="#媒体" class="headerlink" title="媒体"></a>媒体</h3><ul>
 <li>Adobe CC 2017：<a href="http://pan.baidu.com/s/1eRNym9W" target="_blank" rel="external">精简版 密码：f7yt</a></li>
 </ul>
-<h3 id="实用工具"><a href="#实用工具" class="headerlink" title="实用工具"></a>实用工具</h3><p>我平常整理的一些各类有用的工具：<a href="https://pan.baidu.com/s/1pLwsEUZ" target="_blank" rel="external">密码：806j</a></p>
+<h3 id="实用工具"><a href="#实用工具" class="headerlink" title="实用工具"></a>实用工具</h3><ul>
+<li>[Lantern蓝灯翻墙工具]：<a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe" target="_blank" rel="external">最新版</a>、<a href="https://github.com/getlantern/mirror" target="_blank" rel="external">官网</a></li>
+</ul>
+<p>我平常整理的一些各类有用的工具：<a href="https://pan.baidu.com/s/1pLwsEUZ" target="_blank" rel="external">密码：806j</a></p>
 <h2 id="影视汁源"><a href="#影视汁源" class="headerlink" title="影视汁源"></a><strong>影视汁源</strong></h2><h3 id="资源站"><a href="#资源站" class="headerlink" title="资源站"></a>资源站</h3><ul>
 <li><p><a href="http://6vhao.com/" target="_blank" rel="external">6v电影网</a></p>
 </li>
@@ -2455,11 +2462,11 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
-      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
-    
       <category term="MyCLI" scheme="https://ex2tron.github.io/tags/MyCLI/"/>
     
       <category term="MySQL" scheme="https://ex2tron.github.io/tags/MySQL/"/>
+    
+      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
   </entry>
   
