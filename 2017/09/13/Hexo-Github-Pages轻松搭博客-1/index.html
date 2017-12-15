@@ -34,7 +34,7 @@
 <meta property="og:description" content="想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/default_hexo_theme.png">
-<meta property="og:updated_time" content="2017-09-25T12:23:48.596Z">
+<meta property="og:updated_time" content="2017-12-15T02:27:26.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(1)">
 <meta name="twitter:description" content="想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！">
@@ -150,7 +150,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化博客目录"><span class="post-toc-number">3.</span> <span class="post-toc-text">初始化博客目录</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化博客目录"><span class="post-toc-number">3.</span> <span class="post-toc-text">初始化博客目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">4.</span> <span class="post-toc-text">引用</span></a></li></ol>
         </nav>
     </aside>
     
@@ -181,10 +181,14 @@
 <li><a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
 <li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></li>
 </ul>
-<p>如果已经安装了的话，命令行下一句话就好啦：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<h2 id="初始化博客目录"><a href="#初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录</h2><p>在你的本地新建一个存放博客的目录，比如”<em>D:\MyHexoBlog</em>“，然后在这个目录右键，选择”<em>Git Bash Here</em>“，输入下面两条命令进行初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
-<p>初始化完成之后，你的目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── source</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure></p>
-<p>如果没有出错的话，继续执行下面的指令启动服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g </div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
+<p>如果已经安装了的话，命令行下一句话就好啦：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<h2 id="初始化博客目录"><a href="#初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录</h2><p>在你的本地新建一个存放博客的目录，比如”<em>D:\MyHexoBlog</em>“，然后在这个目录右键，选择”<em>Git Bash Here</em>“，输入下面两条命令进行初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>初始化完成之后，你的目录结构应该是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── source</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure>
+<p>如果没有出错的话，继续执行下面的指令启动服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g </div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
 <p>启动之后，在浏览器中访问：<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>，是不是看到了漂亮的Hexo博客页面了。不过目前这个博客还是运行在你本机上的，下篇我们看一下怎么样让别人也能访问这个博客。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -193,10 +197,11 @@
                 </div>
                 <div class="image-caption">default_hexo_index</div>
             </figure>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo Docs</a></li>
-<li><a href="http://blog.csdn.net/cl534854121/article/details/76121066" target="_blank" rel="external">Hexo+Github搭建个人博客(一)——开始搭建 </a></li>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><p><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo Docs</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/cl534854121/article/details/76121066" target="_blank" rel="external">Hexo+Github搭建个人博客(一)——开始搭建</a></p>
+</li>
 </ul>
 
         </div>
@@ -205,7 +210,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-09-25T12:23:48.596Z" itemprop="dateUpdated">2017-09-25 20:23:48</time>
+    Last updated: <time datetime="2017-12-15T02:27:26.463Z" itemprop="dateUpdated">2017-12-15 10:27:26</time>
 </span><br>
 
 
@@ -288,9 +293,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2-——在Github上部署/" id="post-prev" class="post-nav-link">
+      <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Hexo+Github Pages轻松搭博客(2)——在Github上部署</h4>
+        <h4 class="title">Hexo+Github Pages轻松搭博客(2)：在Github上部署</h4>
       </a>
     </div>
   

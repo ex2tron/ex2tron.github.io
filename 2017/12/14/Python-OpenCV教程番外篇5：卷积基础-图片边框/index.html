@@ -25,13 +25,13 @@
     
     
     <meta name="keywords" content="Code,Python,OpenCV,图像处理,卷积,边框">
-    <meta name="description" content="了解卷积的基础知识，给图片添加边框。">
+    <meta name="description" content="了解卷积/滤波的基础知识，给图片添加边框。">
 <meta name="keywords" content="Code,Python,OpenCV,图像处理,卷积,边框">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程番外篇5：卷积基础(图片边框)">
 <meta property="og:url" content="https://ex2tron.github.io/2017/12/14/Python-OpenCV教程番外篇5：卷积基础-图片边框/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="了解卷积的基础知识，给图片添加边框。">
+<meta property="og:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_convolution.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_padding.jpg">
@@ -39,10 +39,10 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg">
-<meta property="og:updated_time" content="2017-12-15T02:20:34.720Z">
+<meta property="og:updated_time" content="2017-12-15T05:29:22.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇5：卷积基础(图片边框)">
-<meta name="twitter:description" content="了解卷积的基础知识，给图片添加边框。">
+<meta name="twitter:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_convolution.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
@@ -174,7 +174,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>了解卷积的基础知识，给图片添加边框。<a id="more"></a>如果你已具备卷积的相关知识，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
+            <p>了解卷积/滤波的基础知识，给图片添加边框。<a id="more"></a>如果你已了解相关理论，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
 <p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
 <h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>什么是二维卷积呢？看下面一张图就一目了然：</p>
 <figure class="image-bubble">
@@ -244,7 +244,7 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<p>可以看到这个核对图像进行了模糊处理，这是卷积的强大功能之一。</p>
+<p>可以看到这个核对图像进行了模糊处理，这是卷积的众多功能之一。当然卷积还有很多知识没有学到，后面我们再继续深入。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>尝试给”lena.jpg”添加几种不同的边框类型，对比下效果。</li>
 </ol>
@@ -258,7 +258,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-15T02:20:34.720Z" itemprop="dateUpdated">2017-12-15 10:20:34</time>
+    Last updated: <time datetime="2017-12-15T05:29:22.394Z" itemprop="dateUpdated">2017-12-15 13:29:22</time>
 </span><br>
 
 
@@ -303,7 +303,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/14/Python-OpenCV教程番外篇5：卷积基础-图片边框/&title=《Python+OpenCV教程番外篇5：卷积基础(图片边框)》 — ex2tron's Blog&source=了解卷积的基础知识，给图片添加边框。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/14/Python-OpenCV教程番外篇5：卷积基础-图片边框/&title=《Python+OpenCV教程番外篇5：卷积基础(图片边框)》 — ex2tron's Blog&source=了解卷积/滤波的基础知识，给图片添加边框。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -338,7 +338,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/15/Python-OpenCV教程12：平滑图像/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python+OpenCV教程12：平滑图像</h4>
+      </a>
+    </div>
   
 
   
@@ -440,7 +447,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/14/Python-OpenCV教程番外篇5：卷积基础-图片边框/&title=《Python+OpenCV教程番外篇5：卷积基础(图片边框)》 — ex2tron's Blog&source=了解卷积的基础知识，给图片添加边框。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/14/Python-OpenCV教程番外篇5：卷积基础-图片边框/&title=《Python+OpenCV教程番外篇5：卷积基础(图片边框)》 — ex2tron's Blog&source=了解卷积/滤波的基础知识，给图片添加边框。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
