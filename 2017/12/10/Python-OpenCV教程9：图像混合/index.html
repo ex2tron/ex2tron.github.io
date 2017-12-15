@@ -18,7 +18,7 @@
     
     
     
-    <title>Python+OpenCV教程11：图像混合 | ex2tron&#39;s Blog | Excelsior!</title>
+    <title>Python+OpenCV教程9：图像混合 | ex2tron&#39;s Blog | Excelsior!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#355876">
@@ -28,17 +28,17 @@
     <meta name="description" content="学习图片间的数学运算，图像混合。">
 <meta name="keywords" content="Code,Python,OpenCV,图像处理,图像混合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+OpenCV教程11：图像混合">
-<meta property="og:url" content="https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/index.html">
+<meta property="og:title" content="Python+OpenCV教程9：图像混合">
+<meta property="og:url" content="https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习图片间的数学运算，图像混合。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bitwise_operations_demo.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_mask.jpg">
-<meta property="og:updated_time" content="2017-12-11T09:03:02.536Z">
+<meta property="og:updated_time" content="2017-12-15T12:39:26.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程11：图像混合">
+<meta name="twitter:title" content="Python+OpenCV教程9：图像混合">
 <meta name="twitter:description" content="学习图片间的数学运算，图像混合。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg">
     
@@ -107,7 +107,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Python+OpenCV教程11：图像混合</div>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程9：图像混合</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -129,7 +129,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Python+OpenCV教程11：图像混合</h1>
+        <h1 class="title">Python+OpenCV教程9：图像混合</h1>
         <h5 class="subtitle">
             
                 <time datetime="2017-12-10T06:13:10.000Z" itemprop="datePublished" class="page-time">
@@ -156,11 +156,11 @@
         </nav>
     </aside>
     
-<article id="post-Python-OpenCV教程11：图像混合"
+<article id="post-Python-OpenCV教程9：图像混合"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Python+OpenCV教程11：图像混合</h1>
+        <h1 class="post-card-title">Python+OpenCV教程9：图像混合</h1>
         <div class="post-meta">
             <time class="post-time" title="2017-12-10 14:13:10" datetime="2017-12-10T06:13:10.000Z"  itemprop="datePublished">2017-12-10</time>
 
@@ -213,7 +213,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">img1 = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 把logo放在左上角，所以我们只关心这一块区域</span></div><div class="line">rows, cols = img2.shape[:<span class="number">2</span>]</div><div class="line">roi = img1[:rows, :cols]</div><div class="line"></div><div class="line"><span class="comment"># 创建掩膜</span></div><div class="line">img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, mask = cv2.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">mask_inv = cv2.bitwise_not(mask)</div><div class="line"></div><div class="line"><span class="comment"># 保留除logo外的背景</span></div><div class="line">img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)</div><div class="line">dst = cv2.add(img1_bg, img2)  <span class="comment"># 进行融合</span></div><div class="line">img1[:rows, :cols] = dst  <span class="comment"># 融合后放在原图上</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'result'</span>, img1)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.add()用来叠加两幅图片，cv2.addWeighted()也是叠加两幅图片，但两幅图片的权重不一样。</p>
 <p><code>cv2.bitwise_and()</code>, <code>cv2.bitwise_not()</code>, <code>cv2.bitwise_or()</code>, <code>cv2.bitwise_xor()</code>分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/11.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></p>
 <p><a href="https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin" target="_blank" rel="external">掩膜</a></p>
 <p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html" target="_blank" rel="external">Arithmetic Operations on Images</a></p>
 
@@ -223,7 +223,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-11T09:03:02.536Z" itemprop="dateUpdated">2017-12-11 17:03:02</time>
+    Last updated: <time datetime="2017-12-15T12:39:26.692Z" itemprop="dateUpdated">2017-12-15 20:39:26</time>
 </span><br>
 
 
@@ -258,7 +258,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/&title=《Python+OpenCV教程11：图像混合》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/&title=《Python+OpenCV教程9：图像混合》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -268,22 +268,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/&title=《Python+OpenCV教程11：图像混合》 — ex2tron's Blog&source=学习图片间的数学运算，图像混合。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/&title=《Python+OpenCV教程9：图像混合》 — ex2tron's Blog&source=学习图片间的数学运算，图像混合。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程11：图像混合》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程9：图像混合》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/&via=https://ex2tron.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -315,9 +315,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/12/10/Python-OpenCV教程番外篇4：亮度与对比度/" id="post-next" class="post-nav-link">
+      <a href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Python+OpenCV番外篇4：亮度与对比度</h4>
+        <h4 class="title">Python+OpenCV教程番外篇6：亮度与对比度</h4>
       </a>
     </div>
   
@@ -402,7 +402,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/&title=《Python+OpenCV教程11：图像混合》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/&title=《Python+OpenCV教程9：图像混合》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -412,22 +412,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/&title=《Python+OpenCV教程11：图像混合》 — ex2tron's Blog&source=学习图片间的数学运算，图像混合。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/&title=《Python+OpenCV教程9：图像混合》 — ex2tron's Blog&source=学习图片间的数学运算，图像混合。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程11：图像混合》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程9：图像混合》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/&via=https://ex2tron.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -438,7 +438,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程11：图像混合/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/10/Python-OpenCV教程9：图像混合/" alt="微信分享二维码">
 </div>
 
 
