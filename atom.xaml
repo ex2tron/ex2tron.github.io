@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-12T15:23:02.961Z</updated>
+  <updated>2017-12-15T02:20:34.720Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -16,11 +16,118 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python+OpenCV教程番外篇5：卷积基础(图片边框)</title>
+    <link href="https://ex2tron.github.io/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/"/>
+    <id>https://ex2tron.github.io/2017/12/14/Python-OpenCV教程番外篇5：卷积基础-图片边框/</id>
+    <published>2017-12-14T08:27:45.000Z</published>
+    <updated>2017-12-15T02:20:34.720Z</updated>
+    
+    <content type="html"><![CDATA[<p>了解卷积的基础知识，给图片添加边框。<a id="more"></a>如果你已具备卷积的相关知识，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
+<p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>什么是二维卷积呢？看下面一张图就一目了然：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_convolution.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……</p>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫padding</strong>。</p>
+<blockquote>
+<p>事实上，原图为n×n，卷积核为f×f，最终结果图大小为(n-f+1) × (n-f+1)</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_padding.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>那么扩展的这一层应该填充什么值呢？OpenCV中有好几种填充方式，都使用<code>cv2.copyMakeBorder()</code>函数实现，一起来看看。</p>
+<h2 id="添加边框"><a href="#添加边框" class="headerlink" title="添加边框"></a>添加边框</h2><p><code>cv2.copyMakeBorder()</code>用来给图片添加边框，它有下面几个参数：</p>
+<ul>
+<li>src：要处理的原图</li>
+<li>top, bottom, left, right：上下左右要扩展的像素数</li>
+<li><strong>borderType</strong>：边框类型，这个就是需要关注的填充方式，详情请参考：<a href="https://docs.opencv.org/3.3.1/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5" target="_blank" rel="external">BorderTypes</a></li>
+</ul>
+<p>其中默认方式和固定值方式最常用，我们详细说明一下：</p>
+<h3 id="固定值填充（cv2-BORDER-CONSTANT）"><a href="#固定值填充（cv2-BORDER-CONSTANT）" class="headerlink" title="固定值填充（cv2.BORDER_CONSTANT）"></a>固定值填充（<code>cv2.BORDER_CONSTANT</code>）</h3><p>顾名思义，这种方式就是边框都填充成一个固定值，比如下面的程序都填充0：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'6_by_6.bmp'</span>, <span class="number">0</span>)</div><div class="line">print(img)</div><div class="line"></div><div class="line"><span class="comment"># 固定值边框，统一都填充0也称为zero padding</span></div><div class="line">cons = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_CONSTANT, value=<span class="number">0</span>)</div><div class="line">print(cons)</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_zero_padding_output.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="默认边框类型（cv2-BORDER-DEFAULT）"><a href="#默认边框类型（cv2-BORDER-DEFAULT）" class="headerlink" title="默认边框类型（cv2.BORDER_DEFAULT）"></a>默认边框类型（<code>cv2.BORDER_DEFAULT</code>）</h3><p>默认方式其实是取镜像对称的像素填充，比较拗口，一步步解释：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">default = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_DEFAULT)</div><div class="line">print(default)</div></pre></td></tr></table></figure>
+<p>首先进行上下填充，填充成与原图像边界对称的值，如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>同理再进行左右两边的填充，最后把四个顶点补充上就好了：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定。</p>
+</blockquote>
+<h2 id="OpenCV进行卷积"><a href="#OpenCV进行卷积" class="headerlink" title="OpenCV进行卷积"></a>OpenCV进行卷积</h2><p>OpenCV中用<code>cv2.filter2D()</code>实现卷积操作，比如我们的核是下面这样（3×3区域像素的和除以10）：</p>
+<p>$$<br> M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 定义卷积核</span></div><div class="line">kernel = np.ones((<span class="number">3</span>, <span class="number">3</span>), np.float32) / <span class="number">10</span></div><div class="line"><span class="comment"># 卷积操作，-1表示通道数与原图相同</span></div><div class="line">dst = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>可以看到这个核对图像进行了模糊处理，这是卷积的强大功能之一。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>尝试给”lena.jpg”添加几种不同的边框类型，对比下效果。</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html" target="_blank" rel="external">Basic Operations on Images</a></p>
+<p><a href="http://blog.csdn.net/zouxy09/article/details/49080029" target="_blank" rel="external">图像卷积与滤波的一些知识点</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;了解卷积的基础知识，给图片添加边框。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="卷积" scheme="https://ex2tron.github.io/tags/%E5%8D%B7%E7%A7%AF/"/>
+    
+      <category term="边框" scheme="https://ex2tron.github.io/tags/%E8%BE%B9%E6%A1%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程</title>
     <link href="https://ex2tron.github.io/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>https://ex2tron.github.io/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-12T15:23:02.961Z</updated>
+    <updated>2017-12-15T02:23:06.780Z</updated>
     
     <content type="html"><![CDATA[<p>Python+OpenCV图像处理全系列教程目录。<a id="more"></a></p>
 <figure class="image-bubble">
@@ -33,7 +140,7 @@
 <ol>
 <li><p><a href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/">简介</a>（了解OpenCV-Python）</p>
 </li>
-<li><p><a href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/">基本元素——图片</a>（图片载入、显示、保存）</p>
+<li><p><a href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/">基本元素——图片</a>（图片载入、显示、保存）</p>
 </li>
 <li><p><a href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B3%EF%BC%9A%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4/">打开摄像头</a>（打开摄像头捕获图片、播放保存视频）</p>
 </li>
@@ -72,68 +179,6 @@
       <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python+OpenCV教程12：亮度与对比度</title>
-    <link href="https://ex2tron.github.io/2017/12/11/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
-    <id>https://ex2tron.github.io/2017/12/11/Python-OpenCV教程12：亮度与对比度/</id>
-    <published>2017-12-11T12:05:10.000Z</published>
-    <updated>2017-12-11T13:01:31.119Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习如何调整图片的亮度和对比度。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
-<hr>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>了解亮度和对比度的概念</li>
-<li>调整图片亮度和对比度</li>
-</ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="亮度与对比度"><a href="#亮度与对比度" class="headerlink" title="亮度与对比度"></a>亮度与对比度</h3><p>亮度调整是将图像像素的强度整体变大/变小，对比度调整指的是图像暗处的像素强度变低，亮出的变高，从而拓宽某个区域内的显示精度。</p>
-<p>OpenCV中亮度和对比度应用这个公式来计算：<code>g(x) = αf(x) + β</code>，其中：α(&gt;0)、β常称为增益与偏置值，分别控制图片的亮度和对比度。</p>
-<blockquote>
-<p>经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：<a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 此处需注意，请参考后面的解释</span></div><div class="line">res = np.uint8(np.clip((<span class="number">1.5</span> * img + <span class="number">10</span>), <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并（便于对比显示）</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p>还记得上一节numpy中数据溢出的取模处理吗？<code>250+10 = 260 =&gt; 260%256=4</code>，它并不适用于我们的图像处理，所以用<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">np.clip()</a>函数将数据限定：<code>a&lt;0 =&gt; a=0, a&gt;255 =&gt; a=255</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_contrast_brightness.jpg" alt="亮度与对比度调整" title="">
-                </div>
-                <div class="image-caption">亮度与对比度调整</div>
-            </figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>对比度α/亮度β，通过公式g(x) = αf(x) + β来计算。</p>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li><p>创建两个滑动条分别调整对比度和亮度（对比度范围：0~0.3，亮度：0~100）。提示：因为滑动条没有小数，所以可以设置为0~300，然后乘以0.01。</p>
-</li>
-<li><p>亮度/对比度用C++实现也很有趣，推荐阅读：<a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></p>
-</li>
-</ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E4%BA%AE%E5%BA%A6%E5%92%8C%E5%AF%B9%E6%AF%94%E5%BA%A6" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">numpy.clip()</a></p>
-<p><a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
-<p><a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></p>
-<p><a href="https://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html#a3f356665bb0ca452e7d7723ccac9a810" target="_blank" rel="external">Mat::convertTo</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学习如何调整图片的亮度和对比度。
-    
-    </summary>
-    
-    
-      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
-    
-      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
-    
-      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
-    
-      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="亮度" scheme="https://ex2tron.github.io/tags/%E4%BA%AE%E5%BA%A6/"/>
-    
-      <category term="对比度" scheme="https://ex2tron.github.io/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     
   </entry>
   
@@ -207,6 +252,63 @@
       <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
       <category term="图像混合" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python+OpenCV教程12：亮度与对比度</title>
+    <link href="https://ex2tron.github.io/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
+    <id>https://ex2tron.github.io/2017/12/10/Python-OpenCV教程番外篇4：亮度与对比度/</id>
+    <published>2017-12-10T06:05:10.000Z</published>
+    <updated>2017-12-14T08:26:21.342Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习如何调整图片的亮度和对比度。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="亮度与对比度"><a href="#亮度与对比度" class="headerlink" title="亮度与对比度"></a>亮度与对比度</h2><p>亮度调整是将图像像素的强度整体变大/变小，对比度调整指的是图像暗处的像素强度变低，亮出的变高，从而拓宽某个区域内的显示精度。</p>
+<p>OpenCV中亮度和对比度应用这个公式来计算：<code>g(x) = αf(x) + β</code>，其中：α(&gt;0)、β常称为增益与偏置值，分别控制图片的对比度和亮度。</p>
+<blockquote>
+<p>经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：<a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 此处需注意，请参考后面的解释</span></div><div class="line">res = np.uint8(np.clip((<span class="number">1.5</span> * img + <span class="number">10</span>), <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并（便于对比显示）</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>还记得图像混合那一节中numpy对数据溢出的取模处理吗？<code>250+10 = 260 =&gt; 260%256=4</code>，它并不适用于我们的图像处理，所以用<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">np.clip()</a>函数将数据限定：<code>a&lt;0 =&gt; a=0, a&gt;255 =&gt; a=255</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_contrast_brightness.jpg" alt="亮度与对比度调整" title="">
+                </div>
+                <div class="image-caption">亮度与对比度调整</div>
+            </figure>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li><p>创建两个滑动条分别调整对比度和亮度（对比度范围：0~0.3，亮度：0~100）。提示：因为滑动条没有小数，所以可以设置为0~300，然后乘以0.01。</p>
+</li>
+<li><p>亮度/对比度用C++实现也很有趣，推荐阅读：<a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></p>
+</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/11.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></p>
+<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">numpy.clip()</a></p>
+<p><a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
+<p><a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></p>
+<p><a href="https://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html#a3f356665bb0ca452e7d7723ccac9a810" target="_blank" rel="external">Mat::convertTo</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习如何调整图片的亮度和对比度。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="亮度" scheme="https://ex2tron.github.io/tags/%E4%BA%AE%E5%BA%A6/"/>
+    
+      <category term="对比度" scheme="https://ex2tron.github.io/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     
   </entry>
   
@@ -965,11 +1067,11 @@
   </entry>
   
   <entry>
-    <title>Python+OpenCV教程2：基本元素——图片</title>
-    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/"/>
-    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素——图片/</id>
+    <title>Python+OpenCV教程2：基本元素-图片</title>
+    <link href="https://ex2tron.github.io/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/"/>
+    <id>https://ex2tron.github.io/2017/12/06/Python-OpenCV教程2：基本元素-图片/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2017-12-12T09:38:49.695Z</updated>
+    <updated>2017-12-14T08:28:14.882Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2123,11 +2225,13 @@
     <link href="https://ex2tron.github.io/2017/09/24/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E8%AF%BA%E5%85%B0%E7%A5%9E%E4%BD%9C%E9%9B%86/"/>
     <id>https://ex2tron.github.io/2017/09/24/【片单】诺兰神作集/</id>
     <published>2017-09-24T12:37:41.000Z</published>
-    <updated>2017-12-05T14:48:53.945Z</updated>
+    <updated>2017-12-13T14:52:24.329Z</updated>
     
-    <content type="html"><![CDATA[<p>有的导演，虽然没拿过奥斯卡，作品不多，但每部却都被影迷奉为神作。没错，说的就是诺神<a id="more"></a>：<a href="https://baike.baidu.com/item/克里斯托弗·诺兰" target="_blank" rel="external">克里斯托弗·诺兰</a></p>
-<h2 id="克里斯托弗·诺兰"><a href="#克里斯托弗·诺兰" class="headerlink" title="克里斯托弗·诺兰"></a>克里斯托弗·诺兰</h2><p>今天周末，回顾了下诺神的<a href="https://movie.douban.com/subject/1851857/" target="_blank" rel="external">蝙蝠侠</a>和<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">盗梦空间</a>，加上前段时间刚看完<a href="https://movie.douban.com/subject/26607693/" target="_blank" rel="external">敦刻尔克</a>，按耐不住，就分享下诺兰的神作电影下载链接吧。</p>
-<p><strong>作品按时间排序，点击片名或者右键复制链接即可：</strong></p>
+    <content type="html"><![CDATA[<p>有的导演，虽然没拿过奥斯卡，作品不多，但每部却都被影迷奉为神作，没错，说的就是诺神。<a id="more"></a>：<a href="https://baike.baidu.com/item/克里斯托弗·诺兰" target="_blank" rel="external">克里斯托弗·诺兰</a></p>
+<h2 id="克里斯托弗·诺兰"><a href="#克里斯托弗·诺兰" class="headerlink" title="克里斯托弗·诺兰"></a><a href="https://baike.baidu.com/item/%E5%85%8B%E9%87%8C%E6%96%AF%E6%89%98%E5%BC%97%C2%B7%E8%AF%BA%E5%85%B0" target="_blank" rel="external">克里斯托弗·诺兰</a></h2><p>今天周末，回顾了下诺神的<a href="https://movie.douban.com/subject/1851857/" target="_blank" rel="external">蝙蝠侠</a>和<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">盗梦空间</a>，加上前段时间刚看完<a href="https://movie.douban.com/subject/26607693/" target="_blank" rel="external">敦刻尔克</a>，按耐不住，就分享下诺兰的神作电影下载链接吧。</p>
+<blockquote>
+<p>大部分片源来自人人影视字幕组，作品按时间倒序，点击片名即可下载。</p>
+</blockquote>
 <h3 id="敦刻尔克-Dunkirk"><a href="#敦刻尔克-Dunkirk" class="headerlink" title="敦刻尔克 | Dunkirk"></a><a href="ed2k://|file|敦刻尔克.Dunkirk.2017.1080p.BluRay.x264.中英字幕-Fantopia.mp4|2418179223|b806cdcd02f7fbd63ce89832aa186ba3|h=452tao356tv7yxm75mzernkj43akb4ib|/" target="_blank" rel="external">敦刻尔克 | Dunkirk</a></h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -2189,7 +2293,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;有的导演，虽然没拿过奥斯卡，作品不多，但每部却都被影迷奉为神作。没错，说的就是诺神
+      &lt;p&gt;有的导演，虽然没拿过奥斯卡，作品不多，但每部却都被影迷奉为神作，没错，说的就是诺神。
     
     </summary>
     
@@ -2556,11 +2660,11 @@
     
       <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
     
-      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
-    
       <category term="MyCLI" scheme="https://ex2tron.github.io/tags/MyCLI/"/>
     
       <category term="MySQL" scheme="https://ex2tron.github.io/tags/MySQL/"/>
+    
+      <category term="利器篇" scheme="https://ex2tron.github.io/tags/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
   </entry>
   
