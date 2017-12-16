@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="https://ex2tron.github.io/"/>
-  <updated>2017-12-15T12:39:36.617Z</updated>
+  <updated>2017-12-16T05:39:15.435Z</updated>
   <id>https://ex2tron.github.io/</id>
   
   <author>
@@ -14,6 +14,118 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python+OpenCV教程11：腐蚀与膨胀</title>
+    <link href="https://ex2tron.github.io/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/"/>
+    <id>https://ex2tron.github.io/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/</id>
+    <published>2017-12-15T12:52:23.000Z</published>
+    <updated>2017-12-16T05:39:15.435Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习常用形态学操作：腐蚀膨胀，开运算和闭运算。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>了解形态学操作的概念</li>
+<li>学习膨胀、腐蚀、开运算和闭运算等形态学操作</li>
+<li>OpenCV函数：cv2.erode(), cv2.dilate(), cv2.morphologyEx()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫形态学操作"><a href="#啥叫形态学操作" class="headerlink" title="啥叫形态学操作"></a>啥叫形态学操作</h3><p>形态学操作其实就是<strong>改变物体的形状</strong>，比如腐蚀就是”变瘦”，膨胀就是”变胖”，看下图就明白了：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_morphological.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。<strong>腐蚀和膨胀是针对图片中的白色部分！</strong></p>
+</blockquote>
+<h3 id="腐蚀"><a href="#腐蚀" class="headerlink" title="腐蚀"></a>腐蚀</h3><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，也就相当于小区域内有一个是0该像素点就为0：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_erosion.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利(●ˇ∀ˇ●)）</p>
+<p>OpenCV中用<code>cv2.erode()</code>函数进行腐蚀，只需要指定核的大小就行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'j.bmp'</span>, <span class="number">0</span>)</div><div class="line">kernel = np.ones((<span class="number">5</span>, <span class="number">5</span>), np.uint8)</div><div class="line">erosion = cv2.erode(img, kernel)  <span class="comment"># 腐蚀</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个核也叫结构元素，因为形态学操作其实也是应用卷积来实现的。结构元素可以是矩形/椭圆/十字形，可以用<code>cv2.getStructuringElement()</code>来生成不同形状的结构元素，比如：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 矩形结构</span></div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 椭圆结构</span></div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 十字形结构</span></div></pre></td></tr></table></figure>
+<h3 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h3><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dilation = cv2.dilate(img, kernel)  <span class="comment"># 膨胀</span></div></pre></td></tr></table></figure>
+<h3 id="开运算"><a href="#开运算" class="headerlink" title="开运算"></a>开运算</h3><p>先腐蚀后膨胀叫开运算，因为先腐蚀会分开物体，这样容易记住。事实上，这也是开运算的作用：分离物体，消除小物体。</p>
+<p>这类形态学操作用<code>cv2.morphologyEx()</code>实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 定义结构元素</span></div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'j_noise_out.bmp'</span>, <span class="number">0</span>)</div><div class="line">opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="comment"># 开运算</span></div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_morphological_opening.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="闭运算"><a href="#闭运算" class="headerlink" title="闭运算"></a>闭运算</h3><p>闭运算则相反，先膨胀后腐蚀。先膨胀会使图像中白色的部分扩张，以至于消除/闭合物体里面的小洞，所以叫闭运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'j_noise_in.bmp'</span>, <span class="number">0</span>)</div><div class="line">closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="comment"># 闭运算</span></div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_morphological_closing.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>接下来的3种形态学操作并不常用，大家有兴趣可以看看（因为较短，没有做成番外篇）：</p>
+<h3 id="其他形态学操作"><a href="#其他形态学操作" class="headerlink" title="其他形态学操作"></a>其他形态学操作</h3><ul>
+<li>形态学梯度：膨胀图减去腐蚀图，<code>dilation - erosion</code>，这样会得到物体的轮廓：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'school.bmp'</span>, <span class="number">0</span>)</div><div class="line">gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_morphological_gradient.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>顶帽：原图减去开运算后的图：<code>src - opening</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)</div></pre></td></tr></table></figure>
+<ul>
+<li>黑帽：闭运算后的图减去原图：<code>closing - src</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>形态学操作就是改变物体的形状，如腐蚀使物体”变瘦”，膨胀使物体”变胖”</p>
+<p>先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体</p>
+<p>先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢(⊙o⊙)</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/11.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></p>
+<p><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></p>
+<p><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习常用形态学操作：腐蚀膨胀，开运算和闭运算。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="https://ex2tron.github.io/tags/Code/"/>
+    
+      <category term="Python" scheme="https://ex2tron.github.io/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="https://ex2tron.github.io/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="https://ex2tron.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="腐蚀" scheme="https://ex2tron.github.io/tags/%E8%85%90%E8%9A%80/"/>
+    
+      <category term="膨胀" scheme="https://ex2tron.github.io/tags/%E8%86%A8%E8%83%80/"/>
+    
+      <category term="形态学" scheme="https://ex2tron.github.io/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>Python+OpenCV教程10：平滑图像</title>
@@ -220,7 +332,7 @@
     <link href="https://ex2tron.github.io/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>https://ex2tron.github.io/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-15T12:42:04.117Z</updated>
+    <updated>2017-12-16T05:37:23.819Z</updated>
     
     <content type="html"><![CDATA[<p>Python+OpenCV图像处理全系列教程目录。<a id="more"></a>番外篇感兴趣的童鞋亦可以学习下哈！</p>
 <figure class="image-bubble">
@@ -245,11 +357,13 @@
 </li>
 <li><p><a href="https://ex2tron.github.io/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B7%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/">图像几何变换</a>（旋转/平移/缩放/仿射变换/透视变换）</p>
 </li>
-<li><p><a href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/">绘图功能</a>（画线/画圆/画矩形/添加文字） | <a href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/">番外篇4：鼠标绘图</a> | <a href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇5：滑动条</a></p>
+<li><p><a href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/">绘图功能</a>（画线/画圆/画矩形/添加文字） | <a href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/">番外篇4：鼠标绘图</a> | <a href="https://ex2tron.github.io/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇5：滑动条</a></p>
 </li>
 <li><p><a href="https://ex2tron.github.io/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/">图像混合</a>（算数运算/混合/按位运算） | <a href="https://ex2tron.github.io/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%876%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/">番外篇6：亮度与对比度</a></p>
 </li>
 <li><p><a href="https://ex2tron.github.io/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="https://ex2tron.github.io/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇7：卷积基础(图片边框)</a></p>
+</li>
+<li><p><a href="https://ex2tron.github.io/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</p>
 </li>
 </ol>
 ]]></content>
@@ -787,7 +901,7 @@
     <link href="https://ex2tron.github.io/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/"/>
     <id>https://ex2tron.github.io/2017/12/07/Python-OpenCV教程6：阈值分割/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2017-12-15T02:38:22.260Z</updated>
+    <updated>2017-12-15T12:47:40.054Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -857,7 +971,7 @@
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.threshold()用来进行固定阈值分割。固定阈值不适用于光线不均匀的图片，所以用cv2.adaptiveThreshold()进行自适应阈值分割。</p>
 <p>二值化跟阈值分割并不等同。针对不同的图片，可以采用不同的阈值方法。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>Otsu阈值是一种高效的二值化算法，请尝试阅读<a href="https://ex2tron.github.io/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">Otsu阈值法</a>。</li>
+<li>Otsu阈值是一种高效的二值化算法，请尝试阅读<a href="https://ex2tron.github.io/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">番外篇：Otsu阈值法</a>。</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="external">本节源码</a></p>
 <p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></p>
