@@ -29,14 +29,14 @@
 <meta name="keywords" content="Code,Python,OpenCV,图像处理,图像混合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程10：平滑图像">
-<meta property="og:url" content="https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/index.html">
+<meta property="og:url" content="http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习模糊/平滑图像，消除噪点。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_median_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
-<meta property="og:updated_time" content="2017-12-15T12:39:36.617Z">
+<meta property="og:updated_time" content="2017-12-16T08:10:35.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程10：平滑图像">
 <meta name="twitter:description" content="学习模糊/平滑图像，消除噪点。">
@@ -177,7 +177,7 @@
 <li>模糊/平滑图片来消除图片噪声</li>
 <li>OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFilter()</li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="滤波与模糊"><a href="#滤波与模糊" class="headerlink" title="滤波与模糊"></a>滤波与模糊</h3><p>推荐大家先阅读：<a href="https://ex2tron.github.io/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>，有助于理解卷积和滤波的概念。</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="滤波与模糊"><a href="#滤波与模糊" class="headerlink" title="滤波与模糊"></a>滤波与模糊</h3><p>推荐大家先阅读：<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>，有助于理解卷积和滤波的概念。</p>
 <p>关于滤波和模糊，很多人分不清，我来给大家理理（虽说如此，我后面也会混着用,,ԾㅂԾ,,）：</p>
 <ul>
 <li>它们都属于卷积，不同滤波方法之间只是卷积核不同（对线性滤波而言）</li>
@@ -191,7 +191,7 @@
 <p>$$<br> kernel = \frac{1}{9}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>所有的滤波函数都有一个可选参数borderType，还记得吗？这个参数就是我们在<a href="https://ex2tron.github.io/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>中所说的边框填充方式。</p>
+<p>所有的滤波函数都有一个可选参数borderType，还记得吗？这个参数就是我们在<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>中所说的边框填充方式。</p>
 </blockquote>
 <h3 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h3><p>方框滤波跟均值滤波很像，如下面的公式。用<code>cv2.boxFilter()</code>函数实现，事实上，当可选参数<code>normalize</code>为True的时候，方框滤波就是均值滤波，如3×3的核，a就等于1/9；<code>normalize</code>为False的时候，a=1，相当于求区域内的像素和。</p>
 <p>$$<br> k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
@@ -243,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-15T12:39:36.617Z" itemprop="dateUpdated">2017-12-15 20:39:36</time>
+    Last updated: <time datetime="2017-12-16T08:10:35.087Z" itemprop="dateUpdated">2017-12-16 16:10:35</time>
 </span><br>
 
 
@@ -252,7 +252,7 @@
         
     </div>
     <footer>
-        <a href="https://ex2tron.github.io">
+        <a href="http://ex2tron.coding.me">
             <img src="/img/avatar.jpg" alt="Tony Wong">
             Tony Wong
         </a>
@@ -278,7 +278,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -288,22 +288,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&source=学习模糊/平滑图像，消除噪点。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&source=学习模糊/平滑图像，消除噪点。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/&via=http://ex2tron.coding.me" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -422,7 +422,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -432,22 +432,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&source=学习模糊/平滑图像，消除噪点。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/&title=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&source=学习模糊/平滑图像，消除噪点。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程10：平滑图像》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/&via=http://ex2tron.coding.me" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -458,7 +458,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/12/15/Python-OpenCV教程10：平滑图像/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/" alt="微信分享二维码">
 </div>
 
 

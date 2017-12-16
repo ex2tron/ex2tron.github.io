@@ -29,7 +29,7 @@
 <meta name="keywords" content="Code,Hexo,Github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github Pages轻松搭博客(2)：在Github上部署">
-<meta property="og:url" content="https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/index.html">
+<meta property="og:url" content="http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！">
 <meta property="og:locale" content="en">
@@ -185,7 +185,7 @@
             </figure>
 <p>接下来打开博客目录下的_config.yml配置文件，定位到最后的deploy选项，修改如下：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:ex2tron/ex2tron.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure></p>
 <p>注意冒号后面有个空格，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
-<p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io">https://ex2tron.github.io</a>）就可以访问你的博客了，简单快速高效！</p>
+<p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io" target="_blank" rel="external">https://ex2tron.github.io</a>）就可以访问你的博客了，简单快速高效！</p>
 <h2 id="发布新博客"><a href="#发布新博客" class="headerlink" title="发布新博客"></a>发布新博客</h2><p>博客搭建起来之后，就可以用Markdown写博客辣，使用下面的命令，创建新博客（如名为：我的第一篇博客）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">'我的第一篇博客'</span></div></pre></td></tr></table></figure></p>
 <p>此命令会在博客目录\source_posts\h下生成“我的第一篇博客.md”文件，这就是你的博客源文件啦，文件开头如下，记得冒号后面有空格噢，不然会出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 我的第一篇博客</div><div class="line">date: 2017-09-13 20:15:47</div><div class="line">tags: #文章标签，格式：[1,2,3]</div><div class="line">---</div></pre></td></tr></table></figure></p>
 <p>不熟悉Markdown语法的可以看：<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown 语法说明</a>。写完之后依然使用之前的三条命令发布：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
@@ -213,7 +213,7 @@
         
     </div>
     <footer>
-        <a href="https://ex2tron.github.io">
+        <a href="http://ex2tron.coding.me">
             <img src="/img/avatar.jpg" alt="Tony Wong">
             Tony Wong
         </a>
@@ -239,7 +239,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -249,22 +249,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&source=使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&source=使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&via=http://ex2tron.coding.me" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -383,7 +383,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&pic=https://ex2tron.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -393,22 +393,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&source=使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&title=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&source=使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&via=https://ex2tron.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo+Github Pages轻松搭博客(2)：在Github上部署》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/&via=http://ex2tron.coding.me" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -419,7 +419,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://ex2tron.github.io/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" alt="微信分享二维码">
 </div>
 
 
