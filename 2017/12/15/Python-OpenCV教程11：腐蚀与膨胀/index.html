@@ -35,10 +35,10 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_morphological.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_erosion.jpg">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_opening.jpg">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_closing.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_struct_element.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_gradient.jpg">
-<meta property="og:updated_time" content="2017-12-16T05:39:15.435Z">
+<meta property="og:updated_time" content="2017-12-17T12:30:42.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程11：腐蚀与膨胀">
 <meta name="twitter:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
@@ -154,7 +154,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥叫形态学操作"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">啥叫形态学操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#腐蚀"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">腐蚀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#膨胀"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">膨胀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开运算"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">开运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#闭运算"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">闭运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他形态学操作"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">其他形态学操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">3.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">4.</span> <span class="post-toc-text">引用</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥叫形态学操作"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">啥叫形态学操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#腐蚀"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">腐蚀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#膨胀"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">膨胀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开-闭运算"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">开/闭运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他形态学操作"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">其他形态学操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">3.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">4.</span> <span class="post-toc-text">引用</span></a></li></ol>
         </nav>
     </aside>
     
@@ -191,7 +191,7 @@
 <blockquote>
 <p>形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。<strong>腐蚀和膨胀是针对图片中的白色部分！</strong></p>
 </blockquote>
-<h3 id="腐蚀"><a href="#腐蚀" class="headerlink" title="腐蚀"></a>腐蚀</h3><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，也就相当于小区域内有一个是0该像素点就为0：</p>
+<h3 id="腐蚀"><a href="#腐蚀" class="headerlink" title="腐蚀"></a>腐蚀</h3><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有0和255，所以小区域内有一个是0该像素点就为0：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -206,27 +206,29 @@
 <p>这个核也叫结构元素，因为形态学操作其实也是应用卷积来实现的。结构元素可以是矩形/椭圆/十字形，可以用<code>cv2.getStructuringElement()</code>来生成不同形状的结构元素，比如：</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 矩形结构</span></div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 椭圆结构</span></div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 十字形结构</span></div></pre></td></tr></table></figure>
-<h3 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h3><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dilation = cv2.dilate(img, kernel)  <span class="comment"># 膨胀</span></div></pre></td></tr></table></figure>
-<h3 id="开运算"><a href="#开运算" class="headerlink" title="开运算"></a>开运算</h3><p>先腐蚀后膨胀叫开运算，因为先腐蚀会分开物体，这样容易记住。事实上，这也是开运算的作用：分离物体，消除小物体。</p>
-<p>这类形态学操作用<code>cv2.morphologyEx()</code>实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 定义结构元素</span></div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'j_noise_out.bmp'</span>, <span class="number">0</span>)</div><div class="line">opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="comment"># 开运算</span></div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_morphological_opening.jpg" alt="" title="">
+                    <img src="http://pic.ex2tron.top/cv2_morphological_struct_element.jpg" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h3 id="闭运算"><a href="#闭运算" class="headerlink" title="闭运算"></a>闭运算</h3><p>闭运算则相反，先膨胀后腐蚀。先膨胀会使图像中白色的部分扩张，以至于消除/闭合物体里面的小洞，所以叫闭运算。</p>
+<h3 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h3><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dilation = cv2.dilate(img, kernel)  <span class="comment"># 膨胀</span></div></pre></td></tr></table></figure>
+<h3 id="开-闭运算"><a href="#开-闭运算" class="headerlink" title="开/闭运算"></a>开/闭运算</h3><p>先腐蚀后膨胀叫开运算（因为先腐蚀会分开物体，这样容易记住），其作用是：分离物体，消除小区域。这类形态学操作用<code>cv2.morphologyEx()</code>函数实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 定义结构元素</span></div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'j_noise_out.bmp'</span>, <span class="number">0</span>)</div><div class="line">opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="comment"># 开运算</span></div></pre></td></tr></table></figure>
+<p>闭运算则相反：先膨胀后腐蚀（先膨胀会使白色的部分扩张，以至于消除/“闭合”物体里面的小黑洞，所以叫闭运算）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'j_noise_in.bmp'</span>, <span class="number">0</span>)</div><div class="line">closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="comment"># 闭运算</span></div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_morphological_closing.jpg" alt="" title="">
+                    <img src="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
+<blockquote>
+<p>经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混◑﹏◐），但看上图↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉。</p>
+</blockquote>
 <p>接下来的3种形态学操作并不常用，大家有兴趣可以看看（因为较短，没有做成番外篇）：</p>
 <h3 id="其他形态学操作"><a href="#其他形态学操作" class="headerlink" title="其他形态学操作"></a>其他形态学操作</h3><ul>
 <li>形态学梯度：膨胀图减去腐蚀图，<code>dilation - erosion</code>，这样会得到物体的轮廓：</li>
@@ -260,7 +262,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-16T05:39:15.435Z" itemprop="dateUpdated">2017-12-16 13:39:15</time>
+    Last updated: <time datetime="2017-12-17T12:30:42.283Z" itemprop="dateUpdated">2017-12-17 20:30:42</time>
 </span><br>
 
 

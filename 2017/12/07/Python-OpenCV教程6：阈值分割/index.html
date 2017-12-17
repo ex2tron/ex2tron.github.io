@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_different_threshold_demo.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_different_thresholds_theory.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_adaptive_vs_global_thresholding.jpg">
-<meta property="og:updated_time" content="2017-12-16T14:13:17.553Z">
+<meta property="og:updated_time" content="2017-12-16T14:33:33.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程6：阈值分割">
 <meta name="twitter:description" content="学习使用不同的阈值方法”二值化”图像。">
@@ -187,7 +187,7 @@
                 <div class="image-caption"></div>
             </figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 灰度图读入</span></div><div class="line">img = cv2.imread(<span class="string">'gradient.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 阈值分割</span></div><div class="line">ret, th = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">cv2.imshow(<span class="string">'thresh'</span>, th)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><code>cv2.threshold()</code>用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时无用，不用管它。函数有4个参数：</p>
+<p><code>cv2.threshold()</code>用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：</p>
 <ul>
 <li>参数1：要处理的原图，<strong>一般是灰度图</strong></li>
 <li>参数2：设定的阈值</li>
@@ -251,7 +251,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-16T14:13:17.553Z" itemprop="dateUpdated">2017-12-16 22:13:17</time>
+    Last updated: <time datetime="2017-12-16T14:33:33.099Z" itemprop="dateUpdated">2017-12-16 22:33:33</time>
 </span><br>
 
 
