@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_rotation_45_degree.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_affine_transformation_drawing.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
-<meta property="og:updated_time" content="2017-12-16T08:10:05.722Z">
+<meta property="og:updated_time" content="2017-12-17T13:03:24.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程7：图像几何变换">
 <meta name="twitter:description" content="学习如何旋转、平移和缩放图片，了解仿射/透视变换。">
@@ -153,7 +153,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缩放图片"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">缩放图片</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平移图片"><span class="post-toc-number">3.</span> <span class="post-toc-text">平移图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#旋转图片"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">旋转图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#仿射变换"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">仿射变换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#透视变换"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">透视变换</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">4.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#练习"><span class="post-toc-number">5.</span> <span class="post-toc-text">练习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">6.</span> <span class="post-toc-text">引用</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缩放图片"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">缩放图片</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平移图片"><span class="post-toc-number">3.</span> <span class="post-toc-text">平移图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#旋转图片"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">旋转图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#翻转图片"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">翻转图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#仿射变换"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">仿射变换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#透视变换"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">透视变换</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">4.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#练习"><span class="post-toc-number">5.</span> <span class="post-toc-text">练习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">6.</span> <span class="post-toc-text">引用</span></a></li></ol>
         </nav>
     </aside>
     
@@ -216,6 +216,9 @@
                 </div>
                 <div class="image-caption">旋转45°并缩放</div>
             </figure>
+<h3 id="翻转图片"><a href="#翻转图片" class="headerlink" title="翻转图片"></a>翻转图片</h3><p>如果我们镜像翻转图片，可以用<code>cv2.flip()</code>函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dst = cv2.flip(img, <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>其中参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</p>
 <h3 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h3><p>除了平移和旋转，如何实现任意的图像变换呢？同样的道理，我们需要一个变换矩阵。</p>
 <p>要生成这个变换矩阵，需要定义变换前后的三个点，比如说：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 变换前的三个点</span></div><div class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</div><div class="line"><span class="comment"># 变换后的三个点</span></div><div class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成变换矩阵</span></div><div class="line">M = cv2.getAffineTransform(pts1, pts2)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
@@ -254,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-16T08:10:05.722Z" itemprop="dateUpdated">2017-12-16 16:10:05</time>
+    Last updated: <time datetime="2017-12-17T13:03:24.380Z" itemprop="dateUpdated">2017-12-17 21:03:24</time>
 </span><br>
 
 

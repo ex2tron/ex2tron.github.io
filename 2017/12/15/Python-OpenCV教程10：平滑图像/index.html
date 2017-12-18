@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_median_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
-<meta property="og:updated_time" content="2017-12-16T08:10:35.087Z">
+<meta property="og:updated_time" content="2017-12-18T07:13:16.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程10：平滑图像">
 <meta name="twitter:description" content="学习模糊/平滑图像，消除噪点。">
@@ -188,13 +188,13 @@
 <p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="external">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="external">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声；这样解释并不准确，只要能简单分辨即可。</p>
 </blockquote>
 <h3 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h3><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
-<p>$$<br> kernel = \frac{1}{9}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<p>$$<br> kernel = \frac{1}{9}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>所有的滤波函数都有一个可选参数borderType，还记得吗？这个参数就是我们在<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>中所说的边框填充方式。</p>
 </blockquote>
 <h3 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h3><p>方框滤波跟均值滤波很像，如下面的公式。用<code>cv2.boxFilter()</code>函数实现，事实上，当可选参数<code>normalize</code>为True的时候，方框滤波就是均值滤波，如3×3的核，a就等于1/9；<code>normalize</code>为False的时候，a=1，相当于求区域内的像素和。</p>
-<p>$$<br> k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<p>$$<br> k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></div><div class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，相当于图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同，中间像素点权重最高，越远离中心的像素权重越小。（其原理是一个2维高斯函数，可以参考：<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">Gaussian Filter</a>）</p>
 <p>高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
@@ -243,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-16T08:10:35.087Z" itemprop="dateUpdated">2017-12-16 16:10:35</time>
+    Last updated: <time datetime="2017-12-18T07:13:16.008Z" itemprop="dateUpdated">2017-12-18 15:13:16</time>
 </span><br>
 
 
