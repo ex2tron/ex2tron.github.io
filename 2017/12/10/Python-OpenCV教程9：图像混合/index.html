@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bitwise_operations_demo.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_mask.jpg">
-<meta property="og:updated_time" content="2017-12-15T12:39:26.692Z">
+<meta property="og:updated_time" content="2017-12-19T14:59:43.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程9：图像混合">
 <meta name="twitter:description" content="学习图片间的数学运算，图像混合。">
@@ -213,9 +213,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">img1 = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 把logo放在左上角，所以我们只关心这一块区域</span></div><div class="line">rows, cols = img2.shape[:<span class="number">2</span>]</div><div class="line">roi = img1[:rows, :cols]</div><div class="line"></div><div class="line"><span class="comment"># 创建掩膜</span></div><div class="line">img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, mask = cv2.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">mask_inv = cv2.bitwise_not(mask)</div><div class="line"></div><div class="line"><span class="comment"># 保留除logo外的背景</span></div><div class="line">img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)</div><div class="line">dst = cv2.add(img1_bg, img2)  <span class="comment"># 进行融合</span></div><div class="line">img1[:rows, :cols] = dst  <span class="comment"># 融合后放在原图上</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'result'</span>, img1)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.add()用来叠加两幅图片，cv2.addWeighted()也是叠加两幅图片，但两幅图片的权重不一样。</p>
 <p><code>cv2.bitwise_and()</code>, <code>cv2.bitwise_not()</code>, <code>cv2.bitwise_or()</code>, <code>cv2.bitwise_xor()</code>分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin" target="_blank" rel="external">掩膜</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html" target="_blank" rel="external">Arithmetic Operations on Images</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin" target="_blank" rel="external">掩膜</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html" target="_blank" rel="external">Arithmetic Operations on Images</a></li>
+</ul>
 
         </div>
 
@@ -223,12 +225,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-15T12:39:26.692Z" itemprop="dateUpdated">2017-12-15 20:39:26</time>
+    Last updated: <time datetime="2017-12-19T14:59:43.963Z" itemprop="dateUpdated">2017-12-19 22:59:43</time>
 </span><br>
 
 
         
-        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        如果您觉得有帮助，欢迎分享给更多的小伙伴，但请注明出处噢o(*￣▽￣*)ブ
         
     </div>
     <footer>

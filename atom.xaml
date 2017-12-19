@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2017-12-18T07:20:52.370Z</updated>
+  <updated>2017-12-19T14:59:43.946Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -16,91 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python+OpenCV教程番外篇8：图像梯度</title>
-    <link href="http://ex2tron.coding.me/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/"/>
-    <id>http://ex2tron.coding.me/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/</id>
-    <published>2017-12-18T02:51:43.000Z</published>
-    <updated>2017-12-18T07:20:52.370Z</updated>
-    
-    <content type="html"><![CDATA[<p>了解图像梯度和边缘检测的相关概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
-<p>还记得前面<a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。</p>
-<h2 id="图像梯度"><a href="#图像梯度" class="headerlink" title="图像梯度"></a><a href="https://baike.baidu.com/item/图像梯度/8528837?fr=aladdin" target="_blank" rel="external">图像梯度</a></h2><p>如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。</p>
-<p>当然，大部分人应该是早忘记高数了(￣▽￣)”，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。</p>
-<h3 id="垂直边缘提取"><a href="#垂直边缘提取" class="headerlink" title="垂直边缘提取"></a>垂直边缘提取</h3><p>滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面这个卷积核：</p>
-<p>$$<br> k1 = \left[<br> \begin{matrix}<br>   -1 &amp; 0 &amp; 1 \newline<br>   -2 &amp; 0 &amp; 2 \newline<br>   -1 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
-<p>这个核是用来提取图片中的垂直边缘的，怎么做到的呢？看下图：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_understand_sobel_edge_detection.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>当前列左右两侧的元素进行差分，由于边缘的值明显小于（或大于）周边像素，所以边缘的差分结果会明显不同，这样就提取出了垂直边缘。同理，把上面那个矩阵转置一下，就是提取水平边缘。这种差分操作就叫图像的梯度计算：</p>
-<p>$$<br> k2 = \left[<br> \begin{matrix}<br>   -1 &amp; -2 &amp; -1 \newline<br>   0 &amp; 0 &amp; 0 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg" alt="垂直和水平边缘提取" title="">
-                </div>
-                <div class="image-caption">垂直和水平边缘提取</div>
-            </figure>
-<blockquote>
-<p>还记得滤波函数<code>cv2.filter2D()</code>吗？（<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础</a>）我们来手动实现上面的功能：</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 自己进行垂直边缘提取</span></div><div class="line">kernel = np.array([[<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>],</div><div class="line">                   [<span class="number">-2</span>, <span class="number">0</span>, <span class="number">2</span>],</div><div class="line">                   [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]], dtype=np.float32)</div><div class="line">dst_v = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div><div class="line"><span class="comment"># 自己进行水平边缘提取</span></div><div class="line">dst_h = cv2.filter2D(img, <span class="number">-1</span>, kernel.T)</div><div class="line"><span class="comment"># 横向并排对比显示</span></div><div class="line">cv2.imshow(<span class="string">'edge'</span>, np.hstack((img, dst_v, dst_h)))</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<h3 id="Sobel算子"><a href="#Sobel算子" class="headerlink" title="Sobel算子"></a>Sobel算子</h3><p>上面的这种差分方法就叫<a href="https://baike.baidu.com/item/Sobel%E7%AE%97%E5%AD%90/11000092?fr=aladdin" target="_blank" rel="external">Sobel算子</a>，它先在垂直方向计算梯度Gx=k1×src，再在水平方向计算梯度Gy=k2×src，最后求出总梯度：\(G=\sqrt{Gx^2+Gy^2}\)</p>
-<p>我们可以把前面的代码用Sobel算子更简单地实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sobelx = cv2.Sobel(img, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, ksize=<span class="number">3</span>)  <span class="comment"># 只计算x方向</span></div><div class="line">sobely = cv2.Sobel(img, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, ksize=<span class="number">3</span>)  <span class="comment"># 只计算y方向</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>经验之谈：很多人疑问，Sobel算子的卷积核这几个值是怎么来的呢？事实上，并没有规定，你可以用你自己的。当然，3×3下另外一个卷积核相比Sobel更好用，叫<strong>Scharr算子</strong>，大家可以了解下：</p>
-</blockquote>
-<p>$$<br> K = \left[<br> \begin{matrix}<br>   -3 &amp; 0 &amp; 3 \newline<br>   -10 &amp; 0 &amp; 10 \newline<br>   -3 &amp; 0 &amp; 3<br>  \end{matrix}<br>  \right]<br>$$</p>
-<h3 id="Laplacian算子"><a href="#Laplacian算子" class="headerlink" title="Laplacian算子"></a>Laplacian算子</h3><p>好开心，又要扯到高数的东西辣(￣_,￣ )高数中用一阶导数求极值，在这些极值的地方，二阶导数为0，所以可以通过求二阶导计算梯度：\(dst=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}\)</p>
-<p>这就是<a href="https://baike.baidu.com/item/Laplacian%E7%AE%97%E5%AD%90" target="_blank" rel="external">Laplacian算子</a>，了解了之后，最关键的是要会用：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">laplacian = cv2.Laplacian(img, <span class="number">-1</span>)  <span class="comment"># 使用Laplacian算子</span></div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cv2_laplacian.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>（选做）同志们有空补补高数姿势（划掉：知识）呗！(✿◕‿◕✿)</li>
-</ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html" target="_blank" rel="external">Image Gradients</a></p>
-<p><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives" target="_blank" rel="external">Sobel导数</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;了解图像梯度和边缘检测的相关概念。
-    
-    </summary>
-    
-    
-      <category term="Code" scheme="http://ex2tron.coding.me/tags/Code/"/>
-    
-      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
-    
-      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
-    
-      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="梯度" scheme="http://ex2tron.coding.me/tags/%E6%A2%AF%E5%BA%A6/"/>
-    
-      <category term="Sobel" scheme="http://ex2tron.coding.me/tags/Sobel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python+OpenCV教程11：腐蚀与膨胀</title>
-    <link href="http://ex2tron.coding.me/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/"/>
-    <id>http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/</id>
-    <published>2017-12-15T12:52:23.000Z</published>
-    <updated>2017-12-17T12:30:42.283Z</updated>
+    <title>Python+OpenCV教程12：腐蚀与膨胀</title>
+    <link href="http://ex2tron.coding.me/2017/12/19/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/"/>
+    <id>http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/</id>
+    <published>2017-12-19T12:52:23.000Z</published>
+    <updated>2017-12-19T14:59:43.946Z</updated>
     
     <content type="html"><![CDATA[<p>学习常用形态学操作：腐蚀膨胀，开运算和闭运算。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -181,9 +101,11 @@
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>形态学操作就是改变物体的形状，如腐蚀使物体”变瘦”，膨胀使物体”变胖”</p>
 <p>先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体</p>
 <p>先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢(⊙o⊙)</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/11.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></p>
-<p><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></li>
+<li><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -210,11 +132,197 @@
   </entry>
   
   <entry>
+    <title>Python+OpenCV教程11：边缘检测</title>
+    <link href="http://ex2tron.coding.me/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/"/>
+    <id>http://ex2tron.coding.me/2017/12/18/Python-OpenCV教程11：边缘检测/</id>
+    <published>2017-12-18T09:11:48.000Z</published>
+    <updated>2017-12-19T14:59:43.963Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习使用Canny获取图像的边缘。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>Canny边缘检测的简单概念</li>
+<li>OpenCV函数：cv2.Canny()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="废话不多说，直接上"><a href="#废话不多说，直接上" class="headerlink" title="废话不多说，直接上"></a>废话不多说，直接上</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">edges = cv2.Canny(img, <span class="number">30</span>, <span class="number">70</span>)  <span class="comment"># canny边缘检测</span></div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_canny_edge_detection.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><code>cv2.Canny()</code>进行边缘检测，参数2、3表示最低、高阈值，看完后面的理论就理解了。</p>
+<blockquote>
+<p>经验之谈：之前我们用低通滤波的方式模糊了图片，那如果反过来，想得到物体的边缘，就需要用到高通滤波。如果你要理解接下来要说的Canny检测原理，请先阅读：<a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇：图像梯度</a></p>
+</blockquote>
+<h3 id="Canny边缘检测"><a href="#Canny边缘检测" class="headerlink" title="Canny边缘检测"></a>Canny边缘检测</h3><p>Canny边缘检测方法常被誉为边缘检测的最优方法，具体步骤如下：</p>
+<p>1，使用5×5高斯滤波消除噪声：</p>
+<p>边缘检测本身属于锐化操作，对噪点比较敏感，所以需要进行平滑处理。</p>
+<p>2，计算图像梯度的方向：</p>
+<p>首先使用Sobel算子计算梯度<code>Gx</code>和<code>Gy</code>，然后算出梯度的方向：<code>θ=arctan(Gy/Gx)</code>，保留这四个方向的梯度：0°/45°/90°/135°，有什么用呢？我们接着看。</p>
+<p>3，取局部极大值：</p>
+<p>梯度其实已经表示了轮廓，为了进一步筛选，可以在上面的四个角度方向上再取局部极大值：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_canny_direction.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>比如，A点在45°方向上大于B/C点，那就保留它，把B/C设置为0。</p>
+<p>4，滞后阈值：</p>
+<p>经过前面三步，就只剩下0和可能的边缘像素值了，为了最终确定下来，需要设定高低阈值：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_canny_max_min_val.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>像素点的值大于最高阈值，那肯定是边缘（上图A）</li>
+<li>同理像素值小于最低阈值，那肯定不是边缘</li>
+<li>像素值介于两者之间，如果与高于最高阈值的点连接，也算边缘，所以上图中C算，B不算</li>
+</ul>
+<p>Canny推荐的高低阈值比在<code>2:1</code>到<code>3:1</code>之间。</p>
+<h3 id="先阈值分割"><a href="#先阈值分割" class="headerlink" title="先阈值分割"></a>先阈值分割</h3><p>其实很多情况下，阈值分割后再检测边缘，效果会更好：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">edges = cv2.Canny(thresh, <span class="number">30</span>, <span class="number">70</span>)</div></pre></td></tr></table></figure>
+<p>代码中我用了<a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">番外篇：Otsu阈值法</a>中的自动阈值分割，如果你不太了解，大可以使用传统的方法，不过如果是下面这种图片，推荐用Otsu阈值法。另外Python中某个值不用的话，就写个下划线’_’。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_canny_edge_detection_threshold.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>（选做）如果你不太理解高低阈值的效果，创建两个滑动条来调节它们的值看看：</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_trackbar_maxval_minval_canny.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Canny是用的最多的边缘检测算法，用<code>cv2.Canny()</code>实现。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/11.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html" target="_blank" rel="external">Canny Edge Detection</a></li>
+<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html" target="_blank" rel="external">Canny 边缘检测</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习使用Canny获取图像的边缘。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="http://ex2tron.coding.me/tags/Code/"/>
+    
+      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="边缘" scheme="http://ex2tron.coding.me/tags/%E8%BE%B9%E7%BC%98/"/>
+    
+      <category term="Canny" scheme="http://ex2tron.coding.me/tags/Canny/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python+OpenCV教程番外篇8：图像梯度</title>
+    <link href="http://ex2tron.coding.me/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/"/>
+    <id>http://ex2tron.coding.me/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/</id>
+    <published>2017-12-18T02:51:43.000Z</published>
+    <updated>2017-12-18T15:13:01.846Z</updated>
+    
+    <content type="html"><![CDATA[<p>了解图像梯度和边缘检测的相关概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<p>还记得前面<a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。</p>
+<h2 id="图像梯度"><a href="#图像梯度" class="headerlink" title="图像梯度"></a><a href="https://baike.baidu.com/item/图像梯度/8528837?fr=aladdin" target="_blank" rel="external">图像梯度</a></h2><p>如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。</p>
+<p>当然，大部分人应该是早忘记高数了(￣▽￣)”，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。</p>
+<h3 id="垂直边缘提取"><a href="#垂直边缘提取" class="headerlink" title="垂直边缘提取"></a>垂直边缘提取</h3><p>滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面这个卷积核：</p>
+<p>$$<br>k1 = \left[<br> \begin{matrix}<br>   -1 &amp; 0 &amp; 1 \newline<br>   -2 &amp; 0 &amp; 2 \newline<br>   -1 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>这个核是用来提取图片中的垂直边缘的，怎么做到的呢？看下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_understand_sobel_edge_detection.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>当前列左右两侧的元素进行差分，由于边缘的值明显小于（或大于）周边像素，所以边缘的差分结果会明显不同，这样就提取出了垂直边缘。同理，把上面那个矩阵转置一下，就是提取水平边缘。这种差分操作就叫图像的梯度计算：</p>
+<p>$$<br>k2 = \left[<br> \begin{matrix}<br>   -1 &amp; -2 &amp; -1 \newline<br>   0 &amp; 0 &amp; 0 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg" alt="垂直和水平边缘提取" title="">
+                </div>
+                <div class="image-caption">垂直和水平边缘提取</div>
+            </figure>
+<blockquote>
+<p>还记得滤波函数<code>cv2.filter2D()</code>吗？（<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础</a>）我们来手动实现上面的功能：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 自己进行垂直边缘提取</span></div><div class="line">kernel = np.array([[<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>],</div><div class="line">                   [<span class="number">-2</span>, <span class="number">0</span>, <span class="number">2</span>],</div><div class="line">                   [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]], dtype=np.float32)</div><div class="line">dst_v = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div><div class="line"><span class="comment"># 自己进行水平边缘提取</span></div><div class="line">dst_h = cv2.filter2D(img, <span class="number">-1</span>, kernel.T)</div><div class="line"><span class="comment"># 横向并排对比显示</span></div><div class="line">cv2.imshow(<span class="string">'edge'</span>, np.hstack((img, dst_v, dst_h)))</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h3 id="Sobel算子"><a href="#Sobel算子" class="headerlink" title="Sobel算子"></a>Sobel算子</h3><p>上面的这种差分方法就叫<a href="https://baike.baidu.com/item/Sobel%E7%AE%97%E5%AD%90/11000092?fr=aladdin" target="_blank" rel="external">Sobel算子</a>，它先在垂直方向计算梯度Gx=k1×src，再在水平方向计算梯度Gy=k2×src，最后求出总梯度：\(G=\sqrt{Gx^2+Gy^2}\)</p>
+<p>我们可以把前面的代码用Sobel算子更简单地实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sobelx = cv2.Sobel(img, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, ksize=<span class="number">3</span>)  <span class="comment"># 只计算x方向</span></div><div class="line">sobely = cv2.Sobel(img, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, ksize=<span class="number">3</span>)  <span class="comment"># 只计算y方向</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：很多人疑问，Sobel算子的卷积核这几个值是怎么来的呢？事实上，并没有规定，你可以用你自己的。当然，3×3下另外一个卷积核相比Sobel更好用，叫<strong>Scharr算子</strong>，大家可以了解下：</p>
+</blockquote>
+<p>$$<br>K = \left[<br> \begin{matrix}<br>   -3 &amp; 0 &amp; 3 \newline<br>   -10 &amp; 0 &amp; 10 \newline<br>   -3 &amp; 0 &amp; 3<br>  \end{matrix}<br>  \right]<br>$$</p>
+<h3 id="Laplacian算子"><a href="#Laplacian算子" class="headerlink" title="Laplacian算子"></a>Laplacian算子</h3><p>好开心，又要扯到高数的东西辣(￣_,￣ )高数中用一阶导数求极值，在这些极值的地方，二阶导数为0，所以可以通过求二阶导计算梯度：\(dst=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}\)</p>
+<p>这就是<a href="https://baike.baidu.com/item/Laplacian%E7%AE%97%E5%AD%90" target="_blank" rel="external">Laplacian算子</a>，了解了之后，最关键的是要会用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">laplacian = cv2.Laplacian(img, <span class="number">-1</span>)  <span class="comment"># 使用Laplacian算子</span></div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pic.ex2tron.top/cv2_laplacian.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>（选做）同志们有空补补高数姿势（划掉：知识）呗！(✿◕‿◕✿)</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html" target="_blank" rel="external">Image Gradients</a></li>
+<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives" target="_blank" rel="external">Sobel导数</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;了解图像梯度和边缘检测的相关概念。
+    
+    </summary>
+    
+    
+      <category term="Code" scheme="http://ex2tron.coding.me/tags/Code/"/>
+    
+      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="梯度" scheme="http://ex2tron.coding.me/tags/%E6%A2%AF%E5%BA%A6/"/>
+    
+      <category term="Sobel" scheme="http://ex2tron.coding.me/tags/Sobel/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程10：平滑图像</title>
     <link href="http://ex2tron.coding.me/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/"/>
     <id>http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/</id>
     <published>2017-12-15T01:44:24.000Z</published>
-    <updated>2017-12-18T07:13:16.008Z</updated>
+    <updated>2017-12-19T14:59:43.965Z</updated>
     
     <content type="html"><![CDATA[<p>学习模糊/平滑图像，消除噪点。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -278,9 +386,11 @@
 <p>要去除噪点的同时尽可能保留更多的边缘信息，使用双边滤波<code>cv2.bilateralFilter()</code></p>
 <p>线性滤波方式：均值滤波、方框滤波、高斯滤波（速度相对快）</p>
 <p>非线性滤波方式：中值滤波、双边滤波（速度相对慢）</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html" target="_blank" rel="external">Smoothing Images</a></p>
-<p><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html" target="_blank" rel="external">图像平滑处理</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html" target="_blank" rel="external">Smoothing Images</a></li>
+<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html" target="_blank" rel="external">图像平滑处理</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -307,7 +417,7 @@
     <link href="http://ex2tron.coding.me/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/"/>
     <id>http://ex2tron.coding.me/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/</id>
     <published>2017-12-14T08:27:45.000Z</published>
-    <updated>2017-12-15T12:33:09.516Z</updated>
+    <updated>2017-12-19T14:59:43.969Z</updated>
     
     <content type="html"><![CDATA[<p>了解卷积/滤波的基础知识，给图片添加边框。<a id="more"></a>如果你已了解相关理论，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
 <p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
@@ -383,9 +493,11 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>尝试给”lena.jpg”添加几种不同的边框类型，对比下效果。</li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html" target="_blank" rel="external">Basic Operations on Images</a></p>
-<p><a href="http://blog.csdn.net/zouxy09/article/details/49080029" target="_blank" rel="external">图像卷积与滤波的一些知识点</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html" target="_blank" rel="external">Basic Operations on Images</a></li>
+<li><a href="http://blog.csdn.net/zouxy09/article/details/49080029" target="_blank" rel="external">图像卷积与滤波的一些知识点</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -414,7 +526,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-16T14:14:19.138Z</updated>
+    <updated>2017-12-19T14:59:43.969Z</updated>
     
     <content type="html"><![CDATA[<p>Python+OpenCV图像处理全系列教程目录。<a id="more"></a>番外篇感兴趣的童鞋亦可以学习下哈！</p>
 <figure class="image-bubble">
@@ -425,28 +537,18 @@
                 <div class="image-caption"></div>
             </figure>
 <ol>
-<li><p><a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/">简介</a>（了解OpenCV-Python） | <a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">番外篇1：代码性能优化</a></p>
-</li>
-<li><p><a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/">基本元素-图片</a>（图片载入/显示/保存） | <a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">番外篇2：Matplotlib显示图像</a></p>
-</li>
-<li><p><a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B3%EF%BC%9A%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4/">打开摄像头</a>（打开摄像头捕获图片/播放保存视频） | <a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇3：滑动条</a></p>
-</li>
-<li><p><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B4%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">图像基本操作</a>（访问像素点/ROI/通道分离合并）</p>
-</li>
-<li><p><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B5%EF%BC%9A%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2/">颜色空间转换</a>（颜色空间转换/追踪特定颜色物体）</p>
-</li>
-<li><p><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/">阈值分割</a>（阈值分割/二值化） | <a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">番外篇4：Otsu阈值法</a></p>
-</li>
-<li><p><a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B7%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/">图像几何变换</a>（旋转/平移/缩放/仿射变换/透视变换）</p>
-</li>
-<li><p><a href="/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/">绘图功能</a>（画线/画圆/画矩形/添加文字） | <a href="/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/">番外篇5：鼠标绘图</a></p>
-</li>
-<li><p><a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/">图像混合</a>（算数运算/混合/按位运算） | <a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%876%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/">番外篇6：亮度与对比度</a></p>
-</li>
-<li><p><a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇7：卷积基础(图片边框)</a></p>
-</li>
-<li><p><a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</p>
-</li>
+<li><a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/">简介</a>（了解OpenCV-Python） | <a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">番外篇1：代码性能优化</a></li>
+<li><a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/">基本元素-图片</a>（图片载入/显示/保存） | <a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">番外篇2：Matplotlib显示图像</a></li>
+<li><a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B3%EF%BC%9A%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4/">打开摄像头</a>（打开摄像头捕获图片/播放保存视频） | <a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇3：滑动条</a></li>
+<li><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B4%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">图像基本操作</a>（访问像素点/ROI/通道分离合并）</li>
+<li><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B5%EF%BC%9A%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2/">颜色空间转换</a>（颜色空间转换/追踪特定颜色物体）</li>
+<li><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/">阈值分割</a>（阈值分割/二值化） | <a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">番外篇4：Otsu阈值法</a></li>
+<li><a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B7%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/">图像几何变换</a>（旋转/平移/缩放/仿射变换/透视变换）</li>
+<li><a href="/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/">绘图功能</a>（画线/画圆/画矩形/添加文字） | <a href="/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/">番外篇5：鼠标绘图</a></li>
+<li><a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/">图像混合</a>（算数运算/混合/按位运算） | <a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%876%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/">番外篇6：亮度与对比度</a></li>
+<li><a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇7：卷积基础(图片边框)</a></li>
+<li><a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">边缘检测</a>（Canny/Sobel） | <a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇8：图像梯度</a></li>
+<li><a href="/2017/12/19/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</li>
 </ol>
 ]]></content>
     
@@ -472,7 +574,7 @@
     <link href="http://ex2tron.coding.me/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
     <id>http://ex2tron.coding.me/2017/12/10/Python-OpenCV教程9：图像混合/</id>
     <published>2017-12-10T06:13:10.000Z</published>
-    <updated>2017-12-15T12:39:26.692Z</updated>
+    <updated>2017-12-19T14:59:43.963Z</updated>
     
     <content type="html"><![CDATA[<p>学习图片间的数学运算，图像混合。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -516,9 +618,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">img1 = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 把logo放在左上角，所以我们只关心这一块区域</span></div><div class="line">rows, cols = img2.shape[:<span class="number">2</span>]</div><div class="line">roi = img1[:rows, :cols]</div><div class="line"></div><div class="line"><span class="comment"># 创建掩膜</span></div><div class="line">img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, mask = cv2.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">mask_inv = cv2.bitwise_not(mask)</div><div class="line"></div><div class="line"><span class="comment"># 保留除logo外的背景</span></div><div class="line">img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)</div><div class="line">dst = cv2.add(img1_bg, img2)  <span class="comment"># 进行融合</span></div><div class="line">img1[:rows, :cols] = dst  <span class="comment"># 融合后放在原图上</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'result'</span>, img1)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.add()用来叠加两幅图片，cv2.addWeighted()也是叠加两幅图片，但两幅图片的权重不一样。</p>
 <p><code>cv2.bitwise_and()</code>, <code>cv2.bitwise_not()</code>, <code>cv2.bitwise_or()</code>, <code>cv2.bitwise_xor()</code>分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin" target="_blank" rel="external">掩膜</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html" target="_blank" rel="external">Arithmetic Operations on Images</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin" target="_blank" rel="external">掩膜</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html" target="_blank" rel="external">Arithmetic Operations on Images</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -545,7 +649,7 @@
     <link href="http://ex2tron.coding.me/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%876%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     <id>http://ex2tron.coding.me/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/</id>
     <published>2017-12-10T06:05:10.000Z</published>
-    <updated>2017-12-15T12:32:30.250Z</updated>
+    <updated>2017-12-19T14:59:43.952Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何调整图片的亮度和对比度。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -569,11 +673,13 @@
 <li><p>亮度/对比度用C++实现也很有趣，推荐阅读：<a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></p>
 </li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">numpy.clip()</a></p>
-<p><a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
-<p><a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></p>
-<p><a href="https://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html#a3f356665bb0ca452e7d7723ccac9a810" target="_blank" rel="external">Mat::convertTo</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">numpy.clip()</a></li>
+<li><a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></li>
+<li><a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></li>
+<li><a href="https://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html#a3f356665bb0ca452e7d7723ccac9a810" target="_blank" rel="external">Mat::convertTo</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -602,7 +708,7 @@
     <link href="http://ex2tron.coding.me/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/"/>
     <id>http://ex2tron.coding.me/2017/12/09/Python-OpenCV教程番外篇5：鼠标绘图/</id>
     <published>2017-12-09T09:28:34.000Z</published>
-    <updated>2017-12-16T14:17:38.184Z</updated>
+    <updated>2017-12-19T14:59:43.948Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何用鼠标实时绘图。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -644,8 +750,10 @@
                 <div class="image-caption">实时画一个矩形</div>
             </figure>
 <p>（选做2）做一个在白色面板上绘图的简单程序，可用滑动条调整颜色和笔刷大小。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/8.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html" target="_blank" rel="external">Mouse as a Paint-Brush</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/8.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html" target="_blank" rel="external">Mouse as a Paint-Brush</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -672,7 +780,7 @@
     <link href="http://ex2tron.coding.me/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/"/>
     <id>http://ex2tron.coding.me/2017/12/09/Python-OpenCV教程8：绘图功能/</id>
     <published>2017-12-09T03:29:48.000Z</published>
-    <updated>2017-12-09T06:17:54.976Z</updated>
+    <updated>2017-12-19T14:59:43.953Z</updated>
     
     <content type="html"><![CDATA[<p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -746,9 +854,11 @@
                 </div>
                 <div class="image-caption">OpenCV logo</div>
             </figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/8.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_drawing_functions/py_drawing_functions.html" target="_blank" rel="external">Drawing Functions in OpenCV</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/8.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_drawing_functions/py_drawing_functions.html" target="_blank" rel="external">Drawing Functions in OpenCV</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -775,7 +885,7 @@
     <link href="http://ex2tron.coding.me/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B7%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
     <id>http://ex2tron.coding.me/2017/12/08/Python-OpenCV教程7：图像几何变换/</id>
     <published>2017-12-08T06:36:53.000Z</published>
-    <updated>2017-12-17T13:03:24.380Z</updated>
+    <updated>2017-12-19T14:59:43.955Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何旋转、平移和缩放图片，了解仿射/透视变换。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -853,8 +963,10 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>透视变换代码中有个<code>img[:, :, ::-1]</code>，还记得吗？请复习：<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">Matplotlib显示图像</a> </li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/7.%20%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html" target="_blank" rel="external">Geometric Transformations of Images</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/7.%20%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html" target="_blank" rel="external">Geometric Transformations of Images</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -881,7 +993,7 @@
     <link href="http://ex2tron.coding.me/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/"/>
     <id>http://ex2tron.coding.me/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/</id>
     <published>2017-12-08T04:48:05.000Z</published>
-    <updated>2017-12-16T13:57:46.187Z</updated>
+    <updated>2017-12-19T11:20:20.952Z</updated>
     
     <content type="html"><![CDATA[<p>大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。<a id="more"></a></p>
 <p><a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？</p>
@@ -896,7 +1008,9 @@
 <p>Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，算法详解：<a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method(wikipedia)</a></p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：</p>
 <p>另外，对含噪点的图像，先进行滤波操作效果会更好。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'noisy.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 固定阈值法</span></div><div class="line">ret1, th1 = cv2.threshold(img, <span class="number">100</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line"></div><div class="line"><span class="comment"># Otsu阈值法</span></div><div class="line">ret2, th2 = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line"><span class="comment"># 先进行高斯滤波，再使用Otsu阈值法</span></div><div class="line">blur = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)</div><div class="line">ret3, th3 = cv2.threshold(blur, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line">images = [img, <span class="number">0</span>, th1,</div><div class="line">          img, <span class="number">0</span>, th2,</div><div class="line">          blur, <span class="number">0</span>, th3]</div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">'Global(v=100)'</span>,</div><div class="line">          <span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>,</div><div class="line">          <span class="string">'Gaussian filtered Image'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="comment"># 绘制原图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">1</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制直方图plt.hist，ravel函数将数组降成一维</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">2</span>)</div><div class="line">    plt.hist(images[i * <span class="number">3</span>].ravel(), <span class="number">256</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">1</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制阈值图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">3</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span> + <span class="number">2</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">2</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'noisy.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 固定阈值法</span></div><div class="line">ret1, th1 = cv2.threshold(img, <span class="number">100</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line"></div><div class="line"><span class="comment"># Otsu阈值法</span></div><div class="line">ret2, th2 = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line"><span class="comment"># 先进行高斯滤波，再使用Otsu阈值法</span></div><div class="line">blur = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)</div><div class="line">ret3, th3 = cv2.threshold(blur, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div></pre></td></tr></table></figure>
+<p>下面我们用Matplotlib把原图、直方图和阈值图都显示出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">images = [img, <span class="number">0</span>, th1, img, <span class="number">0</span>, th2, blur, <span class="number">0</span>, th3]</div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">'Global(v=100)'</span>,</div><div class="line">          <span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>,</div><div class="line">          <span class="string">'Gaussian filtered Image'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="comment"># 绘制原图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">1</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制直方图plt.hist，ravel函数将数组降成一维</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">2</span>)</div><div class="line">    plt.hist(images[i * <span class="number">3</span>].ravel(), <span class="number">256</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">1</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制阈值图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">3</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span> + <span class="number">2</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">2</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -905,10 +1019,12 @@
                 <div class="image-caption">固定阈值 vs Otsu阈值</div>
             </figure>
 <p>可以看到，Otsu阈值明显由于固定阈值，省去了不断尝试阈值判断效果好坏的过程。其中，绘制直方图时，使用了numpy中的<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">ravel()</a>函数，它会将原矩阵压缩成一维数组，便于画直方图。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20阈值分割" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">numpy.ravel</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20阈值分割" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">numpy.ravel</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -935,7 +1051,7 @@
     <link href="http://ex2tron.coding.me/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/"/>
     <id>http://ex2tron.coding.me/2017/12/07/Python-OpenCV教程6：阈值分割/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2017-12-16T14:33:33.099Z</updated>
+    <updated>2017-12-19T14:59:43.964Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1007,8 +1123,10 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>Otsu阈值是一种高效的二值化算法，请尝试阅读<a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">番外篇：Otsu阈值法</a>。</li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1035,7 +1153,7 @@
     <link href="http://ex2tron.coding.me/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B5%EF%BC%9A%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2/"/>
     <id>http://ex2tron.coding.me/2017/12/07/Python-OpenCV教程5：颜色空间转换/</id>
     <published>2017-12-07T07:21:19.000Z</published>
-    <updated>2017-12-17T12:45:53.990Z</updated>
+    <updated>2017-12-19T14:59:43.955Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1084,8 +1202,10 @@
                 </div>
                 <div class="image-caption">同时追踪3种颜色</div>
             </figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/5.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="external">Changing Colorspaces</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/5.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="external">Changing Colorspaces</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1112,7 +1232,7 @@
     <link href="http://ex2tron.coding.me/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B4%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://ex2tron.coding.me/2017/12/07/Python-OpenCV教程4：图像基本操作/</id>
     <published>2017-12-07T04:13:15.000Z</published>
-    <updated>2017-12-07T07:13:43.720Z</updated>
+    <updated>2017-12-19T14:59:43.963Z</updated>
     
     <content type="html"><![CDATA[<p>学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1169,8 +1289,10 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>打开lena.jpg，将帽子部分（高：25~120，宽：50~220）的红色通道截取出来并显示。</li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/4.%20图像基本操作" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops" target="_blank" rel="external">Basic Operations on Images</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/4.%20图像基本操作" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops" target="_blank" rel="external">Basic Operations on Images</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1197,7 +1319,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇3：滑动条/</id>
     <published>2017-12-06T14:23:11.000Z</published>
-    <updated>2017-12-16T14:43:18.150Z</updated>
+    <updated>2017-12-19T14:59:43.964Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用滑动条动态调整参数。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1216,8 +1338,10 @@
 <p>创建好之后，可以在回调函数中获取滑动条的值，也可以用：<code>cv2.getTrackbarPos()</code>得到，其中，参数1是滑动条的名称，参数2是窗口的名称。下面我们实现一个RGB的调色板，理解下函数的使用：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 回调函数，x表示滑块的位置，本例暂不使用</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nothing</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">300</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建RGB三个滑动条</span></div><div class="line">cv2.createTrackbar(<span class="string">'R'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'G'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'B'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取滑块的值</span></div><div class="line">    r = cv2.getTrackbarPos(<span class="string">'R'</span>, <span class="string">'image'</span>)</div><div class="line">    g = cv2.getTrackbarPos(<span class="string">'G'</span>, <span class="string">'image'</span>)</div><div class="line">    b = cv2.getTrackbarPos(<span class="string">'B'</span>, <span class="string">'image'</span>)</div><div class="line">    <span class="comment"># 设定img的颜色</span></div><div class="line">    img[:] = [b, g, r]</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>cv2.createTrackbar()用来创建滑动条，可以在回调函数中得到滑块的位置，也可以用cv2.getTrackbarPos()。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_trackbar/py_trackbar.html" target="_blank" rel="external">Trackbar as the Color Palette</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_trackbar/py_trackbar.html" target="_blank" rel="external">Trackbar as the Color Palette</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1244,7 +1368,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B3%EF%BC%9A%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程3：打开摄像头/</id>
     <published>2017-12-06T08:38:02.000Z</published>
-    <updated>2017-12-16T14:12:48.694Z</updated>
+    <updated>2017-12-19T14:59:43.950Z</updated>
     
     <content type="html"><![CDATA[<p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a>视频等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1278,9 +1402,11 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>请尝试先阅读<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇：滑动条</a>，然后实现一个可以拖动播放视频的功能。（提示：需要用到<code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）</li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs by FOURCC</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html" target="_blank" rel="external">Getting Started with Videos</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs by FOURCC</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html" target="_blank" rel="external">Getting Started with Videos</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1305,7 +1431,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2017-12-15T02:35:41.469Z</updated>
+    <updated>2017-12-19T14:59:43.963Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
@@ -1331,7 +1457,9 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/cv2_using_matplotlib_show_image.py" target="_blank" rel="external">本节源码</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/cv2_using_matplotlib_show_image.py" target="_blank" rel="external">本节源码</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1358,7 +1486,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程2：基本元素-图片/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2017-12-16T08:09:05.187Z</updated>
+    <updated>2017-12-19T14:59:43.949Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1411,8 +1539,10 @@
 <li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">Matplotlib显示图像</a> </p>
 </li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1437,7 +1567,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/</id>
     <published>2017-12-06T07:51:52.000Z</published>
-    <updated>2017-12-12T09:49:04.234Z</updated>
+    <updated>2017-12-19T14:59:43.964Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
 <p>完成一项任务很重要，高效地完成更重要。图像处理是对图像的操作，数据量巨大，如果代码写的不好，性能差距将很大，所以这节我们来了解下如何测量和提升代码性能。</p>
@@ -1462,10 +1592,12 @@
 <li><p>尽量避免数组的复制操作</p>
 </li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></p>
-<p><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></p>
-<p><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
-<p><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="external">Advanced Numpy</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></li>
+<li><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></li>
+<li><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="external">Advanced Numpy</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1490,7 +1622,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程1：简介/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2017-12-15T06:27:42.177Z</updated>
+    <updated>2017-12-19T14:59:43.954Z</updated>
     
     <content type="html"><![CDATA[<p>Python+OpenCV搞图像处理与C/C++一样快！<a id="more"></a></p>
 <p>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！尽管如此，你应该具有Python和图像处理的简单基础。<strong>我相信绝大多数人用Python进行图像处理的疑问是：它快吗？( ╯□╰ )</strong>，下面我来为你解答这个问题：</p>
@@ -1522,11 +1654,13 @@
 <li>如果识别不了<code>pip</code>，说明没有将pip的目录添加到环境变量。找到pip的安装目录，添加到用户变量（或系统变量）的path中。</li>
 <li>如果下载速度很慢，可以<a href="https://pypi.python.org/pypi?%3Aaction=search&amp;term=opencv-python&amp;submit=search" target="_blank" rel="external">点击此处</a>下载离线版。下载完成后，cmd切换到下载的目录，输入<code>pip install 文件名</code>安装。</li>
 </ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
-<p><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></p>
-<p><a href="https://docs.opencv.org/" target="_blank" rel="external">OpenCV Docs</a></p>
-<p><a href="www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">OpenCV 中文教程</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></li>
+<li><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></li>
+<li><a href="https://docs.opencv.org/" target="_blank" rel="external">OpenCV Docs</a></li>
+<li><a href="www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">OpenCV 中文教程</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -1810,7 +1944,7 @@
     <link href="http://ex2tron.coding.me/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>http://ex2tron.coding.me/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2017-12-18T04:38:02.397Z</updated>
+    <updated>2017-12-19T14:59:43.963Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -1819,63 +1953,41 @@
 <hr>
 <h2 id="软件汁源"><a href="#软件汁源" class="headerlink" title="软件汁源"></a><strong>软件汁源</strong></h2><p>首先列出一些常用网站，后面我只列出常用的软件和官网，<strong>请大家优先选择官网进行下载</strong>，因为官网版本一般都是最新的，也比较安全。官网进不去，可以<strong>点击</strong>我给出的版本下载：</p>
 <h3 id="常用资源站"><a href="#常用资源站" class="headerlink" title="常用资源站"></a>常用资源站</h3><ul>
-<li><p><a href="https://www.ithome.com/bibei/" target="_blank" rel="external">Windows装机必备</a></p>
-</li>
-<li><p><a href="http://mirrors.163.com/" target="_blank" rel="external">网易开源镜像站</a>、<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝 NPM 镜像站</a></p>
-</li>
-<li><p><a href="http://www.anxz.com/" target="_blank" rel="external">俺下载</a>、<a href="http://www.verycd.gdajie.com/" target="_blank" rel="external">逛电驴</a>、<a href="http://www.ed2000.com/" target="_blank" rel="external">ED2000资源共享</a>、<a href="https://xbeta.info/" target="_blank" rel="external">善用佳软</a>、<a href="https://www.portablesoft.org/" target="_blank" rel="external">精品绿色便携软件</a></p>
-</li>
+<li><a href="https://www.ithome.com/bibei/" target="_blank" rel="external">Windows装机必备</a></li>
+<li><a href="http://mirrors.163.com/" target="_blank" rel="external">网易开源镜像站</a>、<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝 NPM 镜像站</a></li>
+<li><a href="http://www.anxz.com/" target="_blank" rel="external">俺下载</a>、<a href="http://www.verycd.gdajie.com/" target="_blank" rel="external">逛电驴</a>、<a href="http://www.ed2000.com/" target="_blank" rel="external">ED2000资源共享</a>、<a href="https://xbeta.info/" target="_blank" rel="external">善用佳软</a>、<a href="https://www.portablesoft.org/" target="_blank" rel="external">精品绿色便携软件</a></li>
 </ul>
 <h3 id="微软官方系统"><a href="#微软官方系统" class="headerlink" title="微软官方系统"></a>微软官方系统</h3><ul>
-<li><p>Windows 10创意者更新秋季版：<a href="ed2k://|file|cn_windows_10_multi-edition_version_1709_updated_sept_2017_x64_dvd_100090804.iso|4740610048|37051C54894776826823DAEBDD03F1DC|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_10_multi-edition_version_1709_updated_sept_2017_x86_dvd_100090805.iso|3551899648|6C24A796B66CDA6D909508A16C74B406|/" target="_blank" rel="external">32位</a></p>
-</li>
-<li><p>Windows 7 SP1简体中文旗舰版：<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso|3420557312|B58548681854236C7939003B583A8078|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x86_dvd_u_677486.iso|2653276160|7503E4B9B8738DFCB95872445C72AEFB|/" target="_blank" rel="external">32位</a></p>
-</li>
-<li><p>激活工具：<a href="https://pan.baidu.com/s/1i45IaSt" target="_blank" rel="external">优先OEM10 密码：c6wz</a></p>
-</li>
+<li>Windows 10创意者更新秋季版：<a href="ed2k://|file|cn_windows_10_multi-edition_version_1709_updated_sept_2017_x64_dvd_100090804.iso|4740610048|37051C54894776826823DAEBDD03F1DC|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_10_multi-edition_version_1709_updated_sept_2017_x86_dvd_100090805.iso|3551899648|6C24A796B66CDA6D909508A16C74B406|/" target="_blank" rel="external">32位</a></li>
+<li>Windows 7 SP1简体中文旗舰版：<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso|3420557312|B58548681854236C7939003B583A8078|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x86_dvd_u_677486.iso|2653276160|7503E4B9B8738DFCB95872445C72AEFB|/" target="_blank" rel="external">32位</a></li>
+<li>激活工具：<a href="https://pan.baidu.com/s/1i45IaSt" target="_blank" rel="external">优先OEM10 密码：c6wz</a></li>
 </ul>
 <h3 id="Office办公套件"><a href="#Office办公套件" class="headerlink" title="Office办公套件"></a>Office办公套件</h3><ul>
-<li><p>Office Pro Plus 2016批量授权版：<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO|1123452928|31087A00FF67D4F5B4CBF4AA07C3433B|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_W32_ChnSimp_MLF_X20-41351.ISO|986441728|2DE74581C10096137481873B3AD57D43|/" target="_blank" rel="external">32位</a></p>
-</li>
-<li><p>Visio Pro 2016 批量授权版：<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO|714913792|FC930AB97B366B3595FC2F28ABAC2A6F|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_W32_ChnSimp_MLF_X20-41580.ISO|609447936|91EB248558F236AA66D234EA03FAD9A9|/" target="_blank" rel="external">32位</a></p>
-</li>
-<li><p><a href="ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/" target="_blank" rel="external">Office Pro Plus 2016 即点即用版</a>、<a href="ed2k://|file|cn_visio_professional_2016_x86_x64_dvd_6970929.iso|2588262400|52A997F3AF4E40B896C8E4677CF10E90|/" target="_blank" rel="external">Visio Pro 2016 即点即用版</a></p>
-</li>
-<li><p>激活工具：<a href="https://pan.baidu.com/s/1i45IaSt" target="_blank" rel="external">优先OEM10 密码：c6wz</a></p>
-</li>
+<li>Office Pro Plus 2016批量授权版：<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO|1123452928|31087A00FF67D4F5B4CBF4AA07C3433B|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_W32_ChnSimp_MLF_X20-41351.ISO|986441728|2DE74581C10096137481873B3AD57D43|/" target="_blank" rel="external">32位</a></li>
+<li>Visio Pro 2016 批量授权版：<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO|714913792|FC930AB97B366B3595FC2F28ABAC2A6F|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_W32_ChnSimp_MLF_X20-41580.ISO|609447936|91EB248558F236AA66D234EA03FAD9A9|/" target="_blank" rel="external">32位</a></li>
+<li><a href="ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/" target="_blank" rel="external">Office Pro Plus 2016 即点即用版</a>、<a href="ed2k://|file|cn_visio_professional_2016_x86_x64_dvd_6970929.iso|2588262400|52A997F3AF4E40B896C8E4677CF10E90|/" target="_blank" rel="external">Visio Pro 2016 即点即用版</a></li>
+<li>激活工具：<a href="https://pan.baidu.com/s/1i45IaSt" target="_blank" rel="external">优先OEM10 密码：c6wz</a></li>
+</ul>
+<h3 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h3><ul>
+<li>Ubuntu：<a href="https://www.ubuntu.com/download" target="_blank" rel="external">官网</a>、<a href="http://mirrors.nju.edu.cn/ubuntu-releases/16.04.3/ubuntu-16.04.3-desktop-amd64.iso" target="_blank" rel="external">桌面版16.04 64位</a>、<a href="http://mirrors.nju.edu.cn/ubuntu-releases/17.10/ubuntu-17.10-desktop-amd64.iso" target="_blank" rel="external">桌面版17.10 64位</a></li>
+<li>树莓派系统：<a href="https://downloads.raspberrypi.org/raspbian_latest" target="_blank" rel="external">官网</a>、<a href="http://vx2-downloads.raspberrypi.org/raspbian/images/raspbian-2017-12-01/2017-11-29-raspbian-stretch.zip" target="_blank" rel="external">Rasbian 2017</a></li>
 </ul>
 <h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><ul>
-<li><p>Visual Studio 2017：<a href="https://www.visualstudio.com/" target="_blank" rel="external">官网</a>、<a href="https://download.visualstudio.microsoft.com/download/pr/100266676/045b56eb413191d03850ecc425172a7d/vs_Community.exe" target="_blank" rel="external">社区版15.4</a></p>
-</li>
-<li><p>Android Studio：<a href="https://dl.google.com/dl/android/studio/install/3.0.0.18/android-studio-ide-171.4408382-windows.exe" target="_blank" rel="external">3.0</a>、<a href="https://dl.google.com/dl/android/studio/install/2.3.3.0/android-studio-bundle-162.4069837-windows.exe" target="_blank" rel="external">2.3.3</a></p>
-</li>
-<li><p>Qt：<a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">官网</a>、<a href="http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-windows-x86-mingw530-5.8.0.exe" target="_blank" rel="external">5.8.0 mingw</a></p>
-</li>
-<li><p>Matlab：<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd1.iso|7829774336|b0ed2efeac2af78ce1f797152d8b430a|h=xbq3qn6r6uztxdawcdzgimpzqmcxy3nh|/" target="_blank" rel="external">R2017a x64 dvd1</a>、<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd2.iso|2707779584|ce396df6ebc36a94118a736338d7e05e|h=34xjg5hg77ldbsgf6j64evexssys2hm3|/" target="_blank" rel="external">R2017a x64 dvd2</a>、<a href="ed2k://|file|[矩阵实验室].Crack.rar|957381|725c8700b78027809055ecb5e6986b59|h=rf5lftd7ffdm4dhk3qn5m5ke2zxugztk|/" target="_blank" rel="external">破解工具</a></p>
-</li>
-<li><p>Python相关：<a href="https://www.python.org/" target="_blank" rel="external">官网</a>、<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" target="_blank" rel="external">3.6.3 x64</a>、<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="external">2.7.14 x64</a></p>
-<ul>
-<li>Python包源（如Tensorflow）：<a href="https://pypi.python.org/pypi" target="_blank" rel="external">源1</a>、<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">源2</a></li>
-</ul>
-</li>
-<li><p>Anaconda：<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe" target="_blank" rel="external">5.0.1_cp36_x64</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86.exe" target="_blank" rel="external">5.0.1_cp36_x86</a></p>
-</li>
-<li><p>MySQL：<a href="https://www.mysql.com/" target="_blank" rel="external">官网</a>、<a href="https://cdn.mysql.com//Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi" target="_blank" rel="external">MySQL Installer 5.7.20</a></p>
-</li>
-<li><p>Navicat11 for MySQL：<a href="https://pan.baidu.com/s/1o8dyBxS" target="_blank" rel="external">破解版11.2 密码：ls2c</a></p>
-</li>
-<li><p>WampServer：<a href="http://www.wampserver.com/en/" target="_blank" rel="external">官网</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x64.exe" target="_blank" rel="external">3.1.0 x64</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x86.exe" target="_blank" rel="external">3.1.0 x86</a></p>
-</li>
-<li><p>OpenCV：<a href="https://opencv.org/releases.html" target="_blank" rel="external">官网</a>、<a href="https://ncu.dl.sourceforge.net/project/opencvlibrary/opencv-win/3.3.1/opencv-3.3.1-vc14.exe" target="_blank" rel="external">3.3.1</a>、<a href="https://sourceforge.net/settings/mirror_choices?projectname=opencvlibrary&amp;filename=opencv-win/2.4.13/opencv-2.4.13.4-vc14.exe" target="_blank" rel="external">2.4.13</a>、<a href="https://pypi.python.org/pypi/opencv-python/3.3.0.10" target="_blank" rel="external">OpenCV-Python 3.3</a></p>
-</li>
-<li><p>开发组件：</p>
-<ul>
-<li><p>串口抓包AccessPort：<a href="http://www.sudt.com/cn/ap/download.htm" target="_blank" rel="external">官网</a>、<a href="http://www.sudt.com/download/AccessPort137.zip" target="_blank" rel="external">1.37</a></p>
-</li>
-<li><p>protobuf：<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">官网</a>、  ffmpeg：<a href="http://ffmpeg.org/download.html" target="_blank" rel="external">官网</a></p>
-</li>
-<li><p>爬虫驱动：<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="external">Firefox Geckodriver</a>、<a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/" target="_blank" rel="external">MicrosoftWebDriver</a>、<a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="external">ChromeDriver</a>、<a href="http://blog.csdn.net/cz9025/article/details/70160273" target="_blank" rel="external">各版本对照表</a></p>
-</li>
+<li>Visual Studio 2017：<a href="https://www.visualstudio.com/" target="_blank" rel="external">官网</a>、<a href="https://download.visualstudio.microsoft.com/download/pr/100266676/045b56eb413191d03850ecc425172a7d/vs_Community.exe" target="_blank" rel="external">社区版15.4</a></li>
+<li>Android Studio：<a href="https://dl.google.com/dl/android/studio/install/3.0.0.18/android-studio-ide-171.4408382-windows.exe" target="_blank" rel="external">3.0</a>、<a href="https://dl.google.com/dl/android/studio/install/2.3.3.0/android-studio-bundle-162.4069837-windows.exe" target="_blank" rel="external">2.3.3</a></li>
+<li>Qt：<a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">官网</a>、<a href="http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-windows-x86-mingw530-5.8.0.exe" target="_blank" rel="external">5.8.0 mingw</a></li>
+<li>Matlab：<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd1.iso|7829774336|b0ed2efeac2af78ce1f797152d8b430a|h=xbq3qn6r6uztxdawcdzgimpzqmcxy3nh|/" target="_blank" rel="external">R2017a x64 dvd1</a>、<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd2.iso|2707779584|ce396df6ebc36a94118a736338d7e05e|h=34xjg5hg77ldbsgf6j64evexssys2hm3|/" target="_blank" rel="external">R2017a x64 dvd2</a>、<a href="ed2k://|file|[矩阵实验室].Crack.rar|957381|725c8700b78027809055ecb5e6986b59|h=rf5lftd7ffdm4dhk3qn5m5ke2zxugztk|/" target="_blank" rel="external">破解工具</a></li>
+<li>Python相关：<a href="https://www.python.org/" target="_blank" rel="external">官网</a>、<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" target="_blank" rel="external">3.6.3 x64</a>、<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="external">2.7.14 x64</a>、包源（如Tensorflow）：<a href="https://pypi.python.org/pypi" target="_blank" rel="external">源1</a>、<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">源2</a></li>
+<li>Anaconda：<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe" target="_blank" rel="external">5.0.1_cp36_x64</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86.exe" target="_blank" rel="external">5.0.1_cp36_x86</a></li>
+<li>MySQL：<a href="https://www.mysql.com/" target="_blank" rel="external">官网</a>、<a href="https://cdn.mysql.com//Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi" target="_blank" rel="external">MySQL Installer 5.7.20</a></li>
+<li>Navicat11 for MySQL：<a href="https://pan.baidu.com/s/1o8dyBxS" target="_blank" rel="external">破解版11.2 密码：ls2c</a></li>
+<li>WampServer：<a href="http://www.wampserver.com/en/" target="_blank" rel="external">官网</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x64.exe" target="_blank" rel="external">3.1.0 x64</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x86.exe" target="_blank" rel="external">3.1.0 x86</a></li>
+<li>OpenCV：<a href="https://opencv.org/releases.html" target="_blank" rel="external">官网</a>、<a href="https://ncu.dl.sourceforge.net/project/opencvlibrary/opencv-win/3.3.1/opencv-3.3.1-vc14.exe" target="_blank" rel="external">3.3.1</a>、<a href="https://sourceforge.net/settings/mirror_choices?projectname=opencvlibrary&amp;filename=opencv-win/2.4.13/opencv-2.4.13.4-vc14.exe" target="_blank" rel="external">2.4.13</a>、<a href="https://pypi.python.org/pypi/opencv-python/3.3.0.10" target="_blank" rel="external">OpenCV-Python 3.3</a></li>
+<li>代码编辑器： VS Code：<a href="https://code.visualstudio.com/Download" target="_blank" rel="external">官网</a>、<a href="https://vscode.cdn.azure.cn/stable/816be6780ca8bd0ab80314e11478c48c70d09383/VSCodeSetup-x64-1.19.0.exe" target="_blank" rel="external">1.19 x64</a>、Notepad++：<a href="https://notepad-plus-plus.org/download/" target="_blank" rel="external">官网</a>、<a href="https://notepad-plus-plus.org/repository/7.x/7.5.3/npp.7.5.3.Installer.exe" target="_blank" rel="external">7.5.3</a>、Sublime：<a href="https://www.sublimetext.com/3" target="_blank" rel="external">官网</a></li>
+<li>Markdown编写：Typora：<a href="https://www.typora.io/" target="_blank" rel="external">官网(需翻墙)</a>、<a href="https://www.typora.io/windows/typora-setup-x64.exe?" target="_blank" rel="external">64位</a>、<a href="https://www.typora.io/windows/typora-setup-ia32.exe?" target="_blank" rel="external">32位</a></li>
+<li>开发组件：<ul>
+<li>串口抓包AccessPort：<a href="http://www.sudt.com/cn/ap/download.htm" target="_blank" rel="external">官网</a>、<a href="http://www.sudt.com/download/AccessPort137.zip" target="_blank" rel="external">1.37</a>、protobuf：<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">官网</a>、ffmpeg：<a href="http://ffmpeg.org/download.html" target="_blank" rel="external">官网</a></li>
+<li>爬虫驱动：<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="external">Firefox Geckodriver</a>、<a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/" target="_blank" rel="external">MicrosoftWebDriver</a>、<a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="external">ChromeDriver</a>、<a href="http://blog.csdn.net/cz9025/article/details/70160273" target="_blank" rel="external">各版本对照表</a></li>
 </ul>
 </li>
 </ul>
@@ -1883,22 +1995,16 @@
 <li>Adobe CC 2017(Photoshop/Audition/Premiere)：<a href="http://pan.baidu.com/s/1eRNym9W" target="_blank" rel="external">精简版 密码：f7yt</a></li>
 </ul>
 <h3 id="实用工具"><a href="#实用工具" class="headerlink" title="实用工具"></a>实用工具</h3><ul>
-<li><p>[Lantern蓝灯翻墙]：<a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe" target="_blank" rel="external">最新版</a>、<a href="https://github.com/getlantern/mirror" target="_blank" rel="external">官网</a></p>
-</li>
-<li><p>我平常整理的一些实用工具：<a href="https://pan.baidu.com/s/1pLwsEUZ" target="_blank" rel="external">密码：806j</a></p>
-</li>
+<li>[Lantern蓝灯翻墙]：<a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe" target="_blank" rel="external">最新版</a>、<a href="https://github.com/getlantern/mirror" target="_blank" rel="external">官网</a></li>
+<li>我平常整理的一些实用工具：<a href="https://pan.baidu.com/s/1pLwsEUZ" target="_blank" rel="external">密码：806j</a></li>
 </ul>
 <h2 id="影视汁源"><a href="#影视汁源" class="headerlink" title="影视汁源"></a><strong>影视汁源</strong></h2><h3 id="资源站"><a href="#资源站" class="headerlink" title="资源站"></a>资源站</h3><ul>
-<li><p><a href="http://6vhao.com/" target="_blank" rel="external">6v电影网</a>、<a href="http://www.dytt8.net/" target="_blank" rel="external">电影天堂</a>、<a href="http://www.80s.tw/" target="_blank" rel="external">80s电影网</a></p>
-</li>
-<li><p><a href="http://www.zimuzu.tv/" target="_blank" rel="external">字幕组（原人人影视）</a>、<a href="http://www.ed2000.com/" target="_blank" rel="external">ED2000资源共享</a>、<a href="http://www.piaohua.com/" target="_blank" rel="external">飘花电影网</a></p>
-</li>
+<li><a href="http://6vhao.com/" target="_blank" rel="external">6v电影网</a>、<a href="http://www.dytt8.net/" target="_blank" rel="external">电影天堂</a>、<a href="http://www.80s.tw/" target="_blank" rel="external">80s电影网</a></li>
+<li><a href="http://www.zimuzu.tv/" target="_blank" rel="external">字幕组（原人人影视）</a>、<a href="http://www.ed2000.com/" target="_blank" rel="external">ED2000资源共享</a>、<a href="http://www.piaohua.com/" target="_blank" rel="external">飘花电影网</a></li>
 </ul>
 <h3 id="电影榜单"><a href="#电影榜单" class="headerlink" title="电影榜单"></a>电影榜单</h3><ul>
-<li><p>IMDB电影排行榜：<a href="http://www.imdb.com/chart/top" target="_blank" rel="external">TOP250</a>、豆瓣电影排行榜：<a href="https://movie.douban.com/top250" target="_blank" rel="external">TOP250</a></p>
-</li>
-<li><p>全球电影票房排行榜：<a href="https://www.douban.com/doulist/1641439/" target="_blank" rel="external">中文版</a>、<a href="http://www.boxofficemojo.com/alltime/world/" target="_blank" rel="external">英文版</a></p>
-</li>
+<li>IMDB电影排行榜：<a href="http://www.imdb.com/chart/top" target="_blank" rel="external">TOP250</a>、豆瓣电影排行榜：<a href="https://movie.douban.com/top250" target="_blank" rel="external">TOP250</a></li>
+<li>全球电影票房排行榜：<a href="https://www.douban.com/doulist/1641439/" target="_blank" rel="external">中文版</a>、<a href="http://www.boxofficemojo.com/alltime/world/" target="_blank" rel="external">英文版</a></li>
 </ul>
 <h3 id="电影合集"><a href="#电影合集" class="headerlink" title="电影合集"></a>电影合集</h3><ul>
 <li><a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">漫威电影合集</a>、<a href="/2017/09/24/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E8%AF%BA%E5%85%B0%E7%A5%9E%E4%BD%9C%E9%9B%86/">诺兰电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">007电影合集</a></li>

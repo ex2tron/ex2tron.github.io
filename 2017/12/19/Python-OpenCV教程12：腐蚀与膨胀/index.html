@@ -18,7 +18,7 @@
     
     
     
-    <title>Python+OpenCV教程11：腐蚀与膨胀 | ex2tron&#39;s Blog | Excelsior!</title>
+    <title>Python+OpenCV教程12：腐蚀与膨胀 | ex2tron&#39;s Blog | Excelsior!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#355876">
@@ -28,8 +28,8 @@
     <meta name="description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
 <meta name="keywords" content="Code,Python,OpenCV,图像处理,腐蚀,膨胀,形态学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+OpenCV教程11：腐蚀与膨胀">
-<meta property="og:url" content="http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/index.html">
+<meta property="og:title" content="Python+OpenCV教程12：腐蚀与膨胀">
+<meta property="og:url" content="http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
 <meta property="og:locale" content="en">
@@ -38,9 +38,9 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_struct_element.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_gradient.jpg">
-<meta property="og:updated_time" content="2017-12-17T12:30:42.283Z">
+<meta property="og:updated_time" content="2017-12-19T14:59:43.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程11：腐蚀与膨胀">
+<meta name="twitter:title" content="Python+OpenCV教程12：腐蚀与膨胀">
 <meta name="twitter:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_morphological.jpg">
     
@@ -109,7 +109,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Python+OpenCV教程11：腐蚀与膨胀</div>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程12：腐蚀与膨胀</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -131,11 +131,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Python+OpenCV教程11：腐蚀与膨胀</h1>
+        <h1 class="title">Python+OpenCV教程12：腐蚀与膨胀</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-12-15T12:52:23.000Z" itemprop="datePublished" class="page-time">
-  2017-12-15
+                <time datetime="2017-12-19T12:52:23.000Z" itemprop="datePublished" class="page-time">
+  2017-12-19
 </time>
 
 
@@ -158,13 +158,13 @@
         </nav>
     </aside>
     
-<article id="post-Python-OpenCV教程11：腐蚀与膨胀"
+<article id="post-Python-OpenCV教程12：腐蚀与膨胀"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Python+OpenCV教程11：腐蚀与膨胀</h1>
+        <h1 class="post-card-title">Python+OpenCV教程12：腐蚀与膨胀</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-12-15 20:52:23" datetime="2017-12-15T12:52:23.000Z"  itemprop="datePublished">2017-12-15</time>
+            <time class="post-time" title="2017-12-19 20:52:23" datetime="2017-12-19T12:52:23.000Z"  itemprop="datePublished">2017-12-19</time>
 
             
 
@@ -252,9 +252,11 @@
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>形态学操作就是改变物体的形状，如腐蚀使物体”变瘦”，膨胀使物体”变胖”</p>
 <p>先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体</p>
 <p>先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢(⊙o⊙)</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/11.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></p>
-<p><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></p>
-<p><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></li>
+<li><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></li>
+</ul>
 
         </div>
 
@@ -262,12 +264,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-17T12:30:42.283Z" itemprop="dateUpdated">2017-12-17 20:30:42</time>
+    Last updated: <time datetime="2017-12-19T14:59:43.946Z" itemprop="dateUpdated">2017-12-19 22:59:43</time>
 </span><br>
 
 
         
-        如果你觉得有帮助，欢迎分享给更多的小伙伴o(*￣▽￣*)ブ
+        如果您觉得有帮助，欢迎分享给更多的小伙伴，但请注明出处噢o(*￣▽￣*)ブ
         
     </div>
     <footer>
@@ -297,7 +299,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/&title=《Python+OpenCV教程11：腐蚀与膨胀》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/&title=《Python+OpenCV教程12：腐蚀与膨胀》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -307,22 +309,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/&title=《Python+OpenCV教程11：腐蚀与膨胀》 — ex2tron's Blog&source=学习常用形态学操作：腐蚀膨胀，开运算和闭运算。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/&title=《Python+OpenCV教程12：腐蚀与膨胀》 — ex2tron's Blog&source=学习常用形态学操作：腐蚀膨胀，开运算和闭运算。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程11：腐蚀与膨胀》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/&via=http://ex2tron.coding.me" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程12：腐蚀与膨胀》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/&via=http://ex2tron.coding.me" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -342,21 +344,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Python+OpenCV教程番外篇8：图像梯度</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/12/15/Python-OpenCV教程10：平滑图像/" id="post-next" class="post-nav-link">
+      <a href="/2017/12/18/Python-OpenCV教程11：边缘检测/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Python+OpenCV教程10：平滑图像</h4>
+        <h4 class="title">Python+OpenCV教程11：边缘检测</h4>
       </a>
     </div>
   
@@ -441,7 +436,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/&title=《Python+OpenCV教程11：腐蚀与膨胀》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/&title=《Python+OpenCV教程12：腐蚀与膨胀》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -451,22 +446,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/&title=《Python+OpenCV教程11：腐蚀与膨胀》 — ex2tron's Blog&source=学习常用形态学操作：腐蚀膨胀，开运算和闭运算。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/&title=《Python+OpenCV教程12：腐蚀与膨胀》 — ex2tron's Blog&source=学习常用形态学操作：腐蚀膨胀，开运算和闭运算。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程11：腐蚀与膨胀》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/&via=http://ex2tron.coding.me" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程12：腐蚀与膨胀》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/&via=http://ex2tron.coding.me" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -477,7 +472,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程11：腐蚀与膨胀/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" alt="微信分享二维码">
 </div>
 
 
