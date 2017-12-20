@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?ex2tron"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Python+OpenCV教程13：轮廓 | ex2tron&#39;s Blog | Excelsior!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#355876">
+    
+    
+    <meta name="keywords" content="Code,Python,OpenCV,图像处理,腐蚀,轮廓,Contours">
+    <meta name="description" content="学习如何寻找并绘制轮廓。">
+<meta name="keywords" content="Code,Python,OpenCV,图像处理,腐蚀,轮廓,Contours">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+OpenCV教程13：轮廓">
+<meta property="og:url" content="http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="学习如何寻找并绘制轮廓。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-20T07:08:21.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python+OpenCV教程13：轮廓">
+<meta name="twitter:description" content="学习如何寻找并绘制轮廓。">
+    
+        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
+    
+    <link rel="shortcut icon" href="/bookshelf.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Tony Wong</h5>
+          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ex2tron" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python+OpenCV教程13：轮廓</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Python+OpenCV教程13：轮廓</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-20T01:44:23.000Z" itemprop="datePublished" class="page-time">
+  2017-12-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#教程"><span class="post-toc-number">2.</span> <span class="post-toc-text">教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#啥叫轮廓"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">啥叫轮廓</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#寻找轮廓"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">寻找轮廓</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制轮廓"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">绘制轮廓</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">3.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">4.</span> <span class="post-toc-text">引用</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python-OpenCV教程13：轮廓"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Python+OpenCV教程13：轮廓</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-20 09:44:23" datetime="2017-12-20T01:44:23.000Z"  itemprop="datePublished">2017-12-20</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>学习如何寻找并绘制轮廓。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>了解轮廓这一重要的概念</li>
+<li>寻找并绘制轮廓</li>
+<li>OpenCV函数：cv2.findContours(), cv2.drawContours()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫轮廓"><a href="#啥叫轮廓" class="headerlink" title="啥叫轮廓"></a>啥叫轮廓</h3><p>轮廓是一系列相连的点组成的曲线，代表了物体的基本外形。</p>
+<p>谈起轮廓不免想到边缘，它们确实很像。简单可以用轮廓是连续的，边缘并不连续区分（下图）。其实边缘主要是作为图像的特征用，比如可以用边缘特征区分脸和手，而轮廓主要用来分析物体的形态，比如物体的周长面积等，可以说边缘包括轮廓。</p>
+<p><img src="" alt=""></p>
+<p>寻找轮廓的操作一般用于二值化图，所以通常会先使用阈值分割或Canny边缘检测得到二值图。</p>
+<blockquote>
+<p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<strong>不然很多人在寻找轮廓时会找到图片的最外面一个框。</strong></p>
+</blockquote>
+<h3 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h3><p>使用<code>image, contours, hierarchy = cv2.findContours(image, mode, method)</code>寻找轮廓：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>参数2：轮廓的查找方式，一般使用<code>cv2.RETR_TREE</code>代表提取所有的轮廓，并建立轮廓间的层级。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a></li>
+<li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点的坐标。使用<code>cv2.CHAIN_APPROX_SIMPLE</code>就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
+</ul>
+<p>返回值中contours就是找到的轮廓了，它是以数组形式存储的，记录了每条轮廓的所有<code>(x,y)</code>坐标点。</p>
+<p><img src="" alt=""></p>
+<h3 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h3><p>轮廓找出来后，为了方便观看，可以像前面图中那样用红色画出来：<code>cv2.drawContours()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>其中参数2是我们找到的轮廓，参数3表示要绘制哪一条轮廓，-1表示绘制所有轮廓，参数4是颜色（B/G/R通道，所以(0,0,255)表示红色），参数5是线宽，之前在绘制图形中介绍过。</p>
+<p>一般情况下，我们会首先获得要操作的轮廓，再进行轮廓分析：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contours[<span class="number">1</span>]</div><div class="line">cv2.drawContours(img, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>轮廓特征非常有用，使用<code>cv2.findContours()</code>寻找物体的轮廓，<code>cv2.drawContours()</code>绘制轮廓</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></li>
+<li><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-20T07:08:21.174Z" itemprop="dateUpdated">2017-12-20 15:08:21</time>
+</span><br>
+
+
+        
+        如果您觉得有帮助，欢迎分享给更多的小伙伴，但请注明出处噢o(*￣▽￣*)ブ
+        
+    </div>
+    <footer>
+        <a href="http://ex2tron.coding.me">
+            <img src="/img/avatar.jpg" alt="Tony Wong">
+            Tony Wong
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Contours/">Contours</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐蚀/">腐蚀</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/&title=《Python+OpenCV教程13：轮廓》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/&title=《Python+OpenCV教程13：轮廓》 — ex2tron's Blog&source=学习如何寻找并绘制轮廓。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程13：轮廓》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/&via=http://ex2tron.coding.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python+OpenCV教程12：腐蚀与膨胀</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢支持，我会更加✊~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Tony Wong &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/&title=《Python+OpenCV教程13：轮廓》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/&title=《Python+OpenCV教程13：轮廓》 — ex2tron's Blog&source=学习如何寻找并绘制轮廓。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python+OpenCV教程13：轮廓》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/&via=http://ex2tron.coding.me" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
