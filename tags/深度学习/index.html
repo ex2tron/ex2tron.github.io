@@ -1,645 +1,513 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+  <meta charset="utf-8">
 
-    
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
 
-    
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?ex2tron"></script>
-<!-- End Baidu Tongji -->
+  <!-- PACE Progress Bar START -->
 
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    <title>Tags: 深度学习 | ex2tron&#39;s Blog | Excelsior!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#355876">
-    
-    
-    <meta name="keywords" content="">
-    <meta property="og:type" content="website">
+  
+  <title>tag: 深度学习 | ex2tron&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta property="og:type" content="website">
 <meta property="og:title" content="ex2tron&#39;s Blog">
 <meta property="og:url" content="http://ex2tron.coding.me/tags/深度学习/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ex2tron&#39;s Blog">
+  
+    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="//img/bookshelf.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
-    
-    <link rel="shortcut icon" href="/bookshelf.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
-    
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
 
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
+<script>
+var themeMenus = {};
 
-    <aside id="menu"  >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Tony Wong</h5>
-          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
-        </hgroup>
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body>
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
       </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/10/13/小白深度学习笔记3：浅层神经网络/" class="archive-article-date">
+		  <time datetime="2017-10-13T07:15:18.000Z" itemprop="datePublished">Oct 13, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/10/13/小白深度学习笔记3：浅层神经网络/">小白深度学习笔记3：浅层神经网络</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/10/09/小白深度学习笔记2：Python实现logistic回归/" class="archive-article-date">
+		  <time datetime="2017-10-09T01:52:11.000Z" itemprop="datePublished">Oct 09, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/10/09/小白深度学习笔记2：Python实现logistic回归/">小白深度学习笔记2：Python实现logistic回归</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/10/02/小白深度学习笔记1：logistic回归/" class="archive-article-date">
+		  <time datetime="2017-10-02T13:06:32.000Z" itemprop="datePublished">Oct 02, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/10/02/小白深度学习笔记1：logistic回归/">小白深度学习笔记1：logistic回归</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+
+</section>
+          <aside id="sidebar">
+  
+    <div class="widget-wrap" style="margin: 20px 0;">
+	<div id="search-form-wrap">
+
+    <form class="search-form">
+        <label style="width: 75%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="Search">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Connect With Us</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+          
+     			  <li><a href="https://github.com/ex2tron/" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://weibo.com/ex2tron/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://twitter.com/ex2tron" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:ex2tron@outlook.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
         
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                Home
-              </a>
-            </li>
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
+              <span>December 20, 2017</span>
+            </div>
+
+          </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/">Python+OpenCV教程12：腐蚀与膨胀</a></h6>
+              <span>December 19, 2017</span>
+            </div>
+
+          </li>
         
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/ex2tron" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/18/Python-OpenCV教程11：边缘检测/">Python+OpenCV教程11：边缘检测</a></h6>
+              <span>December 18, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/">Python+OpenCV教程番外篇8：图像梯度</a></h6>
+              <span>December 18, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/15/Python-OpenCV教程10：平滑图像/">Python+OpenCV教程10：平滑图像</a></h6>
+              <span>December 15, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/">Python+OpenCV教程番外篇7：卷积基础(图片边框)</a></h6>
+              <span>December 14, 2017</span>
+            </div>
+
+          </li>
         
       </ul>
     </div>
   </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
 </aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Tags: 深度学习</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header tags-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Tags: 深度学习</h1>
-        <h5 class="subtitle">
-            
-        </h5>
-    </div>
-
-    
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">All</a>
-        
-
-            <a href="/tags/Code/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">Code</a>
-
-        
-
-            <a href="/tags/Hexo/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
-
-        
-
-            <a href="/tags/Github/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">Github</a>
-
-        
-
-            <a href="/tags/Brand7/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">Brand7</a>
-
-        
-
-            <a href="/tags/品牌漆/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">品牌漆</a>
-
-        
-
-            <a href="/tags/Python/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">Python</a>
-
-        
-
-            <a href="/tags/OpenCV/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">OpenCV</a>
-
-        
-
-            <a href="/tags/图像处理/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">图像处理</a>
-
-        
-
-            <a href="/tags/腐蚀/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">腐蚀</a>
-
-        
-
-            <a href="/tags/轮廓/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">轮廓</a>
-
-        
-
-            <a href="/tags/Contours/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">Contours</a>
-
-        
-
-            <a href="/tags/膨胀/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">膨胀</a>
-
-        
-
-            <a href="/tags/形态学/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">形态学</a>
-
-        
-
-            <a href="/tags/图像混合/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">图像混合</a>
-
-        
-
-            <a href="/tags/边缘/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">边缘</a>
-
-        
-
-            <a href="/tags/Canny/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">Canny</a>
-
-        
-
-            <a href="/tags/HSV/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">HSV</a>
-
-        
-
-            <a href="/tags/阈值/" style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">阈值</a>
-
-        
-
-            <a href="/tags/ROI/" style="-webkit-order:30;order:30" class="tags-list-item waves-effect waves-button waves-light">ROI</a>
-
-        
-
-            <a href="/tags/绘图/" style="-webkit-order:31;order:31" class="tags-list-item waves-effect waves-button waves-light">绘图</a>
-
-        
-
-            <a href="/tags/几何变换/" style="-webkit-order:32;order:32" class="tags-list-item waves-effect waves-button waves-light">几何变换</a>
-
-        
-
-            <a href="/tags/Matplotlib/" style="-webkit-order:33;order:33" class="tags-list-item waves-effect waves-button waves-light">Matplotlib</a>
-
-        
-
-            <a href="/tags/滑动条/" style="-webkit-order:34;order:34" class="tags-list-item waves-effect waves-button waves-light">滑动条</a>
-
-        
-
-            <a href="/tags/梯度/" style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">梯度</a>
-
-        
-
-            <a href="/tags/Sobel/" style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">Sobel</a>
-
-        
-
-            <a href="/tags/亮度/" style="-webkit-order:37;order:37" class="tags-list-item waves-effect waves-button waves-light">亮度</a>
-
-        
-
-            <a href="/tags/对比度/" style="-webkit-order:38;order:38" class="tags-list-item waves-effect waves-button waves-light">对比度</a>
-
-        
-
-            <a href="/tags/卷积/" style="-webkit-order:39;order:39" class="tags-list-item waves-effect waves-button waves-light">卷积</a>
-
-        
-
-            <a href="/tags/边框/" style="-webkit-order:40;order:40" class="tags-list-item waves-effect waves-button waves-light">边框</a>
-
-        
-
-            <a href="/tags/Markdown/" style="-webkit-order:41;order:41" class="tags-list-item waves-effect waves-button waves-light">Markdown</a>
-
-        
-
-            <a href="/tags/VSCode/" style="-webkit-order:42;order:42" class="tags-list-item waves-effect waves-button waves-light">VSCode</a>
-
-        
-
-            <a href="/tags/利器篇/" style="-webkit-order:43;order:43" class="tags-list-item waves-effect waves-button waves-light">利器篇</a>
-
-        
-
-            <a href="/tags/qiniu/" style="-webkit-order:44;order:44" class="tags-list-item waves-effect waves-button waves-light">qiniu</a>
-
-        
-
-            <a href="/tags/七牛云/" style="-webkit-order:45;order:45" class="tags-list-item waves-effect waves-button waves-light">七牛云</a>
-
-        
-
-            <a href="/tags/图床/" style="-webkit-order:46;order:46" class="tags-list-item waves-effect waves-button waves-light">图床</a>
-
-        
-
-            <a href="/tags/Git/" style="-webkit-order:47;order:47" class="tags-list-item waves-effect waves-button waves-light">Git</a>
-
-        
-
-            <a href="/tags/GitKraken/" style="-webkit-order:48;order:48" class="tags-list-item waves-effect waves-button waves-light">GitKraken</a>
-
-        
-
-            <a href="/tags/numpy/" style="-webkit-order:49;order:49" class="tags-list-item waves-effect waves-button waves-light">numpy</a>
-
-        
-
-            <a href="/tags/矩阵/" style="-webkit-order:50;order:50" class="tags-list-item waves-effect waves-button waves-light">矩阵</a>
-
-        
-
-            <a href="/tags/MyCLI/" style="-webkit-order:51;order:51" class="tags-list-item waves-effect waves-button waves-light">MyCLI</a>
-
-        
-
-            <a href="/tags/MySQL/" style="-webkit-order:52;order:52" class="tags-list-item waves-effect waves-button waves-light">MySQL</a>
-
-        
-
-            <a href="/tags/Lens/" style="-webkit-order:53;order:53" class="tags-list-item waves-effect waves-button waves-light">Lens</a>
-
-        
-
-            <a href="/tags/片单/" style="-webkit-order:54;order:54" class="tags-list-item waves-effect waves-button waves-light">片单</a>
-
-        
-
-            <a href="/tags/漫威/" style="-webkit-order:55;order:55" class="tags-list-item waves-effect waves-button waves-light">漫威</a>
-
-        
-
-            <a href="/tags/Marvel/" style="-webkit-order:56;order:56" class="tags-list-item waves-effect waves-button waves-light">Marvel</a>
-
-        
-
-            <a href="/tags/复仇者联盟/" style="-webkit-order:57;order:57" class="tags-list-item waves-effect waves-button waves-light">复仇者联盟</a>
-
-        
-
-            <a href="/tags/诺兰/" style="-webkit-order:58;order:58" class="tags-list-item waves-effect waves-button waves-light">诺兰</a>
-
-        
-
-            <a href="/tags/蝙蝠侠/" style="-webkit-order:59;order:59" class="tags-list-item waves-effect waves-button waves-light">蝙蝠侠</a>
-
-        
-
-            <a href="/tags/敦刻尔克/" style="-webkit-order:60;order:60" class="tags-list-item waves-effect waves-button waves-light">敦刻尔克</a>
-
-        
-
-            <a href="/tags/盗梦空间/" style="-webkit-order:61;order:61" class="tags-list-item waves-effect waves-button waves-light">盗梦空间</a>
-
-        
-
-            <a href="/tags/星际穿越/" style="-webkit-order:62;order:62" class="tags-list-item waves-effect waves-button waves-light">星际穿越</a>
-
-        
-
-            <a href="/tags/007/" style="-webkit-order:63;order:63" class="tags-list-item waves-effect waves-button waves-light">007</a>
-
-        
-
-            <a href="/tags/邦德/" style="-webkit-order:64;order:64" class="tags-list-item waves-effect waves-button waves-light">邦德</a>
-
-        
-
-            <a href="/tags/三角定位/" style="-webkit-order:65;order:65" class="tags-list-item waves-effect waves-button waves-light">三角定位</a>
-
-        
-
-            <a href="/tags/算法贴/" style="-webkit-order:66;order:66" class="tags-list-item waves-effect waves-button waves-light">算法贴</a>
-
-        
-
-            <a href="/tags/神经网络/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">神经网络</a>
-
-        
-
-            <a href="/tags/深度学习/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">深度学习</a>
-
-        
-
-            <a href="/tags/logistic回归/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">logistic回归</a>
-
-        
-
-            <a href="/tags/构建法/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">构建法</a>
-
         
-
-            <a href="/tags/变量/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">变量</a>
-
-        
-
-            <a href="/tags/作用域/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">作用域</a>
-
-        
-
-            <a href="/tags/摄影/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">摄影</a>
-
-        
-
-            <a href="/tags/布列松/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">布列松</a>
-
-        
-
-            <a href="/tags/软件/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">软件</a>
-
-        
-
-            <a href="/tags/影视/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">影视</a>
-
-        
-
-            <a href="/tags/计量/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">计量</a>
-
-        
-
-            <a href="/tags/时间之旅/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">时间之旅</a>
-
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" onclick="BLOG.tabBar(this)" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
-
-
-</header>
+      </div>
+      <footer id="footer" class="site-footer">
+  
 
-<div class="container body-wrap fade">
-    
-            <div class="waterfall">
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 ex2tron&#39;s Blog All Rights Reserved.
           
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-10-13 15:15:18" datetime="2017-10-13T07:15:18.000Z"  itemprop="datePublished">2017-10-13</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/小白深度学习笔记3：浅层神经网络/">小白深度学习笔记3：浅层神经网络</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-10-09 09:52:11" datetime="2017-10-09T01:52:11.000Z"  itemprop="datePublished">2017-10-09</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/09/小白深度学习笔记2：Python实现logistic回归/">小白深度学习笔记2：Python实现logistic回归</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic回归/">logistic回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-10-02 21:06:32" datetime="2017-10-02T13:06:32.000Z"  itemprop="datePublished">2017-10-02</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/02/小白深度学习笔记1：logistic回归/">小白深度学习笔记1：logistic回归</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic回归/">logistic回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
-        
-            </div>
-        
-    
-</div>
-
-
-        <footer class="footer">
-    <div class="top">
-        
-
-        <p>
-            
-                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Tony Wong &copy; 2017</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
+<!-- min height -->
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/tags/深度学习/&title=ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/tags/深度学习/&title=ex2tron's Blog&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/tags/深度学习/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=ex2tron's Blog&url=http://ex2tron.coding.me/tags/深度学习/&via=http://ex2tron.coding.me" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/tags/深度学习/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/tags/深度学习/" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+    var contentdiv = document.getElementById("content");
 
-
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
 
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
     tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
     }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
+  });
 </script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 
@@ -648,5 +516,9 @@ MathJax.Hub.Queue(function() {
 
 
 
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

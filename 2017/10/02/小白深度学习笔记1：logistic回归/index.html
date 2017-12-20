@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+  <meta charset="utf-8">
 
-    
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
 
-    
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?ex2tron"></script>
-<!-- End Baidu Tongji -->
+  <!-- PACE Progress Bar START -->
 
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    <title>小白深度学习笔记1：logistic回归 | ex2tron&#39;s Blog | Excelsior!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#355876">
-    
-    
-    <meta name="keywords" content="Code,神经网络,深度学习,logistic回归">
-    <meta name="description" content="开启神经网络与深度学习之坑！">
+  
+  <title>小白深度学习笔记1：logistic回归 | ex2tron&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Code神经网络深度学习logistic回归" />
+  
+  
+  
+  
+  <meta name="description" content="开启神经网络与深度学习之坑！">
 <meta name="keywords" content="Code,神经网络,深度学习,logistic回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小白深度学习笔记1：logistic回归">
@@ -41,137 +37,157 @@
 <meta name="twitter:title" content="小白深度学习笔记1：logistic回归">
 <meta name="twitter:description" content="开启神经网络与深度学习之坑！">
 <meta name="twitter:image" content="http://pic.ex2tron.top/rgb_convert_input_x.png">
+  
+    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="//img/bookshelf.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
-    
-    <link rel="shortcut icon" href="/bookshelf.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
-    
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
 
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
+<script>
+var themeMenus = {};
 
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Tony Wong</h5>
-          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
-        </hgroup>
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
       </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                Home
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/ex2tron" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-      </ul>
-    </div>
   </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">小白深度学习笔记1：logistic回归</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">小白深度学习笔记1：logistic回归</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2017-10-02T13:06:32.000Z" itemprop="datePublished" class="page-time">
-  2017-10-02
-</time>
-
-
-            
-        </h5>
-    </div>
-
-    
-
-
 </header>
 
 
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二类分类"><span class="post-toc-number">1.</span> <span class="post-toc-text">二类分类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#logistic回归"><span class="post-toc-number">2.</span> <span class="post-toc-text">logistic回归</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#损失函数"><span class="post-toc-number">3.</span> <span class="post-toc-text">损失函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#成本函数"><span class="post-toc-number">4.</span> <span class="post-toc-text">成本函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#梯度下降法"><span class="post-toc-number">5.</span> <span class="post-toc-text">梯度下降法</span></a></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-小白深度学习笔记1：logistic回归"
-  class="post-article article-type-post fade" itemprop="blogPost">
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-    <div class="post-card">
-        <h1 class="post-card-title">小白深度学习笔记1：logistic回归</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2017-10-02 21:06:32" datetime="2017-10-02T13:06:32.000Z"  itemprop="datePublished">2017-10-02</time>
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
 
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
             
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-小白深度学习笔记1：logistic回归" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      小白深度学习笔记1：logistic回归
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/10/02/小白深度学习笔记1：logistic回归/" class="article-date">
+	  <time datetime="2017-10-02T13:06:32.000Z" itemprop="datePublished">October 2, 2017</time>
+	</a>
 
-            
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>开启神经网络与深度学习之坑！<a id="more"></a>本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。</p>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开启神经网络与深度学习之坑！<a id="more"></a>本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。</p>
 <blockquote>
 <p><em>When life ends up breathtakingly fucked, you can generally trace it back to one big, bad decision.</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《DeadPool》</a><br><em>当你的生活变成一坨屎的时候，通常都是因为你当时做的傻逼决定。</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《死侍》</a></p>
 </blockquote>
@@ -180,25 +196,13 @@
 <p>本文是我在观看吴恩达老师的<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="external">《神经网络和深度学习》</a>视频课程时，相关的笔记整理，大佬勿喷！</p>
 <hr>
 <h2 id="二类分类"><a href="#二类分类" class="headerlink" title="二类分类"></a>二类分类</h2><p>比如说分析一张图片中有猫还是没猫，这就是一个二类分类（Binary Classification）问题。这里，我们用输出y=1表示有猫，y=0表示没有猫。输入是一张图片，做过图像处理的同学应该知道图片是以RGB三个矩阵存储的，把RGB三分量的值提取出来，作为X，如下图：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/rgb_convert_input_x.png" alt="rgb_convert_input_x" title="">
-                </div>
-                <div class="image-caption">rgb_convert_input_x</div>
-            </figure>
+<p><img src="http://pic.ex2tron.top/rgb_convert_input_x.png" alt="rgb_convert_input_x"></p>
 <p>那么当有m个样本时，X就是一个(nx,m)，即nx行、m列的矩阵，而输出Y的形状（形状就是指矩阵的行数和列数）是(1,m)。</p>
 <h2 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h2><p>logistic回归（<a href="https://baike.baidu.com/item/Logistic%E6%A8%A1%E5%9E%8B?fromtitle=Logistic+regression&amp;fromid=18080373" target="_blank" rel="external">Logistic Regression</a>）就是一个用于二类分类的学习算法：假定给出输入的特征向量\(x_1\)（如一张图片），我们希望程序给出一个预测值\(\hat{y}\)，它指出这张图片中有猫还是没猫的概率，即：<br>$$\hat{y}=P(y=1\ or\ 0\mid x)$$</p>
 <p>既然\(\hat{y}\)是一个概率，那么\(\hat{y}\in[0,1]\)。如果按照线性回归，输出值应该是：\(\hat{y}=w^Tx+b\)，w形状是(nx,1)，b形状是(1,1)，但是这个值可能远比1大或者出现负数，所以，需要用一个sigmoid函数做限定，最终输出为：<br>$$\hat{y}=\sigma(w^Tx+b)$$</p>
 <p>观察sigmoid函数\(\sigma(z)=\frac{1}{1+e^{-z}}\)的曲线图：</p>
 <p>\(z\rightarrow\infty,\sigma(z)\rightarrow1;z\rightarrow-\infty,\sigma(z)\rightarrow0;z=0,\sigma(z)=0.5\)</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/sigmoid_function_graph.png" alt="sigmoid_function_graph" title="">
-                </div>
-                <div class="image-caption">sigmoid_function_graph</div>
-            </figure>
+<p><img src="http://pic.ex2tron.top/sigmoid_function_graph.png" alt="sigmoid_function_graph"></p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>既然我们的目标就是训练得到logistic回归函数中的w和b参数，那么怎么衡量算法的运行情况呢？我们可以用损失函数（Loss Function）L表示预测值与真值的接近程度。最简单的损失函数可以定义成\(L(\hat{y},y)=\hat{y}-y\)。但是不会这样用，因为要考虑到优化算法的运算速度和效率，排除多个局部最优解。一般，损失函数定义为：<br>$$L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]$$</p>
 <p>显然，损失函数越小，结果越好。那么这个损失函数如何起作用的呢？</p>
 <p>假设真值y=1，那么上式就会变成：\(L(\hat{y},1)=-\log\hat{y}\)，要让损失函数尽量小，那么\(\log\hat{y}\)尽量大，也就是说\(\hat{y}\)尽量大，由于\(\hat{y}\in[0,1]\)，所以，这个损失函数会使预测值\(\hat{y}\)尽量接近1，即真值。同样，大家可以推一下真值y=0的情况。</p>
@@ -211,296 +215,189 @@
 <li>训练目标：找到使成本函数J尽可能小的参数w和b</li>
 </ul>
 <p>那么w和b参数是怎么调整的呢？为了说明梯度下降法（Gradient Descent），吴恩达老师假定w和b都是实数，那么J(w,b)的函数图形类似下图：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://pic.ex2tron.top/cost_function_graph.png" alt="cost_function_graph" title="">
-                </div>
-                <div class="image-caption">cost_function_graph</div>
-            </figure>
+<p><img src="http://pic.ex2tron.top/cost_function_graph.png" alt="cost_function_graph"></p>
 <p>一般，先随机初始化w和b，然后朝着最快下降的方向不断按下面的公式调整w和b参数，最后得到最优解（:=表示更新w的值）：</p>
 <p>$$w:=w-\alpha\frac{dJ(w,b)}{dw}$$<br>$$b:=b-\alpha\frac{dJ(w,b)}{db}$$</p>
 <p>\(\alpha\)成为学习率（Learning Rate），表示梯度下降法的步长。</p>
 <p>好了，这就是相关的logistic回归的简单理论笔记。</p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2017-10-06T14:39:26.157Z" itemprop="dateUpdated">2017-10-06 22:39:26</time>
-</span><br>
-
-
-        
-        如果您觉得有帮助，欢迎分享给更多的小伙伴，但请注明出处噢o(*￣▽￣*)ブ
-        
+      
     </div>
-    <footer>
-        <a href="http://ex2tron.coding.me">
-            <img src="/img/avatar.jpg" alt="Tony Wong">
-            Tony Wong
-        </a>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic回归/">logistic回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/img/wechat.jpg',
+  alipayImage: '/img/alipay.jpg'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
     </footer>
-</blockquote>
-
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/05/【利器篇】GitKraken：顶级酷炫Git图像化工具/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic回归/">logistic回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/&title=《小白深度学习笔记1：logistic回归》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/&title=《小白深度学习笔记1：logistic回归》 — ex2tron's Blog&source=开启神经网络与深度学习之坑！" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《小白深度学习笔记1：logistic回归》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/&via=http://ex2tron.coding.me" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
+          【利器篇】GitKraken：顶级酷炫Git图像化客户端
+        
+      </div>
     </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/10/05/【利器篇】GitKraken：顶级酷炫Git图像化工具/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">【利器篇】GitKraken：顶级酷炫Git图像化客户端</h4>
-      </a>
-    </div>
   
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/09/29/【算法贴】三点定位算法/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">【算法贴】三点定位算法</h4>
-      </a>
-    </div>
+    <a href="/2017/09/29/【算法贴】三点定位算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【算法贴】三点定位算法</div>
+    </a>
   
 </nav>
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢支持，我会更加✊~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二类分类"><span class="nav-number">1.</span> <span class="nav-text">二类分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic回归"><span class="nav-number">2.</span> <span class="nav-text">logistic回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">3.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成本函数"><span class="nav-number">4.</span> <span class="nav-text">成本函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降法"><span class="nav-number">5.</span> <span class="nav-text">梯度下降法</span></a></li></ol>
+    
     </div>
-</div>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
+  </aside>
+</section>
         
+      </div>
+      <footer id="footer" class="site-footer">
+  
 
-        <p>
-            
-                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Tony Wong &copy; 2017</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 ex2tron&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
+<!-- min height -->
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/&title=《小白深度学习笔记1：logistic回归》 — ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/&title=《小白深度学习笔记1：logistic回归》 — ex2tron's Blog&source=开启神经网络与深度学习之坑！" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《小白深度学习笔记1：logistic回归》 — ex2tron's Blog&url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/&via=http://ex2tron.coding.me" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+    var contentdiv = document.getElementById("content");
 
-
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
 
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
     tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
     }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
+  });
 </script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 
@@ -509,5 +406,9 @@ MathJax.Hub.Queue(function() {
 
 
 
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

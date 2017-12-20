@@ -1,727 +1,1157 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+  <meta charset="utf-8">
 
-    
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
 
-    
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?ex2tron"></script>
-<!-- End Baidu Tongji -->
+  <!-- PACE Progress Bar START -->
 
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    <title>ex2tron&#39;s Blog | Excelsior!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#355876">
-    
-    
-    <meta name="keywords" content="">
-    <meta property="og:type" content="website">
+  
+  <title>ex2tron&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta property="og:type" content="website">
 <meta property="og:title" content="ex2tron&#39;s Blog">
 <meta property="og:url" content="http://ex2tron.coding.me/page/3/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ex2tron&#39;s Blog">
+  
+    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="//img/bookshelf.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-        <link rel="alternate" type="application/atom+xml" title="ex2tron&#39;s Blog" href="/atom.xaml">
-    
-    <link rel="shortcut icon" href="/bookshelf.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-    <!-- custom head -->
-    
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
 
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
+<script>
+var themeMenus = {};
 
-    <aside id="menu"  >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Tony Wong</h5>
-          <a href="mailto:ex2tron@outlook.com" title="ex2tron@outlook.com" class="mail">ex2tron@outlook.com</a>
-        </hgroup>
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body>
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
       </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+    <article id="post-Python-OpenCV教程2：基本元素-图片"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/">Python+OpenCV教程2：基本元素-图片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/" class="article-date">
+	  <time datetime="2017-12-06T07:52:06.000Z" itemprop="datePublished">December 6, 2017</time>
+	</a>
+
+      
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
+    <div class="article-entry" itemprop="articleBody">
+      
         
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                Home
-              </a>
-            </li>
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习如何加载图片，显示并保存图片。图片等可到源码处下载。
+
+目标
+加载图片，显示图片，保存图片
+OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()
+
+教程加载图片使用cv2.imread()来读入一张图片：
+1234import cv2# 灰度图加载img = cv2.imread('lena.jpg', 0)
+
+参数1是图片的文件名：
+
+如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’
+否则，需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’
+
+
+参数2是图片的读入方式，省略即采用默认值：
+
+cv2.IMREAD_COLOR：忽略透明通道的彩色图，默认值(1)
+cv2.IMREAD_GRAY...
+          
+
         
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
+          <p class="article-more-link">
+            <a href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python-OpenCV教程番外篇1：代码性能优化"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/ex2tron" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/">Python+OpenCV教程番外篇1：代码性能优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" class="article-date">
+	  <time datetime="2017-12-06T07:51:52.000Z" itemprop="datePublished">December 6, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习如何评估和优化代码性能。（本节还没更新完…………）
+完成一项任务很重要，高效地完成更重要。图像处理是对图像的操作，数据量巨大，如果代码写的不好，性能差距将很大，所以这节我们来了解下如何测量和提升代码性能。
+测量代码运行时间123456import cv2start = cv2.getTickCount()# 这里写要测量的代码...end = cv2.getTickCount()print((end - start) / cv2.getTickFrequency())
+这段代码就是用来测量程序运行时间的（单位：s），其中cv2.getTickCount()函数得到电脑启动以来的时钟周期数，cv2.getTickFrequency()返回你电脑的主频，前后相减再除以主频就是你代码的运...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python-OpenCV教程1：简介"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/06/Python-OpenCV教程1：简介/">Python+OpenCV教程1：简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/06/Python-OpenCV教程1：简介/" class="article-date">
+	  <time datetime="2017-12-06T07:50:59.000Z" itemprop="datePublished">December 6, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Python+OpenCV搞图像处理与C/C++一样快！
+本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！尽管如此，你应该具有Python和图像处理的简单基础。我相信绝大多数人用Python进行图像处理的疑问是：它快吗？( ╯□╰ )，下面我来为你解答这个问题：
+
+
+p.s.你英文Ok的话，推荐你看官方教程。我写的大部分也是照搬，但官方是按照OpenCV中的组件顺序讲的，大部分功能并不常用，所以我按照使用度和难易程度重写翻译了一遍。
+
+
+Python照样快！众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要特性：它是一门胶水语言！Python可以很容易地扩展C/C++。OpenCV-Python就是用Python包装了C++的实...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/06/Python-OpenCV教程1：简介/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【片单】漫威宇宙电影合集"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/05/【片单】漫威宇宙电影合集/">【片单】漫威宇宙电影合集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/05/【片单】漫威宇宙电影合集/" class="article-date">
+	  <time datetime="2017-12-05T14:44:35.000Z" itemprop="datePublished">December 5, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！
+
+Excelsior!  ——斯坦·李
+
+漫威电影宇宙MCU的成绩有目共睹，在十周年《复仇者联盟3》上映之前，来补一波吧！
+
+大部分片源来自人人影视字幕组，点击片名即可下载。
+
+MCU观影指南：
+第一阶段
+2008《钢铁侠1》、
+
+2008《无敌浩克》
+
+2010《钢铁侠2》
+
+2011《雷神1》
+
+2011《美国队长1：复仇者先锋》
+
+2012《复仇者联盟1》
+
+
+第二阶段
+2013《钢铁侠3》
+
+2013《雷神2：黑暗世界》
+
+2014《美国队长2：冬日战士》
+
+2014《银河护卫队1》
+
+2015《复仇者联盟2：奥创纪元》
+
+2015《蚁人》
+
+
+第三阶段
+2016《美国队长3：内战》
+
+2016《奇异博士》...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/05/【片单】漫威宇宙电影合集/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Marvel/">Marvel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复仇者联盟/">复仇者联盟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漫威/">漫威</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/片单/">片单</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【片单】007电影合集"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/05/【片单】007电影合集/">【片单】007电影合集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/05/【片单】007电影合集/" class="article-date">
+	  <time datetime="2017-12-05T13:53:37.000Z" itemprop="datePublished">December 5, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            作为风靡全球的一系列谍战电影，007怎能不看呢？007电影合集下载！
+
+“My name is Bond, James Bond.” ——詹姆斯·邦德
+
+目前为止，007系列电影已经有24部辣，六任邦德：
+
+
+大部分片源来自人人影视字幕组，点击片名即可下载。
+
+肖恩·康纳利
+1. 诺博士 (1962)
+
+2. 来自俄罗斯的爱情 (1963)
+
+3. 金手指 (1964)
+
+4. 霹雳弹 (1965)
+
+5. 雷霆谷 (1967)
+
+7. 金刚钻 (1971)
+
+
+乔治·拉赞贝
+6. 女王密使 (1969)
+
+罗杰·摩尔
+8. 生死关头 (1973)
+
+9. 金枪人 (1974)
+
+10. 海底城 (1977)
+
+11. 太空城 (1979)
+
+12. 最高机密 (1981)
+
+13. ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/05/【片单】007电影合集/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/007/">007</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/片单/">片单</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/邦德/">邦德</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Brand7-2-0更名品牌漆正式上架咯！"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/">Brand7 2.0更名&#34;品牌漆&#34;正式上架咯！</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/" class="article-date">
+	  <time datetime="2017-11-26T11:04:32.000Z" itemprop="datePublished">November 26, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            隔了一年更新，良心都有点痛了( ╯□╰ )
+
+示威的人做的不对的话，引起示威的人呢？  ——《辩护人》
+
+当初Brand7写完的时候，一直想写一个关于电影的APP，甚至做出了雏形：MovieBackdrops，可惜，时间不多，事情却很多。前段时间闭关，摸着自己的良心，终于把Brand7更新了一把，来看看更新内容吧：
+品牌漆（Brand7）是一款Win10 UWP猜品牌的小游戏，里面涵盖了汽车、娱乐、时尚、生活、餐饮、科技、旅游七个类别的550个品牌。Ver2.0.1更新日志如下：
+
+更名“品牌漆”
+
+全新Logo
+
+全新启动界面
+
+新增50个品牌，现共550个品牌
+
+全面中文版（英文被很多人吐槽看不懂( ╯□╰ )）
+
+界面UI调整
+
+
+
+
+
+
+可以在Win10应用商店中搜索“品牌漆”...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Brand7/">Brand7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/品牌漆/">品牌漆</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-计量史：时间之旅"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/11/08/计量史：时间之旅/">计量史：时间之旅</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/11/08/计量史：时间之旅/" class="article-date">
+	  <time datetime="2017-11-08T13:35:51.000Z" itemprop="datePublished">November 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            这篇文章也是我一年前研一《计量史》课上的小论文，感觉不错，也放在博客上，哈哈。
+
+Whoever find a friend, find a treasure.  ——《Cars2》一个朋友，一个宝。——《汽车总动员2》
+
+宇宙大爆炸的那一刻就注定了这个世界充满着平凡与不平凡，宇宙的变迁、星云的诞生，看似杂乱无章但又井然有序，一切都注入了时间的长河中。而随着一个奇迹：生命的诞生，人类意识、情感的快速升华，人类开始认识到了“时间”，并随着时间的流逝，逐渐认识这个世界。通过自然界的周期现象——日出日落，季节的轮换，潮汐的涨落，来有意识地进行活动。于是，当我们尝试去考量时间的时候，就促使了时间计量产生。作为《时间之谜》的阅读报告，我摘录了一部分原书材料来表述时间计量的科学演变，最后结合自己的...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/11/08/计量史：时间之旅/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间之旅/">时间之旅</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计量/">计量</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-摄影之魅：瞬间是一面镜子"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/11/08/摄影之魅：瞬间是一面镜子/">摄影之魅：瞬间是一面&#34;镜子&#34;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/11/08/摄影之魅：瞬间是一面镜子/" class="article-date">
+	  <time datetime="2017-11-08T12:56:32.000Z" itemprop="datePublished">November 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            这篇文章其实是我一年前研一《摄影艺术》课上的小论文，感觉写的还行，放在博客上。
+
+Not everyone can become a great artist, but a great artist can come from anywhere.  ——《Ratatouille》并非是谁都能成为伟大的艺术家，不过伟大的艺术家却可能来自任何角落。——《料理鼠王》
+
+19世纪30年代末期，达盖尔发明银版照相法，尼埃普斯拍摄了世界上第一张照片，影像开始可以被记录下来。卢米埃尔兄弟在《火车进站》中开启了24帧的艺术之旅——“电影”。如今，影像无处不在，传递着无穷无尽、千变万化的讯息。这一切都源于定格影像的瞬间——摄影术的独特魅力。
+
+I. 艺术源于生活、艺术高于生活在选修“摄影艺术”这门课程之...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/11/08/摄影之魅：瞬间是一面镜子/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布列松/">布列松</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摄影/">摄影</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-小白深度学习笔记3：浅层神经网络"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/10/13/小白深度学习笔记3：浅层神经网络/">小白深度学习笔记3：浅层神经网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/10/13/小白深度学习笔记3：浅层神经网络/" class="article-date">
+	  <time datetime="2017-10-13T07:15:18.000Z" itemprop="datePublished">October 13, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？
+
+
+
+因为国民不富裕就不能受法律保护，就不能享受民主，这种说法我是无法接受的。  ——《辩护人》
+
+本文是我在观看吴恩达老师的《神经网络和深度学习》视频课程时，相关的笔记整理，大佬勿喷！
+
+神经网络前面学习了logistic回归，可以把logistic看作只有1层1个神经元的神经网络，如下图：
+
+这个神经元做两个操作：
+
+计算\(z=w^Tx+b\)
+计算\(\hat{y}=a=\sigma(z)\)
+
+而一般的神经网路包括输入层、隐藏层和输出层。如下图所示，是一个两层神经网络。层数从隐藏层(Hidden Layer)开始算，也就是这个图中，第1层是隐藏层，第2层是输出层(Output Lay...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/10/13/小白深度学习笔记3：浅层神经网络/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-numpy中几种矩阵的乘法"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/10/11/numpy中几种矩阵的乘法/">numpy中几种矩阵的乘法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/10/11/numpy中几种矩阵的乘法/" class="article-date">
+	  <time datetime="2017-10-11T02:26:09.000Z" itemprop="datePublished">October 11, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。
+
+With great power comes great responsibility  ——《Spider-Man》能力越大，责任越大。——《蜘蛛侠》
+
+
+首先，这里规定一下，我们用numpy定义矩阵时全部采用标准的形式，举例如下：
+12345678import numpy as np# 不推荐的方式a = np.array([1,2,3])print(a.shape)# 推荐的方式b = np.array([[1,2,3]])print(b.shape)
+上面代码a的形状是(3,)，b的形状(1,3)，即1行3列的一个矩阵。
+np.dotnp.dot(A,B)就是实现同线性代数里面的矩阵乘...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/10/11/numpy中几种矩阵的乘法/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵/">矩阵</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next</a>
+  </nav>
+
+</section>
+          <aside id="sidebar">
+  
+    <div class="widget-wrap" style="margin: 20px 0;">
+	<div id="search-form-wrap">
+
+    <form class="search-form">
+        <label style="width: 75%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="Search">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Connect With Us</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+          
+     			  <li><a href="https://github.com/ex2tron/" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://weibo.com/ex2tron/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://twitter.com/ex2tron" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:ex2tron@outlook.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
+              <span>December 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/">Python+OpenCV教程12：腐蚀与膨胀</a></h6>
+              <span>December 19, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/18/Python-OpenCV教程11：边缘检测/">Python+OpenCV教程11：边缘检测</a></h6>
+              <span>December 18, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/">Python+OpenCV教程番外篇8：图像梯度</a></h6>
+              <span>December 18, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/15/Python-OpenCV教程10：平滑图像/">Python+OpenCV教程10：平滑图像</a></h6>
+              <span>December 15, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/">Python+OpenCV教程番外篇7：卷积基础(图片边框)</a></h6>
+              <span>December 14, 2017</span>
+            </div>
+
+          </li>
         
       </ul>
     </div>
   </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
 </aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">ex2tron&#39;s Blog</div>
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header index-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">ex2tron&#39;s Blog</h1>
-        <h5 class="subtitle">
-            
-                Excelsior!
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-<div class="container body-wrap">
-
-    <ul class="post-list">
-    
-        <li class="post-list-item fade">
-            <article id="post-Python-OpenCV教程2：基本元素-图片"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-12-06 15:52:06" datetime="2017-12-06T07:52:06.000Z"  itemprop="datePublished">2017-12-06</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/">Python+OpenCV教程2：基本元素-图片</a>
-    </h3>
+      </div>
+      <footer id="footer" class="site-footer">
   
 
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        学习如何加载图片，显示并保存图片。
-    
-
-        <a href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Python-OpenCV教程番外篇1：代码性能优化"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-12-06 15:51:52" datetime="2017-12-06T07:51:52.000Z"  itemprop="datePublished">2017-12-06</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/">Python+OpenCV教程番外篇1：代码性能优化</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        学习如何评估和优化代码性能。（本节还没更新完…………）
-    
-
-        <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Python-OpenCV教程1：简介"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-12-06 15:50:59" datetime="2017-12-06T07:50:59.000Z"  itemprop="datePublished">2017-12-06</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/06/Python-OpenCV教程1：简介/">Python+OpenCV教程1：简介</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Python+OpenCV搞图像处理与C/C++一样快！
-    
-
-        <a href="/2017/12/06/Python-OpenCV教程1：简介/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-【片单】漫威宇宙电影合集"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-12-05 22:44:35" datetime="2017-12-05T14:44:35.000Z"  itemprop="datePublished">2017-12-05</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/05/【片单】漫威宇宙电影合集/">【片单】漫威宇宙电影合集</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！
-    
-
-        <a href="/2017/12/05/【片单】漫威宇宙电影合集/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Marvel/">Marvel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复仇者联盟/">复仇者联盟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漫威/">漫威</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/片单/">片单</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-【片单】007电影合集"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-12-05 21:53:37" datetime="2017-12-05T13:53:37.000Z"  itemprop="datePublished">2017-12-05</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/05/【片单】007电影合集/">【片单】007电影合集</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        作为风靡全球的一系列谍战电影，007怎能不看呢？007电影合集下载！
-    
-
-        <a href="/2017/12/05/【片单】007电影合集/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/007/">007</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/片单/">片单</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/邦德/">邦德</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Brand7-2-0更名品牌漆正式上架咯！"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-26 19:04:32" datetime="2017-11-26T11:04:32.000Z"  itemprop="datePublished">2017-11-26</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/">Brand7 2.0更名&#34;品牌漆&#34;正式上架咯！</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        隔了一年更新，良心都有点痛了( ╯□╰ )
-    
-
-        <a href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Brand7/">Brand7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/品牌漆/">品牌漆</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-计量史：时间之旅"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-08 21:35:51" datetime="2017-11-08T13:35:51.000Z"  itemprop="datePublished">2017-11-08</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/08/计量史：时间之旅/">计量史：时间之旅</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        这篇文章也是我一年前研一《计量史》课上的小论文，感觉不错，也放在博客上，哈哈。
-    
-
-        <a href="/2017/11/08/计量史：时间之旅/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间之旅/">时间之旅</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计量/">计量</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-摄影之魅：瞬间是一面镜子"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-11-08 20:56:32" datetime="2017-11-08T12:56:32.000Z"  itemprop="datePublished">2017-11-08</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/08/摄影之魅：瞬间是一面镜子/">摄影之魅：瞬间是一面&#34;镜子&#34;</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        这篇文章其实是我一年前研一《摄影艺术》课上的小论文，感觉写的还行，放在博客上。
-    
-
-        <a href="/2017/11/08/摄影之魅：瞬间是一面镜子/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lens/">Lens</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布列松/">布列松</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摄影/">摄影</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-小白深度学习笔记3：浅层神经网络"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-10-13 15:15:18" datetime="2017-10-13T07:15:18.000Z"  itemprop="datePublished">2017-10-13</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/小白深度学习笔记3：浅层神经网络/">小白深度学习笔记3：浅层神经网络</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？
-    
-
-        <a href="/2017/10/13/小白深度学习笔记3：浅层神经网络/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-numpy中几种矩阵的乘法"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-10-11 10:26:09" datetime="2017-10-11T02:26:09.000Z"  itemprop="datePublished">2017-10-11</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/11/numpy中几种矩阵的乘法/">numpy中几种矩阵的乘法</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。
-    
-
-        <a href="/2017/10/11/numpy中几种矩阵的乘法/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵/">矩阵</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-    </ul>
-
-    
-<nav id="page-nav">
-    <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
-    </div>
-</nav>
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-
-        <p>
-            
-                <span><a href="/atom.xaml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Tony Wong &copy; 2017</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 ex2tron&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
+<!-- min height -->
 
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ex2tron.coding.me/page/3/&title=ex2tron's Blog&pic=http://ex2tron.coding.me/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ex2tron.coding.me/page/3/&title=ex2tron's Blog&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ex2tron.coding.me/page/3/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=ex2tron's Blog&url=http://ex2tron.coding.me/page/3/&via=http://ex2tron.coding.me" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ex2tron.coding.me/page/3/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://ex2tron.coding.me/page/3/" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+    var contentdiv = document.getElementById("content");
 
-
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
 
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
     tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
     }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
+  });
 </script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 
@@ -730,5 +1160,9 @@ MathJax.Hub.Queue(function() {
 
 
 
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
