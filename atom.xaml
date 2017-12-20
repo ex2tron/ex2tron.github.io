@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2017-12-20T09:58:54.836Z</updated>
+  <updated>2017-12-20T15:00:34.686Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -16,11 +16,89 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python+OpenCV教程14：轮廓特征</title>
+    <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/"/>
+    <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程14：轮廓特征/</id>
+    <published>2017-12-20T10:46:19.000Z</published>
+    <updated>2017-12-20T15:00:34.686Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习计算轮廓特征，如面积、周长、最小外接矩形等。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>计算物体的周长、面积、质心、最小外接矩形等</li>
+<li>OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">ret, thresh = cv2.threshold(</div><div class="line">    img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 以数字3的轮廓为例</span></div><div class="line">cnt = contours[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p>另外为了便于绘制，我们创建出两幅彩色图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img_color1 = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">img_color2 = np.copy(img_color1)</div><div class="line">cv2.drawContours(img_color1, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<h3 id="轮廓面积"><a href="#轮廓面积" class="headerlink" title="轮廓面积"></a>轮廓面积</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">area = cv2.contourArea(cnt)  <span class="comment"># 4386.5</span></div></pre></td></tr></table></figure>
+<p>注意轮廓特征计算的结果并不等同于像素点的个数，而是根据几何方法算出来的，所以有小数。</p>
+<blockquote>
+<p>如果统计像素点个数，尽量避免循环，可以使用<code>cv2.countNonZero()</code>，更加高效。</p>
+</blockquote>
+<h3 id="轮廓周长"><a href="#轮廓周长" class="headerlink" title="轮廓周长"></a>轮廓周长</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perimeter = cv2.arcLength(cnt, <span class="keyword">True</span>)  <span class="comment"># 585.7</span></div></pre></td></tr></table></figure>
+<p>参数2表示轮廓是否封闭，显然我们的轮廓是封闭的，所以是True</p>
+<h3 id="图像矩"><a href="#图像矩" class="headerlink" title="图像矩"></a>图像矩</h3><p>矩可以理解为图像的各类几何特征，详情请参考：[<a href="http://en.wikipedia.org/wiki/Image_moment" target="_blank" rel="external">Image Moments</a>]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">M = cv2.moments(cnt)</div></pre></td></tr></table></figure>
+<p>M中包含了很多轮廓的特征信息，比如<code>M[&#39;m00&#39;]</code>表示轮廓面积，与<code>cv2.contourArea()</code>计算结果是一样的；质心可以这样算：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cx, cy = M[<span class="string">'m10'</span>] / M[<span class="string">'m00'</span>], M[<span class="string">'m01'</span>] / M[<span class="string">'m00'</span>]  <span class="comment"># (205, 281)</span></div></pre></td></tr></table></figure>
+<h3 id="外接矩形"><a href="#外接矩形" class="headerlink" title="外接矩形"></a>外接矩形</h3><p>形状的外接矩形有两种，如下图：</p>
+<p><img src="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" alt=""></p>
+<p>绿色的叫外接矩形，表示不考虑旋转且能包含整个轮廓的矩形。蓝色的叫最小外接矩，考虑了旋转：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x, y, w, h = cv2.boundingRect(cnt)  <span class="comment"># 外接矩形</span></div><div class="line">cv2.rectangle(img_color1, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rect = cv2.minAreaRect(cnt)  <span class="comment"># 最小外接矩形</span></div><div class="line">box = np.int0(cv2.boxPoints(rect))  <span class="comment"># 矩形的四个角点取整</span></div><div class="line">cv2.drawContours(img_color1, [box], <span class="number">0</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>其中<code>np.int0(x)</code>是把x取整的操作，比如377.93就会变成377，也可以用<code>x.astype(np.int)</code></p>
+<h3 id="最小外接圆"><a href="#最小外接圆" class="headerlink" title="最小外接圆"></a>最小外接圆</h3><p>外接圆跟外接矩形一样，找到一个能包围物体的最小圆：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(x, y), radius = cv2.minEnclosingCircle(cnt)</div><div class="line">(x, y, radius) = np.int0((x, y, radius))  <span class="comment"># 圆心和半径取整</span></div><div class="line">cv2.circle(img_color2, (x, y), radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_min_enclosing_circle.jpg" alt=""></p>
+<h3 id="拟合椭圆"><a href="#拟合椭圆" class="headerlink" title="拟合椭圆"></a>拟合椭圆</h3><p>我们可以用得到的轮廓拟合出一个椭圆：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ellipse = cv2.fitEllipse(cnt)</div><div class="line">cv2.ellipse(img_color2, ellipse, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_fitting_ellipse.jpg" alt=""></p>
+<h3 id="形状匹配"><a href="#形状匹配" class="headerlink" title="形状匹配"></a>形状匹配</h3><p><code>cv2.matchShapes()</code>可以检测两个形状之间的相似度，返回<strong>值越小，越相似</strong>。先读入下面这张图片：</p>
+<p><img src="http://pic.ex2tron.top/cv2_match_shape_shapes.jpg" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>, <span class="number">0</span>)</div><div class="line">ret, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">img_color = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)</div></pre></td></tr></table></figure>
+<p>图中有3条轮廓，我们用A/B/C表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cnt_a, cnt_b, cnt_c = contours[<span class="number">0</span>], contours[<span class="number">1</span>], contours[<span class="number">2</span>]</div><div class="line">print(cv2.matchShapes(cnt_b, cnt_b, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.0</span></div><div class="line">print(cv2.matchShapes(cnt_b, cnt_c, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 2.17e-05</span></div><div class="line">print(cv2.matchShapes(cnt_b, cnt_a, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.418</span></div></pre></td></tr></table></figure>
+<p>可以看到BC相似程度比AB高很多，并且图形旋转或缩放并没有影响。其中，参数3是匹配方法，形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，详情：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="external">Hu-Moments</a></p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>对”handwritiing.jpg”图片中的数字1计算所学的轮廓特征。</li>
+<li>使用形状匹配比较两个字母或数字（相当于很简单的一个OCR）。</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>常用的轮廓特征：cv2.contourArea()算面积，cv2.arcLength()算周长</p>
+<p>cv2.boundingRect()外接矩，cv2.minAreaRect()最小外接矩，cv2.minEnclosingCircle()最小外接圆</p>
+<p>cv2.matchShapes()进行形状匹配</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/13.%20%E8%BD%AE%E5%BB%93" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_begin/py_contours_begin.html" target="_blank" rel="external">Contours : Getting Started</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习计算轮廓特征，如面积、周长、最小外接矩形等。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.coding.me/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="轮廓" scheme="http://ex2tron.coding.me/tags/%E8%BD%AE%E5%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程13：轮廓</title>
     <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/"/>
     <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/</id>
     <published>2017-12-20T01:44:23.000Z</published>
-    <updated>2017-12-20T09:58:54.836Z</updated>
+    <updated>2017-12-20T14:29:34.975Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何寻找并绘制轮廓。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -37,7 +115,7 @@
 <p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<strong>不然很多人在寻找轮廓时会找到图片最外面的一个框。</strong></p>
 </blockquote>
 <h3 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h3><p>使用<code>cv2.findContours()</code>寻找轮廓：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(</div><div class="line">    thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img_gray, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(</div><div class="line">    thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
 <ul>
 <li>参数2：轮廓的查找方式，一般使用<code>cv2.RETR_TREE</code>，表示提取所有的轮廓并建立轮廓间的层级。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a></li>
 <li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用<code>cv2.CHAIN_APPROX_SIMPLE</code>就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
@@ -47,9 +125,12 @@
 <h3 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h3><p>轮廓找出来后，为了方便观看，可以像前面图中那样用红色画出来：<code>cv2.drawContours()</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <p>其中参数2就是得到的contours，参数3表示要绘制哪一条轮廓，-1表示绘制所有轮廓，参数4是颜色（B/G/R通道，所以(0,0,255)表示红色），参数5是线宽，之前在绘制图形中介绍过。</p>
+<blockquote>
+<p>经验之谈：很多人画图时明明用了彩色，但没有效果，请检查你是在哪个图上画，画在灰度图和二值图上显然是没有彩色的(⊙o⊙)</p>
+</blockquote>
 <p>一般情况下，我们会首先获得要操作的轮廓，再进行轮廓绘制及分析：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contours[<span class="number">1</span>]</div><div class="line">cv2.drawContours(img, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>轮廓特征非常有用，使用<code>cv2.findContours()</code>寻找物体的轮廓，<code>cv2.drawContours()</code>绘制轮廓</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>轮廓特征非常有用，使用cv2.findContours()寻找物体的轮廓，cv2.drawContours()绘制轮廓</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/13.%20%E8%BD%AE%E5%BB%93" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_begin/py_contours_begin.html" target="_blank" rel="external">Contours : Getting Started</a></li>
@@ -71,11 +152,7 @@
     
       <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="腐蚀" scheme="http://ex2tron.coding.me/tags/%E8%85%90%E8%9A%80/"/>
-    
       <category term="轮廓" scheme="http://ex2tron.coding.me/tags/%E8%BD%AE%E5%BB%93/"/>
-    
-      <category term="Contours" scheme="http://ex2tron.coding.me/tags/Contours/"/>
     
   </entry>
   
@@ -458,7 +535,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-20T09:33:54.881Z</updated>
+    <updated>2017-12-20T13:57:32.620Z</updated>
     
     <content type="html"><![CDATA[<h2 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h2><p>OpenCV-Python图像处理教程（由官方英文版翻译并重新编写）。<a id="more"></a>推荐大家同时阅读番外篇(⊙o⊙)</p>
 <ol>
@@ -474,6 +551,8 @@
 <li><a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇7：卷积基础(图片边框)</a></li>
 <li><a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">边缘检测</a>（Canny/Sobel） | <a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇8：图像梯度</a></li>
 <li><a href="/2017/12/19/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</li>
+<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/">轮廓</a> （轮廓概念/寻找绘制轮廓）</li>
+<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">轮廓特征</a> （轮廓面积/周长/最小外接矩/最小外接圆/形状匹配）</li>
 </ol>
 ]]></content>
     
@@ -1667,7 +1746,7 @@
     <link href="http://ex2tron.coding.me/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>http://ex2tron.coding.me/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2017-12-20T09:23:44.685Z</updated>
+    <updated>2017-12-20T13:57:32.614Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
