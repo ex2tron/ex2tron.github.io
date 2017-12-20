@@ -16,20 +16,20 @@
   <title>python+opencv教程番外篇1：代码性能优化 | ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="CodePythonOpenCV图像处理" />
+  <meta name="keywords" content="PythonOpenCV图像处理" />
   
   
   
   
   <meta name="description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
-<meta name="keywords" content="Code,Python,OpenCV,图像处理">
+<meta name="keywords" content="Python,OpenCV,图像处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程番外篇1：代码性能优化">
 <meta property="og:url" content="http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-19T14:59:43.964Z">
+<meta property="og:updated_time" content="2017-12-20T09:20:00.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇1：代码性能优化">
 <meta name="twitter:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
@@ -217,23 +217,27 @@ var themeMenus = {};
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
 
       
         <div id="donation_div"></div>
 
 <script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: '/img/wechat.jpg',
-  alipayImage: '/img/alipay.jpg'
-});
-</script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
       
             
       

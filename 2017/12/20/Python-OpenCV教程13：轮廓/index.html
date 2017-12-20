@@ -16,23 +16,26 @@
   <title>python+opencv教程13：轮廓 | ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="CodePythonOpenCV图像处理腐蚀轮廓Contours" />
+  <meta name="keywords" content="PythonOpenCV图像处理腐蚀轮廓Contours" />
   
   
   
   
   <meta name="description" content="学习如何寻找并绘制轮廓。">
-<meta name="keywords" content="Code,Python,OpenCV,图像处理,腐蚀,轮廓,Contours">
+<meta name="keywords" content="Python,OpenCV,图像处理,腐蚀,轮廓,Contours">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程13：轮廓">
 <meta property="og:url" content="http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何寻找并绘制轮廓。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-20T07:08:21.174Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_contours.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_find_contours_contours.jpg">
+<meta property="og:updated_time" content="2017-12-20T09:58:54.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程13：轮廓">
 <meta name="twitter:description" content="学习如何寻找并绘制轮廓。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_contours.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -186,58 +189,61 @@ var themeMenus = {};
         <p>学习如何寻找并绘制轮廓。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>了解轮廓这一重要的概念</li>
+<li>了解轮廓概念</li>
 <li>寻找并绘制轮廓</li>
 <li>OpenCV函数：cv2.findContours(), cv2.drawContours()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫轮廓"><a href="#啥叫轮廓" class="headerlink" title="啥叫轮廓"></a>啥叫轮廓</h3><p>轮廓是一系列相连的点组成的曲线，代表了物体的基本外形。</p>
-<p>谈起轮廓不免想到边缘，它们确实很像。简单可以用轮廓是连续的，边缘并不连续区分（下图）。其实边缘主要是作为图像的特征用，比如可以用边缘特征区分脸和手，而轮廓主要用来分析物体的形态，比如物体的周长面积等，可以说边缘包括轮廓。</p>
-<p><img src="" alt=""></p>
-<p>寻找轮廓的操作一般用于二值化图，所以通常会先使用阈值分割或Canny边缘检测得到二值图。</p>
+<p>谈起轮廓不免想到边缘，它们确实很像。简单的说，轮廓是连续的，边缘并不全都连续（下图）。其实边缘主要是作为图像的特征使用，比如可以用边缘特征可以区分脸和手，而轮廓主要用来分析物体的形态，比如物体的周长和面积等，可以说边缘包括轮廓。</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_contours.jpg" alt=""></p>
+<p>寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或Canny边缘检测先得到二值图。</p>
 <blockquote>
-<p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<strong>不然很多人在寻找轮廓时会找到图片的最外面一个框。</strong></p>
+<p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<strong>不然很多人在寻找轮廓时会找到图片最外面的一个框。</strong></p>
 </blockquote>
-<h3 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h3><p>使用<code>image, contours, hierarchy = cv2.findContours(image, mode, method)</code>寻找轮廓：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
+<h3 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h3><p>使用<code>cv2.findContours()</code>寻找轮廓：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(</div><div class="line">    thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
 <ul>
-<li>参数2：轮廓的查找方式，一般使用<code>cv2.RETR_TREE</code>代表提取所有的轮廓，并建立轮廓间的层级。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a></li>
-<li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点的坐标。使用<code>cv2.CHAIN_APPROX_SIMPLE</code>就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
+<li>参数2：轮廓的查找方式，一般使用<code>cv2.RETR_TREE</code>，表示提取所有的轮廓并建立轮廓间的层级。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a></li>
+<li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用<code>cv2.CHAIN_APPROX_SIMPLE</code>就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
 </ul>
-<p>返回值中contours就是找到的轮廓了，它是以数组形式存储的，记录了每条轮廓的所有<code>(x,y)</code>坐标点。</p>
-<p><img src="" alt=""></p>
+<p>返回值中contours就是找到的轮廓了，它是以数组形式存储的，记录了每条轮廓的所有像素点的坐标<code>(x,y)</code>。</p>
+<p><img src="http://pic.ex2tron.top/cv2_find_contours_contours.jpg" alt=""></p>
 <h3 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h3><p>轮廓找出来后，为了方便观看，可以像前面图中那样用红色画出来：<code>cv2.drawContours()</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>其中参数2是我们找到的轮廓，参数3表示要绘制哪一条轮廓，-1表示绘制所有轮廓，参数4是颜色（B/G/R通道，所以(0,0,255)表示红色），参数5是线宽，之前在绘制图形中介绍过。</p>
-<p>一般情况下，我们会首先获得要操作的轮廓，再进行轮廓分析：</p>
+<p>其中参数2就是得到的contours，参数3表示要绘制哪一条轮廓，-1表示绘制所有轮廓，参数4是颜色（B/G/R通道，所以(0,0,255)表示红色），参数5是线宽，之前在绘制图形中介绍过。</p>
+<p>一般情况下，我们会首先获得要操作的轮廓，再进行轮廓绘制及分析：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contours[<span class="number">1</span>]</div><div class="line">cv2.drawContours(img, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>轮廓特征非常有用，使用<code>cv2.findContours()</code>寻找物体的轮廓，<code>cv2.drawContours()</code>绘制轮廓</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></li>
-<li><a href="http://szeliski.org/Book/" target="_blank" rel="external">Computer Vision: Algorithms and Applications</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/13.%20%E8%BD%AE%E5%BB%93" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_begin/py_contours_begin.html" target="_blank" rel="external">Contours : Getting Started</a></li>
 </ul>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Contours/">Contours</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐蚀/">腐蚀</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Contours/">Contours</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐蚀/">腐蚀</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
 
       
         <div id="donation_div"></div>
 
 <script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: '/img/wechat.jpg',
-  alipayImage: '/img/alipay.jpg'
-});
-</script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
       
             
       

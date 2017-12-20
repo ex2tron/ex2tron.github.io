@@ -16,13 +16,13 @@
   <title>小白深度学习笔记2：python实现logistic回归 | ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Code神经网络深度学习logistic回归" />
+  <meta name="keywords" content="神经网络logistic" />
   
   
   
   
   <meta name="description" content="上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！">
-<meta name="keywords" content="Code,神经网络,深度学习,logistic回归">
+<meta name="keywords" content="神经网络,logistic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小白深度学习笔记2：Python实现logistic回归">
 <meta property="og:url" content="http://ex2tron.coding.me/2017/10/09/小白深度学习笔记2：Python实现logistic回归/index.html">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/logistic_forward_backword_propagation.png">
-<meta property="og:updated_time" content="2017-10-09T03:13:17.501Z">
+<meta property="og:updated_time" content="2017-12-20T09:20:00.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小白深度学习笔记2：Python实现logistic回归">
 <meta name="twitter:description" content="上一篇了解了一些logistic回归的原理，现在我们用Python实现一个用于鉴别是否是一张猫的图片的分类器！">
@@ -232,23 +232,27 @@ var themeMenus = {};
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
+
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic回归/">logistic回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic/">logistic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
 
       
         <div id="donation_div"></div>
 
 <script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: '/img/wechat.jpg',
-  alipayImage: '/img/alipay.jpg'
-});
-</script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
       
             
       
