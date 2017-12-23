@@ -397,24 +397,32 @@ var themeMenus = {};
       <footer id="footer" class="site-footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 ex2tron&#39;s Blog All Rights Reserved.
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2017
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
 </footer>
 
 
 <!-- min height -->
 
 <script>
-    var contentdiv = document.getElementById("content");
+  var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
 
 <!-- Custome JS -->
