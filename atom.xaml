@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2017-12-22T03:53:57.741Z</updated>
+  <updated>2017-12-24T11:21:00.304Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -14,6 +14,98 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python+OpenCV教程15：直方图</title>
+    <link href="http://ex2tron.coding.me/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
+    <id>http://ex2tron.coding.me/2017/12/23/Python-OpenCV教程15：直方图/</id>
+    <published>2017-12-23T09:48:30.000Z</published>
+    <updated>2017-12-24T11:21:00.304Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习计算并绘制直方图，直方图均衡化等。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>计算并绘制直方图</li>
+<li>直方图均衡化</li>
+<li>OpenCV函数：cv2.calcHist(), cv2.equalizeHist()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫直方图"><a href="#啥叫直方图" class="headerlink" title="啥叫直方图"></a>啥叫直方图</h3><p>直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_histogram.jpg" alt=""></p>
+<p>当然在计算直方图之前，有几个术语先来了解一下：</p>
+<ul>
+<li>dims：要计算的通道数，对于灰度图dims=1</li>
+<li>range：要计算的像素值范围，一般为[0,256]（不包括256）</li>
+<li>bins：子区段数目，如果我们统计0~255每个像素值，bins=256；如果划分区间，比如0~15, 16~31…240~255这样16个区间，bins=16</li>
+</ul>
+<h3 id="计算直方图"><a href="#计算直方图" class="headerlink" title="计算直方图"></a>计算直方图</h3><p>OpenCV和Numpy中都提供了计算直方图的函数，我们对比下它们的性能。</p>
+<h4 id="OpenCV中直方图计算"><a href="#OpenCV中直方图计算" class="headerlink" title="OpenCV中直方图计算"></a>OpenCV中直方图计算</h4><p>使用<code>cv2.calcHist(images, channels, mask, histSize, ranges)</code>计算，其中：</p>
+<ul>
+<li>参数1：要计算的原图，以方括号的传入，如：[img]</li>
+<li>参数2：类似前面提到的dims，灰度图写[0]就行，彩色图B/G/R分别传入[0]/[1]/[2]</li>
+<li>参数3：要计算的区域，计算整幅图的话，写None</li>
+<li>参数4：前面提到的bins</li>
+<li>参数5：前面提到的range</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'hist.jpg'</span>, <span class="number">0</span>)</div><div class="line">hist = cv2.calcHist([img], [<span class="number">0</span>], <span class="keyword">None</span>, [<span class="number">256</span>], [<span class="number">0</span>, <span class="number">256</span>])  <span class="comment"># 性能：0.025288 s</span></div></pre></td></tr></table></figure>
+<h4 id="Numpy中直方图计算"><a href="#Numpy中直方图计算" class="headerlink" title="Numpy中直方图计算"></a>Numpy中直方图计算</h4><p>也可用Numpy的函数计算，其中<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">ravel()</a>函数将二维矩阵展平变成一维数组，之前有提到过：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hist, bins = np.histogram(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])  <span class="comment"># 性能：0.020628 s</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：Numpy中还有一种更高效的方式：（还记得怎么评估性能吗：<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">番外篇：代码性能优化</a>）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hist = np.bincount(img.ravel(), minlength=<span class="number">256</span>)  <span class="comment"># 性能：0.003163 s</span></div></pre></td></tr></table></figure>
+<p>计算出直方图之后，怎么把它画出来呢？</p>
+<h3 id="绘制直方图"><a href="#绘制直方图" class="headerlink" title="绘制直方图"></a>绘制直方图</h3><p>其实Matplotlib自带了一个计算并绘制直方图的功能，不需要用到上面的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plt.hist(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>当然，也可以用前面计算出来的结果绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.plot(hist); plt.show()</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_calc_draw_histogram.jpg" alt=""></p>
+<p>从直方图上可以看到图片的大部分区域集中在150偏白的附近，这其实并不是很好的效果，下面我们来看看如何改善它。</p>
+<blockquote>
+<p>使用OpenCV的画线功能也可以画直方图，不过太麻烦了，有兴趣的可以看下官方示例：<a href="https://github.com/opencv/opencv/blob/master/samples/python/hist.py" target="_blank" rel="external">hist.py</a></p>
+</blockquote>
+<h3 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h3><p>一副效果好的图像通常在直方图上的分布比较均匀，直方图均衡化就是用来改善图像的全局亮度和对比度。其实从观感上就可以发现，前面那幅图对比度不高，偏灰白。对均衡化算法感兴趣的同学可参考：<a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_histogram_equalization.jpg" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">equ = cv2.equalizeHist(img)</div></pre></td></tr></table></figure>
+<p>OpenCV中用<code>cv2.equalizeHist()</code>实现均衡化。我们把两张图片并排显示，对比一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'equalization'</span>, np.hstack((img, equ)))  <span class="comment"># 并排显示</span></div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_before_after_equalization.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg" alt="均衡化前后的直方图对比"></p>
+<p>可以看到均衡化后图片的亮度和对比度效果明显好于原图。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200*200区域的直方图程序</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>直方图是一种分析图像的手段</li>
+<li>cv2.calcHist()和numpy.bincount()均可用来计算直方图，使用Matplotlib绘制直方图</li>
+<li>均衡化用来使图像的直方图分布更加均匀，提升亮度和对比度</li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/15.%20%E7%9B%B4%E6%96%B9%E5%9B%BE" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histograms-getting-started" target="_blank" rel="external">Histograms - 1 : Find, Plot, Analyze !!!</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html#histogram-equalization" target="_blank" rel="external">Histograms - 2: Histogram Equalization</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></li>
+<li><a href="http://www.cambridgeincolour.com/tutorials/histograms1.htm" target="_blank" rel="external">Cambridge in Color website</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习计算并绘制直方图，直方图均衡化等。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.coding.me/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="直方图" scheme="http://ex2tron.coding.me/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>Python+OpenCV教程14：轮廓特征</title>
@@ -548,7 +640,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-22T14:45:23.400Z</updated>
+    <updated>2017-12-24T11:38:46.549Z</updated>
     
     <content type="html"><![CDATA[<p>图文版 | <a href="/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/">简洁版</a><a id="more"></a></p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><table>
@@ -663,7 +755,7 @@
 </tr>
 </tbody>
 </table>
-<table>
+<h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><table>
 <thead>
 <tr>
 <th style="text-align:left"><a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/">9. 图像混合</a></th>
@@ -744,6 +836,20 @@
 <tr>
 <td style="text-align:left"><img src="http://pic.ex2tron.top/cv2_thumbnail_contours_features2.jpg" align="left"></td>
 <td style="text-align:right">轮廓特征：面积，周长，最小外接矩和最小外接圆，几何形状匹配</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><a href="/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/">15. 直方图</a></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="http://pic.ex2tron.top/cv2_thumbnail_histogram.jpg" align="left"></td>
+<td style="text-align:right">了解，计算并绘制直方图，直方图均衡化</td>
 </tr>
 </tbody>
 </table>
@@ -2261,7 +2367,7 @@
     <link href="http://ex2tron.coding.me/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
     <id>http://ex2tron.coding.me/2017/10/10/Python-OpenCV教程（目录）/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2017-12-22T14:41:58.826Z</updated>
+    <updated>2017-12-24T11:44:41.828Z</updated>
     
     <content type="html"><![CDATA[<p><a href="/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/">图文版</a> | 简洁版</p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><ol>
@@ -2273,12 +2379,15 @@
 <li><a href="/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/">阈值分割</a>（阈值分割/二值化） | <a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/">番外篇4：Otsu阈值法</a></li>
 <li><a href="/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B7%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/">图像几何变换</a>（旋转/平移/缩放/仿射变换/透视变换）</li>
 <li><a href="/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/">绘图功能</a>（画线/画圆/画矩形/添加文字） | <a href="/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/">番外篇5：鼠标绘图</a></li>
+</ol>
+<h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><ol>
 <li><a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/">图像混合</a>（算数运算/混合/按位运算） | <a href="/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%876%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/">番外篇6：亮度与对比度</a></li>
 <li><a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇7：卷积基础(图片边框)</a></li>
 <li><a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">边缘检测</a>（Canny/Sobel） | <a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇8：图像梯度</a></li>
 <li><a href="/2017/12/19/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</li>
 <li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/">轮廓</a> （寻找绘制轮廓）</li>
 <li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">轮廓特征</a> （面积/周长/最小外接矩/最小外接圆/形状匹配）</li>
+<li><a href="/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/">直方图</a>（计算绘制直方图/均衡化）</li>
 </ol>
 ]]></content>
     

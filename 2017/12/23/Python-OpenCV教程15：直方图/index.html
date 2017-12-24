@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>python+opencv教程15：直方图 | ex2tron&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="PythonOpenCV图像处理直方图" />
+  
+  
+  
+  
+  <meta name="description" content="学习计算并绘制直方图，直方图均衡化等。">
+<meta name="keywords" content="Python,OpenCV,图像处理,直方图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+OpenCV教程15：直方图">
+<meta property="og:url" content="http://ex2tron.coding.me/2017/12/23/Python-OpenCV教程15：直方图/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="学习计算并绘制直方图，直方图均衡化等。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_histogram.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_calc_draw_histogram.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_histogram_equalization.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_before_after_equalization.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg">
+<meta property="og:updated_time" content="2017-12-24T11:21:00.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python+OpenCV教程15：直方图">
+<meta name="twitter:description" content="学习计算并绘制直方图，直方图均衡化等。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_histogram.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="//img/bookshelf.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python-OpenCV教程15：直方图" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python+OpenCV教程15：直方图
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/23/Python-OpenCV教程15：直方图/" class="article-date">
+	  <time datetime="2017-12-23T09:48:30.000Z" itemprop="datePublished">December 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习计算并绘制直方图，直方图均衡化等。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>计算并绘制直方图</li>
+<li>直方图均衡化</li>
+<li>OpenCV函数：cv2.calcHist(), cv2.equalizeHist()</li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫直方图"><a href="#啥叫直方图" class="headerlink" title="啥叫直方图"></a>啥叫直方图</h3><p>直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_histogram.jpg" alt=""></p>
+<p>当然在计算直方图之前，有几个术语先来了解一下：</p>
+<ul>
+<li>dims：要计算的通道数，对于灰度图dims=1</li>
+<li>range：要计算的像素值范围，一般为[0,256]（不包括256）</li>
+<li>bins：子区段数目，如果我们统计0~255每个像素值，bins=256；如果划分区间，比如0~15, 16~31…240~255这样16个区间，bins=16</li>
+</ul>
+<h3 id="计算直方图"><a href="#计算直方图" class="headerlink" title="计算直方图"></a>计算直方图</h3><p>OpenCV和Numpy中都提供了计算直方图的函数，我们对比下它们的性能。</p>
+<h4 id="OpenCV中直方图计算"><a href="#OpenCV中直方图计算" class="headerlink" title="OpenCV中直方图计算"></a>OpenCV中直方图计算</h4><p>使用<code>cv2.calcHist(images, channels, mask, histSize, ranges)</code>计算，其中：</p>
+<ul>
+<li>参数1：要计算的原图，以方括号的传入，如：[img]</li>
+<li>参数2：类似前面提到的dims，灰度图写[0]就行，彩色图B/G/R分别传入[0]/[1]/[2]</li>
+<li>参数3：要计算的区域，计算整幅图的话，写None</li>
+<li>参数4：前面提到的bins</li>
+<li>参数5：前面提到的range</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'hist.jpg'</span>, <span class="number">0</span>)</div><div class="line">hist = cv2.calcHist([img], [<span class="number">0</span>], <span class="keyword">None</span>, [<span class="number">256</span>], [<span class="number">0</span>, <span class="number">256</span>])  <span class="comment"># 性能：0.025288 s</span></div></pre></td></tr></table></figure>
+<h4 id="Numpy中直方图计算"><a href="#Numpy中直方图计算" class="headerlink" title="Numpy中直方图计算"></a>Numpy中直方图计算</h4><p>也可用Numpy的函数计算，其中<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">ravel()</a>函数将二维矩阵展平变成一维数组，之前有提到过：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hist, bins = np.histogram(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])  <span class="comment"># 性能：0.020628 s</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：Numpy中还有一种更高效的方式：（还记得怎么评估性能吗：<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">番外篇：代码性能优化</a>）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hist = np.bincount(img.ravel(), minlength=<span class="number">256</span>)  <span class="comment"># 性能：0.003163 s</span></div></pre></td></tr></table></figure>
+<p>计算出直方图之后，怎么把它画出来呢？</p>
+<h3 id="绘制直方图"><a href="#绘制直方图" class="headerlink" title="绘制直方图"></a>绘制直方图</h3><p>其实Matplotlib自带了一个计算并绘制直方图的功能，不需要用到上面的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plt.hist(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>当然，也可以用前面计算出来的结果绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.plot(hist); plt.show()</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_calc_draw_histogram.jpg" alt=""></p>
+<p>从直方图上可以看到图片的大部分区域集中在150偏白的附近，这其实并不是很好的效果，下面我们来看看如何改善它。</p>
+<blockquote>
+<p>使用OpenCV的画线功能也可以画直方图，不过太麻烦了，有兴趣的可以看下官方示例：<a href="https://github.com/opencv/opencv/blob/master/samples/python/hist.py" target="_blank" rel="external">hist.py</a></p>
+</blockquote>
+<h3 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h3><p>一副效果好的图像通常在直方图上的分布比较均匀，直方图均衡化就是用来改善图像的全局亮度和对比度。其实从观感上就可以发现，前面那幅图对比度不高，偏灰白。对均衡化算法感兴趣的同学可参考：<a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_histogram_equalization.jpg" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">equ = cv2.equalizeHist(img)</div></pre></td></tr></table></figure>
+<p>OpenCV中用<code>cv2.equalizeHist()</code>实现均衡化。我们把两张图片并排显示，对比一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'equalization'</span>, np.hstack((img, equ)))  <span class="comment"># 并排显示</span></div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_before_after_equalization.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg" alt="均衡化前后的直方图对比"></p>
+<p>可以看到均衡化后图片的亮度和对比度效果明显好于原图。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200*200区域的直方图程序</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>直方图是一种分析图像的手段</li>
+<li>cv2.calcHist()和numpy.bincount()均可用来计算直方图，使用Matplotlib绘制直方图</li>
+<li>均衡化用来使图像的直方图分布更加均匀，提升亮度和对比度</li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/15.%20%E7%9B%B4%E6%96%B9%E5%9B%BE" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histograms-getting-started" target="_blank" rel="external">Histograms - 1 : Find, Plot, Analyze !!!</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html#histogram-equalization" target="_blank" rel="external">Histograms - 2: Histogram Equalization</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></li>
+<li><a href="http://www.cambridgeincolour.com/tutorials/histograms1.htm" target="_blank" rel="external">Cambridge in Color website</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直方图/">直方图</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat2.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/20/Python-OpenCV教程14：轮廓特征/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python+OpenCV教程14：轮廓特征</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#啥叫直方图"><span class="nav-number">2.1.</span> <span class="nav-text">啥叫直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算直方图"><span class="nav-number">2.2.</span> <span class="nav-text">计算直方图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenCV中直方图计算"><span class="nav-number">2.2.1.</span> <span class="nav-text">OpenCV中直方图计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Numpy中直方图计算"><span class="nav-number">2.2.2.</span> <span class="nav-text">Numpy中直方图计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制直方图"><span class="nav-number">2.3.</span> <span class="nav-text">绘制直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直方图均衡化"><span class="nav-number">2.4.</span> <span class="nav-text">直方图均衡化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">3.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2017
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
