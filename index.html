@@ -273,9 +273,8 @@ I’ve always believed with hard work and a little bit of luck, it’s only a ma
 
 软件汁源首先列出一些常用网站，后面我只列出常用的软件和官网，请大家优先选择官网进行下载，因为官网版本一般都是最新的，也比较安全。官网进不去，可以点击我给出的版本下载：
 常用资源站
-Windows装机必备
 网易开源镜像站、淘宝 NPM 镜像站
-俺下...
+Windows装机必备、精品...
           
 
         
@@ -431,6 +430,66 @@ OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等
       
   <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python-OpenCV教程番外篇9：凸包及更多轮廓特征"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/">Python+OpenCV教程番外篇9：凸包及更多轮廓特征</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/" class="article-date">
+	  <time datetime="2017-12-20T05:41:11.000Z" itemprop="datePublished">December 20, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            计算凸包及更多轮廓特征。图片等可到源码处下载。
+多边形逼近前面我们学习过最小外接矩和最小外接圆，那么可以用一个最小的多边形包围物体吗？当然可以：
+ 123456789101112# 1.先找到轮廓img = cv2.imread('unregular.jpg', 0)_, thresh = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)image, contours, hierarchy = cv2.findContours(thresh, 3, 2)cnt = contours[0]# 2.进行多边形逼近，得到多边形的角点approx = cv2.approxPolyDP(cnt, 3, True)# 3...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/凸包/">凸包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
 
       
             
@@ -789,69 +848,6 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程番外篇7：卷积基础-图片边框"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/">Python+OpenCV教程番外篇7：卷积基础(图片边框)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/" class="article-date">
-	  <time datetime="2017-12-14T08:27:45.000Z" itemprop="datePublished">December 14, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            了解卷积/滤波的基础知识，给图片添加边框。如果你已了解相关理论，请直接跳到添加边框部分。
-卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(￣▽￣)o
-卷积什么是二维卷积呢？看下面一张图就一目了然：
-
-卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……
-padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卷积/">卷积</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/边框/">边框</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -980,6 +976,18 @@ padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/">Python+OpenCV教程番外篇9：凸包及更多轮廓特征</a></h6>
+              <span>December 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
               <span>December 20, 2017</span>
             </div>
@@ -1010,18 +1018,6 @@ padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/">Python+OpenCV教程番外篇8：图像梯度</a></h6>
-              <span>December 18, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1031,7 +1027,7 @@ padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -1042,7 +1038,7 @@ padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到�
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1057,7 +1053,7 @@ padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到�
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            2018
+            2017
               ex2tron&#39;s Blog All Rights Reserved.
                 
           </div>

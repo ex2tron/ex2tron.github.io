@@ -198,6 +198,58 @@
   </entry>
   
   <entry>
+    <title>Python+OpenCV教程番外篇9：凸包及更多轮廓特征</title>
+    <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/"/>
+    <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/</id>
+    <published>2017-12-20T05:41:11.000Z</published>
+    <updated>2017-12-27T08:26:31.932Z</updated>
+    
+    <content type="html"><![CDATA[<p>计算凸包及更多轮廓特征。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<h2 id="多边形逼近"><a href="#多边形逼近" class="headerlink" title="多边形逼近"></a>多边形逼近</h2><p>前面我们学习过最小外接矩和最小外接圆，那么可以用一个最小的多边形包围物体吗？当然可以：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.先找到轮廓</span></div><div class="line">img = cv2.imread(<span class="string">'unregular.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">cnt = contours[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># 2.进行多边形逼近，得到多边形的角点</span></div><div class="line">approx = cv2.approxPolyDP(cnt, <span class="number">3</span>, <span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># 3.画出多边形</span></div><div class="line">image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">cv2.polylines(image, [approx], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>其中<code>cv2.approxPolyDP()</code>的参数2(epsilon)是一个距离值，表示多边形的轮廓接近实际轮廓的程度，值越小，越精确；参数3表示是否闭合。</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_approxpoly.jpg" alt=""></p>
+<h2 id="凸包"><a href="#凸包" class="headerlink" title="凸包"></a>凸包</h2><p><a href="https://baike.baidu.com/item/%E5%87%B8%E5%8C%85/179150?fr=aladdin" target="_blank" rel="external">凸包</a>跟多边形逼近很像，只不过它是物体最外层的”凸”多边形：集合A内连接任意两个点的直线都在A的内部，则称集合A是凸形的。如下图，红色的部分为手掌的凸包，双箭头部分表示凸缺陷(Convexity Defects)，凸缺陷常用来进行手势识别等：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_convex.jpg" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.先找到轮廓</span></div><div class="line">img = cv2.imread(<span class="string">'convex.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">cnt = contours[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># 2.寻找凸包，得到凸包的角点</span></div><div class="line">hull = cv2.convexHull(cnt)</div><div class="line"></div><div class="line"><span class="comment"># 3.绘制凸包</span></div><div class="line">image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">cv2.polylines(image, [hull], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_convex_hull.jpg" alt=""></p>
+<p>其中函数<code>cv2.convexHull()</code>有个可选参数<code>returnPoints</code>，默认是True，代表返回角点的x/y坐标；如果为False的话，表示返回轮廓中是凸包角点的索引，比如说：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(hull[<span class="number">0</span>])  <span class="comment"># [[362 184]]（坐标）</span></div><div class="line">hull2 = cv2.convexHull(cnt, returnPoints=<span class="keyword">False</span>)</div><div class="line">print(hull2[<span class="number">0</span>])  <span class="comment"># [510]（cnt中的索引）</span></div><div class="line">print(cnt[<span class="number">510</span>])  <span class="comment"># [[362 184]]</span></div></pre></td></tr></table></figure>
+<p>当使用<code>cv2.convexityDefects()</code>计算凸包缺陷时，<code>returnPoints</code>需为False，详情可参考：<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html#contours-more-functions" target="_blank" rel="external">Convexity Defects</a></p>
+<p>另外可以用下面的语句来判断轮廓是否是凸形的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(cv2.isContourConvex(hull))  <span class="comment"># True</span></div></pre></td></tr></table></figure>
+<h2 id="点到轮廓距离"><a href="#点到轮廓距离" class="headerlink" title="点到轮廓距离"></a>点到轮廓距离</h2><p><code>cv2.pointPolygonTest()</code>函数计算点到轮廓的最短距离（也就是垂线），又称多边形测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dist = cv2.pointPolygonTest(cnt, (<span class="number">100</span>, <span class="number">100</span>), <span class="keyword">True</span>)  <span class="comment"># -3.53</span></div></pre></td></tr></table></figure>
+<p>其中参数3为True时表示计算距离值：点在轮廓外面值为负，点在轮廓上值为0，点在轮廓里面值为正；参数3为False时，只返回-1/0/1表示点相对轮廓的位置，不计算距离。</p>
+<p>更多轮廓特征，如当量直径、平均强度等，我目前也没用到过，以后用到再写吧，感兴趣的可以参看：<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_properties/py_contour_properties.html" target="_blank" rel="external">Contour Properties</a>、<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html" target="_blank" rel="external">Contours Hierarchy</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/14.%20%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html#contours-more-functions" target="_blank" rel="external">Convexity Defects</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_properties/py_contour_properties.html" target="_blank" rel="external">Contour Properties</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html" target="_blank" rel="external">Contours Hierarchy</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;计算凸包及更多轮廓特征。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.coding.me/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="凸包" scheme="http://ex2tron.coding.me/tags/%E5%87%B8%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程13：轮廓</title>
     <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/"/>
     <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/</id>
@@ -648,7 +700,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-26T05:15:39.958Z</updated>
+    <updated>2017-12-27T08:16:53.907Z</updated>
     
     <content type="html"><![CDATA[<p>图文版 | <a href="/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/">简洁版</a><a id="more"></a></p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><table>
@@ -843,7 +895,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><img src="http://pic.ex2tron.top/cv2_thumbnail_contours_features2.jpg" align="left"></td>
-<td style="text-align:right">轮廓特征：面积，周长，最小外接矩和最小外接圆，几何形状匹配</td>
+<td style="text-align:right">轮廓特征：面积，周长，最小外接矩和最小外接圆，几何形状匹配<br>      <a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">番外篇9：凸包及更多轮廓特征</a></td>
 </tr>
 </tbody>
 </table>
@@ -2163,7 +2215,7 @@
     <link href="http://ex2tron.coding.me/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>http://ex2tron.coding.me/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2018-04-07T09:40:49.079Z</updated>
+    <updated>2017-12-27T08:34:08.190Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -2172,49 +2224,62 @@
 <hr>
 <h2 id="软件汁源"><a href="#软件汁源" class="headerlink" title="软件汁源"></a><strong>软件汁源</strong></h2><p>首先列出一些常用网站，后面我只列出常用的软件和官网，<strong>请大家优先选择官网进行下载</strong>，因为官网版本一般都是最新的，也比较安全。官网进不去，可以<strong>点击</strong>我给出的版本下载：</p>
 <h3 id="常用资源站"><a href="#常用资源站" class="headerlink" title="常用资源站"></a>常用资源站</h3><ul>
-<li><a href="https://www.ithome.com/bibei/" target="_blank" rel="external">Windows装机必备</a></li>
 <li><a href="http://mirrors.163.com/" target="_blank" rel="external">网易开源镜像站</a>、<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝 NPM 镜像站</a></li>
-<li><a href="http://www.anxz.com/" target="_blank" rel="external">俺下载</a>、<a href="http://www.verycd.gdajie.com/" target="_blank" rel="external">逛电驴</a>、<a href="http://www.ed2000.com/" target="_blank" rel="external">ED2000资源共享</a>、<a href="https://xbeta.info/" target="_blank" rel="external">善用佳软</a>、<a href="https://www.portablesoft.org/" target="_blank" rel="external">精品绿色便携软件</a></li>
+<li><a href="https://www.ithome.com/bibei/" target="_blank" rel="external">Windows装机必备</a>、<a href="https://www.portablesoft.org/" target="_blank" rel="external">精品绿色便携软件</a></li>
+<li><a href="http://www.anxz.com/" target="_blank" rel="external">俺下载</a>、<a href="http://www.verycd.gdajie.com/" target="_blank" rel="external">逛电驴</a>、<a href="http://www.ed2000.com/" target="_blank" rel="external">ED2000资源共享</a>、<a href="https://xbeta.info/" target="_blank" rel="external">善用佳软</a></li>
 </ul>
 <h3 id="微软官方系统"><a href="#微软官方系统" class="headerlink" title="微软官方系统"></a>微软官方系统</h3><ul>
+<li>Windows 7 SP1：<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso|3420557312|B58548681854236C7939003B583A8078|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x86_dvd_u_677486.iso|2653276160|7503E4B9B8738DFCB95872445C72AEFB|/" target="_blank" rel="external">32位</a></li>
 <li>Windows 10创意者更新秋季版：<a href="ed2k://|file|cn_windows_10_multi-edition_version_1709_updated_sept_2017_x64_dvd_100090804.iso|4740610048|37051C54894776826823DAEBDD03F1DC|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_10_multi-edition_version_1709_updated_sept_2017_x86_dvd_100090805.iso|3551899648|6C24A796B66CDA6D909508A16C74B406|/" target="_blank" rel="external">32位</a></li>
-<li>Windows 7 SP1简体中文旗舰版：<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso|3420557312|B58548681854236C7939003B583A8078|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_windows_7_ultimate_with_sp1_x86_dvd_u_677486.iso|2653276160|7503E4B9B8738DFCB95872445C72AEFB|/" target="_blank" rel="external">32位</a></li>
 <li>激活工具：<a href="https://pan.baidu.com/s/1i45IaSt" target="_blank" rel="external">优先OEM10 密码：c6wz</a></li>
 </ul>
 <h3 id="Office办公套件"><a href="#Office办公套件" class="headerlink" title="Office办公套件"></a>Office办公套件</h3><ul>
-<li>Office Pro Plus 2016批量授权版：<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO|1123452928|31087A00FF67D4F5B4CBF4AA07C3433B|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_W32_ChnSimp_MLF_X20-41351.ISO|986441728|2DE74581C10096137481873B3AD57D43|/" target="_blank" rel="external">32位</a></li>
-<li>Visio Pro 2016 批量授权版：<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO|714913792|FC930AB97B366B3595FC2F28ABAC2A6F|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_W32_ChnSimp_MLF_X20-41580.ISO|609447936|91EB248558F236AA66D234EA03FAD9A9|/" target="_blank" rel="external">32位</a></li>
-<li><a href="ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/" target="_blank" rel="external">Office Pro Plus 2016 即点即用版</a>、<a href="ed2k://|file|cn_visio_professional_2016_x86_x64_dvd_6970929.iso|2588262400|52A997F3AF4E40B896C8E4677CF10E90|/" target="_blank" rel="external">Visio Pro 2016 即点即用版</a></li>
+<li>2016：<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO|1123452928|31087A00FF67D4F5B4CBF4AA07C3433B|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_W32_ChnSimp_MLF_X20-41351.ISO|986441728|2DE74581C10096137481873B3AD57D43|/" target="_blank" rel="external">32位</a> Visio：<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO|714913792|FC930AB97B366B3595FC2F28ABAC2A6F|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Visio_Pro_2016_W32_ChnSimp_MLF_X20-41580.ISO|609447936|91EB248558F236AA66D234EA03FAD9A9|/" target="_blank" rel="external">32位</a></li>
+<li>2013：<a href="ed2k://|file|cn_office_professional_plus_2013_with_sp1_x64_dvd_3921920.iso|980258816|E18C9CF896D65B2778AA1A44C922C377|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_office_professional_plus_2013_with_sp1_x86_dvd_3921919.iso|858245120|EA50FF2DE78488DF2646D66FA791164A|/" target="_blank" rel="external">32位</a> Visio：<a href="ed2k://|file|cn_visio_professional_2013_with_sp1_x64_3910821.exe|566078120|238DBAB9F597E05EB93C06229AF3A57B|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|cn_visio_professional_2013_with_sp1_x86_3910886.exe|475819680|4B6A240FCB9C31D4C86EF408D235779E|/" target="_blank" rel="external">32位</a> </li>
+<li>2010：<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2010w_SP1_64Bit_ChnSimp_CORE_MLF_X17-76742.iso|1612515328|032320121E0EE36D8F0C32EC89CA0AB9|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Office_Professional_Plus_2010w_SP1_W32_ChnSimp_CORE_MLF_X17-76734.iso|1412091904|79B75EE3F629A1BD925E6C0AEFDECA10|/" target="_blank" rel="external">32位</a> Visio：<a href="ed2k://|file|SW_DVD5_Visio_Premium_2010w_SP1_64Bit_ChnSimp_Std_Pro_Prem_MLF_X17-75849.iso|770732032|B0BFCB2BA515B4A55936332FBD362844|/" target="_blank" rel="external">64位</a>、<a href="ed2k://|file|SW_DVD5_Visio_Premium_2010w_SP1_W32_ChnSimp_Std_Pro_Prem_MLF_X17-75847.iso|674627584|9945A8591D1B2D185656B5B3DC2CA24B|/" target="_blank" rel="external">32位</a></li>
+<li>2016即点即用版：<a href="ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/" target="_blank" rel="external">Office</a>、<a href="ed2k://|file|cn_visio_professional_2016_x86_x64_dvd_6970929.iso|2588262400|52A997F3AF4E40B896C8E4677CF10E90|/" target="_blank" rel="external">Visio</a></li>
 <li>激活工具：<a href="https://pan.baidu.com/s/1i45IaSt" target="_blank" rel="external">优先OEM10 密码：c6wz</a></li>
 </ul>
 <h3 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h3><ul>
-<li>Ubuntu：<a href="https://www.ubuntu.com/download" target="_blank" rel="external">官网</a>、<a href="http://mirrors.nju.edu.cn/ubuntu-releases/16.04.3/ubuntu-16.04.3-desktop-amd64.iso" target="_blank" rel="external">桌面版16.04 64位</a>、<a href="http://mirrors.nju.edu.cn/ubuntu-releases/17.10/ubuntu-17.10-desktop-amd64.iso" target="_blank" rel="external">桌面版17.10 64位</a></li>
 <li>树莓派系统：<a href="https://downloads.raspberrypi.org/raspbian_latest" target="_blank" rel="external">官网</a>、<a href="http://vx2-downloads.raspberrypi.org/raspbian/images/raspbian-2017-12-01/2017-11-29-raspbian-stretch.zip" target="_blank" rel="external">Rasbian 2017</a></li>
+<li>Ubuntu：<a href="https://www.ubuntu.com/download" target="_blank" rel="external">官网</a>、桌面版：<a href="http://mirrors.nju.edu.cn/ubuntu-releases/16.04.3/ubuntu-16.04.3-desktop-amd64.iso" target="_blank" rel="external">16.04 64位</a>、<a href="http://mirrors.nju.edu.cn/ubuntu-releases/17.10/ubuntu-17.10-desktop-amd64.iso" target="_blank" rel="external">17.10 64位</a></li>
 </ul>
 <h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><ul>
-<li>Visual Studio 2017：<a href="https://www.visualstudio.com/" target="_blank" rel="external">官网</a>、<a href="https://download.visualstudio.microsoft.com/download/pr/100266676/045b56eb413191d03850ecc425172a7d/vs_Community.exe" target="_blank" rel="external">社区版15.4</a></li>
-<li>Android Studio：<a href="https://dl.google.com/dl/android/studio/install/3.0.0.18/android-studio-ide-171.4408382-windows.exe" target="_blank" rel="external">3.0</a>、<a href="https://dl.google.com/dl/android/studio/install/2.3.3.0/android-studio-bundle-162.4069837-windows.exe" target="_blank" rel="external">2.3.3</a></li>
 <li>Qt：<a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">官网</a>、<a href="http://download.qt.io/archive/qt/5.8/5.8.0/qt-opensource-windows-x86-mingw530-5.8.0.exe" target="_blank" rel="external">5.8.0 mingw</a></li>
-<li>Matlab：<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd1.iso|7829774336|b0ed2efeac2af78ce1f797152d8b430a|h=xbq3qn6r6uztxdawcdzgimpzqmcxy3nh|/" target="_blank" rel="external">R2017a x64 dvd1</a>、<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd2.iso|2707779584|ce396df6ebc36a94118a736338d7e05e|h=34xjg5hg77ldbsgf6j64evexssys2hm3|/" target="_blank" rel="external">R2017a x64 dvd2</a>、<a href="ed2k://|file|[矩阵实验室].Crack.rar|957381|725c8700b78027809055ecb5e6986b59|h=rf5lftd7ffdm4dhk3qn5m5ke2zxugztk|/" target="_blank" rel="external">破解工具</a></li>
-<li>Python相关：<a href="https://www.python.org/" target="_blank" rel="external">官网</a>、<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" target="_blank" rel="external">3.6.3 x64</a>、<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="external">2.7.14 x64</a>、包源（如Tensorflow）：<a href="https://pypi.python.org/pypi" target="_blank" rel="external">源1</a>、<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">源2</a></li>
+<li>Android Studio：<a href="https://dl.google.com/dl/android/studio/install/3.0.0.18/android-studio-ide-171.4408382-windows.exe" target="_blank" rel="external">3.0</a>、<a href="https://dl.google.com/dl/android/studio/install/2.3.3.0/android-studio-bundle-162.4069837-windows.exe" target="_blank" rel="external">2.3.3</a></li>
+<li>Visual Studio 2017：<a href="https://www.visualstudio.com/" target="_blank" rel="external">官网</a>、<a href="https://download.visualstudio.microsoft.com/download/pr/100266676/045b56eb413191d03850ecc425172a7d/vs_Community.exe" target="_blank" rel="external">社区版15.4</a></li>
+<li>Matlab R2017a：<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd1.iso|7829774336|b0ed2efeac2af78ce1f797152d8b430a|h=xbq3qn6r6uztxdawcdzgimpzqmcxy3nh|/" target="_blank" rel="external">x64 dvd1</a>、<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd2.iso|2707779584|ce396df6ebc36a94118a736338d7e05e|h=34xjg5hg77ldbsgf6j64evexssys2hm3|/" target="_blank" rel="external">x64 dvd2</a>、<a href="ed2k://|file|[矩阵实验室].Crack.rar|957381|725c8700b78027809055ecb5e6986b59|h=rf5lftd7ffdm4dhk3qn5m5ke2zxugztk|/" target="_blank" rel="external">破解工具</a></li>
+<li>OpenCV：<a href="https://opencv.org/releases.html" target="_blank" rel="external">官网</a>、<a href="https://ncu.dl.sourceforge.net/project/opencvlibrary/opencv-win/3.3.1/opencv-3.3.1-vc14.exe" target="_blank" rel="external">3.3.1</a>、<a href="https://sourceforge.net/settings/mirror_choices?projectname=opencvlibrary&amp;filename=opencv-win/2.4.13/opencv-2.4.13.4-vc14.exe" target="_blank" rel="external">2.4.13</a>、<a href="https://pypi.python.org/pypi/opencv-python/3.3.0.10" target="_blank" rel="external">OpenCV-Python</a></li>
+<li>代码编辑器： <a href="https://code.visualstudio.com/Download" target="_blank" rel="external">VS Code</a>：<a href="https://vscode.cdn.azure.cn/stable/816be6780ca8bd0ab80314e11478c48c70d09383/VSCodeSetup-x64-1.19.0.exe" target="_blank" rel="external">1.19 x64</a>、<a href="https://notepad-plus-plus.org/download/" target="_blank" rel="external">Notepad++</a>：<a href="https://notepad-plus-plus.org/repository/7.x/7.5.3/npp.7.5.3.Installer.exe" target="_blank" rel="external">7.5.3</a>、<a href="https://www.sublimetext.com/3" target="_blank" rel="external">Sublime</a></li>
+<li>Typora(Markdown编写)：<a href="https://www.typora.io/" target="_blank" rel="external">官网(需翻墙)</a>、<a href="https://www.typora.io/windows/typora-setup-x64.exe?" target="_blank" rel="external">64位</a>、<a href="https://www.typora.io/windows/typora-setup-ia32.exe?" target="_blank" rel="external">32位</a></li>
+<li>Python：<a href="https://www.python.org/" target="_blank" rel="external">官网</a>、<a href="https://www.python.org/ftp/python/3.6.3/python-3.6.3-amd64.exe" target="_blank" rel="external">3.6.3 x64</a>、<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="external">2.7.14 x64</a></li>
+<li>Python包源（如Tensorflow）：<a href="https://pypi.python.org/pypi" target="_blank" rel="external">源1</a>、<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">源2</a></li>
 <li>Anaconda：<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe" target="_blank" rel="external">5.0.1_cp36_x64</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86.exe" target="_blank" rel="external">5.0.1_cp36_x86</a></li>
 <li>MySQL：<a href="https://www.mysql.com/" target="_blank" rel="external">官网</a>、<a href="https://cdn.mysql.com//Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi" target="_blank" rel="external">MySQL Installer 5.7.20</a></li>
-<li>Navicat11 for MySQL：<a href="https://pan.baidu.com/s/1o8dyBxS" target="_blank" rel="external">破解版11.2 密码：ls2c</a></li>
+<li>Navicat11 for MySQL：<a href="https://pan.baidu.com/s/1o8dyBxS" target="_blank" rel="external">11.2 密码：ls2c</a></li>
 <li>WampServer：<a href="http://www.wampserver.com/en/" target="_blank" rel="external">官网</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x64.exe" target="_blank" rel="external">3.1.0 x64</a>、<a href="https://jaist.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.0_x86.exe" target="_blank" rel="external">3.1.0 x86</a></li>
-<li>OpenCV：<a href="https://opencv.org/releases.html" target="_blank" rel="external">官网</a>、<a href="https://ncu.dl.sourceforge.net/project/opencvlibrary/opencv-win/3.3.1/opencv-3.3.1-vc14.exe" target="_blank" rel="external">3.3.1</a>、<a href="https://sourceforge.net/settings/mirror_choices?projectname=opencvlibrary&amp;filename=opencv-win/2.4.13/opencv-2.4.13.4-vc14.exe" target="_blank" rel="external">2.4.13</a>、<a href="https://pypi.python.org/pypi/opencv-python/3.3.0.10" target="_blank" rel="external">OpenCV-Python 3.3</a></li>
-<li>代码编辑器： VS Code：<a href="https://code.visualstudio.com/Download" target="_blank" rel="external">官网</a>、<a href="https://vscode.cdn.azure.cn/stable/816be6780ca8bd0ab80314e11478c48c70d09383/VSCodeSetup-x64-1.19.0.exe" target="_blank" rel="external">1.19 x64</a>、Notepad++：<a href="https://notepad-plus-plus.org/download/" target="_blank" rel="external">官网</a>、<a href="https://notepad-plus-plus.org/repository/7.x/7.5.3/npp.7.5.3.Installer.exe" target="_blank" rel="external">7.5.3</a>、Sublime：<a href="https://www.sublimetext.com/3" target="_blank" rel="external">官网</a></li>
-<li>Markdown编写：Typora：<a href="https://www.typora.io/" target="_blank" rel="external">官网(需翻墙)</a>、<a href="https://www.typora.io/windows/typora-setup-x64.exe?" target="_blank" rel="external">64位</a>、<a href="https://www.typora.io/windows/typora-setup-ia32.exe?" target="_blank" rel="external">32位</a></li>
-<li>开发组件：<ul>
-<li>串口抓包AccessPort：<a href="http://www.sudt.com/cn/ap/download.htm" target="_blank" rel="external">官网</a>、<a href="http://www.sudt.com/download/AccessPort137.zip" target="_blank" rel="external">1.37</a>、protobuf：<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">官网</a>、ffmpeg：<a href="http://ffmpeg.org/download.html" target="_blank" rel="external">官网</a></li>
+<li>开发组件：<a href="http://www.sudt.com/cn/ap/download.htm" target="_blank" rel="external">串口抓包AccessPort</a>：<a href="http://www.sudt.com/download/AccessPort137.zip" target="_blank" rel="external">1.37</a>、<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">protobuf</a>、<a href="http://ffmpeg.org/download.html" target="_blank" rel="external">ffmpeg</a></li>
 <li>爬虫驱动：<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="external">Firefox Geckodriver</a>、<a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/" target="_blank" rel="external">MicrosoftWebDriver</a>、<a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="external">ChromeDriver</a>、<a href="http://blog.csdn.net/cz9025/article/details/70160273" target="_blank" rel="external">各版本对照表</a></li>
+</ul>
+<h3 id="微软库"><a href="#微软库" class="headerlink" title="微软库"></a>微软库</h3><ul>
+<li>Microsoft Visual C++：<ul>
+<li>2005：<a href="http://download.microsoft.com/download/5/2/1/5212066c-5f48-4b16-a059-ed84b505a65d/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/5/2/1/5212066c-5f48-4b16-a059-ed84b505a65d/vcredist_x86.exe" target="_blank" rel="external">x64</a> 2005 SP1：<a href="http://download.microsoft.com/download/7/9/8/798325b7-8993-4ef9-9148-8db9ff4187fc/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/7/5/2/7521765a-7b4f-4656-a439-dd0de12b35ea/vcredist_x64.exe" target="_blank" rel="external">x64</a></li>
+<li>2008：<a href="http://download.microsoft.com/download/7/5/0/7502f4e9-1f90-4895-9259-1bde67b8b9a1/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/2/b/e/2bec4780-6f99-4347-ad31-48d4b46ab1d3/vcredist_x64.exe" target="_blank" rel="external">x64</a> 2008 SP1：<a href="http://download.microsoft.com/download/5/9/e/59e74271-2b59-49a1-b955-96b69cc34f38/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/b/d/e/bde0381b-20e2-4631-a5f4-aa72111a23d8/vcredist_x64.exe" target="_blank" rel="external">x64</a></li>
+<li>2010：<a href="http://download.microsoft.com/download/5/B/C/5BC5DBB3-652D-4DCE-B14A-475AB85EEF6E/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe" target="_blank" rel="external">x64</a> 2010 SP1：<a href="http://download.microsoft.com/download/C/6/D/C6D0FD4E-9E53-4897-9B91-836EBA2AACD3/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/A/8/0/A80747C3-41BD-45DF-B505-E9710D2744E0/vcredist_x64.exe" target="_blank" rel="external">x64</a></li>
+<li>2012 Update1：<a href="http://download.microsoft.com/download/9/C/D/9CD480DC-0301-41B0-AAAB-FE9AC1F60237/VSU1/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/9/C/D/9CD480DC-0301-41B0-AAAB-FE9AC1F60237/VSU1/vcredist_x64.exe" target="_blank" rel="external">x64</a> 2013：<a href="http://download.microsoft.com/download/F/3/5/F3500770-8A08-488E-94B6-17A1E1DD526F/vcredist_x86.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/F/3/5/F3500770-8A08-488E-94B6-17A1E1DD526F/vcredist_x64.exe" target="_blank" rel="external">x64</a></li>
+</ul>
+</li>
+<li>Microsoft .NET Framework：<ul>
+<li>2.0：<a href="http://download.microsoft.com/download/5/6/7/567758a3-759e-473e-bf8f-52154438565a/dotnetfx.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/a/3/f/a3f1bf98-18f3-4036-9b68-8e6de530ce0a/NetFx64.exe" target="_blank" rel="external">x64</a> 3.5：<a href="http://download.microsoft.com/download/7/0/3/703455ee-a747-4cc8-bd3e-98a615c3aedb/dotNetFx35setup.exe" target="_blank" rel="external">x86</a> 3.5 SP1：<a href="http://download.microsoft.com/download/0/6/1/061F001C-8752-4600-A198-53214C69B51F/dotnetfx35setup.exe" target="_blank" rel="external">x86</a>、<a href="http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe" target="_blank" rel="external">完整版</a></li>
+<li>4：<a href="http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe" target="_blank" rel="external">x86/x64</a>、<a href="http://www.microsoft.com/zh-cn/download/confirmation.aspx?id=17718" target="_blank" rel="external">完整版</a> 4.5：<a href="http://download.microsoft.com/download/B/A/4/BA4A7E71-2906-4B2D-A0E1-80CF16844F5F/dotNetFx45_Full_setup.exe" target="_blank" rel="external">x86/x64</a>、<a href="http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe" target="_blank" rel="external">完整版</a> 4.5.1：<a href="http://download.microsoft.com/download/7/4/0/74078A56-A3A1-492D-BBA9-865684B83C1B/NDP451-KB2859818-Web.exe" target="_blank" rel="external">x86/x64</a>、<a href="http://download.microsoft.com/download/1/6/7/167F0D79-9317-48AE-AEDB-17120579F8E2/NDP451-KB2858728-x86-x64-AllOS-ENU.exe" target="_blank" rel="external">完整版</a></li>
 </ul>
 </li>
 </ul>
-<h3 id="媒体"><a href="#媒体" class="headerlink" title="媒体"></a>媒体</h3><ul>
+<h3 id="媒体设计"><a href="#媒体设计" class="headerlink" title="媒体设计"></a>媒体设计</h3><ul>
 <li>Adobe CC 2017(Photoshop/Audition/Premiere)：<a href="http://pan.baidu.com/s/1eRNym9W" target="_blank" rel="external">精简版 密码：f7yt</a></li>
 </ul>
 <h3 id="实用工具"><a href="#实用工具" class="headerlink" title="实用工具"></a>实用工具</h3><ul>
-<li>[Lantern蓝灯翻墙]：<a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe" target="_blank" rel="external">最新版</a>、<a href="https://github.com/getlantern/mirror" target="_blank" rel="external">官网</a></li>
+<li>Lantern蓝灯翻墙：<a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe" target="_blank" rel="external">最新版</a>、<a href="https://github.com/getlantern/mirror" target="_blank" rel="external">官网</a></li>
 <li>我平常整理的一些实用工具：<a href="https://pan.baidu.com/s/1pLwsEUZ" target="_blank" rel="external">密码：806j</a></li>
 </ul>
 <h2 id="影视汁源"><a href="#影视汁源" class="headerlink" title="影视汁源"></a><strong>影视汁源</strong></h2><h3 id="资源站"><a href="#资源站" class="headerlink" title="资源站"></a>资源站</h3><ul>
@@ -2226,7 +2291,8 @@
 <li>全球电影票房排行榜：<a href="https://www.douban.com/doulist/1641439/" target="_blank" rel="external">中文版</a>、<a href="http://www.boxofficemojo.com/alltime/world/" target="_blank" rel="external">英文版</a></li>
 </ul>
 <h3 id="电影合集"><a href="#电影合集" class="headerlink" title="电影合集"></a>电影合集</h3><ul>
-<li><a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">漫威电影合集</a>、<a href="/2017/09/24/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E8%AF%BA%E5%85%B0%E7%A5%9E%E4%BD%9C%E9%9B%86/">诺兰电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">007电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E5%8E%86%E5%B1%8A%E5%A5%A5%E6%96%AF%E5%8D%A1%E6%9C%80%E4%BD%B3%E5%8A%A8%E7%94%BB%E9%95%BF%E7%89%87%E9%9B%86/">历届奥斯卡最佳动画长片合集</a></li>
+<li><a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">漫威电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">007电影合集</a></li>
+<li><a href="/2017/09/24/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E8%AF%BA%E5%85%B0%E7%A5%9E%E4%BD%9C%E9%9B%86/">诺兰电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E5%8E%86%E5%B1%8A%E5%A5%A5%E6%96%AF%E5%8D%A1%E6%9C%80%E4%BD%B3%E5%8A%A8%E7%94%BB%E9%95%BF%E7%89%87%E9%9B%86/">历届奥斯卡最佳动画长片合集</a></li>
 </ul>
 ]]></content>
     
@@ -2445,7 +2511,7 @@
     <link href="http://ex2tron.coding.me/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
     <id>http://ex2tron.coding.me/2017/10/10/Python-OpenCV教程（目录）/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2017-12-24T11:44:41.828Z</updated>
+    <updated>2017-12-27T08:31:09.933Z</updated>
     
     <content type="html"><![CDATA[<p><a href="/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/">图文版</a> | 简洁版</p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><ol>
@@ -2464,7 +2530,7 @@
 <li><a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">边缘检测</a>（Canny/Sobel） | <a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇8：图像梯度</a></li>
 <li><a href="/2017/12/19/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</li>
 <li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/">轮廓</a> （寻找绘制轮廓）</li>
-<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">轮廓特征</a> （面积/周长/最小外接矩/最小外接圆/形状匹配）</li>
+<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">轮廓特征</a> （面积/周长/最小外接矩(圆)/形状匹配） | <a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">番外篇9：凸包及更多轮廓特征</a></li>
 <li><a href="/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/">直方图</a>（计算绘制直方图/均衡化）</li>
 </ol>
 ]]></content>
