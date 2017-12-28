@@ -127,7 +127,7 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-Python-OpenCV教程5：颜色空间转换"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-博客新篇章！"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -135,7 +135,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/07/Python-OpenCV教程5：颜色空间转换/">Python+OpenCV教程5：颜色空间转换</a>
+      <a class="article-title" href="/2017/08/23/博客新篇章！/">博客新篇章！Brave New World</a>
     </h1>
   
 
@@ -143,8 +143,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/12/07/Python-OpenCV教程5：颜色空间转换/" class="article-date">
-	  <time datetime="2017-12-07T07:21:19.000Z" itemprop="datePublished">December 7, 2017</time>
+	Posted on <a href="/2017/08/23/博客新篇章！/" class="article-date">
+	  <time datetime="2017-08-23T12:56:32.000Z" itemprop="datePublished">August 23, 2017</time>
 	</a>
 
       
@@ -155,678 +155,31 @@ var themeMenus = {};
 
           
             <div class="entry-summary" style="margin-left:0;">
-            学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。图片等可到源码处下载。
+            从2014/08/23在lofter上写我的第一篇博客开始，已经过去了整整三年……
+再见，lofterlofter是一个非常不错的轻博客平台，我喜欢它的设计和定位。但lofter终究不适合程序猿，长久以来不支持markdown也让我很头痛。现在，终于还是要说再见了!
 
-目标
-颜色空间转换，如BGR↔Gray，BGR↔HSV等
-追踪视频中特定颜色的物体
-OpenCV函数：cv2.cvtColor(),cv2.inRange()
+http://ex2tron.lofter.com
 
-教程颜色空间转换12345678import cv2import numpy as npimg = cv2.imread('lena.jpg')# 转换为灰度图img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)cv2.imshow('img', img)cv2.imshow('gray', img_gray), cv2.waitKey(0)
-cv2.cvtColor()用来进行颜色模型转换，参数1是要...
+旧的66篇博客【Code/编程/开发】构建法、单点控制
+构建法、表驱动法
+【云端漫步】一起上“阿里云”（1）、购买学生党套餐
+【云端漫步】一起上“阿里云”（2）、远程登陆服务器
+【云端漫步】一起上“阿里云”（3）、LAMP环境搭建
+【云端漫步】一起上“阿里云”（4）、搭建Git服务器
+【云端漫步】一起上“阿里云”（5）、域名购买和解析
+Python多字节二进制文件读取...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/12/07/Python-OpenCV教程5：颜色空间转换/#more">Continue Reading →</a>
+            <a href="/2017/08/23/博客新篇章！/#more">Continue Reading →</a>
           </p>
         </div>
       
     </div>
     <footer class="entry-meta entry-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HSV/">HSV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程4：图像基本操作"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/07/Python-OpenCV教程4：图像基本操作/">Python+OpenCV教程4：图像基本操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/07/Python-OpenCV教程4：图像基本操作/" class="article-date">
-	  <time datetime="2017-12-07T04:13:15.000Z" itemprop="datePublished">December 7, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。图片等可到源码处下载。
-
-目标
-访问和修改图片像素点的值
-获取图片的宽、高、通道数等属性
-了解感兴趣区域ROI
-分离和合并图像通道
-
-教程获取和修改像素点值我们先读入一张图片：
-123import cv2img = cv2.imread('lena.jpg')
-通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R三个值的列表，对于灰度图，只有一个值：
-123456px = img[100, 100]print(px)  # [119 108 201]# 只获取蓝色blue通道的值px_blue = img[100, 100, 0]print(px_blue)  # 119
-
-经验之谈：还记得吗？行对应的是y...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/07/Python-OpenCV教程4：图像基本操作/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROI/">ROI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程番外篇3：滑动条"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程番外篇3：滑动条/">Python+OpenCV教程番外篇3：滑动条</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程番外篇3：滑动条/" class="article-date">
-	  <time datetime="2017-12-06T14:23:11.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习使用滑动条动态调整参数。图片等可到源码处下载。
-
-目标
-创建和使用滑动条
-OpenCV函数：cv2.createTrackbar(), cv2.getTrackbarPos()
-
-教程滑动条的使用首先我们需要创建一个滑动条，如cv2.createTrackbar(&#39;R&#39;,&#39;image&#39;,0,255,call_back)，其中
-
-参数1：滑动条的名称
-参数2：所在窗口的名称
-参数3：当前的值
-参数4：最大值
-参数5：回调函数名称，回调函数默认有一个表示当前值的参数
-
-创建好之后，可以在回调函数中获取滑动条的值，也可以用：cv2.getTrackbarPos()得到，其中，参数1是滑动条的名称，参数2是窗口的名称。下面我们实现一个RGB的调色板，理解下函...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程番外篇3：滑动条/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滑动条/">滑动条</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程3：打开摄像头"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程3：打开摄像头/">Python+OpenCV教程3：打开摄像头</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程3：打开摄像头/" class="article-date">
-	  <time datetime="2017-12-06T08:38:02.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习打开摄像头捕获照片、播放本地视频、录制视频等。视频等可到源码处下载。
-
-目标
-打开摄像头并捕获照片
-播放本地视频，录制视频
-OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
-
-教程打开摄像头要使用摄像头，需要使用cv2.VideoCapture(0)创建VideoCapture对象，参数0指的是摄像头的编号。如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1。
-1234567891011121314# 打开摄像头并灰度化显示import cv2capture = cv2.VideoCapture(0)while(True):    # 获取一帧    ret, frame = capture.read()    # 将这帧转换为灰...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程3：打开摄像头/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程番外篇2：Matplotlib显示图像"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/">Python+OpenCV教程番外篇2：Matplotlib显示图像</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/" class="article-date">
-	  <time datetime="2017-12-06T07:55:15.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何使用Matplotlib显示OpenCV图像。
-Matplotlib是Python的一个非常重要的绘图库，更多内容可以去官网学习。
-显示灰度图1234567import cv2import matplotlib.pyplot as pltimg = cv2.imread('lena.jpg', 0)# 灰度图显示，cmap(color map)设置为grayplt.imshow(img, cmap='gray')plt.show()
-结果如下：
-
-显示彩色图OpenCV中的图像是以BGR的通道顺序存储的，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:
-12345678910111213141516i...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matplotlib/">Matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程2：基本元素-图片"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/">Python+OpenCV教程2：基本元素-图片</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/" class="article-date">
-	  <time datetime="2017-12-06T07:52:06.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何加载图片，显示并保存图片。图片等可到源码处下载。
-
-目标
-加载图片，显示图片，保存图片
-OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()
-
-教程图片
- 注：本教程不再赘述图像处理的基本理论，只把需要注意的做简单提及噢(⊙o⊙)
-
-OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图像坐标的起始点是在左上角：
-
-加载图片使用cv2.imread()来读入一张图片：
-1234import cv2# 灰度图加载img = cv2.imread('lena.jpg', 0)
-
-参数1是图片的文件名：
-
-如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’
-否则，需要给出绝对路径，如’D:\OpenCVS...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程2：基本元素-图片/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程番外篇1：代码性能优化"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/">Python+OpenCV教程番外篇1：代码性能优化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" class="article-date">
-	  <time datetime="2017-12-06T07:51:52.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何评估和优化代码性能。（本节还没更新完…………）
-完成一项任务很重要，高效地完成更重要。图像处理是对图像的操作，数据量巨大，如果代码写的不好，性能差距将很大，所以这节我们来了解下如何测量和提升代码性能。
-测量代码运行时间123456import cv2start = cv2.getTickCount()# 这里写要测量的代码...end = cv2.getTickCount()print((end - start) / cv2.getTickFrequency())
-这段代码就是用来测量程序运行时间的（单位：s），其中cv2.getTickCount()函数得到电脑启动以来的时钟周期数，cv2.getTickFrequency()返回你电脑的主频，前后相减再除以主频就是你代码的运...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python-OpenCV教程1：简介与安装"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程1：简介与安装/">Python+OpenCV教程1：简介与安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程1：简介与安装/" class="article-date">
-	  <time datetime="2017-12-06T07:50:59.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！
-我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。
-
-本教程翻译自OpenCV官方英文教程，我按照使用度和难易度重写翻译和编写，将不常用和较难的部分写成番外篇。每小节的原文、图片和源码等均可在引用处找到。虽然简单，但本教程依然需要你具备Python和图像处理的简单基础噢(⊙o⊙)
-
-
-Python照样快！众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要特性：它是一门胶水语言！Python可以很容易地扩展C/C++。OpenCV-Python就是用Python包装了C++的实现，背后实际就是C++...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程1：简介与安装/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【片单】漫威宇宙电影合集"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/05/【片单】漫威宇宙电影合集/">【片单】漫威宇宙电影合集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/05/【片单】漫威宇宙电影合集/" class="article-date">
-	  <time datetime="2017-12-05T14:44:35.000Z" itemprop="datePublished">December 5, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！
-
-Excelsior!  ——斯坦·李
-
-漫威电影宇宙MCU的成绩有目共睹，在十周年《复仇者联盟3》上映之前，来补一波吧！
-
-大部分片源来自人人影视字幕组，点击片名即可下载
-
-MCU观影指南：
-第一阶段
-2008《钢铁侠1》、
-
-2008《无敌浩克》
-
-2010《钢铁侠2》
-
-2011《雷神1》
-
-2011《美国队长1：复仇者先锋》
-
-2012《复仇者联盟1》
-
-
-第二阶段
-2013《钢铁侠3》
-
-2013《雷神2：黑暗世界》
-
-2014《美国队长2：冬日战士》
-
-2014《银河护卫队1》
-
-2015《复仇者联盟2：奥创纪元》
-
-2015《蚁人》
-
-
-第三阶段
-2016《美国队长3：内战》
-
-2016《奇异博士》
-...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/05/【片单】漫威宇宙电影合集/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/谈电影/">谈电影</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Marvel/">Marvel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复仇者联盟/">复仇者联盟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漫威/">漫威</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【片单】007电影合集"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/05/【片单】007电影合集/">【片单】007电影合集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/05/【片单】007电影合集/" class="article-date">
-	  <time datetime="2017-12-05T13:53:37.000Z" itemprop="datePublished">December 5, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <a href="/2017/12/05/【片单】007电影合集/"><img width="250" height="175" src="http://image12.m1905.cn/mapps/uploadfile/edu/2014/0404/2014040411314213256.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          作为风靡全球的一系列谍战电影，007怎能不看呢？007电影合集下载！
-
-“My name is Bond, James Bond.” ——詹姆斯·邦德
-
-目前为止，007系列电影已经有24部辣，六任邦德。
-
-大部分片源来自人人影视字幕组，点击片名即可下载
-
-肖恩·康纳利
-1. 诺博士 (1962)
-
-2. 来自俄罗斯的爱情 (1963)
-
-3. 金手指 (1964)
-
-4. 霹雳弹 (196...
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/05/【片单】007电影合集/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/谈电影/">谈电影</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/007/">007</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/邦德/">邦德</a></li></ul>
-
       
             
       
@@ -842,7 +195,7 @@ MCU观影指南：
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
 
 </section>
@@ -942,8 +295,38 @@ MCU观影指南：
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/">Python+OpenCV教程17：霍夫变换</a></h6>
-              <span>December 28, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/12/05/【片单】漫威宇宙电影合集/">【片单】漫威宇宙电影合集</a></h6>
+              <span>December 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2017/12/05/【片单】007电影合集/" title=""><img width="50" height="50" src="http://image12.m1905.cn/mapps/uploadfile/edu/2014/0404/2014040411314213256.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/05/【片单】007电影合集/">【片单】007电影合集</a></h6>
+              <span>December 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2017/12/05/【片单】历届奥斯卡最佳动画长片集/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/zootopia_ps_oscars.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/05/【片单】历届奥斯卡最佳动画长片集/">【片单】历届奥斯卡最佳动画长片集</a></h6>
+              <span>December 5, 2017</span>
             </div>
 
           </li>
@@ -954,8 +337,8 @@ MCU观影指南：
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/27/Python-OpenCV教程16：模板匹配/">Python+OpenCV教程16：模板匹配</a></h6>
-              <span>December 27, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/">Brand7 2.0更名&#34;品牌漆&#34;正式上架咯！</a></h6>
+              <span>November 26, 2017</span>
             </div>
 
           </li>
@@ -966,8 +349,8 @@ MCU观影指南：
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/23/Python-OpenCV教程15：直方图/">Python+OpenCV教程15：直方图</a></h6>
-              <span>December 23, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/11/15/软件-影视汁源贴-updating/">软件+影视汁源贴(updating...)</a></h6>
+              <span>November 15, 2017</span>
             </div>
 
           </li>
@@ -978,32 +361,8 @@ MCU观影指南：
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程14：轮廓特征/">Python+OpenCV教程14：轮廓特征</a></h6>
-              <span>December 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/">Python+OpenCV教程番外篇9：凸包及更多轮廓特征</a></h6>
-              <span>December 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
-              <span>December 20, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/11/08/计量史：时间之旅/">计量史：时间之旅</a></h6>
+              <span>November 8, 2017</span>
             </div>
 
           </li>
@@ -1017,7 +376,7 @@ MCU观影指南：
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -1028,7 +387,7 @@ MCU观影指南：
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
