@@ -127,7 +127,7 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-【利器篇】GitKraken：顶级酷炫Git图像化工具"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程番外篇8：图像梯度"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -135,7 +135,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/10/05/【利器篇】GitKraken：顶级酷炫Git图像化工具/">【利器篇】GitKraken：顶级酷炫Git图像化客户端</a>
+      <a class="article-title" href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/">Python+OpenCV教程番外篇8：图像梯度</a>
     </h1>
   
 
@@ -143,8 +143,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/10/05/【利器篇】GitKraken：顶级酷炫Git图像化工具/" class="article-date">
-	  <time datetime="2017-10-05T09:33:20.000Z" itemprop="datePublished">October 5, 2017</time>
+	Posted on <a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/" class="article-date">
+	  <time datetime="2017-12-18T02:51:43.000Z" itemprop="datePublished">December 18, 2017</time>
 	</a>
 
       
@@ -155,17 +155,17 @@ var themeMenus = {};
 
           
             <div class="entry-summary" style="margin-left:0;">
-            不喜欢敲命令？那么这款酷炫的Git客户端让你逼格满满！
-
-真正的忘记是不需要努力的。——《大鱼海棠》
-
-
-首先废话一段：以前我上班的时候，公司里的SCM用的是perforce，你应该、可能没听过( ╯□╰ )。总之，就是集中式版本管理系统，相比于git的分布式有很多缺陷，具体可以看廖雪峰的这篇文章：“集中式vs分布式”。但作为一款商业软件，perforce提供的优秀客户端体验还是相当不错的。使用git后，一直都是敲命令的，一是因为习惯，毕竟码代码逼格高嘛，二是因为git的GUI客户端要不很丑，要不功能捉急，总之不想用。之后，在微博上看到这款软件，又同类似的SourceTree相比体验了一下，无奈，我，还是喜欢颜值高的~ o(￣▽￣)o另外，以前外教老师提问说《加勒比海盗2》中的那个怪物...
+            了解图像梯度和边缘检测的相关概念。图片等可到源码处下载。
+还记得前面平滑图像中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。
+图像梯度如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。
+当然，大部分人应该是早忘记高数了(￣▽￣)”，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。
+垂直边缘提取滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面这个卷积核：
+$$k1 = \left[ \begin{matrix}  ...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/10/05/【利器篇】GitKraken：顶级酷炫Git图像化工具/#more">Continue Reading →</a>
+            <a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -173,11 +173,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitKraken/">GitKraken</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sobel/">Sobel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/梯度/">梯度</a></li></ul>
 
       
             
@@ -190,7 +190,7 @@ var themeMenus = {};
 <!-- Table of Contents -->
 
   
-    <article id="post-小白深度学习笔记1：logistic回归"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程10：平滑图像"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -198,7 +198,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/10/02/小白深度学习笔记1：logistic回归/">小白深度学习笔记1：logistic回归</a>
+      <a class="article-title" href="/2017/12/15/Python-OpenCV教程10：平滑图像/">Python+OpenCV教程10：平滑图像</a>
     </h1>
   
 
@@ -206,8 +206,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/10/02/小白深度学习笔记1：logistic回归/" class="article-date">
-	  <time datetime="2017-10-02T13:06:32.000Z" itemprop="datePublished">October 2, 2017</time>
+	Posted on <a href="/2017/12/15/Python-OpenCV教程10：平滑图像/" class="article-date">
+	  <time datetime="2017-12-15T01:44:24.000Z" itemprop="datePublished">December 15, 2017</time>
 	</a>
 
       
@@ -218,20 +218,24 @@ var themeMenus = {};
 
           
             <div class="entry-summary" style="margin-left:0;">
-            开启神经网络与深度学习之坑！本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。
+            学习模糊/平滑图像，消除噪点。图片等可到源码处下载。
 
-When life ends up breathtakingly fucked, you can generally trace it back to one big, bad decision.——《DeadPool》当你的生活变成一坨屎的时候，通常都是因为你当时做的傻逼决定。——《死侍》
+目标
+模糊/平滑图片来消除图片噪声
+OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFilter()
 
+教程滤波与模糊推荐大家先阅读：番外篇：卷积基础(图片边框)，有助于理解卷积和滤波的概念。
+关于滤波和模糊，很多人分不清，我来给大家理理（虽说如此，我后面也会混着用,,ԾㅂԾ,,）：
 
+它们都属于卷积，不同滤波方法之间只是卷积核不同（对线性滤波而言）
+低通滤波器是模糊，高通滤波器是锐化
 
-本文是我在观看吴恩达老师的《神经网络和深度学习》视频课程时，相关的笔记整理，大佬勿喷！
-
-二类分类比如说分析一张图片中有猫还是没猫，这就是一个二类分类（Binary Classification）问题。这里，我们用输出y=1表示有猫，y=0表示没有猫。输入是一张...
+低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/10/02/小白深度学习笔记1：logistic回归/#more">Continue Reading →</a>
+            <a href="/2017/12/15/Python-OpenCV教程10：平滑图像/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -239,11 +243,11 @@ When life ends up breathtakingly fucked, you can generally trace it back to one 
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic/">logistic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模糊/">模糊</a></li></ul>
 
       
             
@@ -256,7 +260,7 @@ When life ends up breathtakingly fucked, you can generally trace it back to one 
 <!-- Table of Contents -->
 
   
-    <article id="post-【算法贴】三点定位算法"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程番外篇7：卷积基础-图片边框"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -264,7 +268,7 @@ When life ends up breathtakingly fucked, you can generally trace it back to one 
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/29/【算法贴】三点定位算法/">【算法贴】三点定位算法</a>
+      <a class="article-title" href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/">Python+OpenCV教程番外篇7：卷积基础(图片边框)</a>
     </h1>
   
 
@@ -272,8 +276,8 @@ When life ends up breathtakingly fucked, you can generally trace it back to one 
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/29/【算法贴】三点定位算法/" class="article-date">
-	  <time datetime="2017-09-29T10:58:31.000Z" itemprop="datePublished">September 29, 2017</time>
+	Posted on <a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/" class="article-date">
+	  <time datetime="2017-12-14T08:27:45.000Z" itemprop="datePublished">December 14, 2017</time>
 	</a>
 
       
@@ -284,27 +288,17 @@ When life ends up breathtakingly fucked, you can generally trace it back to one 
 
           
             <div class="entry-summary" style="margin-left:0;">
-            已知三个点的坐标和未知点到这三个点的距离，求未知点？
+            了解卷积/滤波的基础知识，给图片添加边框。如果你已了解相关理论，请直接跳到添加边框部分。
+卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(￣▽￣)o
+卷积什么是二维卷积呢？看下面一张图就一目了然：
 
-过去的如果就这么过去了，以后只会越来越糟。——《驴得水》
-
-
-
-
-p.s.本文引用了mathjax脚本用来显示数学公式，所以需等待加载完成才能显示正常。
-算法解析如下图所示，以三个已知点为圆心，d1,d2,d3为半径作圆，交点便是要求解的未知点：
-
-刚开始百度了一下，各种稀奇的算法，包括将三角形平移、旋转啥的，其实不用这么麻烦，直接通过勾股定理死算就可以了。
-$$(x_1-x_0)^2+(y_1-y_0)^2=d_1^2$$
-$$(x_2-x_0)^2+(y_2-y_0)^2=d_2^2$$
-$$(x_3-x_0)^2+(y_3-y_0)^2=d_3^2$$
-将上面三个式子展开：
-$$x_1^2+x_0^2-2x_0x_1+y_1...
+卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……
+padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/29/【算法贴】三点定位算法/#more">Continue Reading →</a>
+            <a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -312,11 +306,11 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/三角定位/">三角定位</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卷积/">卷积</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/边框/">边框</a></li></ul>
 
       
             
@@ -329,7 +323,7 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
 <!-- Table of Contents -->
 
   
-    <article id="post-构建法、杀死变量"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程9：图像混合"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -337,7 +331,7 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/28/构建法、杀死变量/">构建法、杀死变量</a>
+      <a class="article-title" href="/2017/12/10/Python-OpenCV教程9：图像混合/">Python+OpenCV教程9：图像混合</a>
     </h1>
   
 
@@ -345,8 +339,8 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/28/构建法、杀死变量/" class="article-date">
-	  <time datetime="2017-09-28T13:23:45.000Z" itemprop="datePublished">September 28, 2017</time>
+	Posted on <a href="/2017/12/10/Python-OpenCV教程9：图像混合/" class="article-date">
+	  <time datetime="2017-12-10T06:13:10.000Z" itemprop="datePublished">December 10, 2017</time>
 	</a>
 
       
@@ -357,19 +351,20 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。
+            学习图片间的数学运算，图像混合。图片等可到源码处下载。
 
-Why do we fall, Bruce? So we can learn to pick ourselves up.  ——《Batman Begins》我们为何会跌倒？这样我们才可以学会自己爬起来。——《蝙蝠侠：侠影之谜》
+目标
+图片间的数学运算，如相加、按位运算等
+OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
 
-
-如果一个变量在代码中很分散，阅读者在同一时间内考虑的代码行数势必会增加，编写者引入Bug的概率也会增大。那么，该如何从减少变量的作用域角度提高代码质量呢？
-p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结，大佬勿喷！
-变量跨度与存活时间建议一：把对变量的引用尽可能集中在一起，使变量局部化12345a = 0; b = 0;c = 0;a = b + c;b...
+教程首先，恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油(ง •_•)ง
+图片相加要叠加两张图片，可以用cv2.add()函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用res = img + img1相加，但这两者的结果并不相同：
+1234567import cv2import numpy as npx = np.uint8([250])y = np.uint8([10])print(cv2.add(x, y...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/28/构建法、杀死变量/#more">Continue Reading →</a>
+            <a href="/2017/12/10/Python-OpenCV教程9：图像混合/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -377,11 +372,11 @@ p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结�
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/作用域/">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/变量/">变量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建法/">构建法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像混合/">图像混合</a></li></ul>
 
       
             
@@ -394,7 +389,7 @@ p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结�
 <!-- Table of Contents -->
 
   
-    <article id="post-【片单】诺兰神作集"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程番外篇6：亮度与对比度"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -402,7 +397,7 @@ p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结�
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/24/【片单】诺兰神作集/">【片单】诺兰神作集</a>
+      <a class="article-title" href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/">Python+OpenCV教程番外篇6：亮度与对比度</a>
     </h1>
   
 
@@ -410,8 +405,8 @@ p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结�
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/24/【片单】诺兰神作集/" class="article-date">
-	  <time datetime="2017-09-24T12:37:41.000Z" itemprop="datePublished">September 24, 2017</time>
+	Posted on <a href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/" class="article-date">
+	  <time datetime="2017-12-10T06:05:10.000Z" itemprop="datePublished">December 10, 2017</time>
 	</a>
 
       
@@ -422,25 +417,19 @@ p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结�
 
           
             <div class="entry-summary" style="margin-left:0;">
-            有的导演，虽然没拿过奥斯卡，作品不多，但每部却都被影迷奉为神作，没错，说的就是诺神。：克里斯托弗·诺兰
-克里斯托弗·诺兰今天周末，回顾了下诺神的蝙蝠侠和盗梦空间，加上前段时间刚看完敦刻尔克，按耐不住，就分享下诺兰的神作电影下载链接吧。
+            学习如何调整图片的亮度和对比度。图片等可到源码处下载。
 
-大部分片源来自人人影视字幕组，作品按时间倒序，点击片名即可下载。
+亮度与对比度亮度调整是将图像像素的强度整体变大/变小，对比度调整指的是图像暗处的像素强度变低，亮出的变高，从而拓宽某个区域内的显示精度。
+OpenCV中亮度和对比度应用这个公式来计算：g(x) = αf(x) + β，其中：α(&gt;0)、β常称为增益与偏置值，分别控制图片的对比度和亮度。
 
-敦刻尔克 | Dunkirk
-星际穿越 | Interstellar
-蝙蝠侠：黑暗骑士崛起 | The Dark Knight Rises
-盗梦空间 | Inception
-蝙蝠侠：黑暗骑士 | The Dark Knight
-致命魔术 | The Prestige
-蝙蝠侠.侠影之谜 | Batman Begins
-记忆碎片 | Memento
-p.s.本文所有的图片均来自TMDB，如...
+经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：OpenCV关于对比度和亮度的误解
+
+12345678910import cv2import numpy as npimg = cv2.imread('lena.jpg')# 此处需注意，请参考后面的解释res = np.uint8(np.clip((1.5 * img + 10)...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/24/【片单】诺兰神作集/#more">Continue Reading →</a>
+            <a href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -448,11 +437,11 @@ p.s.本文所有的图片均来自TMDB，如...
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/谈电影/">谈电影</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/诺兰/">诺兰</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/亮度/">亮度</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对比度/">对比度</a></li></ul>
 
       
             
@@ -465,7 +454,7 @@ p.s.本文所有的图片均来自TMDB，如...
 <!-- Table of Contents -->
 
   
-    <article id="post-【利器篇】七牛云：用做每月免费10G的图床"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程番外篇5：鼠标绘图"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -473,7 +462,7 @@ p.s.本文所有的图片均来自TMDB，如...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/18/【利器篇】七牛云：用做每月免费10G的图床/">【利器篇】七牛云——用做每月免费10G的图床</a>
+      <a class="article-title" href="/2017/12/09/Python-OpenCV教程番外篇5：鼠标绘图/">Python+OpenCV教程番外篇5：鼠标绘图</a>
     </h1>
   
 
@@ -481,8 +470,8 @@ p.s.本文所有的图片均来自TMDB，如...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/18/【利器篇】七牛云：用做每月免费10G的图床/" class="article-date">
-	  <time datetime="2017-09-18T11:55:38.000Z" itemprop="datePublished">September 18, 2017</time>
+	Posted on <a href="/2017/12/09/Python-OpenCV教程番外篇5：鼠标绘图/" class="article-date">
+	  <time datetime="2017-12-09T09:28:34.000Z" itemprop="datePublished">December 9, 2017</time>
 	</a>
 
       
@@ -493,24 +482,20 @@ p.s.本文所有的图片均来自TMDB，如...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。
-对比在七牛云之前，我使用过国外的Cloud App和阿里云的oss对象存储。
+            学习如何用鼠标实时绘图。图片等可到源码处下载。
 
-首先，国外的东西在国内稳定性和速度都是相对较差的，我试着在阿里云和Cloud App上上传同一张图片并生成外链，Cloud App要比阿里的加载速度延迟1-2s，阿里基本秒开。
+目标
+捕获鼠标事件
+OpenCV函数：cv2.setMouseCallback()
 
-阿里的oss对象存储虽然很稳定，但是并不提供免费的空间。相对来说，七牛云提供的每月10G免费流量，对于博客来说，绰绰有余了。
-
-另外，七牛云提供了诸多的图片处理接口，如水印、格式转换、缩放等，很实用，很强大。
-
-
-使用注册并登陆七牛云，在七牛云的产品列表中，添加一个对象存储，如这里取名为picblog：
-
-创建好之后，七牛云会自动生成一个...
+教程知道鼠标在哪儿OpenCV中，我们需要创建一个鼠标的回调函数来知道鼠标当前的位置，当前的事件如左键按下、左键释放或是右键单击等等，然后执行相应的功能。
+使用cv2.setMouseCallback()来创建鼠标的回调函数，比如我们在左键单击的时候，打印出当前鼠标的位置：
+12345678910111213141516171819import cv2import numpy as np# 鼠标的回调函数def mouse_event(event, x, y, flags, param):    # 通过event判断具体是什么事件，这里是左键按下  ...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/18/【利器篇】七牛云：用做每月免费10G的图床/#more">Continue Reading →</a>
+            <a href="/2017/12/09/Python-OpenCV教程番外篇5：鼠标绘图/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -518,11 +503,11 @@ p.s.本文所有的图片均来自TMDB，如...
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/七牛/">七牛</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图床/">图床</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
 
       
             
@@ -535,7 +520,7 @@ p.s.本文所有的图片均来自TMDB，如...
 <!-- Table of Contents -->
 
   
-    <article id="post-Hexo-Github-Pages轻松搭博客-2：在Github上部署"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程8：绘图功能"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -543,7 +528,7 @@ p.s.本文所有的图片均来自TMDB，如...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/">Hexo+Github Pages轻松搭博客(2)：在Github上部署</a>
+      <a class="article-title" href="/2017/12/09/Python-OpenCV教程8：绘图功能/">Python+OpenCV教程8：绘图功能</a>
     </h1>
   
 
@@ -551,8 +536,8 @@ p.s.本文所有的图片均来自TMDB，如...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" class="article-date">
-	  <time datetime="2017-09-13T12:15:47.000Z" itemprop="datePublished">September 13, 2017</time>
+	Posted on <a href="/2017/12/09/Python-OpenCV教程8：绘图功能/" class="article-date">
+	  <time datetime="2017-12-09T03:29:48.000Z" itemprop="datePublished">December 9, 2017</time>
 	</a>
 
       
@@ -563,15 +548,25 @@ p.s.本文所有的图片均来自TMDB，如...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！
-如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在/var/www/html/下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。
+            学习画线、圆和矩形等多种几何形状，给图片添加文字。图片等可到源码处下载。
 
-关联Github首先登陆Github，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，username必须与你的账户名相同，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。新建时注意勾选”Initializ...
+目标
+绘制各种几何形状、添加文字
+OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.putText()
+
+教程参数说明绘制形状的函数有一些共同的参数，提前在此说明一下：
+
+img：要绘制形状的图片
+color：绘制的颜色，彩色（BGR）的话，传入一个元组，如(255,0,0)。灰度图，传入一个值就行
+thickness：线宽，默认为1。对于矩形/圆之类的封闭形状而言，传入-1的话，代表填充
+
+p.s.此节及之后的教程，为节约篇幅，显示图片的代码，我会省略掉：
+12cv2.imshow('img', img)cv2.wai...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/#more">Continue Reading →</a>
+            <a href="/2017/12/09/Python-OpenCV教程8：绘图功能/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -579,11 +574,11 @@ p.s.本文所有的图片均来自TMDB，如...
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
 
       
             
@@ -596,7 +591,7 @@ p.s.本文所有的图片均来自TMDB，如...
 <!-- Table of Contents -->
 
   
-    <article id="post-Hexo-Github-Pages轻松搭博客-1"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程7：图像几何变换"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -604,7 +599,7 @@ p.s.本文所有的图片均来自TMDB，如...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/13/Hexo-Github-Pages轻松搭博客-1/">Hexo+Github Pages轻松搭博客(1)</a>
+      <a class="article-title" href="/2017/12/08/Python-OpenCV教程7：图像几何变换/">Python+OpenCV教程7：图像几何变换</a>
     </h1>
   
 
@@ -612,8 +607,8 @@ p.s.本文所有的图片均来自TMDB，如...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-1/" class="article-date">
-	  <time datetime="2017-09-13T08:07:06.000Z" itemprop="datePublished">September 13, 2017</time>
+	Posted on <a href="/2017/12/08/Python-OpenCV教程7：图像几何变换/" class="article-date">
+	  <time datetime="2017-12-08T06:36:53.000Z" itemprop="datePublished">December 8, 2017</time>
 	</a>
 
       
@@ -624,19 +619,20 @@ p.s.本文所有的图片均来自TMDB，如...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！
+            学习如何旋转、平移和缩放图片，了解仿射/透视变换。图片等可到源码处下载。
 
-废话区域：我在接触Hexo（可以读作Hack So）之前，绝对没少尝试建立一个完全自由、自己说了算的独立博客：WordPress定位重量级，功能强大，生成的是动态网站，依赖数据库……太繁琐了，放弃~而Jekyll和Hexo都是静态建站工具，但Jekyll的依赖项也很多，也不简约，不想用~最后才是名气相对不高的Hexo，相信我，熟练的情况下，10分钟就可以搭出来：
+目标
+实现旋转、平移和缩放图片
+了解仿射变换和透视变换
+OpenCV函数：cv2.resize(), cv2.warpAffine(), cv2.warpPerspective()
 
-
-简介Hexo是一个免费的静态Blog生成工具。简单来说，就是把你写的Markdown博客文件生成静态网页，把这个网页放在Github或者你自己的服务器上就可以快速访问了。软件界，从来不缺自动化工具(ง •_•)ง
-安装官网文档：Hexo Docs
-H...
+教程缩放图片缩放就是调整图片的大小，使用cv2.resize()函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：
+12345678910111213import cv2import numpy as npimport matplotlib.pyplot as pltimg = cv2.imread('drawing.jpg')# 按照指定的宽度、高度缩放图片res = cv2.resize(img, (132, 150)...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-1/#more">Continue Reading →</a>
+            <a href="/2017/12/08/Python-OpenCV教程7：图像几何变换/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -644,11 +640,11 @@ H...
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/几何变换/">几何变换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
 
       
             
@@ -661,7 +657,7 @@ H...
 <!-- Table of Contents -->
 
   
-    <article id="post-【利器篇】用VSCode写Markdown"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程番外篇4：Otsu阈值法"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -669,7 +665,7 @@ H...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/11/【利器篇】用VSCode写Markdown/">【利器篇】用VS Code写Markdown</a>
+      <a class="article-title" href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/">Python+OpenCV教程番外篇4：Otsu阈值法</a>
     </h1>
   
 
@@ -677,8 +673,8 @@ H...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/11/【利器篇】用VSCode写Markdown/" class="article-date">
-	  <time datetime="2017-09-11T07:11:22.000Z" itemprop="datePublished">September 11, 2017</time>
+	Posted on <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/" class="article-date">
+	  <time datetime="2017-12-08T04:48:05.000Z" itemprop="datePublished">December 8, 2017</time>
 	</a>
 
       
@@ -689,14 +685,19 @@ H...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客。关于Markdown相较富文本的优势，我就不细说了。
-Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，如这篇文章：码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点。就我自己目前在Windows上使用的而言有：简书、有道云笔记、Typora、VSCode
-简书本身就是一个博客平台，有道云笔记是类似OneNote和印象笔迹的应用。如果你已经在使用这两个平台的话，就不用多说了。但如果只是想用一个单纯的Markdown编辑器的话，推荐极致简洁的Typora。虽说界面简洁，但功能强大，不仅内置了常见的一些Markdown...
+            大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。
+Otsu阈值法（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？
+什么是双峰图片？双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，如黑色点0有多少个等等，后面会详细介绍。
+
+Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，算法详解：Otsu’s Method(wikipedia)
+代码示例下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：
+另外，对含噪点的图像，先进行滤波操作效果会更好。
+1234567891011121314import cv2fro...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/11/【利器篇】用VSCode写Markdown/#more">Continue Reading →</a>
+            <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -704,11 +705,11 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阈值/">阈值</a></li></ul>
 
       
             
@@ -721,7 +722,7 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
 <!-- Table of Contents -->
 
   
-    <article id="post-【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python-OpenCV教程6：阈值分割"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -729,7 +730,7 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/11/【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具/">【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具</a>
+      <a class="article-title" href="/2017/12/07/Python-OpenCV教程6：阈值分割/">Python+OpenCV教程6：阈值分割</a>
     </h1>
   
 
@@ -737,8 +738,8 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/11/【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具/" class="article-date">
-	  <time datetime="2017-09-11T06:32:14.000Z" itemprop="datePublished">September 11, 2017</time>
+	Posted on <a href="/2017/12/07/Python-OpenCV教程6：阈值分割/" class="article-date">
+	  <time datetime="2017-12-07T13:14:44.000Z" itemprop="datePublished">December 7, 2017</time>
 	</a>
 
       
@@ -746,19 +747,23 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
     <div class="article-entry" itemprop="articleBody">
       
         
-          <div class="entry-thumbnail">
-            <a href="/2017/09/11/【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具/"><img width="250" height="175" src="http://pic.ex2tron.top/mycli_demo.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。
-mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。
-官网：MyCLI
-安装其实mycli是一个Python的包，所以你已经安装了Python(pip)的话，用下面一条指令就好了：
-1pip in...
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习使用不同的阈值方法”二值化”图像。图片等可到源码处下载。
+
+目标
+使用固定阈值、自适应阈值和Otsu阈值法”二值化”图像
+OpenCV函数：cv2.threshold(), cv2.adaptiveThreshold()
+
+教程固定阈值分割固定阈值分割很直接，一句话说就是像素点值大于阈值一个值，小于阈值是另外一个值。
+
+12345678910import cv2import matplotlib.pyplot as plt# 灰度图读入img = cv2.imread('gradient.jpg', 0)# 阈值分割ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)cv2.imshow('thresh', th)cv2...
+          
 
         
           <p class="article-more-link">
-            <a href="/2017/09/11/【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具/#more">Continue Reading →</a>
+            <a href="/2017/12/07/Python-OpenCV教程6：阈值分割/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -766,11 +771,11 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyCLI/">MyCLI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阈值/">阈值</a></li></ul>
 
       
             
@@ -787,7 +792,7 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next</a>
+    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next</a>
   </nav>
 
 </section>
@@ -887,38 +892,8 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/05/【片单】漫威宇宙电影合集/">【片单】漫威宇宙电影合集</a></h6>
-              <span>December 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2017/12/05/【片单】007电影合集/" title=""><img width="50" height="50" src="http://image12.m1905.cn/mapps/uploadfile/edu/2014/0404/2014040411314213256.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/05/【片单】007电影合集/">【片单】007电影合集</a></h6>
-              <span>December 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2017/12/05/【片单】历届奥斯卡最佳动画长片集/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/zootopia_ps_oscars.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/05/【片单】历届奥斯卡最佳动画长片集/">【片单】历届奥斯卡最佳动画长片集</a></h6>
-              <span>December 5, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/">Python+OpenCV教程17：霍夫变换</a></h6>
+              <span>December 28, 2017</span>
             </div>
 
           </li>
@@ -929,8 +904,8 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/">Brand7 2.0更名&#34;品牌漆&#34;正式上架咯！</a></h6>
-              <span>November 26, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/12/27/Python-OpenCV教程16：模板匹配/">Python+OpenCV教程16：模板匹配</a></h6>
+              <span>December 27, 2017</span>
             </div>
 
           </li>
@@ -941,8 +916,8 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/11/15/软件-影视汁源贴-updating/">软件+影视汁源贴(updating...)</a></h6>
-              <span>November 15, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/12/23/Python-OpenCV教程15：直方图/">Python+OpenCV教程15：直方图</a></h6>
+              <span>December 23, 2017</span>
             </div>
 
           </li>
@@ -953,8 +928,32 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/11/08/计量史：时间之旅/">计量史：时间之旅</a></h6>
-              <span>November 8, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程14：轮廓特征/">Python+OpenCV教程14：轮廓特征</a></h6>
+              <span>December 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/">Python+OpenCV教程番外篇9：凸包及更多轮廓特征</a></h6>
+              <span>December 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
+              <span>December 20, 2017</span>
             </div>
 
           </li>
@@ -968,7 +967,7 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -979,7 +978,7 @@ mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、�
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
