@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2017-12-29T01:47:55.097Z</updated>
+  <updated>2017-12-29T02:59:29.861Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.coding.me/2017/12/28/Python-OpenCV%E6%95%99%E7%A8%8B17%EF%BC%9A%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"/>
     <id>http://ex2tron.coding.me/2017/12/28/Python-OpenCV教程17：霍夫变换/</id>
     <published>2017-12-28T03:35:11.000Z</published>
-    <updated>2017-12-29T01:47:55.097Z</updated>
+    <updated>2017-12-29T02:59:29.861Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用霍夫变换识别出图像中的直线和圆。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1686,7 +1686,7 @@
     <link href="http://ex2tron.coding.me/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B4%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://ex2tron.coding.me/2017/12/07/Python-OpenCV教程4：图像基本操作/</id>
     <published>2017-12-07T04:13:15.000Z</published>
-    <updated>2017-12-22T14:41:32.610Z</updated>
+    <updated>2017-12-29T02:59:29.838Z</updated>
     
     <content type="html"><![CDATA[<p>学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1701,19 +1701,19 @@
 <p>通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R三个值的列表，对于灰度图，只有一个值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">px = img[<span class="number">100</span>, <span class="number">100</span>]</div><div class="line">print(px)  <span class="comment"># [119 108 201]</span></div><div class="line"></div><div class="line"><span class="comment"># 只获取蓝色blue通道的值</span></div><div class="line">px_blue = img[<span class="number">100</span>, <span class="number">100</span>, <span class="number">0</span>]</div><div class="line">print(px_blue)  <span class="comment"># 119</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：还记得吗？行对应的是y，列对应的是x，所以其实是<code>img[y, x]</code></p>
+<p>经验之谈：还记得吗？行对应的是y，列对应的是x，所以其实是<code>img[y, x]</code>，需要注意噢(●ˇ∀ˇ●)</p>
 </blockquote>
 <p>修改像素的值也是同样的方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img[<span class="number">100</span>, <span class="number">100</span>] = [<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>]</div><div class="line">print(img[<span class="number">100</span>, <span class="number">100</span>])  <span class="comment"># [255 255 255]</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：还记得之前说过OpenCV-Python原生支持numpy吗？numpy是针对矩阵运算优化的，所以像上面的操作性能较差，更推荐的方式是：<br>获取：img.item(100,100,0)，修改：img.itemset((100,100,0),255)，但这种方式只能B,G,R逐一进行。</p>
+<p>经验之谈：还有一种性能更好的方式，获取：<code>img.item(100,100,0)</code>，修改：<code>img.itemset((100,100,0),255)</code>，但这种方式只能B,G,R逐一进行</p>
 </blockquote>
 <h3 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h3><p><code>img.shape</code>获取图像的形状，图片是彩色的话，返回一个包含高度、宽度和通道数的元组，灰度图只返回高度和宽度：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(img.shape)  <span class="comment"># (263, 263, 3)</span></div><div class="line"><span class="comment"># 形状中包括高度、宽度和通道数</span></div><div class="line">height, width, channels = img.shape</div><div class="line"><span class="comment"># img是灰度图的话：height, width = img.shape</span></div></pre></td></tr></table></figure>
 <p><code>img.dtype</code>获取图像数据类型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.dtype)  <span class="comment"># uint8</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码需要对这个属性加以判断。</p>
+<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码需要对这个属性加以判断</p>
 </blockquote>
 <p><code>img.size</code>获取图像总像素数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*263*3=207507</span></div></pre></td></tr></table></figure>
@@ -1762,7 +1762,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇3：滑动条/</id>
     <published>2017-12-06T14:23:11.000Z</published>
-    <updated>2017-12-22T02:52:50.006Z</updated>
+    <updated>2017-12-29T02:59:29.855Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用滑动条动态调整参数。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1780,6 +1780,7 @@
 </ul>
 <p>创建好之后，可以在回调函数中获取滑动条的值，也可以用：<code>cv2.getTrackbarPos()</code>得到，其中，参数1是滑动条的名称，参数2是窗口的名称。下面我们实现一个RGB的调色板，理解下函数的使用：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 回调函数，x表示滑块的位置，本例暂不使用</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nothing</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">300</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建RGB三个滑动条</span></div><div class="line">cv2.createTrackbar(<span class="string">'R'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'G'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'B'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取滑块的值</span></div><div class="line">    r = cv2.getTrackbarPos(<span class="string">'R'</span>, <span class="string">'image'</span>)</div><div class="line">    g = cv2.getTrackbarPos(<span class="string">'G'</span>, <span class="string">'image'</span>)</div><div class="line">    b = cv2.getTrackbarPos(<span class="string">'B'</span>, <span class="string">'image'</span>)</div><div class="line">    <span class="comment"># 设定img的颜色</span></div><div class="line">    img[:] = [b, g, r]</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>cv2.createTrackbar()用来创建滑动条，可以在回调函数中得到滑块的位置，也可以用cv2.getTrackbarPos()</li>
 </ul>
@@ -1813,7 +1814,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B3%EF%BC%9A%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程3：打开摄像头/</id>
     <published>2017-12-06T08:38:02.000Z</published>
-    <updated>2017-12-28T02:06:28.138Z</updated>
+    <updated>2017-12-29T02:59:29.864Z</updated>
     
     <content type="html"><![CDATA[<p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a>视频等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1822,17 +1823,17 @@
 <li>播放本地视频，录制视频</li>
 <li>OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()</li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数0指的是摄像头的编号。如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1。</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数：0指的是摄像头的编号。如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打开摄像头并灰度化显示</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 获取一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line">    <span class="comment"># 将这帧转换为灰度图</span></div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
-<p><code>capture.read()</code>函数返回的第一个参数是一个布尔值，frame获取正确的话，ret=True。<code>cv2.cvtColor()</code>是颜色空间转换函数，OpenCV默认以BGR通道顺序存储图像，这里转成灰度图。</p>
-<p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些信息，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/3.3.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">Property Identifier</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取捕获的分辨率</span></div><div class="line">width, height = capture.get(<span class="number">3</span>), capture.get(<span class="number">4</span>)</div><div class="line">print(width, height)</div><div class="line"></div><div class="line"><span class="comment"># 以原分辨率的一倍来捕获，</span></div><div class="line"><span class="comment"># 参数1可以直接写数字，或者OpenCV符号表示</span></div><div class="line">capture.set(cv2.CAP_PROP_FRAME_WIDTH, width * <span class="number">2</span>)</div><div class="line">capture.set(cv2.CAP_PROP_FRAME_HEIGHT, height * <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p><code>capture.read()</code>函数返回的第1个参数ret(return value缩写)是一个布尔值，表示当前这一帧是否获取正确。<code>cv2.cvtColor()</code>用来转换颜色，这里将彩色图转成灰度图。</p>
+<p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/3.3.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">Property Identifier</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取捕获的分辨率</span></div><div class="line"><span class="comment"># propId可以直接写数字，也可以用OpenCV的符号表示</span></div><div class="line">width, height = capture.get(<span class="number">3</span>), capture.get(<span class="number">4</span>)</div><div class="line">print(width, height)</div><div class="line"></div><div class="line"><span class="comment"># 以原分辨率的一倍来捕获</span></div><div class="line">capture.set(cv2.CAP_PROP_FRAME_WIDTH, width * <span class="number">2</span>)</div><div class="line">capture.set(cv2.CAP_PROP_FRAME_HEIGHT, height * <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到。</p>
+<p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到</p>
 </blockquote>
-<h3 id="播放本地视频"><a href="#播放本地视频" class="headerlink" title="播放本地视频"></a>播放本地视频</h3><p>跟打开摄像头一样，如果把摄像头的编号换成本地视频的路径就可以播放了。回想一下<code>cv2.waitKey()</code>，它的参数表示暂停时间，所以这个值越大，视频播放速度越慢，反之，播放速度越快，通常设置为25或30。</p>
+<h3 id="播放本地视频"><a href="#播放本地视频" class="headerlink" title="播放本地视频"></a>播放本地视频</h3><p>跟打开摄像头一样，如果把摄像头的编号换成视频的路径就可以播放本地视频了。回想一下<code>cv2.waitKey()</code>，它的参数表示暂停时间，所以这个值越大，视频播放速度越慢，反之，播放速度越快，通常设置为25或30。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 播放本地视频</span></div><div class="line">capture = cv2.VideoCapture(<span class="string">'demo_video.mp4'</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(capture.isOpened()):</div><div class="line">    ret, frame = capture.read()</div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">30</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
-<h3 id="录制视频"><a href="#录制视频" class="headerlink" title="录制视频"></a>录制视频</h3><p>之前我们保存图片用的是<code>cv2.imwrite()</code>，要保存视频，我们需要创建一个<code>VideoWriter</code>对象，可以给它传入四个参数：</p>
+<h3 id="录制视频"><a href="#录制视频" class="headerlink" title="录制视频"></a>录制视频</h3><p>之前我们保存图片用的是<code>cv2.imwrite()</code>，要保存视频，我们需要创建一个<code>VideoWriter</code>的对象，需要给它传入四个参数：</p>
 <ul>
 <li>输出的文件名，如’output.avi’</li>
 <li>编码方式<a href="https://baike.baidu.com/item/fourcc/6168470?fr=aladdin" target="_blank" rel="external">FourCC</a>码</li>
@@ -1842,12 +1843,12 @@
 <p>FourCC是用来指定视频编码方式的四字节码，所有的编码可参考<a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs</a>。如MJPG编码可以这样写：<code>cv2.VideoWriter_fourcc(*&#39;MJPG&#39;)</code>或<code>cv2.VideoWriter_fourcc(&#39;M&#39;,&#39;J&#39;,&#39;P&#39;,&#39;G&#39;)</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 定义编码方式并创建VideoWriter对象</span></div><div class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">'MJPG'</span>)</div><div class="line">outfile = cv2.VideoWriter(<span class="string">'output.avi'</span>, fourcc, <span class="number">25.</span>, (<span class="number">640</span>, <span class="number">480</span>))</div><div class="line"></div><div class="line"><span class="keyword">while</span>(capture.isOpened()):</div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ret:</div><div class="line">        outfile.write(frame)  <span class="comment"># 写入文件</span></div><div class="line">        cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>使用cv2.VideoCapture()创建视频对象，然后在循环中一帧帧显示图像。参数传入数字时，代表打开摄像头，传入本地视频地址时，代表播放本地视频</li>
+<li>使用cv2.VideoCapture()创建视频对象，然后在循环中一帧帧显示图像。参数传入数字时，代表打开摄像头，传入本地视频路径时，表示播放本地视频</li>
 <li>cap.get(propId)获取视频属性，cap.set(propId,value)设置视频属性</li>
-<li>cv2.VideoWriter()创建视频写入对象，用来录制/保存视频，四位FOURCC码表示视频编码方式</li>
+<li>cv2.VideoWriter()创建视频写入对象，用来录制/保存视频</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>请尝试先阅读<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇：滑动条</a>，然后实现一个可以拖动播放视频的功能。（提示：需要用到<code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）</li>
+<li>请尝试先阅读<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/">番外篇：滑动条</a>，然后实现一个可以拖动滑块播放视频的功能。（提示：需要用到<code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
@@ -1878,7 +1879,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2017-12-29T02:59:29.851Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
@@ -1888,12 +1889,13 @@
 <h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <blockquote>
-<p>注解：img[:,:,0]代表拷贝图片的蓝色通道，熟悉Python的同学应该知道，对一个字符串s进行翻转用的是s[::-1]，同样img[:,:,::-1]就表示BGR通道翻转，变成RGB。</p>
+<p>注解：<code>img[:,:,0]</code>表示图片的蓝色通道，熟悉Python的同学应该知道，对一个字符串s进行翻转用的是<code>s[::-1]</code>，同样<code>img[:,:,::-1]</code>就表示BGR通道翻转，变成RGB</p>
 </blockquote>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/cv2_using_matplotlib_show_image.py" target="_blank" rel="external">本节源码</a></li>
+<li><a href="www.matplotlib.org/">Matplotlib</a></li>
 </ul>
 ]]></content>
     
@@ -1921,7 +1923,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程2：基本元素-图片/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2017-12-26T05:29:28.740Z</updated>
+    <updated>2017-12-29T02:59:29.862Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1937,43 +1939,42 @@
 <h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 灰度图加载</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 <ul>
-<li><p>参数1是图片的文件名：</p>
+<li><p>参数1：图片的文件名</p>
 <ul>
 <li>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</li>
 <li>否则，需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’</li>
 </ul>
 </li>
-<li><p>参数2是图片的读入方式，省略即采用默认值：</p>
+<li><p>参数2：读入方式，省略即采用默认值</p>
 <ul>
-<li>cv2.IMREAD_COLOR：忽略透明通道的彩色图，默认值(1)</li>
-<li>cv2.IMREAD_GRAYSCALE：灰度图加载(0)</li>
+<li>cv2.IMREAD_COLOR：彩色图，默认值(1)</li>
+<li>cv2.IMREAD_GRAYSCALE：灰度图(0)</li>
 <li>cv2.IMREAD_UNCHANGED：包含透明通道的彩色图(-1)</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p>经验之谈：路径不能有中文噢，并且没有加载成功的话是不会报错的，而是None，后面处理才会报错，算是个小坑。</p>
+<p>经验之谈：路径中不能有中文噢，并且没有加载成功的话是不会报错的，而是None，后面处理才会报错，算是个小坑</p>
 </blockquote>
 <h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>结果应该如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_show_lena_gray.jpg" alt="lena灰度图显示"></p>
-<ul>
-<li>参数1是窗口的名字，参数2是要显示的图片。</li>
-</ul>
-<p><code>cv2.waitKey()</code>是让程序暂停等待按键的函数。参数是等待时间（单位：毫秒ms），时间一到，会继续执行接下来的程序，传入0的话代表一直等待。按键可通过<code>k = cv2.waitKey(0)</code>获取（<a href="#练习">练习1</a>）。</p>
-<p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片。参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，代表窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，来调整窗口大小：</p>
+<p>参数1是窗口的名字，参数2是要显示的图片。</p>
+<p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code>（<a href="#练习">练习1</a>）。</p>
+<p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先定义窗口，后显示图片</span></div><div class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</div><div class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，表示窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，表示窗口大小可调整。图片比较大的时候，可以考虑用后者。</p>
 <h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><p>使用<code>cv2.imwrite()</code>保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
-<p>Nice，是不是很简单，再接再厉噢(●’◡’●)</p>
+<p>Nice，是不是很简单呐，再接再厉噢(●’◡’●)</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>cv2.imread()读入图片、cv2.imshow()显示图片、cv2.imwrite()保存图片</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li><p>打开lena.jpg并显示，显示时如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序</p>
+<li><p>打开lena.jpg并显示，如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序</p>
 </li>
-<li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">Matplotlib显示图像</a> </p>
+<li><p>Matplotlib是Python中很重要的绘图库，请学习<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">番外篇：Matplotlib显示图像</a> </p>
 </li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
@@ -2004,31 +2005,29 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/</id>
     <published>2017-12-06T07:51:52.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2017-12-29T02:59:29.862Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
-<p>完成一项任务很重要，高效地完成更重要。图像处理是对图像的操作，数据量巨大，如果代码写的不好，性能差距将很大，所以这节我们来了解下如何测量和提升代码性能。</p>
-<h2 id="测量代码运行时间"><a href="#测量代码运行时间" class="headerlink" title="测量代码运行时间"></a>测量代码运行时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">start = cv2.getTickCount()</div><div class="line"><span class="comment"># 这里写要测量的代码...</span></div><div class="line">end = cv2.getTickCount()</div><div class="line">print((end - start) / cv2.getTickFrequency())</div></pre></td></tr></table></figure>
+<p>完成一项任务很重要，高效地完成更重要。图像处理是对矩阵的操作，数据量巨大。如果代码写的不好，性能差距将很大，所以这节我们来了解下如何评估和提升代码性能。</p>
+<h2 id="评估代码运行时间"><a href="#评估代码运行时间" class="headerlink" title="评估代码运行时间"></a>评估代码运行时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">start = cv2.getTickCount()</div><div class="line"><span class="comment"># 这里写测试代码...</span></div><div class="line">end = cv2.getTickCount()</div><div class="line">print((end - start) / cv2.getTickFrequency())</div></pre></td></tr></table></figure>
 <p>这段代码就是用来测量程序运行时间的（单位：s），其中<code>cv2.getTickCount()</code>函数得到电脑启动以来的时钟周期数，<code>cv2.getTickFrequency()</code>返回你电脑的主频，前后相减再除以主频就是你代码的运行时间（这样解释并不完全准确，但能理解就行）。另外，也可以用Python中的time模块计时：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">start = time.clock()</div><div class="line"><span class="comment"># 这里写要测量的代码...</span></div><div class="line">end = time.clock()</div><div class="line">print(end - start)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">start = time.clock()</div><div class="line"><span class="comment"># 这里写测试代码...</span></div><div class="line">end = time.clock()</div><div class="line">print(end - start)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>经验之谈：如果你使用的是<a href="https://baike.baidu.com/item/ipython" target="_blank" rel="external">IPython</a>或<a href="https://baike.baidu.com/item/Jupyter" target="_blank" rel="external">Jupyter Notebook</a>开发环境，性能分析将会非常方便，详情请参考：<a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
 </blockquote>
-<h2 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h2><ol>
-<li>数据元素少时用Python本身格式，数据元素多时用numpy：</li>
-</ol>
+<h2 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h2><ul>
+<li>数据元素少时用Python语法，数据元素多时用Numpy：</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10</span></div><div class="line">z = np.uint8([<span class="number">10</span>])</div><div class="line"></div><div class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></div><div class="line">y = x * x * x   <span class="comment"># (1.6410249677846285e-06)</span></div><div class="line">y = x**<span class="number">3</span>        <span class="comment"># (2.461537451676943e-06)</span></div><div class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></div></pre></td></tr></table></figure>
-<p>所以numpy的运行速度并不一定比Python本身格式快，元素数量较少时，请用Python本身格式。</p>
-<ol>
-<li><p>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</p>
-</li>
-<li><p>优先使用OpenCV/numpy中封装好的函数</p>
-</li>
-<li><p>尽量将数据向量化，变成numpy的数据格式</p>
+<p>所以Numpy的运行速度并不一定比Python本身语法快，元素数量较少时，请用Python本身格式。</p>
+<ul>
+<li>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</li>
+<li>优先使用OpenCV/Numpy中封装好的函数</li>
+<li><p>尽量将数据向量化，变成Numpy的数据格式</p>
 </li>
 <li><p>尽量避免数组的复制操作</p>
 </li>
-</ol>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></li>
@@ -2059,35 +2058,35 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程1：简介与安装/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2017-12-28T02:06:28.139Z</updated>
+    <updated>2017-12-29T02:59:29.848Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p><strong>我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )</strong>，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。</p>
 <blockquote>
-<p>本教程翻译自OpenCV<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">官方英文教程</a>，我按照使用度和难易度重写翻译和编写，将不常用和较难的部分写成番外篇。每小节的原文、图片和源码等均可在<a href="#引用">引用</a>处找到。虽然简单，但本教程依然需要你具备Python和图像处理的简单基础噢(⊙o⊙)</p>
+<p>本教程翻译自OpenCV<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">官方英文教程</a>，我按照使用度和难易度翻译和重新编写，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到。虽然简单，但本教程依然需要你具备Python和图像处理的简单基础噢(⊙o⊙)</p>
 </blockquote>
 <hr>
 <h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要特性：它是一门胶水语言！Python可以很容易地扩展C/C++。OpenCV-Python就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
 <p>我举两个简单的例子就一目了然了：一个是读入图片，另一个是调整图片的对比度和亮度：</p>
 <p><img src="http://pic.ex2tron.top/cv2_python_vs_cplus_time.jpg" alt="Python vs C++"></p>
-<p>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！</p>
+<p><strong>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！</strong></p>
 <h2 id="人生苦短，我用Python"><a href="#人生苦短，我用Python" class="headerlink" title="人生苦短，我用Python"></a>人生苦短，我用Python</h2><ul>
 <li>如果你搞科研用，果断放弃C++（Matlab？出门左拐）</li>
 <li>如果你是快速原型开发，验证方案，果断放弃C++</li>
 <li>如果你懒的配置OpenCV环境，果断放弃C++</li>
 <li>如果你的程序是在支持Python的较高硬件环境下运行，果断放弃C++</li>
 <li>如果你担心Python写不了界面，那是你的问题o_o ….</li>
-<li>除非你的程序是MFC或已经用C++编写其他功能或是嵌入式设备，那就用C++吧，不过我仍然建议你进行模块开发，如上层用其他平台开发，图像处理仍然用Python外部调用。</li>
+<li>除非你的程序是MFC或已经用C++编写其他模块或是嵌入式设备，那就用C++吧，不过我仍然建议你进行模块式开发，如上层用其他语言，图像处理仍然用Python外部调用。</li>
 </ul>
-<p>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">numpy</a>，相当于Python的Matlab，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
+<p>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">Numpy</a>，相当于Python的Matlab，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
-<p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用我们一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。</p>
+<p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用后期一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。</p>
 <p><img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" alt=""></p>
 <p>在cmd中输入：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
 <p>等待安装完成即可。要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。</p>
 <blockquote>
-<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)</p>
+<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)等，自己习惯就行</p>
 </blockquote>
 <p>常见安装问题：</p>
 <ol>

@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_show_lena_gray.jpg">
-<meta property="og:updated_time" content="2017-12-26T05:29:28.740Z">
+<meta property="og:updated_time" content="2017-12-29T02:59:29.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程2：基本元素-图片">
 <meta name="twitter:description" content="学习如何加载图片，显示并保存图片。">
@@ -173,43 +173,42 @@ var themeMenus = {};
 <h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 灰度图加载</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 <ul>
-<li><p>参数1是图片的文件名：</p>
+<li><p>参数1：图片的文件名</p>
 <ul>
 <li>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</li>
 <li>否则，需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’</li>
 </ul>
 </li>
-<li><p>参数2是图片的读入方式，省略即采用默认值：</p>
+<li><p>参数2：读入方式，省略即采用默认值</p>
 <ul>
-<li>cv2.IMREAD_COLOR：忽略透明通道的彩色图，默认值(1)</li>
-<li>cv2.IMREAD_GRAYSCALE：灰度图加载(0)</li>
+<li>cv2.IMREAD_COLOR：彩色图，默认值(1)</li>
+<li>cv2.IMREAD_GRAYSCALE：灰度图(0)</li>
 <li>cv2.IMREAD_UNCHANGED：包含透明通道的彩色图(-1)</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p>经验之谈：路径不能有中文噢，并且没有加载成功的话是不会报错的，而是None，后面处理才会报错，算是个小坑。</p>
+<p>经验之谈：路径中不能有中文噢，并且没有加载成功的话是不会报错的，而是None，后面处理才会报错，算是个小坑</p>
 </blockquote>
 <h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>结果应该如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_show_lena_gray.jpg" alt="lena灰度图显示"></p>
-<ul>
-<li>参数1是窗口的名字，参数2是要显示的图片。</li>
-</ul>
-<p><code>cv2.waitKey()</code>是让程序暂停等待按键的函数。参数是等待时间（单位：毫秒ms），时间一到，会继续执行接下来的程序，传入0的话代表一直等待。按键可通过<code>k = cv2.waitKey(0)</code>获取（<a href="#练习">练习1</a>）。</p>
-<p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片。参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，代表窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，来调整窗口大小：</p>
+<p>参数1是窗口的名字，参数2是要显示的图片。</p>
+<p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code>（<a href="#练习">练习1</a>）。</p>
+<p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先定义窗口，后显示图片</span></div><div class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</div><div class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，表示窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，表示窗口大小可调整。图片比较大的时候，可以考虑用后者。</p>
 <h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><p>使用<code>cv2.imwrite()</code>保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
-<p>Nice，是不是很简单，再接再厉噢(●’◡’●)</p>
+<p>Nice，是不是很简单呐，再接再厉噢(●’◡’●)</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>cv2.imread()读入图片、cv2.imshow()显示图片、cv2.imwrite()保存图片</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li><p>打开lena.jpg并显示，显示时如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序</p>
+<li><p>打开lena.jpg并显示，如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序</p>
 </li>
-<li><p>Matplotlib是Python中很重要的绘图库，请学习这篇内容：<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">Matplotlib显示图像</a> </p>
+<li><p>Matplotlib是Python中很重要的绘图库，请学习<a href="/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/">番外篇：Matplotlib显示图像</a> </p>
 </li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>

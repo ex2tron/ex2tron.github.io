@@ -30,7 +30,7 @@
 <meta property="og:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg">
-<meta property="og:updated_time" content="2017-12-22T14:41:32.610Z">
+<meta property="og:updated_time" content="2017-12-29T02:59:29.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程4：图像基本操作">
 <meta name="twitter:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
@@ -171,19 +171,19 @@ var themeMenus = {};
 <p>通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R三个值的列表，对于灰度图，只有一个值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">px = img[<span class="number">100</span>, <span class="number">100</span>]</div><div class="line">print(px)  <span class="comment"># [119 108 201]</span></div><div class="line"></div><div class="line"><span class="comment"># 只获取蓝色blue通道的值</span></div><div class="line">px_blue = img[<span class="number">100</span>, <span class="number">100</span>, <span class="number">0</span>]</div><div class="line">print(px_blue)  <span class="comment"># 119</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：还记得吗？行对应的是y，列对应的是x，所以其实是<code>img[y, x]</code></p>
+<p>经验之谈：还记得吗？行对应的是y，列对应的是x，所以其实是<code>img[y, x]</code>，需要注意噢(●ˇ∀ˇ●)</p>
 </blockquote>
 <p>修改像素的值也是同样的方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img[<span class="number">100</span>, <span class="number">100</span>] = [<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>]</div><div class="line">print(img[<span class="number">100</span>, <span class="number">100</span>])  <span class="comment"># [255 255 255]</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：还记得之前说过OpenCV-Python原生支持numpy吗？numpy是针对矩阵运算优化的，所以像上面的操作性能较差，更推荐的方式是：<br>获取：img.item(100,100,0)，修改：img.itemset((100,100,0),255)，但这种方式只能B,G,R逐一进行。</p>
+<p>经验之谈：还有一种性能更好的方式，获取：<code>img.item(100,100,0)</code>，修改：<code>img.itemset((100,100,0),255)</code>，但这种方式只能B,G,R逐一进行</p>
 </blockquote>
 <h3 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h3><p><code>img.shape</code>获取图像的形状，图片是彩色的话，返回一个包含高度、宽度和通道数的元组，灰度图只返回高度和宽度：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(img.shape)  <span class="comment"># (263, 263, 3)</span></div><div class="line"><span class="comment"># 形状中包括高度、宽度和通道数</span></div><div class="line">height, width, channels = img.shape</div><div class="line"><span class="comment"># img是灰度图的话：height, width = img.shape</span></div></pre></td></tr></table></figure>
 <p><code>img.dtype</code>获取图像数据类型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.dtype)  <span class="comment"># uint8</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码需要对这个属性加以判断。</p>
+<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码需要对这个属性加以判断</p>
 </blockquote>
 <p><code>img.size</code>获取图像总像素数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*263*3=207507</span></div></pre></td></tr></table></figure>
