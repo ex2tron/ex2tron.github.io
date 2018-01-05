@@ -557,11 +557,13 @@ OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.put
 教程参数说明绘制形状的函数有一些共同的参数，提前在此说明一下：
 
 img：要绘制形状的图片
-color：绘制的颜色，彩色（BGR）的话，传入一个元组，如(255,0,0)。灰度图，传入一个值就行
-thickness：线宽，默认为1。对于矩形/圆之类的封闭形状而言，传入-1的话，代表填充
+color：绘制的颜色，绘制彩色就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行
+thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，传入-1表示填充形状
 
-p.s.此节及之后的教程，为节约篇幅，显示图片的代码，我会省略掉：
-12cv2.imshow('img', img)cv2.wai...
+
+模块导入和显示图片的通用代码，相信你已经很熟悉了吧，为节约篇幅，后面我会省略掉噢：
+
+123456import cv2import...
           
 
         
@@ -993,7 +995,7 @@ OpenCV函数：cv2.threshold(), cv2.adaptiveThreshold()
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            2017
+            2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
           </div>
