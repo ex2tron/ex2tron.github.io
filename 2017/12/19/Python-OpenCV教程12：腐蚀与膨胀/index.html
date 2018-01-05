@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_struct_element.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_gradient.jpg">
-<meta property="og:updated_time" content="2017-12-22T03:53:57.741Z">
+<meta property="og:updated_time" content="2018-01-05T04:39:48.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程12：腐蚀与膨胀">
 <meta name="twitter:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
@@ -178,7 +178,7 @@ var themeMenus = {};
 <p><img src="http://pic.ex2tron.top/cv2_understand_erosion.jpg" alt=""></p>
 <p>这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利(●ˇ∀ˇ●)）</p>
 <p>OpenCV中用<code>cv2.erode()</code>函数进行腐蚀，只需要指定核的大小就行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'j.bmp'</span>, <span class="number">0</span>)</div><div class="line">kernel = np.ones((<span class="number">5</span>, <span class="number">5</span>), np.uint8)</div><div class="line">erosion = cv2.erode(img, kernel)  <span class="comment"># 腐蚀</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'j.bmp'</span>, <span class="number">0</span>)</div><div class="line">kernel = np.ones((<span class="number">5</span>, <span class="number">5</span>), np.uint8)</div><div class="line">erosion = cv2.erode(img, kernel)  <span class="comment"># 腐蚀</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>这个核也叫结构元素，因为形态学操作其实也是应用卷积来实现的。结构元素可以是矩形/椭圆/十字形，可以用<code>cv2.getStructuringElement()</code>来生成不同形状的结构元素，比如：</p>
 </blockquote>

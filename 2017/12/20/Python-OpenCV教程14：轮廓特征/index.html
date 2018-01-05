@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_min_enclosing_circle.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_fitting_ellipse.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_match_shape_shapes.jpg">
-<meta property="og:updated_time" content="2017-12-22T03:53:57.741Z">
+<meta property="og:updated_time" content="2018-01-05T04:40:32.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程14：轮廓特征">
 <meta name="twitter:description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
@@ -168,13 +168,13 @@ var themeMenus = {};
 <li>OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 以数字3的轮廓为例</span></div><div class="line">cnt = contours[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 以数字3的轮廓为例</span></div><div class="line">cnt = contours[<span class="number">0</span>]</div></pre></td></tr></table></figure>
 <p>为了便于绘制，我们创建出两幅彩色图，并把轮廓画在第一幅图上：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img_color1 = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">img_color2 = np.copy(img_color1)</div><div class="line">cv2.drawContours(img_color1, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <h3 id="轮廓面积"><a href="#轮廓面积" class="headerlink" title="轮廓面积"></a>轮廓面积</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">area = cv2.contourArea(cnt)  <span class="comment"># 4386.5</span></div></pre></td></tr></table></figure>
 <p>注意轮廓特征计算的结果并不等同于像素点的个数，而是根据几何方法算出来的，所以有小数。</p>
 <blockquote>
-<p>如果统计二值图中像素点个数，应尽量避免循环，可以使用<code>cv2.countNonZero()</code>，更加高效。</p>
+<p>如果统计二值图中像素点个数，应尽量避免循环，可以使用<code>cv2.countNonZero()</code>，更加高效</p>
 </blockquote>
 <h3 id="轮廓周长"><a href="#轮廓周长" class="headerlink" title="轮廓周长"></a>轮廓周长</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perimeter = cv2.arcLength(cnt, <span class="keyword">True</span>)  <span class="comment"># 585.7</span></div></pre></td></tr></table></figure>
 <p>参数2表示轮廓是否封闭，显然我们的轮廓是封闭的，所以是True。</p>
