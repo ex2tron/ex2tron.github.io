@@ -127,6 +127,79 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程12：腐蚀与膨胀"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/">Python+OpenCV教程12：腐蚀与膨胀</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/" class="article-date">
+	  <time datetime="2017-12-19T12:52:23.000Z" itemprop="datePublished">December 19, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习常用形态学操作：腐蚀膨胀，开运算和闭运算。图片等可到源码处下载。
+
+目标
+了解形态学操作的概念
+学习膨胀、腐蚀、开运算和闭运算等形态学操作
+OpenCV函数：cv2.erode(), cv2.dilate(), cv2.morphologyEx()
+
+教程啥叫形态学操作形态学操作其实就是改变物体的形状，比如腐蚀就是”变瘦”，膨胀就是”变胖”，看下图就明白了：
+
+
+形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。腐蚀和膨胀是针对图片中的白色部分！
+
+腐蚀腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有0和255，所以小区域内有一个是0该像素点就为0：
+
+这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利(●ˇ∀ˇ●)）
+Op...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/形态学/">形态学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐蚀/">腐蚀</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/膨胀/">膨胀</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程11：边缘检测"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -363,8 +436,9 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
 卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(￣▽￣)o
 卷积什么是二维卷积呢？看下面一张图就一目了然：
 
-卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……
-padding不难发现，用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们...
+卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：
+
+padding不难发现，前面我们用3×3的核对一副6×6的图像进行...
           
 
         
@@ -495,7 +569,7 @@ OpenCV中亮度和对比度应用这个公式来计算：g(x) = αf(x) + β，�
 
 经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：OpenCV关于对比度和亮度的误解
 
-12345678910import cv2import numpy as npimg = cv2.imread('lena.jpg')# 此处需注意，请参考后面的解释res = np.uint8(np.clip((1.5 * img + 10)...
+1234567img = cv2.imread('lena.jpg')# 此处需注意，请参考后面的解释res = np.uint8(np.clip((1.5 * img + 10), 0, 255))tmp = np.hstack((img, ...
           
 
         
@@ -730,71 +804,6 @@ OpenCV函数：cv2.resize(), cv2.warpAffine(), cv2.warpPerspective()
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程番外篇4：Otsu阈值法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/">Python+OpenCV教程番外篇4：Otsu阈值法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/" class="article-date">
-	  <time datetime="2017-12-08T04:48:05.000Z" itemprop="datePublished">December 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。
-Otsu阈值法（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？
-什么是双峰图片？双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，如黑色点0有多少个等等，后面会详细介绍。
-
-Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，算法详解：Otsu’s Method(wikipedia)
-代码示例下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：
-另外，对含噪点的图像，先进行滤波操作效果会更好。
-1234567891011121314import cv2fro...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阈值/">阈值</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -947,7 +956,7 @@ Otsu算法假设这副图片由前景色和背景色组成，通过统计学方�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/">Python+OpenCV教程番外篇9：凸包及更多轮廓特征</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/">Python+OpenCV教程番外篇10：凸包及更多轮廓特征</a></h6>
               <span>December 20, 2017</span>
             </div>
 
@@ -959,7 +968,7 @@ Otsu算法假设这副图片由前景色和背景色组成，通过统计学方�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/">Python+OpenCV教程番外篇9：轮廓层级</a></h6>
               <span>December 20, 2017</span>
             </div>
 
@@ -974,7 +983,7 @@ Otsu算法假设这副图片由前景色和背景色组成，通过统计学方�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -985,7 +994,7 @@ Otsu算法假设这副图片由前景色和背景色组成，通过统计学方�
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

@@ -105,7 +105,7 @@
     <link href="http://ex2tron.coding.me/2017/12/27/Python-OpenCV%E6%95%99%E7%A8%8B16%EF%BC%9A%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/"/>
     <id>http://ex2tron.coding.me/2017/12/27/Python-OpenCV教程16：模板匹配/</id>
     <published>2017-12-27T08:45:31.000Z</published>
-    <updated>2017-12-27T13:52:07.566Z</updated>
+    <updated>2018-01-18T02:14:14.760Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用模板匹配在图像中寻找物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -121,7 +121,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 相关系数匹配方法：cv2.TM_CCOEFF</span></div><div class="line">res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF)</div><div class="line">min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)</div><div class="line"></div><div class="line">left_top = max_loc  <span class="comment"># 左上角</span></div><div class="line">right_bottom = (left_top[<span class="number">0</span>] + w, left_top[<span class="number">1</span>] + h)  <span class="comment"># 右下角</span></div><div class="line">cv2.rectangle(img, left_top, right_bottom, <span class="number">255</span>, <span class="number">2</span>)  <span class="comment"># 画出矩形位置</span></div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_ccoeff_matching_template.jpg" alt=""></p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><blockquote>
-<p>这部分可看可不看，不太理解也没关系，还记得前面的方法吗？划掉(✿◕‿◕✿)</p>
+<p>这部分可看可不看，不太理解也没关系，还记得前面的方法吗？不懂得就划掉(✿◕‿◕✿)</p>
 </blockquote>
 <p>模板匹配的原理其实很简单，就是不断地在原图中移动模板图像去比较，有6种不同的比较方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d" target="_blank" rel="external">TemplateMatchModes</a></p>
 <ul>
@@ -364,9 +364,9 @@
   </entry>
   
   <entry>
-    <title>Python+OpenCV教程番外篇9：凸包及更多轮廓特征</title>
-    <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/"/>
-    <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/</id>
+    <title>Python+OpenCV教程番外篇10：凸包及更多轮廓特征</title>
+    <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%8710%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/"/>
+    <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/</id>
     <published>2017-12-20T05:41:11.000Z</published>
     <updated>2017-12-27T08:36:44.619Z</updated>
     
@@ -389,7 +389,7 @@
 <p>其中参数3为True时表示计算距离值：点在轮廓外面值为负，点在轮廓上值为0，点在轮廓里面值为正；参数3为False时，只返回-1/0/1表示点相对轮廓的位置，不计算距离。</p>
 <p>更多轮廓特征，如当量直径、平均强度等，我目前也没用到过，以后用到再写吧，感兴趣的可以参看：<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_properties/py_contour_properties.html" target="_blank" rel="external">Contour Properties</a>、<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html" target="_blank" rel="external">Contours Hierarchy</a></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/14.%20%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇10.%20凸包及更多轮廓特征" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html#contours-more-functions" target="_blank" rel="external">Convexity Defects</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_properties/py_contour_properties.html" target="_blank" rel="external">Contour Properties</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html" target="_blank" rel="external">Contours Hierarchy</a></li>
@@ -416,11 +416,101 @@
   </entry>
   
   <entry>
+    <title>Python+OpenCV教程番外篇9：轮廓层级</title>
+    <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
+    <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/</id>
+    <published>2017-12-20T04:41:11.000Z</published>
+    <updated>2018-01-19T06:04:51.256Z</updated>
+    
+    <content type="html"><![CDATA[<p>了解轮廓间的层级关系。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<p>前面我们使用<code>cv2.findContours()</code>寻找轮廓时，参数3表示轮廓的寻找方式(<code>RetrievalModes</code>)，当时我们传入的是<code>cv2.RETR_TREE</code>，它表示什么意思呢？另外，函数返回值hierarchy有什么用途呢？下面我们就来回答这两个问题。</p>
+<h2 id="理解轮廓层级"><a href="#理解轮廓层级" class="headerlink" title="理解轮廓层级"></a>理解轮廓层级</h2><p>很多情况下，图像中的形状之间是有关联的，比如说下图：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg" alt=""></p>
+<p>图中总共有8条轮廓，2和2a分别表示外层和里层的轮廓，3和3a也是一样。从图中看得出来：</p>
+<ul>
+<li>轮廓0/1/2是最外层的轮廓，我们可以说它们处于同一轮廓等级：0级</li>
+<li>轮廓2a是轮廓2的子轮廓，反过来说2是2a的父轮廓，轮廓2a算一个等级：1级</li>
+<li>同样3是2a的子轮廓，轮廓3处于一个等级：2级</li>
+<li>类似的，3a是3的子轮廓，等等…………</li>
+</ul>
+<p>这里面OpenCV关注的就是两个概念：同一轮廓等级和轮廓间的子属关系。</p>
+<h2 id="OpenCV中轮廓等级的表示"><a href="#OpenCV中轮廓等级的表示" class="headerlink" title="OpenCV中轮廓等级的表示"></a>OpenCV中轮廓等级的表示</h2><p>如果我们打印出<code>cv2.findContours()</code>函数的返回值hierarchy，会发现它是一个包含4个值的数组：<strong>[Next, Previous, First Child, Parent]</strong></p>
+<ul>
+<li><em>Next：与当前轮廓处于同一层级的下一条轮廓</em></li>
+</ul>
+<p>举例来说，前面图中跟0处于同一层级的下一条轮廓是1，所以Next=1；同理，对轮廓1来说，Next=2；那么对于轮廓2呢？没有与它同一层级的下一条轮廓了，此时Next=-1。</p>
+<ul>
+<li><em>Previous：与当前轮廓处于同一层级的上一条轮廓</em></li>
+</ul>
+<p>跟前面一样，对于轮廓1来说，Previous=0；对于轮廓2，Previous=1；对于轮廓1，没有上一条轮廓了，所以Previous=-1。</p>
+<ul>
+<li><em>First Child：当前轮廓的第一条子轮廓</em></li>
+</ul>
+<p>比如对于轮廓2，第一条子轮廓就是轮廓2a，所以First Child=2a；对轮廓3a，First Child=4。</p>
+<ul>
+<li><em>Parent：当前轮廓的父轮廓</em></li>
+</ul>
+<p>比如2a的父轮廓是2，Parent=2；轮廓2没有父轮廓，所以Parent=-1。</p>
+<p>下面我们通过代码验证一下：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.读入图片</span></div><div class="line">img = cv2.imread(<span class="string">'hierarchy.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">_, thresh = cv2.threshold(img_gray, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line"><span class="comment"># 2.寻找轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 3.绘制轮廓</span></div><div class="line">print(len(contours),hierarchy)  <span class="comment"># 8条</span></div><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：OpenCV中找到的轮廓序号跟前面讲的不同噢，如下图：</p>
+</blockquote>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_RETR_TREE.jpg" alt=""></p>
+<p>现在既然我们了解了层级的概念，那么类似<code>cv2.RETR_TREE</code>的轮廓寻找方式又是啥意思呢？</p>
+<h2 id="轮廓寻找方式"><a href="#轮廓寻找方式" class="headerlink" title="轮廓寻找方式"></a>轮廓寻找方式</h2><p>OpenCV中有四种轮廓寻找方式<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a>，下面分别来看下：</p>
+<h3 id="1-RETR-LIST"><a href="#1-RETR-LIST" class="headerlink" title="1. RETR_LIST"></a>1. RETR_LIST</h3><p>这是最简单的一种寻找方式，它不建立轮廓间的子属关系，也就是所有轮廓都属于同一层级。这样的话，hierarchy中的后两个值<code>[First Child, Parent]</code>都为-1。比如同样的图，我们使用RETR_LIST来寻找轮廓：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_, _, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, <span class="number">2</span>)</div><div class="line">print(hierarchy)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">3</span>  <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">4</span>  <span class="number">2</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">5</span>  <span class="number">3</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">6</span>  <span class="number">4</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">7</span>  <span class="number">5</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">6</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
+<p>因为没有从属关系，所以轮廓0的下一条是1，1的下一条是2……</p>
+<blockquote>
+<p>经验之谈：如果你不需要轮廓层级信息的话，<code>cv2.RETR_LIST</code>更推荐使用，因为性能更好</p>
+</blockquote>
+<h3 id="2-RETR-TREE"><a href="#2-RETR-TREE" class="headerlink" title="2. RETR_TREE"></a>2. RETR_TREE</h3><p><code>cv2.RETR_TREE</code>就是之前我们一直在使用的方式，它会完整建立轮廓的层级从属关系，前面已经详细说明过了。</p>
+<h3 id="3-RETR-EXTERNAL"><a href="#3-RETR-EXTERNAL" class="headerlink" title="3. RETR_EXTERNAL"></a>3. RETR_EXTERNAL</h3><p>这种方式只寻找最高层级的轮廓，也就是它只会找到前面我们所说的3条0级轮廓：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, <span class="number">2</span>)</div><div class="line">print(len(contours), hierarchy, sep=<span class="string">'\n'</span>)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line"><span class="number">3</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_RETR_EXTERNAL.jpg" alt=""></p>
+<h3 id="4-RETR-CCOMP"><a href="#4-RETR-CCOMP" class="headerlink" title="4. RETR_CCOMP"></a>4. RETR_CCOMP</h3><p>相比之下<code>cv2.RETR_CCOMP</code>比较难理解，但其实也很简单：它把所有的轮廓只分为2个层级，不是外层的就是里层的。结合代码和图片，我们来理解下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_CCOMP, <span class="number">2</span>)</div><div class="line">print(hierarchy)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">4</span>  <span class="number">1</span>  <span class="number">3</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>  <span class="number">2</span>]</div><div class="line">  [ <span class="number">6</span>  <span class="number">2</span>  <span class="number">5</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>  <span class="number">4</span>]</div><div class="line">  [ <span class="number">7</span>  <span class="number">4</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">6</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_RETR_CCOMP.jpg" alt=""></p>
+<blockquote>
+<p>注意：使用这个参数找到的轮廓序号与之前不同</p>
+</blockquote>
+<p>图中括号里面1代表外层轮廓，2代表里层轮廓。比如说对于轮廓2，Next就是4，Previous是1，它有里层的轮廓3，所以First Child=3，但因为只有两个层级，它本身就是外层轮廓，所以Parent=-1。大家可以针对其他的轮廓自己验证一下。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>如下图，找到3个圆环的内环，然后填充成<code>(180,215,215)</code>这种颜色：</li>
+</ol>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_fill_holes.jpg" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇9.%20轮廓层级" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html#contours-hierarchy" target="_blank" rel="external">Contours Hierarchy</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;了解轮廓间的层级关系。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.coding.me/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="Python" scheme="http://ex2tron.coding.me/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.coding.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="轮廓层级" scheme="http://ex2tron.coding.me/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程13：轮廓</title>
     <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/"/>
     <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/</id>
     <published>2017-12-20T01:44:23.000Z</published>
-    <updated>2018-01-05T04:40:05.868Z</updated>
+    <updated>2018-01-18T06:32:18.706Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何寻找并绘制轮廓。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -443,7 +533,7 @@
 <li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用<code>cv2.CHAIN_APPROX_SIMPLE</code>就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
 <li>简便起见，这两个参数也可以直接用真值<code>3</code>和<code>2</code>表示。</li>
 </ul>
-<p>返回值中contours就是找到的轮廓了，它是以数组形式存储的，记录了每条轮廓的所有像素点的坐标<code>(x,y)</code>。</p>
+<p>函数有3个返回值，image还是原来的二值化图片，hierarchy是轮廓间的层级关系（番外篇：xxxx），这两个暂时不用理会。我们主要看contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标<code>(x,y)</code>。</p>
 <p><img src="http://pic.ex2tron.top/cv2_find_contours_contours.jpg" alt=""></p>
 <h3 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h3><p>轮廓找出来后，为了方便观看，可以像前面图中那样用红色画出来：<code>cv2.drawContours()</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
@@ -650,7 +740,7 @@
     <link href="http://ex2tron.coding.me/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/"/>
     <id>http://ex2tron.coding.me/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/</id>
     <published>2017-12-18T02:51:43.000Z</published>
-    <updated>2017-12-22T02:53:55.261Z</updated>
+    <updated>2018-01-19T05:36:11.748Z</updated>
     
     <content type="html"><![CDATA[<p>了解图像梯度和边缘检测的相关概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <p>还记得前面<a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。</p>
@@ -666,7 +756,7 @@
 <blockquote>
 <p>还记得滤波函数<code>cv2.filter2D()</code>吗？（<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础</a>）我们来手动实现上面的功能：</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 自己进行垂直边缘提取</span></div><div class="line">kernel = np.array([[<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>],</div><div class="line">                   [<span class="number">-2</span>, <span class="number">0</span>, <span class="number">2</span>],</div><div class="line">                   [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]], dtype=np.float32)</div><div class="line">dst_v = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div><div class="line"><span class="comment"># 自己进行水平边缘提取</span></div><div class="line">dst_h = cv2.filter2D(img, <span class="number">-1</span>, kernel.T)</div><div class="line"><span class="comment"># 横向并排对比显示</span></div><div class="line">cv2.imshow(<span class="string">'edge'</span>, np.hstack((img, dst_v, dst_h)))</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 自己进行垂直边缘提取</span></div><div class="line">kernel = np.array([[<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>],</div><div class="line">                   [<span class="number">-2</span>, <span class="number">0</span>, <span class="number">2</span>],</div><div class="line">                   [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]], dtype=np.float32)</div><div class="line">dst_v = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div><div class="line"><span class="comment"># 自己进行水平边缘提取</span></div><div class="line">dst_h = cv2.filter2D(img, <span class="number">-1</span>, kernel.T)</div><div class="line"><span class="comment"># 横向并排对比显示</span></div><div class="line">cv2.imshow(<span class="string">'edge'</span>, np.hstack((img, dst_v, dst_h)))</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h3 id="Sobel算子"><a href="#Sobel算子" class="headerlink" title="Sobel算子"></a>Sobel算子</h3><p>上面的这种差分方法就叫<a href="https://baike.baidu.com/item/Sobel%E7%AE%97%E5%AD%90/11000092?fr=aladdin" target="_blank" rel="external">Sobel算子</a>，它先在垂直方向计算梯度Gx=k1×src，再在水平方向计算梯度Gy=k2×src，最后求出总梯度：\(G=\sqrt{Gx^2+Gy^2}\)</p>
 <p>我们可以把前面的代码用Sobel算子更简单地实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sobelx = cv2.Sobel(img, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, ksize=<span class="number">3</span>)  <span class="comment"># 只计算x方向</span></div><div class="line">sobely = cv2.Sobel(img, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, ksize=<span class="number">3</span>)  <span class="comment"># 只计算y方向</span></div></pre></td></tr></table></figure>
@@ -682,7 +772,7 @@
 <li>（选做）同志们有空补补高数<del>姿势</del>（知识）呗！(✿◕‿◕✿)</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/12.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇8.%20图像梯度" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html" target="_blank" rel="external">Image Gradients</a></li>
 <li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives" target="_blank" rel="external">Sobel导数</a></li>
 </ul>
@@ -793,14 +883,15 @@
     <link href="http://ex2tron.coding.me/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/"/>
     <id>http://ex2tron.coding.me/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/</id>
     <published>2017-12-14T08:27:45.000Z</published>
-    <updated>2017-12-22T02:53:31.761Z</updated>
+    <updated>2018-01-19T05:35:53.894Z</updated>
     
     <content type="html"><![CDATA[<p>了解卷积/滤波的基础知识，给图片添加边框。<a id="more"></a>如果你已了解相关理论，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
 <p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
 <h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>什么是二维卷积呢？看下面一张图就一目了然：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_convolution.jpg" alt=""></p>
-<p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……</p>
-<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫padding</strong>。</p>
+<p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_cnn.gif" alt=""></p>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，前面我们用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫padding</strong>。</p>
 <blockquote>
 <p>事实上，原图为n×n，卷积核为f×f，最终结果图大小为(n-f+1) × (n-f+1)</p>
 </blockquote>
@@ -813,17 +904,17 @@
 <li><strong>borderType</strong>：边框类型，这个就是需要关注的填充方式，详情请参考：<a href="https://docs.opencv.org/3.3.1/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5" target="_blank" rel="external">BorderTypes</a></li>
 </ul>
 <p>其中默认方式和固定值方式最常用，我们详细说明一下：</p>
-<h3 id="固定值填充（cv2-BORDER-CONSTANT）"><a href="#固定值填充（cv2-BORDER-CONSTANT）" class="headerlink" title="固定值填充（cv2.BORDER_CONSTANT）"></a>固定值填充（<code>cv2.BORDER_CONSTANT</code>）</h3><p>顾名思义，这种方式就是边框都填充成一个固定值，比如下面的程序都填充0：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'6_by_6.bmp'</span>, <span class="number">0</span>)</div><div class="line">print(img)</div><div class="line"></div><div class="line"><span class="comment"># 固定值边框，统一都填充0也称为zero padding</span></div><div class="line">cons = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_CONSTANT, value=<span class="number">0</span>)</div><div class="line">print(cons)</div></pre></td></tr></table></figure>
+<h3 id="固定值填充"><a href="#固定值填充" class="headerlink" title="固定值填充"></a>固定值填充</h3><p>顾名思义，<code>cv2.BORDER_CONSTANT</code>这种方式就是边框都填充成一个固定的值，比如下面的程序都填充0：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'6_by_6.bmp'</span>, <span class="number">0</span>)</div><div class="line">print(img)</div><div class="line"></div><div class="line"><span class="comment"># 固定值边框，统一都填充0也称为zero padding</span></div><div class="line">cons = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_CONSTANT, value=<span class="number">0</span>)</div><div class="line">print(cons)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_zero_padding_output.jpg" alt=""></p>
-<h3 id="默认边框类型（cv2-BORDER-DEFAULT）"><a href="#默认边框类型（cv2-BORDER-DEFAULT）" class="headerlink" title="默认边框类型（cv2.BORDER_DEFAULT）"></a>默认边框类型（<code>cv2.BORDER_DEFAULT</code>）</h3><p>默认方式其实是取镜像对称的像素填充，比较拗口，一步步解释：</p>
+<h3 id="默认边框类型"><a href="#默认边框类型" class="headerlink" title="默认边框类型"></a>默认边框类型</h3><p>默认边框<code>cv2.BORDER_DEFAULT</code>其实是取镜像对称的像素填充，比较拗口，一步步解释：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">default = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_DEFAULT)</div><div class="line">print(default)</div></pre></td></tr></table></figure>
 <p>首先进行上下填充，填充成与原图像边界对称的值，如下图：</p>
 <p><img src="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg" alt=""></p>
 <p>同理再进行左右两边的填充，最后把四个顶点补充上就好了：</p>
 <p><img src="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg" alt=""></p>
 <blockquote>
-<p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定。</p>
+<p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定</p>
 </blockquote>
 <h2 id="OpenCV进行卷积"><a href="#OpenCV进行卷积" class="headerlink" title="OpenCV进行卷积"></a>OpenCV进行卷积</h2><p>OpenCV中用<code>cv2.filter2D()</code>实现卷积操作，比如我们的核是下面这样（3×3区域像素的和除以10）：</p>
 <p>$$<br> M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
@@ -834,7 +925,7 @@
 <li>尝试给”lena.jpg”添加几种不同的边框类型，对比下效果</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇7.%20卷积基础(图片边框" target="_blank" rel="external">本节源码</a>)</li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html" target="_blank" rel="external">Basic Operations on Images</a></li>
 <li><a href="http://blog.csdn.net/zouxy09/article/details/49080029" target="_blank" rel="external">图像卷积与滤波的一些知识点</a></li>
 </ul>
@@ -1047,7 +1138,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><img src="http://pic.ex2tron.top/cv2_thumbnail_find_contours2.jpg" align="left"></td>
-<td style="text-align:right">寻找并绘制物体轮廓</td>
+<td style="text-align:right">寻找并绘制物体轮廓<br>      <a href="/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/">番外篇9：轮廓层级</a></td>
 </tr>
 </tbody>
 </table>
@@ -1061,7 +1152,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><img src="http://pic.ex2tron.top/cv2_thumbnail_contours_features2.jpg" align="left"></td>
-<td style="text-align:right">轮廓特征：面积，周长，最小外接矩和最小外接圆，几何形状匹配<br>      <a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">番外篇9：凸包及更多轮廓特征</a></td>
+<td style="text-align:right">轮廓特征：面积，周长，最小外接矩和最小外接圆，几何形状匹配<br>      <a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/">番外篇10：凸包及更多轮廓特征</a></td>
 </tr>
 </tbody>
 </table>
@@ -1191,7 +1282,7 @@
     <link href="http://ex2tron.coding.me/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%876%EF%BC%9A%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     <id>http://ex2tron.coding.me/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/</id>
     <published>2017-12-10T06:05:10.000Z</published>
-    <updated>2017-12-22T02:53:22.856Z</updated>
+    <updated>2018-01-19T05:35:33.827Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何调整图片的亮度和对比度。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1200,7 +1291,7 @@
 <blockquote>
 <p>经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：<a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 此处需注意，请参考后面的解释</span></div><div class="line">res = np.uint8(np.clip((<span class="number">1.5</span> * img + <span class="number">10</span>), <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并（便于对比显示）</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 此处需注意，请参考后面的解释</span></div><div class="line">res = np.uint8(np.clip((<span class="number">1.5</span> * img + <span class="number">10</span>), <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并（便于对比显示）</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>还记得图像混合那一节中numpy对数据溢出的取模处理吗？<code>250+10 = 260 =&gt; 260%256=4</code>，它并不适用于我们的图像处理，所以用<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">np.clip()</a>函数将数据限定：<code>a&lt;0 =&gt; a=0, a&gt;255 =&gt; a=255</code></p>
 <p><img src="http://pic.ex2tron.top/cv2_contrast_brightness.jpg" alt="亮度与对比度调整"></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
@@ -1210,7 +1301,7 @@
 </li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/9.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇6.%20亮度与对比度" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="external">numpy.clip()</a></li>
 <li><a href="http://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="external">OpenCV关于对比度和亮度的误解</a></li>
 <li><a href="http://blog.csdn.net/u013139259/article/details/52145377" target="_blank" rel="external">OpenCV改变图像亮度和对比度以及优化</a></li>
@@ -1244,7 +1335,7 @@
     <link href="http://ex2tron.coding.me/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%875%EF%BC%9A%E9%BC%A0%E6%A0%87%E7%BB%98%E5%9B%BE/"/>
     <id>http://ex2tron.coding.me/2017/12/09/Python-OpenCV教程番外篇5：鼠标绘图/</id>
     <published>2017-12-09T09:28:34.000Z</published>
-    <updated>2017-12-22T03:53:57.741Z</updated>
+    <updated>2018-01-19T05:35:16.056Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何用鼠标实时绘图。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1281,7 +1372,7 @@
 <li>（选做）做一个在白色面板上绘图的简单程序，可用滑动条调整颜色和笔刷大小。</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/8.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇5.%20鼠标绘图" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html" target="_blank" rel="external">Mouse as a Paint-Brush</a></li>
 </ul>
 ]]></content>
@@ -1310,7 +1401,7 @@
     <link href="http://ex2tron.coding.me/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/"/>
     <id>http://ex2tron.coding.me/2017/12/09/Python-OpenCV教程8：绘图功能/</id>
     <published>2017-12-09T03:29:48.000Z</published>
-    <updated>2018-01-05T04:37:28.003Z</updated>
+    <updated>2018-01-05T07:40:16.384Z</updated>
     
     <content type="html"><![CDATA[<p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1508,7 +1599,7 @@
 <p><img src="http://pic.ex2tron.top/cv2_otsu_vs_simple_thresholding.jpg" alt="固定阈值 vs Otsu阈值"></p>
 <p>可以看到，Otsu阈值明显由于固定阈值，省去了不断尝试阈值判断效果好坏的过程。其中，绘制直方图时，使用了numpy中的<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">ravel()</a>函数，它会将原矩阵压缩成一维数组，便于画直方图。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/6.%20阈值分割" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇4.%20Otsu阈值法" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">numpy.ravel</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></li>
@@ -1764,7 +1855,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇3：滑动条/</id>
     <published>2017-12-06T14:23:11.000Z</published>
-    <updated>2017-12-29T02:59:29.855Z</updated>
+    <updated>2018-01-19T05:34:23.023Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用滑动条动态调整参数。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1787,7 +1878,7 @@
 <li>cv2.createTrackbar()用来创建滑动条，可以在回调函数中得到滑块的位置，也可以用cv2.getTrackbarPos()</li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/3.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇3.%20滑动条" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_trackbar/py_trackbar.html" target="_blank" rel="external">Trackbar as the Color Palette</a></li>
 </ul>
 ]]></content>
@@ -1881,7 +1972,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2017-12-29T02:59:29.851Z</updated>
+    <updated>2018-01-19T05:33:51.484Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
@@ -1896,7 +1987,7 @@
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/2.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87/cv2_using_matplotlib_show_image.py" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇2.%20Matplotlib显示图像" target="_blank" rel="external">本节源码</a></li>
 <li><a href="www.matplotlib.org/">Matplotlib</a></li>
 </ul>
 ]]></content>
@@ -2031,7 +2122,7 @@
 </li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇1.%20代码性能优化" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></li>
 <li><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></li>
 <li><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="external">Advanced Numpy</a></li>
@@ -2060,7 +2151,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程1：简介与安装/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2017-12-29T02:59:29.848Z</updated>
+    <updated>2018-01-18T14:00:34.967Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p><strong>我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )</strong>，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。</p>
@@ -2082,13 +2173,17 @@
 </ul>
 <p>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">Numpy</a>，相当于Python的Matlab，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
-<p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用后期一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。</p>
-<p><img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" alt=""></p>
-<p>在cmd中输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
-<p>等待安装完成即可。要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。</p>
+<p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用后期一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。安装好之后，可以在cmd中输入<code>python --version</code>来查看Python的版本信息。</p>
 <blockquote>
-<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)等，自己习惯就行</p>
+<p>经验之谈：Windows版的Anaconda安装时，记得勾选<code>Add Anaconda to my PATH environment variable</code>，添加到环境变量中</p>
+</blockquote>
+<p><img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" alt=""></p>
+<p>要安装OpenCV，只需cmd下的一条指令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
+<p>要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。要查看OpenCV的版本，可以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(cv2.__version__)  <span class="comment"># '3.3.0'</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)等，自己习惯就行</p>
 </blockquote>
 <p>常见安装问题：</p>
 <ol>
@@ -2100,7 +2195,7 @@
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></li>
 <li><a href="https://docs.opencv.org/" target="_blank" rel="external">OpenCV Docs</a></li>
-<li><a href="www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">OpenCV 中文教程</a></li>
+<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html" target="_blank" rel="external">OpenCV 中文教程</a></li>
 </ul>
 ]]></content>
     
@@ -2707,7 +2802,7 @@
     <link href="http://ex2tron.coding.me/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
     <id>http://ex2tron.coding.me/2017/10/10/Python-OpenCV教程（目录）/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2017-12-28T14:59:56.802Z</updated>
+    <updated>2018-01-05T07:40:16.384Z</updated>
     
     <content type="html"><![CDATA[<p><a href="/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/">图文版</a> | 简洁版</p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><ol>
@@ -2725,8 +2820,8 @@
 <li><a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇7：卷积基础(图片边框)</a></li>
 <li><a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B11%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">边缘检测</a>（Canny/Sobel） | <a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇8：图像梯度</a></li>
 <li><a href="/2017/12/19/Python-OpenCV%E6%95%99%E7%A8%8B12%EF%BC%9A%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80/">腐蚀与膨胀</a>（形态学操作/腐蚀/膨胀/开运算/闭运算）</li>
-<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/">轮廓</a> （寻找/绘制轮廓）</li>
-<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">轮廓特征</a> （面积/周长/最小外接矩(圆)/形状匹配） | <a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">番外篇9：凸包及更多轮廓特征</a></li>
+<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/">轮廓</a> （寻找/绘制轮廓）  | <a href="/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/">番外篇9：轮廓层级</a></li>
+<li><a href="/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B14%EF%BC%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/">轮廓特征</a> （面积/周长/最小外接矩(圆)/形状匹配） | <a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/">番外篇10：凸包及更多轮廓特征</a></li>
 <li><a href="/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/">直方图</a>（计算绘制直方图/均衡化）</li>
 <li><a href="/2017/12/27/Python-OpenCV%E6%95%99%E7%A8%8B16%EF%BC%9A%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/">模板匹配</a>（大图中找小图）</li>
 <li><a href="/2017/12/28/Python-OpenCV%E6%95%99%E7%A8%8B17%EF%BC%9A%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"> 霍夫变换</a>（提取直线/圆）</li>

@@ -127,6 +127,71 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程番外篇4：Otsu阈值法"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/">Python+OpenCV教程番外篇4：Otsu阈值法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/" class="article-date">
+	  <time datetime="2017-12-08T04:48:05.000Z" itemprop="datePublished">December 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。
+Otsu阈值法（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？
+什么是双峰图片？双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，如黑色点0有多少个等等，后面会详细介绍。
+
+Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，算法详解：Otsu’s Method(wikipedia)
+代码示例下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：
+另外，对含噪点的图像，先进行滤波操作效果会更好。
+1234567891011121314import cv2fro...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阈值/">阈值</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程6：阈值分割"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -732,105 +797,6 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
 <!-- Table of Contents -->
 
   
-    <article id="post-【片单】漫威宇宙电影合集"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/05/【片单】漫威宇宙电影合集/">【片单】漫威宇宙电影合集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/05/【片单】漫威宇宙电影合集/" class="article-date">
-	  <time datetime="2017-12-05T14:44:35.000Z" itemprop="datePublished">December 5, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！
-
-Excelsior!  ——斯坦·李
-
-漫威电影宇宙MCU的成绩有目共睹，在十周年《复仇者联盟3》上映之前，来补一波吧！
-
-大部分片源来自人人影视字幕组，点击片名即可下载
-
-MCU观影指南：
-第一阶段
-2008《钢铁侠1》、
-
-2008《无敌浩克》
-
-2010《钢铁侠2》
-
-2011《雷神1》
-
-2011《美国队长1：复仇者先锋》
-
-2012《复仇者联盟1》
-
-
-第二阶段
-2013《钢铁侠3》
-
-2013《雷神2：黑暗世界》
-
-2014《美国队长2：冬日战士》
-
-2014《银河护卫队1》
-
-2015《复仇者联盟2：奥创纪元》
-
-2015《蚁人》
-
-
-第三阶段
-2016《美国队长3：内战》
-
-2016《奇异博士》
-...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/05/【片单】漫威宇宙电影合集/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/谈电影/">谈电影</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Marvel/">Marvel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复仇者联盟/">复仇者联盟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漫威/">漫威</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -983,7 +949,7 @@ MCU观影指南：
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：凸包及更多轮廓特征/">Python+OpenCV教程番外篇9：凸包及更多轮廓特征</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/">Python+OpenCV教程番外篇10：凸包及更多轮廓特征</a></h6>
               <span>December 20, 2017</span>
             </div>
 
@@ -995,7 +961,7 @@ MCU观影指南：
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/">Python+OpenCV教程番外篇9：轮廓层级</a></h6>
               <span>December 20, 2017</span>
             </div>
 
@@ -1010,7 +976,7 @@ MCU观影指南：
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -1021,7 +987,7 @@ MCU观影指南：
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

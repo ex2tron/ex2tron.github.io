@@ -30,12 +30,13 @@
 <meta property="og:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_convolution.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_cnn.gif">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_padding.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_zero_padding_output.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg">
-<meta property="og:updated_time" content="2017-12-22T02:53:31.761Z">
+<meta property="og:updated_time" content="2018-01-19T05:35:53.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇7：卷积基础(图片边框)">
 <meta name="twitter:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
@@ -167,8 +168,9 @@ var themeMenus = {};
 <p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
 <h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>什么是二维卷积呢？看下面一张图就一目了然：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_convolution.jpg" alt=""></p>
-<p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……</p>
-<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫padding</strong>。</p>
+<p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_cnn.gif" alt=""></p>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，前面我们用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫padding</strong>。</p>
 <blockquote>
 <p>事实上，原图为n×n，卷积核为f×f，最终结果图大小为(n-f+1) × (n-f+1)</p>
 </blockquote>
@@ -181,17 +183,17 @@ var themeMenus = {};
 <li><strong>borderType</strong>：边框类型，这个就是需要关注的填充方式，详情请参考：<a href="https://docs.opencv.org/3.3.1/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5" target="_blank" rel="external">BorderTypes</a></li>
 </ul>
 <p>其中默认方式和固定值方式最常用，我们详细说明一下：</p>
-<h3 id="固定值填充（cv2-BORDER-CONSTANT）"><a href="#固定值填充（cv2-BORDER-CONSTANT）" class="headerlink" title="固定值填充（cv2.BORDER_CONSTANT）"></a>固定值填充（<code>cv2.BORDER_CONSTANT</code>）</h3><p>顾名思义，这种方式就是边框都填充成一个固定值，比如下面的程序都填充0：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'6_by_6.bmp'</span>, <span class="number">0</span>)</div><div class="line">print(img)</div><div class="line"></div><div class="line"><span class="comment"># 固定值边框，统一都填充0也称为zero padding</span></div><div class="line">cons = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_CONSTANT, value=<span class="number">0</span>)</div><div class="line">print(cons)</div></pre></td></tr></table></figure>
+<h3 id="固定值填充"><a href="#固定值填充" class="headerlink" title="固定值填充"></a>固定值填充</h3><p>顾名思义，<code>cv2.BORDER_CONSTANT</code>这种方式就是边框都填充成一个固定的值，比如下面的程序都填充0：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'6_by_6.bmp'</span>, <span class="number">0</span>)</div><div class="line">print(img)</div><div class="line"></div><div class="line"><span class="comment"># 固定值边框，统一都填充0也称为zero padding</span></div><div class="line">cons = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_CONSTANT, value=<span class="number">0</span>)</div><div class="line">print(cons)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_zero_padding_output.jpg" alt=""></p>
-<h3 id="默认边框类型（cv2-BORDER-DEFAULT）"><a href="#默认边框类型（cv2-BORDER-DEFAULT）" class="headerlink" title="默认边框类型（cv2.BORDER_DEFAULT）"></a>默认边框类型（<code>cv2.BORDER_DEFAULT</code>）</h3><p>默认方式其实是取镜像对称的像素填充，比较拗口，一步步解释：</p>
+<h3 id="默认边框类型"><a href="#默认边框类型" class="headerlink" title="默认边框类型"></a>默认边框类型</h3><p>默认边框<code>cv2.BORDER_DEFAULT</code>其实是取镜像对称的像素填充，比较拗口，一步步解释：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">default = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_DEFAULT)</div><div class="line">print(default)</div></pre></td></tr></table></figure>
 <p>首先进行上下填充，填充成与原图像边界对称的值，如下图：</p>
 <p><img src="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg" alt=""></p>
 <p>同理再进行左右两边的填充，最后把四个顶点补充上就好了：</p>
 <p><img src="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg" alt=""></p>
 <blockquote>
-<p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定。</p>
+<p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定</p>
 </blockquote>
 <h2 id="OpenCV进行卷积"><a href="#OpenCV进行卷积" class="headerlink" title="OpenCV进行卷积"></a>OpenCV进行卷积</h2><p>OpenCV中用<code>cv2.filter2D()</code>实现卷积操作，比如我们的核是下面这样（3×3区域像素的和除以10）：</p>
 <p>$$<br> M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
@@ -202,7 +204,7 @@ var themeMenus = {};
 <li>尝试给”lena.jpg”添加几种不同的边框类型，对比下效果</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/番外篇7.%20卷积基础(图片边框" target="_blank" rel="external">本节源码</a>)</li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html" target="_blank" rel="external">Basic Operations on Images</a></li>
 <li><a href="http://blog.csdn.net/zouxy09/article/details/49080029" target="_blank" rel="external">图像卷积与滤波的一些知识点</a></li>
 </ul>
@@ -291,7 +293,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">1.</span> <span class="nav-text">卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">2.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加边框"><span class="nav-number">3.</span> <span class="nav-text">添加边框</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定值填充（cv2-BORDER-CONSTANT）"><span class="nav-number">3.1.</span> <span class="nav-text">固定值填充（cv2.BORDER_CONSTANT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认边框类型（cv2-BORDER-DEFAULT）"><span class="nav-number">3.2.</span> <span class="nav-text">默认边框类型（cv2.BORDER_DEFAULT）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV进行卷积"><span class="nav-number">4.</span> <span class="nav-text">OpenCV进行卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">1.</span> <span class="nav-text">卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">2.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加边框"><span class="nav-number">3.</span> <span class="nav-text">添加边框</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定值填充"><span class="nav-number">3.1.</span> <span class="nav-text">固定值填充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认边框类型"><span class="nav-number">3.2.</span> <span class="nav-text">默认边框类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV进行卷积"><span class="nav-number">4.</span> <span class="nav-text">OpenCV进行卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

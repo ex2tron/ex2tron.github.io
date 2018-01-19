@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_ccoeff_matching_template.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_template_matching_multi.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_np_where_function.jpg">
-<meta property="og:updated_time" content="2017-12-27T13:52:07.566Z">
+<meta property="og:updated_time" content="2018-01-18T02:14:14.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程16：模板匹配">
 <meta name="twitter:description" content="学习使用模板匹配在图像中寻找物体。">
@@ -175,7 +175,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 相关系数匹配方法：cv2.TM_CCOEFF</span></div><div class="line">res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF)</div><div class="line">min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)</div><div class="line"></div><div class="line">left_top = max_loc  <span class="comment"># 左上角</span></div><div class="line">right_bottom = (left_top[<span class="number">0</span>] + w, left_top[<span class="number">1</span>] + h)  <span class="comment"># 右下角</span></div><div class="line">cv2.rectangle(img, left_top, right_bottom, <span class="number">255</span>, <span class="number">2</span>)  <span class="comment"># 画出矩形位置</span></div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_ccoeff_matching_template.jpg" alt=""></p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><blockquote>
-<p>这部分可看可不看，不太理解也没关系，还记得前面的方法吗？划掉(✿◕‿◕✿)</p>
+<p>这部分可看可不看，不太理解也没关系，还记得前面的方法吗？不懂得就划掉(✿◕‿◕✿)</p>
 </blockquote>
 <p>模板匹配的原理其实很简单，就是不断地在原图中移动模板图像去比较，有6种不同的比较方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d" target="_blank" rel="external">TemplateMatchModes</a></p>
 <ul>
