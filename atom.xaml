@@ -328,7 +328,7 @@
 <p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
 <p>形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，大家如果感兴趣，可以参考：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="external">Hu-Moments</a></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>我们是对手写字符图片中的数字1进行轮廓特征计算，大家换成数字1看看</li>
+<li>我们是对手写字符图片中的数字3进行轮廓特征计算，大家换成数字1看看</li>
 <li>（选做）用形状匹配比较两个字母或数字（这相当于很简单的一个<a href="https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&amp;fromid=25995&amp;fromtitle=OCR" target="_blank" rel="external">OCR</a>噢）</li>
 </ol>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>常用的轮廓特征：</p>
@@ -368,7 +368,7 @@
     <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%8710%EF%BC%9A%E5%87%B8%E5%8C%85%E5%8F%8A%E6%9B%B4%E5%A4%9A%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81/"/>
     <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/</id>
     <published>2017-12-20T05:41:11.000Z</published>
-    <updated>2017-12-27T08:36:44.619Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>计算凸包及更多轮廓特征。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <h2 id="多边形逼近"><a href="#多边形逼近" class="headerlink" title="多边形逼近"></a>多边形逼近</h2><p>前面我们学习过最小外接矩和最小外接圆，那么可以用一个最小的多边形包围物体吗？当然可以：</p>
@@ -420,7 +420,7 @@
     <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%879%EF%BC%9A%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
     <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/</id>
     <published>2017-12-20T04:41:11.000Z</published>
-    <updated>2018-01-19T06:04:51.256Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>了解轮廓间的层级关系。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <p>前面我们使用<code>cv2.findContours()</code>寻找轮廓时，参数3表示轮廓的寻找方式(<code>RetrievalModes</code>)，当时我们传入的是<code>cv2.RETR_TREE</code>，它表示什么意思呢？另外，函数返回值hierarchy有什么用途呢？下面我们就来回答这两个问题。</p>
@@ -510,7 +510,7 @@
     <link href="http://ex2tron.coding.me/2017/12/20/Python-OpenCV%E6%95%99%E7%A8%8B13%EF%BC%9A%E8%BD%AE%E5%BB%93/"/>
     <id>http://ex2tron.coding.me/2017/12/20/Python-OpenCV教程13：轮廓/</id>
     <published>2017-12-20T01:44:23.000Z</published>
-    <updated>2018-01-18T06:32:18.706Z</updated>
+    <updated>2018-01-22T04:34:31.527Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何寻找并绘制轮廓。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -533,7 +533,7 @@
 <li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用<code>cv2.CHAIN_APPROX_SIMPLE</code>就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
 <li>简便起见，这两个参数也可以直接用真值<code>3</code>和<code>2</code>表示。</li>
 </ul>
-<p>函数有3个返回值，image还是原来的二值化图片，hierarchy是轮廓间的层级关系（番外篇：xxxx），这两个暂时不用理会。我们主要看contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标<code>(x,y)</code>。</p>
+<p>函数有3个返回值，image还是原来的二值化图片，hierarchy是轮廓间的层级关系（<a href="/2017/12/20/Python-OpenCV教程番外篇9%EF%BC%9A轮廓层级/">番外篇：轮廓层级</a>），这两个暂时不用理会。我们主要看contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标<code>(x,y)</code>。</p>
 <p><img src="http://pic.ex2tron.top/cv2_find_contours_contours.jpg" alt=""></p>
 <h3 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h3><p>轮廓找出来后，为了方便观看，可以像前面图中那样用红色画出来：<code>cv2.drawContours()</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
@@ -957,7 +957,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-28T14:59:56.802Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>图文版 | <a href="/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/">简洁版</a><a id="more"></a></p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><table>
@@ -1584,7 +1584,7 @@
     <link href="http://ex2tron.coding.me/2017/12/08/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%874%EF%BC%9AOtsu%E9%98%88%E5%80%BC%E6%B3%95/"/>
     <id>http://ex2tron.coding.me/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/</id>
     <published>2017-12-08T04:48:05.000Z</published>
-    <updated>2017-12-22T06:16:40.382Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。<a id="more"></a></p>
 <p><a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？</p>
@@ -1855,7 +1855,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%873%EF%BC%9A%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇3：滑动条/</id>
     <published>2017-12-06T14:23:11.000Z</published>
-    <updated>2018-01-19T05:34:23.023Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用滑动条动态调整参数。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1972,7 +1972,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%872%EF%BC%9AMatplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2018-01-19T05:33:51.484Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
@@ -2098,7 +2098,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%871%EF%BC%9A%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/</id>
     <published>2017-12-06T07:51:52.000Z</published>
-    <updated>2017-12-29T02:59:29.862Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
 <p>完成一项任务很重要，高效地完成更重要。图像处理是对矩阵的操作，数据量巨大。如果代码写的不好，性能差距将很大，所以这节我们来了解下如何评估和提升代码性能。</p>
@@ -2151,7 +2151,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程1：简介与安装/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2018-01-18T14:00:34.967Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p><strong>我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )</strong>，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。</p>
@@ -2802,7 +2802,7 @@
     <link href="http://ex2tron.coding.me/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
     <id>http://ex2tron.coding.me/2017/10/10/Python-OpenCV教程（目录）/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2018-01-05T07:40:16.384Z</updated>
+    <updated>2018-01-19T06:08:20.571Z</updated>
     
     <content type="html"><![CDATA[<p><a href="/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/">图文版</a> | 简洁版</p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><ol>
