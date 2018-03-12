@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_struct_element.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_morphological_gradient.jpg">
-<meta property="og:updated_time" content="2018-01-05T04:39:48.502Z">
+<meta property="og:updated_time" content="2018-01-22T08:17:22.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程12：腐蚀与膨胀">
 <meta name="twitter:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
@@ -159,6 +159,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -192,7 +196,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'j_noise_in.bmp'</span>, <span class="number">0</span>)</div><div class="line">closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="comment"># 闭运算</span></div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg" alt=""></p>
 <blockquote>
-<p>经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混◑﹏◐），但看上图↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉。</p>
+<p>经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混◑﹏◐），但看上图↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉</p>
 </blockquote>
 <p>接下来的3种形态学操作并不常用，大家有兴趣可以看看（因为较短，没有做成番外篇）：</p>
 <h3 id="其他形态学操作"><a href="#其他形态学操作" class="headerlink" title="其他形态学操作"></a>其他形态学操作</h3><ul>
@@ -319,6 +323,12 @@ var themeMenus = {};
             2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
@@ -410,6 +420,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 

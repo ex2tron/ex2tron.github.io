@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_median_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
-<meta property="og:updated_time" content="2018-01-05T04:39:13.394Z">
+<meta property="og:updated_time" content="2018-01-22T08:16:47.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程10：平滑图像">
 <meta name="twitter:description" content="学习模糊/平滑图像，消除噪点。">
@@ -157,6 +157,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -174,7 +178,7 @@ var themeMenus = {};
 </ul>
 <p>低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。</p>
 <blockquote>
-<p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="external">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="external">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声；这样解释并不准确，只要能简单分辨即可。</p>
+<p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="external">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="external">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声；这样解释并不准确，只要能简单分辨即可</p>
 </blockquote>
 <h3 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h3><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
 <p>$$<br> kernel = \frac{1}{9}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
@@ -312,6 +316,12 @@ var themeMenus = {};
             2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
@@ -403,6 +413,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 

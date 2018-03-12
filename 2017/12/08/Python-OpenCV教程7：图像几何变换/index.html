@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_rotation_45_degree.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_affine_transformation_drawing.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
-<meta property="og:updated_time" content="2017-12-22T02:50:32.573Z">
+<meta property="og:updated_time" content="2018-01-29T05:19:37.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程7：图像几何变换">
 <meta name="twitter:description" content="学习如何旋转、平移和缩放图片，了解仿射/透视变换。">
@@ -158,6 +158,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -171,7 +175,7 @@ var themeMenus = {};
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="缩放图片"><a href="#缩放图片" class="headerlink" title="缩放图片"></a>缩放图片</h3><p>缩放就是调整图片的大小，使用<code>cv2.resize()</code>函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 按照指定的宽度、高度缩放图片</span></div><div class="line">res = cv2.resize(img, (<span class="number">132</span>, <span class="number">150</span>))</div><div class="line"><span class="comment"># 按照比例缩放，如x,y轴均放大一倍</span></div><div class="line">res2 = cv2.resize(img, <span class="keyword">None</span>, fx=<span class="number">2</span>, fy=<span class="number">2</span>, interpolation=cv2.INTER_LINEAR)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shrink'</span>, res), cv2.imshow(<span class="string">'zoom'</span>, res2)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/3.3.1/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
-<h2 id="平移图片"><a href="#平移图片" class="headerlink" title="平移图片"></a>平移图片</h2><p>这里涉及到<a href="https://baike.baidu.com/item/仿射变换" target="_blank" rel="external">仿射变换</a>的概念，大家不用知道它的意思，只需要了解下面三点：</p>
+<h3 id="平移图片"><a href="#平移图片" class="headerlink" title="平移图片"></a>平移图片</h3><p>这里涉及到<a href="https://baike.baidu.com/item/仿射变换" target="_blank" rel="external">仿射变换</a>的概念，大家不用知道它的意思，只需要了解下面三点：</p>
 <ul>
 <li>仿射变换后，原图中平行的线依然平行</li>
 <li>用<code>cv2.warpAffine()</code>实现仿射变换</li>
@@ -181,7 +185,7 @@ var themeMenus = {};
 <p>$$<br> M = \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; tx \newline<br>   0 &amp; 1 &amp; ty<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 平移图片</span></div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 定义平移矩阵，需要是numpy的float32类型</span></div><div class="line"><span class="comment"># x轴平移100，y轴平移50</span></div><div class="line">M = np.float32([[<span class="number">1</span>, <span class="number">0</span>, <span class="number">100</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>]])</div><div class="line"><span class="comment"># 用仿射变换实现平移</span></div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shift'</span>, dst)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>再次强调一下：图片的高度（y方向）是rows，宽度（x方向）是cols，请勿混淆。</p>
+<p>再次强调一下：图片的高度（y方向）是rows，宽度（x方向）是cols，请勿混淆</p>
 </blockquote>
 <p><img src="http://pic.ex2tron.top/cv2_translation_100_50.jpg" alt="平移图片"></p>
 <h3 id="旋转图片"><a href="#旋转图片" class="headerlink" title="旋转图片"></a>旋转图片</h3><p>旋转同平移一样，也需要定义一个变换矩阵。OpenCV直接提供了<code>cv2.getRotationMatrix2D()</code>函数用来生成这个矩阵，对这个矩阵的形式感兴趣的童鞋可以去<a href="#引用">引用</a>查看：</p>
@@ -304,7 +308,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放图片"><span class="nav-number">2.1.</span> <span class="nav-text">缩放图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平移图片"><span class="nav-number">3.</span> <span class="nav-text">平移图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转图片"><span class="nav-number">3.1.</span> <span class="nav-text">旋转图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻转图片"><span class="nav-number">3.2.</span> <span class="nav-text">翻转图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仿射变换"><span class="nav-number">3.3.</span> <span class="nav-text">仿射变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透视变换"><span class="nav-number">3.4.</span> <span class="nav-text">透视变换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放图片"><span class="nav-number">2.1.</span> <span class="nav-text">缩放图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平移图片"><span class="nav-number">2.2.</span> <span class="nav-text">平移图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转图片"><span class="nav-number">2.3.</span> <span class="nav-text">旋转图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻转图片"><span class="nav-number">2.4.</span> <span class="nav-text">翻转图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仿射变换"><span class="nav-number">2.5.</span> <span class="nav-text">仿射变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透视变换"><span class="nav-number">2.6.</span> <span class="nav-text">透视变换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
@@ -320,6 +324,12 @@ var themeMenus = {};
             2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
@@ -411,6 +421,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 

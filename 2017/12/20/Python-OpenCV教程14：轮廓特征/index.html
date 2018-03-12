@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_min_enclosing_circle.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_fitting_ellipse.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_match_shape_shapes.jpg">
-<meta property="og:updated_time" content="2018-01-05T04:40:32.224Z">
+<meta property="og:updated_time" content="2018-01-22T08:19:33.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程14：轮廓特征">
 <meta name="twitter:description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
@@ -158,6 +158,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -201,7 +205,7 @@ var themeMenus = {};
 <p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
 <p>形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，大家如果感兴趣，可以参考：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="external">Hu-Moments</a></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>我们是对手写字符图片中的数字3进行轮廓特征计算，大家换成数字1看看</li>
+<li>前面我们是对图片中的数字3进行轮廓特征计算的，大家换成数字1看看</li>
 <li>（选做）用形状匹配比较两个字母或数字（这相当于很简单的一个<a href="https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&amp;fromid=25995&amp;fromtitle=OCR" target="_blank" rel="external">OCR</a>噢）</li>
 </ol>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>常用的轮廓特征：</p>
@@ -316,6 +320,12 @@ var themeMenus = {};
             2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
@@ -407,6 +417,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 

@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg">
-<meta property="og:updated_time" content="2018-01-05T07:40:16.384Z">
+<meta property="og:updated_time" content="2018-01-22T08:19:33.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程8：绘图功能">
 <meta name="twitter:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
@@ -156,6 +156,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -180,7 +184,7 @@ var themeMenus = {};
 <h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画线只需知道起点和终点的坐标就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建一副黑色的图片</span></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></div><div class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：绘图函数会直接影响到原图片，这点要注意</p>
+<p>经验之谈：所有绘图函数均会直接影响原图片，这点要注意</p>
 </blockquote>
 <h3 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h3><p>画矩形需要知道左上角和右下角的坐标：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个绿色边框的矩形，参数2：左上角坐标，参数3：右下角坐标</span></div><div class="line">cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</div></pre></td></tr></table></figure>
@@ -329,6 +333,12 @@ var themeMenus = {};
             2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
@@ -420,6 +430,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 

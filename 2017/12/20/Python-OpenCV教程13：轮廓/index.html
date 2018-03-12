@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_contours.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_find_contours_contours.jpg">
-<meta property="og:updated_time" content="2018-01-22T04:34:31.527Z">
+<meta property="og:updated_time" content="2018-01-22T08:19:33.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程13：轮廓">
 <meta name="twitter:description" content="学习如何寻找并绘制轮廓。">
@@ -156,6 +156,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -171,7 +175,7 @@ var themeMenus = {};
 <p><img src="http://pic.ex2tron.top/cv2_understand_contours.jpg" alt=""></p>
 <p>寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或Canny边缘检测先得到二值图。</p>
 <blockquote>
-<p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<em>*不然很多人在寻找轮廓时会找到图片最外面的一个框。</em></p>
+<p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<em>*不然很多人在寻找轮廓时会找到图片最外面的一个框</em></p>
 </blockquote>
 <h3 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h3><p>使用<code>cv2.findContours()</code>寻找轮廓：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img_gray, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(</div><div class="line">    thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
@@ -298,6 +302,12 @@ var themeMenus = {};
             2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
@@ -389,6 +399,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 
