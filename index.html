@@ -262,6 +262,79 @@ Windows装机必备、精品...
 <!-- Table of Contents -->
 
   
+    <article id="post-Python-OpenCV教程18：理解特征"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/03/15/Python-OpenCV教程18：理解特征/">Python+OpenCV教程18：理解特征</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/03/15/Python-OpenCV教程18：理解特征/" class="article-date">
+	  <time datetime="2018-03-15T12:13:55.000Z" itemprop="datePublished">March 15, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习和了解图像特征的重要性。图片等可到源码处下载。
+
+目标
+理解图像特征
+图像特征的重要性和用途
+
+教程拼图游戏相信大部分人都玩过拼图游戏：根据散落的图片小块最终拼接成一副完整的图片。那么，你是怎么拼起来的呢？
+
+我们是通过小块间的相似性来拼的，但我们很难具体说出来这个”像”，谁叫我们的大脑已经被上帝编好程序了呢(￣_￣)。现在做个假设，如果能让计算机找到这些小块间的相似性，是不是也可以让计算机玩拼图游戏呢？
+理解特征那这些特征有哪些？如何找到这些特征呢？我们来看下这幅图片：
+
+图的上面有6个小块，都是图中的某一部分。你能找到这6个小块在图中的具体位置吗？
+
+A和B很难确定具体的位置，因为它们在原图中的很多地方都有。可以把这些地方称为扁平的区域。
+
+C和D相对容易点，因为它们是建筑物的...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/03/15/Python-OpenCV教程18：理解特征/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/特征/">特征</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【片单】推荐几部优秀的传记电影"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -727,76 +800,6 @@ OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程13：轮廓"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/20/Python-OpenCV教程13：轮廓/">Python+OpenCV教程13：轮廓</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/20/Python-OpenCV教程13：轮廓/" class="article-date">
-	  <time datetime="2017-12-20T01:44:23.000Z" itemprop="datePublished">December 20, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何寻找并绘制轮廓。图片等可到源码处下载。
-
-目标
-了解轮廓概念
-寻找并绘制轮廓
-OpenCV函数：cv2.findContours(), cv2.drawContours()
-
-教程啥叫轮廓轮廓是一系列相连的点组成的曲线，代表了物体的基本外形。
-谈起轮廓不免想到边缘，它们确实很像。简单的说，轮廓是连续的，边缘并不全都连续（下图）。其实边缘主要是作为图像的特征使用，比如可以用边缘特征可以区分脸和手，而轮廓主要用来分析物体的形态，比如物体的周长和面积等，可以说边缘包括轮廓。
-
-寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或Canny边缘检测先得到二值图。
-
-经验之谈：寻找轮廓是针对白色物体的，一定要保证物体是白色，而背景是黑色，*不然很多人在寻找轮廓时会找到图片最外面的一个...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/20/Python-OpenCV教程13：轮廓/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -898,6 +901,18 @@ OpenCV函数：cv2.findContours(), cv2.drawContours()
           <li class="clearfix">
 
             
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/03/15/Python-OpenCV教程18：理解特征/">Python+OpenCV教程18：理解特征</a></h6>
+              <span>March 15, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
               <div class="widget-entry-thumbnail">
                 <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
@@ -958,18 +973,6 @@ OpenCV函数：cv2.findContours(), cv2.drawContours()
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/">Python+OpenCV教程番外篇10：凸包及更多轮廓特征</a></h6>
-              <span>December 20, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -979,7 +982,7 @@ OpenCV函数：cv2.findContours(), cv2.drawContours()
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -990,7 +993,7 @@ OpenCV函数：cv2.findContours(), cv2.drawContours()
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

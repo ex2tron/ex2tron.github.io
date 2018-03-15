@@ -127,6 +127,79 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程8：绘图功能"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/09/Python-OpenCV教程8：绘图功能/">Python+OpenCV教程8：绘图功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/09/Python-OpenCV教程8：绘图功能/" class="article-date">
+	  <time datetime="2017-12-09T03:29:48.000Z" itemprop="datePublished">December 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习画线、圆和矩形等多种几何形状，给图片添加文字。图片等可到源码处下载。
+
+目标
+绘制各种几何形状、添加文字
+OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.putText()
+
+教程参数说明绘制形状的函数有一些共同的参数，提前在此说明一下：
+
+img：要绘制形状的图片
+color：绘制的颜色，绘制彩色就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行
+thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，传入-1表示填充形状
+
+
+模块导入和显示图片的通用代码，相信你已经很熟悉了，为节约篇幅，后面我会省略掉噢：
+
+123456import cv2import ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/09/Python-OpenCV教程8：绘图功能/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程7：图像几何变换"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -738,67 +811,6 @@ OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程番外篇1：代码性能优化"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/">Python+OpenCV教程番外篇1：代码性能优化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/" class="article-date">
-	  <time datetime="2017-12-06T07:51:52.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何评估和优化代码性能。（本节还没更新完…………）
-完成一项任务很重要，高效地完成更重要。图像处理是对矩阵的操作，数据量巨大。如果代码写的不好，性能差距将很大，所以这节我们来了解下如何评估和提升代码性能。
-评估代码运行时间123456import cv2start = cv2.getTickCount()# 这里写测试代码...end = cv2.getTickCount()print((end - start) / cv2.getTickFrequency())
-这段代码就是用来测量程序运行时间的（单位：s），其中cv2.getTickCount()函数得到电脑启动以来的时钟周期数，cv2.getTickFrequency()返回你电脑的主频，前后相减再除以主频就是你代码的运行时...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程番外篇1：代码性能优化/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -900,6 +912,18 @@ OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图
           <li class="clearfix">
 
             
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/03/15/Python-OpenCV教程18：理解特征/">Python+OpenCV教程18：理解特征</a></h6>
+              <span>March 15, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
               <div class="widget-entry-thumbnail">
                 <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
@@ -960,18 +984,6 @@ OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/">Python+OpenCV教程番外篇10：凸包及更多轮廓特征</a></h6>
-              <span>December 20, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -981,7 +993,7 @@ OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -992,7 +1004,7 @@ OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
