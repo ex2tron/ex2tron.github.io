@@ -34,7 +34,10 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_histogram_equalization.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_before_after_equalization.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg">
-<meta property="og:updated_time" content="2017-12-24T11:21:00.304Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_adaptive_histogram.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_adaptive_histogram.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_histogram_mask.jpg">
+<meta property="og:updated_time" content="2017-12-26T05:29:28.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程15：直方图">
 <meta name="twitter:description" content="学习计算并绘制直方图，直方图均衡化等。">
@@ -166,12 +169,12 @@ var themeMenus = {};
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>计算并绘制直方图</li>
-<li>直方图均衡化</li>
+<li>（自适应）直方图均衡化</li>
 <li>OpenCV函数：cv2.calcHist(), cv2.equalizeHist()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫直方图"><a href="#啥叫直方图" class="headerlink" title="啥叫直方图"></a>啥叫直方图</h3><p>直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_histogram.jpg" alt=""></p>
-<p>当然在计算直方图之前，有几个术语先来了解一下：</p>
+<p>在计算直方图之前，有几个术语先来了解一下：</p>
 <ul>
 <li>dims：要计算的通道数，对于灰度图dims=1</li>
 <li>range：要计算的像素值范围，一般为[0,256]（不包括256）</li>
@@ -211,9 +214,16 @@ var themeMenus = {};
 <p><img src="http://pic.ex2tron.top/cv2_before_after_equalization.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg" alt="均衡化前后的直方图对比"></p>
 <p>可以看到均衡化后图片的亮度和对比度效果明显好于原图。</p>
+<h3 id="自适应均衡化"><a href="#自适应均衡化" class="headerlink" title="自适应均衡化"></a>自适应均衡化</h3><p>不难看出来，直方图均衡化是应用于整幅图片的，会有什么问题呢？看下图：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_adaptive_histogram.jpg" alt=""></p>
+<p>很明显，因为全局调整亮度和对比度的原因，脸部太亮，大部分细节都丢失了。</p>
+<p>自适应均衡化就是用来解决这一问题的：它在每一个小区域内（默认8×8）进行直方图均衡化。当然，如果有噪点的话，噪点会被放大，需要对小区域内的对比度进行了限制，所以这个算法全称叫：<strong>对比度受限的自适应直方图均衡化</strong>CLAHE <a href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization" target="_blank" rel="external">Contrast Limited Adaptive Histogram Equalization</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自适应均衡化，参数可选</span></div><div class="line">clahe = cv2.createCLAHE(clipLimit=<span class="number">2.0</span>, tileGridSize=(<span class="number">8</span>, <span class="number">8</span>))</div><div class="line">cl1 = clahe.apply(img)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_adaptive_histogram.jpg" alt=""></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200*200区域的直方图程序</li>
+<li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200×200区域直方图的程序</li>
 </ol>
+<p><img src="http://pic.ex2tron.top/cv2_histogram_mask.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>直方图是一种分析图像的手段</li>
 <li>cv2.calcHist()和numpy.bincount()均可用来计算直方图，使用Matplotlib绘制直方图</li>
@@ -224,6 +234,7 @@ var themeMenus = {};
 <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histograms-getting-started" target="_blank" rel="external">Histograms - 1 : Find, Plot, Analyze !!!</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html#histogram-equalization" target="_blank" rel="external">Histograms - 2: Histogram Equalization</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization" target="_blank" rel="external">维基百科：自适应直方图均衡化</a></li>
 <li><a href="http://www.cambridgeincolour.com/tutorials/histograms1.htm" target="_blank" rel="external">Cambridge in Color website</a></li>
 </ul>
 
@@ -302,7 +313,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#啥叫直方图"><span class="nav-number">2.1.</span> <span class="nav-text">啥叫直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算直方图"><span class="nav-number">2.2.</span> <span class="nav-text">计算直方图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenCV中直方图计算"><span class="nav-number">2.2.1.</span> <span class="nav-text">OpenCV中直方图计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Numpy中直方图计算"><span class="nav-number">2.2.2.</span> <span class="nav-text">Numpy中直方图计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制直方图"><span class="nav-number">2.3.</span> <span class="nav-text">绘制直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直方图均衡化"><span class="nav-number">2.4.</span> <span class="nav-text">直方图均衡化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">3.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#啥叫直方图"><span class="nav-number">2.1.</span> <span class="nav-text">啥叫直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算直方图"><span class="nav-number">2.2.</span> <span class="nav-text">计算直方图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenCV中直方图计算"><span class="nav-number">2.2.1.</span> <span class="nav-text">OpenCV中直方图计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Numpy中直方图计算"><span class="nav-number">2.2.2.</span> <span class="nav-text">Numpy中直方图计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制直方图"><span class="nav-number">2.3.</span> <span class="nav-text">绘制直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直方图均衡化"><span class="nav-number">2.4.</span> <span class="nav-text">直方图均衡化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自适应均衡化"><span class="nav-number">2.5.</span> <span class="nav-text">自适应均衡化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">3.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
@@ -315,7 +326,7 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            2017
+            2018
               ex2tron&#39;s Blog All Rights Reserved.
                 
           </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2017-12-24T11:21:00.304Z</updated>
+  <updated>2017-12-26T05:29:28.740Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -20,18 +20,18 @@
     <link href="http://ex2tron.coding.me/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
     <id>http://ex2tron.coding.me/2017/12/23/Python-OpenCV教程15：直方图/</id>
     <published>2017-12-23T09:48:30.000Z</published>
-    <updated>2017-12-24T11:21:00.304Z</updated>
+    <updated>2017-12-26T05:29:28.740Z</updated>
     
     <content type="html"><![CDATA[<p>学习计算并绘制直方图，直方图均衡化等。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>计算并绘制直方图</li>
-<li>直方图均衡化</li>
+<li>（自适应）直方图均衡化</li>
 <li>OpenCV函数：cv2.calcHist(), cv2.equalizeHist()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫直方图"><a href="#啥叫直方图" class="headerlink" title="啥叫直方图"></a>啥叫直方图</h3><p>直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_histogram.jpg" alt=""></p>
-<p>当然在计算直方图之前，有几个术语先来了解一下：</p>
+<p>在计算直方图之前，有几个术语先来了解一下：</p>
 <ul>
 <li>dims：要计算的通道数，对于灰度图dims=1</li>
 <li>range：要计算的像素值范围，一般为[0,256]（不包括256）</li>
@@ -71,9 +71,16 @@
 <p><img src="http://pic.ex2tron.top/cv2_before_after_equalization.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg" alt="均衡化前后的直方图对比"></p>
 <p>可以看到均衡化后图片的亮度和对比度效果明显好于原图。</p>
+<h3 id="自适应均衡化"><a href="#自适应均衡化" class="headerlink" title="自适应均衡化"></a>自适应均衡化</h3><p>不难看出来，直方图均衡化是应用于整幅图片的，会有什么问题呢？看下图：</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_adaptive_histogram.jpg" alt=""></p>
+<p>很明显，因为全局调整亮度和对比度的原因，脸部太亮，大部分细节都丢失了。</p>
+<p>自适应均衡化就是用来解决这一问题的：它在每一个小区域内（默认8×8）进行直方图均衡化。当然，如果有噪点的话，噪点会被放大，需要对小区域内的对比度进行了限制，所以这个算法全称叫：<strong>对比度受限的自适应直方图均衡化</strong>CLAHE <a href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization" target="_blank" rel="external">Contrast Limited Adaptive Histogram Equalization</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自适应均衡化，参数可选</span></div><div class="line">clahe = cv2.createCLAHE(clipLimit=<span class="number">2.0</span>, tileGridSize=(<span class="number">8</span>, <span class="number">8</span>))</div><div class="line">cl1 = clahe.apply(img)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_adaptive_histogram.jpg" alt=""></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200*200区域的直方图程序</li>
+<li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200×200区域直方图的程序</li>
 </ol>
+<p><img src="http://pic.ex2tron.top/cv2_histogram_mask.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>直方图是一种分析图像的手段</li>
 <li>cv2.calcHist()和numpy.bincount()均可用来计算直方图，使用Matplotlib绘制直方图</li>
@@ -84,6 +91,7 @@
 <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.html#histograms-getting-started" target="_blank" rel="external">Histograms - 1 : Find, Plot, Analyze !!!</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html#histogram-equalization" target="_blank" rel="external">Histograms - 2: Histogram Equalization</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization" target="_blank" rel="external">维基百科：自适应直方图均衡化</a></li>
 <li><a href="http://www.cambridgeincolour.com/tutorials/histograms1.htm" target="_blank" rel="external">Cambridge in Color website</a></li>
 </ul>
 ]]></content>
@@ -640,7 +648,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2017-12-24T11:38:46.549Z</updated>
+    <updated>2017-12-26T05:15:39.958Z</updated>
     
     <content type="html"><![CDATA[<p>图文版 | <a href="/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/">简洁版</a><a id="more"></a></p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><table>
@@ -849,7 +857,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><img src="http://pic.ex2tron.top/cv2_thumbnail_histogram.jpg" align="left"></td>
-<td style="text-align:right">了解，计算并绘制直方图，直方图均衡化</td>
+<td style="text-align:right">了解，计算并绘制直方图，（自适应）直方图均衡化</td>
 </tr>
 </tbody>
 </table>
@@ -877,7 +885,7 @@
     <link href="http://ex2tron.coding.me/2017/12/10/Python-OpenCV%E6%95%99%E7%A8%8B9%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
     <id>http://ex2tron.coding.me/2017/12/10/Python-OpenCV教程9：图像混合/</id>
     <published>2017-12-10T06:13:10.000Z</published>
-    <updated>2017-12-22T02:51:26.941Z</updated>
+    <updated>2017-12-26T05:29:28.740Z</updated>
     
     <content type="html"><![CDATA[<p>学习图片间的数学运算，图像混合。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -885,7 +893,8 @@
 <li>图片间的数学运算，如相加、按位运算等</li>
 <li>OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()</li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="图片相加"><a href="#图片相加" class="headerlink" title="图片相加"></a>图片相加</h3><p>要叠加两张图片，可以用<code>cv2.add()</code>函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用<code>res = img + img1</code>相加，但这两者的结果并不相同：</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>首先，恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油(ง •_•)ง</p>
+<h3 id="图片相加"><a href="#图片相加" class="headerlink" title="图片相加"></a>图片相加</h3><p>要叠加两张图片，可以用<code>cv2.add()</code>函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用<code>res = img + img1</code>相加，但这两者的结果并不相同：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">x = np.uint8([<span class="number">250</span>])</div><div class="line">y = np.uint8([<span class="number">10</span>])</div><div class="line">print(cv2.add(x, y))  <span class="comment"># 250+10 = 260 =&gt; 255</span></div><div class="line">print(x + y)  <span class="comment"># 250+10 = 260 % 256 = 4</span></div></pre></td></tr></table></figure>
 <p>如果是二值化图片（只有0和255），两者结果是一样的（用numpy的方式更简便一些）。</p>
 <h3 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h3><p>图像混合<code>cv2.addWeighted()</code>也是一种图片相加的操作，只不过两幅图片的权重不一样，γ相当于一个修正值：</p>
@@ -1055,7 +1064,7 @@
     <link href="http://ex2tron.coding.me/2017/12/09/Python-OpenCV%E6%95%99%E7%A8%8B8%EF%BC%9A%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD/"/>
     <id>http://ex2tron.coding.me/2017/12/09/Python-OpenCV教程8：绘图功能/</id>
     <published>2017-12-09T03:29:48.000Z</published>
-    <updated>2017-12-22T03:53:57.741Z</updated>
+    <updated>2017-12-26T06:21:57.143Z</updated>
     
     <content type="html"><![CDATA[<p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1096,12 +1105,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在图中心画一个填充的半圆</span></div><div class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
 <h3 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h3><p>画多边形需要指定一系列多边形的顶点坐标，相当于从第一个点到第二个点画直线，再从第二个点到第三个点画直线….</p>
 <p>多边形的顶点坐标需要变成”顶点数×1×2”维的矩阵：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义四个顶点坐标</span></div><div class="line">pts = np.array([[<span class="number">10</span>, <span class="number">5</span>],  [<span class="number">50</span>, <span class="number">10</span>], [<span class="number">70</span>, <span class="number">20</span>], [<span class="number">20</span>, <span class="number">30</span>]], np.int32)</div><div class="line"><span class="comment"># 顶点个数：4，矩阵变成4*1*2维</span></div><div class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">img = cv2.polylines(img, [pts], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义四个顶点坐标</span></div><div class="line">pts = np.array([[<span class="number">10</span>, <span class="number">5</span>],  [<span class="number">50</span>, <span class="number">10</span>], [<span class="number">70</span>, <span class="number">20</span>], [<span class="number">20</span>, <span class="number">30</span>]], np.int32)</div><div class="line"><span class="comment"># 顶点个数：4，矩阵变成4*1*2维</span></div><div class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">cv2.polylines(img, [pts], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
 <p><code>cv2.polylines()</code>的参数3如果是False的话，多边形就不闭合。</p>
 <blockquote>
 <p>经验之谈：如果需要绘制多条直线，使用cv2.polylines()要比cv2.line()高效很多，例如：</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用cv2.polylines()画多条直线</span></div><div class="line">line1 = np.array([[<span class="number">100</span>, <span class="number">20</span>],  [<span class="number">300</span>, <span class="number">20</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line2 = np.array([[<span class="number">100</span>, <span class="number">60</span>],  [<span class="number">300</span>, <span class="number">60</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line3 = np.array([[<span class="number">100</span>, <span class="number">100</span>],  [<span class="number">300</span>, <span class="number">100</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">img = cv2.polylines(img, [line1, line2, line3], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用cv2.polylines()画多条直线</span></div><div class="line">line1 = np.array([[<span class="number">100</span>, <span class="number">20</span>],  [<span class="number">300</span>, <span class="number">20</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line2 = np.array([[<span class="number">100</span>, <span class="number">60</span>],  [<span class="number">300</span>, <span class="number">60</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line3 = np.array([[<span class="number">100</span>, <span class="number">100</span>],  [<span class="number">300</span>, <span class="number">100</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">cv2.polylines(img, [line1, line2, line3], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
 <h3 id="添加文字"><a href="#添加文字" class="headerlink" title="添加文字"></a>添加文字</h3><p>使用<code>cv2.putText()</code>添加文字，它的参数也比较多，同样请对照后面的代码理解这几个参数：</p>
 <ul>
 <li>参数2：要添加的文本</li>
@@ -1282,7 +1291,7 @@
     <link href="http://ex2tron.coding.me/2017/12/07/Python-OpenCV%E6%95%99%E7%A8%8B6%EF%BC%9A%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/"/>
     <id>http://ex2tron.coding.me/2017/12/07/Python-OpenCV教程6：阈值分割/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2017-12-22T02:50:13.907Z</updated>
+    <updated>2017-12-26T05:29:28.740Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1666,7 +1675,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B2%EF%BC%9A%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程2：基本元素-图片/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2017-12-22T14:41:32.619Z</updated>
+    <updated>2017-12-26T05:29:28.740Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1711,6 +1720,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先定义窗口，后显示图片</span></div><div class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</div><div class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><p>使用<code>cv2.imwrite()</code>保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
+<p>Nice，是不是很简单，再接再厉噢(●’◡’●)</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>cv2.imread()读入图片、cv2.imshow()显示图片、cv2.imwrite()保存图片</li>
 </ul>
@@ -1803,7 +1813,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程1：简介与安装/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2017-12-22T06:52:26.272Z</updated>
+    <updated>2017-12-24T14:08:31.258Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p><strong>我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )</strong>，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。</p>
@@ -1826,7 +1836,9 @@
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
 <p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用我们一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。</p>
 <p><img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" alt=""></p>
-<p>在cmd中输入：<code>pip install opencv-python</code>，等待安装完成即可。要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。</p>
+<p>在cmd中输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
+<p>等待安装完成即可。要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。</p>
 <blockquote>
 <p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)等</p>
 </blockquote>
@@ -1866,7 +1878,7 @@
     <link href="http://ex2tron.coding.me/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/"/>
     <id>http://ex2tron.coding.me/2017/12/05/【片单】漫威宇宙电影合集/</id>
     <published>2017-12-05T14:44:35.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-04-07T09:40:49.058Z</updated>
     
     <content type="html"><![CDATA[<p>十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！<a id="more"></a></p>
 <blockquote>
@@ -1874,7 +1886,7 @@
 </blockquote>
 <p>漫威电影宇宙MCU的成绩有目共睹，在十周年《复仇者联盟3》上映之前，来补一波吧！</p>
 <blockquote>
-<p>大部分片源来自人人影视字幕组，点击片名即可下载。</p>
+<p>大部分片源来自人人影视字幕组，点击片名即可下载</p>
 </blockquote>
 <p>MCU观影指南：</p>
 <h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><ul>
@@ -1944,16 +1956,15 @@
     <link href="http://ex2tron.coding.me/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/"/>
     <id>http://ex2tron.coding.me/2017/12/05/【片单】007电影合集/</id>
     <published>2017-12-05T13:53:37.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-04-07T09:40:49.080Z</updated>
     
     <content type="html"><![CDATA[<p>作为风靡全球的一系列谍战电影，007怎能不看呢？007电影合集下载！<a id="more"></a></p>
 <blockquote>
 <p><em>“My name is Bond, James Bond.”</em> ——<a href="https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%C2%B7%E9%82%A6%E5%BE%B7" target="_blank" rel="external">詹姆斯·邦德</a></p>
 </blockquote>
-<p>目前为止，<a href="https://baike.baidu.com/item/007/33915" target="_blank" rel="external">007</a>系列电影已经有24部辣，六任邦德：</p>
-<p><img src="http://image12.m1905.cn/mapps/uploadfile/edu/2014/0404/2014040411314213256.jpg" alt=""></p>
+<p>目前为止，<a href="https://baike.baidu.com/item/007/33915" target="_blank" rel="external">007</a>系列电影已经有24部辣，六任邦德。</p>
 <blockquote>
-<p>大部分片源来自人人影视字幕组，点击片名即可下载。</p>
+<p>大部分片源来自人人影视字幕组，点击片名即可下载</p>
 </blockquote>
 <h3 id="肖恩·康纳利"><a href="#肖恩·康纳利" class="headerlink" title="肖恩·康纳利"></a><a href="https://baike.baidu.com/item/%E8%82%96%E6%81%A9%C2%B7%E5%BA%B7%E7%BA%B3%E5%88%A9/1296145?fr=aladdin" target="_blank" rel="external">肖恩·康纳利</a></h3><ul>
 <li><p><a href="ed2k://|file|007.Dr.No.007%E4%B8%80%E4%B9%8B%E8%AF%BA%E5%8D%9A%E5%A3%AB.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1913696596|C6FE723B4B78F21C3E55DC18D46C7111|h=7DXVWWD3DJSOXFHCTQKTA4F3WFDZEVIV|/" target="_blank" rel="external">1. 诺博士 (1962)</a></p>
@@ -2032,6 +2043,73 @@
   </entry>
   
   <entry>
+    <title>【片单】历届奥斯卡最佳动画长片集</title>
+    <link href="http://ex2tron.coding.me/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E5%8E%86%E5%B1%8A%E5%A5%A5%E6%96%AF%E5%8D%A1%E6%9C%80%E4%BD%B3%E5%8A%A8%E7%94%BB%E9%95%BF%E7%89%87%E9%9B%86/"/>
+    <id>http://ex2tron.coding.me/2017/12/05/【片单】历届奥斯卡最佳动画长片集/</id>
+    <published>2017-12-05T06:55:09.000Z</published>
+    <updated>2018-04-07T09:40:49.079Z</updated>
+    
+    <content type="html"><![CDATA[<p>历届奥斯卡最佳动画长片合集下载！！！<a id="more"></a></p>
+<blockquote>
+<p><em>Take her to the moon for me, okay?</em>  ——<a href="https://movie.douban.com/subject/10533913/" target="_blank" rel="external">头脑特工队(Inside Out)</a></p>
+</blockquote>
+<p>奥斯卡最佳动画长片奖设立于2002年，由当时的奥斯卡最佳动画奖细分出来。</p>
+<p>天马行空的创意、顶级技术效果、发现生活的美好……都是我喜欢动画的原因。我一直很喜欢国内早期的动画片，三个和尚、小蝌蚪找妈妈和大闹天宫…然而国漫之后一直没啥起色。每次看到喜羊羊，熊出没，我就…同时好莱坞三大动画工作室，迪士尼（皮克斯）、梦工厂、蓝天工作室每年都在制作着世界顶级动画作品。而奥斯卡最佳动画长片更是代表了每年作品中的佼佼者。</p>
+<blockquote>
+<p>大部分片源来自人人影视字幕组，点击片名即可下载</p>
+</blockquote>
+<ul>
+<li><p>第89届奥斯卡最佳动画长片（2017）：<a href="ed2k://|file|Zootopia.2016.%E7%96%AF%E7%8B%82%E5%8A%A8%E7%89%A9%E5%9F%8E.720p.Chi_Eng.ZMZ-BD-MP4.mp4|1624450533|b2bd5f3bbccb67d70e1b6b2309e986c9|h=bluqdoehhs6nwianhaqbebr54732rubc|/" target="_blank" rel="external">疯狂动物城</a></p>
+</li>
+<li><p>第88届奥斯卡最佳动画长片（2016）：<a href="ed2k://|file|%E5%A4%B4%E8%84%91%E7%89%B9%E5%B7%A5%E9%98%9F.Inside.Out.2015.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.720p.BluRay.x264.%E6%B7%B1%E5%BD%B1%E5%AD%97%E5%B9%95%E7%BB%84.mkv|2344293745|74B8904467BC963BD950C988A6FDEC18|h=YJEWNF4JLIOYQR5F2E5V2KFU7DYRWNL7|/" target="_blank" rel="external">头脑特工队</a></p>
+</li>
+<li><p>第87届奥斯卡最佳动画长片（2015）：<a href="ed2k://|file|%E8%B6%85%E8%83%BD%E9%99%86%E6%88%98%E9%98%9F.Big.Hero.6.2014.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.BDrip.720p.x264.%E6%B7%B1%E5%BD%B1%E8%AE%BA%E5%9D%9B%E7%BF%BB%E8%AF%91%E5%88%B6%E4%BD%9CV3.mkv|2343923616|5D6DB02D89D32CF3557D6D76AC16CDC9|h=UBUWZG7RMFUR6PYY6VLXI3QXCJOLPWRF|/" target="_blank" rel="external">超能陆战队</a></p>
+</li>
+<li><p>第86届奥斯卡最佳动画长片（2014）：<a href="ed2k://|file|Frozen.2013.%E5%86%B0%E9%9B%AA%E5%A5%87%E7%BC%98.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.%E8%8B%B1%E5%8F%B0%E7%B2%A4%E9%9F%B3%E8%BD%A8.HR-HDTV.AC3.1024X576.x264.V2.mkv|2264858962|f571467d174f0114530ac1bc6c190704|h=lsmudzlfsfxqu3722q6qkwq7jgusxcz7|/" target="_blank" rel="external">冰雪奇缘</a></p>
+</li>
+<li><p>第85届奥斯卡最佳动画长片（2013）：<a href="ed2k://|file|Brave.2012.%E5%8B%87%E6%95%A2%E4%BC%A0%E8%AF%B4.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1534863000|2c388a9be43845a24266a4192369d0d3|h=uwcjzvg3guwhs6kejbd664h5bvhxodag|/" target="_blank" rel="external">勇敢传说</a></p>
+</li>
+<li><p>第84届奥斯卡最佳动画长片（2012）：<a href="ed2k://|file|Rango.2011.兰戈.双语字幕.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|2338210117|fbfac876f4a05a0d5f8ea31936076f36|h=65uxzqomklc657ixx7bt6wvyfsnlkmqo|/" target="_blank" rel="external">兰戈</a></p>
+</li>
+<li><p>第83届奥斯卡最佳动画长片（2011）：<a href="ed2k://|file|Toy.Story.3.2010.玩具总动员3.国粤英四音轨.双语字幕.HR-HDTV.AC3.1024x576.X264-人人影视制作.mkv|2562839788|2728791516D400440ABE73C30844F00B|h=2TTNRGE7AAMPC4UPOMBSA4STOEXZLLH3|/" target="_blank" rel="external">玩具总动员3</a></p>
+</li>
+<li><p>第82届奥斯卡最佳动画长片（2010）：<a href="ed2k://|file|Up.2009.%E9%A3%9E%E5%B1%8B%E7%8E%AF%E6%B8%B8%E8%AE%B0.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1649439684|B1085779D40C6FC46481EB2403D9AD75|h=TKRZ4AQURPGCFW4HIIPMZLHWSLYO3V6N|/" target="_blank" rel="external">飞屋环游记</a></p>
+</li>
+<li><p>第81届奥斯卡最佳动画长片（2009）：<a href="ed2k://|file|WALL.E.2008.%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%80%BB%E5%8A%A8%E5%91%98.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.%E5%9B%BD%E8%8B%B1%E7%B2%A4%E9%9F%B3%E8%BD%A8.HR-HDTV.AC3.1024x576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|2187264769|b2e470cc0fa2ffb7e02c60f8d462776a|h=n47eq7i5ogxuozbu2pi3k7udsx3hdtmc|/" target="_blank" rel="external">机器人总动员</a></p>
+</li>
+<li><p>第80届奥斯卡最佳动画长片（2008）：<a href="ed2k://|file|Ratatouille.2007.料理鼠王.双语字幕.HR-HDTV.AAC.1024X576.x264-人人影视制作.mkv|1657757497|923296BE4AC33A8CEEB74A1EFE9FD66F|h=RSE3N54Y6XPJYW4I5KCG7SDGM72CXVVY|/" target="_blank" rel="external">料理鼠王</a></p>
+</li>
+<li><p>第79届奥斯卡最佳动画长片（2007）：<a href="ed2k://|file|Happy.Feet.2006.快乐的大脚.双语字幕.HR-HDTV.AC3.1024X576.x265-人人影视制作.mkv|1820193043|465E969D87F3B285706A9F6CE0D219EA|h=IG2GHKLNHQXG6CTBGK22BGOCDWHONGOH|/" target="_blank" rel="external">快乐的大脚</a></p>
+</li>
+<li><p>第78届奥斯卡最佳动画长片（2006）：<a href="ed2k://|file|Wallace.And.Gromit.In.The.Curse.Of.The.Were.Rabbit.2005.超级无敌掌门狗-人兔的诅咒.双语字幕.HR-HDTV.AC3.1024x576.x264-人人影视制作.mkv|1328004580|B7BC8BD27B1AD8A5A1D43E47EFD3B28C|h=KBUCKHKJQPNWZSWMAVU2BDLRSM4H7IBP|/" target="_blank" rel="external">超级无敌掌门狗-人兔的诅咒</a></p>
+</li>
+<li><p>第77届奥斯卡最佳动画长片（2005）：<a href="ed2k://|file|The.Incredibles.2004.超人总动员.双语字幕.HR-HDTV.AC3.1024X576.x264-人人影视制作.V2.mkv|1848359019|F669872941DE396E5C4B543D00093998|h=54ZKL3GGEADMYHU3QBWWVDSIIKVBHS2R|/" target="_blank" rel="external">超人总动员</a></p>
+</li>
+<li><p>第76届奥斯卡最佳动画长片（2004）：<a href="ed2k://|file|Finding.Nemo.2003.海底总动员.双语字幕.国英音轨.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|1823609402|58d66fdfd69a3b8b6ad16ef752b722ad|h=457m2rl73pet7st7t4pjqmwonqpxzwas|/" target="_blank" rel="external">海底总动员</a></p>
+</li>
+<li><p>第75届奥斯卡最佳动画长片（2003）：<a href="ed2k://|file|Spirited.Away.2001.千与千寻.国粤日音轨.双语字幕.HR-HDTV.AC3.1024X550.x264-人人影视制作.mkv|2339461922|f169fab09a5f8a1f54cf066e1068d31a|h=zz2i6uhgdezy7f3tfrag4lppg4zqsc4u|/" target="_blank" rel="external">千与千寻</a></p>
+</li>
+<li><p>第74届奥斯卡最佳动画长片（2002）：<a href="ed2k://|file|Shrek.2001.怪物史莱克.双语字幕.HR-HDTV.AAC.1024X576.x264-YYeTs人人影视.mkv|1393402562|CA0EEB980750D5EFFB6E8F0CB727AD8C|h=INABIQQFAGANNSVI24O65OOMO5H7BMYB|/" target="_blank" rel="external">怪物史瑞克</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;历届奥斯卡最佳动画长片合集下载！！！
+    
+    </summary>
+    
+      <category term="谈电影" scheme="http://ex2tron.coding.me/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="奥斯卡" scheme="http://ex2tron.coding.me/tags/%E5%A5%A5%E6%96%AF%E5%8D%A1/"/>
+    
+      <category term="动画" scheme="http://ex2tron.coding.me/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Brand7 2.0更名&quot;品牌漆&quot;正式上架咯！</title>
     <link href="http://ex2tron.coding.me/2017/11/26/Brand7-2-0%E6%9B%B4%E5%90%8D%E5%93%81%E7%89%8C%E6%BC%86%E6%AD%A3%E5%BC%8F%E4%B8%8A%E6%9E%B6%E5%92%AF%EF%BC%81/"/>
     <id>http://ex2tron.coding.me/2017/11/26/Brand7-2-0更名品牌漆正式上架咯！/</id>
@@ -2085,7 +2163,7 @@
     <link href="http://ex2tron.coding.me/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>http://ex2tron.coding.me/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2017-12-22T01:39:59.898Z</updated>
+    <updated>2018-04-07T09:40:49.079Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -2148,7 +2226,7 @@
 <li>全球电影票房排行榜：<a href="https://www.douban.com/doulist/1641439/" target="_blank" rel="external">中文版</a>、<a href="http://www.boxofficemojo.com/alltime/world/" target="_blank" rel="external">英文版</a></li>
 </ul>
 <h3 id="电影合集"><a href="#电影合集" class="headerlink" title="电影合集"></a>电影合集</h3><ul>
-<li><a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">漫威电影合集</a>、<a href="/2017/09/24/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E8%AF%BA%E5%85%B0%E7%A5%9E%E4%BD%9C%E9%9B%86/">诺兰电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">007电影合集</a></li>
+<li><a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">漫威电影合集</a>、<a href="/2017/09/24/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E8%AF%BA%E5%85%B0%E7%A5%9E%E4%BD%9C%E9%9B%86/">诺兰电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/">007电影合集</a>、<a href="/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E5%8E%86%E5%B1%8A%E5%A5%A5%E6%96%AF%E5%8D%A1%E6%9C%80%E4%BD%B3%E5%8A%A8%E7%94%BB%E9%95%BF%E7%89%87%E9%9B%86/">历届奥斯卡最佳动画长片合集</a></li>
 </ul>
 ]]></content>
     
@@ -2920,13 +2998,13 @@
     <link href="http://ex2tron.coding.me/2017/09/11/%E3%80%90%E5%88%A9%E5%99%A8%E7%AF%87%E3%80%91MyCLI%EF%BC%9A%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E5%92%8C%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E7%9A%84MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/"/>
     <id>http://ex2tron.coding.me/2017/09/11/【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具/</id>
     <published>2017-09-11T06:32:14.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2017-12-25T15:17:44.463Z</updated>
     
-    <content type="html"><![CDATA[<p>mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了：<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。<a id="more"></a></p>
 <p>mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。</p>
 <p>官网：<a href="http://www.mycli.net/" target="_blank" rel="external">MyCLI</a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>其实mycli是一个Python的包，所以你已经安装了Python(pip)的话，用下面一条指令就好了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; pip install mycli</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mycli</div></pre></td></tr></table></figure>
 <p>如果出现问题，可以参考<a href="http://www.mycli.net/" target="_blank" rel="external">官网</a>，有详细的说明。</p>
 <p><img src="http://pic.ex2tron.top/install_mycli.png" alt="install_mycli"></p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装好之后，在cmd下，将以往登陆MySQL用的mysql换成mycli就可以了：</p>
@@ -2939,7 +3017,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了：
+      &lt;p&gt;mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。
     
     </summary>
     
