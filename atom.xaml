@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2018-04-08T13:47:58.634Z</updated>
+  <updated>2018-04-08T14:14:22.142Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.coding.me/2018/04/08/%E6%9E%84%E5%BB%BA%EF%BC%9A%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
     <id>http://ex2tron.coding.me/2018/04/08/构建：表驱动法/</id>
     <published>2018-04-08T10:54:04.000Z</published>
-    <updated>2018-04-08T13:47:58.634Z</updated>
+    <updated>2018-04-08T14:14:22.142Z</updated>
     
     <content type="html"><![CDATA[<p>每次谈到查表，我都会先想到下面这个简单的例子：<a id="more"></a></p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
@@ -32,7 +32,7 @@
 <p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
 <p>怎么样，2行够简洁了吗？</p>
-<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记。</em></p>
+<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
 <p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
 </blockquote>
