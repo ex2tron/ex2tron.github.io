@@ -5,9 +5,6 @@
 
   <!-- PACE Progress Bar START -->
   
-    <script src="/js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
   
 
   <!-- PACE Progress Bar START -->
@@ -126,6 +123,72 @@ var themeMenus = {};
       <div id="content" class="outer">
         
           <section id="main">
+  
+    <article id="post-numpy中几种矩阵的乘法"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/10/11/numpy中几种矩阵的乘法/">numpy中几种矩阵的乘法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/10/11/numpy中几种矩阵的乘法/" class="article-date">
+	  <time datetime="2017-10-11T02:26:09.000Z" itemprop="datePublished">October 11, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。
+
+With great power comes great responsibility  ——《Spider-Man》能力越大，责任越大。——《蜘蛛侠》
+
+
+首先，这里规定一下，我们用numpy定义矩阵时全部采用标准的形式，举例如下：
+12345678import numpy as np# 不推荐的方式a = np.array([1,2,3])print(a.shape)# 推荐的方式b = np.array([[1,2,3]])print(b.shape)
+上面代码a的形状是(3,)，b的形状(1,3)，即1行3列的一个矩阵。
+np.dotnp.dot(A,B)就是实现同线性代数里面的矩阵乘...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/10/11/numpy中几种矩阵的乘法/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵/">矩阵</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-小白深度学习笔记2：Python实现logistic回归"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
@@ -397,7 +460,7 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
 <!-- Table of Contents -->
 
   
-    <article id="post-构建法、杀死变量"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-构建：杀死变量"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -405,7 +468,7 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/28/构建法、杀死变量/">构建法、杀死变量</a>
+      <a class="article-title" href="/2017/09/28/构建：杀死变量/">构建：杀死变量</a>
     </h1>
   
 
@@ -413,7 +476,7 @@ $$x_1^2+x_0^2-2x_0x_1+y_1...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/28/构建法、杀死变量/" class="article-date">
+	Posted on <a href="/2017/09/28/构建：杀死变量/" class="article-date">
 	  <time datetime="2017-09-28T13:23:45.000Z" itemprop="datePublished">September 28, 2017</time>
 	</a>
 
@@ -431,13 +494,15 @@ Why do we fall, Bruce? So we can learn to pick ourselves up.  ——《Batman Be
 
 
 如果一个变量在代码中很分散，阅读者在同一时间内考虑的代码行数势必会增加，编写者引入Bug的概率也会增大。那么，该如何从减少变量的作用域角度提高代码质量呢？
-p.s.本文相关内容仍旧是我阅读《代码大全》时的笔记与总结，大佬勿喷！
-变量跨度与存活时间建议一：把对变量的引用尽可能集中在一起，使变量局部化12345a = 0; b = 0;c = 0;a = b + c;b...
+
+本文相关内容仍旧是我阅读《代码大全》时的笔记与总结，大佬勿喷！
+
+变量跨度与存活时间建议一：把对变量的引用尽可能集中在一起，使变量局部化12345a = 0; b = 0;c = 0;a = b + c;b +...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/28/构建法、杀死变量/#more">Continue Reading →</a>
+            <a href="/2017/09/28/构建：杀死变量/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -729,66 +794,6 @@ H...
 <!-- Table of Contents -->
 
   
-    <article id="post-【利器篇】用VSCode写Markdown"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/11/【利器篇】用VSCode写Markdown/">【利器篇】用VS Code写Markdown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/09/11/【利器篇】用VSCode写Markdown/" class="article-date">
-	  <time datetime="2017-09-11T07:11:22.000Z" itemprop="datePublished">September 11, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客。关于Markdown相较富文本的优势，我就不细说了。
-Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，如这篇文章：码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点。就我自己目前在Windows上使用的而言有：简书、有道云笔记、Typora、VSCode
-简书本身就是一个博客平台，有道云笔记是类似OneNote和印象笔迹的应用。如果你已经在使用这两个平台的话，就不用多说了。但如果只是想用一个单纯的Markdown编辑器的话，推荐极致简洁的Typora。虽说界面简洁，但功能强大，不仅内置了常见的一些Markdown...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/09/11/【利器篇】用VSCode写Markdown/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -880,109 +885,10 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
 
   
     
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/03/15/Python-OpenCV教程18：理解特征/">Python+OpenCV教程18：理解特征</a></h6>
-              <span>March 15, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/03/15/【片单】推荐几部优秀的传记电影/">【片单】推荐几部优秀的传记电影</a></h6>
-              <span>March 15, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/">Python+OpenCV教程17：霍夫变换</a></h6>
-              <span>December 28, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/27/Python-OpenCV教程16：模板匹配/">Python+OpenCV教程16：模板匹配</a></h6>
-              <span>December 27, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/23/Python-OpenCV教程15：直方图/">Python+OpenCV教程15：直方图</a></h6>
-              <span>December 23, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/12/20/Python-OpenCV教程14：轮廓特征/">Python+OpenCV教程14：轮廓特征</a></h6>
-              <span>December 20, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 

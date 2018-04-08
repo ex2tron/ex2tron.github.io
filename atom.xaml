@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2018-03-15T12:32:13.957Z</updated>
+  <updated>2018-04-08T13:47:58.634Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -16,11 +16,75 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>构建：查表法</title>
+    <link href="http://ex2tron.coding.me/2018/04/08/%E6%9E%84%E5%BB%BA%EF%BC%9A%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
+    <id>http://ex2tron.coding.me/2018/04/08/构建：表驱动法/</id>
+    <published>2018-04-08T10:54:04.000Z</published>
+    <updated>2018-04-08T13:47:58.634Z</updated>
+    
+    <content type="html"><![CDATA[<p>每次谈到查表，我都会先想到下面这个简单的例子：<a id="more"></a></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
+<p><em>宁在一思进，莫在一思停。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
+</blockquote>
+<p>如果你需要根据月份计算当月的天数（不考虑闰年），你会怎么写？</p>
+<p>如果使用if语句，你的代码可能会像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python示例（其他语言中Switch/case也一样）</span></div><div class="line"><span class="keyword">if</span> (month == <span class="number">1</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">3</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">4</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">5</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">6</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">7</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">8</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">9</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">10</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">11</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">12</span>):</div><div class="line">    day = <span class="number">31</span></div></pre></td></tr></table></figure>
+<p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
+<p>怎么样，2行够简洁了吗？</p>
+<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记。</em></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
+</blockquote>
+<p>查表法在灵活性、可维护性等方面有着普遍的优势。对于简单的情况而言，逻辑判断更加简单和直白，但数据量和逻辑链增大的时候，显然，查表法不可替代。</p>
+<p><strong>查表法的核心在于如果构建表</strong>。前面的例子中，月份不重复，以月份为索引建立一个数组即可。但如果逻辑判断是个区间，比如对于下面的考试成绩，应该如何建表呢？</p>
+<p>90-100分：优 | 70-90分：良 | 60-70分：及格 | 60分以下：不及格</p>
+<h3 id="直接查表"><a href="#直接查表" class="headerlink" title="直接查表"></a>直接查表</h3><p>月份的例子就是直接查表，查询的信息（月份）可以直接转为表中的索引，一目了然。下面再看个例子：</p>
+<p>有一个根据汽车速度计算转弯距离的程序：速度30马以下，距离为固定值a；100马以上也为固定值b；31~99之间，每个速度对应1个数值。这时如何建表呢？</p>
+<p><strong>1.重复数据，直接使用键值</strong></p>
+<p>第一种方式可以把a复制31次，100以上也复制多次，那表应该像这样：</p>
+<p><img src="http://pic.ex2tron.top/repeat_key_table_driven_method.jpg" alt=""></p>
+<p>显然，这种方式很蠢，不仅有很多冗余的数据，而且很容易出错。</p>
+<p><strong>2.转换键值</strong></p>
+<p>我们可以用一个函数将键值做下转换：因为0~30是同一值，所以将0~30转成一个键值，100以上转成一个键值，中间的数据本身作为键值。对于这种转换，可以一句话搞定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">newKey = max(min(<span class="number">100</span>, speed), <span class="number">30</span>)</div></pre></td></tr></table></figure>
+<p>其他语言中<code>max/min</code>函数一般在Math相关模块中可以找到。这样完整的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">distanceOfSpeed = [a, n31, n32, ……, n99, b]</div><div class="line">result = distanceOfSpeed[max(min(<span class="number">100</span>, speed), <span class="number">30</span>) - <span class="number">30</span>]</div></pre></td></tr></table></figure>
+<h3 id="阶梯查表"><a href="#阶梯查表" class="headerlink" title="阶梯查表"></a>阶梯查表</h3><p>前面考试成绩的例子，不同的成绩范围对应不同的数据，如同台阶一样：</p>
+<p><img src="http://pic.ex2tron.top/stair_table_look_up_method.jpg" alt=""></p>
+<p>这时可以使用阶梯查表：表内的数据是对应不同的数据范围，而不是对应不同的数据点。阶梯法查表就是循环检查每个区间的上限。当成绩第一次超过某个区间的上限时，就可以得到想要的等级（留心端点的值噢：&lt;和&lt;=的区别）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">scoreLimit = [<span class="number">60.0</span>, <span class="number">70.0</span>, <span class="number">90.0</span>, <span class="number">100.0</span>]</div><div class="line">grade = [<span class="string">"不及格"</span>, <span class="string">"及格"</span>, <span class="string">"良"</span>, <span class="string">"优"</span>]</div><div class="line"></div><div class="line">score, index, result = <span class="number">45</span>, <span class="number">0</span>, <span class="string">'优'</span></div><div class="line"><span class="comment"># 这个条件语句很重要噢！</span></div><div class="line"><span class="keyword">while</span> (result == <span class="string">'优'</span> <span class="keyword">and</span> index &lt; len(grade) - <span class="number">1</span>):</div><div class="line">    <span class="keyword">if</span> (score &lt; scoreLimit[index]):</div><div class="line">        result = grade[index]</div><div class="line">    index += <span class="number">1</span></div><div class="line"></div><div class="line">print(result) <span class="comment"># 不及格</span></div></pre></td></tr></table></figure>
+<p>这种阶梯方法很适合处理区间、等级评价和键值无规则的场合。</p>
+<p>除了上面两种方法外，还有索引查表法：相当于书的目录。先从目录中找到页码，再根据页码找到对应的记录。在程序中，就是先建一张索引表，从索引表中找出值，再在主表中查到数据，数据库经常用到，这里不详细介绍了。</p>
+<p><strong>另外，可以将表存储在外部，这样可以在不更改逻辑代码的情况下，改变表的值。</strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/blob/master/Build/build_table_driven_methods.py" target="_blank" rel="external">本节源码</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;每次谈到查表，我都会先想到下面这个简单的例子：
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.coding.me/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="构建法" scheme="http://ex2tron.coding.me/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+    
+      <category term="表驱动法" scheme="http://ex2tron.coding.me/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
+    
+      <category term="查表法" scheme="http://ex2tron.coding.me/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程18：理解特征</title>
     <link href="http://ex2tron.coding.me/2018/03/15/Python-OpenCV%E6%95%99%E7%A8%8B18%EF%BC%9A%E7%90%86%E8%A7%A3%E7%89%B9%E5%BE%81/"/>
     <id>http://ex2tron.coding.me/2018/03/15/Python-OpenCV教程18：理解特征/</id>
     <published>2018-03-15T12:13:55.000Z</published>
-    <updated>2018-03-15T12:32:13.957Z</updated>
+    <updated>2018-03-15T14:12:22.045Z</updated>
     
     <content type="html"><![CDATA[<p>学习和了解图像特征的重要性。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2619,7 +2683,7 @@
     <link href="http://ex2tron.coding.me/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>http://ex2tron.coding.me/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2018-03-14T01:21:10.320Z</updated>
+    <updated>2018-03-19T13:59:22.184Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -2653,6 +2717,7 @@
 <li>Android Studio：<a href="http://www.android-studio.org/" target="_blank" rel="external">中文社区</a>、<a href="https://dl.google.com/dl/android/studio/install/3.0.0.18/android-studio-ide-171.4408382-windows.exe" target="_blank" rel="external">3.0</a>、<a href="https://dl.google.com/dl/android/studio/install/2.3.3.0/android-studio-bundle-162.4069837-windows.exe" target="_blank" rel="external">2.3.3</a></li>
 <li>Visual Studio 2017：<a href="https://www.visualstudio.com/" target="_blank" rel="external">官网</a>、<a href="https://download.visualstudio.microsoft.com/download/pr/100266676/045b56eb413191d03850ecc425172a7d/vs_Community.exe" target="_blank" rel="external">社区版15.4</a></li>
 <li>Matlab R2017a：<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd1.iso|7829774336|b0ed2efeac2af78ce1f797152d8b430a|h=xbq3qn6r6uztxdawcdzgimpzqmcxy3nh|/" target="_blank" rel="external">x64 dvd1</a>、<a href="ed2k://|file|[矩阵实验室].R2017a_win64_dvd2.iso|2707779584|ce396df6ebc36a94118a736338d7e05e|h=34xjg5hg77ldbsgf6j64evexssys2hm3|/" target="_blank" rel="external">x64 dvd2</a>、<a href="ed2k://|file|[矩阵实验室].Crack.rar|957381|725c8700b78027809055ecb5e6986b59|h=rf5lftd7ffdm4dhk3qn5m5ke2zxugztk|/" target="_blank" rel="external">破解工具</a></li>
+<li>Octave：<a href="www.gnu.org/software/octave/">官网</a>、<a href="https://ftp.gnu.org/gnu/octave/windows/octave-4.2.2-w64-installer.exe" target="_blank" rel="external">4.2.2_x64</a>、<a href="https://ftp.gnu.org/gnu/octave/windows/octave-4.2.2-w32-installer.exe" target="_blank" rel="external">4.2.2_x86</a></li>
 <li>Python：<a href="https://www.python.org/downloads/" target="_blank" rel="external">官网</a>、<a href="https://www.python.org/ftp/python/3.6.4/python-3.6.4-amd64.exe" target="_blank" rel="external">3.6.4 x64</a>、<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="external">2.7.14 x64</a></li>
 <li>Python包源（如Tensorflow）：<a href="https://pypi.python.org/pypi" target="_blank" rel="external">源1</a>、<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">源2</a></li>
 <li>Anaconda：<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.1.0-Windows-x86_64.exe" target="_blank" rel="external">5.1.0_cp36_x64</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.1.0-Windows-x86.exe" target="_blank" rel="external">5.1.0_cp36_x86</a></li>
@@ -3172,11 +3237,11 @@
   </entry>
   
   <entry>
-    <title>构建法、杀死变量</title>
-    <link href="http://ex2tron.coding.me/2017/09/28/%E6%9E%84%E5%BB%BA%E6%B3%95%E3%80%81%E6%9D%80%E6%AD%BB%E5%8F%98%E9%87%8F/"/>
-    <id>http://ex2tron.coding.me/2017/09/28/构建法、杀死变量/</id>
+    <title>构建：杀死变量</title>
+    <link href="http://ex2tron.coding.me/2017/09/28/%E6%9E%84%E5%BB%BA%EF%BC%9A%E6%9D%80%E6%AD%BB%E5%8F%98%E9%87%8F/"/>
+    <id>http://ex2tron.coding.me/2017/09/28/构建：杀死变量/</id>
     <published>2017-09-28T13:23:45.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-04-08T10:54:42.250Z</updated>
     
     <content type="html"><![CDATA[<p>如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。<a id="more"></a></p>
 <blockquote>
@@ -3184,7 +3249,9 @@
 </blockquote>
 <hr>
 <p>如果一个变量在代码中很分散，阅读者在同一时间内考虑的代码行数势必会增加，编写者引入Bug的概率也会增大。那么，该如何从减少变量的作用域角度提高代码质量呢？</p>
-<p>p.s.本文相关内容仍旧是我阅读<a href="https://www.amazon.cn/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8-%E5%8F%B2%E8%92%82%E5%A4%AB%E2%80%A2%E8%BF%88%E5%85%8B%E5%BA%B7%E5%A5%88%E5%B0%94/dp/B0061XKRXA/ref=sr_1_1?ie=UTF8&amp;qid=1506601446&amp;sr=8-1&amp;keywords=%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8" target="_blank" rel="external">《代码大全》</a>时的笔记与总结，大佬勿喷！</p>
+<blockquote>
+<p>本文相关内容仍旧是我阅读<a href="https://www.amazon.cn/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8-%E5%8F%B2%E8%92%82%E5%A4%AB%E2%80%A2%E8%BF%88%E5%85%8B%E5%BA%B7%E5%A5%88%E5%B0%94/dp/B0061XKRXA/ref=sr_1_1?ie=UTF8&amp;qid=1506601446&amp;sr=8-1&amp;keywords=%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8" target="_blank" rel="external">《代码大全》</a>时的笔记与总结，大佬勿喷！</p>
+</blockquote>
 <h3 id="变量跨度与存活时间"><a href="#变量跨度与存活时间" class="headerlink" title="变量跨度与存活时间"></a>变量跨度与存活时间</h3><h4 id="建议一：把对变量的引用尽可能集中在一起，使变量局部化"><a href="#建议一：把对变量的引用尽可能集中在一起，使变量局部化" class="headerlink" title="建议一：把对变量的引用尽可能集中在一起，使变量局部化"></a>建议一：把对变量的引用尽可能集中在一起，使变量局部化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a = 0; </div><div class="line">b = 0;</div><div class="line">c = 0;</div><div class="line">a = b + c;</div><div class="line">b += 1;</div></pre></td></tr></table></figure>
 <p>跨度（span）是衡量变量不同引用点靠近程度的一种方法。比如说上面的代码，对a的第一次引用和第二次引用之间有2行代码，那么变量a的跨度就是2。引用多次的话，可以取平均跨度。如b的第一次和第二次引用之间行数为1，第二次和第三次引用之间行数为0，所以平均跨度span(b)=(1+0)/2=0.5。</p>
 <p>另外一个概念是：存活时间（live time）。跟跨度类似，不过存活时间只跟变量第一次和最后一次引用有关。比如对于上面代码中的b变量，跨度是0.5，但是存活时间是4条语句。</p>

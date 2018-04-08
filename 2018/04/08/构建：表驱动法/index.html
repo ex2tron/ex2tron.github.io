@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>构建：查表法 | ex2tron&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="构建法表驱动法查表法" />
+  
+  
+  
+  
+  <meta name="description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
+<meta name="keywords" content="构建法,表驱动法,查表法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建：查表法">
+<meta property="og:url" content="http://ex2tron.coding.me/2018/04/08/构建：表驱动法/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/build_table_driven_methods.jpg">
+<meta property="og:updated_time" content="2018-04-08T13:47:58.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="构建：查表法">
+<meta name="twitter:description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
+<meta name="twitter:image" content="http://pic.ex2tron.top/build_table_driven_methods.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="//img/bookshelf.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-构建：表驱动法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/build_table_driven_methods.jpg" rel="gallery_cjfqskien0045yc59l8th509f">
+        <img src="http://pic.ex2tron.top/build_table_driven_methods.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      构建：查表法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/04/08/构建：表驱动法/" class="article-date">
+	  <time datetime="2018-04-08T10:54:04.000Z" itemprop="datePublished">April 8, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每次谈到查表，我都会先想到下面这个简单的例子：<a id="more"></a></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
+<p><em>宁在一思进，莫在一思停。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
+</blockquote>
+<p>如果你需要根据月份计算当月的天数（不考虑闰年），你会怎么写？</p>
+<p>如果使用if语句，你的代码可能会像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python示例（其他语言中Switch/case也一样）</span></div><div class="line"><span class="keyword">if</span> (month == <span class="number">1</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">3</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">4</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">5</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">6</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">7</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">8</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">9</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">10</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">11</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">12</span>):</div><div class="line">    day = <span class="number">31</span></div></pre></td></tr></table></figure>
+<p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
+<p>怎么样，2行够简洁了吗？</p>
+<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记。</em></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
+</blockquote>
+<p>查表法在灵活性、可维护性等方面有着普遍的优势。对于简单的情况而言，逻辑判断更加简单和直白，但数据量和逻辑链增大的时候，显然，查表法不可替代。</p>
+<p><strong>查表法的核心在于如果构建表</strong>。前面的例子中，月份不重复，以月份为索引建立一个数组即可。但如果逻辑判断是个区间，比如对于下面的考试成绩，应该如何建表呢？</p>
+<p>90-100分：优 | 70-90分：良 | 60-70分：及格 | 60分以下：不及格</p>
+<h3 id="直接查表"><a href="#直接查表" class="headerlink" title="直接查表"></a>直接查表</h3><p>月份的例子就是直接查表，查询的信息（月份）可以直接转为表中的索引，一目了然。下面再看个例子：</p>
+<p>有一个根据汽车速度计算转弯距离的程序：速度30马以下，距离为固定值a；100马以上也为固定值b；31~99之间，每个速度对应1个数值。这时如何建表呢？</p>
+<p><strong>1.重复数据，直接使用键值</strong></p>
+<p>第一种方式可以把a复制31次，100以上也复制多次，那表应该像这样：</p>
+<p><img src="http://pic.ex2tron.top/repeat_key_table_driven_method.jpg" alt=""></p>
+<p>显然，这种方式很蠢，不仅有很多冗余的数据，而且很容易出错。</p>
+<p><strong>2.转换键值</strong></p>
+<p>我们可以用一个函数将键值做下转换：因为0~30是同一值，所以将0~30转成一个键值，100以上转成一个键值，中间的数据本身作为键值。对于这种转换，可以一句话搞定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">newKey = max(min(<span class="number">100</span>, speed), <span class="number">30</span>)</div></pre></td></tr></table></figure>
+<p>其他语言中<code>max/min</code>函数一般在Math相关模块中可以找到。这样完整的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">distanceOfSpeed = [a, n31, n32, ……, n99, b]</div><div class="line">result = distanceOfSpeed[max(min(<span class="number">100</span>, speed), <span class="number">30</span>) - <span class="number">30</span>]</div></pre></td></tr></table></figure>
+<h3 id="阶梯查表"><a href="#阶梯查表" class="headerlink" title="阶梯查表"></a>阶梯查表</h3><p>前面考试成绩的例子，不同的成绩范围对应不同的数据，如同台阶一样：</p>
+<p><img src="http://pic.ex2tron.top/stair_table_look_up_method.jpg" alt=""></p>
+<p>这时可以使用阶梯查表：表内的数据是对应不同的数据范围，而不是对应不同的数据点。阶梯法查表就是循环检查每个区间的上限。当成绩第一次超过某个区间的上限时，就可以得到想要的等级（留心端点的值噢：&lt;和&lt;=的区别）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">scoreLimit = [<span class="number">60.0</span>, <span class="number">70.0</span>, <span class="number">90.0</span>, <span class="number">100.0</span>]</div><div class="line">grade = [<span class="string">"不及格"</span>, <span class="string">"及格"</span>, <span class="string">"良"</span>, <span class="string">"优"</span>]</div><div class="line"></div><div class="line">score, index, result = <span class="number">45</span>, <span class="number">0</span>, <span class="string">'优'</span></div><div class="line"><span class="comment"># 这个条件语句很重要噢！</span></div><div class="line"><span class="keyword">while</span> (result == <span class="string">'优'</span> <span class="keyword">and</span> index &lt; len(grade) - <span class="number">1</span>):</div><div class="line">    <span class="keyword">if</span> (score &lt; scoreLimit[index]):</div><div class="line">        result = grade[index]</div><div class="line">    index += <span class="number">1</span></div><div class="line"></div><div class="line">print(result) <span class="comment"># 不及格</span></div></pre></td></tr></table></figure>
+<p>这种阶梯方法很适合处理区间、等级评价和键值无规则的场合。</p>
+<p>除了上面两种方法外，还有索引查表法：相当于书的目录。先从目录中找到页码，再根据页码找到对应的记录。在程序中，就是先建一张索引表，从索引表中找出值，再在主表中查到数据，数据库经常用到，这里不详细介绍了。</p>
+<p><strong>另外，可以将表存储在外部，这样可以在不更改逻辑代码的情况下，改变表的值。</strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/blob/master/Build/build_table_driven_methods.py" target="_blank" rel="external">本节源码</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建法/">构建法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查表法/">查表法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表驱动法/">表驱动法</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat2.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/15/Python-OpenCV教程18：理解特征/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python+OpenCV教程18：理解特征</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接查表"><span class="nav-number">2.1.</span> <span class="nav-text">直接查表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阶梯查表"><span class="nav-number">2.2.</span> <span class="nav-text">阶梯查表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2018
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
