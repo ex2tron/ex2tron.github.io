@@ -59,6 +59,7 @@
 <p><strong>另外，可以将表存储在外部，这样可以在不更改逻辑代码的情况下，改变表的值。</strong></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/blob/master/Build/build_table_driven_methods.py" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">旧版：构建法——表驱动法</a></li>
 </ul>
 ]]></content>
     
