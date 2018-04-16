@@ -3670,13 +3670,13 @@
     <link href="http://ex2tron.coding.me/2017/05/16/%E3%80%90%E8%A7%86%E8%A7%89%E4%B8%8E%E5%9B%BE%E5%83%8F%E3%80%91%E6%91%84%E5%83%8F%E5%A4%B4%E7%AF%872%EF%BC%9A%E7%84%A6%E8%B7%9D%E5%92%8C%E8%A7%86%E8%A7%92/"/>
     <id>http://ex2tron.coding.me/2017/05/16/【视觉与图像】摄像头篇2：焦距和视角/</id>
     <published>2017-05-16T12:41:16.000Z</published>
-    <updated>2018-04-16T14:00:35.580Z</updated>
+    <updated>2018-04-16T14:14:06.807Z</updated>
     
-    <content type="html"><![CDATA[<p>镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。<a id="more"></a>如图中所示，<strong>焦距就是透镜中心点到CCD焦平面的距离</strong>。按照焦距可否调节，镜头可分为定焦镜头和变焦镜头。</p>
+    <content type="html"><![CDATA[<h2 id="焦距"><a href="#焦距" class="headerlink" title="焦距"></a>焦距</h2><p>镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。<a id="more"></a>如上图中所示，<strong>焦距就是透镜中心点到CCD焦平面的距离</strong>。按照焦距可否调节，镜头可分为定焦镜头和变焦镜头。</p>
 <blockquote>
 <p><em>当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。</em>——<a href="https://movie.douban.com/subject/1292328/" target="_blank" rel="external">《东邪西毒》</a></p>
 </blockquote>
-<h2 id="焦距"><a href="#焦距" class="headerlink" title="焦距"></a>焦距</h2><p>玩过单反摄影的人都知道相机上有个焦平面标记，这就是胶片时代为了精准对焦用的，有相机的童鞋可以拿出来看看：</p>
+<p>玩过单反摄影的人都知道相机上有个焦平面标记，这就是胶片时代为了精准对焦用的，有相机的童鞋可以拿出来看看：</p>
 <p><img src="http://pic.ex2tron.top/lens_focal_plane.jpg" alt=""></p>
 <h2 id="可视角"><a href="#可视角" class="headerlink" title="可视角"></a>可视角</h2><p>显然，焦距的大小决定了视场角的大小（也称视野范围FOV：Field of View）。<strong>同样的CCD尺寸下，焦距越大，视角越小。同理，相同的焦距下，CCD尺寸越大，可视角越大。</strong></p>
 <p>举例来说，一张4:3比例（CCD比例假设也为4:3）的照片中，要把身高为1.75m的人拍到，那么对角线距离是2.19m左右：</p>
@@ -3692,7 +3692,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。
+      &lt;h2 id=&quot;焦距&quot;&gt;&lt;a href=&quot;#焦距&quot; class=&quot;headerlink&quot; title=&quot;焦距&quot;&gt;&lt;/a&gt;焦距&lt;/h2&gt;&lt;p&gt;镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。
     
     </summary>
     
@@ -3710,7 +3710,7 @@
     <link href="http://ex2tron.coding.me/2017/05/15/%E3%80%90%E8%A7%86%E8%A7%89%E4%B8%8E%E5%9B%BE%E5%83%8F%E3%80%91%E6%91%84%E5%83%8F%E5%A4%B4%E7%AF%871%EF%BC%9ACCD%E9%9D%B6%E9%9D%A2%E5%B0%BA%E5%AF%B8/"/>
     <id>http://ex2tron.coding.me/2017/05/15/【视觉与图像】摄像头篇1：CCD靶面尺寸/</id>
     <published>2017-05-15T02:29:52.000Z</published>
-    <updated>2018-04-16T12:21:27.273Z</updated>
+    <updated>2018-04-16T14:14:06.806Z</updated>
     
     <content type="html"><![CDATA[<p>对于机器视觉和图像处理的任务，通常都从选择一款好的摄像头开始的。<a id="more"></a>如果摄像头选的恰当，就能获取到一幅“好”的图像，这点很重要。</p>
 <blockquote>
