@@ -310,6 +310,81 @@ Python多字节二进制文件读取...
 <!-- Table of Contents -->
 
   
+    <article id="post-CMake编译OpenCV3-2（Qt平台）"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/26/CMake编译OpenCV3-2（Qt平台）/">CMake编译OpenCV3.2（QT平台）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/26/CMake编译OpenCV3-2（Qt平台）/" class="article-date">
+	  <time datetime="2017-07-26T14:25:29.000Z" itemprop="datePublished">July 26, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            最近，需要在Windows下搭建一个QT和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对QT平台的。所以，需要用CMake编译OpenCV的源码。
+
+CMake V3.9.0
+OpenCV V3.2.0
+
+编译步骤安装完CMake后，打开cmake-gui，如下图所示：
+
+
+选择OpenCV3.2源码所在位置，我的是在：D:\ProgramFiles\OpenCV3\sources
+选择编译生成的目录
+最后点击”Configure”，如下图所示：
+
+
+选择“MinGW Makefiles”并勾选“Specify native compilers”，点击“Next”：
+
+这里分别选择QT安装目录下gcc和g++的路径，点击“Finish”，等待配置完成。
+
+配置...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/07/26/CMake编译OpenCV3-2（Qt平台）/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMake/">CMake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【视觉与图像】摄像头篇2：焦距和视角"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -534,7 +609,7 @@ CCD尺寸CCD靶面尺寸就是相机中CCD图像传感器芯片的大小：
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
