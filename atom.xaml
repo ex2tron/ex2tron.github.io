@@ -2684,7 +2684,7 @@
     <link href="http://ex2tron.coding.me/2017/11/15/%E8%BD%AF%E4%BB%B6-%E5%BD%B1%E8%A7%86%E6%B1%81%E6%BA%90%E8%B4%B4-updating/"/>
     <id>http://ex2tron.coding.me/2017/11/15/软件-影视汁源贴-updating/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2018-03-19T13:59:22.184Z</updated>
+    <updated>2018-04-11T12:56:41.544Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -2722,6 +2722,7 @@
 <li>Python：<a href="https://www.python.org/downloads/" target="_blank" rel="external">官网</a>、<a href="https://www.python.org/ftp/python/3.6.4/python-3.6.4-amd64.exe" target="_blank" rel="external">3.6.4 x64</a>、<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="external">2.7.14 x64</a></li>
 <li>Python包源（如Tensorflow）：<a href="https://pypi.python.org/pypi" target="_blank" rel="external">源1</a>、<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">源2</a></li>
 <li>Anaconda：<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.1.0-Windows-x86_64.exe" target="_blank" rel="external">5.1.0_cp36_x64</a>、<a href="https://repo.continuum.io/archive/Anaconda3-5.1.0-Windows-x86.exe" target="_blank" rel="external">5.1.0_cp36_x86</a></li>
+<li>PyCharm：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="external">官网</a>、<a href="https://download.jetbrains.com/python/pycharm-community-2018.1.1.exe" target="_blank" rel="external">2018.1 社区版</a></li>
 <li>OpenCV：<a href="https://opencv.org/releases.html" target="_blank" rel="external">官网</a>、<a href="https://ncu.dl.sourceforge.net/project/opencvlibrary/opencv-win/3.3.1/opencv-3.3.1-vc14.exe" target="_blank" rel="external">3.3.1</a>、<a href="https://sourceforge.net/settings/mirror_choices?projectname=opencvlibrary&amp;filename=opencv-win/2.4.13/opencv-2.4.13.4-vc14.exe" target="_blank" rel="external">2.4.13</a> | <a href="https://pypi.python.org/pypi/opencv-python/" target="_blank" rel="external">OpenCV-Python</a></li>
 <li>MySQL：<a href="https://www.mysql.com/" target="_blank" rel="external">官网</a>、<a href="https://cdn.mysql.com//Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi" target="_blank" rel="external">MySQL Installer 5.7.20</a></li>
 <li>Navicat11 for MySQL：<a href="https://pan.baidu.com/s/1o8dyBxS" target="_blank" rel="external">11.2 密码：ls2c</a></li>
@@ -3238,11 +3239,11 @@
   </entry>
   
   <entry>
-    <title>构建：杀死变量</title>
+    <title>构建：变量</title>
     <link href="http://ex2tron.coding.me/2017/09/28/%E6%9E%84%E5%BB%BA%EF%BC%9A%E6%9D%80%E6%AD%BB%E5%8F%98%E9%87%8F/"/>
     <id>http://ex2tron.coding.me/2017/09/28/构建：杀死变量/</id>
     <published>2017-09-28T13:23:45.000Z</published>
-    <updated>2018-04-08T10:54:42.250Z</updated>
+    <updated>2018-04-09T08:36:37.427Z</updated>
     
     <content type="html"><![CDATA[<p>如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。<a id="more"></a></p>
 <blockquote>
@@ -3250,9 +3251,7 @@
 </blockquote>
 <hr>
 <p>如果一个变量在代码中很分散，阅读者在同一时间内考虑的代码行数势必会增加，编写者引入Bug的概率也会增大。那么，该如何从减少变量的作用域角度提高代码质量呢？</p>
-<blockquote>
-<p>本文相关内容仍旧是我阅读<a href="https://www.amazon.cn/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8-%E5%8F%B2%E8%92%82%E5%A4%AB%E2%80%A2%E8%BF%88%E5%85%8B%E5%BA%B7%E5%A5%88%E5%B0%94/dp/B0061XKRXA/ref=sr_1_1?ie=UTF8&amp;qid=1506601446&amp;sr=8-1&amp;keywords=%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8" target="_blank" rel="external">《代码大全》</a>时的笔记与总结，大佬勿喷！</p>
-</blockquote>
+<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
 <h3 id="变量跨度与存活时间"><a href="#变量跨度与存活时间" class="headerlink" title="变量跨度与存活时间"></a>变量跨度与存活时间</h3><h4 id="建议一：把对变量的引用尽可能集中在一起，使变量局部化"><a href="#建议一：把对变量的引用尽可能集中在一起，使变量局部化" class="headerlink" title="建议一：把对变量的引用尽可能集中在一起，使变量局部化"></a>建议一：把对变量的引用尽可能集中在一起，使变量局部化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a = 0; </div><div class="line">b = 0;</div><div class="line">c = 0;</div><div class="line">a = b + c;</div><div class="line">b += 1;</div></pre></td></tr></table></figure>
 <p>跨度（span）是衡量变量不同引用点靠近程度的一种方法。比如说上面的代码，对a的第一次引用和第二次引用之间有2行代码，那么变量a的跨度就是2。引用多次的话，可以取平均跨度。如b的第一次和第二次引用之间行数为1，第二次和第三次引用之间行数为0，所以平均跨度span(b)=(1+0)/2=0.5。</p>
 <p>另外一个概念是：存活时间（live time）。跟跨度类似，不过存活时间只跟变量第一次和最后一次引用有关。比如对于上面代码中的b变量，跨度是0.5，但是存活时间是4条语句。</p>
@@ -3663,6 +3662,152 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>【视觉与图像】摄像头篇2：焦距和视角</title>
+    <link href="http://ex2tron.coding.me/2017/05/16/%E3%80%90%E8%A7%86%E8%A7%89%E4%B8%8E%E5%9B%BE%E5%83%8F%E3%80%91%E6%91%84%E5%83%8F%E5%A4%B4%E7%AF%872%EF%BC%9A%E7%84%A6%E8%B7%9D%E5%92%8C%E8%A7%86%E8%A7%92/"/>
+    <id>http://ex2tron.coding.me/2017/05/16/【视觉与图像】摄像头篇2：焦距和视角/</id>
+    <published>2017-05-16T12:41:16.000Z</published>
+    <updated>2018-04-16T14:00:35.580Z</updated>
+    
+    <content type="html"><![CDATA[<p>镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。<a id="more"></a>如图中所示，<strong>焦距就是透镜中心点到CCD焦平面的距离</strong>。按照焦距可否调节，镜头可分为定焦镜头和变焦镜头。</p>
+<blockquote>
+<p><em>当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。</em>——<a href="https://movie.douban.com/subject/1292328/" target="_blank" rel="external">《东邪西毒》</a></p>
+</blockquote>
+<h2 id="焦距"><a href="#焦距" class="headerlink" title="焦距"></a>焦距</h2><p>玩过单反摄影的人都知道相机上有个焦平面标记，这就是胶片时代为了精准对焦用的，有相机的童鞋可以拿出来看看：</p>
+<p><img src="http://pic.ex2tron.top/lens_focal_plane.jpg" alt=""></p>
+<h2 id="可视角"><a href="#可视角" class="headerlink" title="可视角"></a>可视角</h2><p>显然，焦距的大小决定了视场角的大小（也称视野范围FOV：Field of View）。<strong>同样的CCD尺寸下，焦距越大，视角越小。同理，相同的焦距下，CCD尺寸越大，可视角越大。</strong></p>
+<p>举例来说，一张4:3比例（CCD比例假设也为4:3）的照片中，要把身高为1.75m的人拍到，那么对角线距离是2.19m左右：</p>
+<p><img src="http://pic.ex2tron.top/lens_camera_angle_demo.jpg" alt=""></p>
+<p>把上图中的黑线部分提取出来，摄像头跟拍摄人物间的距离计算如下：</p>
+<p><img src="http://pic.ex2tron.top/lens_camera_angle.jpg" alt=""></p>
+<p>购买摄像头时，如果没有说明镜头的可视角，但知道CCD尺寸和焦距，可按照上图简单计算。</p>
+<p>比如1/2.7inch的CCD（4:3），焦距为3.6mm，那么根据<a href="/2017/05/15/【视觉与图像】摄像头篇1%EF%BC%9ACCD靶面尺寸/">上篇博客</a>，w=6.592/2=3.296mm，d=3.6mm，所以可视角=2*α=84.95°。</p>
+<p>当然，<strong>焦距越大，视角越小，摄像头也能看得更远</strong>。比如下图是某款1/3inch CCD监控摄像头的可视角和监控范围图：</p>
+<p><img src="http://pic.ex2tron.top/lens_distance_angle.jpg" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="http://www.360doc.com/content/13/0104/10/3535222_258105657.shtml" target="_blank" rel="external">监控摄像头镜头焦距与可视角度换算表</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.coding.me/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="焦距" scheme="http://ex2tron.coding.me/tags/%E7%84%A6%E8%B7%9D/"/>
+    
+      <category term="视角" scheme="http://ex2tron.coding.me/tags/%E8%A7%86%E8%A7%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【视觉与图像】摄像头篇1：CCD靶面尺寸</title>
+    <link href="http://ex2tron.coding.me/2017/05/15/%E3%80%90%E8%A7%86%E8%A7%89%E4%B8%8E%E5%9B%BE%E5%83%8F%E3%80%91%E6%91%84%E5%83%8F%E5%A4%B4%E7%AF%871%EF%BC%9ACCD%E9%9D%B6%E9%9D%A2%E5%B0%BA%E5%AF%B8/"/>
+    <id>http://ex2tron.coding.me/2017/05/15/【视觉与图像】摄像头篇1：CCD靶面尺寸/</id>
+    <published>2017-05-15T02:29:52.000Z</published>
+    <updated>2018-04-16T12:21:27.273Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于机器视觉和图像处理的任务，通常都从选择一款好的摄像头开始的。<a id="more"></a>如果摄像头选的恰当，就能获取到一幅“好”的图像，这点很重要。</p>
+<blockquote>
+<p><em>如果你不出去走走，你就会以为这就是全世界。</em>——<a href="https://movie.douban.com/subject/1291828/" target="_blank" rel="external">《天堂电影院》</a></p>
+</blockquote>
+<p>所以我们就摄像头的几个重要参数来深入说明一下，首先看下CCD尺寸，开始入坑吧：</p>
+<h2 id="CCD尺寸"><a href="#CCD尺寸" class="headerlink" title="CCD尺寸"></a>CCD尺寸</h2><p>CCD靶面尺寸就是相机中CCD图像传感器芯片的大小：</p>
+<p><img src="http://pic.ex2tron.top/ccd_inch_calculate_method.jpg" alt=""></p>
+<p>玩过摄影的人应该都知道<a href="https://baike.baidu.com/item/135相机" target="_blank" rel="external">135相机</a>和<a href="https://baike.baidu.com/item/全画幅相机" target="_blank" rel="external">全画幅相机</a>，全画幅相机指的就是CCD/CMOS长宽为36×24mm的数码相机。胶片时代，135胶卷（柯达生产）的画幅就是36×24mm，算上胶卷的开孔，高度是35mm，所以135相机也叫35mm相机。</p>
+<p><strong>显然，CCD尺寸越大，感光面积就越大，能捕获的光也就越多。另外，相同分辨率大小下，CCD面积越大，单个像素感光点之间的间隔也就越大，信噪比越低。</strong> </p>
+<h3 id="常见尺寸"><a href="#常见尺寸" class="headerlink" title="常见尺寸"></a>常见尺寸</h3><p>这里列举几种典型的CCD尺寸：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">规格</th>
+<th style="text-align:left">长宽比</th>
+<th style="text-align:left">尺寸mm</th>
+<th style="text-align:left">对角线mm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">全画幅</td>
+<td style="text-align:left">3:2</td>
+<td style="text-align:left">36×24</td>
+<td style="text-align:left">43.3</td>
+</tr>
+<tr>
+<td style="text-align:left">APS-C</td>
+<td style="text-align:left">3:2</td>
+<td style="text-align:left">24.9×16.6</td>
+<td style="text-align:left">29.3</td>
+</tr>
+<tr>
+<td style="text-align:left">4/3英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">18×13.5</td>
+<td style="text-align:left">22.5</td>
+</tr>
+<tr>
+<td style="text-align:left">1英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">12.8×9.6</td>
+<td style="text-align:left">16</td>
+</tr>
+<tr>
+<td style="text-align:left">2/3英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">8.8×6.6</td>
+<td style="text-align:left">11</td>
+</tr>
+<tr>
+<td style="text-align:left">1/2英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">6.4×4.8</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td style="text-align:left">1/2.7英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">5.27×3.96</td>
+<td style="text-align:left">6.592</td>
+</tr>
+<tr>
+<td style="text-align:left">1/3英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">4.8×3.6</td>
+<td style="text-align:left">6</td>
+</tr>
+<tr>
+<td style="text-align:left">1/4英寸</td>
+<td style="text-align:left">4:3</td>
+<td style="text-align:left">3.2×2.4</td>
+<td style="text-align:left">4</td>
+</tr>
+</tbody>
+</table>
+<p>要注意的是，这里的<strong>1英寸并不等于实际中的25.4毫米</strong>。其实最初是为了避免圆形图像裁剪成矩形显示时四个角发暗，才搞出了对角线16mm为1英寸的说法：</p>
+<p><img src="http://pic.ex2tron.top/actual_ccd_inch.jpg" alt=""></p>
+<h3 id="宽高比"><a href="#宽高比" class="headerlink" title="宽高比"></a>宽高比</h3><p>另外，CCD靶面除了尺寸之外，还需要注意它的宽高比/长宽比。目前主流的CCD大多是4:3和3:2比例，还有16:9等比例的CCD。<strong>如果一个CCD的宽高比为4:3，那么只有分辨率宽高比也是4:3的情况下（如：640*480），才能全像素输出，拍摄16：9的图像时，像素会有损失。</strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="www.360doc.com/content/14/0509/09/237615_376009079.shtml">CCD尺寸对应表</a></li>
+<li><a href="http://www.360doc.com/content/16/0229/07/248984_538174911.shtml" target="_blank" rel="external">科普：CCD/CMOS靶面尺寸型号标准</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_64822c3b0101awwo.html" target="_blank" rel="external">【CCD尺寸】各尺寸CCD大小比对图 全幅、半幅、M4/3、2/3、1/2.3、1/2.7</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对于机器视觉和图像处理的任务，通常都从选择一款好的摄像头开始的。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.coding.me/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="CCD" scheme="http://ex2tron.coding.me/tags/CCD/"/>
     
   </entry>
   
