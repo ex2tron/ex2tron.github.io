@@ -310,6 +310,79 @@ Python多字节二进制文件读取...
 <!-- Table of Contents -->
 
   
+    <article id="post-Qt-OpenCV环境搭建"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/27/Qt-OpenCV环境搭建/">Qt+OpenCV环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/27/Qt-OpenCV环境搭建/" class="article-date">
+	  <time datetime="2017-07-27T00:17:00.000Z" itemprop="datePublished">July 27, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Windows下的配置
+念念不忘，必有回响。——《一代宗师》
+
+我电脑上安装的Qt版本信息：Qt 5.8/Qt Creator 4.2.1/MinGW 5.3.0
+Qt官方下载 
+
+首先用CMake编译OpenCV3.2，参考：CMake编译OpenCV3.2（Qt平台）。针对Qt5.8+OpenCV3.2我已经编译好了，可以直接下载。
+编译好之后，把下面三个文件夹提取出来放在一个新目录下，比如：D:\QtOpenCV
+
+OpenCV安装目录下的build\include文件夹
+CMake生成后的lib文件夹
+CMake生成后的bin文件夹
+
+
+放好之后，将上图bin的路径（D:\QtOpenCV\bin）添加到系统环境变量，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。
+...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/07/27/Qt-OpenCV环境搭建/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMake/">CMake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-CMake编译OpenCV3-2（Qt平台）"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -343,6 +416,10 @@ Python多字节二进制文件读取...
 CMake V3.9.0
 OpenCV V3.2.0
 
+
+所有的大人都曾经是小孩，虽然只有少数的人记得。
+All grown-ups were once children… but only few of them remember it.《小王子》
+
 编译步骤安装完CMake后，打开cmake-gui，如下图所示：
 
 
@@ -351,11 +428,7 @@ OpenCV V3.2.0
 最后点击”Configure”，如下图所示：
 
 
-选择“MinGW Makefiles”并勾选“Specify native compilers”，点击“Next”：
-
-这里分别选择QT安装目录下gcc和g++的路径，点击“Finish”，等待配置完成。
-
-配置...
+选择“MinG...
           
 
         
@@ -609,7 +682,7 @@ CCD尺寸CCD靶面尺寸就是相机中CCD图像传感器芯片的大小：
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 

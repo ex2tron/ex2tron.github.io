@@ -146,10 +146,10 @@
     <link href="http://ex2tron.coding.me/2018/03/15/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%8E%A8%E8%8D%90%E5%87%A0%E9%83%A8%E4%BC%98%E7%A7%80%E7%9A%84%E4%BC%A0%E8%AE%B0%E7%94%B5%E5%BD%B1/"/>
     <id>http://ex2tron.coding.me/2018/03/15/【片单】推荐几部优秀的传记电影/</id>
     <published>2018-03-15T05:46:50.000Z</published>
-    <updated>2018-03-15T07:43:52.335Z</updated>
+    <updated>2018-04-17T00:26:54.620Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p><em>“Look up at the stars, not down at your feet.”</em> ——<a href="https://baike.baidu.com/item/斯蒂芬·威廉·霍金?fromtitle=%E9%9C%8D%E9%87%91&amp;fromid=171893" target="_blank" rel="external"><em>Stephen Hawking</em></a></p>
+<p><em>Look up at the stars, not down at your feet.</em> ——<a href="https://baike.baidu.com/item/斯蒂芬·威廉·霍金?fromtitle=%E9%9C%8D%E9%87%91&amp;fromid=171893" target="_blank" rel="external"><em>Stephen Hawking</em></a></p>
 </blockquote>
 <p><em>昨天看到霍金去世的新闻，无比震惊，走在路上，停留了片刻。也许就像很多人说的，他，属于星辰大海！</em><a id="more"></a></p>
 <p>以下是我看过的一些优秀传记片，推荐给大家（大部分片源来自人人影视字幕组，点击片名即可下载）：</p>
@@ -180,7 +180,7 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;“Look up at the stars, not down at your feet.”&lt;/em&gt; ——&lt;a href=&quot;https://baike.baidu.com/item/斯蒂芬·威廉·霍金?fromtitle=%E9%9C%8D%E9%87%91&amp;amp;fromid=171893&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;Stephen Hawking&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Look up at the stars, not down at your feet.&lt;/em&gt; ——&lt;a href=&quot;https://baike.baidu.com/item/斯蒂芬·威廉·霍金?fromtitle=%E9%9C%8D%E9%87%91&amp;amp;fromid=171893&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;Stephen Hawking&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;昨天看到霍金去世的新闻，无比震惊，走在路上，停留了片刻。也许就像很多人说的，他，属于星辰大海！&lt;/em&gt;
     
@@ -2477,11 +2477,11 @@
     <link href="http://ex2tron.coding.me/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91007%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/"/>
     <id>http://ex2tron.coding.me/2017/12/05/【片单】007电影合集/</id>
     <published>2017-12-05T13:53:37.000Z</published>
-    <updated>2018-04-07T09:40:49.080Z</updated>
+    <updated>2018-04-17T00:26:43.708Z</updated>
     
     <content type="html"><![CDATA[<p>作为风靡全球的一系列谍战电影，007怎能不看呢？007电影合集下载！<a id="more"></a></p>
 <blockquote>
-<p><em>“My name is Bond, James Bond.”</em> ——<a href="https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%C2%B7%E9%82%A6%E5%BE%B7" target="_blank" rel="external">詹姆斯·邦德</a></p>
+<p><em>My name is Bond, James Bond.</em> ——<a href="https://baike.baidu.com/item/%E8%A9%B9%E5%A7%86%E6%96%AF%C2%B7%E9%82%A6%E5%BE%B7" target="_blank" rel="external">詹姆斯·邦德</a></p>
 </blockquote>
 <p>目前为止，<a href="https://baike.baidu.com/item/007/33915" target="_blank" rel="external">007</a>系列电影已经有24部辣，六任邦德。</p>
 <blockquote>
@@ -3666,17 +3666,75 @@
   </entry>
   
   <entry>
+    <title>Qt+OpenCV环境搭建</title>
+    <link href="http://ex2tron.coding.me/2017/07/27/Qt-OpenCV%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://ex2tron.coding.me/2017/07/27/Qt-OpenCV环境搭建/</id>
+    <published>2017-07-27T00:17:00.000Z</published>
+    <updated>2018-04-17T00:55:20.128Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Windows下的配置"><a href="#Windows下的配置" class="headerlink" title="Windows下的配置"></a>Windows下的配置</h2><blockquote>
+<p><em>念念不忘，必有回响。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
+</blockquote>
+<p>我电脑上安装的Qt版本信息：Qt 5.8/Qt Creator 4.2.1/MinGW 5.3.0<a id="more"></a></p>
+<p><a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">Qt官方下载</a> </p>
+<p><img src="http://pic.ex2tron.top/qt_opencv_environment_demo1.jpg" alt=""></p>
+<p>首先用CMake编译OpenCV3.2，参考：<a href="/2017/07/26/CMake编译OpenCV3-2%EF%BC%88Qt平台%EF%BC%89/">CMake编译OpenCV3.2（Qt平台）</a>。针对Qt5.8+OpenCV3.2我已经编译好了，可以直接<a href="https://pan.baidu.com/s/1miaCDL2" target="_blank" rel="external">下载</a>。</p>
+<p>编译好之后，把下面三个文件夹提取出来放在一个新目录下，比如：D:\QtOpenCV</p>
+<ol>
+<li>OpenCV安装目录下的build\include文件夹</li>
+<li>CMake生成后的lib文件夹</li>
+<li>CMake生成后的bin文件夹</li>
+</ol>
+<p><img src="http://pic.ex2tron.top/qt_opencv_environment_demo2.jpg" alt=""></p>
+<p>放好之后，将上图<strong>bin的路径（D:\QtOpenCV\bin）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
+<p>然后打开Qt的pro文件，在<code>SOURCES</code>前面添加如下的OpenCV的依赖项：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> INCLUDEPATH 头文件路径</div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="meta">#</span> LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</div><div class="line"><span class="meta">#</span> 使用下面方法包含所有库</div><div class="line"><span class="meta">#</span> LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</div><div class="line"><span class="meta">#</span> 或使用下面方法只包含要使用的库</div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
+<p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/MyLibsAndSamples/tree/master/Samples/OpenCV" target="_blank" rel="external">MyLibsAndSamples-OpenCV</a></p>
+<h2 id="Ubuntu下的配置"><a href="#Ubuntu下的配置" class="headerlink" title="Ubuntu下的配置"></a>Ubuntu下的配置</h2><p>Ubuntu下如果不用CMake自行安装的话，就简单多了，在终端里面输入下面几条指令就搞定了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 安装Qt5</div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="meta">#</span> 安装opencv</div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
+<p>同样，在Qt的pro文件中添加OpenCV的依赖项就可以调用了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INCLUDEPATH += /usr/include\</div><div class="line">		/usr/include/opencv\</div><div class="line">		/usr/include/opencv2</div><div class="line">LIBS  += -L/usr/lib\</div><div class="line">	-llibopencv_highgui\</div><div class="line">	-llibopencv_core\</div><div class="line">	-llibopencv_imgproc\</div><div class="line">	-llibopencv_calib3d</div></pre></td></tr></table></figure>
+<p>如果<code>LIBS</code>像上面这样加不进去的话，可以一个一个加，比如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/libopencv_highgui.so</div><div class="line">LIBS  += -L/usr/lib/libopencv_core.so</div></pre></td></tr></table></figure>
+<p>另外，不同版本和不同平台库的位置可能不同，比如树莓派下，库文件可能在：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Windows下的配置&quot;&gt;&lt;a href=&quot;#Windows下的配置&quot; class=&quot;headerlink&quot; title=&quot;Windows下的配置&quot;&gt;&lt;/a&gt;Windows下的配置&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;念念不忘，必有回响。&lt;/em&gt;——&lt;a href=&quot;https://movie.douban.com/subject/3821067/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《一代宗师》&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我电脑上安装的Qt版本信息：Qt 5.8/Qt Creator 4.2.1/MinGW 5.3.0
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.coding.me/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="CMake" scheme="http://ex2tron.coding.me/tags/CMake/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.coding.me/tags/OpenCV/"/>
+    
+      <category term="Qt" scheme="http://ex2tron.coding.me/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CMake编译OpenCV3.2（QT平台）</title>
     <link href="http://ex2tron.coding.me/2017/07/26/CMake%E7%BC%96%E8%AF%91OpenCV3-2%EF%BC%88Qt%E5%B9%B3%E5%8F%B0%EF%BC%89/"/>
     <id>http://ex2tron.coding.me/2017/07/26/CMake编译OpenCV3-2（Qt平台）/</id>
     <published>2017-07-26T14:25:29.000Z</published>
-    <updated>2018-04-16T14:38:17.856Z</updated>
+    <updated>2018-04-16T14:44:23.196Z</updated>
     
     <content type="html"><![CDATA[<p>最近，需要在Windows下搭建一个QT和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对QT平台的。所以，需要用CMake编译OpenCV的源码。<a id="more"></a></p>
 <ul>
 <li><a href="https://cmake.org/download/" target="_blank" rel="external">CMake V3.9.0</a></li>
 <li><a href="http://opencv.org/releases.html" target="_blank" rel="external">OpenCV V3.2.0</a></li>
 </ul>
+<blockquote>
+<p><em>所有的大人都曾经是小孩，虽然只有少数的人记得。</em><br></p>
+<p><em>All grown-ups were once children… but only few of them remember it.</em>《<a href="https://movie.douban.com/subject/20645098/" target="_blank" rel="external">小王子</a>》</p>
+</blockquote>
 <h2 id="编译步骤"><a href="#编译步骤" class="headerlink" title="编译步骤"></a>编译步骤</h2><p>安装完CMake后，打开cmake-gui，如下图所示：</p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo1.jpg" alt=""></p>
 <ol>
