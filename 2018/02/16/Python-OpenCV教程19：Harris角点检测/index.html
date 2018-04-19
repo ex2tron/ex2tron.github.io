@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_harris_theroy_lambda_judge.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_harris_theroy_R_judge.jpg">
-<meta property="og:updated_time" content="2018-04-19T04:07:02.327Z">
+<meta property="og:updated_time" content="2018-04-19T04:46:15.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程19：Harris角点检测">
 <meta name="twitter:description" content="既然角点是一种比较好的特征，那么怎么检测角点呢？">
@@ -165,13 +165,14 @@ var themeMenus = {};
 <li>Harris角点检测的原理</li>
 <li>OpenCV函数：<code>cv2.cornerHarris()</code></li>
 </ul>
-<h2 id="角点"><a href="#角点" class="headerlink" title="角点"></a>角点</h2><p><a href="/2018/02/15/Python-OpenCV教程18%EF%BC%9A理解特征/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
+<h2 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h2><p><a href="/2018/02/15/Python-OpenCV教程18%EF%BC%9A理解特征/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cv2_corner_type.jpg" alt=""></p>
-<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>Harris角点检测算法就是基于这个原理，常见的角点类型如上图。我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 1. Harris角点检测基于灰度图像</span></div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"><span class="comment"># 2. Harris角点检测</span></div><div class="line">dst = cv2.cornerHarris(gray, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0.04</span>)</div><div class="line"><span class="comment"># 3. 角点标记为红色（阈值根据图动态调整）</span></div><div class="line">img[dst &gt; <span class="number">0.01</span> * dst.max()] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>]</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey()</div></pre></td></tr></table></figure>
+<p>Harris角点检测算法就是基于这个原理，常见的角点类型如上图。</p>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 1. Harris角点检测基于灰度图像</span></div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"><span class="comment"># 2. Harris角点检测</span></div><div class="line">dst = cv2.cornerHarris(gray, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0.04</span>)</div><div class="line"><span class="comment"># 3. 角点标记为红色（阈值可动态调整）</span></div><div class="line">img[dst &gt; <span class="number">0.01</span> * dst.max()] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>]</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey()</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_corner_detector_chessboard_small.jpg" alt=""></p>
-<p>使用<a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#gac1fc3598018010880e370e2f709b4345" target="_blank" rel="external"><code>cv2.cornerHarris(src, blockSize, ksize, k, borderType)</code></a>函数实现Harris角点检测：</p>
+<p>使用<a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#gac1fc3598018010880e370e2f709b4345" target="_blank" rel="external"><code>cv2.cornerHarris(src,blockSize,ksize,k,borderType)</code></a>函数实现Harris角点检测：</p>
 <ul>
 <li><code>src</code>：单通道8位或浮点型源图片</li>
 <li><code>blockSize</code>：邻域大小(int)</li>
@@ -181,7 +182,7 @@ var themeMenus = {};
 </ul>
 <p>由于<strong>Harris角点检测算法是基于灰度图像的</strong>，所以首先进行了颜色空间转换。函数的后3个参数在之后推导算法时再来解释。函数的输出<code>dst</code>是一个浮点型图像，大小跟输入相同，表示Harris角点检测的结果，浮点值越高，表示越可能是角点。所以在角点标记的时候，设定了一个阈值范围：0.01×最高浮点值，只要大于这个阈值就标记为角点。</p>
 <p>下面我们来详细看下Harris算法的原理，涉及的数学知识较多，可以作为番外篇阅读：</p>
-<h2 id="算法推导"><a href="#算法推导" class="headerlink" title="算法推导"></a>算法推导</h2><h3 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h3><p>在推导之前，先来回顾一下简单的数学知识（其实我也早TMD忘光了( ╯□╰ )）。</p>
+<h2 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h2><h3 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h3><p>在推导之前，先来回顾一下简单的数学知识（其实我也早TMD忘光了( ╯□╰ )）。</p>
 <p>首先对于一个二阶矩阵：<br>$$<br>M = \left[<br> \begin{matrix}<br>   \lambda_1 &amp; 0 \newline<br>   0 &amp; \lambda_2<br>  \end{matrix}<br>  \right]<br>$$<br>λ1和λ2称为M矩阵的特征值，那么M的行列式值和M的迹分别为：<br>$$<br>detM = \lambda_1*\lambda_2  ，<br>traceM = \lambda_1+\lambda_2<br>$$<br>再来看下椭圆的表示形式：</p>
 <p><img src="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg" alt=""></p>
 <p>数学中，我们用\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)表示，其实我们可以写成矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   x &amp; y<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   \frac{1}{a^2} &amp; 0  \newline<br>   0 &amp; \frac{1}{b^2}<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   x  \newline<br>   y<br>  \end{matrix}<br>  \right]=1<br>$$<br>把中间的矩阵当作M，这样我们就可以得到一个椭圆半轴与特征值的关系：显然，特征值λ越大，半轴a或b越短。</p>
@@ -267,7 +268,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角点"><span class="nav-number">2.</span> <span class="nav-text">角点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法推导"><span class="nav-number">3.</span> <span class="nav-text">算法推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">3.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导"><span class="nav-number">3.2.</span> <span class="nav-text">数学推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角点类型"><span class="nav-number">2.</span> <span class="nav-text">角点类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解算法"><span class="nav-number">3.</span> <span class="nav-text">理解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">3.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导"><span class="nav-number">3.2.</span> <span class="nav-text">数学推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

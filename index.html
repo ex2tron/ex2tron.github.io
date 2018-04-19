@@ -419,11 +419,12 @@ Look up at the stars, not down at your feet. ——Stephen Hawking
 Harris角点检测的原理
 OpenCV函数：cv2.cornerHarris()
 
-角点上节中，我们知道了在角点处沿各个方向移动，像素值都会变化：
+角点类型上节中，我们知道了在角点处沿各个方向移动，像素值都会变化：
 
 
-代码示例Harris角点检测算法就是基于这个原理，常见的角点类型如上图。我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。
-1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)# 2. Harris角点检测dst ...
+Harris角点检测算法就是基于这个原理，常见的角点类型如上图。
+代码示例我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。
+1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)# 2. Harris角点检测d...
           
 
         
