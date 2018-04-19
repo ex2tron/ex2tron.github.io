@@ -420,7 +420,10 @@ Look up at the stars, not down at your feet. ——Stephen Hawking
 Shi-Tomasi角点检测算法的原理
 OpenCV函数：cv2.goodFeaturesToTrack()
 
-理解算法Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2$...
+理解算法
+本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
+
+Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM-k(traceM)^2=\lambda...
 
         
           <p class="article-more-link">
@@ -482,12 +485,15 @@ OpenCV函数：cv2.goodFeaturesToTrack()
 Harris角点检测的原理
 OpenCV函数：cv2.cornerHarris()
 
-角点类型上节中，我们知道了在角点处沿各个方向移动，像素值都会变化：
+角点类型
+本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
+
+上节中，我们知道了在角点处沿各个方向移动，像素值都会变化：
 
 
 Harris角点检测算法就是基于这个原理，常见的角点类型如上图。
 代码示例我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。
-1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)# 2. Harris角点检测dst =...
+1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv...
           
 
         

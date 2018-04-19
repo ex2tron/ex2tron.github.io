@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习Shi-Tomasi角点检测算法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
-<meta property="og:updated_time" content="2018-04-19T06:43:19.260Z">
+<meta property="og:updated_time" content="2018-04-19T06:54:19.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程20：Shi-Tomasi角点检测">
 <meta name="twitter:description" content="学习Shi-Tomasi角点检测算法。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_features.jpg" rel="gallery_cjg65hufh0018d859f5p32wuo">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_features.jpg" rel="gallery_cjg66k7dg001buc59acl8fndn">
         <img src="http://pic.ex2tron.top/cv2_understand_features.jpg" itemprop="image">
       </a>
     
@@ -170,7 +170,10 @@ var themeMenus = {};
 <li>Shi-Tomasi角点检测算法的原理</li>
 <li>OpenCV函数：<code>cv2.goodFeaturesToTrack()</code></li>
 </ul>
-<h2 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h2><p>Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：<br>$$<br>R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2<br>$$<br>可以看出Harris角点检测结果和k值有关，而Shi Jianbo和Tomasi两人发现角点的稳定性和M矩阵的较小特征值有关，所以在Shi-Tomasi算法中：<br>$$<br>R = min(\lambda_1,\lambda_2)<br>$$<br>接下来与Harris一致，将R与阈值比较，大于阈值的就是角点。改进后的算法可以用下图表示：</p>
+<h2 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h2><blockquote>
+<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+</blockquote>
+<p>Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：<br>$$<br>R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2<br>$$<br>可以看出Harris角点检测结果和k值有关，而Shi Jianbo和Tomasi两人发现角点的稳定性和M矩阵的较小特征值有关，所以在Shi-Tomasi算法中：<br>$$<br>R = min(\lambda_1,\lambda_2)<br>$$<br>接下来与Harris一致，将R与阈值比较，大于阈值的就是角点。改进后的算法可以用下图表示：</p>
 <p><img src="http://pic.ex2tron.top/cv2_shi_tomasi_R_judge.jpg" alt=""></p>
 <ul>
 <li>从图中可以看出当λ1和λ2都大于一个阈值λmin时，才被认为时角点。</li>

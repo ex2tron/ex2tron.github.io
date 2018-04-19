@@ -137,14 +137,17 @@
     <link href="http://ex2tron.coding.me/2018/02/17/Python-OpenCV%E6%95%99%E7%A8%8B20%EF%BC%9AShi-Tomasi%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
     <id>http://ex2tron.coding.me/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/</id>
     <published>2018-02-17T04:57:50.000Z</published>
-    <updated>2018-04-19T06:43:19.260Z</updated>
+    <updated>2018-04-19T06:54:19.399Z</updated>
     
     <content type="html"><![CDATA[<p>学习Shi-Tomasi角点检测算法。<a id="more"></a></p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Shi-Tomasi角点检测算法的原理</li>
 <li>OpenCV函数：<code>cv2.goodFeaturesToTrack()</code></li>
 </ul>
-<h2 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h2><p>Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：<br>$$<br>R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2<br>$$<br>可以看出Harris角点检测结果和k值有关，而Shi Jianbo和Tomasi两人发现角点的稳定性和M矩阵的较小特征值有关，所以在Shi-Tomasi算法中：<br>$$<br>R = min(\lambda_1,\lambda_2)<br>$$<br>接下来与Harris一致，将R与阈值比较，大于阈值的就是角点。改进后的算法可以用下图表示：</p>
+<h2 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h2><blockquote>
+<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+</blockquote>
+<p>Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：<br>$$<br>R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2<br>$$<br>可以看出Harris角点检测结果和k值有关，而Shi Jianbo和Tomasi两人发现角点的稳定性和M矩阵的较小特征值有关，所以在Shi-Tomasi算法中：<br>$$<br>R = min(\lambda_1,\lambda_2)<br>$$<br>接下来与Harris一致，将R与阈值比较，大于阈值的就是角点。改进后的算法可以用下图表示：</p>
 <p><img src="http://pic.ex2tron.top/cv2_shi_tomasi_R_judge.jpg" alt=""></p>
 <ul>
 <li>从图中可以看出当λ1和λ2都大于一个阈值λmin时，才被认为时角点。</li>
@@ -203,14 +206,17 @@
     <link href="http://ex2tron.coding.me/2018/02/16/Python-OpenCV%E6%95%99%E7%A8%8B19%EF%BC%9AHarris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
     <id>http://ex2tron.coding.me/2018/02/16/Python-OpenCV教程19：Harris角点检测/</id>
     <published>2018-02-16T04:29:54.000Z</published>
-    <updated>2018-04-19T05:04:44.263Z</updated>
+    <updated>2018-04-19T06:54:19.399Z</updated>
     
     <content type="html"><![CDATA[<p>学习一种角点特征的检测方法：Harris<a id="more"></a></p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Harris角点检测的原理</li>
 <li>OpenCV函数：<code>cv2.cornerHarris()</code></li>
 </ul>
-<h2 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h2><p><a href="/2018/02/15/Python-OpenCV教程18%EF%BC%9A理解特征/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
+<h2 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h2><blockquote>
+<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+</blockquote>
+<p><a href="/2018/02/15/Python-OpenCV教程18%EF%BC%9A理解特征/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cv2_corner_type.jpg" alt=""></p>
 <p>Harris角点检测算法就是基于这个原理，常见的角点类型如上图。</p>
@@ -251,7 +257,7 @@
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/19.%20Harris角点检测" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html" target="_blank" rel="external">Harris Corner Detection</a></li>
-<li>[Harris, C. “A combined corner and edge detector.” <em>Proc Alvey Vision Conf</em> 1988.3(1988):147-151.](<a href="http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2" target="_blank" rel="external">http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2</a></li>
+<li><a href="http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2" target="_blank" rel="external">Harris, C. “A combined corner and edge detector.” <em>Proc Alvey Vision Conf</em> 1988.3(1988):147-151.</a></li>
 <li><a href="https://blog.csdn.net/hujingshuang/article/details/46829627" target="_blank" rel="external">【特征检测】Harris角点检测中的数学推导</a></li>
 <li><a href=""><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法</a></a></li>
 <li><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法PPT</a></li>
@@ -284,7 +290,7 @@
     <link href="http://ex2tron.coding.me/2018/02/15/Python-OpenCV%E6%95%99%E7%A8%8B18%EF%BC%9A%E7%90%86%E8%A7%A3%E7%89%B9%E5%BE%81/"/>
     <id>http://ex2tron.coding.me/2018/02/15/Python-OpenCV教程18：理解特征/</id>
     <published>2018-02-15T12:13:55.000Z</published>
-    <updated>2018-03-15T14:12:22.045Z</updated>
+    <updated>2018-04-19T06:54:19.398Z</updated>
     
     <content type="html"><![CDATA[<p>学习和了解图像特征的重要性。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1286,7 +1292,7 @@
     <link href="http://ex2tron.coding.me/2017/12/12/Python-OpenCV%E6%95%99%E7%A8%8B/"/>
     <id>http://ex2tron.coding.me/2017/12/12/Python-OpenCV教程/</id>
     <published>2017-12-12T15:04:43.021Z</published>
-    <updated>2018-04-18T05:05:45.754Z</updated>
+    <updated>2018-04-19T06:54:19.399Z</updated>
     
     <content type="html"><![CDATA[<p>图文版 | <a href="/2017/10/10/Python-OpenCV%E6%95%99%E7%A8%8B%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/">简洁版</a><a id="more"></a></p>
 <h3 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h3><table>
@@ -3028,11 +3034,9 @@
     <link href="http://ex2tron.coding.me/2017/10/13/%E5%B0%8F%E7%99%BD%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E6%B5%85%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     <id>http://ex2tron.coding.me/2017/10/13/小白深度学习笔记3：浅层神经网络/</id>
     <published>2017-10-13T07:15:18.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-04-19T07:05:35.113Z</updated>
     
     <content type="html"><![CDATA[<p>logistic回归可以看作是只有1层1个神经元的神经网络，那么一般的神经网络是怎么样的呢？<a id="more"></a></p>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 <blockquote>
 <p><em>因为国民不富裕就不能受法律保护，就不能享受民主，这种说法我是无法接受的。</em>  ——<a href="https://movie.douban.com/subject/21937445/" target="_blank" rel="external">《辩护人》</a></p>
 </blockquote>
@@ -3295,14 +3299,12 @@
     <link href="http://ex2tron.coding.me/2017/10/02/%E5%B0%8F%E7%99%BD%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9Alogistic%E5%9B%9E%E5%BD%92/"/>
     <id>http://ex2tron.coding.me/2017/10/02/小白深度学习笔记1：logistic回归/</id>
     <published>2017-10-02T13:06:32.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-04-19T07:05:04.573Z</updated>
     
     <content type="html"><![CDATA[<p>开启神经网络与深度学习之坑！<a id="more"></a>本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。</p>
 <blockquote>
 <p><em>When life ends up breathtakingly fucked, you can generally trace it back to one big, bad decision.</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《DeadPool》</a><br><em>当你的生活变成一坨屎的时候，通常都是因为你当时做的傻逼决定。</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《死侍》</a></p>
 </blockquote>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 <p>本文是我在观看吴恩达老师的<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="external">《神经网络和深度学习》</a>视频课程时，相关的笔记整理，大佬勿喷！</p>
 <hr>
 <h2 id="二类分类"><a href="#二类分类" class="headerlink" title="二类分类"></a>二类分类</h2><p>比如说分析一张图片中有猫还是没猫，这就是一个二类分类（Binary Classification）问题。这里，我们用输出y=1表示有猫，y=0表示没有猫。输入是一张图片，做过图像处理的同学应该知道图片是以RGB三个矩阵存储的，把RGB三分量的值提取出来，作为X，如下图：</p>
