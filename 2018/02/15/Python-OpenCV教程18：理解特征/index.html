@@ -187,6 +187,10 @@ var themeMenus = {};
 <li>最后红色方块表示角点，随便移动它，它都会改变，说明它是唯一的。<strong>所以，角点对图像来说就是一个比较好的特征。</strong></li>
 </ul>
 <p>现在我们就回答了”什么是特征？”这个问题，那么我们如何找到特征呢？其实不难发现，对于角点，我们可以通过移动图像中的一个小区域，找出图像中变化量最大的地方，这就叫<strong>特征检测</strong>。找到特征后，我们可以这样描述图片：图的上面是天空，下面是一个建筑物，建筑物外层是玻璃等等，这就叫<strong>特征描述</strong>。特征检测和特征描述就是我们接下来要学习的内容。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>角点相比扁平区域和边缘是一种更好的特征</li>
+<li>特征可以用来描述对象、追踪对象</li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_meaning/py_features_meaning.html" target="_blank" rel="external">Understanding Features</a></li>
 </ul>
@@ -251,7 +255,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拼图游戏"><span class="nav-number">2.1.</span> <span class="nav-text">拼图游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解特征"><span class="nav-number">2.2.</span> <span class="nav-text">理解特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拼图游戏"><span class="nav-number">2.1.</span> <span class="nav-text">拼图游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解特征"><span class="nav-number">2.2.</span> <span class="nav-text">理解特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

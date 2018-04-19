@@ -386,6 +386,69 @@ Look up at the stars, not down at your feet. ——Stephen Hawking
 <!-- Table of Contents -->
 
   
+    <article id="post-Python-OpenCV教程20：Shi-Tomasi角点检测"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/">Python+OpenCV教程20：Shi-Tomasi角点检测</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/" class="article-date">
+	  <time datetime="2018-02-17T04:57:50.000Z" itemprop="datePublished">February 17, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_understand_features.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习Shi-Tomasi角点检测算法。
+目标
+Shi-Tomasi角点检测算法的原理
+OpenCV函数：cv2.goodFeaturesToTrack()
+
+理解算法Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2$...
+
+        
+          <p class="article-more-link">
+            <a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shi-Tomasi/">Shi-Tomasi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/角点检测/">角点检测</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程19：Harris角点检测"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -414,7 +477,7 @@ Look up at the stars, not down at your feet. ——Stephen Hawking
 
           
             <div class="entry-summary" style="margin-left:0;">
-            既然角点是一种比较好的特征，那么怎么检测角点呢？
+            学习一种角点特征的检测方法：Harris
 目标
 Harris角点检测的原理
 OpenCV函数：cv2.cornerHarris()
@@ -424,7 +487,7 @@ OpenCV函数：cv2.cornerHarris()
 
 Harris角点检测算法就是基于这个原理，常见的角点类型如上图。
 代码示例我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。
-1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)# 2. Harris角点检测d...
+1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)# 2. Harris角点检测dst =...
           
 
         
@@ -737,71 +800,6 @@ bins：子区段数目，如果我们统计0~255每个像素值，bins=256；如
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程14：轮廓特征"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/20/Python-OpenCV教程14：轮廓特征/">Python+OpenCV教程14：轮廓特征</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/20/Python-OpenCV教程14：轮廓特征/" class="article-date">
-	  <time datetime="2017-12-20T10:46:19.000Z" itemprop="datePublished">December 20, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习计算轮廓特征，如面积、周长、最小外接矩形等。图片等可到源码处下载。
-
-目标
-计算物体的周长、面积、质心、最小外接矩形等
-OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等
-
-教程在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：
-123456img = cv2.imread('handwriting.jpg', 0)_, thresh = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)image, contours, hierarchy = cv2.findContours(thresh, 3, 2)# 以数字3的...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/20/Python-OpenCV教程14：轮廓特征/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -896,7 +894,7 @@ OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 

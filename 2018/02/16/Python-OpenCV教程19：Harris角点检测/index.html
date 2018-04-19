@@ -18,13 +18,13 @@
   
   
   
-  <meta name="description" content="既然角点是一种比较好的特征，那么怎么检测角点呢？">
+  <meta name="description" content="学习一种角点特征的检测方法：Harris">
 <meta name="keywords" content="OpenCV,Python,图像处理,角点检测,Harris">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程19：Harris角点检测">
 <meta property="og:url" content="http://ex2tron.coding.me/2018/02/16/Python-OpenCV教程19：Harris角点检测/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="既然角点是一种比较好的特征，那么怎么检测角点呢？">
+<meta property="og:description" content="学习一种角点特征的检测方法：Harris">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_corner_type.jpg">
@@ -32,10 +32,10 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_harris_theroy_lambda_judge.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_harris_theroy_R_judge.jpg">
-<meta property="og:updated_time" content="2018-04-19T04:46:15.562Z">
+<meta property="og:updated_time" content="2018-04-19T05:04:44.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程19：Harris角点检测">
-<meta name="twitter:description" content="既然角点是一种比较好的特征，那么怎么检测角点呢？">
+<meta name="twitter:description" content="学习一种角点特征的检测方法：Harris">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
@@ -160,7 +160,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>既然角点是一种比较好的特征，那么怎么检测角点呢？<a id="more"></a></p>
+        <p>学习一种角点特征的检测方法：Harris<a id="more"></a></p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Harris角点检测的原理</li>
 <li>OpenCV函数：<code>cv2.cornerHarris()</code></li>
@@ -199,10 +199,14 @@ var themeMenus = {};
 <p>上面的计算量还是很大的，所以为了计算方便，Harris给出了一个角点响应函数R：<br>$$<br>R = detM-k(traceM)^2<br>$$<br><code>k</code>就是之前<code>cv2.cornerHarris()</code>函数中的Harris算子参数，一般取0.04~0.06。而之前的<code>ksize</code>参数表示的就是使用Sobel算子计算梯度时的卷积核大小（参考：<a href="/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">番外篇：图像梯度</a>），<code>blockSize</code>表示的就是<code>blockSize×blockSize</code>的窗口邻域大小。这样只需判断R的值就好了：</p>
 <p><img src="http://pic.ex2tron.top/cv2_harris_theroy_R_judge.jpg" alt=""></p>
 <p>怎么样，看懂了吗？如果不懂也没关系，暂时会用之后，慢慢理解(❤ ω ❤)</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>Harris角点检测是一种基于灰度图像的角点检测方法</li>
+<li>其原理是通过移动窗口，计算移动时窗口内像素间的差值来判断</li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/19.%20Harris角点检测" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html" target="_blank" rel="external">Harris Corner Detection</a></li>
-<li><a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#gac1fc3598018010880e370e2f709b4345" target="_blank" rel="external">cornerHarris()</a></li>
+<li>[Harris, C. “A combined corner and edge detector.” <em>Proc Alvey Vision Conf</em> 1988.3(1988):147-151.](<a href="http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2" target="_blank" rel="external">http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2</a></li>
 <li><a href="https://blog.csdn.net/hujingshuang/article/details/46829627" target="_blank" rel="external">【特征检测】Harris角点检测中的数学推导</a></li>
 <li><a href=""><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法</a></a></li>
 <li><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法PPT</a></li>
@@ -242,11 +246,11 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【片单】推荐几部优秀的传记电影
+          Python+OpenCV教程20：Shi-Tomasi角点检测
         
       </div>
     </a>
@@ -268,7 +272,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角点类型"><span class="nav-number">2.</span> <span class="nav-text">角点类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解算法"><span class="nav-number">3.</span> <span class="nav-text">理解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">3.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导"><span class="nav-number">3.2.</span> <span class="nav-text">数学推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角点类型"><span class="nav-number">2.</span> <span class="nav-text">角点类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解算法"><span class="nav-number">3.</span> <span class="nav-text">理解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">3.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导"><span class="nav-number">3.2.</span> <span class="nav-text">数学推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
