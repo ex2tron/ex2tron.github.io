@@ -13,18 +13,18 @@
   <title>cmake编译opencv3.2（qt平台） | ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="CMakeOpenCV" />
+  <meta name="keywords" content="CMakeOpenCVQt" />
   
   
   
   
-  <meta name="description" content="最近，需要在Windows下搭建一个QT和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对QT平台的。所以，需要用CMake编译OpenCV的源码。">
-<meta name="keywords" content="CMake,OpenCV">
+  <meta name="description" content="最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。">
+<meta name="keywords" content="CMake,OpenCV,Qt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CMake编译OpenCV3.2（QT平台）">
+<meta property="og:title" content="CMake编译OpenCV3.2（Qt平台）">
 <meta property="og:url" content="http://ex2tron.coding.me/2017/07/26/CMake编译OpenCV3-2（Qt平台）/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="最近，需要在Windows下搭建一个QT和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对QT平台的。所以，需要用CMake编译OpenCV的源码。">
+<meta property="og:description" content="最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cmake_opencv_qt_demo1.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cmake_opencv_qt_demo2.jpg">
@@ -35,10 +35,10 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cmake_opencv_qt_demo7.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cmake_opencv_qt_demo8.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cmake_opencv_qt_demo9.jpg">
-<meta property="og:updated_time" content="2018-04-16T14:44:23.196Z">
+<meta property="og:updated_time" content="2018-04-17T01:27:34.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMake编译OpenCV3.2（QT平台）">
-<meta name="twitter:description" content="最近，需要在Windows下搭建一个QT和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对QT平台的。所以，需要用CMake编译OpenCV的源码。">
+<meta name="twitter:title" content="CMake编译OpenCV3.2（Qt平台）">
+<meta name="twitter:description" content="最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cmake_opencv_qt_demo1.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
@@ -147,7 +147,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      CMake编译OpenCV3.2（QT平台）
+      CMake编译OpenCV3.2（Qt平台）
     </h1>
   
 
@@ -163,10 +163,11 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近，需要在Windows下搭建一个QT和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对QT平台的。所以，需要用CMake编译OpenCV的源码。<a id="more"></a></p>
+        <p>最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。<a id="more"></a></p>
 <ul>
 <li><a href="https://cmake.org/download/" target="_blank" rel="external">CMake V3.9.0</a></li>
 <li><a href="http://opencv.org/releases.html" target="_blank" rel="external">OpenCV V3.2.0</a></li>
+<li><a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">Qt V5.8.0</a></li>
 </ul>
 <blockquote>
 <p><em>所有的大人都曾经是小孩，虽然只有少数的人记得。</em><br></p>
@@ -182,11 +183,11 @@ var themeMenus = {};
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo2.jpg" alt=""></p>
 <p>选择“MinGW Makefiles”并勾选“Specify native compilers”，点击“Next”：</p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo3.jpg" alt=""></p>
-<p>这里分别选择QT安装目录下gcc和g++的路径，点击“Finish”，等待配置完成。</p>
+<p>这里分别选择Qt安装目录下gcc和g++的路径，点击“Finish”，等待配置完成。</p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo4.jpg" alt=""></p>
 <p>配置完成后，勾选“WITH_OPENGL”和“WITH_QT”，点击“Generate”就可以了。如果发生错误：</p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo5.jpg" alt=""></p>
-<p><strong>将QT的相关路径配置如下：</strong></p>
+<p><strong>将Qt的相关路径配置如下：</strong></p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo6.jpg" alt=""></p>
 <p><strong>先点击“Configure”，再次点击“Generate”就可以生成了。</strong>然后在cmd下切换到生成的目录，我的是<code>D:\OpenCVBuild</code>，执行命令：<code>mingw32-make</code>开始编译（25分钟左右）：</p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo7.jpg" alt=""></p>
@@ -203,7 +204,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMake/">CMake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMake/">CMake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
 
       
         <div id="donation_div"></div>

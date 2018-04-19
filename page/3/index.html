@@ -124,6 +124,71 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程番外篇6：亮度与对比度"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/">Python+OpenCV教程番外篇6：亮度与对比度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/" class="article-date">
+	  <time datetime="2017-12-10T06:05:10.000Z" itemprop="datePublished">December 10, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习如何调整图片的亮度和对比度。图片等可到源码处下载。
+
+亮度与对比度亮度调整是将图像像素的强度整体变大/变小，对比度调整指的是图像暗处的像素强度变低，亮出的变高，从而拓宽某个区域内的显示精度。
+OpenCV中亮度和对比度应用这个公式来计算：g(x) = αf(x) + β，其中：α(&gt;0)、β常称为增益与偏置值，分别控制图片的对比度和亮度。
+
+经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：OpenCV关于对比度和亮度的误解
+
+1234567img = cv2.imread('lena.jpg')# 此处需注意，请参考后面的解释res = np.uint8(np.clip((1.5 * img + 10), 0, 255))tmp = np.hstack((img, ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/亮度/">亮度</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对比度/">对比度</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程番外篇5：鼠标绘图"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -735,70 +800,6 @@ OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程番外篇2：Matplotlib显示图像"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/">Python+OpenCV教程番外篇2：Matplotlib显示图像</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/" class="article-date">
-	  <time datetime="2017-12-06T07:55:15.000Z" itemprop="datePublished">December 6, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何使用Matplotlib显示OpenCV图像。
-Matplotlib是Python的一个非常重要的绘图库，更多内容可以去官网学习。
-显示灰度图1234567import cv2import matplotlib.pyplot as pltimg = cv2.imread('lena.jpg', 0)# 灰度图显示，cmap(color map)设置为grayplt.imshow(img, cmap='gray')plt.show()
-结果如下：
-
-显示彩色图OpenCV中的图像是以BGR的通道顺序存储的，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:
-12345678910111213141516i...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/12/06/Python-OpenCV教程番外篇2：Matplotlib显示图像/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matplotlib/">Matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -893,7 +894,7 @@ Matplotlib是Python的一个非常重要的绘图库，更多内容可以去官�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
