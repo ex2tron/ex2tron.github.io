@@ -132,7 +132,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/10/10/Python-OpenCV教程（目录）/">【视觉与图像】OpenCV篇：Python+OpenCV教程</a>
+      <a class="article-title" href="/2017/10/10/Python-OpenCV教程（目录）/">【视觉与图像】OpenCV篇：Python+OpenCV实用教程</a>
     </h1>
   
 
@@ -169,6 +169,11 @@ var themeMenus = {};
 <li><a href="/2017/12/23/Python-OpenCV%E6%95%99%E7%A8%8B15%EF%BC%9A%E7%9B%B4%E6%96%B9%E5%9B%BE/">直方图</a>（计算绘制直方图/均衡化）</li>
 <li><a href="/2017/12/27/Python-OpenCV%E6%95%99%E7%A8%8B16%EF%BC%9A%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/">模板匹配</a>（大图中找小图）</li>
 <li><a href="/2017/12/28/Python-OpenCV%E6%95%99%E7%A8%8B17%EF%BC%9A%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"> 霍夫变换</a>（提取直线/圆）</li>
+</ol>
+<h3 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h3><ol>
+<li><a href="/2018/02/15/Python-OpenCV%E6%95%99%E7%A8%8B18%EF%BC%9A%E7%90%86%E8%A7%A3%E7%89%B9%E5%BE%81/">理解特征</a>（特征/特征作用）</li>
+<li><a href="/2018/02/16/Python-OpenCV%E6%95%99%E7%A8%8B19%EF%BC%9AHarris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">Harris角点检测</a>（Harris/角点检测/原理）</li>
+<li><a href="/2018/02/17/Python-OpenCV%E6%95%99%E7%A8%8B20%EF%BC%9AShi-Tomasi%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">Shi-Tomasi角点检测</a>（Shi-Tomasi/角点检测/原理）</li>
 </ol>
 
       
@@ -420,10 +425,10 @@ Look up at the stars, not down at your feet. ——Stephen Hawking
 Shi-Tomasi角点检测算法的原理
 OpenCV函数：cv2.goodFeaturesToTrack()
 
-理解算法
+教程理解算法
 本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
 
-Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM-k(traceM)^2=\lambda...
+Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM-k(traceM)^2=\lamb...
 
         
           <p class="article-more-link">
@@ -485,7 +490,7 @@ Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点�
 Harris角点检测的原理
 OpenCV函数：cv2.cornerHarris()
 
-角点类型
+教程角点类型
 本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
 
 上节中，我们知道了在角点处沿各个方向移动，像素值都会变化：
@@ -493,7 +498,7 @@ OpenCV函数：cv2.cornerHarris()
 
 Harris角点检测算法就是基于这个原理，常见的角点类型如上图。
 代码示例我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。
-1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, cv...
+1234567891011121314import cv2import numpy as npimg = cv2.imread('chessboard.png')# 1. Harris角点检测基于灰度图像gray = cv2.cvtColor(img, ...
           
 
         
@@ -557,16 +562,10 @@ Harris角点检测算法就是基于这个原理，常见的角点类型如上�
 理解图像特征
 图像特征的重要性和用途
 
-教程拼图游戏相信大部分人都玩过拼图游戏：根据散落的图片小块最终拼接成一副完整的图片。那么，你是怎么拼起来的呢？
+教程回想一下，我们是不是总可以用一些词语来描述一件物体，比如说描述人脸，我们可以说脸上有两只眼睛，一个鼻子和一个嘴巴，这其实就是特征。对于计算机来说，图片本身的二维矩阵就是最完整的特征，但我们有时也需要像描述人脸那样，让计算机提取一些显著的特征。相信大部分人都玩过拼图游戏，一起来看看：
+拼图游戏拼图游戏是根据散落的图片小块最终拼接成一副完整的图片。那么，你是怎么拼起来的呢？
 
-我们是通过小块间的相似性来拼的，但我们很难具体说出来这个”像”，谁叫我们的大脑已经被上帝编好程序了呢(￣_￣)。现在做个假设，如果能让计算机找到这些小块间的相似性，是不是也可以让计算机玩拼图游戏呢？
-理解特征那这些特征有哪些？如何找到这些特征呢？我们来看下这幅图片：
-
-图的上面有6个小块，都是图中的某一部分。你能找到这6个小块在图中的具体位置吗？
-
-A和B很难确定具体的位置，因为它们在原图中的很多地方都有。可以把这些地方称为扁平的区域。
-
-C和D相对容易点，因为它们是建筑物的...
+虽然你很难让一个小朋友具体说出来是如何拼接的，但毫无疑问他们都能拼成功。我们可以说这一块跟另外一块很像：这块有个突出的部分，那块刚好有个凹进去的部分。这些小块间的相似性就是特征，试想一下，如果能让计算机找到这些小块...
           
 
         
@@ -631,11 +630,14 @@ C和D相对容易点，因为它们是建筑物的...
 分别使用霍夫线变换和圆变换检测图像中的直线和圆
 OpenCV函数：cv2.HoughLines(), cv2.HoughLinesP(), cv2.HoughCircles()
 
-教程理解霍夫变换霍夫变换常用来在图像中提取直线和圆等几何形状，实现原理在维基百科上解释的非常清楚：Hough transform，我来做个简易的解释，感兴趣的可以一看，否则划掉(●ˇ∀ˇ●)：
+教程理解霍夫变换
+本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
+
+霍夫变换常用来在图像中提取直线和圆等几何形状，实现原理在维基百科上解释的非常清楚：Hough transform，我来做个简易的解释，感兴趣的可以一看，否则划掉(●ˇ∀ˇ●)：
 
 学过几何的都知道，直线可以分别用直角坐标系和极坐标系来表示：
 
-那么经过某个点(x0,y0)的所有直线都可以用这个式子来表示：$ r_\theta=x_0\cdot\cos \theta+y_0\cdot\sin \theta...
+那么经过某个点(x0,y0)的所有直线都可以用这个式子来表示：$ r_\theta=x_...
           
 
         

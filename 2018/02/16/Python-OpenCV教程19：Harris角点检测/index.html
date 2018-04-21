@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_harris_theroy_lambda_judge.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_harris_theroy_R_judge.jpg">
-<meta property="og:updated_time" content="2018-04-19T06:54:19.399Z">
+<meta property="og:updated_time" content="2018-04-20T08:55:21.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程19：Harris角点检测">
 <meta name="twitter:description" content="学习一种角点特征的检测方法：Harris">
@@ -165,7 +165,7 @@ var themeMenus = {};
 <li>Harris角点检测的原理</li>
 <li>OpenCV函数：<code>cv2.cornerHarris()</code></li>
 </ul>
-<h2 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h2><blockquote>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h3><blockquote>
 <p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
 </blockquote>
 <p><a href="/2018/02/15/Python-OpenCV教程18%EF%BC%9A理解特征/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
@@ -185,12 +185,12 @@ var themeMenus = {};
 </ul>
 <p>由于<strong>Harris角点检测算法是基于灰度图像的</strong>，所以首先进行了颜色空间转换。函数的后3个参数在之后推导算法时再来解释。函数的输出<code>dst</code>是一个浮点型图像，大小跟输入相同，表示Harris角点检测的结果，浮点值越高，表示越可能是角点。所以在角点标记的时候，设定了一个阈值范围：0.01×最高浮点值，只要大于这个阈值就标记为角点。</p>
 <p>下面我们来详细看下Harris算法的原理，涉及的数学知识较多，可以作为番外篇阅读：</p>
-<h2 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h2><h3 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h3><p>在推导之前，先来回顾一下简单的数学知识（其实我也早TMD忘光了( ╯□╰ )）。</p>
+<h3 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h3><h4 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h4><p>在推导之前，先来回顾一下简单的数学知识（其实我也早TMD忘光了( ╯□╰ )）。</p>
 <p>首先对于一个二阶矩阵：<br>$$<br>M = \left[<br> \begin{matrix}<br>   \lambda_1 &amp; 0 \newline<br>   0 &amp; \lambda_2<br>  \end{matrix}<br>  \right]<br>$$<br>λ1和λ2称为M矩阵的特征值，那么M的行列式值和M的迹分别为：<br>$$<br>detM = \lambda_1*\lambda_2  ，<br>traceM = \lambda_1+\lambda_2<br>$$<br>再来看下椭圆的表示形式：</p>
 <p><img src="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg" alt=""></p>
 <p>数学中，我们用\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)表示，其实我们可以写成矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   x &amp; y<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   \frac{1}{a^2} &amp; 0  \newline<br>   0 &amp; \frac{1}{b^2}<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   x  \newline<br>   y<br>  \end{matrix}<br>  \right]=1<br>$$<br>把中间的矩阵当作M，这样我们就可以得到一个椭圆半轴与特征值的关系：显然，特征值λ越大，半轴a或b越短。</p>
 <p>另外，我们还要用到泰勒展开，一阶泰勒展开：<br>$$<br>f(x+\Delta x) = f(x)+f\prime(x)\Delta x+\cdots+\frac{f\prime^n(x)}{n!}\Delta x+R_n(x)<br>$$<br>二阶泰勒展开：<br>$$<br>f(x+\Delta x,y+\Delta y)=f(x,y)+f_x(x,y)\Delta x+f_y(x,y)\Delta y+\cdots+R_n(x,y)<br>$$</p>
-<h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p>Harris角点检测简单来说就是先选取一个矩形块，移动这个矩形块，然后计算像素间的差值。这个矩形块称为窗口，一般矩形块内的像素点权重不同，比如中间的像素点权重明显大于周边像素。综上，Harris算法模型可以用如下公式表示：</p>
+<h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>Harris角点检测简单来说就是先选取一个矩形块，移动这个矩形块，然后计算像素间的差值。这个矩形块称为窗口，一般矩形块内的像素点权重不同，比如中间的像素点权重明显大于周边像素。综上，Harris算法模型可以用如下公式表示：</p>
 <p>$$<br>E(u,v)=\sum\limits_{x,y\in W}w(x,y)[I(x+u,y+v)-I(x,y)]^2<br>$$<br>其中W表示窗口，w(x,y)就是窗口内像素点的权重，一般取高斯函数。我们把上面的公式用泰勒级数展开：<br>$$<br>I(x+u,y+v)\approx I(x,y)+I_xu+I_yv<br>$$<br>那么带入原公式：<br>$$<br>E(u,v)=\sum w(x,y)(I_xu+I_yv)^2<br>$$<br>其中，后面的一项我们可以展开后用矩阵的方式表示：<br>$$<br>(I_xu+I_yv)^2=I_x^2u^2+I_y^2v^2+2I_xI_yuv= \left[<br> \begin{matrix}<br>  u &amp; v<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   I_x^2 &amp; I_xI_y \newline<br>   I_xI_y &amp; I_y^2<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right]<br>$$<br>这样：<br>$$<br>E(u,v)=  \left[<br> \begin{matrix}<br>  u &amp; v<br>  \end{matrix}<br>  \right]{\sum w(x,y)\left[<br> \begin{matrix}<br>   I_x^2 &amp; I_xI_y \newline<br>   I_xI_y &amp; I_y^2<br>  \end{matrix}<br>  \right]}\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right] = \left[<br> \begin{matrix}<br> u &amp; v<br>  \end{matrix}<br>  \right]M\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right]<br>$$<br>M矩阵称为梯度协方差矩阵。同样地，我们把上面表达式当作一个椭圆的形式来看，假设λ1和λ2是M矩阵的两个特征值，那么<strong>Harris算法就根据这两个特征值判断角点</strong>：</p>
 <p><img src="http://pic.ex2tron.top/cv2_harris_theroy_lambda_judge.jpg" alt=""></p>
 <ul>
@@ -212,7 +212,7 @@ var themeMenus = {};
 <li><a href="http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2" target="_blank" rel="external">Harris, C. “A combined corner and edge detector.” <em>Proc Alvey Vision Conf</em> 1988.3(1988):147-151.</a></li>
 <li><a href="https://blog.csdn.net/hujingshuang/article/details/46829627" target="_blank" rel="external">【特征检测】Harris角点检测中的数学推导</a></li>
 <li><a href=""><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法</a></a></li>
-<li><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法PPT</a></li>
+<li><a href="https://wenku.baidu.com/view/b0a2788acc22bcd126ff0c48.html" target="_blank" rel="external">Harris角点算法PPT</a></li>
 </ul>
 
       
@@ -275,7 +275,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角点类型"><span class="nav-number">2.</span> <span class="nav-text">角点类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解算法"><span class="nav-number">3.</span> <span class="nav-text">理解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">3.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导"><span class="nav-number">3.2.</span> <span class="nav-text">数学推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#角点类型"><span class="nav-number">2.1.</span> <span class="nav-text">角点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解算法"><span class="nav-number">2.3.</span> <span class="nav-text">理解算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数学基础"><span class="nav-number">2.3.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数学推导"><span class="nav-number">2.3.2.</span> <span class="nav-text">数学推导</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
