@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_hough_line_function.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_hough_lines_p_function.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_hough_circles_function.jpg">
-<meta property="og:updated_time" content="2018-04-21T13:10:56.487Z">
+<meta property="og:updated_time" content="2018-04-23T00:18:02.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程17：霍夫变换">
 <meta name="twitter:description" content="学习使用霍夫变换识别出图像中的直线和圆。">
@@ -193,8 +193,8 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line"><span class="comment"># 3.统计概率霍夫线变换</span></div><div class="line">lines = cv2.HoughLinesP(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>,</div><div class="line">                        minLineLength=<span class="number">50</span>, maxLineGap=<span class="number">10</span>)</div></pre></td></tr></table></figure>
 <p>前面几个参数跟之前的一样，有两个可选参数：</p>
 <ul>
-<li>minLineLength：最短长度阈值，比这个长度短的线会被排除</li>
-<li>maxLineGap：同一直线两点之间的最大距离</li>
+<li><code>minLineLength</code>：最短长度阈值，比这个长度短的线会被排除</li>
+<li><code>maxLineGap</code>：同一直线两点之间的最大距离</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 3.将检测的线画出来</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">    x1, y1, x2, y2 = line[<span class="number">0</span>]</div><div class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
 <p><code>cv2.LINE_AA</code>在之前绘图功能中讲解过，表示抗锯齿线型。</p>

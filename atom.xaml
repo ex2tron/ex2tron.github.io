@@ -137,12 +137,12 @@
     <link href="http://ex2tron.coding.me/2018/02/17/Python-OpenCV%E6%95%99%E7%A8%8B20%EF%BC%9AShi-Tomasi%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
     <id>http://ex2tron.coding.me/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/</id>
     <published>2018-02-17T04:57:50.000Z</published>
-    <updated>2018-04-21T13:08:20.497Z</updated>
+    <updated>2018-05-01T07:07:25.368Z</updated>
     
     <content type="html"><![CDATA[<p>学习Shi-Tomasi角点检测算法。<a id="more"></a></p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Shi-Tomasi角点检测算法的原理</li>
-<li>OpenCV函数：<code>cv2.goodFeaturesToTrack()</code></li>
+<li>OpenCV函数：cv2.goodFeaturesToTrack()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h3><blockquote>
 <p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
@@ -155,7 +155,7 @@
 <h3 id="OpenCV实现"><a href="#OpenCV实现" class="headerlink" title="OpenCV实现"></a>OpenCV实现</h3><p>因为Shi Jianbo和Tomasi两人在1994年发表的论文叫”Good features to track.”，所以OpenCV中用函数<code>cv2.goodFeaturesToTrack()</code>来实现Shi-Tomasi算法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line"><span class="comment"># Shi-Tomasi角点检测</span></div><div class="line">corners = cv2.goodFeaturesToTrack(gray, <span class="number">20</span>, <span class="number">0.1</span>, <span class="number">10</span>)</div><div class="line">corners = np.int0(corners)  <span class="comment"># 12个角点坐标</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corners:</div><div class="line">    <span class="comment"># 压缩至一维：[[62,64]]-&gt;[62,64]</span></div><div class="line">    x, y = i.ravel()</div><div class="line">    cv2.circle(img, (x, y), <span class="number">4</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" alt=""></p>
-<p>Shi-Tomasi也是基于灰度图像的，所以图片要先进行颜色转换。</p>
+<p><strong>Shi-Tomasi算法的一个好处是，它可以直接得到角点的坐标值<code>corners</code>，</strong><code>numpy.ravel()</code>函数我们之前已经用过了，用于将二维矩阵压缩成一维。由于Shi-Tomasi也是基于灰度图像的，所以图片要先进行颜色转换。</p>
 <p>函数原型：<code>cv2.goodFeaturesToTrack(image,maxCorners,qualityLevel,minDistance)</code></p>
 <ul>
 <li>算法首先进行角点检测，类似Harris算法，返回一个角点检测的浮点型响应结果，浮点值越高，越有可能是角点</li>
@@ -165,7 +165,6 @@
 </ul>
 <p>前面的代码示例中，我们试图在图中寻找20个角点，并且角点之间的距离不小于10个像素，结果我们得到12个角点的坐标，因为最多就找到了12个。</p>
 <p>函数还有一些可选参数，并不常用，可参考：<a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#ga1d6bb77486c8f92d79c8793ad995d541" target="_blank" rel="external">goodFeaturesToTrack()</a></p>
-<p>另外，<strong>Shi-Tomasi算法的一个好处是，它可以直接得到角点的坐标值。</strong></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>Shi-Tomasi角点检测算法是对Harris算法的改进</li>
 <li>Shi-Tomasi算法可以直接得到角点的坐标</li>
@@ -206,12 +205,12 @@
     <link href="http://ex2tron.coding.me/2018/02/16/Python-OpenCV%E6%95%99%E7%A8%8B19%EF%BC%9AHarris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
     <id>http://ex2tron.coding.me/2018/02/16/Python-OpenCV教程19：Harris角点检测/</id>
     <published>2018-02-16T04:29:54.000Z</published>
-    <updated>2018-04-20T08:55:21.679Z</updated>
+    <updated>2018-04-23T00:17:05.483Z</updated>
     
     <content type="html"><![CDATA[<p>学习一种角点特征的检测方法：Harris<a id="more"></a></p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Harris角点检测的原理</li>
-<li>OpenCV函数：<code>cv2.cornerHarris()</code></li>
+<li>OpenCV函数：cv2.cornerHarris()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h3><blockquote>
 <p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
@@ -356,7 +355,7 @@
     <link href="http://ex2tron.coding.me/2017/12/28/Python-OpenCV%E6%95%99%E7%A8%8B17%EF%BC%9A%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"/>
     <id>http://ex2tron.coding.me/2017/12/28/Python-OpenCV教程17：霍夫变换/</id>
     <published>2017-12-28T03:35:11.000Z</published>
-    <updated>2018-04-21T13:10:56.487Z</updated>
+    <updated>2018-04-23T00:18:02.998Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用霍夫变换识别出图像中的直线和圆。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -391,8 +390,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line"><span class="comment"># 3.统计概率霍夫线变换</span></div><div class="line">lines = cv2.HoughLinesP(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>,</div><div class="line">                        minLineLength=<span class="number">50</span>, maxLineGap=<span class="number">10</span>)</div></pre></td></tr></table></figure>
 <p>前面几个参数跟之前的一样，有两个可选参数：</p>
 <ul>
-<li>minLineLength：最短长度阈值，比这个长度短的线会被排除</li>
-<li>maxLineGap：同一直线两点之间的最大距离</li>
+<li><code>minLineLength</code>：最短长度阈值，比这个长度短的线会被排除</li>
+<li><code>maxLineGap</code>：同一直线两点之间的最大距离</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 3.将检测的线画出来</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">    x1, y1, x2, y2 = line[<span class="number">0</span>]</div><div class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
 <p><code>cv2.LINE_AA</code>在之前绘图功能中讲解过，表示抗锯齿线型。</p>
@@ -444,7 +443,7 @@
     <link href="http://ex2tron.coding.me/2017/12/27/Python-OpenCV%E6%95%99%E7%A8%8B16%EF%BC%9A%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/"/>
     <id>http://ex2tron.coding.me/2017/12/27/Python-OpenCV教程16：模板匹配/</id>
     <published>2017-12-27T08:45:31.000Z</published>
-    <updated>2018-01-18T02:14:14.760Z</updated>
+    <updated>2018-04-23T00:18:02.998Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用模板匹配在图像中寻找物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -464,12 +463,12 @@
 </blockquote>
 <p>模板匹配的原理其实很简单，就是不断地在原图中移动模板图像去比较，有6种不同的比较方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d" target="_blank" rel="external">TemplateMatchModes</a></p>
 <ul>
-<li>平方差匹配CV_TM_SQDIFF：用两者的平方差来匹配，最好的匹配值为0</li>
-<li>归一化平方差匹配CV_TM_SQDIFF_NORMED</li>
-<li>相关匹配CV_TM_CCORR：用两者的乘积匹配，数值越大表明匹配程度越好</li>
-<li>归一化相关匹配CV_TM_CCORR_NORMED</li>
-<li>相关系数匹配CV_TM_CCOEFF：用两者的相关系数匹配，1表示完美的匹配，-1表示最差的匹配</li>
-<li>归一化相关系数匹配CV_TM_CCOEFF_NORMED</li>
+<li>平方差匹配<code>CV_TM_SQDIFF</code>：用两者的平方差来匹配，最好的匹配值为0</li>
+<li>归一化平方差匹配<code>CV_TM_SQDIFF_NORMED</code></li>
+<li>相关匹配<code>CV_TM_CCORR</code>：用两者的乘积匹配，数值越大表明匹配程度越好</li>
+<li>归一化相关匹配<code>CV_TM_CCORR_NORMED</code></li>
+<li>相关系数匹配<code>CV_TM_CCOEFF</code>：用两者的相关系数匹配，1表示完美的匹配，-1表示最差的匹配</li>
+<li>归一化相关系数匹配<code>CV_TM_CCOEFF_NORMED</code></li>
 </ul>
 <p>这些方法的对比代码可到<a href="#引用">源码处</a>查看。模板匹配也是应用卷积来实现的：假设原图大小为W×H，模板图大小为w×h，那么生成图大小是(W-w+1)×(H-h+1)，生成图中的每个像素值表示原图与模板的匹配程度。</p>
 <h3 id="匹配多个物体"><a href="#匹配多个物体" class="headerlink" title="匹配多个物体"></a>匹配多个物体</h3><p>前面我们是找最大匹配的点，所以只能匹配一次。我们可以设定一个匹配阈值来匹配多次：</p>
@@ -1079,11 +1078,14 @@
     <link href="http://ex2tron.coding.me/2017/12/18/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%878%EF%BC%9A%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/"/>
     <id>http://ex2tron.coding.me/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/</id>
     <published>2017-12-18T02:51:43.000Z</published>
-    <updated>2018-01-19T05:36:11.748Z</updated>
+    <updated>2018-04-22T06:26:35.181Z</updated>
     
     <content type="html"><![CDATA[<p>了解图像梯度和边缘检测的相关概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <p>还记得前面<a href="/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/">平滑图像</a>中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。</p>
-<h2 id="图像梯度"><a href="#图像梯度" class="headerlink" title="图像梯度"></a><a href="https://baike.baidu.com/item/图像梯度/8528837?fr=aladdin" target="_blank" rel="external">图像梯度</a></h2><p>如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。</p>
+<h2 id="图像梯度"><a href="#图像梯度" class="headerlink" title="图像梯度"></a><a href="https://baike.baidu.com/item/图像梯度/8528837?fr=aladdin" target="_blank" rel="external">图像梯度</a></h2><blockquote>
+<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+</blockquote>
+<p>如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。</p>
 <p>当然，大部分人应该是早忘记高数了(￣▽￣)”，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。</p>
 <h3 id="垂直边缘提取"><a href="#垂直边缘提取" class="headerlink" title="垂直边缘提取"></a>垂直边缘提取</h3><p>滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面这个卷积核：</p>
 <p>$$<br>k1 = \left[<br> \begin{matrix}<br>   -1 &amp; 0 &amp; 1 \newline<br>   -2 &amp; 0 &amp; 2 \newline<br>   -1 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
@@ -1225,11 +1227,14 @@
     <link href="http://ex2tron.coding.me/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/"/>
     <id>http://ex2tron.coding.me/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/</id>
     <published>2017-12-14T08:27:45.000Z</published>
-    <updated>2018-01-19T05:35:53.894Z</updated>
+    <updated>2018-04-22T06:26:35.181Z</updated>
     
     <content type="html"><![CDATA[<p>了解卷积/滤波的基础知识，给图片添加边框。<a id="more"></a>如果你已了解相关理论，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
 <p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
-<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>什么是二维卷积呢？看下面一张图就一目了然：</p>
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><blockquote>
+<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+</blockquote>
+<p>什么是二维卷积呢？看下面一张图就一目了然：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_convolution.jpg" alt=""></p>
 <p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_cnn.gif" alt=""></p>
@@ -1259,7 +1264,7 @@
 <p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定</p>
 </blockquote>
 <h2 id="OpenCV进行卷积"><a href="#OpenCV进行卷积" class="headerlink" title="OpenCV进行卷积"></a>OpenCV进行卷积</h2><p>OpenCV中用<code>cv2.filter2D()</code>实现卷积操作，比如我们的核是下面这样（3×3区域像素的和除以10）：</p>
-<p>$$<br> M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<p>$$<br>M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 定义卷积核</span></div><div class="line">kernel = np.ones((<span class="number">3</span>, <span class="number">3</span>), np.float32) / <span class="number">10</span></div><div class="line"><span class="comment"># 卷积操作，-1表示通道数与原图相同</span></div><div class="line">dst = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg" alt=""></p>
 <p>可以看到这个核对图像进行了模糊处理，这是卷积的众多功能之一。当然卷积还有很多知识没有学到，后面我们再继续深入。</p>
@@ -2493,7 +2498,7 @@
     <link href="http://ex2tron.coding.me/2017/12/06/Python-OpenCV%E6%95%99%E7%A8%8B1%EF%BC%9A%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
     <id>http://ex2tron.coding.me/2017/12/06/Python-OpenCV教程1：简介与安装/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2018-04-19T13:13:02.774Z</updated>
+    <updated>2018-04-23T11:09:10.902Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p><strong>我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )</strong>，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。</p>
@@ -2535,7 +2540,7 @@
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/BlogCode/tree/master/Python%2BOpenCV/1.%20%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></li>
-<li><a href="www.learnopencv.com">LearnOpenCV</a></li>
+<li><a href="http://www.learnopencv.com" target="_blank" rel="external">LearnOpenCV</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></li>
 <li><a href="https://docs.opencv.org/" target="_blank" rel="external">OpenCV Docs</a></li>
 <li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html" target="_blank" rel="external">OpenCV 中文教程</a></li>

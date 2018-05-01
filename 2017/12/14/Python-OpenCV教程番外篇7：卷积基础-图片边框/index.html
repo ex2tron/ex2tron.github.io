@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg">
-<meta property="og:updated_time" content="2018-01-19T05:35:53.894Z">
+<meta property="og:updated_time" content="2018-04-22T06:26:35.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇7：卷积基础(图片边框)">
 <meta name="twitter:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
@@ -163,7 +163,10 @@ var themeMenus = {};
       
         <p>了解卷积/滤波的基础知识，给图片添加边框。<a id="more"></a>如果你已了解相关理论，请直接跳到<a href="#添加边框">添加边框</a>部分。</p>
 <p>卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(<em>￣▽￣</em>)o</p>
-<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>什么是二维卷积呢？看下面一张图就一目了然：</p>
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><blockquote>
+<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+</blockquote>
+<p>什么是二维卷积呢？看下面一张图就一目了然：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_convolution.jpg" alt=""></p>
 <p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_cnn.gif" alt=""></p>
@@ -193,7 +196,7 @@ var themeMenus = {};
 <p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定</p>
 </blockquote>
 <h2 id="OpenCV进行卷积"><a href="#OpenCV进行卷积" class="headerlink" title="OpenCV进行卷积"></a>OpenCV进行卷积</h2><p>OpenCV中用<code>cv2.filter2D()</code>实现卷积操作，比如我们的核是下面这样（3×3区域像素的和除以10）：</p>
-<p>$$<br> M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<p>$$<br>M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 定义卷积核</span></div><div class="line">kernel = np.ones((<span class="number">3</span>, <span class="number">3</span>), np.float32) / <span class="number">10</span></div><div class="line"><span class="comment"># 卷积操作，-1表示通道数与原图相同</span></div><div class="line">dst = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg" alt=""></p>
 <p>可以看到这个核对图像进行了模糊处理，这是卷积的众多功能之一。当然卷积还有很多知识没有学到，后面我们再继续深入。</p>
