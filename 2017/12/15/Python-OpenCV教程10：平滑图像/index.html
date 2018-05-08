@@ -26,14 +26,15 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习模糊/平滑图像，消除噪点。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_gaussian_kernel_function_theory.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_median_vs_average.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
-<meta property="og:updated_time" content="2018-04-20T08:55:21.679Z">
+<meta property="og:updated_time" content="2018-05-05T06:19:46.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程10：平滑图像">
 <meta name="twitter:description" content="学习模糊/平滑图像，消除噪点。">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_gaussian_kernel_function_theory.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -183,14 +184,15 @@ var themeMenus = {};
 <p>所有的滤波函数都有一个可选参数borderType，还记得吗？这个参数就是我们在<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>中所说的边框填充方式。</p>
 </blockquote>
 <h3 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h3><p>方框滤波跟均值滤波很像，如下面的公式。用<code>cv2.boxFilter()</code>函数实现，事实上，当可选参数<code>normalize</code>为True的时候，方框滤波就是均值滤波，如3×3的核，a就等于1/9；<code>normalize</code>为False的时候，a=1，相当于求区域内的像素和。</p>
-<p>$$<br> k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>$$<br>k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></div><div class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
-<h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，相当于图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同，中间像素点权重最高，越远离中心的像素权重越小。（其原理是一个2维高斯函数，可以参考：<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">Gaussian Filter</a>）</p>
-<p>高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
+<h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小，来，数学时间( ╯□╰ )，还记得标准正态分布的曲线吗？</p>
+<p><img src="http://pic.ex2tron.top/cv2_gaussian_kernel_function_theory.jpg" alt=""></p>
+<p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（高斯函数和卷积核生成方式请参考文末的番外小篇）：</p>
+<p>$$<br>k = \left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'gaussian_noise.bmp'</span>)</div><div class="line"><span class="comment"># 均值滤波vs高斯滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)  <span class="comment"># 高斯滤波</span></div></pre></td></tr></table></figure>
-<p>均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
+<p>其实，参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
 <p><img src="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg" alt=""></p>
-<p>GaussianBlur()中参数3是σx，值越大，模糊效果越明显，0代表默认值0.8：<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external">getGaussianKernel()</a></p>
 <h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><p><a href="https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC" target="_blank" rel="external">中值</a>又叫中位数，是所有值排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。</p>
 <p>比如下面这张斑点噪声图，用中值滤波显然更好：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'salt_noise.bmp'</span>, <span class="number">0</span>)</div><div class="line"><span class="comment"># 均值滤波vs中值滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">median = cv2.medianBlur(img, <span class="number">5</span>)  <span class="comment"># 中值滤波</span></div></pre></td></tr></table></figure>
@@ -199,6 +201,17 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 双边滤波vs高斯滤波</span></div><div class="line">gau = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></div><div class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" alt=""></p>
 <p>可以看到，双边滤波明显保留了更多边缘信息。</p>
+<h2 id="番外小篇：高斯滤波卷积核"><a href="#番外小篇：高斯滤波卷积核" class="headerlink" title="番外小篇：高斯滤波卷积核"></a>番外小篇：高斯滤波卷积核</h2><p>要解释高斯滤波卷积核是如何生成的，需要先复习下概率论的知识（What？？又是数学( ╯□╰ )）</p>
+<p>一维的高斯函数/正态分布X~N(μ, σ^2)：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})<br>$$<br>当μ=0，σ^2=1时，称为标准正态分布X~N(0,1)：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2})<br>$$<br>二维X/Y相互独立的高斯函数：<br>$$<br>G(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}exp(-\frac{(x-\mu_x)^2+(y-\mu_y)^2}{2\sigma_x\sigma_y})=G(x)G(y)<br>$$</p>
+<p>由上可知，<strong>二维高斯函数具有可分离性</strong>，所以OpenCV分两步计算二维高斯卷积，先水平再垂直，每个方向上都是一维的卷积。OpenCV中这个一维卷积的计算公式类似于上面的一维高斯函数：<br>$$<br>G(i)=\alpha *exp(-\frac{(i-\frac{ksize-1}{2})^2}{2\sigma^2})<br>$$<br>其中i=0…ksize-1，α是一个常数，也称为缩放因子，它使得\(\sum{G(i)}=1\)</p>
+<p>比如我们可以用<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external"><code>cv2.getGaussianKernel(ksize,sigma)</code></a>来生成一维卷积核：</p>
+<ul>
+<li>sigma&lt;=0时，<code>sigma=0.3*((ksize-1)*0.5 - 1) + 0.8</code></li>
+<li>sigma&gt;0时，sigma=sigma</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(cv2.getGaussianKernel(<span class="number">3</span>, <span class="number">0</span>))</div><div class="line"><span class="comment"># 结果：[[0.25][0.5][0.25]]</span></div></pre></td></tr></table></figure>
+<p>生成之后，先进行三次的水平卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]<br>$$<br>然后再进行垂直的三次卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.25 &amp; 0.25 \newline<br>    0.5 &amp; 0.5 &amp; 0.5 \newline<br>   0.25 &amp; 0.25 &amp; 0.25<br>  \end{matrix}<br>  \right] =I×\left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>这就是OpenCV中高斯卷积核的生成方式。其实，OpenCV源码中对小于7×7的核是直接计算好放在数组里面的，这样计算速度会快一点，感兴趣的可以看下源码：<a href="https://github.com/ex2tron/BlogCode/blob/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/cv2_source_code_getGaussianKernel.cpp" target="_blank" rel="external">getGaussianKernel()</a></p>
+<p>上面矩阵也可以写成：<br>$$<br>\frac{1}{16}\left[<br> \begin{matrix}<br>   1&amp; 2 &amp; 1 \newline<br>   2 &amp; 4 &amp; 2 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>在不知道用什么滤波器好的时候，优先高斯滤波<code>cv2.GaussianBlur()</code>，然后均值滤波<code>cv2.blur()</code></li>
 <li>斑点和椒盐噪声优先使用中值滤波<code>cv2.medianBlur()</code></li>
@@ -272,7 +285,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滤波与模糊"><span class="nav-number">2.1.</span> <span class="nav-text">滤波与模糊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均值滤波"><span class="nav-number">2.2.</span> <span class="nav-text">均值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方框滤波"><span class="nav-number">2.3.</span> <span class="nav-text">方框滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯滤波"><span class="nav-number">2.4.</span> <span class="nav-text">高斯滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中值滤波"><span class="nav-number">2.5.</span> <span class="nav-text">中值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双边滤波"><span class="nav-number">2.6.</span> <span class="nav-text">双边滤波</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滤波与模糊"><span class="nav-number">2.1.</span> <span class="nav-text">滤波与模糊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均值滤波"><span class="nav-number">2.2.</span> <span class="nav-text">均值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方框滤波"><span class="nav-number">2.3.</span> <span class="nav-text">方框滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯滤波"><span class="nav-number">2.4.</span> <span class="nav-text">高斯滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中值滤波"><span class="nav-number">2.5.</span> <span class="nav-text">中值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双边滤波"><span class="nav-number">2.6.</span> <span class="nav-text">双边滤波</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#番外小篇：高斯滤波卷积核"><span class="nav-number">3.</span> <span class="nav-text">番外小篇：高斯滤波卷积核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习Shi-Tomasi角点检测算法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
-<meta property="og:updated_time" content="2018-05-01T07:07:25.368Z">
+<meta property="og:updated_time" content="2018-05-01T07:16:47.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程20：Shi-Tomasi角点检测">
 <meta name="twitter:description" content="学习Shi-Tomasi角点检测算法。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_features.jpg" rel="gallery_cjgnbzggd001bh459wciz4zou">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_features.jpg" rel="gallery_cjgx085ms001bg459h3fyp1a7">
         <img src="http://pic.ex2tron.top/cv2_understand_features.jpg" itemprop="image">
       </a>
     
@@ -165,7 +165,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习Shi-Tomasi角点检测算法。<a id="more"></a></p>
+        <p>学习Shi-Tomasi角点检测算法。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Shi-Tomasi角点检测算法的原理</li>
 <li>OpenCV函数：cv2.goodFeaturesToTrack()</li>
@@ -178,7 +178,7 @@ var themeMenus = {};
 <ul>
 <li>从图中可以看出当λ1和λ2都大于一个阈值λmin时，才被认为时角点。</li>
 </ul>
-<h3 id="OpenCV实现"><a href="#OpenCV实现" class="headerlink" title="OpenCV实现"></a>OpenCV实现</h3><p>因为Shi Jianbo和Tomasi两人在1994年发表的论文叫”Good features to track.”，所以OpenCV中用函数<code>cv2.goodFeaturesToTrack()</code>来实现Shi-Tomasi算法：</p>
+<h3 id="OpenCV实现"><a href="#OpenCV实现" class="headerlink" title="OpenCV实现"></a>OpenCV实现</h3><p>因为Shi Jianbo和Tomasi两人在1994年发表的论文叫<a href="#引用">“Good features to track.”</a>，所以OpenCV中用函数<code>cv2.goodFeaturesToTrack()</code>来实现Shi-Tomasi算法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line"><span class="comment"># Shi-Tomasi角点检测</span></div><div class="line">corners = cv2.goodFeaturesToTrack(gray, <span class="number">20</span>, <span class="number">0.1</span>, <span class="number">10</span>)</div><div class="line">corners = np.int0(corners)  <span class="comment"># 12个角点坐标</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corners:</div><div class="line">    <span class="comment"># 压缩至一维：[[62,64]]-&gt;[62,64]</span></div><div class="line">    x, y = i.ravel()</div><div class="line">    cv2.circle(img, (x, y), <span class="number">4</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" alt=""></p>
 <p><strong>Shi-Tomasi算法的一个好处是，它可以直接得到角点的坐标值<code>corners</code>，</strong><code>numpy.ravel()</code>函数我们之前已经用过了，用于将二维矩阵压缩成一维。由于Shi-Tomasi也是基于灰度图像的，所以图片要先进行颜色转换。</p>

@@ -22,12 +22,12 @@
 <meta name="keywords" content="构建法,表驱动法,查表法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构建：查表法">
-<meta property="og:url" content="http://ex2tron.coding.me/2018/04/08/构建：表驱动法/index.html">
+<meta property="og:url" content="http://ex2tron.coding.me/2017/06/13/构建：查表法/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/build_table_driven_methods2.jpg">
-<meta property="og:updated_time" content="2018-04-09T00:17:12.266Z">
+<meta property="og:updated_time" content="2018-05-08T00:48:25.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建：查表法">
 <meta name="twitter:description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
@@ -131,13 +131,13 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-构建：表驱动法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-构建：查表法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/build_table_driven_methods2.jpg" rel="gallery_cjgnbzgip0052h459fd3tq9fg">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/build_table_driven_methods2.jpg" rel="gallery_cjgx085oy004zg459bfsm4blw">
         <img src="http://pic.ex2tron.top/build_table_driven_methods2.jpg" itemprop="image">
       </a>
     
@@ -157,8 +157,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/04/08/构建：表驱动法/" class="article-date">
-	  <time datetime="2018-04-08T10:54:04.000Z" itemprop="datePublished">April 8, 2018</time>
+	Posted on <a href="/2017/06/13/构建：查表法/" class="article-date">
+	  <time datetime="2017-06-13T10:54:04.000Z" itemprop="datePublished">June 13, 2017</time>
 	</a>
 
       
@@ -169,13 +169,13 @@ var themeMenus = {};
 <blockquote>
 <p><em>宁在一思进，莫在一思停。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
 </blockquote>
+<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>如果你需要根据月份计算当月的天数（不考虑闰年），你会怎么写？</p>
 <p>如果使用if语句，你的代码可能会像这样：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python示例（其他语言中Switch/case也一样）</span></div><div class="line"><span class="keyword">if</span> (month == <span class="number">1</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">3</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">4</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">5</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">6</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">7</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">8</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">9</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">10</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">11</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">12</span>):</div><div class="line">    day = <span class="number">31</span></div></pre></td></tr></table></figure>
 <p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
 <p>怎么样，2行够简洁了吗？</p>
-<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
 <p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
 </blockquote>
@@ -239,10 +239,19 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
+    <a href="/2017/07/26/CMake编译OpenCV3-2（Qt平台）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CMake编译OpenCV3.2（Qt平台）
+        
+      </div>
+    </a>
   
-    <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2017/05/16/【视觉与图像】摄像头篇2：焦距和视角/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【片单】推荐几部优秀的传记电影</div>
+      <div class="article-nav-title">【视觉与图像】摄像头篇2：焦距和视角</div>
     </a>
   
 </nav>

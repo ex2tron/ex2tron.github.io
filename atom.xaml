@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.coding.me/"/>
-  <updated>2018-04-09T00:17:12.266Z</updated>
+  <updated>2018-04-17T00:26:54.620Z</updated>
   <id>http://ex2tron.coding.me/</id>
   
   <author>
@@ -14,71 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>构建：查表法</title>
-    <link href="http://ex2tron.coding.me/2018/04/08/%E6%9E%84%E5%BB%BA%EF%BC%9A%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
-    <id>http://ex2tron.coding.me/2018/04/08/构建：表驱动法/</id>
-    <published>2018-04-08T10:54:04.000Z</published>
-    <updated>2018-04-09T00:17:12.266Z</updated>
-    
-    <content type="html"><![CDATA[<p>每次谈到查表，我都会先想到下面这个简单的例子：<a id="more"></a></p>
-<blockquote>
-<p><em>宁在一思进，莫在一思停。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
-</blockquote>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>如果你需要根据月份计算当月的天数（不考虑闰年），你会怎么写？</p>
-<p>如果使用if语句，你的代码可能会像这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python示例（其他语言中Switch/case也一样）</span></div><div class="line"><span class="keyword">if</span> (month == <span class="number">1</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">3</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">4</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">5</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">6</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">7</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">8</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">9</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">10</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">11</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">12</span>):</div><div class="line">    day = <span class="number">31</span></div></pre></td></tr></table></figure>
-<p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
-<p>怎么样，2行够简洁了吗？</p>
-<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
-</blockquote>
-<p>对于简单的情况，逻辑判断更简单和易理解，但数据量和逻辑链增大的时候，查表法在灵活性、可维护性等方面有着显著的优势。</p>
-<p><strong>查表法的核心在于如果构建表</strong>。前面的例子中，月份不重复，以月份为索引建立一个数组即可。但如果逻辑判断是个区间，比如对于下面的考试成绩，应该如何建表呢？</p>
-<p>90-100分：优 | 70-90分：良 | 60-70分：及格 | 60分以下：不及格</p>
-<h3 id="直接查表"><a href="#直接查表" class="headerlink" title="直接查表"></a>直接查表</h3><p>月份的例子就是直接查表，查询的信息（月份）可以直接转为表中的索引，一目了然。下面再看个例子：</p>
-<p>有一个根据汽车速度计算转弯距离的程序：速度30马以下，距离为固定值a；100马以上也为固定值b；31~99之间，每个速度对应1个数值。这时如何建表呢？</p>
-<p><strong>1.重复数据，直接使用键值</strong></p>
-<p>第一种方式可以把a复制31次，100以上也复制多次，那表应该像这样：</p>
-<p><img src="http://pic.ex2tron.top/repeat_key_table_driven_method.jpg" alt=""></p>
-<p>显然，这种方式很蠢，不仅有很多冗余的数据，而且很容易出错。</p>
-<p><strong>2.转换键值</strong></p>
-<p>我们可以用一个函数将键值做下转换：因为0~30是同一值，所以将0~30转成一个键值，100以上转成一个键值，中间的数据本身作为键值。对于这种转换，可以一句话搞定：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">newKey = max(min(<span class="number">100</span>, speed), <span class="number">30</span>)</div></pre></td></tr></table></figure>
-<p>其他语言中<code>max/min</code>函数一般在Math相关模块中可以找到。这样完整的代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">distanceOfSpeed = [a, n31, n32, ……, n99, b]</div><div class="line">result = distanceOfSpeed[max(min(<span class="number">100</span>, speed), <span class="number">30</span>) - <span class="number">30</span>]</div></pre></td></tr></table></figure>
-<h3 id="阶梯查表"><a href="#阶梯查表" class="headerlink" title="阶梯查表"></a>阶梯查表</h3><p>前面考试成绩的例子，不同的成绩范围对应不同的数据，如同台阶一样：</p>
-<p><img src="http://pic.ex2tron.top/stair_table_look_up_method.jpg" alt=""></p>
-<p>这时可以使用阶梯查表：表内的数据是对应不同的数据范围，而不是对应不同的数据点。阶梯法查表就是循环检查每个区间的上限。当分数第一次超过某个区间的上限时，就可以得到想要的等级（留心端点的值噢：&lt;和&lt;=的区别）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">scoreLimit = [<span class="number">60.0</span>, <span class="number">70.0</span>, <span class="number">90.0</span>, <span class="number">100.0</span>]</div><div class="line">grade = [<span class="string">"不及格"</span>, <span class="string">"及格"</span>, <span class="string">"良"</span>, <span class="string">"优"</span>]</div><div class="line"></div><div class="line">score, index, result = <span class="number">45</span>, <span class="number">0</span>, <span class="string">'优'</span></div><div class="line"><span class="comment"># 这个条件语句很重要噢！</span></div><div class="line"><span class="keyword">while</span> (result == <span class="string">'优'</span> <span class="keyword">and</span> index &lt; len(grade) - <span class="number">1</span>):</div><div class="line">    <span class="keyword">if</span> (score &lt; scoreLimit[index]):</div><div class="line">        result = grade[index]</div><div class="line">    index += <span class="number">1</span></div><div class="line"></div><div class="line">print(result) <span class="comment"># 不及格</span></div></pre></td></tr></table></figure>
-<p>这种阶梯方法很适合处理区间、等级评价和键值无规则的场合。</p>
-<p>除了上面两种方法外，还有索引查表法：相当于书的目录。先从目录中找到页码，再根据页码找到对应的记录。在程序中，就是先建一张索引表，从索引表中找出值，再在主表中查到数据，数据库经常用到，这里不详细介绍了。</p>
-<p><strong>另外，可以将表存储在外部，这样可以在不更改逻辑代码的情况下，改变表的值。</strong></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/blob/master/Build/build_table_driven_methods.py" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">旧版：构建法——表驱动法</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;每次谈到查表，我都会先想到下面这个简单的例子：
-    
-    </summary>
-    
-      <category term="Build篇" scheme="http://ex2tron.coding.me/categories/Build%E7%AF%87/"/>
-    
-    
-      <category term="构建法" scheme="http://ex2tron.coding.me/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
-    
-      <category term="表驱动法" scheme="http://ex2tron.coding.me/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
-    
-      <category term="查表法" scheme="http://ex2tron.coding.me/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
-    
-  </entry>
   
   <entry>
     <title>【片单】推荐几部优秀的传记电影</title>
@@ -137,9 +72,9 @@
     <link href="http://ex2tron.coding.me/2018/02/17/Python-OpenCV%E6%95%99%E7%A8%8B20%EF%BC%9AShi-Tomasi%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
     <id>http://ex2tron.coding.me/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/</id>
     <published>2018-02-17T04:57:50.000Z</published>
-    <updated>2018-05-01T07:07:25.368Z</updated>
+    <updated>2018-05-01T07:16:47.631Z</updated>
     
-    <content type="html"><![CDATA[<p>学习Shi-Tomasi角点检测算法。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>学习Shi-Tomasi角点检测算法。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Shi-Tomasi角点检测算法的原理</li>
 <li>OpenCV函数：cv2.goodFeaturesToTrack()</li>
@@ -152,7 +87,7 @@
 <ul>
 <li>从图中可以看出当λ1和λ2都大于一个阈值λmin时，才被认为时角点。</li>
 </ul>
-<h3 id="OpenCV实现"><a href="#OpenCV实现" class="headerlink" title="OpenCV实现"></a>OpenCV实现</h3><p>因为Shi Jianbo和Tomasi两人在1994年发表的论文叫”Good features to track.”，所以OpenCV中用函数<code>cv2.goodFeaturesToTrack()</code>来实现Shi-Tomasi算法：</p>
+<h3 id="OpenCV实现"><a href="#OpenCV实现" class="headerlink" title="OpenCV实现"></a>OpenCV实现</h3><p>因为Shi Jianbo和Tomasi两人在1994年发表的论文叫<a href="#引用">“Good features to track.”</a>，所以OpenCV中用函数<code>cv2.goodFeaturesToTrack()</code>来实现Shi-Tomasi算法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line"><span class="comment"># Shi-Tomasi角点检测</span></div><div class="line">corners = cv2.goodFeaturesToTrack(gray, <span class="number">20</span>, <span class="number">0.1</span>, <span class="number">10</span>)</div><div class="line">corners = np.int0(corners)  <span class="comment"># 12个角点坐标</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corners:</div><div class="line">    <span class="comment"># 压缩至一维：[[62,64]]-&gt;[62,64]</span></div><div class="line">    x, y = i.ravel()</div><div class="line">    cv2.circle(img, (x, y), <span class="number">4</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" alt=""></p>
 <p><strong>Shi-Tomasi算法的一个好处是，它可以直接得到角点的坐标值<code>corners</code>，</strong><code>numpy.ravel()</code>函数我们之前已经用过了，用于将二维矩阵压缩成一维。由于Shi-Tomasi也是基于灰度图像的，所以图片要先进行颜色转换。</p>
@@ -205,9 +140,9 @@
     <link href="http://ex2tron.coding.me/2018/02/16/Python-OpenCV%E6%95%99%E7%A8%8B19%EF%BC%9AHarris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
     <id>http://ex2tron.coding.me/2018/02/16/Python-OpenCV教程19：Harris角点检测/</id>
     <published>2018-02-16T04:29:54.000Z</published>
-    <updated>2018-04-23T00:17:05.483Z</updated>
+    <updated>2018-05-01T07:13:43.250Z</updated>
     
-    <content type="html"><![CDATA[<p>学习一种角点特征的检测方法：Harris<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>学习一种角点特征的检测方法：Harris。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>Harris角点检测的原理</li>
 <li>OpenCV函数：cv2.cornerHarris()</li>
@@ -265,7 +200,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;学习一种角点特征的检测方法：Harris
+      &lt;p&gt;学习一种角点特征的检测方法：Harris。
     
     </summary>
     
@@ -1145,7 +1080,7 @@
     <link href="http://ex2tron.coding.me/2017/12/15/Python-OpenCV%E6%95%99%E7%A8%8B10%EF%BC%9A%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/"/>
     <id>http://ex2tron.coding.me/2017/12/15/Python-OpenCV教程10：平滑图像/</id>
     <published>2017-12-15T01:44:24.000Z</published>
-    <updated>2018-04-20T08:55:21.679Z</updated>
+    <updated>2018-05-05T06:19:46.133Z</updated>
     
     <content type="html"><![CDATA[<p>学习模糊/平滑图像，消除噪点。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1173,14 +1108,15 @@
 <p>所有的滤波函数都有一个可选参数borderType，还记得吗？这个参数就是我们在<a href="/2017/12/14/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%877%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%9F%BA%E7%A1%80-%E5%9B%BE%E7%89%87%E8%BE%B9%E6%A1%86/">番外篇：卷积基础(图片边框)</a>中所说的边框填充方式。</p>
 </blockquote>
 <h3 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h3><p>方框滤波跟均值滤波很像，如下面的公式。用<code>cv2.boxFilter()</code>函数实现，事实上，当可选参数<code>normalize</code>为True的时候，方框滤波就是均值滤波，如3×3的核，a就等于1/9；<code>normalize</code>为False的时候，a=1，相当于求区域内的像素和。</p>
-<p>$$<br> k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>$$<br>k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></div><div class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
-<h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，相当于图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同，中间像素点权重最高，越远离中心的像素权重越小。（其原理是一个2维高斯函数，可以参考：<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">Gaussian Filter</a>）</p>
-<p>高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
+<h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小，来，数学时间( ╯□╰ )，还记得标准正态分布的曲线吗？</p>
+<p><img src="http://pic.ex2tron.top/cv2_gaussian_kernel_function_theory.jpg" alt=""></p>
+<p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（高斯函数和卷积核生成方式请参考文末的番外小篇）：</p>
+<p>$$<br>k = \left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'gaussian_noise.bmp'</span>)</div><div class="line"><span class="comment"># 均值滤波vs高斯滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)  <span class="comment"># 高斯滤波</span></div></pre></td></tr></table></figure>
-<p>均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
+<p>其实，参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
 <p><img src="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg" alt=""></p>
-<p>GaussianBlur()中参数3是σx，值越大，模糊效果越明显，0代表默认值0.8：<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external">getGaussianKernel()</a></p>
 <h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><p><a href="https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC" target="_blank" rel="external">中值</a>又叫中位数，是所有值排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。</p>
 <p>比如下面这张斑点噪声图，用中值滤波显然更好：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'salt_noise.bmp'</span>, <span class="number">0</span>)</div><div class="line"><span class="comment"># 均值滤波vs中值滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">median = cv2.medianBlur(img, <span class="number">5</span>)  <span class="comment"># 中值滤波</span></div></pre></td></tr></table></figure>
@@ -1189,6 +1125,17 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 双边滤波vs高斯滤波</span></div><div class="line">gau = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></div><div class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" alt=""></p>
 <p>可以看到，双边滤波明显保留了更多边缘信息。</p>
+<h2 id="番外小篇：高斯滤波卷积核"><a href="#番外小篇：高斯滤波卷积核" class="headerlink" title="番外小篇：高斯滤波卷积核"></a>番外小篇：高斯滤波卷积核</h2><p>要解释高斯滤波卷积核是如何生成的，需要先复习下概率论的知识（What？？又是数学( ╯□╰ )）</p>
+<p>一维的高斯函数/正态分布X~N(μ, σ^2)：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})<br>$$<br>当μ=0，σ^2=1时，称为标准正态分布X~N(0,1)：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2})<br>$$<br>二维X/Y相互独立的高斯函数：<br>$$<br>G(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}exp(-\frac{(x-\mu_x)^2+(y-\mu_y)^2}{2\sigma_x\sigma_y})=G(x)G(y)<br>$$</p>
+<p>由上可知，<strong>二维高斯函数具有可分离性</strong>，所以OpenCV分两步计算二维高斯卷积，先水平再垂直，每个方向上都是一维的卷积。OpenCV中这个一维卷积的计算公式类似于上面的一维高斯函数：<br>$$<br>G(i)=\alpha *exp(-\frac{(i-\frac{ksize-1}{2})^2}{2\sigma^2})<br>$$<br>其中i=0…ksize-1，α是一个常数，也称为缩放因子，它使得\(\sum{G(i)}=1\)</p>
+<p>比如我们可以用<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external"><code>cv2.getGaussianKernel(ksize,sigma)</code></a>来生成一维卷积核：</p>
+<ul>
+<li>sigma&lt;=0时，<code>sigma=0.3*((ksize-1)*0.5 - 1) + 0.8</code></li>
+<li>sigma&gt;0时，sigma=sigma</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(cv2.getGaussianKernel(<span class="number">3</span>, <span class="number">0</span>))</div><div class="line"><span class="comment"># 结果：[[0.25][0.5][0.25]]</span></div></pre></td></tr></table></figure>
+<p>生成之后，先进行三次的水平卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]<br>$$<br>然后再进行垂直的三次卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.25 &amp; 0.25 \newline<br>    0.5 &amp; 0.5 &amp; 0.5 \newline<br>   0.25 &amp; 0.25 &amp; 0.25<br>  \end{matrix}<br>  \right] =I×\left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>这就是OpenCV中高斯卷积核的生成方式。其实，OpenCV源码中对小于7×7的核是直接计算好放在数组里面的，这样计算速度会快一点，感兴趣的可以看下源码：<a href="https://github.com/ex2tron/BlogCode/blob/master/Python%2BOpenCV/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/cv2_source_code_getGaussianKernel.cpp" target="_blank" rel="external">getGaussianKernel()</a></p>
+<p>上面矩阵也可以写成：<br>$$<br>\frac{1}{16}\left[<br> \begin{matrix}<br>   1&amp; 2 &amp; 1 \newline<br>   2 &amp; 4 &amp; 2 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>在不知道用什么滤波器好的时候，优先高斯滤波<code>cv2.GaussianBlur()</code>，然后均值滤波<code>cv2.blur()</code></li>
 <li>斑点和椒盐噪声优先使用中值滤波<code>cv2.medianBlur()</code></li>
@@ -3411,10 +3358,10 @@
   
   <entry>
     <title>构建：变量</title>
-    <link href="http://ex2tron.coding.me/2017/09/28/%E6%9E%84%E5%BB%BA%EF%BC%9A%E6%9D%80%E6%AD%BB%E5%8F%98%E9%87%8F/"/>
-    <id>http://ex2tron.coding.me/2017/09/28/构建：杀死变量/</id>
+    <link href="http://ex2tron.coding.me/2017/09/28/%E6%9E%84%E5%BB%BA%EF%BC%9A%E5%8F%98%E9%87%8F/"/>
+    <id>http://ex2tron.coding.me/2017/09/28/构建：变量/</id>
     <published>2017-09-28T13:23:45.000Z</published>
-    <updated>2018-04-09T08:36:37.427Z</updated>
+    <updated>2018-05-08T01:33:27.897Z</updated>
     
     <content type="html"><![CDATA[<p>如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。<a id="more"></a></p>
 <blockquote>
@@ -3423,25 +3370,20 @@
 <hr>
 <p>如果一个变量在代码中很分散，阅读者在同一时间内考虑的代码行数势必会增加，编写者引入Bug的概率也会增大。那么，该如何从减少变量的作用域角度提高代码质量呢？</p>
 <p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
-<h3 id="变量跨度与存活时间"><a href="#变量跨度与存活时间" class="headerlink" title="变量跨度与存活时间"></a>变量跨度与存活时间</h3><h4 id="建议一：把对变量的引用尽可能集中在一起，使变量局部化"><a href="#建议一：把对变量的引用尽可能集中在一起，使变量局部化" class="headerlink" title="建议一：把对变量的引用尽可能集中在一起，使变量局部化"></a>建议一：把对变量的引用尽可能集中在一起，使变量局部化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a = 0; </div><div class="line">b = 0;</div><div class="line">c = 0;</div><div class="line">a = b + c;</div><div class="line">b += 1;</div></pre></td></tr></table></figure>
+<h3 id="变量跨度与存活时间"><a href="#变量跨度与存活时间" class="headerlink" title="变量跨度与存活时间"></a>变量跨度与存活时间</h3><h4 id="建议一：把对变量的引用尽可能集中在一起，使变量局部化"><a href="#建议一：把对变量的引用尽可能集中在一起，使变量局部化" class="headerlink" title="建议一：把对变量的引用尽可能集中在一起，使变量局部化"></a>建议一：把对变量的引用尽可能集中在一起，使变量局部化</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line">a = <span class="number">0</span>; </div><div class="line">b = <span class="number">0</span>;</div><div class="line">c = <span class="number">0</span>;</div><div class="line">a = b + c;</div><div class="line">b += <span class="number">1</span>;</div></pre></td></tr></table></figure>
 <p>跨度（span）是衡量变量不同引用点靠近程度的一种方法。比如说上面的代码，对a的第一次引用和第二次引用之间有2行代码，那么变量a的跨度就是2。引用多次的话，可以取平均跨度。如b的第一次和第二次引用之间行数为1，第二次和第三次引用之间行数为0，所以平均跨度span(b)=(1+0)/2=0.5。</p>
 <p>另外一个概念是：存活时间（live time）。跟跨度类似，不过存活时间只跟变量第一次和最后一次引用有关。比如对于上面代码中的b变量，跨度是0.5，但是存活时间是4条语句。</p>
 <p>显然，我们的目标就是<strong>缩短变量的跨度和存活时间</strong>。如果用这两个概念考察全局变量，就会发现全局变量的跨度和存活时间都很长，这也是为什么避免使用全局变量的原因之一。</p>
 <h3 id="减小作用域的建议"><a href="#减小作用域的建议" class="headerlink" title="减小作用域的建议"></a>减小作用域的建议</h3><h4 id="建议二：把相关语句放在一起"><a href="#建议二：把相关语句放在一起" class="headerlink" title="建议二：把相关语句放在一起"></a>建议二：把相关语句放在一起</h4><p>把变量的引用点集中在一起，使代码易于自上而下的阅读，举例来说：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//跳来跳去的糟糕代码</div><div class="line">MarketingData marketingData;</div><div class="line">SalesData salesData;</div><div class="line">TravelData travelData;</div><div class="line"></div><div class="line">travelData.ComputeWeekly();</div><div class="line">salesData.ComputeWeekly();</div><div class="line">marketingData.ComputeWeekly();</div><div class="line"></div><div class="line">salesData.ComputeAnnually();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line"></div><div class="line">salesData.print();</div><div class="line">travelData.print();</div><div class="line">marketingData.print();</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line"><span class="comment">//跳来跳去的糟糕代码</span></div><div class="line">MarketingData marketingData;</div><div class="line">SalesData salesData;</div><div class="line">TravelData travelData;</div><div class="line"></div><div class="line">travelData.ComputeWeekly();</div><div class="line">salesData.ComputeWeekly();</div><div class="line">marketingData.ComputeWeekly();</div><div class="line"></div><div class="line">salesData.ComputeAnnually();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line"></div><div class="line">salesData.print();</div><div class="line">travelData.print();</div><div class="line">marketingData.print();</div></pre></td></tr></table></figure>
 <p>显然，如果你要想知道marketingData的计算流程，就必须在这段代码的不同行数跳跃。所以，这样组织代码会更好：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//组织良好，从上而下阅读</div><div class="line">MarketingData marketingData;</div><div class="line">marketingData.ComputeWeekly();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line">marketingData.print();</div><div class="line"></div><div class="line">SalesData salesData;</div><div class="line">salesData.ComputeWeekly();</div><div class="line">salesData.ComputeAnnually();</div><div class="line">salesData.print();</div><div class="line"></div><div class="line">TravelData travelData;</div><div class="line">travelData.ComputeWeekly();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">travelData.print();</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//组织良好，从上而下阅读</span></div><div class="line">MarketingData marketingData;</div><div class="line">marketingData.ComputeWeekly();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line">marketingData.print();</div><div class="line"></div><div class="line">SalesData salesData;</div><div class="line">salesData.ComputeWeekly();</div><div class="line">salesData.ComputeAnnually();</div><div class="line">salesData.print();</div><div class="line"></div><div class="line">TravelData travelData;</div><div class="line">travelData.ComputeWeekly();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">travelData.print();</div></pre></td></tr></table></figure>
 <p>《代码大全》中介绍了一种简便的检查相关语句是否组成得当的方法，把你的代码片段打印出来，然后把相关的语句画上框，组织得当的话， 这些框是不会重叠的：</p>
 <p><img src="http://pic.ex2tron.top/good_grouping_related_statements.png" alt="good_grouping_related_statements"></p>
 <h4 id="建议三：把相关语句提取成单独的子程序"><a href="#建议三：把相关语句提取成单独的子程序" class="headerlink" title="建议三：把相关语句提取成单独的子程序"></a>建议三：把相关语句提取成单独的子程序</h4><p>更短的子程序相比长的子程序，变量的跨度和存活时间更小。比如，可以尝试这样重构上面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//重构，提取子程序</div><div class="line">ComputeMarketingData();</div><div class="line"></div><div class="line">ComputeSalesData();</div><div class="line"></div><div class="line">ComputeTravelData();</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//重构，提取子程序</span></div><div class="line">ComputeMarketingData();</div><div class="line"></div><div class="line">ComputeSalesData();</div><div class="line"></div><div class="line">ComputeTravelData();</div></pre></td></tr></table></figure>
 <h4 id="建议四：开始使用最小的作用域，然后根据需求再扩展"><a href="#建议四：开始使用最小的作用域，然后根据需求再扩展" class="headerlink" title="建议四：开始使用最小的作用域，然后根据需求再扩展"></a>建议四：开始使用最小的作用域，然后根据需求再扩展</h4><p>一句话解释就是：<strong>把全局变量转换为成员局部变量要比局部变量转换为全局变量难的多</strong>。因此，在设计程序时，如果对变量的作用域犹豫不决时，优先倾向于最小的作用域。</p>
 <h4 id="建议五：循环开始之前再去初始化循环变量"><a href="#建议五：循环开始之前再去初始化循环变量" class="headerlink" title="建议五：循环开始之前再去初始化循环变量"></a>建议五：循环开始之前再去初始化循环变量</h4><p>一个不好的编程习惯就是在程序开头初始化好循环所使用的变量，如<code>int i = 0,j = 0;</code>。而在很后面才使用到循环。这样做的坏处一是查看循环时需要跳到开头才知道循环变量的值，另外，如果要修改这个循环，往往会忘记同时修改循环变量。</p>
-<p>往期【构建法】系列回顾：</p>
-<ul>
-<li><a href="http://www.lofter.com/lpost/1d7338a1_f50d92d" target="_blank" rel="external">构建法、单点控制</a></li>
-<li><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">构建法、表驱动法</a></li>
-</ul>
 ]]></content>
     
     <summary type="html">
@@ -3948,6 +3890,71 @@
   </entry>
   
   <entry>
+    <title>构建：查表法</title>
+    <link href="http://ex2tron.coding.me/2017/06/13/%E6%9E%84%E5%BB%BA%EF%BC%9A%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
+    <id>http://ex2tron.coding.me/2017/06/13/构建：查表法/</id>
+    <published>2017-06-13T10:54:04.000Z</published>
+    <updated>2018-05-08T00:48:25.753Z</updated>
+    
+    <content type="html"><![CDATA[<p>每次谈到查表，我都会先想到下面这个简单的例子：<a id="more"></a></p>
+<blockquote>
+<p><em>宁在一思进，莫在一思停。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
+</blockquote>
+<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>如果你需要根据月份计算当月的天数（不考虑闰年），你会怎么写？</p>
+<p>如果使用if语句，你的代码可能会像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python示例（其他语言中Switch/case也一样）</span></div><div class="line"><span class="keyword">if</span> (month == <span class="number">1</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">3</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">4</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">5</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">6</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">7</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">8</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">9</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">10</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">11</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">12</span>):</div><div class="line">    day = <span class="number">31</span></div></pre></td></tr></table></figure>
+<p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
+<p>怎么样，2行够简洁了吗？</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
+</blockquote>
+<p>对于简单的情况，逻辑判断更简单和易理解，但数据量和逻辑链增大的时候，查表法在灵活性、可维护性等方面有着显著的优势。</p>
+<p><strong>查表法的核心在于如果构建表</strong>。前面的例子中，月份不重复，以月份为索引建立一个数组即可。但如果逻辑判断是个区间，比如对于下面的考试成绩，应该如何建表呢？</p>
+<p>90-100分：优 | 70-90分：良 | 60-70分：及格 | 60分以下：不及格</p>
+<h3 id="直接查表"><a href="#直接查表" class="headerlink" title="直接查表"></a>直接查表</h3><p>月份的例子就是直接查表，查询的信息（月份）可以直接转为表中的索引，一目了然。下面再看个例子：</p>
+<p>有一个根据汽车速度计算转弯距离的程序：速度30马以下，距离为固定值a；100马以上也为固定值b；31~99之间，每个速度对应1个数值。这时如何建表呢？</p>
+<p><strong>1.重复数据，直接使用键值</strong></p>
+<p>第一种方式可以把a复制31次，100以上也复制多次，那表应该像这样：</p>
+<p><img src="http://pic.ex2tron.top/repeat_key_table_driven_method.jpg" alt=""></p>
+<p>显然，这种方式很蠢，不仅有很多冗余的数据，而且很容易出错。</p>
+<p><strong>2.转换键值</strong></p>
+<p>我们可以用一个函数将键值做下转换：因为0~30是同一值，所以将0~30转成一个键值，100以上转成一个键值，中间的数据本身作为键值。对于这种转换，可以一句话搞定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">newKey = max(min(<span class="number">100</span>, speed), <span class="number">30</span>)</div></pre></td></tr></table></figure>
+<p>其他语言中<code>max/min</code>函数一般在Math相关模块中可以找到。这样完整的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">distanceOfSpeed = [a, n31, n32, ……, n99, b]</div><div class="line">result = distanceOfSpeed[max(min(<span class="number">100</span>, speed), <span class="number">30</span>) - <span class="number">30</span>]</div></pre></td></tr></table></figure>
+<h3 id="阶梯查表"><a href="#阶梯查表" class="headerlink" title="阶梯查表"></a>阶梯查表</h3><p>前面考试成绩的例子，不同的成绩范围对应不同的数据，如同台阶一样：</p>
+<p><img src="http://pic.ex2tron.top/stair_table_look_up_method.jpg" alt=""></p>
+<p>这时可以使用阶梯查表：表内的数据是对应不同的数据范围，而不是对应不同的数据点。阶梯法查表就是循环检查每个区间的上限。当分数第一次超过某个区间的上限时，就可以得到想要的等级（留心端点的值噢：&lt;和&lt;=的区别）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">scoreLimit = [<span class="number">60.0</span>, <span class="number">70.0</span>, <span class="number">90.0</span>, <span class="number">100.0</span>]</div><div class="line">grade = [<span class="string">"不及格"</span>, <span class="string">"及格"</span>, <span class="string">"良"</span>, <span class="string">"优"</span>]</div><div class="line"></div><div class="line">score, index, result = <span class="number">45</span>, <span class="number">0</span>, <span class="string">'优'</span></div><div class="line"><span class="comment"># 这个条件语句很重要噢！</span></div><div class="line"><span class="keyword">while</span> (result == <span class="string">'优'</span> <span class="keyword">and</span> index &lt; len(grade) - <span class="number">1</span>):</div><div class="line">    <span class="keyword">if</span> (score &lt; scoreLimit[index]):</div><div class="line">        result = grade[index]</div><div class="line">    index += <span class="number">1</span></div><div class="line"></div><div class="line">print(result) <span class="comment"># 不及格</span></div></pre></td></tr></table></figure>
+<p>这种阶梯方法很适合处理区间、等级评价和键值无规则的场合。</p>
+<p>除了上面两种方法外，还有索引查表法：相当于书的目录。先从目录中找到页码，再根据页码找到对应的记录。在程序中，就是先建一张索引表，从索引表中找出值，再在主表中查到数据，数据库经常用到，这里不详细介绍了。</p>
+<p><strong>另外，可以将表存储在外部，这样可以在不更改逻辑代码的情况下，改变表的值。</strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/blob/master/Build/build_table_driven_methods.py" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">旧版：构建法——表驱动法</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;每次谈到查表，我都会先想到下面这个简单的例子：
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.coding.me/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="构建法" scheme="http://ex2tron.coding.me/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+    
+      <category term="表驱动法" scheme="http://ex2tron.coding.me/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
+    
+      <category term="查表法" scheme="http://ex2tron.coding.me/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【视觉与图像】摄像头篇2：焦距和视角</title>
     <link href="http://ex2tron.coding.me/2017/05/16/%E3%80%90%E8%A7%86%E8%A7%89%E4%B8%8E%E5%9B%BE%E5%83%8F%E3%80%91%E6%91%84%E5%83%8F%E5%A4%B4%E7%AF%872%EF%BC%9A%E7%84%A6%E8%B7%9D%E5%92%8C%E8%A7%86%E8%A7%92/"/>
     <id>http://ex2tron.coding.me/2017/05/16/【视觉与图像】摄像头篇2：焦距和视角/</id>
@@ -4090,6 +4097,73 @@
     
     
       <category term="CCD" scheme="http://ex2tron.coding.me/tags/CCD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>构建：单点控制</title>
+    <link href="http://ex2tron.coding.me/2017/04/23/%E6%9E%84%E5%BB%BA%EF%BC%9A%E5%8D%95%E7%82%B9%E6%8E%A7%E5%88%B6/"/>
+    <id>http://ex2tron.coding.me/2017/04/23/构建：单点控制/</id>
+    <published>2017-04-23T06:57:09.000Z</published>
+    <updated>2018-05-08T01:33:48.519Z</updated>
+    
+    <content type="html"><![CDATA[<p>常常被程序猿忽略的一个问题是：其实你只在10％时间里写代码，90％的时间在调试和阅读代码！！！<a id="more"></a> </p>
+<blockquote>
+<p><em>So do you want to take a leap of faith or become an old man, filled with regret, waiting for die alone?</em>——<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">《Inception》</a><br><br><em>你愿意放手一搏，还是要等到年华老去，心中充满遗憾，孤单地迈向黄泉路？</em>——《<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">盗梦空间</a>》</p>
+</blockquote>
+<p>所以，程序猿的痛点就是：Bug。显然，掌握良好的软件构建思想是很重要的辣~ o(<em>￣▽￣</em>)o。</p>
+<blockquote>
+<p>任何一种能够对可能发生改变的事物进行集中控制的技术，都是减少维护工作量的好技术。（代码大全，P308）</p>
+</blockquote>
+<p>以下面几种常见的提升软件质量的方法来说：</p>
+<h4 id="建议一：使用有具体含义的常量名、避免“神秘数值”"><a href="#建议一：使用有具体含义的常量名、避免“神秘数值”" class="headerlink" title="建议一：使用有具体含义的常量名、避免“神秘数值”"></a>建议一：使用有具体含义的常量名、避免“神秘数值”</h4><p>如果你在看代码的时候，突然冒出一个10000、9206、‘a’，而且旁边没有注释，你一定会说：what the fu*k( ╯□╰ )。即使是源码的编写者，在隔一段时间再去看他自己的代码时，也不会马上理解它的意思。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line"><span class="comment">//含义不明确，且不易修改的代码</span></div><div class="line"><span class="keyword">int</span>[] ReceivedDatas = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000</span>];</div><div class="line"></div><div class="line"><span class="comment">//含义更加清晰，且易修改的代码</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_RECEIVED_LENGTH = <span class="number">1000</span>;</div><div class="line"><span class="keyword">int</span>[] ReceivedDatas = <span class="keyword">new</span> <span class="keyword">int</span>[MAX_RECEIVED_LENGTH];</div></pre></td></tr></table></figure>
+<p>这样做的好处是显而易见的：</p>
+<ul>
+<li><strong>修改会变得更容易</strong>：当接收的最大值从1000变到2000的时候，我们就不需要找出代码中所有的1000，一个个把他们改成2000</li>
+<li><strong>提高代码可读性</strong>：即使你代码里的某个数你认为永远不会变化，这样方法也有助于提高可读性</li>
+</ul>
+<h4 id="建议二：使用结构体组织数据"><a href="#建议二：使用结构体组织数据" class="headerlink" title="建议二：使用结构体组织数据"></a>建议二：使用结构体组织数据</h4><p>在<a href="https://baike.baidu.com/item/OOP/1152915?fr=aladdin" target="_blank" rel="external">OOP</a>面向对象编程中，类其实是一个组织、封装数据成员和操作的绝佳手段。但有时使用结构体来组织并操作<strong>成块的数据</strong>会更加方便。</p>
+<p>举例来说，对于下面一堆变量：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line"><span class="comment">//无组织，混乱的一堆变量</span></div><div class="line">id = txtId;</div><div class="line">name = txtName;</div><div class="line">score = txtScore;</div><div class="line">bonus = txtBonus;</div><div class="line">department = txtDepartment;</div><div class="line">payment = txtPayment;</div></pre></td></tr></table></figure>
+<p>我们看不出变量的含义及其数据关联，但如果我们使用结构体来组织这些变量：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用结构体组织过的变量</span></div><div class="line">student.id = txtId;</div><div class="line">student.name = txtName;</div><div class="line">student.score = txtScore;</div><div class="line"></div><div class="line">employee.bonus = txtBonus;</div><div class="line">employee.department = txtDepartment;</div><div class="line">employee.payment = txtPayment;</div></pre></td></tr></table></figure>
+<p>使用结构体来组织数据，除了可以从中看出更多的数据信息之外，还有下面的好处：</p>
+<ul>
+<li><strong>简化对数据块的操作：</strong></li>
+</ul>
+<p>如果采用之前不用结构体的方法，那交换两组数据的代码量就有可能是：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//交换两组变量的值</span></div><div class="line">tempId = id;</div><div class="line">tempName = name;</div><div class="line">tempScore = score;</div><div class="line"></div><div class="line">id = newId;</div><div class="line">name = newName;</div><div class="line">score = newScore;</div><div class="line"></div><div class="line">newId = tempId;</div><div class="line">newName = tempName;</div><div class="line">newScore = tempScore;</div></pre></td></tr></table></figure>
+<p>显然，这种方式实在是太可怕了，这还只是3个变量的情况。那使用结构体呢？</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用结构体交换两组变量</span></div><div class="line">tempStudent = oldStudent;</div><div class="line">oldStudent = newStudent;</div><div class="line">newStudent = tempStudent;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>简化参数列表：</strong></li>
+</ul>
+<p>如果说我们有一个处理Student这一组变量的函数，不使用结构体：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//未使用结构体调用函数</span></div><div class="line">DealStudent(<span class="keyword">int</span> id,<span class="keyword">string</span> name,<span class="keyword">float</span> score,<span class="keyword">string</span> phone,<span class="keyword">string</span> address);</div></pre></td></tr></table></figure>
+<p>显然，我们需要将参数一个个传入，并且位置一一对应。而使用结构体就要简单很多：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用结构体调用函数</span></div><div class="line">DealStudent(Student student);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>单点控制，减少维护：</strong></li>
+</ul>
+<p>在上面的简化数据块和参数列表的例子中，如果我们要给学生添加一个班级变量，假如不使用结构体，我们就<strong>需要对每一处调用这组变量的地方都做出改动。显然，改动越大，变化越大，出错的概率也会越大。</strong></p>
+<p>而使用结构体，我们只需要在定义结构体的地方，增加一个班级变量。如果有子函数处理，也只需要增加对班级变量的处理。因此，不仅使代码更加容易阅读，提高了相关变量的关联性，也减少了维护的成本。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;常常被程序猿忽略的一个问题是：其实你只在10％时间里写代码，90％的时间在调试和阅读代码！！！
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.coding.me/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="构建法" scheme="http://ex2tron.coding.me/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+    
+      <category term="变量" scheme="http://ex2tron.coding.me/tags/%E5%8F%98%E9%87%8F/"/>
+    
+      <category term="单点控制" scheme="http://ex2tron.coding.me/tags/%E5%8D%95%E7%82%B9%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   
