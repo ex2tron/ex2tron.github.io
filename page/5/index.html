@@ -735,7 +735,7 @@ p.s.本文所有的图片均来自TMDB，如...
 <!-- Table of Contents -->
 
   
-    <article id="post-Hexo-Github-Pages轻松搭博客-2：在Github上部署"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Hexo-Github-Pages轻松搭博客-3：绑定独立域名"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -743,7 +743,7 @@ p.s.本文所有的图片均来自TMDB，如...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/">Hexo+Github Pages轻松搭博客(2)：在Github上部署</a>
+      <a class="article-title" href="/2017/09/13/Hexo-Github-Pages轻松搭博客-3：绑定独立域名/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a>
     </h1>
   
 
@@ -751,8 +751,8 @@ p.s.本文所有的图片均来自TMDB，如...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/" class="article-date">
-	  <time datetime="2017-09-13T12:15:47.000Z" itemprop="datePublished">September 13, 2017</time>
+	Posted on <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-3：绑定独立域名/" class="article-date">
+	  <time datetime="2017-09-13T13:25:24.000Z" itemprop="datePublished">September 13, 2017</time>
 	</a>
 
       
@@ -763,15 +763,23 @@ p.s.本文所有的图片均来自TMDB，如...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！
-如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在/var/www/html/下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。
+            嫌username.github.io不够高大上，来个高大上的独立域名吧。
+购买域名域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开万网主页：
 
-关联Github首先登陆Github，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，username必须与你的账户名相同，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。新建时注意勾选”Initializ...
+查找你想购买的域名，比如我购买ex2tron.top这个域名。.top域名的价格还是很便宜的，划算：
+
+购买需要登陆阿里云的账号，购买域名后，按照提示进行实名认证和拍照备案，认证过程需要几天。
+域名解析域名购买认证完成后，登陆阿里云控制台，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：
+
+选择你的域名，点击”解析设置”，我们添加三条解析：
+
+记录类型：CNAME，主机记录：www，路线：默认，记录值：username.github.io
+记录类型：A，主机记录：@，路线：默认，记录值：192.3...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/#more">Continue Reading →</a>
+            <a href="/2017/09/13/Hexo-Github-Pages轻松搭博客-3：绑定独立域名/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -800,7 +808,7 @@ p.s.本文所有的图片均来自TMDB，如...
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next</a>
   </nav>
 
 </section>
@@ -997,7 +1005,7 @@ p.s.本文所有的图片均来自TMDB，如...
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1007,7 +1015,7 @@ p.s.本文所有的图片均来自TMDB，如...
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 12px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 12px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/logistic/" style="font-size: 12px;">logistic</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/三角定位/" style="font-size: 10px;">三角定位</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 12px;">变量</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像处理/" style="font-size: 16px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 14px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 14px;">神经网络</a> <a href="/tags/绘图/" style="font-size: 12px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 12px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 12px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 12px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
+      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 12px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 14px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/logistic/" style="font-size: 12px;">logistic</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/三角定位/" style="font-size: 10px;">三角定位</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 12px;">变量</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像处理/" style="font-size: 16px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 14px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 14px;">神经网络</a> <a href="/tags/绘图/" style="font-size: 12px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 12px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 12px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 12px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
     </div>
   </div>
 

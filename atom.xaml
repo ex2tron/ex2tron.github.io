@@ -2516,7 +2516,7 @@
     <link href="http://ex2tron.coding.me/2017/12/05/%E3%80%90%E7%89%87%E5%8D%95%E3%80%91%E6%BC%AB%E5%A8%81%E5%AE%87%E5%AE%99%E7%94%B5%E5%BD%B1%E5%90%88%E9%9B%86/"/>
     <id>http://ex2tron.coding.me/2017/12/05/【片单】漫威宇宙电影合集/</id>
     <published>2017-12-05T14:44:35.000Z</published>
-    <updated>2018-06-19T06:49:03.581Z</updated>
+    <updated>2018-06-19T09:11:24.374Z</updated>
     
     <content type="html"><![CDATA[<p>十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！<a id="more"></a></p>
 <blockquote>
@@ -2528,7 +2528,7 @@
 </blockquote>
 <p>MCU观影指南：</p>
 <h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><ul>
-<li><p>2008<a href="ed2k://|file|Iron.Man.%E9%92%A2%E9%93%81%E4%BE%A0.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.X264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|2361675752|A57750EDD6B523F23E23DF9D123FA998|h=3PEOFILFEMS624ZBPUHMPBMDQEQ6FR4L|/" target="_blank" rel="external">《钢铁侠1》</a>、</p>
+<li><p>2008<a href="ed2k://|file|Iron.Man.%E9%92%A2%E9%93%81%E4%BE%A0.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.X264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|2361675752|A57750EDD6B523F23E23DF9D123FA998|h=3PEOFILFEMS624ZBPUHMPBMDQEQ6FR4L|/" target="_blank" rel="external">《钢铁侠1》</a></p>
 </li>
 <li><p>2008<a href="ed2k://|file|The.Incredible.Hulk.2008.无敌浩克.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|2057353900|d922864d91ddc2d951e0b7a0e8ce92d5|h=sjk76hnh4i7jcr4iawdgxgt5qrplkgwq|/" target="_blank" rel="external">《无敌浩克》</a></p>
 </li>
@@ -3499,32 +3499,70 @@
   </entry>
   
   <entry>
+    <title>Hexo+Github Pages轻松搭博客(3)：绑定独立域名</title>
+    <link href="http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-3%EF%BC%9A%E7%BB%91%E5%AE%9A%E7%8B%AC%E7%AB%8B%E5%9F%9F%E5%90%8D/"/>
+    <id>http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-3：绑定独立域名/</id>
+    <published>2017-09-13T13:25:24.000Z</published>
+    <updated>2018-06-19T11:50:13.558Z</updated>
+    
+    <content type="html"><![CDATA[<p>嫌<code>username.github.io</code>不够高大上，来个高大上的独立域名吧。<a id="more"></a></p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
+<p><img src="" alt=""></p>
+<p>查找你想购买的域名，比如我购买ex2tron.top这个域名。.top域名的价格还是很便宜的，划算：</p>
+<p><img src="" alt=""></p>
+<p>购买需要登陆阿里云的账号，购买域名后，按照提示进行实名认证和拍照备案，认证过程需要几天。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名购买认证完成后，登陆<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云控制台</a>，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：</p>
+<p><img src="" alt=""></p>
+<p>选择你的域名，点击”解析设置”，我们添加三条解析：</p>
+<ul>
+<li>记录类型：CNAME，主机记录：www，路线：默认，记录值：username.github.io</li>
+<li>记录类型：A，主机记录：@，路线：默认，记录值：192.30.252.153</li>
+<li>记录类型：A，主机记录：@，路线：默认，记录值：192.30.252.154</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;嫌&lt;code&gt;username.github.io&lt;/code&gt;不够高大上，来个高大上的独立域名吧。
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.coding.me/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="Hexo" scheme="http://ex2tron.coding.me/tags/Hexo/"/>
+    
+      <category term="Github" scheme="http://ex2tron.coding.me/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo+Github Pages轻松搭博客(2)：在Github上部署</title>
     <link href="http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-2%EF%BC%9A%E5%9C%A8Github%E4%B8%8A%E9%83%A8%E7%BD%B2/"/>
     <id>http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-2：在Github上部署/</id>
     <published>2017-09-13T12:15:47.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-06-19T09:17:05.230Z</updated>
     
     <content type="html"><![CDATA[<p>使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！<a id="more"></a></p>
-<p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<em>/var/www/html/</em>下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</p>
+<p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<code>/var/www/html/</code>下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</p>
 <hr>
-<h2 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h2><p>首先登陆<a href="https://github.com/" target="_blank" rel="external">Github</a>，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，<strong>username必须与你的账户名相同</strong>，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。<strong>新建时注意勾选”<em>Initialize this repository with a README</em>“</strong>，因为这个仓库必须不能为空。</p>
+<h2 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h2><p>首先登陆<a href="https://github.com/" target="_blank" rel="external">Github</a>，没有账号的话，先注册一个。新建一个名为<code>username.github.io</code>的仓库，<strong>username必须与你的账户名相同</strong>，比如我的就是<code>ex2tron.github.io</code>，这就是你博客的域名地址了（绑定独立域名之后再说）。<strong>新建时注意勾选”<em>Initialize this repository with a README</em>“</strong>，因为这个仓库必须不能为空。</p>
 <blockquote>
 <p>如果你是git新用户的话，推荐看：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="external">廖雪峰的Git教程-远程仓库</a></p>
 </blockquote>
 <p><img src="http://pic.ex2tron.top/create_github_pages_repository.png" alt="create_github_pages_repository"></p>
 <p>接下来打开博客目录下的_config.yml配置文件，定位到最后的deploy选项，修改如下：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:ex2tron/ex2tron.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure></p>
-<p>注意冒号后面有个空格，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<p><strong>注意冒号后面有个空格</strong>，不然会出错滴~~~配置好之后，使用下面的命令就可以部署到Github上了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
 <p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io" target="_blank" rel="external">https://ex2tron.github.io</a>）就可以访问你的博客了，简单快速高效！</p>
 <h2 id="发布新博客"><a href="#发布新博客" class="headerlink" title="发布新博客"></a>发布新博客</h2><p>博客搭建起来之后，就可以用Markdown写博客辣，使用下面的命令，创建新博客（如名为：我的第一篇博客）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">'我的第一篇博客'</span></div></pre></td></tr></table></figure></p>
-<p>此命令会在博客目录\source_posts\h下生成“我的第一篇博客.md”文件，这就是你的博客源文件啦，文件开头如下，记得冒号后面有空格噢，不然会出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 我的第一篇博客</div><div class="line">date: 2017-09-13 20:15:47</div><div class="line">tags: #文章标签，格式：[1,2,3]</div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>此命令会在博客目录<code>\source\_posts\</code>下生成“我的第一篇博客.md”文件，这就是你的博客源文件啦，文件开头如下，记得冒号后面有空格噢，不然会出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 我的第一篇博客</div><div class="line">date: 2017-09-13 20:15:47</div><div class="line">tags: #文章标签，格式：[1,2,3]</div><div class="line">---</div></pre></td></tr></table></figure></p>
 <p>不熟悉Markdown语法的可以看：<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown 语法说明</a>。写完之后依然使用之前的三条命令发布：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
 <p>后面两条指令也可以简化为一条：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g -d</div></pre></td></tr></table></figure></p>
 <h2 id="常出现的问题"><a href="#常出现的问题" class="headerlink" title="常出现的问题"></a>常出现的问题</h2><ol>
 <li><p>在hexo d进行部署时，如果出现ERROR Deployer not found: git的问题，可以先用下面的命令修复：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 </li>
-<li><p>如果你没配置过ssh导致部署失败（可以通过ssh -T username@example.com来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
+<li><p>如果你没配置过ssh导致部署失败（可以通过<code>ssh -T username@example.com</code>来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
 </li>
 </ol>
 ]]></content>
@@ -3549,11 +3587,11 @@
     <link href="http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-1/"/>
     <id>http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
-    <updated>2017-12-20T09:20:00.144Z</updated>
+    <updated>2018-06-19T09:13:07.237Z</updated>
     
     <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
 <blockquote>
-<p>废话区域：我在接触Hexo（可以读作Hack So）之前，绝对没少尝试建立一个完全自由、自己说了算的独立博客：WordPress定位重量级，功能强大，生成的是动态网站，依赖数据库……太繁琐了，放弃~而Jekyll和Hexo都是静态建站工具，但Jekyll的依赖项也很多，也不简约，不想用~最后才是名气相对不高的Hexo，相信我，熟练的情况下，10分钟就可以搭出来：</p>
+<p>废话区域：我在接触Hexo（可以读作Hack So）之前，绝对没少尝试建立一个完全自由、自己说了算的独立博客：WordPress定位重量级，功能强大，生成的是动态网站，依赖数据库……太繁琐了，放弃~而Jekyll和Hexo都是静态建站工具，但Jekyll的依赖项也很多，也不简约，不想用~最后才是名气相对不高的Hexo，相信我，熟练的情况下，10分钟就可以搭出来。</p>
 </blockquote>
 <hr>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是一个免费的静态Blog生成工具。简单来说，就是把你写的Markdown博客文件生成静态网页，把这个网页放在Github或者你自己的服务器上就可以快速访问了。软件界，从来不缺自动化工具(ง •_•)ง</p>
