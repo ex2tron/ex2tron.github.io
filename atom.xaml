@@ -3503,27 +3503,35 @@
     <link href="http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-3%EF%BC%9A%E7%BB%91%E5%AE%9A%E7%8B%AC%E7%AB%8B%E5%9F%9F%E5%90%8D/"/>
     <id>http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-3：绑定独立域名/</id>
     <published>2017-09-13T13:25:24.000Z</published>
-    <updated>2018-06-19T11:50:13.558Z</updated>
+    <updated>2018-06-19T12:16:43.881Z</updated>
     
-    <content type="html"><![CDATA[<p>嫌<code>username.github.io</code>不够高大上，来个高大上的独立域名吧。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
-<p><img src="" alt=""></p>
-<p>查找你想购买的域名，比如我购买ex2tron.top这个域名。.top域名的价格还是很便宜的，划算：</p>
-<p><img src="" alt=""></p>
-<p>购买需要登陆阿里云的账号，购买域名后，按照提示进行实名认证和拍照备案，认证过程需要几天。</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名购买认证完成后，登陆<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云控制台</a>，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：</p>
-<p><img src="" alt=""></p>
+<p><img src="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg" alt=""></p>
+<p>查找你想购买的域名，比如我购买<code>`ex2tron.top</code>这个域名。.top域名的价格还是很便宜的，划算：</p>
+<p><img src="http://pic.ex2tron.top/hexo_wanwang_top_domain_price.png" alt=""></p>
+<p>购买需要登陆阿里云的账号。购买成功后，按照提示进行实名认证和拍照备案，认证过程需要几天。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名认证完成后，登陆<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云控制台</a>，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：</p>
+<p><img src="http://pic.ex2tron.top/hexo_dns_domain_aliyun_navigation.jpg" alt=""></p>
 <p>选择你的域名，点击”解析设置”，我们添加三条解析：</p>
 <ul>
-<li>记录类型：CNAME，主机记录：www，路线：默认，记录值：username.github.io</li>
-<li>记录类型：A，主机记录：@，路线：默认，记录值：192.30.252.153</li>
-<li>记录类型：A，主机记录：@，路线：默认，记录值：192.30.252.154</li>
+<li>记录类型：CNAME，主机记录：www，路线：默认，记录值：<code>username.github.io</code></li>
+<li>记录类型：A，主机记录：@，路线：默认，记录值：<code>192.30.252.153</code></li>
+<li>记录类型：A，主机记录：@，路线：默认，记录值：<code>192.30.252.154</code></li>
 </ul>
+<p><img src="http://pic.ex2tron.top/hexo_add_new_dns_for_new_domain.jpg" alt=""></p>
+<p>（图上文字小的话，可以点击查看大图）</p>
+<p><img src="http://pic.ex2tron.top/hexo_github_dns_domain_settings.jpg" alt=""></p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>设置完成后，在本地的hexo博客的source目录下，新建一个名为CNAME的文件（没有任何后缀），编辑文件内容为你的域名，如<code>ex2tron.top</code>。这里如果在域名上加<code>www</code>的话，只能用<code>www.ex2tron.top</code>来访问，所以建议不要加<code>www</code>。</p>
+<p><img src="http://pic.ex2tron.top/hexo_source_directory_cname_file.jpg" alt=""></p>
+<p>配置完成后，重新发布博客就可以用独立域名<a href="http://ex2tron.top" target="_blank" rel="external">ex2tron.top</a>来访问博客辣( •̀ ω •́ )✧：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://blog.csdn.net/linshuhe1/article/details/73013730" target="_blank" rel="external">Hexo个人免费博客(五) 使用自己的域名</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;嫌&lt;code&gt;username.github.io&lt;/code&gt;不够高大上，来个高大上的独立域名吧。
+      &lt;p&gt;嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。
     
     </summary>
     
