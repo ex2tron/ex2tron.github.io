@@ -3503,7 +3503,7 @@
     <link href="http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2-3%EF%BC%9A%E7%BB%91%E5%AE%9A%E7%8B%AC%E7%AB%8B%E5%9F%9F%E5%90%8D/"/>
     <id>http://ex2tron.coding.me/2017/09/13/Hexo-Github-Pages轻松搭博客-3：绑定独立域名/</id>
     <published>2017-09-13T13:25:24.000Z</published>
-    <updated>2018-06-19T12:16:43.881Z</updated>
+    <updated>2018-06-19T12:23:22.670Z</updated>
     
     <content type="html"><![CDATA[<p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
@@ -3522,7 +3522,7 @@
 <p><img src="http://pic.ex2tron.top/hexo_add_new_dns_for_new_domain.jpg" alt=""></p>
 <p>（图上文字小的话，可以点击查看大图）</p>
 <p><img src="http://pic.ex2tron.top/hexo_github_dns_domain_settings.jpg" alt=""></p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>设置完成后，在本地的hexo博客的source目录下，新建一个名为CNAME的文件（没有任何后缀），编辑文件内容为你的域名，如<code>ex2tron.top</code>。这里如果在域名上加<code>www</code>的话，只能用<code>www.ex2tron.top</code>来访问，所以建议不要加<code>www</code>。</p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>设置完成后，在本地的hexo博客的source目录下，新建一个名为CNAME的文件（没有任何后缀），编辑文件内容为你的域名，如<code>ex2tron.top</code>。这里如果在域名上加<code>www</code>的话，访问时会跳转到<code>www.ex2tron.top</code>，为了简洁起见，我这里就不加了。</p>
 <p><img src="http://pic.ex2tron.top/hexo_source_directory_cname_file.jpg" alt=""></p>
 <p>配置完成后，重新发布博客就可以用独立域名<a href="http://ex2tron.top" target="_blank" rel="external">ex2tron.top</a>来访问博客辣( •̀ ω •́ )✧：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
