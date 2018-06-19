@@ -13,6 +13,8 @@
   <title>ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+    <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
   
   
   
@@ -26,7 +28,7 @@
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
-  <link rel="icon" href="//img/bookshelf.ico">
+  <link rel="icon" href="/img/bookshelf.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -149,18 +151,16 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何调整图片的亮度和对比度。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/10/Python-OpenCV教程番外篇6：亮度与对比度/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_contrast_brightness.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习如何调整图片的亮度和对比度。图片等可到源码处下载。
 
 亮度与对比度亮度调整是将图像像素的强度整体变大/变小，对比度调整指的是图像暗处的像素强度变低，亮出的变高，从而拓宽某个区域内的显示精度。
 OpenCV中亮度和对比度应用这个公式来计算：g(x) = αf(x) + β，其中：α(&gt;0)、β常称为增益与偏置值，分别控制图片的对比度和亮度。
 
-经验之谈：此处对α/β控制对比度和亮度有争议，具体请参考：OpenCV关于对比度和亮度的误解
-
-1234567img = cv2.imread('lena.jpg')# 此处需注意，请参考后面的解释res = np.uint8(np.clip((1.5 * img + 10), 0, 255))tmp = np.hstack((img, ...
-          
+经验之谈：此处对α/β控制对比度和亮度有...
 
         
           <p class="article-more-link">
@@ -214,19 +214,18 @@ OpenCV中亮度和对比度应用这个公式来计算：g(x) = αf(x) + β，�
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何用鼠标实时绘图。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/09/Python-OpenCV教程番外篇5：鼠标绘图/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习如何用鼠标实时绘图。图片等可到源码处下载。
 
 目标
 捕获鼠标事件
 OpenCV函数：cv2.setMouseCallback()
 
 教程知道鼠标在哪儿OpenCV中，我们需要创建一个鼠标的回调函数来知道鼠标当前的位置，当前的事件如左键按下、左键释放或是右键单击等等，然后执行相应的功能。
-使用cv2.setMouseCallback()来创建鼠标的回调函数，比如我们在左键单击的时候，打印出当前鼠标的位置：
-12345678910111213141516171819import cv2import numpy as np# 鼠标的回调函数def mouse_event(event, x, y, flags, param):    # 通过event判断具体是什么事件，这里是左键按下  ...
-          
+使用cv2.setMouseCallback()来创建鼠标的回调函数，比如我们在左键单击的时候，打印出...
 
         
           <p class="article-more-link">
@@ -280,10 +279,11 @@ OpenCV函数：cv2.setMouseCallback()
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习画线、圆和矩形等多种几何形状，给图片添加文字。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/09/Python-OpenCV教程8：绘图功能/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习画线、圆和矩形等多种几何形状，给图片添加文字。图片等可到源码处下载。
 
 目标
 绘制各种几何形状、添加文字
@@ -292,14 +292,7 @@ OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.put
 教程参数说明绘制形状的函数有一些共同的参数，提前在此说明一下：
 
 img：要绘制形状的图片
-color：绘制的颜色，绘制彩色就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行
-thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，传入-1表示填充形状
-
-
-模块导入和显示图片的通用代码，相信你已经很熟悉了，为节约篇幅，后面我会省略掉噢：
-
-123456import cv2import ...
-          
+color：绘制的颜色，绘制...
 
         
           <p class="article-more-link">
@@ -353,10 +346,11 @@ thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何旋转、平移和缩放图片，了解仿射/透视变换。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/08/Python-OpenCV教程7：图像几何变换/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习如何旋转、平移和缩放图片，了解仿射/透视变换。图片等可到源码处下载。
 
 目标
 实现旋转、平移和缩放图片
@@ -364,8 +358,7 @@ thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，
 OpenCV函数：cv2.resize(), cv2.warpAffine(), cv2.warpPerspective()
 
 教程缩放图片缩放就是调整图片的大小，使用cv2.resize()函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：
-12345678910111213import cv2import numpy as npimport matplotlib.pyplot as pltimg = cv2.imread('drawing.jpg')# 按照指定的宽度、高度缩放图片res = cv2.resize(img, (132, 150)...
-          
+12345...
 
         
           <p class="article-more-link">
@@ -419,18 +412,15 @@ OpenCV函数：cv2.resize(), cv2.warpAffine(), cv2.warpPerspective()
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/08/Python-OpenCV教程番外篇4：Otsu阈值法/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。
 Otsu阈值法（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？
 什么是双峰图片？双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，如黑色点0有多少个等等，后面会详细介绍。
 
-Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，算法详解：Otsu’s Method(wikipedia)
-代码示例下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：
-另外，对含噪点的图像，先进行滤波操作效果会更好。
-1234567891011121314import cv2fro...
-          
+Otsu算法假设这副图片由前景色和背景色组成，通过统计学...
 
         
           <p class="article-more-link">
@@ -484,10 +474,11 @@ Otsu算法假设这副图片由前景色和背景色组成，通过统计学方�
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习使用不同的阈值方法”二值化”图像。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/07/Python-OpenCV教程6：阈值分割/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习使用不同的阈值方法”二值化”图像。图片等可到源码处下载。
 
 目标
 使用固定阈值、自适应阈值和Otsu阈值法”二值化”图像
@@ -495,8 +486,7 @@ OpenCV函数：cv2.threshold(), cv2.adaptiveThreshold()
 
 教程固定阈值分割固定阈值分割很直接，一句话说就是像素点值大于阈值一个值，小于阈值是另外一个值。
 
-12345678910import cv2import matplotlib.pyplot as plt# 灰度图读入img = cv2.imread('gradient.jpg', 0)# 阈值分割ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)cv2.imshow('thresh', th)cv2...
-          
+12345678910import cv2import matplo...
 
         
           <p class="article-more-link">
@@ -616,10 +606,11 @@ cv2.cvtColor()用来进行颜色模型转换，参数1是要...
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/07/Python-OpenCV教程4：图像基本操作/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。图片等可到源码处下载。
 
 目标
 访问和修改图片像素点的值
@@ -629,11 +620,7 @@ cv2.cvtColor()用来进行颜色模型转换，参数1是要...
 
 教程获取和修改像素点值我们先读入一张图片：
 123import cv2img = cv2.imread('lena.jpg')
-通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R三个值的列表，对于灰度图，只有一个值：
-123456px = img[100, 100]print(px)  # [119 108 201]# 只获取蓝色blue通道的值px_blue = img[100, 100, 0]print(px_blue)  # 119
-
-经验之谈：还记得吗？行对应的是y...
-          
+通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R...
 
         
           <p class="article-more-link">
@@ -687,10 +674,11 @@ cv2.cvtColor()用来进行颜色模型转换，参数1是要...
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习使用滑动条动态调整参数。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/06/Python-OpenCV教程番外篇3：滑动条/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习使用滑动条动态调整参数。图片等可到源码处下载。
 
 目标
 创建和使用滑动条
@@ -699,13 +687,7 @@ OpenCV函数：cv2.createTrackbar(), cv2.getTrackbarPos()
 教程滑动条的使用首先我们需要创建一个滑动条，如cv2.createTrackbar(&#39;R&#39;,&#39;image&#39;,0,255,call_back)，其中
 
 参数1：滑动条的名称
-参数2：所在窗口的名称
-参数3：当前的值
-参数4：最大值
-参数5：回调函数名称，回调函数默认有一个表示当前值的参数
-
-创建好之后，可以在回调函数中获取滑动条的值，也可以用：cv2.getTrackbarPos()得到，其中，参数1是滑动条的名称，参数2是窗口的名称。下面我们实现一个RGB的调色板，理解下函...
-          
+参数2...
 
         
           <p class="article-more-link">
@@ -865,6 +847,10 @@ OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
           
    		
           
+     			  <li><a href="https://weibo.com/ex2tron/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
      			  <li><a href="https://twitter.com/ex2tron" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
           
    		
@@ -891,6 +877,109 @@ OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
 
   
     
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/03/15/【片单】推荐几部优秀的传记电影/">【片单】推荐几部优秀的传记电影</a></h6>
+              <span>March 15, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/">Python+OpenCV教程20：Shi-Tomasi角点检测</a></h6>
+              <span>February 17, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/02/16/Python-OpenCV教程19：Harris角点检测/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_corner_type.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/02/16/Python-OpenCV教程19：Harris角点检测/">Python+OpenCV教程19：Harris角点检测</a></h6>
+              <span>February 16, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/02/15/Python-OpenCV教程18：理解特征/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_features.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/02/15/Python-OpenCV教程18：理解特征/">Python+OpenCV教程18：理解特征</a></h6>
+              <span>February 15, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/">Python+OpenCV教程17：霍夫变换</a></h6>
+              <span>December 28, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2017/12/27/Python-OpenCV教程16：模板匹配/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_template_matching.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/27/Python-OpenCV教程16：模板匹配/">Python+OpenCV教程16：模板匹配</a></h6>
+              <span>December 27, 2017</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
@@ -898,6 +987,15 @@ OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
     </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 12px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 12px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/logistic/" style="font-size: 12px;">logistic</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/三角定位/" style="font-size: 10px;">三角定位</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 12px;">变量</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像处理/" style="font-size: 16px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 14px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 14px;">神经网络</a> <a href="/tags/绘图/" style="font-size: 12px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 12px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 12px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 12px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
+    </div>
+  </div>
 
   
 </aside>

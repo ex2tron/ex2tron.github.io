@@ -13,6 +13,8 @@
   <title>ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+    <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
   
   
   
@@ -26,7 +28,7 @@
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
-  <link rel="icon" href="//img/bookshelf.ico">
+  <link rel="icon" href="/img/bookshelf.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -149,13 +151,13 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            计算凸包及更多轮廓特征。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/20/Python-OpenCV教程番外篇10：凸包及更多轮廓特征/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_understand_convex.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          计算凸包及更多轮廓特征。图片等可到源码处下载。
 多边形逼近前面我们学习过最小外接矩和最小外接圆，那么可以用一个最小的多边形包围物体吗？当然可以：
- 123456789101112# 1.先找到轮廓img = cv2.imread('unregular.jpg', 0)_, thresh = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)image, contours, hierarchy = cv2.findContours(thresh, 3, 2)cnt = contours[0]# 2.进行多边形逼近，得到多边形的角点approx = cv2.approxPolyDP(cnt, 3, True)# 3...
-          
+ 123456789101112# 1.先找到轮廓img = cv2.imread('unregular.jpg', 0)_, thresh = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2....
 
         
           <p class="article-more-link">
@@ -209,20 +211,15 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            了解轮廓间的层级关系。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/20/Python-OpenCV教程番外篇9：轮廓层级/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          了解轮廓间的层级关系。图片等可到源码处下载。
 前面我们使用cv2.findContours()寻找轮廓时，参数3表示轮廓的寻找方式(RetrievalModes)，当时我们传入的是cv2.RETR_TREE，它表示什么意思呢？另外，函数返回值hierarchy有什么用途呢？下面我们就来回答这两个问题。
 理解轮廓层级很多情况下，图像中的形状之间是有关联的，比如说下图：
 
-图中总共有8条轮廓，2和2a分别表示外层和里层的轮廓，3和3a也是一样。从图中看得出来：
-
-轮廓0/1/2是最外层的轮廓，我们可以说它们处于同一轮廓等级：0级
-轮廓2a是轮廓2的子轮廓，反过来说2是2a的父轮廓，轮廓2a算一个等级：1级
-同样3是2a的子轮廓，轮廓3处于一个等级：2级
-类似的，3a是3的子轮廓，等等………...
-          
+图中总共有8条轮廓，2...
 
         
           <p class="article-more-link">
@@ -276,10 +273,11 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习如何寻找并绘制轮廓。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/20/Python-OpenCV教程13：轮廓/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_understand_contours.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习如何寻找并绘制轮廓。图片等可到源码处下载。
 
 目标
 了解轮廓概念
@@ -287,12 +285,7 @@ var themeMenus = {};
 OpenCV函数：cv2.findContours(), cv2.drawContours()
 
 教程啥叫轮廓轮廓是一系列相连的点组成的曲线，代表了物体的基本外形。
-谈起轮廓不免想到边缘，它们确实很像。简单的说，轮廓是连续的，边缘并不全都连续（下图）。其实边缘主要是作为图像的特征使用，比如可以用边缘特征可以区分脸和手，而轮廓主要用来分析物体的形态，比如物体的周长和面积等，可以说边缘包括轮廓。
-
-寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或Canny边缘检测先得到二值图。
-
-经验之谈：寻找轮廓是针对白色物体的，一定要保证物体是白色，而背景是黑色，*不然很多人在寻找轮廓时会找到图片最外面的一个...
-          
+谈起轮廓不免想到边缘，它们确实很像。简单的说，轮廓是连续的，边缘并不全都连续（下图）。其实边缘主要是作为图像的特征使用，比如可以用边缘特征可以...
 
         
           <p class="article-more-link">
@@ -346,10 +339,11 @@ OpenCV函数：cv2.findContours(), cv2.drawContours()
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习常用形态学操作：腐蚀膨胀，开运算和闭运算。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/19/Python-OpenCV教程12：腐蚀与膨胀/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_understand_morphological.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习常用形态学操作：腐蚀膨胀，开运算和闭运算。图片等可到源码处下载。
 
 目标
 了解形态学操作的概念
@@ -359,13 +353,7 @@ OpenCV函数：cv2.erode(), cv2.dilate(), cv2.morphologyEx()
 教程啥叫形态学操作形态学操作其实就是改变物体的形状，比如腐蚀就是”变瘦”，膨胀就是”变胖”，看下图就明白了：
 
 
-形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。腐蚀和膨胀是针对图片中的白色部分！
-
-腐蚀腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有0和255，所以小区域内有一个是0该像素点就为0：
-
-这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利(●ˇ∀ˇ●)）
-Op...
-          
+形态学操作一般作用于二值...
 
         
           <p class="article-more-link">
@@ -419,10 +407,11 @@ Op...
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习使用Canny获取图像的边缘。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/18/Python-OpenCV教程11：边缘检测/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_canny_edge_detection_threshold.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习使用Canny获取图像的边缘。图片等可到源码处下载。
 
 目标
 Canny边缘检测的简单概念
@@ -430,13 +419,7 @@ OpenCV函数：cv2.Canny()
 
 教程废话不多说，直接上12img = cv2.imread('handwriting.jpg', 0)edges = cv2.Canny(img, 30, 70)  # canny边缘检测
 
-cv2.Canny()进行边缘检测，参数2、3表示最低、高阈值，看完后面的理论就理解了。
-
-经验之谈：之前我们用低通滤波的方式模糊了图片，那如果反过来，想得到物体的边缘，就需要用到高通滤波。如果你要理解接下来要说的Canny检测原理，请先阅读：番外篇：图像梯度
-
-Canny边缘检测Canny边缘检测方法常被誉为边缘检测的最优方法，具体步骤如下：
-1，使用5×5...
-          
+cv2.Canny()进行边缘检测，参数2、3表示最低、高阈值...
 
         
           <p class="article-more-link">
@@ -490,18 +473,16 @@ Canny边缘检测Canny边缘检测方法常被誉为边缘检测的最优方法�
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            了解图像梯度和边缘检测的相关概念。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/18/Python-OpenCV教程番外篇8：图像梯度/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          了解图像梯度和边缘检测的相关概念。图片等可到源码处下载。
 还记得前面平滑图像中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。
 图像梯度
 本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
 
-如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。
-当然，大部分人应该是早忘记高数了(￣▽￣)”，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。
-垂直边缘提取滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面...
-          
+如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片...
 
         
           <p class="article-more-link">
@@ -555,10 +536,11 @@ Canny边缘检测Canny边缘检测方法常被誉为边缘检测的最优方法�
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习模糊/平滑图像，消除噪点。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/15/Python-OpenCV教程10：平滑图像/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习模糊/平滑图像，消除噪点。图片等可到源码处下载。
 
 目标
 模糊/平滑图片来消除图片噪声
@@ -567,14 +549,7 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
 教程
 本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
 
-滤波与模糊推荐大家先阅读：番外篇：卷积基础(图片边框)，有助于理解卷积和滤波的概念。
-关于滤波和模糊，很多人分不清，我来给大家理理（虽说如此，我后面也会混着用,,ԾㅂԾ,,）：
-
-它们都属于卷积，不同滤波方法之间只是卷积核不同（对线性滤波而言）
-低通滤波器是模糊，高通滤波器是锐化
-
-低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通...
-          
+滤波与模糊推荐大家先阅读：番外篇：卷积基础(图片边框)，有助...
 
         
           <p class="article-more-link">
@@ -628,18 +603,18 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            了解卷积/滤波的基础知识，给图片添加边框。如果你已了解相关理论，请直接跳到添加边框部分。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/14/Python-OpenCV教程番外篇7：卷积基础-图片边框/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_understand_padding.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          了解卷积/滤波的基础知识，给图片添加边框。如果你已了解相关理论，请直接跳到添加边框部分。
 卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(￣▽￣)o
 卷积
 本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！
 
 什么是二维卷积呢？看下面一张图就一目了然：
 
-卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷...
-          
+卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一...
 
         
           <p class="article-more-link">
@@ -804,19 +779,18 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            学习图片间的数学运算，图像混合。图片等可到源码处下载。
+          <div class="entry-thumbnail">
+            <a href="/2017/12/10/Python-OpenCV教程9：图像混合/"><img width="250" height="175" src="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          学习图片间的数学运算，图像混合。图片等可到源码处下载。
 
 目标
 图片间的数学运算，如相加、按位运算等
 OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
 
 教程首先，恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油(ง •_•)ง
-图片相加要叠加两张图片，可以用cv2.add()函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用res = img + img1相加，但这两者的结果并不相同：
-1234x = np.uint8([250])y = np.uint8([10])print(cv2.add(x, y))  # 250+10 = 260 =&gt; 255pri...
-          
+图片相加要叠加两张图片，可以用cv2.add()函数，相加两幅图片的形...
 
         
           <p class="article-more-link">
@@ -910,6 +884,10 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
           
    		
           
+     			  <li><a href="https://weibo.com/ex2tron/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
      			  <li><a href="https://twitter.com/ex2tron" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
           
    		
@@ -936,6 +914,109 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
 
   
     
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/03/15/【片单】推荐几部优秀的传记电影/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/03/15/【片单】推荐几部优秀的传记电影/">【片单】推荐几部优秀的传记电影</a></h6>
+              <span>March 15, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/02/17/Python-OpenCV教程20：Shi-Tomasi角点检测/">Python+OpenCV教程20：Shi-Tomasi角点检测</a></h6>
+              <span>February 17, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/02/16/Python-OpenCV教程19：Harris角点检测/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_corner_type.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/02/16/Python-OpenCV教程19：Harris角点检测/">Python+OpenCV教程19：Harris角点检测</a></h6>
+              <span>February 16, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/02/15/Python-OpenCV教程18：理解特征/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_features.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/02/15/Python-OpenCV教程18：理解特征/">Python+OpenCV教程18：理解特征</a></h6>
+              <span>February 15, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/28/Python-OpenCV教程17：霍夫变换/">Python+OpenCV教程17：霍夫变换</a></h6>
+              <span>December 28, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2017/12/27/Python-OpenCV教程16：模板匹配/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_template_matching.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/27/Python-OpenCV教程16：模板匹配/">Python+OpenCV教程16：模板匹配</a></h6>
+              <span>December 27, 2017</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
@@ -943,6 +1024,15 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
     </div>
   </div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 12px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 12px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/logistic/" style="font-size: 12px;">logistic</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/三角定位/" style="font-size: 10px;">三角定位</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 12px;">变量</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像处理/" style="font-size: 16px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 14px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 14px;">神经网络</a> <a href="/tags/绘图/" style="font-size: 12px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 12px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 12px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 12px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
+    </div>
+  </div>
 
   
 </aside>
