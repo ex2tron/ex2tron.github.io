@@ -27,7 +27,7 @@
 <meta property="og:description" content="理解尺度、图像金字塔和尺度空间的概念。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg">
-<meta property="og:updated_time" content="2018-07-22T12:51:34.460Z">
+<meta property="og:updated_time" content="2018-07-23T09:14:46.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇11：尺度空间与图像金字塔">
 <meta name="twitter:description" content="理解尺度、图像金字塔和尺度空间的概念。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" rel="gallery_cjjwuheyn0027r8595izodhjo">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" rel="gallery_cjjy238750021f459b5wbwwyd">
         <img src="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" itemprop="image">
       </a>
     
@@ -180,7 +180,7 @@ var themeMenus = {};
 <p>这两个性质都称为特征的局部不变性。</p>
 <h2 id="图像金字塔"><a href="#图像金字塔" class="headerlink" title="图像金字塔"></a>图像金字塔</h2><h3 id="向下采样"><a href="#向下采样" class="headerlink" title="向下采样"></a>向下采样</h3><p>既然要考虑多尺度下的物体描述，那么如何为图像构建一系列不同尺度的图像集合呢？一种方法就是使用图像金字塔：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_scale_image_pyramid.jpg" alt=""></p>
-<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/2017/12/15/Python-OpenCV教程10：平滑图像/">平滑图像</a>）：<br>$$<br>M = \frac{1}{16}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和奇数行，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
+<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/2017/12/15/Python-OpenCV教程10：平滑图像/">平滑图像</a>）：<br>$$<br>M = \frac{1}{16}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和列，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
 <blockquote>
 <p>向下采样缩小图片实际上丢失了图片的一些信息。</p>
 </blockquote>

@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2018-07-22T12:51:34.460Z</updated>
+  <updated>2018-07-23T09:14:46.436Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/2018/04/22/Python-OpenCV%E6%95%99%E7%A8%8B%E7%95%AA%E5%A4%96%E7%AF%8711%EF%BC%9A%E5%B0%BA%E5%BA%A6%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%9B%BE%E5%83%8F%E9%87%91%E5%AD%97%E5%A1%94/"/>
     <id>http://ex2tron.wang/2018/04/22/Python-OpenCV教程番外篇11：尺度空间与图像金字塔/</id>
     <published>2018-04-22T06:28:44.000Z</published>
-    <updated>2018-07-22T12:51:34.460Z</updated>
+    <updated>2018-07-23T09:14:46.436Z</updated>
     
     <content type="html"><![CDATA[<p>理解尺度、图像金字塔和尺度空间的概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <h2 id="理解尺度"><a href="#理解尺度" class="headerlink" title="理解尺度"></a>理解尺度</h2><p>我们先要明确尺度的概念：<strong>一副图像，只有在一定的尺度范围内，描述其中的物体才是有意义的。</strong>啥意思呢，比如说你面前的人，你是米级的距离看到的，如果从千米级或微米级看，你是感知不到人的，你看到的可能是城市或细胞。就如同百度/谷歌地图，不同尺度变换下，所获取的信息点不同。</p>
@@ -37,7 +37,7 @@
 <p>这两个性质都称为特征的局部不变性。</p>
 <h2 id="图像金字塔"><a href="#图像金字塔" class="headerlink" title="图像金字塔"></a>图像金字塔</h2><h3 id="向下采样"><a href="#向下采样" class="headerlink" title="向下采样"></a>向下采样</h3><p>既然要考虑多尺度下的物体描述，那么如何为图像构建一系列不同尺度的图像集合呢？一种方法就是使用图像金字塔：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_scale_image_pyramid.jpg" alt=""></p>
-<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/2017/12/15/Python-OpenCV教程10：平滑图像/">平滑图像</a>）：<br>$$<br>M = \frac{1}{16}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和奇数行，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
+<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/2017/12/15/Python-OpenCV教程10：平滑图像/">平滑图像</a>）：<br>$$<br>M = \frac{1}{16}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和列，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
 <blockquote>
 <p>向下采样缩小图片实际上丢失了图片的一些信息。</p>
 </blockquote>
