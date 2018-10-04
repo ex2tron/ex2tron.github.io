@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>python+opencv教程番外篇9：轮廓层级 | ex2tron&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="了解轮廓间的层级关系。">
+<meta name="keywords" content="OpenCV,Python,图像处理,轮廓层级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+OpenCV教程番外篇9：轮廓层级">
+<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-contours-hierarchy/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="了解轮廓间的层级关系。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg">
+<meta property="og:updated_time" content="2018-10-04T09:53:19.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python+OpenCV教程番外篇9：轮廓层级">
+<meta name="twitter:description" content="了解轮廓间的层级关系。">
+<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python-OpenCV教程番外篇9：轮廓层级" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg" rel="gallery_cjmufjlwu0032t0593ustztk9">
+        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python+OpenCV教程番外篇9：轮廓层级
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/opencv-python-extra-contours-hierarchy/" class="article-date">
+	  <time datetime="2017-12-20T04:41:11.000Z" itemprop="datePublished">December 20, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>了解轮廓间的层级关系。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<p>前面我们使用<code>cv2.findContours()</code>寻找轮廓时，参数3表示轮廓的寻找方式(<code>RetrievalModes</code>)，当时我们传入的是<code>cv2.RETR_TREE</code>，它表示什么意思呢？另外，函数返回值hierarchy有什么用途呢？下面我们就来回答这两个问题。</p>
+<h2 id="理解轮廓层级"><a href="#理解轮廓层级" class="headerlink" title="理解轮廓层级"></a>理解轮廓层级</h2><p>很多情况下，图像中的形状之间是有关联的，比如说下图：</p>
+<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg" alt=""></p>
+<p>图中总共有8条轮廓，2和2a分别表示外层和里层的轮廓，3和3a也是一样。从图中看得出来：</p>
+<ul>
+<li>轮廓0/1/2是最外层的轮廓，我们可以说它们处于同一轮廓等级：0级</li>
+<li>轮廓2a是轮廓2的子轮廓，反过来说2是2a的父轮廓，轮廓2a算一个等级：1级</li>
+<li>同样3是2a的子轮廓，轮廓3处于一个等级：2级</li>
+<li>类似的，3a是3的子轮廓，等等…………</li>
+</ul>
+<p>这里面OpenCV关注的就是两个概念：同一轮廓等级和轮廓间的子属关系。</p>
+<h2 id="OpenCV中轮廓等级的表示"><a href="#OpenCV中轮廓等级的表示" class="headerlink" title="OpenCV中轮廓等级的表示"></a>OpenCV中轮廓等级的表示</h2><p>如果我们打印出<code>cv2.findContours()</code>函数的返回值hierarchy，会发现它是一个包含4个值的数组：<strong>[Next, Previous, First Child, Parent]</strong></p>
+<ul>
+<li><em>Next：与当前轮廓处于同一层级的下一条轮廓</em></li>
+</ul>
+<p>举例来说，前面图中跟0处于同一层级的下一条轮廓是1，所以Next=1；同理，对轮廓1来说，Next=2；那么对于轮廓2呢？没有与它同一层级的下一条轮廓了，此时Next=-1。</p>
+<ul>
+<li><em>Previous：与当前轮廓处于同一层级的上一条轮廓</em></li>
+</ul>
+<p>跟前面一样，对于轮廓1来说，Previous=0；对于轮廓2，Previous=1；对于轮廓1，没有上一条轮廓了，所以Previous=-1。</p>
+<ul>
+<li><em>First Child：当前轮廓的第一条子轮廓</em></li>
+</ul>
+<p>比如对于轮廓2，第一条子轮廓就是轮廓2a，所以First Child=2a；对轮廓3a，First Child=4。</p>
+<ul>
+<li><em>Parent：当前轮廓的父轮廓</em></li>
+</ul>
+<p>比如2a的父轮廓是2，Parent=2；轮廓2没有父轮廓，所以Parent=-1。</p>
+<p>下面我们通过代码验证一下：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.读入图片</span></div><div class="line">img = cv2.imread(<span class="string">'hierarchy.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">_, thresh = cv2.threshold(img_gray, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line"><span class="comment"># 2.寻找轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 3.绘制轮廓</span></div><div class="line">print(len(contours),hierarchy)  <span class="comment"># 8条</span></div><div class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：OpenCV中找到的轮廓序号跟前面讲的不同噢，如下图：</p>
+</blockquote>
+<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_RETR_TREE.jpg" alt=""></p>
+<p>现在既然我们了解了层级的概念，那么类似<code>cv2.RETR_TREE</code>的轮廓寻找方式又是啥意思呢？</p>
+<h2 id="轮廓寻找方式"><a href="#轮廓寻找方式" class="headerlink" title="轮廓寻找方式"></a>轮廓寻找方式</h2><p>OpenCV中有四种轮廓寻找方式<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a>，下面分别来看下：</p>
+<h3 id="1-RETR-LIST"><a href="#1-RETR-LIST" class="headerlink" title="1. RETR_LIST"></a>1. RETR_LIST</h3><p>这是最简单的一种寻找方式，它不建立轮廓间的子属关系，也就是所有轮廓都属于同一层级。这样的话，hierarchy中的后两个值<code>[First Child, Parent]</code>都为-1。比如同样的图，我们使用RETR_LIST来寻找轮廓：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_, _, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, <span class="number">2</span>)</div><div class="line">print(hierarchy)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">3</span>  <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">4</span>  <span class="number">2</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">5</span>  <span class="number">3</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">6</span>  <span class="number">4</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">7</span>  <span class="number">5</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">6</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
+<p>因为没有从属关系，所以轮廓0的下一条是1，1的下一条是2……</p>
+<blockquote>
+<p>经验之谈：如果你不需要轮廓层级信息的话，<code>cv2.RETR_LIST</code>更推荐使用，因为性能更好</p>
+</blockquote>
+<h3 id="2-RETR-TREE"><a href="#2-RETR-TREE" class="headerlink" title="2. RETR_TREE"></a>2. RETR_TREE</h3><p><code>cv2.RETR_TREE</code>就是之前我们一直在使用的方式，它会完整建立轮廓的层级从属关系，前面已经详细说明过了。</p>
+<h3 id="3-RETR-EXTERNAL"><a href="#3-RETR-EXTERNAL" class="headerlink" title="3. RETR_EXTERNAL"></a>3. RETR_EXTERNAL</h3><p>这种方式只寻找最高层级的轮廓，也就是它只会找到前面我们所说的3条0级轮廓：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, <span class="number">2</span>)</div><div class="line">print(len(contours), hierarchy, sep=<span class="string">'\n'</span>)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line"><span class="number">3</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
+<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_RETR_EXTERNAL.jpg" alt=""></p>
+<h3 id="4-RETR-CCOMP"><a href="#4-RETR-CCOMP" class="headerlink" title="4. RETR_CCOMP"></a>4. RETR_CCOMP</h3><p>相比之下<code>cv2.RETR_CCOMP</code>比较难理解，但其实也很简单：它把所有的轮廓只分为2个层级，不是外层的就是里层的。结合代码和图片，我们来理解下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_CCOMP, <span class="number">2</span>)</div><div class="line">print(hierarchy)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">4</span>  <span class="number">1</span>  <span class="number">3</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>  <span class="number">2</span>]</div><div class="line">  [ <span class="number">6</span>  <span class="number">2</span>  <span class="number">5</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>  <span class="number">4</span>]</div><div class="line">  [ <span class="number">7</span>  <span class="number">4</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">6</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
+<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_RETR_CCOMP.jpg" alt=""></p>
+<blockquote>
+<p>注意：使用这个参数找到的轮廓序号与之前不同</p>
+</blockquote>
+<p>图中括号里面1代表外层轮廓，2代表里层轮廓。比如说对于轮廓2，Next就是4，Previous是1，它有里层的轮廓3，所以First Child=3，但因为只有两个层级，它本身就是外层轮廓，所以Parent=-1。大家可以针对其他的轮廓自己验证一下。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
+<li>如下图，找到3个圆环的内环，然后填充成<code>(180,215,215)</code>这种颜色：</li>
+</ol>
+<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_fill_holes.jpg" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8709.%20%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html#contours-hierarchy" target="_blank" rel="external">Contours Hierarchy</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓层级/">轮廓层级</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/opencv-python-extra-convex-hull/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python+OpenCV教程番外篇10：凸包及更多轮廓特征
+        
+      </div>
+    </a>
+  
+  
+    <a href="/opencv-python-contours/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python+OpenCV教程13：轮廓</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解轮廓层级"><span class="nav-number">1.</span> <span class="nav-text">理解轮廓层级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV中轮廓等级的表示"><span class="nav-number">2.</span> <span class="nav-text">OpenCV中轮廓等级的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#轮廓寻找方式"><span class="nav-number">3.</span> <span class="nav-text">轮廓寻找方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-RETR-LIST"><span class="nav-number">3.1.</span> <span class="nav-text">1. RETR_LIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RETR-TREE"><span class="nav-number">3.2.</span> <span class="nav-text">2. RETR_TREE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RETR-EXTERNAL"><span class="nav-number">3.3.</span> <span class="nav-text">3. RETR_EXTERNAL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-RETR-CCOMP"><span class="nav-number">3.4.</span> <span class="nav-text">4. RETR_CCOMP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2018
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
