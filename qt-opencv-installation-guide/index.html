@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/qt_opencv_environment_demo1.jpg">
 <meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/qt_opencv_environment_demo2.jpg">
-<meta property="og:updated_time" content="2018-10-03T04:11:33.260Z">
+<meta property="og:updated_time" content="2018-10-09T00:48:23.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt+OpenCV环境搭建">
 <meta name="twitter:description" content="Windows下的配置 念念不忘，必有回响。——《一代宗师》  我电脑上安装的Qt版本信息：Qt 5.8/Qt Creator 4.2.1/MinGW 5.3.0">
@@ -173,7 +173,7 @@ var themeMenus = {};
 <p>放好之后，将上图<strong>bin的路径（D:\QtOpenCV\bin）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
 <p>然后打开Qt的pro文件，在<code>SOURCES</code>前面添加如下的OpenCV的依赖项：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> INCLUDEPATH 头文件路径</span></div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="meta">#</span><span class="bash"> LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</span></div><div class="line"><span class="meta">#</span><span class="bash"> 使用下面方法包含所有库</span></div><div class="line"><span class="meta">#</span><span class="bash"> LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</span></div><div class="line"><span class="meta">#</span><span class="bash"> 或使用下面方法只包含要使用的库</span></div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
-<p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/MyLibsAndSamples/tree/master/Samples/OpenCV" target="_blank" rel="external">MyLibsAndSamples-OpenCV</a></p>
+<p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/BlogCode/tree/master/OpenCV-C++-Sample" target="_blank" rel="external">C++ OpenCV示例</a></p>
 <h2 id="Ubuntu下的配置"><a href="#Ubuntu下的配置" class="headerlink" title="Ubuntu下的配置"></a>Ubuntu下的配置</h2><p>Ubuntu下如果不用CMake自行安装的话，就简单多了，在终端里面输入下面几条指令就搞定了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 安装Qt5</span></div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="meta">#</span><span class="bash"> 安装opencv</span></div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
 <p>同样，在Qt的pro文件中添加OpenCV的依赖项就可以调用了：</p>

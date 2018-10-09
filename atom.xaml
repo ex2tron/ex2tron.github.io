@@ -1155,7 +1155,7 @@
     <link href="http://ex2tron.wang/opencv-python-smoothing-images/"/>
     <id>http://ex2tron.wang/opencv-python-smoothing-images/</id>
     <published>2017-12-15T01:44:24.000Z</published>
-    <updated>2018-10-04T09:39:16.692Z</updated>
+    <updated>2018-10-06T08:24:33.919Z</updated>
     
     <content type="html"><![CDATA[<p>学习模糊/平滑图像，消除噪点。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1174,7 +1174,7 @@
 </ul>
 <p>低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。</p>
 <blockquote>
-<p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="external">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="external">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声；这样解释并不准确，只要能简单分辨即可</p>
+<p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="external">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="external">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
 </blockquote>
 <h3 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h3><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
 <p>$$<br> kernel = \frac{1}{9}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
@@ -1187,7 +1187,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></div><div class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小，来，数学时间( ╯□╰ )，还记得标准正态分布的曲线吗？</p>
 <p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_gaussian_kernel_function_theory.jpg" alt=""></p>
-<p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（高斯函数和卷积核生成方式请参考文末的番外小篇）：</p>
+<p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（高斯函数和卷积核生成方式请参考文末的番外篇）：</p>
 <p>$$<br>k = \left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'gaussian_noise.bmp'</span>)</div><div class="line"><span class="comment"># 均值滤波vs高斯滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)  <span class="comment"># 高斯滤波</span></div></pre></td></tr></table></figure>
 <p>其实，参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
@@ -1200,7 +1200,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 双边滤波vs高斯滤波</span></div><div class="line">gau = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></div><div class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></div></pre></td></tr></table></figure>
 <p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_bilateral_vs_gaussian.jpg" alt=""></p>
 <p>可以看到，双边滤波明显保留了更多边缘信息。</p>
-<h2 id="番外小篇：高斯滤波卷积核"><a href="#番外小篇：高斯滤波卷积核" class="headerlink" title="番外小篇：高斯滤波卷积核"></a>番外小篇：高斯滤波卷积核</h2><p>要解释高斯滤波卷积核是如何生成的，需要先复习下概率论的知识（What？？又是数学( ╯□╰ )）</p>
+<h2 id="番外篇：高斯滤波卷积核"><a href="#番外篇：高斯滤波卷积核" class="headerlink" title="番外篇：高斯滤波卷积核"></a>番外篇：高斯滤波卷积核</h2><p>要解释高斯滤波卷积核是如何生成的，需要先复习下概率论的知识（What？？又是数学( ╯□╰ )）</p>
 <p>一维的高斯函数/正态分布X~N(μ, σ^2)：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})<br>$$<br>当μ=0，σ^2=1时，称为标准正态分布X~N(0,1)：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2})<br>$$<br>二维X/Y相互独立的高斯函数：<br>$$<br>G(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}exp(-\frac{(x-\mu_x)^2+(y-\mu_y)^2}{2\sigma_x\sigma_y})=G(x)G(y)<br>$$</p>
 <p>由上可知，<strong>二维高斯函数具有可分离性</strong>，所以OpenCV分两步计算二维高斯卷积，先水平再垂直，每个方向上都是一维的卷积。OpenCV中这个一维卷积的计算公式类似于上面的一维高斯函数：<br>$$<br>G(i)=\alpha *exp(-\frac{(i-\frac{ksize-1}{2})^2}{2\sigma^2})<br>$$<br>其中i=0…ksize-1，α是一个常数，也称为缩放因子，它使得\(\sum{G(i)}=1\)</p>
 <p>比如我们可以用<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external"><code>cv2.getGaussianKernel(ksize,sigma)</code></a>来生成一维卷积核：</p>
@@ -3916,7 +3916,7 @@
     <link href="http://ex2tron.wang/qt-opencv-installation-guide/"/>
     <id>http://ex2tron.wang/qt-opencv-installation-guide/</id>
     <published>2017-07-27T00:17:00.000Z</published>
-    <updated>2018-10-03T04:11:33.260Z</updated>
+    <updated>2018-10-09T00:48:23.574Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Windows下的配置"><a href="#Windows下的配置" class="headerlink" title="Windows下的配置"></a>Windows下的配置</h2><blockquote>
 <p><em>念念不忘，必有回响。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
@@ -3935,7 +3935,7 @@
 <p>放好之后，将上图<strong>bin的路径（D:\QtOpenCV\bin）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
 <p>然后打开Qt的pro文件，在<code>SOURCES</code>前面添加如下的OpenCV的依赖项：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> INCLUDEPATH 头文件路径</span></div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="meta">#</span><span class="bash"> LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</span></div><div class="line"><span class="meta">#</span><span class="bash"> 使用下面方法包含所有库</span></div><div class="line"><span class="meta">#</span><span class="bash"> LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</span></div><div class="line"><span class="meta">#</span><span class="bash"> 或使用下面方法只包含要使用的库</span></div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
-<p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/MyLibsAndSamples/tree/master/Samples/OpenCV" target="_blank" rel="external">MyLibsAndSamples-OpenCV</a></p>
+<p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/BlogCode/tree/master/OpenCV-C++-Sample" target="_blank" rel="external">C++ OpenCV示例</a></p>
 <h2 id="Ubuntu下的配置"><a href="#Ubuntu下的配置" class="headerlink" title="Ubuntu下的配置"></a>Ubuntu下的配置</h2><p>Ubuntu下如果不用CMake自行安装的话，就简单多了，在终端里面输入下面几条指令就搞定了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 安装Qt5</span></div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="meta">#</span><span class="bash"> 安装opencv</span></div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
 <p>同样，在Qt的pro文件中添加OpenCV的依赖项就可以调用了：</p>
