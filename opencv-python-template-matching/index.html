@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习使用模板匹配在图像中寻找物体。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_template_matching.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:45:14.205Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_template_matching.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程16：模板匹配">
 <meta name="twitter:description" content="学习使用模板匹配在图像中寻找物体。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_template_matching.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_template_matching.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_template_matching.jpg" rel="gallery_cjn10c6mx000s0o591aj8kxc0">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_template_matching.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_template_matching.jpg" rel="gallery_cjnzn69300012mg599ryy7w8x">
+        <img src="http://pic.ex2tron.top/cv2_understand_template_matching.jpg" itemprop="image">
       </a>
     
   </div>
@@ -172,12 +172,12 @@ var themeMenus = {};
 <li>OpenCV函数：cv2.matchTemplate(), cv2.minMaxLoc()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="模板匹配"><a href="#模板匹配" class="headerlink" title="模板匹配"></a>模板匹配</h3><p><a href="https://baike.baidu.com/item/模板匹配" target="_blank" rel="external">模板匹配</a>就是用来在大图中找小图，也就是说在一副图像中寻找另外一张模板图像的位置：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_template_matching.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_template_matching.jpg" alt=""></p>
 <p>用<code>cv2.matchTemplate()</code>实现模板匹配。首先我们来读入图片和模板：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line">template = cv2.imread(<span class="string">'face.jpg'</span>, <span class="number">0</span>)</div><div class="line">h, w = template.shape[:<span class="number">2</span>]  <span class="comment"># rows-&gt;h, cols-&gt;w</span></div></pre></td></tr></table></figure>
 <p>匹配函数返回的是一副灰度图，最白的地方表示最大的匹配。使用<code>cv2.minMaxLoc()</code>函数可以得到最大匹配值的坐标，以这个点为左上角角点，模板的宽和高画矩形就是匹配的位置了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 相关系数匹配方法：cv2.TM_CCOEFF</span></div><div class="line">res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF)</div><div class="line">min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)</div><div class="line"></div><div class="line">left_top = max_loc  <span class="comment"># 左上角</span></div><div class="line">right_bottom = (left_top[<span class="number">0</span>] + w, left_top[<span class="number">1</span>] + h)  <span class="comment"># 右下角</span></div><div class="line">cv2.rectangle(img, left_top, right_bottom, <span class="number">255</span>, <span class="number">2</span>)  <span class="comment"># 画出矩形位置</span></div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_ccoeff_matching_template.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_ccoeff_matching_template.jpg" alt=""></p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><blockquote>
 <p>这部分可看可不看，不太理解也没关系，还记得前面的方法吗？不懂得就划掉(✿◕‿◕✿)</p>
 </blockquote>
@@ -193,13 +193,13 @@ var themeMenus = {};
 <p>这些方法的对比代码可到<a href="#引用">源码处</a>查看。模板匹配也是应用卷积来实现的：假设原图大小为W×H，模板图大小为w×h，那么生成图大小是(W-w+1)×(H-h+1)，生成图中的每个像素值表示原图与模板的匹配程度。</p>
 <h3 id="匹配多个物体"><a href="#匹配多个物体" class="headerlink" title="匹配多个物体"></a>匹配多个物体</h3><p>前面我们是找最大匹配的点，所以只能匹配一次。我们可以设定一个匹配阈值来匹配多次：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.读入原图和模板</span></div><div class="line">img_rgb = cv2.imread(<span class="string">'mario.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)</div><div class="line">template = cv2.imread(<span class="string">'mario_coin.jpg'</span>, <span class="number">0</span>)</div><div class="line">h, w = template.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 2.标准相关模板匹配</span></div><div class="line">res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)</div><div class="line">threshold = <span class="number">0.8</span> </div><div class="line"></div><div class="line"><span class="comment"># 3.这边是Python/Numpy的知识，后面解释</span></div><div class="line">loc = np.where(res &gt;= threshold)  <span class="comment"># 匹配程度大于%80的坐标y,x</span></div><div class="line"><span class="keyword">for</span> pt <span class="keyword">in</span> zip(*loc[::<span class="number">-1</span>]):  <span class="comment"># *号表示可选参数</span></div><div class="line">    right_bottom = (pt[<span class="number">0</span>] + w, pt[<span class="number">1</span>] + h)</div><div class="line">    cv2.rectangle(img_rgb, pt, right_bottom, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_template_matching_multi.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_template_matching_multi.jpg" alt=""></p>
 <p>第3步有几个Python/Numpy的重要知识，来大致看下：</p>
 <ul>
 <li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html" target="_blank" rel="external">np.where</a>在这里返回res中值大于0.8的所有坐标，如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = np.arange(<span class="number">9.</span>).reshape(<span class="number">3</span>, <span class="number">3</span>)</div><div class="line">print(np.where(x &gt; <span class="number">5</span>))</div><div class="line"><span class="comment"># 结果(先y坐标，再x坐标)：(array([2, 2, 2]), array([0, 1, 2]))</span></div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_np_where_function.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_np_where_function.jpg" alt=""></p>
 <ul>
 <li><a href="https://docs.python.org/3/library/functions.html#zip" target="_blank" rel="external">zip</a>函数，功能很强大到难以解释，举个简单例子就知道了：</li>
 </ul>

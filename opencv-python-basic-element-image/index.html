@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何加载图片，显示并保存图片。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_image_coordinate_channels.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:08:44.774Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程2：基本元素-图片">
 <meta name="twitter:description" content="学习如何加载图片，显示并保存图片。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_image_coordinate_channels.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_image_coordinate_channels.jpg" rel="gallery_cjn10c6nl001e0o59ii1pvl3z">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_image_coordinate_channels.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" rel="gallery_cjnzn6935001bmg591wwythmz">
+        <img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" itemprop="image">
       </a>
     
   </div>
@@ -175,7 +175,7 @@ var themeMenus = {};
 <p> 注：本教程不再赘述图像处理的基本理论，只把需要注意的做简单提及噢(⊙o⊙)</p>
 </blockquote>
 <p>OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图像坐标的起始点是在左上角：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_image_coordinate_channels.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" alt=""></p>
 <h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 灰度图加载</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 <ul>
@@ -199,7 +199,7 @@ var themeMenus = {};
 <h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>结果应该如下：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_show_lena_gray.jpg" alt="lena灰度图显示"></p>
+<p><img src="http://pic.ex2tron.top/cv2_show_lena_gray.jpg" alt="lena灰度图显示"></p>
 <p>参数1是窗口的名字，参数2是要显示的图片。</p>
 <p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code>（<a href="#练习">练习1</a>）。</p>
 <p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>

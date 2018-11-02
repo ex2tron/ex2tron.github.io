@@ -10,7 +10,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>小白深度学习笔记1：logistic回归 | ex2tron&#39;s Blog</title>
+  <title>构建：命名法 | ex2tron&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="ex2tron,opencv,tensorflow" />
@@ -18,22 +18,20 @@
   
   
   
-  <meta name="description" content="开启神经网络与深度学习之坑！">
-<meta name="keywords" content="神经网络,logistic">
+  <meta name="description" content="软件开发都需要遵循一定的编程规范！">
+<meta name="keywords" content="构建法,变量命名,驼峰">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小白深度学习笔记1：logistic回归">
-<meta property="og:url" content="http://ex2tron.wang/deep-learning-for-beginners-logistic-regression/index.html">
+<meta property="og:title" content="构建：命名法">
+<meta property="og:url" content="http://ex2tron.wang/build-how-to-name-your-variables/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="开启神经网络与深度学习之坑！">
+<meta property="og:description" content="软件开发都需要遵循一定的编程规范！">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/rgb_convert_input_x.png">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/sigmoid_function_graph.png">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cost_function_graph.png">
-<meta property="og:updated_time" content="2018-10-03T02:56:51.079Z">
+<meta property="og:image" content="http://pic.ex2tron.top/build_how_to_name_variables.jpg">
+<meta property="og:updated_time" content="2018-11-02T03:28:49.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小白深度学习笔记1：logistic回归">
-<meta name="twitter:description" content="开启神经网络与深度学习之坑！">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/rgb_convert_input_x.png">
+<meta name="twitter:title" content="构建：命名法">
+<meta name="twitter:description" content="软件开发都需要遵循一定的编程规范！">
+<meta name="twitter:image" content="http://pic.ex2tron.top/build_how_to_name_variables.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -133,15 +131,25 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-小白深度学习笔记1：logistic回归" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-构建：命名法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/build_how_to_name_variables.jpg" rel="gallery_cjnzn698g008rmg59dyvcbpd0">
+        <img src="http://pic.ex2tron.top/build_how_to_name_variables.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
     
       <header class="article-header">
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      小白深度学习笔记1：logistic回归
+      构建：命名法
     </h1>
   
 
@@ -149,56 +157,63 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/deep-learning-for-beginners-logistic-regression/" class="article-date">
-	  <time datetime="2017-10-02T13:06:32.000Z" itemprop="datePublished">October 2, 2017</time>
+	Posted on <a href="/build-how-to-name-your-variables/" class="article-date">
+	  <time datetime="2015-03-31T02:45:33.000Z" itemprop="datePublished">March 31, 2015</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>开启神经网络与深度学习之坑！<a id="more"></a>本篇内容包含部分数学公式，需要用MathJax脚本渲染，所以页面需等待加载完成后，才可完整显示公式。</p>
+        <p>软件开发都需要遵循一定的编程规范！<a id="more"></a></p>
 <blockquote>
-<p><em>When life ends up breathtakingly fucked, you can generally trace it back to one big, bad decision.</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《DeadPool》</a><br><em>当你的生活变成一坨屎的时候，通常都是因为你当时做的傻逼决定。</em>——<a href="https://movie.douban.com/subject/3718279/" target="_blank" rel="external">《死侍》</a></p>
+<p><em>每个人都会经过这个阶段，见到一座山，就想知道山后面是什么。我很想告诉他，可能翻过山后面，你会发现没什么特别。</em>——《<a href="https://movie.douban.com/subject/1292328/" target="_blank" rel="external">东邪西毒</a>》</p>
 </blockquote>
-<p>本文是我在观看吴恩达老师的<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="external">《神经网络和深度学习》</a>视频课程时，相关的笔记整理，大佬勿喷！</p>
 <hr>
-<h2 id="二类分类"><a href="#二类分类" class="headerlink" title="二类分类"></a>二类分类</h2><p>比如说分析一张图片中有猫还是没猫，这就是一个二类分类（Binary Classification）问题。这里，我们用输出y=1表示有猫，y=0表示没有猫。输入是一张图片，做过图像处理的同学应该知道图片是以RGB三个矩阵存储的，把RGB三分量的值提取出来，作为X，如下图：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/rgb_convert_input_x.png" alt="rgb_convert_input_x"></p>
-<p>那么当有m个样本时，X就是一个(nx,m)，即nx行、m列的矩阵，而输出Y的形状（形状就是指矩阵的行数和列数）是(1,m)。</p>
-<h2 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h2><p>logistic回归（<a href="https://baike.baidu.com/item/Logistic%E6%A8%A1%E5%9E%8B?fromtitle=Logistic+regression&amp;fromid=18080373" target="_blank" rel="external">Logistic Regression</a>）就是一个用于二类分类的学习算法：假定给出输入的特征向量\(x_1\)（如一张图片），我们希望程序给出一个预测值\(\hat{y}\)，它指出这张图片中有猫还是没猫的概率，即：<br>$$\hat{y}=P(y=1\ or\ 0\mid x)$$</p>
-<p>既然\(\hat{y}\)是一个概率，那么\(\hat{y}\in[0,1]\)。如果按照线性回归，输出值应该是：\(\hat{y}=w^Tx+b\)，w形状是(nx,1)，b形状是(1,1)，但是这个值可能远比1大或者出现负数，所以，需要用一个sigmoid函数做限定，最终输出为：<br>$$\hat{y}=\sigma(w^Tx+b)$$</p>
-<p>观察sigmoid函数\(\sigma(z)=\frac{1}{1+e^{-z}}\)的曲线图：</p>
-<p>\(z\rightarrow\infty,\sigma(z)\rightarrow1;z\rightarrow-\infty,\sigma(z)\rightarrow0;z=0,\sigma(z)=0.5\)</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/sigmoid_function_graph.png" alt="sigmoid_function_graph"></p>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>既然我们的目标就是训练得到logistic回归函数中的w和b参数，那么怎么衡量算法的运行情况呢？我们可以用损失函数（Loss Function）L表示预测值与真值的接近程度。最简单的损失函数可以定义成\(L(\hat{y},y)=\hat{y}-y\)。但是不会这样用，因为要考虑到优化算法的运算速度和效率，排除多个局部最优解。一般，损失函数定义为：<br>$$L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]$$</p>
-<p>显然，损失函数越小，结果越好。那么这个损失函数如何起作用的呢？</p>
-<p>假设真值y=1，那么上式就会变成：\(L(\hat{y},1)=-\log\hat{y}\)，要让损失函数尽量小，那么\(\log\hat{y}\)尽量大，也就是说\(\hat{y}\)尽量大，由于\(\hat{y}\in[0,1]\)，所以，这个损失函数会使预测值\(\hat{y}\)尽量接近1，即真值。同样，大家可以推一下真值y=0的情况。</p>
-<h2 id="成本函数"><a href="#成本函数" class="headerlink" title="成本函数"></a>成本函数</h2><p>前面所说的损失函数是针对单个训练样本定义的，我们可以用成本函数（Cost Function）来定义全体训练样本上的算法运行情况，定义如下：<br>$$J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat{y^i},y^i)$$</p>
-<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>好，到这里，先总结一下：</p>
+<p>我们都知道编程过程中，需要遵守一定的编程规范。对于变量的命名规范，有些是编程语言本身的规则，如C#中变量名中不能包含空格、小数点等等，有些则是开发人员或企业的编程风格或制约。</p>
+<p>目前形成的最为常用的变量命名规约主要有三种：</p>
 <ul>
-<li>logistic回归模型是用于二类分类的一种学习算法</li>
-<li>损失函数衡量参数w和b在单个训练样本的效果</li>
-<li>成本函数衡量参数w和b在全体训练样本的效果</li>
-<li>训练目标：找到使成本函数J尽可能小的参数w和b</li>
+<li>驼峰式大小写/小驼峰命名法（Lower Camel Case）</li>
+<li>Pascal命名法/大驼峰命名法（Pascal Case/Upper Camel Case）</li>
+<li>匈牙利命名法（Hungarian）</li>
 </ul>
-<p>那么w和b参数是怎么调整的呢？为了说明梯度下降法（Gradient Descent），吴恩达老师假定w和b都是实数，那么J(w,b)的函数图形类似下图：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cost_function_graph.png" alt="cost_function_graph"></p>
-<p>一般，先随机初始化w和b，然后朝着最快下降的方向不断按下面的公式调整w和b参数，最后得到最优解（:=表示更新w的值）：</p>
-<p>$$w:=w-\alpha\frac{dJ(w,b)}{dw}$$<br>$$b:=b-\alpha\frac{dJ(w,b)}{db}$$</p>
-<p>\(\alpha\)成为学习率（Learning Rate），表示梯度下降法的步长。</p>
-<p>好了，这就是相关的logistic回归的简单理论笔记。</p>
+<h3 id="驼峰命名法"><a href="#驼峰命名法" class="headerlink" title="驼峰命名法"></a>驼峰命名法</h3><p><a href="https://baike.baidu.com/item/%E9%AA%86%E9%A9%BC%E5%91%BD%E5%90%8D%E6%B3%95?fromtitle=%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95&amp;fromid=7560610" target="_blank" rel="external">驼峰式大小写</a>来自<a href="https://baike.baidu.com/item/perl" target="_blank" rel="external">Perl</a>语言。组成变量名的第一个单词以小写字母开头，其余单词都以大写字母开头，单词之间不以空格分隔或连接号（-）下划线（_）连接。</p>
+<blockquote>
+<p>如：<code>gender</code>、<code>myName</code>、<code>studentInfoNumber</code></p>
+</blockquote>
+<p>因为这些高低起伏的字符很像骆驼的侧影，所以称为小驼峰命名法。</p>
+<p>以前的命名规约常使用下划线作为变量名中各个单词之间的分隔符，又称为下划线法，如<code>input_student_name()</code>、<code>employee_counter</code>。这种形式是从C出现后流行使用的，目前在嵌入式/Unix等C编程环境下，还较为普遍。</p>
+<h3 id="Pascal命名法"><a href="#Pascal命名法" class="headerlink" title="Pascal命名法"></a>Pascal命名法</h3><p><a href="https://baike.baidu.com/item/%E5%B8%95%E6%96%AF%E5%8D%A1%E5%91%BD%E5%90%8D%E6%B3%95/9464494" target="_blank" rel="external">帕斯卡命名法</a>又称大驼峰式命名法，源自于<a href="https://baike.baidu.com/item/pascal/241171" target="_blank" rel="external">Pascal</a>语言的命名惯例。与驼峰命名法类似，只不过组成变量名的所有单词首字母都大写。</p>
+<blockquote>
+<p>如：<code>Gender</code>、<code>MyName</code>、<code>StudentInfoNumber</code></p>
+</blockquote>
+<p>这样组合方式可以让开发人员很明确的看出变量的字母组合。</p>
+<h3 id="匈牙利命名法"><a href="#匈牙利命名法" class="headerlink" title="匈牙利命名法"></a>匈牙利命名法</h3><p><a href="https://baike.baidu.com/item/%E5%8C%88%E7%89%99%E5%88%A9%E5%91%BD%E5%90%8D%E6%B3%95" target="_blank" rel="external">匈牙利命名法</a>基本规则是：变量名=属性+类型+对象描述，这种方法要求在每个变量名的前面加上表示变量数据类型或用途的小写字母，它包括系统匈牙利命名法和匈牙利应用命名法：</p>
+<ul>
+<li>系统匈牙利命名法中，前缀字母说明变量的数据类型</li>
+</ul>
+<blockquote>
+<p>如：<code>iGender</code>、<code>strMyName</code>，i代表int型，str代表string型</p>
+</blockquote>
+<ul>
+<li>匈牙利应用命名法中，前缀说明变量用途</li>
+</ul>
+<blockquote>
+<p>如：<code>pCircleSize</code>，p代表指针。</p>
+</blockquote>
+<p>当然，这种方法在面向对象编程（OOP, Object Oriented Programming）中基本不被采用，因为类似.net/Java这种语言中有上百种类型，很容易混淆，但可以了解一下。</p>
+<p>C#中类名、类的属性和方法常采用Pascal命名法，变量、对象常采用驼峰命名法。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logistic/">logistic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/变量命名/">变量命名</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建法/">构建法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驼峰/">驼峰</a></li></ul>
 
       
         <div id="donation_div"></div>
@@ -223,20 +238,15 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/tools-gitkraken/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/build-single-point-control/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【利器篇】GitKraken：顶级酷炫Git图像化客户端
+          构建：单点控制
         
       </div>
     </a>
   
-  
-    <a href="/algorithm-three-points-location/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【算法贴】三点定位算法</div>
-    </a>
   
 </nav>
 
@@ -249,7 +259,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二类分类"><span class="nav-number">1.</span> <span class="nav-text">二类分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic回归"><span class="nav-number">2.</span> <span class="nav-text">logistic回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">3.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成本函数"><span class="nav-number">4.</span> <span class="nav-text">成本函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降法"><span class="nav-number">5.</span> <span class="nav-text">梯度下降法</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#驼峰命名法"><span class="nav-number">1.</span> <span class="nav-text">驼峰命名法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pascal命名法"><span class="nav-number">2.</span> <span class="nav-text">Pascal命名法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匈牙利命名法"><span class="nav-number">3.</span> <span class="nav-text">匈牙利命名法</span></a></li></ol>
     
     </div>
   </aside>

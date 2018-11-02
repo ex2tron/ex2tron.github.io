@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_bimodal_image_two_peaks.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:49:53.268Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇4：Otsu阈值法">
 <meta name="twitter:description" content="大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_bimodal_image_two_peaks.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_bimodal_image_two_peaks.jpg" rel="gallery_cjn10c6oc00290o59ppdcgdet">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_bimodal_image_two_peaks.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" rel="gallery_cjnzn696q006fmg59dbr1frwf">
+        <img src="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" itemprop="image">
       </a>
     
   </div>
@@ -168,14 +168,14 @@ var themeMenus = {};
         <p>大部分图像处理任务都需要先二值化操作，所以阈值的选取很关键，Otsu阈值法会自动计算阈值。<a id="more"></a></p>
 <p><a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>（日本人提出的，也可以叫大津算法）会自动计算阈值，它适用于双峰图片，啥意思呢？</p>
 <h2 id="什么是双峰图片？"><a href="#什么是双峰图片？" class="headerlink" title="什么是双峰图片？"></a>什么是双峰图片？</h2><p>双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，如黑色点0有多少个等等，后面会详细介绍。</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_bimodal_image_two_peaks.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" alt=""></p>
 <p>Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，算法详解：<a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method(wikipedia)</a></p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：</p>
 <p>另外，对含噪点的图像，先进行滤波操作效果会更好。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'noisy.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 固定阈值法</span></div><div class="line">ret1, th1 = cv2.threshold(img, <span class="number">100</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line"></div><div class="line"><span class="comment"># Otsu阈值法</span></div><div class="line">ret2, th2 = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line"><span class="comment"># 先进行高斯滤波，再使用Otsu阈值法</span></div><div class="line">blur = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)</div><div class="line">ret3, th3 = cv2.threshold(blur, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div></pre></td></tr></table></figure>
 <p>下面我们用Matplotlib把原图、直方图和阈值图都显示出来：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">images = [img, <span class="number">0</span>, th1, img, <span class="number">0</span>, th2, blur, <span class="number">0</span>, th3]</div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">'Global(v=100)'</span>,</div><div class="line">          <span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>,</div><div class="line">          <span class="string">'Gaussian filtered Image'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="comment"># 绘制原图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">1</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制直方图plt.hist，ravel函数将数组降成一维</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">2</span>)</div><div class="line">    plt.hist(images[i * <span class="number">3</span>].ravel(), <span class="number">256</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">1</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制阈值图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">3</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span> + <span class="number">2</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">2</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_otsu_vs_simple_thresholding.jpg" alt="固定阈值 vs Otsu阈值"></p>
+<p><img src="http://pic.ex2tron.top/cv2_otsu_vs_simple_thresholding.jpg" alt="固定阈值 vs Otsu阈值"></p>
 <p>可以看到，Otsu阈值明显由于固定阈值，省去了不断尝试阈值判断效果好坏的过程。其中，绘制直方图时，使用了numpy中的<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">ravel()</a>函数，它会将原矩阵压缩成一维数组，便于画直方图。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8704.%20Otsu%E9%98%88%E5%80%BC%E6%B3%95" target="_blank" rel="external">本节源码</a></li>

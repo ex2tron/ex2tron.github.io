@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_lena_face_roi_crop.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:32:16.258Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程4：图像基本操作">
 <meta name="twitter:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_lena_face_roi_crop.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_lena_face_roi_crop.jpg" rel="gallery_cjn10c6nr001h0o59fnoyjil6">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_lena_face_roi_crop.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjnzn6938001emg59mqd8pmn1">
+        <img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" itemprop="image">
       </a>
     
   </div>
@@ -195,7 +195,7 @@ var themeMenus = {};
 <p><code>img.size</code>获取图像总像素数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*263*3=207507</span></div></pre></td></tr></table></figure>
 <h3 id="ROI"><a href="#ROI" class="headerlink" title="ROI"></a>ROI</h3><p><a href="https://baike.baidu.com/item/ROI/1125333#viewPageContent" target="_blank" rel="external">ROI</a>：region of interest，感兴趣区域。什么意思呢？比如我们要检测眼睛，因为眼睛肯定在脸上，所以我们感兴趣的只有脸这部分，其他不需要关注，这样就可以大大节省计算量，提高运行速度。</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_lena_face_roi_crop.jpg" alt="只关注脸( ╯□╰ )"></p>
+<p><img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" alt="只关注脸( ╯□╰ )"></p>
 <p>截取ROI非常简单，指定图片的范围即可：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 截取脸部ROI</span></div><div class="line">face = img[<span class="number">100</span>:<span class="number">200</span>, <span class="number">115</span>:<span class="number">188</span>]</div><div class="line">cv2.imshow(<span class="string">'face'</span>, face)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h3 id="通道分割与合并"><a href="#通道分割与合并" class="headerlink" title="通道分割与合并"></a>通道分割与合并</h3><p>彩色图的BGR三个通道是可以分开单独访问的，也可以将单独的三个通道合并成一副图像。分别使用<code>cv2.split()</code>和<code>cv2.merge()</code>：</p>

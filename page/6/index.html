@@ -126,260 +126,6 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-Hexo-Github-Pages轻松搭博客-3：绑定独立域名"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/hexo-blog-with-github-pages-3/" class="article-date">
-	  <time datetime="2017-09-13T13:25:24.000Z" itemprop="datePublished">September 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。
-购买域名域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开万网主页：
-
-查找你想购买的域名，比如我购买`ex2tron.top这个域名。.top域名的价格还是很便宜的，划算：
-
-购买需要登陆阿里云的账号。购买成功后，按照提示进行实名认证和拍照备案，认证过程需要几天。
-域名解析域名认证完成后，登陆阿里云控制台，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：
-
-选择你的域名，点击”解析设置”，我们添加三条解析：
-
-记录类型：CNAME，主机记录：www，路线：默认，记录值：username.github.io
-记录类型：A，主机记录：@，路线：默认，记录值：192...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/hexo-blog-with-github-pages-3/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Hexo-Github-Pages轻松搭博客-2：在Github上部署"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/hexo-blog-with-github-pages-2/">Hexo+Github Pages轻松搭博客(2)：在Github上部署</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/hexo-blog-with-github-pages-2/" class="article-date">
-	  <time datetime="2017-09-13T12:15:47.000Z" itemprop="datePublished">September 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！
-如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在/var/www/html/下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。
-
-关联Github首先登陆Github，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，username必须与你的账户名相同，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。新建时注意勾选”Initializ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/hexo-blog-with-github-pages-2/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Hexo-Github-Pages轻松搭博客-1"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/hexo-blog-with-github-pages-1/">Hexo+Github Pages轻松搭博客(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/hexo-blog-with-github-pages-1/" class="article-date">
-	  <time datetime="2017-09-13T08:07:06.000Z" itemprop="datePublished">September 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！
-
-废话区域：我在接触Hexo（可以读作Hack So）之前，绝对没少尝试建立一个完全自由、自己说了算的独立博客：WordPress定位重量级，功能强大，生成的是动态网站，依赖数据库……太繁琐了，放弃~而Jekyll和Hexo都是静态建站工具，但Jekyll的依赖项也很多，也不简约，不想用~最后才是名气相对不高的Hexo，相信我，熟练的情况下，10分钟就可以搭出来。
-
-
-简介Hexo是一个免费的静态Blog生成工具。简单来说，就是把你写的Markdown博客文件生成静态网页，把这个网页放在Github或者你自己的服务器上就可以快速访问了。软件界，从来不缺自动化工具(ง •_•)ง
-安装官网文档：Hexo Docs
-H...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/hexo-blog-with-github-pages-1/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【利器篇】用VSCode写Markdown"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/tools-markdown-in-vscode/">【利器篇】用VS Code写Markdown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/tools-markdown-in-vscode/" class="article-date">
-	  <time datetime="2017-09-11T07:11:22.000Z" itemprop="datePublished">September 11, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <a href="/tools-markdown-in-vscode/"><img width="250" height="175" src="http://ovhe2wt44.bkt.clouddn.com/editor_preview_Synchronization.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客。关于Markdown相较富文本的优势，我就不细说了。
-Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，如这篇文章：码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点。就我自己目前在Windows上使用的而言有：简书、有...
-
-        
-          <p class="article-more-link">
-            <a href="/tools-markdown-in-vscode/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -406,7 +152,7 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
       
         
           <div class="entry-thumbnail">
-            <a href="/tools-mycli/"><img width="250" height="175" src="http://ovhe2wt44.bkt.clouddn.com/mycli_demo.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="/tools-mycli/"><img width="250" height="175" src="http://pic.ex2tron.top/mycli_demo.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。
@@ -678,7 +424,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
       
         
           <div class="entry-thumbnail">
-            <a href="/build-table-driven-methods/"><img width="250" height="175" src="http://ovhe2wt44.bkt.clouddn.com/build_table_driven_methods2.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="/build-table-driven-methods/"><img width="250" height="175" src="http://pic.ex2tron.top/build_table_driven_methods2.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           每次谈到查表，我都会先想到下面这个简单的例子：
@@ -743,7 +489,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
       
         
           <div class="entry-thumbnail">
-            <a href="/vision-camera-focal-length-and-view/"><img width="250" height="175" src="http://ovhe2wt44.bkt.clouddn.com/lens_theory_diagram_.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="/vision-camera-focal-length-and-view/"><img width="250" height="175" src="http://pic.ex2tron.top/lens_theory_diagram_.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           焦距镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。如上图中所示，焦距就是透镜中心点到CCD焦平面的距离。按照焦距可否调节，镜头可分为定焦镜头和变焦镜头。
@@ -781,11 +527,202 @@ All grown-ups were once children… but only few of them remember it.《小王�
 <!-- Table of Contents -->
 
   
+    <article id="post-【视觉与图像】摄像头篇1：CCD靶面尺寸"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/vision-camera-ccd-size/">【视觉与图像】摄像头篇1：CCD靶面尺寸</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/vision-camera-ccd-size/" class="article-date">
+	  <time datetime="2017-05-15T02:29:52.000Z" itemprop="datePublished">May 15, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/vision-camera-ccd-size/"><img width="250" height="175" src="http://pic.ex2tron.top/ccd_inch_calculate_method.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          对于机器视觉和图像处理的任务，通常都从选择一款好的摄像头开始的。如果摄像头选的恰当，就能获取到一幅“好”的图像，这点很重要。
+
+如果你不出去走走，你就会以为这就是全世界。——《天堂电影院》
+
+所以我们就摄像头的几个重要参数来深入说明一下，首先看下CCD尺寸，开始入坑吧：
+CCD尺寸CCD靶面尺寸就是相机中CCD图像传感器芯片的大小：
+
+玩过摄影的人应该都知道135相机和全画幅相机，全画幅相机...
+
+        
+          <p class="article-more-link">
+            <a href="/vision-camera-ccd-size/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CCD/">CCD</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-构建：单点控制"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/build-single-point-control/">构建：单点控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/build-single-point-control/" class="article-date">
+	  <time datetime="2017-04-23T06:57:09.000Z" itemprop="datePublished">April 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/build-single-point-control/"><img width="250" height="175" src="http://pic.ex2tron.top/build_single_point_control.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          常常被程序猿忽略的一个问题是：其实你只在10％时间里写代码，90％的时间在调试和阅读代码！！！ 
+
+So do you want to take a leap of faith or become an old man, filled with regret, waiting for die alone?——《Inception》你愿意放手一搏，还是要等到年华老去，心中充满遗憾，孤单地迈向黄...
+
+        
+          <p class="article-more-link">
+            <a href="/build-single-point-control/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单点控制/">单点控制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/变量/">变量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建法/">构建法</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-构建：命名法"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/build-how-to-name-your-variables/">构建：命名法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/build-how-to-name-your-variables/" class="article-date">
+	  <time datetime="2015-03-31T02:45:33.000Z" itemprop="datePublished">March 31, 2015</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/build-how-to-name-your-variables/"><img width="250" height="175" src="http://pic.ex2tron.top/build_how_to_name_variables.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          软件开发都需要遵循一定的编程规范！
+
+每个人都会经过这个阶段，见到一座山，就想知道山后面是什么。我很想告诉他，可能翻过山后面，你会发现没什么特别。——《东邪西毒》
+
+
+我们都知道编程过程中，需要遵守一定的编程规范。对于变量的命名规范，有些是编程语言本身的规则，如C#中变量名中不能包含空格、小数点等等，有些则是开发人员或企业的编程风格或制约。
+目前形成的最为常用的变量命名规约主要有三种：
+
+驼...
+
+        
+          <p class="article-more-link">
+            <a href="/build-how-to-name-your-variables/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/变量命名/">变量命名</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建法/">构建法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驼峰/">驼峰</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
   </nav>
 
 </section>
@@ -887,7 +824,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/opencv-python-extra-image-pyramids/" title=""><img width="50" height="50" src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_scale_different_view.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/opencv-python-extra-image-pyramids/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
@@ -902,7 +839,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/movie-biopic-collections/" title=""><img width="50" height="50" src="http://ovhe2wt44.bkt.clouddn.com/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/movie-biopic-collections/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hawking_stars_feet.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
@@ -917,7 +854,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/opencv-python-shi-tomasi-corner-detection/" title=""><img width="50" height="50" src="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_detection_shi_tomasi.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/opencv-python-shi-tomasi-corner-detection/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
@@ -932,7 +869,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/opencv-python-harris-corner-detection/" title=""><img width="50" height="50" src="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_type.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/opencv-python-harris-corner-detection/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_corner_type.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
@@ -947,7 +884,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/opencv-python-understand-features/" title=""><img width="50" height="50" src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/opencv-python-understand-features/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_features.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
@@ -962,7 +899,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/opencv-python-hough-transform/" title=""><img width="50" height="50" src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hough_transform.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/opencv-python-hough-transform/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
@@ -982,7 +919,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/五味杂粮/">五味杂粮</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/谈电影/">谈电影</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -992,7 +929,7 @@ All grown-ups were once children… but only few of them remember it.《小王�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 12px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 14px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18px;">Python</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/logistic/" style="font-size: 12px;">logistic</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/三角定位/" style="font-size: 10px;">三角定位</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 12px;">变量</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像处理/" style="font-size: 16px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图像金字塔/" style="font-size: 10px;">图像金字塔</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/尺度/" style="font-size: 10px;">尺度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 14px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 14px;">神经网络</a> <a href="/tags/绘图/" style="font-size: 12px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 12px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 12px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 12px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
+      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 13.33px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 11.67px;">变量</a> <a href="/tags/变量命名/" style="font-size: 10px;">变量命名</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图像金字塔/" style="font-size: 10px;">图像金字塔</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/尺度/" style="font-size: 10px;">尺度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 15px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 11.67px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a> <a href="/tags/驼峰/" style="font-size: 10px;">驼峰</a>
     </div>
   </div>
 

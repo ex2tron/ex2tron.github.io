@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何旋转、平移和缩放图片，了解仿射/透视变换。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_perspective_transformations_inm.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:35:55.187Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程7：图像几何变换">
 <meta name="twitter:description" content="学习如何旋转、平移和缩放图片，了解仿射/透视变换。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_perspective_transformations_inm.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_perspective_transformations_inm.jpg" rel="gallery_cjn10c6nx001q0o59lgd7x0yz">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_perspective_transformations_inm.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" rel="gallery_cjnzn693g001tmg59tbdzkpcs">
+        <img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" itemprop="image">
       </a>
     
   </div>
@@ -187,7 +187,7 @@ var themeMenus = {};
 <blockquote>
 <p>再次强调一下：图片的高度（y方向）是rows，宽度（x方向）是cols，请勿混淆</p>
 </blockquote>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_translation_100_50.jpg" alt="平移图片"></p>
+<p><img src="http://pic.ex2tron.top/cv2_translation_100_50.jpg" alt="平移图片"></p>
 <h3 id="旋转图片"><a href="#旋转图片" class="headerlink" title="旋转图片"></a>旋转图片</h3><p>旋转同平移一样，也需要定义一个变换矩阵。OpenCV直接提供了<code>cv2.getRotationMatrix2D()</code>函数用来生成这个矩阵，对这个矩阵的形式感兴趣的童鞋可以去<a href="#引用">引用</a>查看：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 45°旋转图片并缩小一半</span></div><div class="line">M = cv2.getRotationMatrix2D((cols / <span class="number">2</span>, rows / <span class="number">2</span>), <span class="number">45</span>, <span class="number">0.5</span>)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'rotation'</span>, dst)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><code>cv2.getRotationMatrix2D()</code>函数有三个参数：</p>
@@ -196,7 +196,7 @@ var themeMenus = {};
 <li>参数2：旋转角度</li>
 <li>参数3：缩放比例，该例中0.5表示我们缩小一半</li>
 </ul>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_rotation_45_degree.jpg" alt="旋转45°并缩放"></p>
+<p><img src="http://pic.ex2tron.top/cv2_rotation_45_degree.jpg" alt="旋转45°并缩放"></p>
 <h3 id="翻转图片"><a href="#翻转图片" class="headerlink" title="翻转图片"></a>翻转图片</h3><p>如果我们镜像翻转图片，可以用<code>cv2.flip()</code>函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dst = cv2.flip(img, <span class="number">1</span>)</div></pre></td></tr></table></figure>
 <p>其中参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</p>
@@ -204,10 +204,10 @@ var themeMenus = {};
 <p>要生成这个变换矩阵，需要定义变换前后的三个点，比如说：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 变换前的三个点</span></div><div class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</div><div class="line"><span class="comment"># 变换后的三个点</span></div><div class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成变换矩阵</span></div><div class="line">M = cv2.getAffineTransform(pts1, pts2)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>变换前后的三个点我已经标记出来了。用<code>cv2.getAffineTransform()</code>生成变换矩阵，接下来再用<code>cv2.warpAffine()</code>实现变换。大家可以修改下变换后的三个点坐标看看效果：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_affine_transformation_drawing.jpg" alt="仿射变换前后对比图"></p>
+<p><img src="http://pic.ex2tron.top/cv2_affine_transformation_drawing.jpg" alt="仿射变换前后对比图"></p>
 <h3 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h3><p><a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>绝对是一项很酷的功能。我们经常会用手机去拍身份证和文件，无论你怎么拍，貌似都拍不正或者有边框。如果你使用过手机上面一些扫描类软件，比如”<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8B" target="_blank" rel="external">扫描全能王</a>“，”<a href="https://baike.baidu.com/item/Office%20Lens" target="_blank" rel="external">Office Lens</a>“，它们能很好地矫正图片。这些软件就是应用透视变换实现的，跟仿射变换一样，我们不用知道它的具体原理。</p>
 <p>透视变换后，原图中的直线依旧是直线。如下图，我们实现这个功能：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_perspective_transformations_inm.jpg" alt="矫正一鸣的卡片"></p>
+<p><img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" alt="矫正一鸣的卡片"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'card.jpg'</span>)</div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 原图中卡片的四个角点</span></div><div class="line">pts1 = np.float32([[<span class="number">148</span>, <span class="number">80</span>], [<span class="number">437</span>, <span class="number">114</span>], [<span class="number">94</span>, <span class="number">247</span>], [<span class="number">423</span>, <span class="number">288</span>]])</div><div class="line"><span class="comment"># 变换后分别在左上、右上、左下、右下四个点</span></div><div class="line">pts2 = np.float32([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">320</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">178</span>], [<span class="number">320</span>, <span class="number">178</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成透视变换矩阵</span></div><div class="line">M = cv2.getPerspectiveTransform(pts1, pts2)</div><div class="line"><span class="comment"># 进行透视变换</span></div><div class="line">dst = cv2.warpPerspective(img, M, (<span class="number">320</span>, <span class="number">178</span>))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>透视变换需要前后四个点来生成3*3的变换矩阵，用<code>cv2.getPerspectiveTransform()</code>实现。然后再用<code>cv2.warpPerspective()</code>进行变换。代码中有个<code>img[:, :, ::-1]</code>还记得吗？忘记的话，请看<a href="#练习">练习</a>。</p>
 <p>是不是很简单？当然，我们后面学习了特征提取之后，就可以自动识别角点了。</p>

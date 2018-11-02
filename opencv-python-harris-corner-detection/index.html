@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习一种角点特征的检测方法：Harris。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_type.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:47:26.113Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_corner_type.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程19：Harris角点检测">
 <meta name="twitter:description" content="学习一种角点特征的检测方法：Harris。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_type.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_corner_type.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_type.jpg" rel="gallery_cjn10c6nb00160o59dxzg0su4">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_type.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_corner_type.jpg" rel="gallery_cjnzn692v000vmg59gpjypx11">
+        <img src="http://pic.ex2tron.top/cv2_corner_type.jpg" itemprop="image">
       </a>
     
   </div>
@@ -174,12 +174,12 @@ var themeMenus = {};
 <p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
 </blockquote>
 <p><a href="/opencv-python-understand-features/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg" alt=""></p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_type.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_corner_type.jpg" alt=""></p>
 <p>Harris角点检测算法就是基于这个原理，常见的角点类型如上图。</p>
 <h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 1. Harris角点检测基于灰度图像</span></div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"><span class="comment"># 2. Harris角点检测</span></div><div class="line">dst = cv2.cornerHarris(gray, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0.04</span>)</div><div class="line"><span class="comment"># 3. 角点标记为红色（阈值可动态调整）</span></div><div class="line">img[dst &gt; <span class="number">0.01</span> * dst.max()] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>]</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey()</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_corner_detector_chessboard_small.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_corner_detector_chessboard_small.jpg" alt=""></p>
 <p>使用<a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#gac1fc3598018010880e370e2f709b4345" target="_blank" rel="external"><code>cv2.cornerHarris(src,blockSize,ksize,k,borderType)</code></a>函数实现Harris角点检测：</p>
 <ul>
 <li><code>src</code>：单通道8位或浮点型源图片</li>
@@ -192,12 +192,12 @@ var themeMenus = {};
 <p>下面我们来详细看下Harris算法的原理，涉及的数学知识较多，可以作为番外篇阅读：</p>
 <h3 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h3><h4 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h4><p>在推导之前，先来回顾一下简单的数学知识（其实我也早TMD忘光了( ╯□╰ )）。</p>
 <p>首先对于一个二阶矩阵：<br>$$<br>M = \left[<br> \begin{matrix}<br>   \lambda_1 &amp; 0 \newline<br>   0 &amp; \lambda_2<br>  \end{matrix}<br>  \right]<br>$$<br>λ1和λ2称为M矩阵的特征值，那么M的行列式值和M的迹分别为：<br>$$<br>detM = \lambda_1*\lambda_2  ，<br>traceM = \lambda_1+\lambda_2<br>$$<br>再来看下椭圆的表示形式：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_ellipse_curve_demo.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg" alt=""></p>
 <p>数学中，我们用\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)表示，其实我们可以写成矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   x &amp; y<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   \frac{1}{a^2} &amp; 0  \newline<br>   0 &amp; \frac{1}{b^2}<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   x  \newline<br>   y<br>  \end{matrix}<br>  \right]=1<br>$$<br>把中间的矩阵当作M，这样我们就可以得到一个椭圆半轴与特征值的关系：显然，特征值λ越大，半轴a或b越短。</p>
 <p>另外，我们还要用到泰勒展开，一阶泰勒展开：<br>$$<br>f(x+\Delta x) = f(x)+f\prime(x)\Delta x+\cdots+\frac{f\prime^n(x)}{n!}\Delta x+R_n(x)<br>$$<br>二阶泰勒展开：<br>$$<br>f(x+\Delta x,y+\Delta y)=f(x,y)+f_x(x,y)\Delta x+f_y(x,y)\Delta y+\cdots+R_n(x,y)<br>$$</p>
 <h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>Harris角点检测简单来说就是先选取一个矩形块，移动这个矩形块，然后计算像素间的差值。这个矩形块称为窗口，一般矩形块内的像素点权重不同，比如中间的像素点权重明显大于周边像素。综上，Harris算法模型可以用如下公式表示：</p>
 <p>$$<br>E(u,v)=\sum\limits_{x,y\in W}w(x,y)[I(x+u,y+v)-I(x,y)]^2<br>$$<br>其中W表示窗口，w(x,y)就是窗口内像素点的权重，一般取高斯函数。我们把上面的公式用泰勒级数展开：<br>$$<br>I(x+u,y+v)\approx I(x,y)+I_xu+I_yv<br>$$<br>那么带入原公式：<br>$$<br>E(u,v)=\sum w(x,y)(I_xu+I_yv)^2<br>$$<br>其中，后面的一项我们可以展开后用矩阵的方式表示：<br>$$<br>(I_xu+I_yv)^2=I_x^2u^2+I_y^2v^2+2I_xI_yuv= \left[<br> \begin{matrix}<br>  u &amp; v<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   I_x^2 &amp; I_xI_y \newline<br>   I_xI_y &amp; I_y^2<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right]<br>$$<br>这样：<br>$$<br>E(u,v)=  \left[<br> \begin{matrix}<br>  u &amp; v<br>  \end{matrix}<br>  \right]{\sum w(x,y)\left[<br> \begin{matrix}<br>   I_x^2 &amp; I_xI_y \newline<br>   I_xI_y &amp; I_y^2<br>  \end{matrix}<br>  \right]}\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right] = \left[<br> \begin{matrix}<br> u &amp; v<br>  \end{matrix}<br>  \right]M\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right]<br>$$<br>M矩阵称为梯度协方差矩阵。同样地，我们把上面表达式当作一个椭圆的形式来看，假设λ1和λ2是M矩阵的两个特征值，那么<strong>Harris算法就根据这两个特征值判断角点</strong>：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_harris_theroy_lambda_judge.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_harris_theroy_lambda_judge.jpg" alt=""></p>
 <ul>
 <li><strong>λ1和λ2都很小且两个值比较接近时，说明椭圆的两个半轴很长，所以可以视为扁平区域</strong></li>
 <li><strong>λ1和λ2一大一小且差距较大时，说明两个半轴一个长一个短，所以是边缘或线段</strong></li>
@@ -205,7 +205,7 @@ var themeMenus = {};
 </ul>
 <p>其实E(u,v)的表达式并不是标准的椭圆，但是可以类比理解。</p>
 <p>上面的计算量还是很大的，所以为了计算方便，Harris给出了一个角点响应函数R：<br>$$<br>R = detM-k(traceM)^2<br>$$<br><code>k</code>就是之前<code>cv2.cornerHarris()</code>函数中的Harris算子参数，一般取0.04~0.06。而之前的<code>ksize</code>参数表示的就是使用Sobel算子计算梯度时的卷积核大小（参考：<a href="/opencv-python-extra-image-gradients/">番外篇：图像梯度</a>），<code>blockSize</code>表示的就是<code>blockSize×blockSize</code>的窗口邻域大小。这样只需判断R的值就好了：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_harris_theroy_R_judge.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_harris_theroy_R_judge.jpg" alt=""></p>
 <p>怎么样，看懂了吗？如果不懂也没关系，暂时会用之后，慢慢理解(❤ ω ❤)</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>Harris角点检测是一种基于灰度图像的角点检测方法</li>

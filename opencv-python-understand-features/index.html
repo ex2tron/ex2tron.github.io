@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习和了解图像特征的重要性。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg">
-<meta property="og:updated_time" content="2018-10-03T03:52:37.384Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程18：理解特征">
 <meta name="twitter:description" content="学习和了解图像特征的重要性。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg" rel="gallery_cjn10c6n400120o59cx5ecbcd">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_features.jpg" rel="gallery_cjnzn692y000ymg59y2wjq4a7">
+        <img src="http://pic.ex2tron.top/cv2_understand_features.jpg" itemprop="image">
       </a>
     
   </div>
@@ -173,10 +173,10 @@ var themeMenus = {};
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>回想一下，我们是不是总可以用一些词语来描述一件物体，比如说描述人脸，我们可以说脸上有两只眼睛，一个鼻子和一个嘴巴，这其实就是特征。对于计算机来说，图片本身的二维矩阵就是最完整的特征，但我们有时也需要像描述人脸那样，让计算机提取一些显著的特征。相信大部分人都玩过拼图游戏，一起来看看：</p>
 <h3 id="拼图游戏"><a href="#拼图游戏" class="headerlink" title="拼图游戏"></a>拼图游戏</h3><p>拼图游戏是根据散落的图片小块最终拼接成一副完整的图片。那么，你是怎么拼起来的呢？</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features_jigsaw_puzzle.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_features_jigsaw_puzzle.jpg" alt=""></p>
 <p>虽然你很难让一个小朋友具体说出来是如何拼接的，但毫无疑问他们都能拼成功。我们可以说这一块跟另外一块很像：这块有个突出的部分，那块刚好有个凹进去的部分。这些小块间的相似性就是特征，试想一下，如果能让计算机找到这些小块间的特征，是不是也可以让计算机玩拼图游戏呢？</p>
 <h3 id="理解特征"><a href="#理解特征" class="headerlink" title="理解特征"></a>理解特征</h3><p>那计算机能理解的特征有哪些？如何找到这些特征呢？我们来看下这张图：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features_building.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_features_building.jpg" alt=""></p>
 <p>图的上面有6个小块，都是图中的某一部分。你能找到这6个小块在图中的具体位置吗？</p>
 <ul>
 <li><p>A和B很难确定具体的位置，因为它们在原图中的很多地方都有，可以把这些地方称为扁平的区域</p>
@@ -189,7 +189,7 @@ var themeMenus = {};
 </li>
 </ul>
 <p>可以简单地用下面这个图来表示这三种特征：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_features.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
 <ul>
 <li>蓝色方块代表的扁平区域很难定位，因为不论移动到哪儿，结果都一样</li>
 <li>黑色方块表示边缘，如果我们垂直移动它，它就会改变，但水平移动，结果仍然不变</li>

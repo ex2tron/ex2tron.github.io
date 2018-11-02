@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何用鼠标实时绘图。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_live_draw_rectangle.gif">
-<meta property="og:updated_time" content="2018-10-04T09:50:16.120Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇5：鼠标绘图">
 <meta name="twitter:description" content="学习如何用鼠标实时绘图。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_live_draw_rectangle.gif">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_live_draw_rectangle.gif" rel="gallery_cjn10c6ok002o0o595uevl838">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_live_draw_rectangle.gif" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif" rel="gallery_cjnzn696y006qmg5940lijk5z">
+        <img src="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif" itemprop="image">
       </a>
     
   </div>
@@ -188,14 +188,14 @@ var themeMenus = {};
 <p>好，开始coding吧：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">drawing = <span class="keyword">False</span>  <span class="comment"># 是否开始画图</span></div><div class="line">mode = <span class="keyword">True</span>  <span class="comment"># True：画矩形，False：画圆</span></div><div class="line">start = (<span class="number">-1</span>, <span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mouse_event</span><span class="params">(event, x, y, flags, param)</span>:</span></div><div class="line">    <span class="keyword">global</span> start, drawing, mode</div><div class="line"></div><div class="line">    <span class="comment"># 左键按下：开始画图</span></div><div class="line">    <span class="keyword">if</span> event == cv2.EVENT_LBUTTONDOWN:</div><div class="line">        drawing = <span class="keyword">True</span></div><div class="line">        start = (x, y)</div><div class="line">    <span class="comment"># 鼠标移动，画图</span></div><div class="line">    <span class="keyword">elif</span> event == cv2.EVENT_MOUSEMOVE:</div><div class="line">        <span class="keyword">if</span> drawing:</div><div class="line">            <span class="keyword">if</span> mode:</div><div class="line">                cv2.rectangle(img, start, (x, y), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                cv2.circle(img, (x, y), <span class="number">5</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line">    <span class="comment"># 左键释放：结束画图</span></div><div class="line">    <span class="keyword">elif</span> event == cv2.EVENT_LBUTTONUP:</div><div class="line">        drawing = <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> mode:</div><div class="line">            cv2.rectangle(img, start, (x, y), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            cv2.circle(img, (x, y), <span class="number">5</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line">cv2.setMouseCallback(<span class="string">'image'</span>, mouse_event)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="comment"># 按下m切换模式</span></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'m'</span>):</div><div class="line">        mode = <span class="keyword">not</span> mode</div><div class="line">    <span class="keyword">elif</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <p>效果应该如下图所示：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_mouse_drawing_rectangle_circle.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_mouse_drawing_rectangle_circle.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>要用鼠标绘图，需要用cv2.setMouseCallback()定义回调函数，然后在回调函数中根据不同的event事件，执行不同的功能</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>（选做）实现用鼠标画矩形，跟实例差不多，但只实时画一个，类似下面动图：</li>
 </ol>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_live_draw_rectangle.gif" alt="实时画一个矩形"></p>
+<p><img src="http://pic.ex2tron.top/cv2_live_draw_rectangle.gif" alt="实时画一个矩形"></p>
 <ol>
 <li>（选做）做一个在白色面板上绘图的简单程序，可用滑动条调整颜色和笔刷大小。</li>
 </ol>

@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="计算凸包及更多轮廓特征。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_convex.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:53:41.746Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_convex.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇10：凸包及更多轮廓特征">
 <meta name="twitter:description" content="计算凸包及更多轮廓特征。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_convex.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_convex.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_convex.jpg" rel="gallery_cjn10c6o700220o59ayi8k9sq">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_convex.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_convex.jpg" rel="gallery_cjnzn6969005wmg59m5m30u7o">
+        <img src="http://pic.ex2tron.top/cv2_understand_convex.jpg" itemprop="image">
       </a>
     
   </div>
@@ -169,11 +169,11 @@ var themeMenus = {};
 <h2 id="多边形逼近"><a href="#多边形逼近" class="headerlink" title="多边形逼近"></a>多边形逼近</h2><p>前面我们学习过最小外接矩和最小外接圆，那么可以用一个最小的多边形包围物体吗？当然可以：</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.先找到轮廓</span></div><div class="line">img = cv2.imread(<span class="string">'unregular.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">cnt = contours[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># 2.进行多边形逼近，得到多边形的角点</span></div><div class="line">approx = cv2.approxPolyDP(cnt, <span class="number">3</span>, <span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># 3.画出多边形</span></div><div class="line">image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">cv2.polylines(image, [approx], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <p>其中<code>cv2.approxPolyDP()</code>的参数2(epsilon)是一个距离值，表示多边形的轮廓接近实际轮廓的程度，值越小，越精确；参数3表示是否闭合。</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_approxpoly.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_approxpoly.jpg" alt=""></p>
 <h2 id="凸包"><a href="#凸包" class="headerlink" title="凸包"></a>凸包</h2><p><a href="https://baike.baidu.com/item/%E5%87%B8%E5%8C%85/179150?fr=aladdin" target="_blank" rel="external">凸包</a>跟多边形逼近很像，只不过它是物体最外层的”凸”多边形：集合A内连接任意两个点的直线都在A的内部，则称集合A是凸形的。如下图，红色的部分为手掌的凸包，双箭头部分表示凸缺陷(Convexity Defects)，凸缺陷常用来进行手势识别等：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_convex.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_convex.jpg" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.先找到轮廓</span></div><div class="line">img = cv2.imread(<span class="string">'convex.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">cnt = contours[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># 2.寻找凸包，得到凸包的角点</span></div><div class="line">hull = cv2.convexHull(cnt)</div><div class="line"></div><div class="line"><span class="comment"># 3.绘制凸包</span></div><div class="line">image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">cv2.polylines(image, [hull], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_convex_hull.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_convex_hull.jpg" alt=""></p>
 <p>其中函数<code>cv2.convexHull()</code>有个可选参数<code>returnPoints</code>，默认是True，代表返回角点的x/y坐标；如果为False的话，表示返回轮廓中是凸包角点的索引，比如说：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(hull[<span class="number">0</span>])  <span class="comment"># [[362 184]]（坐标）</span></div><div class="line">hull2 = cv2.convexHull(cnt, returnPoints=<span class="keyword">False</span>)</div><div class="line">print(hull2[<span class="number">0</span>])  <span class="comment"># [510]（cnt中的索引）</span></div><div class="line">print(cnt[<span class="number">510</span>])  <span class="comment"># [[362 184]]</span></div></pre></td></tr></table></figure>
 <p>当使用<code>cv2.convexityDefects()</code>计算凸包缺陷时，<code>returnPoints</code>需为False，详情可参考：<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html#contours-more-functions" target="_blank" rel="external">Convexity Defects</a></p>

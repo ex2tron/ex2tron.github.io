@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/good_grouping_related_statements.png">
-<meta property="og:updated_time" content="2018-10-03T02:50:45.277Z">
+<meta property="og:image" content="http://pic.ex2tron.top/good_grouping_related_statements.png">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建：变量">
 <meta name="twitter:description" content="如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/good_grouping_related_statements.png">
+<meta name="twitter:image" content="http://pic.ex2tron.top/good_grouping_related_statements.png">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -171,7 +171,7 @@ var themeMenus = {};
 <p>显然，如果你要想知道marketingData的计算流程，就必须在这段代码的不同行数跳跃。所以，这样组织代码会更好：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//组织良好，从上而下阅读</span></div><div class="line">MarketingData marketingData;</div><div class="line">marketingData.ComputeWeekly();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line">marketingData.print();</div><div class="line"></div><div class="line">SalesData salesData;</div><div class="line">salesData.ComputeWeekly();</div><div class="line">salesData.ComputeAnnually();</div><div class="line">salesData.print();</div><div class="line"></div><div class="line">TravelData travelData;</div><div class="line">travelData.ComputeWeekly();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">travelData.print();</div></pre></td></tr></table></figure>
 <p>《代码大全》中介绍了一种简便的检查相关语句是否组成得当的方法，把你的代码片段打印出来，然后把相关的语句画上框，组织得当的话， 这些框是不会重叠的：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/good_grouping_related_statements.png" alt="good_grouping_related_statements"></p>
+<p><img src="http://pic.ex2tron.top/good_grouping_related_statements.png" alt="good_grouping_related_statements"></p>
 <h4 id="建议三：把相关语句提取成单独的子程序"><a href="#建议三：把相关语句提取成单独的子程序" class="headerlink" title="建议三：把相关语句提取成单独的子程序"></a>建议三：把相关语句提取成单独的子程序</h4><p>更短的子程序相比长的子程序，变量的跨度和存活时间更小。比如，可以尝试这样重构上面的代码：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//重构，提取子程序</span></div><div class="line">ComputeMarketingData();</div><div class="line"></div><div class="line">ComputeSalesData();</div><div class="line"></div><div class="line">ComputeTravelData();</div></pre></td></tr></table></figure>
 <h4 id="建议四：开始使用最小的作用域，然后根据需求再扩展"><a href="#建议四：开始使用最小的作用域，然后根据需求再扩展" class="headerlink" title="建议四：开始使用最小的作用域，然后根据需求再扩展"></a>建议四：开始使用最小的作用域，然后根据需求再扩展</h4><p>一句话解释就是：<strong>把全局变量转换为成员局部变量要比局部变量转换为全局变量难的多</strong>。因此，在设计程序时，如果对变量的作用域犹豫不决时，优先倾向于最小的作用域。</p>
@@ -211,11 +211,11 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/algorithm-three-points-location/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/tools-gitkraken/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【算法贴】三点定位算法
+          【利器篇】GitKraken：顶级酷炫Git图像化客户端
         
       </div>
     </a>

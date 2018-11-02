@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习计算并绘制直方图，直方图均衡化等。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_histogram.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:44:45.443Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_histogram.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程15：直方图">
 <meta name="twitter:description" content="学习计算并绘制直方图，直方图均衡化等。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_histogram.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_histogram.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_histogram.jpg" rel="gallery_cjn10c6mu000o0o59pmzv5q9m">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_histogram.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_histogram.jpg" rel="gallery_cjnzn692m000lmg59gsgycglj">
+        <img src="http://pic.ex2tron.top/cv2_understand_histogram.jpg" itemprop="image">
       </a>
     
   </div>
@@ -173,7 +173,7 @@ var themeMenus = {};
 <li>OpenCV函数：cv2.calcHist(), cv2.equalizeHist()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫直方图"><a href="#啥叫直方图" class="headerlink" title="啥叫直方图"></a>啥叫直方图</h3><p>直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_histogram.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_histogram.jpg" alt=""></p>
 <p>在计算直方图之前，有几个术语先来了解一下：</p>
 <ul>
 <li>dims：要计算的通道数，对于灰度图dims=1</li>
@@ -201,29 +201,29 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plt.hist(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>当然，也可以用前面计算出来的结果绘制：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.plot(hist); plt.show()</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_calc_draw_histogram.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_calc_draw_histogram.jpg" alt=""></p>
 <p>从直方图上可以看到图片的大部分区域集中在150偏白的附近，这其实并不是很好的效果，下面我们来看看如何改善它。</p>
 <blockquote>
 <p>使用OpenCV的画线功能也可以画直方图，不过太麻烦了，有兴趣的可以看下官方示例：<a href="https://github.com/opencv/opencv/blob/master/samples/python/hist.py" target="_blank" rel="external">hist.py</a></p>
 </blockquote>
 <h3 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h3><p>一副效果好的图像通常在直方图上的分布比较均匀，直方图均衡化就是用来改善图像的全局亮度和对比度。其实从观感上就可以发现，前面那幅图对比度不高，偏灰白。对均衡化算法感兴趣的同学可参考：<a href="https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96" target="_blank" rel="external">维基百科：直方图均衡化</a></p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_histogram_equalization.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_histogram_equalization.jpg" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">equ = cv2.equalizeHist(img)</div></pre></td></tr></table></figure>
 <p>OpenCV中用<code>cv2.equalizeHist()</code>实现均衡化。我们把两张图片并排显示，对比一下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'equalization'</span>, np.hstack((img, equ)))  <span class="comment"># 并排显示</span></div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_before_after_equalization.jpg" alt=""></p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_before_after_equalization_histogram.jpg" alt="均衡化前后的直方图对比"></p>
+<p><img src="http://pic.ex2tron.top/cv2_before_after_equalization.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_before_after_equalization_histogram.jpg" alt="均衡化前后的直方图对比"></p>
 <p>可以看到均衡化后图片的亮度和对比度效果明显好于原图。</p>
 <h3 id="自适应均衡化"><a href="#自适应均衡化" class="headerlink" title="自适应均衡化"></a>自适应均衡化</h3><p>不难看出来，直方图均衡化是应用于整幅图片的，会有什么问题呢？看下图：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_adaptive_histogram.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_adaptive_histogram.jpg" alt=""></p>
 <p>很明显，因为全局调整亮度和对比度的原因，脸部太亮，大部分细节都丢失了。</p>
 <p>自适应均衡化就是用来解决这一问题的：它在每一个小区域内（默认8×8）进行直方图均衡化。当然，如果有噪点的话，噪点会被放大，需要对小区域内的对比度进行了限制，所以这个算法全称叫：<strong>对比度受限的自适应直方图均衡化</strong>CLAHE <a href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization" target="_blank" rel="external">Contrast Limited Adaptive Histogram Equalization</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自适应均衡化，参数可选</span></div><div class="line">clahe = cv2.createCLAHE(clipLimit=<span class="number">2.0</span>, tileGridSize=(<span class="number">8</span>, <span class="number">8</span>))</div><div class="line">cl1 = clahe.apply(img)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_adaptive_histogram.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_adaptive_histogram.jpg" alt=""></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>cv2.calcHist()函数中的参数3是指要计算的区域(mask：目标区域白色，其余黑色)，编写一个只计算图片左上角200×200区域直方图的程序</li>
 </ol>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_histogram_mask.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_histogram_mask.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>直方图是一种分析图像的手段</li>
 <li>cv2.calcHist()和numpy.bincount()均可用来计算直方图，使用Matplotlib绘制直方图</li>

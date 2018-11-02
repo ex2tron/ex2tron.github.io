@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/build_table_driven_methods2.jpg">
-<meta property="og:updated_time" content="2018-10-03T02:51:23.988Z">
+<meta property="og:image" content="http://pic.ex2tron.top/build_table_driven_methods2.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建：查表法">
 <meta name="twitter:description" content="每次谈到查表，我都会先想到下面这个简单的例子：">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/build_table_driven_methods2.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/build_table_driven_methods2.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/build_table_driven_methods2.jpg" rel="gallery_cjn10c6ta00bu0o59m5chz2ee">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/build_table_driven_methods2.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/build_table_driven_methods2.jpg" rel="gallery_cjnzn698e008omg5915f8qn5j">
+        <img src="http://pic.ex2tron.top/build_table_driven_methods2.jpg" itemprop="image">
       </a>
     
   </div>
@@ -186,7 +186,7 @@ var themeMenus = {};
 <p>有一个根据汽车速度计算转弯距离的程序：速度30马以下，距离为固定值a；100马以上也为固定值b；31~99之间，每个速度对应1个数值。这时如何建表呢？</p>
 <p><strong>1.重复数据，直接使用键值</strong></p>
 <p>第一种方式可以把a复制31次，100以上也复制多次，那表应该像这样：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/repeat_key_table_driven_method.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/repeat_key_table_driven_method.jpg" alt=""></p>
 <p>显然，这种方式很蠢，不仅有很多冗余的数据，而且很容易出错。</p>
 <p><strong>2.转换键值</strong></p>
 <p>我们可以用一个函数将键值做下转换：因为0~30是同一值，所以将0~30转成一个键值，100以上转成一个键值，中间的数据本身作为键值。对于这种转换，可以一句话搞定：</p>
@@ -194,7 +194,7 @@ var themeMenus = {};
 <p>其他语言中<code>max/min</code>函数一般在Math相关模块中可以找到。这样完整的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">distanceOfSpeed = [a, n31, n32, ……, n99, b]</div><div class="line">result = distanceOfSpeed[max(min(<span class="number">100</span>, speed), <span class="number">30</span>) - <span class="number">30</span>]</div></pre></td></tr></table></figure>
 <h3 id="阶梯查表"><a href="#阶梯查表" class="headerlink" title="阶梯查表"></a>阶梯查表</h3><p>前面考试成绩的例子，不同的成绩范围对应不同的数据，如同台阶一样：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/stair_table_look_up_method.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/stair_table_look_up_method.jpg" alt=""></p>
 <p>这时可以使用阶梯查表：表内的数据是对应不同的数据范围，而不是对应不同的数据点。阶梯法查表就是循环检查每个区间的上限。当分数第一次超过某个区间的上限时，就可以得到想要的等级（留心端点的值噢：&lt;和&lt;=的区别）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">scoreLimit = [<span class="number">60.0</span>, <span class="number">70.0</span>, <span class="number">90.0</span>, <span class="number">100.0</span>]</div><div class="line">grade = [<span class="string">"不及格"</span>, <span class="string">"及格"</span>, <span class="string">"良"</span>, <span class="string">"优"</span>]</div><div class="line"></div><div class="line">score, index, result = <span class="number">45</span>, <span class="number">0</span>, <span class="string">'优'</span></div><div class="line"><span class="comment"># 这个条件语句很重要噢！</span></div><div class="line"><span class="keyword">while</span> (result == <span class="string">'优'</span> <span class="keyword">and</span> index &lt; len(grade) - <span class="number">1</span>):</div><div class="line">    <span class="keyword">if</span> (score &lt; scoreLimit[index]):</div><div class="line">        result = grade[index]</div><div class="line">    index += <span class="number">1</span></div><div class="line"></div><div class="line">print(result) <span class="comment"># 不及格</span></div></pre></td></tr></table></figure>
 <p>这种阶梯方法很适合处理区间、等级评价和键值无规则的场合。</p>

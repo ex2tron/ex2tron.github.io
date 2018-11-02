@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_drawing_functions.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:36:26.739Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程8：绘图功能">
 <meta name="twitter:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_drawing_functions.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_drawing_functions.jpg" rel="gallery_cjn10c6o1001x0o59gcb9r2uh">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_drawing_functions.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" rel="gallery_cjnzn696l0068mg593b5kuh2v">
+        <img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" itemprop="image">
       </a>
     
   </div>
@@ -181,7 +181,7 @@ var themeMenus = {};
 <p>模块导入和显示图片的通用代码，相信你已经很熟悉了，为节约篇幅，后面我会省略掉噢：</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_drawing_functions.jpg" alt="绘制各种几何形状"></p>
+<p><img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" alt="绘制各种几何形状"></p>
 <p>上图就是本教程绘制的最终效果，下面一步步来看：</p>
 <h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画线只需知道起点和终点的坐标就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建一副黑色的图片</span></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></div><div class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</div></pre></td></tr></table></figure>
@@ -228,7 +228,7 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>你能用已学的绘图功能画出OpenCV的logo吗？(提示：椭圆和圆)</li>
 </ol>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_draw_opencv_logo.jpg" alt="OpenCV logo"></p>
+<p><img src="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg" alt="OpenCV logo"></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/08.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></li>

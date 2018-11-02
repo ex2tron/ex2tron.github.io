@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="了解轮廓间的层级关系。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:53:19.682Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇9：轮廓层级">
 <meta name="twitter:description" content="了解轮廓间的层级关系。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg" rel="gallery_cjn10c6oq002z0o59el4suz22">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg" rel="gallery_cjnzn696z006tmg59euymgobo">
+        <img src="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg" itemprop="image">
       </a>
     
   </div>
@@ -168,7 +168,7 @@ var themeMenus = {};
         <p>了解轮廓间的层级关系。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <p>前面我们使用<code>cv2.findContours()</code>寻找轮廓时，参数3表示轮廓的寻找方式(<code>RetrievalModes</code>)，当时我们传入的是<code>cv2.RETR_TREE</code>，它表示什么意思呢？另外，函数返回值hierarchy有什么用途呢？下面我们就来回答这两个问题。</p>
 <h2 id="理解轮廓层级"><a href="#理解轮廓层级" class="headerlink" title="理解轮廓层级"></a>理解轮廓层级</h2><p>很多情况下，图像中的形状之间是有关联的，比如说下图：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hierarchy.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_hierarchy.jpg" alt=""></p>
 <p>图中总共有8条轮廓，2和2a分别表示外层和里层的轮廓，3和3a也是一样。从图中看得出来：</p>
 <ul>
 <li>轮廓0/1/2是最外层的轮廓，我们可以说它们处于同一轮廓等级：0级</li>
@@ -199,7 +199,7 @@ var themeMenus = {};
 <blockquote>
 <p>经验之谈：OpenCV中找到的轮廓序号跟前面讲的不同噢，如下图：</p>
 </blockquote>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_RETR_TREE.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_RETR_TREE.jpg" alt=""></p>
 <p>现在既然我们了解了层级的概念，那么类似<code>cv2.RETR_TREE</code>的轮廓寻找方式又是啥意思呢？</p>
 <h2 id="轮廓寻找方式"><a href="#轮廓寻找方式" class="headerlink" title="轮廓寻找方式"></a>轮廓寻找方式</h2><p>OpenCV中有四种轮廓寻找方式<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a>，下面分别来看下：</p>
 <h3 id="1-RETR-LIST"><a href="#1-RETR-LIST" class="headerlink" title="1. RETR_LIST"></a>1. RETR_LIST</h3><p>这是最简单的一种寻找方式，它不建立轮廓间的子属关系，也就是所有轮廓都属于同一层级。这样的话，hierarchy中的后两个值<code>[First Child, Parent]</code>都为-1。比如同样的图，我们使用RETR_LIST来寻找轮廓：</p>
@@ -211,10 +211,10 @@ var themeMenus = {};
 <h3 id="2-RETR-TREE"><a href="#2-RETR-TREE" class="headerlink" title="2. RETR_TREE"></a>2. RETR_TREE</h3><p><code>cv2.RETR_TREE</code>就是之前我们一直在使用的方式，它会完整建立轮廓的层级从属关系，前面已经详细说明过了。</p>
 <h3 id="3-RETR-EXTERNAL"><a href="#3-RETR-EXTERNAL" class="headerlink" title="3. RETR_EXTERNAL"></a>3. RETR_EXTERNAL</h3><p>这种方式只寻找最高层级的轮廓，也就是它只会找到前面我们所说的3条0级轮廓：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, <span class="number">2</span>)</div><div class="line">print(len(contours), hierarchy, sep=<span class="string">'\n'</span>)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line"><span class="number">3</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_RETR_EXTERNAL.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_RETR_EXTERNAL.jpg" alt=""></p>
 <h3 id="4-RETR-CCOMP"><a href="#4-RETR-CCOMP" class="headerlink" title="4. RETR_CCOMP"></a>4. RETR_CCOMP</h3><p>相比之下<code>cv2.RETR_CCOMP</code>比较难理解，但其实也很简单：它把所有的轮廓只分为2个层级，不是外层的就是里层的。结合代码和图片，我们来理解下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_CCOMP, <span class="number">2</span>)</div><div class="line">print(hierarchy)</div><div class="line"><span class="comment"># 结果如下</span></div><div class="line">[[[ <span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">2</span>  <span class="number">0</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [ <span class="number">4</span>  <span class="number">1</span>  <span class="number">3</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>  <span class="number">2</span>]</div><div class="line">  [ <span class="number">6</span>  <span class="number">2</span>  <span class="number">5</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span>  <span class="number">4</span>]</div><div class="line">  [ <span class="number">7</span>  <span class="number">4</span> <span class="number">-1</span> <span class="number">-1</span>]</div><div class="line">  [<span class="number">-1</span>  <span class="number">6</span> <span class="number">-1</span> <span class="number">-1</span>]]]</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_RETR_CCOMP.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_RETR_CCOMP.jpg" alt=""></p>
 <blockquote>
 <p>注意：使用这个参数找到的轮廓序号与之前不同</p>
 </blockquote>
@@ -222,7 +222,7 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>如下图，找到3个圆环的内环，然后填充成<code>(180,215,215)</code>这种颜色：</li>
 </ol>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hierarchy_fill_holes.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hierarchy_fill_holes.jpg" alt=""></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8709.%20%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.html#contours-hierarchy" target="_blank" rel="external">Contours Hierarchy</a></li>

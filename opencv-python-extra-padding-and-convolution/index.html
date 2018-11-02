@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_padding.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:51:00.667Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_padding.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇7：卷积基础(图片边框)">
 <meta name="twitter:description" content="了解卷积/滤波的基础知识，给图片添加边框。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_padding.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_padding.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_padding.jpg" rel="gallery_cjn10c6oi002l0o598fi8e0b2">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_padding.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_padding.jpg" rel="gallery_cjnzn696v006mmg59s28p153u">
+        <img src="http://pic.ex2tron.top/cv2_understand_padding.jpg" itemprop="image">
       </a>
     
   </div>
@@ -171,14 +171,14 @@ var themeMenus = {};
 <p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
 </blockquote>
 <p>什么是二维卷积呢？看下面一张图就一目了然：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_convolution.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_convolution.jpg" alt=""></p>
 <p>卷积就是循环对<strong>图像跟一个核逐个元素相乘再求和得到另外一副图像的操作</strong>，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：<code>1×1 + 2×0 + 1×0 + 0×0 + 1×0 + 1×0 + 3×0 + 0×0 + 2×2 = 5</code>。算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_cnn.gif" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_cnn.gif" alt=""></p>
 <h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，前面我们用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫padding</strong>。</p>
 <blockquote>
 <p>事实上，原图为n×n，卷积核为f×f，最终结果图大小为(n-f+1) × (n-f+1)</p>
 </blockquote>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_padding.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_padding.jpg" alt=""></p>
 <p>那么扩展的这一层应该填充什么值呢？OpenCV中有好几种填充方式，都使用<code>cv2.copyMakeBorder()</code>函数实现，一起来看看。</p>
 <h2 id="添加边框"><a href="#添加边框" class="headerlink" title="添加边框"></a>添加边框</h2><p><code>cv2.copyMakeBorder()</code>用来给图片添加边框，它有下面几个参数：</p>
 <ul>
@@ -189,20 +189,20 @@ var themeMenus = {};
 <p>其中默认方式和固定值方式最常用，我们详细说明一下：</p>
 <h3 id="固定值填充"><a href="#固定值填充" class="headerlink" title="固定值填充"></a>固定值填充</h3><p>顾名思义，<code>cv2.BORDER_CONSTANT</code>这种方式就是边框都填充成一个固定的值，比如下面的程序都填充0：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'6_by_6.bmp'</span>, <span class="number">0</span>)</div><div class="line">print(img)</div><div class="line"></div><div class="line"><span class="comment"># 固定值边框，统一都填充0也称为zero padding</span></div><div class="line">cons = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_CONSTANT, value=<span class="number">0</span>)</div><div class="line">print(cons)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_zero_padding_output.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_zero_padding_output.jpg" alt=""></p>
 <h3 id="默认边框类型"><a href="#默认边框类型" class="headerlink" title="默认边框类型"></a>默认边框类型</h3><p>默认边框<code>cv2.BORDER_DEFAULT</code>其实是取镜像对称的像素填充，比较拗口，一步步解释：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">default = cv2.copyMakeBorder(img, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, cv2.BORDER_DEFAULT)</div><div class="line">print(default)</div></pre></td></tr></table></figure>
 <p>首先进行上下填充，填充成与原图像边界对称的值，如下图：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_up_down_padding_first.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_up_down_padding_first.jpg" alt=""></p>
 <p>同理再进行左右两边的填充，最后把四个顶点补充上就好了：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_right_left_padding_second2.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_right_left_padding_second2.jpg" alt=""></p>
 <blockquote>
 <p>一般情况下默认方式更加合理，因为边界的像素值更加接近，当然应视场合而定</p>
 </blockquote>
 <h2 id="OpenCV进行卷积"><a href="#OpenCV进行卷积" class="headerlink" title="OpenCV进行卷积"></a>OpenCV进行卷积</h2><p>OpenCV中用<code>cv2.filter2D()</code>实现卷积操作，比如我们的核是下面这样（3×3区域像素的和除以10）：</p>
 <p>$$<br>M = \frac{1}{10}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 定义卷积核</span></div><div class="line">kernel = np.ones((<span class="number">3</span>, <span class="number">3</span>), np.float32) / <span class="number">10</span></div><div class="line"><span class="comment"># 卷积操作，-1表示通道数与原图相同</span></div><div class="line">dst = cv2.filter2D(img, <span class="number">-1</span>, kernel)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_convolution_kernel_3_3.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_convolution_kernel_3_3.jpg" alt=""></p>
 <p>可以看到这个核对图像进行了模糊处理，这是卷积的众多功能之一。当然卷积还有很多知识没有学到，后面我们再继续深入。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>尝试给”lena.jpg”添加几种不同的边框类型，对比下效果</li>

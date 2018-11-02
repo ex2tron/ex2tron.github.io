@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_morphological.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:41:56.999Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_morphological.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程12：腐蚀与膨胀">
 <meta name="twitter:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_morphological.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_morphological.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_morphological.jpg" rel="gallery_cjn10c6mm000f0o59895spyv8">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_morphological.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_morphological.jpg" rel="gallery_cjnzn692p000omg594pfp5b2f">
+        <img src="http://pic.ex2tron.top/cv2_understand_morphological.jpg" itemprop="image">
       </a>
     
   </div>
@@ -173,12 +173,12 @@ var themeMenus = {};
 <li>OpenCV函数：cv2.erode(), cv2.dilate(), cv2.morphologyEx()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫形态学操作"><a href="#啥叫形态学操作" class="headerlink" title="啥叫形态学操作"></a>啥叫形态学操作</h3><p>形态学操作其实就是<strong>改变物体的形状</strong>，比如腐蚀就是”变瘦”，膨胀就是”变胖”，看下图就明白了：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_morphological.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_morphological.jpg" alt=""></p>
 <blockquote>
 <p>形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。<strong>腐蚀和膨胀是针对图片中的白色部分！</strong></p>
 </blockquote>
 <h3 id="腐蚀"><a href="#腐蚀" class="headerlink" title="腐蚀"></a>腐蚀</h3><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有0和255，所以小区域内有一个是0该像素点就为0：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_erosion.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_erosion.jpg" alt=""></p>
 <p>这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利(●ˇ∀ˇ●)）</p>
 <p>OpenCV中用<code>cv2.erode()</code>函数进行腐蚀，只需要指定核的大小就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'j.bmp'</span>, <span class="number">0</span>)</div><div class="line">kernel = np.ones((<span class="number">5</span>, <span class="number">5</span>), np.uint8)</div><div class="line">erosion = cv2.erode(img, kernel)  <span class="comment"># 腐蚀</span></div></pre></td></tr></table></figure>
@@ -186,14 +186,14 @@ var themeMenus = {};
 <p>这个核也叫结构元素，因为形态学操作其实也是应用卷积来实现的。结构元素可以是矩形/椭圆/十字形，可以用<code>cv2.getStructuringElement()</code>来生成不同形状的结构元素，比如：</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 矩形结构</span></div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 椭圆结构</span></div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 十字形结构</span></div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_morphological_struct_element.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_morphological_struct_element.jpg" alt=""></p>
 <h3 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h3><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dilation = cv2.dilate(img, kernel)  <span class="comment"># 膨胀</span></div></pre></td></tr></table></figure>
 <h3 id="开-闭运算"><a href="#开-闭运算" class="headerlink" title="开/闭运算"></a>开/闭运算</h3><p>先腐蚀后膨胀叫开运算（因为先腐蚀会分开物体，这样容易记住），其作用是：分离物体，消除小区域。这类形态学操作用<code>cv2.morphologyEx()</code>函数实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 定义结构元素</span></div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'j_noise_out.bmp'</span>, <span class="number">0</span>)</div><div class="line">opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="comment"># 开运算</span></div></pre></td></tr></table></figure>
 <p>闭运算则相反：先膨胀后腐蚀（先膨胀会使白色的部分扩张，以至于消除/“闭合”物体里面的小黑洞，所以叫闭运算）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'j_noise_in.bmp'</span>, <span class="number">0</span>)</div><div class="line">closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="comment"># 闭运算</span></div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_morphological_opening_closing.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_morphological_opening_closing.jpg" alt=""></p>
 <blockquote>
 <p>经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混◑﹏◐），但看上图↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉</p>
 </blockquote>
@@ -202,7 +202,7 @@ var themeMenus = {};
 <li>形态学梯度：膨胀图减去腐蚀图，<code>dilation - erosion</code>，这样会得到物体的轮廓：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'school.bmp'</span>, <span class="number">0</span>)</div><div class="line">gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_morphological_gradient.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_morphological_gradient.jpg" alt=""></p>
 <ul>
 <li>顶帽：原图减去开运算后的图：<code>src - opening</code></li>
 </ul>

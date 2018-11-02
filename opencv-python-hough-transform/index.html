@@ -26,12 +26,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习使用霍夫变换识别出图像中的直线和圆。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hough_transform.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:45:44.549Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程17：霍夫变换">
 <meta name="twitter:description" content="学习使用霍夫变换识别出图像中的直线和圆。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hough_transform.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -137,8 +137,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hough_transform.jpg" rel="gallery_cjn10c6n2000y0o59k5qzrgro">
-        <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hough_transform.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" rel="gallery_cjnzn692u000smg59psnwlv1t">
+        <img src="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" itemprop="image">
       </a>
     
   </div>
@@ -176,12 +176,12 @@ var themeMenus = {};
 <p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
 </blockquote>
 <p>霍夫变换常用来在图像中提取直线和圆等几何形状，实现原理在维基百科上解释的非常清楚：<a href="https://en.wikipedia.org/wiki/Hough_transform" target="_blank" rel="external">Hough transform</a>，我来做个简易的解释，感兴趣的可以一看，否则划掉(●ˇ∀ˇ●)：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_understand_hough_transform.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" alt=""></p>
 <p>学过几何的都知道，直线可以分别用直角坐标系和极坐标系来表示：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_line_expression_in_coordinate.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_line_expression_in_coordinate.jpg" alt=""></p>
 <p>那么经过某个点(x0,y0)的所有直线都可以用这个式子来表示：$ r_\theta=x_0\cdot\cos \theta+y_0\cdot\sin \theta​$</p>
 <p>也就是说每一个(r,θ)都表示一条经过(x0,y0)直线，那么同一条直线上的点必然会有同样的(r,θ)。如果将某个点所有的(r,θ)绘制成下面的曲线，那么同一条直线上的点的(r,θ)曲线会相交于一点：</p>
-<p>  <img src="http://ovhe2wt44.bkt.clouddn.com/cv2_curve_of_r_theta.jpg" alt=""> </p>
+<p>  <img src="http://pic.ex2tron.top/cv2_curve_of_r_theta.jpg" alt=""> </p>
 <p>OpenCV中首先计算(r,θ) 累加数，累加数超过一定值后就认为在同一直线上（有点拗口，不懂也没关系，暂时会用就行）。</p>
 <h3 id="霍夫直线变换"><a href="#霍夫直线变换" class="headerlink" title="霍夫直线变换"></a>霍夫直线变换</h3><p>OpenCV中用<code>cv2.HoughLines()</code>在二值图上实现霍夫变换，函数返回的是一组直线的(r,θ)数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1.加载图片，转为二值图</span></div><div class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>)</div><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">edges = cv2.Canny(gray, <span class="number">50</span>, <span class="number">150</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2.霍夫直线变换</span></div><div class="line">lines = cv2.HoughLines(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>)</div></pre></td></tr></table></figure>
@@ -193,7 +193,7 @@ var themeMenus = {};
 <li>参数4：累加数阈值，值越小，考虑越多的线</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 3.将检测的线画出来（注意是极坐标噢）</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">    rho, theta = line[<span class="number">0</span>]</div><div class="line">    a = np.cos(theta)</div><div class="line">    b = np.sin(theta)</div><div class="line">    x0 = a * rho</div><div class="line">    y0 = b * rho</div><div class="line">    x1 = int(x0 + <span class="number">1000</span> * (-b))</div><div class="line">    y1 = int(y0 + <span class="number">1000</span> * (a))</div><div class="line">    x2 = int(x0 - <span class="number">1000</span> * (-b))</div><div class="line">    y2 = int(y0 - <span class="number">1000</span> * (a))</div><div class="line"></div><div class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hough_line_function.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hough_line_function.jpg" alt=""></p>
 <h3 id="统计概率霍夫直线变换"><a href="#统计概率霍夫直线变换" class="headerlink" title="统计概率霍夫直线变换"></a>统计概率霍夫直线变换</h3><p>前面的方法又称为标准霍夫变换，它会计算图像中的每一个点，计算量比较大，另外它得到的是整一条线（r和θ），并不知道原图中直线的端点。所以提出了统计概率霍夫直线变换(Probabilistic Hough Transform)，是一种改进的霍夫变换：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line"><span class="comment"># 3.统计概率霍夫线变换</span></div><div class="line">lines = cv2.HoughLinesP(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>,</div><div class="line">                        minLineLength=<span class="number">50</span>, maxLineGap=<span class="number">10</span>)</div></pre></td></tr></table></figure>
 <p>前面几个参数跟之前的一样，有两个可选参数：</p>
@@ -203,7 +203,7 @@ var themeMenus = {};
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 3.将检测的线画出来</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">    x1, y1, x2, y2 = line[<span class="number">0</span>]</div><div class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
 <p><code>cv2.LINE_AA</code>在之前绘图功能中讲解过，表示抗锯齿线型。</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hough_lines_p_function.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hough_lines_p_function.jpg" alt=""></p>
 <h3 id="霍夫圆变换"><a href="#霍夫圆变换" class="headerlink" title="霍夫圆变换"></a>霍夫圆变换</h3><p>霍夫圆变换跟直线变换类似，只不过线是用(r,θ)表示，圆是用(x_center,y_center,r)来表示，从二维变成了三维，数据量变大了很多；所以一般使用霍夫梯度法减少计算量，对该算法感兴趣的同学可参考：<a href="https://en.wikipedia.org/wiki/Circle_Hough_Transform" target="_blank" rel="external">Circle Hough Transform</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line"><span class="comment"># 2.霍夫圆变换</span></div><div class="line">circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, <span class="number">1</span>, <span class="number">20</span>, param2=<span class="number">30</span>)</div><div class="line">circles = np.int0(np.around(circles))</div></pre></td></tr></table></figure>
 <p>其中，</p>
@@ -214,7 +214,7 @@ var themeMenus = {};
 <li>参数5：param2跟霍夫直线变换中的累加数阈值一样</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将检测的圆画出来</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> circles[<span class="number">0</span>, :]:</div><div class="line">    cv2.circle(drawing, (i[<span class="number">0</span>], i[<span class="number">1</span>]), i[<span class="number">2</span>], (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)  <span class="comment"># 画出外圆</span></div><div class="line">    cv2.circle(drawing, (i[<span class="number">0</span>], i[<span class="number">1</span>]), <span class="number">2</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)  <span class="comment"># 画出圆心</span></div></pre></td></tr></table></figure>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_hough_circles_function.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_hough_circles_function.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>霍夫变换用来提取图像中的直线和圆等几何形状</li>
 <li>霍夫直线变换：cv2.HoughLines()（整条直线）, cv2.HoughLinesP()</li>

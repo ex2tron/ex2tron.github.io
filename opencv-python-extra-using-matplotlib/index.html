@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习如何使用Matplotlib显示OpenCV图像。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_matplotlib_show_gray_image.jpg">
-<meta property="og:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_matplotlib_show_color_image.jpg">
-<meta property="og:updated_time" content="2018-10-04T09:49:04.379Z">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg">
+<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇2：Matplotlib显示图像">
 <meta name="twitter:description" content="学习如何使用Matplotlib显示OpenCV图像。">
-<meta name="twitter:image" content="http://ovhe2wt44.bkt.clouddn.com/cv2_matplotlib_show_gray_image.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -160,14 +160,14 @@ var themeMenus = {};
 <p>Matplotlib是Python的一个非常重要的绘图库，更多内容可以去<a href="www.matplotlib.org/">官网</a>学习。</p>
 <h2 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>结果如下：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
 <h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注解：<code>img[:,:,0]</code>表示图片的蓝色通道，熟悉Python的同学应该知道，对一个字符串s进行翻转用的是<code>s[::-1]</code>，同样<code>img[:,:,::-1]</code>就表示BGR通道翻转，变成RGB</p>
 </blockquote>
 <p>结果如下：</p>
-<p><img src="http://ovhe2wt44.bkt.clouddn.com/cv2_matplotlib_show_color_image.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20Matplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
 <li><a href="www.matplotlib.org/">Matplotlib</a></li>
