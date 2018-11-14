@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习打开摄像头捕获照片、播放本地视频、录制视频等。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-04T09:09:55.371Z">
+<meta property="og:updated_time" content="2018-11-03T12:38:03.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程3：打开摄像头">
 <meta name="twitter:description" content="学习打开摄像头捕获照片、播放本地视频、录制视频等。">
@@ -158,7 +158,7 @@ var themeMenus = {};
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>打开摄像头并捕获照片</li>
 <li>播放本地视频，录制视频</li>
-<li>OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()</li>
+<li>OpenCV函数：<code>cv2.VideoCapture()</code>, <code>cv2.VideoWriter()</code></li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数：0指的是摄像头的编号。如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打开摄像头并灰度化显示</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 获取一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line">    <span class="comment"># 将这帧转换为灰度图</span></div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>

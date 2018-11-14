@@ -221,12 +221,12 @@ OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
           
             <div class="entry-summary" style="margin-left:0;">
             学习如何使用Matplotlib显示OpenCV图像。
-Matplotlib是Python的一个非常重要的绘图库，更多内容可以去官网学习。
-显示灰度图1234567import cv2import matplotlib.pyplot as pltimg = cv2.imread('lena.jpg', 0)# 灰度图显示，cmap(color map)设置为grayplt.imshow(img, cmap='gray')plt.show()
+Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去官网学习更多内容。
+显示灰度图12345678import cv2import matplotlib.pyplot as pltimg = cv2.imread('lena.jpg', 0)# 灰度图显示，cmap(color map)设置为grayplt.imshow(img, cmap='gray')plt.show()
 结果如下：
 
 显示彩色图OpenCV中的图像是以BGR的通道顺序存储的，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:
-12345678910111213141516i...
+12345678910111213141...
           
 
         
@@ -291,12 +291,7 @@ Matplotlib是Python的一个非常重要的绘图库，更多内容可以去官�
 加载图片，显示图片，保存图片
 OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()
 
-教程图片
- 注：本教程不再赘述图像处理的基本理论，只把需要注意的做简单提及噢(⊙o⊙)
-
-OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图像坐标的起始点是在左上角：
-
-加载图...
+教程图片大部分人可能都知道电脑上的彩色图是以RGB(红-绿-蓝，Red-Green-Blue)颜色模式表示的，但OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图像坐标的起始点...
 
         
           <p class="article-more-link">
