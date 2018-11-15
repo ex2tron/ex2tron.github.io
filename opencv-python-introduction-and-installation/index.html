@@ -27,7 +27,7 @@
 <meta property="og:description" content="本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_install_opencv-python.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2018-11-15T03:49:16.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程1：简介与安装">
 <meta name="twitter:description" content="本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" rel="gallery_cjoh3z7mx001dr459qw1k03kp">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" rel="gallery_cjoi22s6t00193459w6ykbdfq">
         <img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" itemprop="image">
       </a>
     
@@ -166,15 +166,18 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
-<p><strong>我相信大部分人对Python进行图像处理的首要疑问是：它快吗？( ╯□╰ )</strong>，其次是它的应用平台和拓展性，下面我来为你解答这两个疑惑。</p>
+<p>相信大部分人知道的OpenCV都是用C++来开发的，那么为什么我推荐使用Python呢？</p>
 <blockquote>
-<p>本教程翻译自OpenCV<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">官方英文教程</a>，我按照使用度和难易度翻译和重新编写，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到。虽然简单，但本教程依然需要你具备Python和图像处理的简单基础噢(⊙o⊙)</p>
+<p>本教程翻译自<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">OpenCV官方英文教程</a>，我按照使用度和难易度翻译，并重绘和编写了大量原创内容，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到奥(⊙o⊙)</p>
 </blockquote>
 <hr>
-<h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要特性：它是一门胶水语言！Python可以很容易地扩展C/C++。OpenCV-Python就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
+<h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要的特性：它是一门胶水语言！Python可以很容易地扩展C/C++。<strong>OpenCV-Python</strong>就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
 <p>我举两个简单的例子就一目了然了：一个是读入图片，另一个是调整图片的对比度和亮度：</p>
-<p><img src="http://pic.ex2tron.top/cv2_python_vs_cplus_time.jpg" alt="Python vs C++"></p>
+<p><img src="http://pic.ex2tron.top/cv2_python_vs_cplus_speed.jpg" alt=""></p>
 <p><strong>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！</strong></p>
+<h2 id="人工智能浪潮"><a href="#人工智能浪潮" class="headerlink" title="人工智能浪潮"></a>人工智能浪潮</h2><p>近些年，人工智能相关技术的快速发展大家有目共睹，不必多说。在编程语言方面，更多人希望的是具备高效开发效率、跨平台、高度扩展性的语言，尤其是一些AI巨头优先推出支持Python语言的深度学习框架，如Facebook的<a href="https://pytorch.org/" target="_blank" rel="external">PyTorch</a>、Google的<a href="https://tensorflow.google.cn/" target="_blank" rel="external">Tensorflow</a>等，可以说Python是名副其实的“网红语言”了。</p>
+<p><img src="http://pic.ex2tron.top/cv2_ai_ml_dl2.jpg" alt=""></p>
+<p>从<a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="external">TIOBE编程语言排行榜</a>也可以看到，Python发展迅猛，已经逼近C++的份额。这个排行榜每月更新，我就不截图了。</p>
 <h2 id="人生苦短，我用Python"><a href="#人生苦短，我用Python" class="headerlink" title="人生苦短，我用Python"></a>人生苦短，我用Python</h2><ul>
 <li>如果你搞科研用，果断放弃C++（Matlab？出门左拐）</li>
 <li>如果你是快速原型开发，验证方案，果断放弃C++</li>
@@ -184,23 +187,27 @@ var themeMenus = {};
 <li>除非你的程序是MFC或已经用C++编写其他模块或是嵌入式设备，那就用C++吧，不过我仍然建议你进行模块式开发，如上层用其他语言，图像处理仍然用Python外部调用。</li>
 </ul>
 <p>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">Numpy</a>，相当于Python的Matlab，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
-<p>如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用后期一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。安装好之后，可以在cmd中输入<code>python --version</code>来查看Python的版本信息。</p>
-<blockquote>
-<p>经验之谈：Windows版的Anaconda安装时，记得勾选<code>Add Anaconda to my PATH environment variable</code>，添加到环境变量中</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
 </blockquote>
-<p><img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" alt=""></p>
 <p>要安装OpenCV，只需cmd下的一条指令：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
-<p>要测试是否安装正确，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。要查看OpenCV的版本，可以：</p>
+<p>pip是Python的包管理器，如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用后期一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。</p>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p>进入Anaconda<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>，下载最新版本的安装文件，速度比较慢的话，可以去<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external">清华开源镜像站</a>。</p>
+<ul>
+<li><p>Windows版下载的是exe文件，双击可以直接安装，安装时记得勾选 <code>Add Anaconda to my PATH environment variable</code>，添加到环境变量中。</p>
+</li>
+<li><p>Linux版下载的是sh文件，下载完成后，终端切换到下载目录，执行<code>bash Anaconda3-xx.sh</code>，Linux版也会提示添加环境变量，记得输yes哈。</p>
+</li>
+</ul>
+<h3 id="安装测试"><a href="#安装测试" class="headerlink" title="安装测试"></a>安装测试</h3><p>Python安装好之后，可以在cmd中输入<code>python --version</code>来查看Python的版本信息。对于OpenCV，可以打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。要查看OpenCV的版本，可以：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(cv2.__version__)  <span class="comment"># '3.4.1'</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)等，自己习惯就行</p>
+<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)，或者直接在命令行里敲，自己习惯就行。</p>
 </blockquote>
-<p>常见安装问题：</p>
-<ol>
-<li>pip识别不了，说明环境变量中没有pip的目录。找到pip目录，添加到用户（或系统）变量的path中</li>
-<li>如果下载速度很慢，可以<a href="https://pypi.org/search/?q=opencv-python" target="_blank" rel="external">点击此处</a>下载离线版。下载完成后，cmd切换到下载的目录，输入<code>pip install 文件名</code>安装</li>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li>pip识别不了：环境变量中没有pip的目录，找到pip目录，添加到用户（或系统）变量的path中。</li>
+<li>下载速度很慢：可以<a href="https://pypi.org/search/?q=opencv-python" target="_blank" rel="external">到此处</a>下载离线版。下载完成后，cmd切换到下载目录，输入 <code>pip install 文件名</code>安装。</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/01.%20%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85" target="_blank" rel="external">本节源码</a></li>
@@ -271,7 +278,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python照样快！"><span class="nav-number">1.</span> <span class="nav-text">Python照样快！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人生苦短，我用Python"><span class="nav-number">2.</span> <span class="nav-text">人生苦短，我用Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python照样快！"><span class="nav-number">1.</span> <span class="nav-text">Python照样快！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人工智能浪潮"><span class="nav-number">2.</span> <span class="nav-text">人工智能浪潮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人生苦短，我用Python"><span class="nav-number">3.</span> <span class="nav-text">人生苦短，我用Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装步骤"><span class="nav-number">4.1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装测试"><span class="nav-number">4.2.</span> <span class="nav-text">安装测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题"><span class="nav-number">4.3.</span> <span class="nav-text">常见问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

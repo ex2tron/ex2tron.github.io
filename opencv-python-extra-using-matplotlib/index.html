@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg">
-<meta property="og:updated_time" content="2018-11-03T12:36:18.639Z">
+<meta property="og:updated_time" content="2018-11-15T01:30:28.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇2：Matplotlib显示图像">
 <meta name="twitter:description" content="学习如何使用Matplotlib显示OpenCV图像。">
@@ -166,9 +166,9 @@ var themeMenus = {};
 <blockquote>
 <p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，下面解释下：</p>
 </blockquote>
-<p>熟悉Python的童鞋应该知道，对一个字符串s翻转可以这样写：<code>s[::-1]</code>，’abc’变成’cba’，写全就是<code>s[0:end:-1]</code>，-1表示倒数。图片是二维的，所以完整地复制一副图像就是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img2 = img[:,:] <span class="comment"># 写全就是：img2 = img[0:end,0:end]</span></div></pre></td></tr></table></figure>
-<p>而图片是有三个通道，相当于一个长度为3的字符串，所以通道翻转就是<code>img2[::-1]</code>，组合起来便是<code>img[:,:,::-1]</code>。</p>
+<p>熟悉Python的童鞋应该知道，对一个字符串s翻转可以这样写：<code>s[::-1]</code>，’abc’变成’cba’，-1表示逆序。图片是二维的，所以完整地复制一副图像就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img2 = img[:,:] <span class="comment"># 写全就是：img2 = img[0:height,0:width]</span></div></pre></td></tr></table></figure>
+<p>而图片是有三个通道，相当于一个长度为3的字符串，所以通道翻转与图片复制组合起来便是<code>img[:,:,::-1]</code>。</p>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h2 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h2><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
