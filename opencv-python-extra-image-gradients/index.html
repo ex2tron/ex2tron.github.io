@@ -27,7 +27,7 @@
 <meta property="og:description" content="了解图像梯度和边缘检测的相关概念。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2018-11-15T14:09:41.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇8：图像梯度">
 <meta name="twitter:description" content="了解图像梯度和边缘检测的相关概念。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg" rel="gallery_cjoi22s84002v34598wq827a5">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg" rel="gallery_cjoiosovp003h3g59bg1057qg">
         <img src="http://pic.ex2tron.top/cv2_horizen_vertical_edge_detection.jpg" itemprop="image">
       </a>
     
@@ -168,7 +168,7 @@ var themeMenus = {};
         <p>了解图像梯度和边缘检测的相关概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <p>还记得前面<a href="/opencv-python-smoothing-images/">平滑图像</a>中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。</p>
 <h2 id="图像梯度"><a href="#图像梯度" class="headerlink" title="图像梯度"></a><a href="https://baike.baidu.com/item/图像梯度/8528837?fr=aladdin" target="_blank" rel="external">图像梯度</a></h2><blockquote>
-<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+<p>本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。</p>
 </blockquote>
 <p>如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。</p>
 <p>当然，大部分人应该是早忘记高数了(￣▽￣)”，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。</p>

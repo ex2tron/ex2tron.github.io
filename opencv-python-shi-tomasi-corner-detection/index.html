@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习Shi-Tomasi角点检测算法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
+<meta property="og:updated_time" content="2018-11-15T14:09:30.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程20：Shi-Tomasi角点检测">
 <meta name="twitter:description" content="学习Shi-Tomasi角点检测算法。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" rel="gallery_cjoi22s6t001b3459farfu5na">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" rel="gallery_cjoiosovq003v3g59mnuhbobq">
         <img src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" itemprop="image">
       </a>
     
@@ -171,7 +171,7 @@ var themeMenus = {};
 <li>OpenCV函数：cv2.goodFeaturesToTrack()</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h3><blockquote>
-<p>本节包含MathJax数学公式，如果显示有问题，可尝试更换浏览器噢！</p>
+<p>本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。</p>
 </blockquote>
 <p>Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：<br>$$<br>R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2<br>$$<br>可以看出Harris角点检测结果和k值有关，而Shi Jianbo和Tomasi两人发现角点的稳定性和M矩阵的较小特征值有关，所以在Shi-Tomasi算法中：<br>$$<br>R = min(\lambda_1,\lambda_2)<br>$$<br>接下来与Harris一致，将R与阈值比较，大于阈值的就是角点。改进后的算法可以用下图表示：</p>
 <p><img src="http://pic.ex2tron.top/cv2_shi_tomasi_R_judge.jpg" alt=""></p>

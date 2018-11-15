@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习使用滑动条动态调整参数。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2018-11-15T14:19:40.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇3：滑动条">
 <meta name="twitter:description" content="学习使用滑动条动态调整参数。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" rel="gallery_cjoi22s7o002d3459xaiyc0q2">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" rel="gallery_cjoiosovd002z3g5962zdy8gw">
         <img src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" itemprop="image">
       </a>
     
@@ -167,11 +167,7 @@ var themeMenus = {};
       
         <p>学习使用滑动条动态调整参数。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>创建和使用滑动条</li>
-<li>OpenCV函数：cv2.createTrackbar(), cv2.getTrackbarPos()</li>
-</ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="滑动条的使用"><a href="#滑动条的使用" class="headerlink" title="滑动条的使用"></a>滑动条的使用</h3><p>首先我们需要创建一个滑动条，如<code>cv2.createTrackbar(&#39;R&#39;,&#39;image&#39;,0,255,call_back)</code>，其中</p>
+<h2 id="滑动条的使用"><a href="#滑动条的使用" class="headerlink" title="滑动条的使用"></a>滑动条的使用</h2><p>首先我们需要创建一个滑动条，如<code>cv2.createTrackbar(&#39;R&#39;,&#39;image&#39;,0,255,call_back)</code>，其中</p>
 <ul>
 <li>参数1：滑动条的名称</li>
 <li>参数2：所在窗口的名称</li>
@@ -179,11 +175,12 @@ var themeMenus = {};
 <li>参数4：最大值</li>
 <li>参数5：回调函数名称，回调函数默认有一个表示当前值的参数</li>
 </ul>
-<p>创建好之后，可以在回调函数中获取滑动条的值，也可以用：<code>cv2.getTrackbarPos()</code>得到，其中，参数1是滑动条的名称，参数2是窗口的名称。下面我们实现一个RGB的调色板，理解下函数的使用：</p>
+<p>创建好之后，可以在回调函数中获取滑动条的值，也可以用：<code>cv2.getTrackbarPos()</code>得到，其中，参数1是滑动条的名称，参数2是窗口的名称。</p>
+<h2 id="RGB调色板"><a href="#RGB调色板" class="headerlink" title="RGB调色板"></a>RGB调色板</h2><p>下面我们实现一个RGB的调色板，理解下滑动条的用法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 回调函数，x表示滑块的位置，本例暂不使用</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nothing</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">300</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建RGB三个滑动条</span></div><div class="line">cv2.createTrackbar(<span class="string">'R'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'G'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'B'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取滑块的值</span></div><div class="line">    r = cv2.getTrackbarPos(<span class="string">'R'</span>, <span class="string">'image'</span>)</div><div class="line">    g = cv2.getTrackbarPos(<span class="string">'G'</span>, <span class="string">'image'</span>)</div><div class="line">    b = cv2.getTrackbarPos(<span class="string">'B'</span>, <span class="string">'image'</span>)</div><div class="line">    <span class="comment"># 设定img的颜色</span></div><div class="line">    img[:] = [b, g, r]</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>cv2.createTrackbar()用来创建滑动条，可以在回调函数中得到滑块的位置，也可以用cv2.getTrackbarPos()</li>
+<li><code>cv2.createTrackbar()</code>用来创建滑动条，可以在回调函数中或使用<code>cv2.getTrackbarPos()</code>得到滑块的位置</li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8703.%20%E6%BB%91%E5%8A%A8%E6%9D%A1" target="_blank" rel="external">本节源码</a></li>
@@ -250,7 +247,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动条的使用"><span class="nav-number">2.1.</span> <span class="nav-text">滑动条的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#滑动条的使用"><span class="nav-number">1.</span> <span class="nav-text">滑动条的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RGB调色板"><span class="nav-number">2.</span> <span class="nav-text">RGB调色板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

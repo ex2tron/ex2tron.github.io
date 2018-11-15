@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg">
-<meta property="og:updated_time" content="2018-11-15T01:30:28.439Z">
+<meta property="og:updated_time" content="2018-11-15T14:21:09.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇2：Matplotlib显示图像">
 <meta name="twitter:description" content="学习如何使用Matplotlib显示OpenCV图像。">
@@ -157,6 +157,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
+<hr>
 <p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
 <h2 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>结果如下：</p>

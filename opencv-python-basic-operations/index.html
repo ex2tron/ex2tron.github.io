@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2018-11-15T10:48:50.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程4：图像基本操作">
 <meta name="twitter:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjoi22s79001l3459b5r337r0">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjoiosouo001v3g59bcfkn4i0">
         <img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" itemprop="image">
       </a>
     
@@ -175,36 +175,35 @@ var themeMenus = {};
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="获取和修改像素点值"><a href="#获取和修改像素点值" class="headerlink" title="获取和修改像素点值"></a>获取和修改像素点值</h3><p>我们先读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div></pre></td></tr></table></figure>
-<p>通过行列的坐标来获取某像素点的值，对于彩色图，这个值是B,G,R三个值的列表，对于灰度图，只有一个值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">px = img[<span class="number">100</span>, <span class="number">100</span>]</div><div class="line">print(px)  <span class="comment"># [119 108 201]</span></div><div class="line"></div><div class="line"><span class="comment"># 只获取蓝色blue通道的值</span></div><div class="line">px_blue = img[<span class="number">100</span>, <span class="number">100</span>, <span class="number">0</span>]</div><div class="line">print(px_blue)  <span class="comment"># 119</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>经验之谈：还记得吗？行对应的是y，列对应的是x，所以其实是<code>img[y, x]</code>，需要注意噢(●ˇ∀ˇ●)</p>
-</blockquote>
+<p>通过行列的坐标来获取某像素点的值，对于彩色图，结果是B,G,R三个值的列表，对于灰度图或单通道图，只有一个值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">px = img[<span class="number">100</span>, <span class="number">90</span>]</div><div class="line">print(px)  <span class="comment"># [103 98 197]</span></div><div class="line"></div><div class="line"><span class="comment"># 只获取蓝色blue通道的值</span></div><div class="line">px_blue = img[<span class="number">100</span>, <span class="number">90</span>, <span class="number">0</span>]</div><div class="line">print(px_blue)  <span class="comment"># 103</span></div></pre></td></tr></table></figure>
+<p>还记得吗？行对应y，列对应x，所以其实是<code>img[y, x]</code>，需要注意噢(●ˇ∀ˇ●)。容易混淆的话，可以只记行和列，行在前，列在后。</p>
 <p>修改像素的值也是同样的方式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img[<span class="number">100</span>, <span class="number">100</span>] = [<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>]</div><div class="line">print(img[<span class="number">100</span>, <span class="number">100</span>])  <span class="comment"># [255 255 255]</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img[<span class="number">100</span>, <span class="number">90</span>] = [<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>]</div><div class="line">print(img[<span class="number">100</span>, <span class="number">90</span>])  <span class="comment"># [255 255 255]</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：还有一种性能更好的方式，获取：<code>img.item(100,100,0)</code>，修改：<code>img.itemset((100,100,0),255)</code>，但这种方式只能B,G,R逐一进行</p>
+<p>经验之谈：还有一种性能更好的方式，获取：<code>img.item(100,100,0)</code>，修改：<code>img.itemset((100,100,0),255)</code>，但这种方式只能B,G,R逐一进行。</p>
 </blockquote>
-<h3 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h3><p><code>img.shape</code>获取图像的形状，图片是彩色的话，返回一个包含高度、宽度和通道数的元组，灰度图只返回高度和宽度：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(img.shape)  <span class="comment"># (263, 263, 3)</span></div><div class="line"><span class="comment"># 形状中包括高度、宽度和通道数</span></div><div class="line">height, width, channels = img.shape</div><div class="line"><span class="comment"># img是灰度图的话：height, width = img.shape</span></div></pre></td></tr></table></figure>
+<p>注意：这步操作只是内存中的img像素点值变了，因为没有保存，所以原图并没有更改。</p>
+<h3 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h3><p><code>img.shape</code>获取图像的形状，图片是彩色的话，返回一个包含<strong>行数（高度）、列数（宽度）和通道数</strong>的元组，灰度图只返回行数和列数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(img.shape)  <span class="comment"># (263, 247, 3)</span></div><div class="line"><span class="comment"># 形状中包括行数、列数和通道数</span></div><div class="line">height, width, channels = img.shape</div><div class="line"><span class="comment"># img是灰度图的话：height, width = img.shape</span></div></pre></td></tr></table></figure>
 <p><code>img.dtype</code>获取图像数据类型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.dtype)  <span class="comment"># uint8</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码需要对这个属性加以判断</p>
+<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码应该对这个属性加以判断。</p>
 </blockquote>
 <p><code>img.size</code>获取图像总像素数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*263*3=207507</span></div></pre></td></tr></table></figure>
-<h3 id="ROI"><a href="#ROI" class="headerlink" title="ROI"></a>ROI</h3><p><a href="https://baike.baidu.com/item/ROI/1125333#viewPageContent" target="_blank" rel="external">ROI</a>：region of interest，感兴趣区域。什么意思呢？比如我们要检测眼睛，因为眼睛肯定在脸上，所以我们感兴趣的只有脸这部分，其他不需要关注，这样就可以大大节省计算量，提高运行速度。</p>
-<p><img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" alt="只关注脸( ╯□╰ )"></p>
-<p>截取ROI非常简单，指定图片的范围即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*247*3=194883</span></div></pre></td></tr></table></figure>
+<h3 id="ROI"><a href="#ROI" class="headerlink" title="ROI"></a>ROI</h3><p><a href="https://baike.baidu.com/item/ROI/1125333#viewPageContent" target="_blank" rel="external">ROI</a>：Region of Interest，感兴趣区域。什么意思呢？比如我们要检测眼睛，因为眼睛肯定在脸上，所以我们感兴趣的只有脸这部分，其他都不care，所以可以单独把脸截取出来，这样就可以大大节省计算量，提高运行速度。</p>
+<p><img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" alt="只关心脸( ╯□╰ )"></p>
+<p>截取ROI非常简单，指定图片的范围即可（后面我们学了特征后，就可以自动截取辣，(ง •_•)ง）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 截取脸部ROI</span></div><div class="line">face = img[<span class="number">100</span>:<span class="number">200</span>, <span class="number">115</span>:<span class="number">188</span>]</div><div class="line">cv2.imshow(<span class="string">'face'</span>, face)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h3 id="通道分割与合并"><a href="#通道分割与合并" class="headerlink" title="通道分割与合并"></a>通道分割与合并</h3><p>彩色图的BGR三个通道是可以分开单独访问的，也可以将单独的三个通道合并成一副图像。分别使用<code>cv2.split()</code>和<code>cv2.merge()</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">b, g, r = cv2.split(img)</div><div class="line">img = cv2.merge((b, g, r))</div></pre></td></tr></table></figure>
-<p>split()函数比较耗时，<strong>更高效的方式是用numpy的索引</strong>，如提取B通道：</p>
+<p><code>split()</code>函数比较耗时，<strong>更高效的方式是用numpy中的索引</strong>，如提取B通道：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = img[:, :, <span class="number">0</span>]</div><div class="line">cv2.imshow(<span class="string">'blue'</span>, b)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>img[y,x]获取/设置像素点值，img.shape：图片的形状（高度、宽度、通道数）,img.dtype：图像的数据类型</li>
-<li>img[y1:y2,x1:x2]进行ROI截取，cv2.split()/cv2.merge()通道分割/合并。更推荐的获取单通道方式：b = img[:, :, 0]</li>
+<li><code>img[y,x]</code>获取/设置像素点值，<code>img.shape</code>：图片的形状（行数、列数、通道数）,<code>img.dtype</code>：图像的数据类型</li>
+<li><code>img[y1:y2,x1:x2]</code>进行ROI截取，<code>cv2.split()/cv2.merge()</code>通道分割/合并。更推荐的获取单通道方式：<code>b = img[:, :, 0]</code></li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>打开lena.jpg，将帽子部分（高：25~120，宽：50~220）的红色通道截取出来并显示。</li>

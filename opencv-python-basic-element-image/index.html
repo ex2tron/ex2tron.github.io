@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习如何加载图片，显示并保存图片。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
-<meta property="og:updated_time" content="2018-11-03T12:35:23.367Z">
+<meta property="og:updated_time" content="2018-11-15T14:15:14.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程2：基本元素-图片">
 <meta name="twitter:description" content="学习如何加载图片，显示并保存图片。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" rel="gallery_cjoi22s6t001e3459fxh5ckrt">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" rel="gallery_cjoiosovb002w3g59fr9is1g6">
         <img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" itemprop="image">
       </a>
     
@@ -171,7 +171,8 @@ var themeMenus = {};
 <li>加载图片，显示图片，保存图片</li>
 <li>OpenCV函数：<code>cv2.imread()</code>, <code>cv2.imshow()</code>, <code>cv2.imwrite()</code></li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>大部分人可能都知道电脑上的彩色图是以RGB(红-绿-蓝，Red-Green-Blue)颜色模式表示的，但OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图像坐标的起始点是在左上角：</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>大部分人可能都知道电脑上的彩色图是以RGB(红-绿-蓝，Red-Green-Blue)颜色模式显示的，但OpenCV中彩色图是以B-G-R通道顺序存储的，灰度图只有一个通道。</p>
+<p>图像坐标的起始点是在左上角，所以行对应的是y，列对应的是x：</p>
 <p><img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" alt=""></p>
 <h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 加载灰度图</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
@@ -191,11 +192,11 @@ var themeMenus = {};
 </li>
 </ul>
 <blockquote>
-<p>经验之谈：路径中不能有中文噢，并且没有加载成功的话是不会报错的，print(img)的结果为None，后面处理才会报错，算是个小坑</p>
+<p>经验之谈：路径中不能有中文噢，并且没有加载成功的话是不会报错的，<code>print(img)</code>的结果为None，后面处理才会报错，算是个小坑。</p>
 </blockquote>
 <h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p>参数1是窗口的名字，参数2是要显示的图片。不同窗口之间用窗口名字区分，所以窗口名相同就表示是同一个窗口。显示结果如下：</p>
+<p>参数1是窗口的名字，参数2是要显示的图片。不同窗口之间用窗口名区分，所以窗口名相同就表示是同一个窗口，显示结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_show_lena_gray.jpg" alt=""></p>
 <p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code>（<a href="#练习">练习1</a>）。</p>
 <p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>
@@ -208,9 +209,9 @@ var themeMenus = {};
 <li><code>cv2.imread()</code>读入图片、<code>cv2.imshow()</code>显示图片、<code>cv2.imwrite()</code>保存图片</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li><p>打开lena.jpg并显示，如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序</p>
+<li><p>打开lena.jpg并显示，如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
 </li>
-<li><p>Matplotlib是Python中很重要的一个绘图库，请学习<a href="/opencv-python-extra-using-matplotlib/">番外篇：Matplotlib显示图像</a> </p>
+<li><p>Matplotlib是Python中常用的一个绘图库，请学习<a href="/opencv-python-extra-using-matplotlib/">番外篇：Matplotlib显示图像</a>。</p>
 </li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
@@ -278,7 +279,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">3.</span> <span class="nav-text">图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载图片"><span class="nav-number">3.1.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示图片"><span class="nav-number">3.2.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存图片"><span class="nav-number">3.3.</span> <span class="nav-text">保存图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载图片"><span class="nav-number">2.1.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示图片"><span class="nav-number">2.2.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存图片"><span class="nav-number">2.3.</span> <span class="nav-text">保存图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

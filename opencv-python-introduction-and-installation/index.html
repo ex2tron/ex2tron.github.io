@@ -27,7 +27,7 @@
 <meta property="og:description" content="本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_install_opencv-python.jpg">
-<meta property="og:updated_time" content="2018-11-15T03:49:16.362Z">
+<meta property="og:updated_time" content="2018-11-15T11:21:16.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程1：简介与安装">
 <meta name="twitter:description" content="本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" rel="gallery_cjoi22s6t00193459w6ykbdfq">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" rel="gallery_cjoiosou8001o3g597qwbgm1c">
         <img src="http://pic.ex2tron.top/cv2_install_opencv-python.jpg" itemprop="image">
       </a>
     
@@ -168,7 +168,7 @@ var themeMenus = {};
         <p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p>相信大部分人知道的OpenCV都是用C++来开发的，那么为什么我推荐使用Python呢？</p>
 <blockquote>
-<p>本教程翻译自<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">OpenCV官方英文教程</a>，我按照使用度和难易度翻译，并重绘和编写了大量原创内容，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到奥(⊙o⊙)</p>
+<p>本教程翻译自<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">OpenCV官方英文教程</a>，我按照使用度和难易度翻译，并重新编写了大量原创内容，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到奥(⊙o⊙)</p>
 </blockquote>
 <hr>
 <h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要的特性：它是一门胶水语言！Python可以很容易地扩展C/C++。<strong>OpenCV-Python</strong>就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
@@ -184,7 +184,7 @@ var themeMenus = {};
 <li>如果你懒的配置OpenCV环境，果断放弃C++</li>
 <li>如果你的程序是在支持Python的较高硬件环境下运行，果断放弃C++</li>
 <li>如果你担心Python写不了界面，那是你的问题o_o ….</li>
-<li>除非你的程序是MFC或已经用C++编写其他模块或是嵌入式设备，那就用C++吧，不过我仍然建议你进行模块式开发，如上层用其他语言，图像处理仍然用Python外部调用。</li>
+<li>除非你的程序是MFC或已经用C++编写其他模块或是嵌入式设备，那就用C++吧</li>
 </ul>
 <p>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">Numpy</a>，相当于Python的Matlab，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python”，扔掉C/C++，开始OpenCV-Python吧！！！</strong></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
@@ -209,6 +209,8 @@ var themeMenus = {};
 <li>pip识别不了：环境变量中没有pip的目录，找到pip目录，添加到用户（或系统）变量的path中。</li>
 <li>下载速度很慢：可以<a href="https://pypi.org/search/?q=opencv-python" target="_blank" rel="external">到此处</a>下载离线版。下载完成后，cmd切换到下载目录，输入 <code>pip install 文件名</code>安装。</li>
 </ol>
+<h2 id="学习软件"><a href="#学习软件" class="headerlink" title="学习软件"></a>学习软件</h2><p>为了便于学习OpenCV，我写了一个教学款软件<a href="https://github.com/ex2tron/LearnOpenCVEdu" target="_blank" rel="external">LearnOpenCVEdu</a>，目前只开发了一部分功能，有兴趣的童鞋可以支持一下噢😊</p>
+<p><img src="http://pic.ex2tron.top/cv2_learn_opencv_edu_soft_screenshot.jpg" alt="大家随手点个Star吧(●ˇ∀ˇ●)"></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/01.%20%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></li>
@@ -278,7 +280,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python照样快！"><span class="nav-number">1.</span> <span class="nav-text">Python照样快！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人工智能浪潮"><span class="nav-number">2.</span> <span class="nav-text">人工智能浪潮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人生苦短，我用Python"><span class="nav-number">3.</span> <span class="nav-text">人生苦短，我用Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装步骤"><span class="nav-number">4.1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装测试"><span class="nav-number">4.2.</span> <span class="nav-text">安装测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题"><span class="nav-number">4.3.</span> <span class="nav-text">常见问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python照样快！"><span class="nav-number">1.</span> <span class="nav-text">Python照样快！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人工智能浪潮"><span class="nav-number">2.</span> <span class="nav-text">人工智能浪潮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人生苦短，我用Python"><span class="nav-number">3.</span> <span class="nav-text">人生苦短，我用Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装步骤"><span class="nav-number">4.1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装测试"><span class="nav-number">4.2.</span> <span class="nav-text">安装测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题"><span class="nav-number">4.3.</span> <span class="nav-text">常见问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习软件"><span class="nav-number">5.</span> <span class="nav-text">学习软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

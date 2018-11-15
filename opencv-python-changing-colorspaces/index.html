@@ -18,20 +18,20 @@
   
   
   
-  <meta name="description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。">
+  <meta name="description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
 <meta name="keywords" content="OpenCV,Python,图像处理,HSV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程5：颜色空间转换">
 <meta property="og:url" content="http://ex2tron.wang/opencv-python-changing-colorspaces/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。">
+<meta property="og:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_blue_object_tracking.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
+<meta property="og:updated_time" content="2018-11-15T10:55:00.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程5：颜色空间转换">
-<meta name="twitter:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。">
+<meta name="twitter:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_blue_object_tracking.jpg">
   
     <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
@@ -156,16 +156,19 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习如何进行图片的颜色空间转换，视频中追踪特定颜色物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+        <p>学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>颜色空间转换，如BGR↔Gray，BGR↔HSV等</li>
 <li>追踪视频中特定颜色的物体</li>
-<li>OpenCV函数：cv2.cvtColor(),cv2.inRange()</li>
+<li>OpenCV函数：<code>cv2.cvtColor()</code>, <code>cv2.inRange()</code></li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 转换为灰度图</span></div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.imshow(<span class="string">'gray'</span>, img_gray), cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><code>cv2.cvtColor()</code>用来进行颜色模型转换，参数1是要转换的图片，参数2是转换模式，<code>COLOR_BGR2GRAY</code>表示BGR→Gray，可用下面的代码显示所有的转换模式：</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 转换为灰度图</span></div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.imshow(<span class="string">'gray'</span>, img_gray)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><code>cv2.cvtColor()</code>用来进行颜色模型转换，参数1是要转换的图片，参数2是转换模式， <code>COLOR_BGR2GRAY</code>表示BGR→Gray，可用下面的代码显示所有的转换模式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">flags = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> i.startswith(<span class="string">'COLOR_'</span>)]</div><div class="line">print(flags)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：颜色转换其实是数学运算，如灰度化最常用的是：<code>gray=R*0.299+G*0.587+B*0.114</code>。</p>
+</blockquote>
 <h3 id="视频中特定颜色物体追踪"><a href="#视频中特定颜色物体追踪" class="headerlink" title="视频中特定颜色物体追踪"></a>视频中特定颜色物体追踪</h3><p><a href="https://baike.baidu.com/item/HSV/547122" target="_blank" rel="external">HSV</a>是一个常用于颜色识别的模型，相比BGR更易区分颜色，转换模式用<code>COLOR_BGR2HSV</code>表示。</p>
 <blockquote>
 <p>经验之谈：OpenCV中色调H范围为[0,179]，饱和度S是[0,255]，明度V是[0,255]。虽然H的理论数值是0°~360°，但8位图像像素点的最大值是255，所以OpenCV中除以了2，某些软件可能使用不同的尺度表示，所以同其他软件混用时，记得归一化。</p>
@@ -178,16 +181,16 @@ var themeMenus = {};
 <li>只显示蓝色物体</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_blue_object_tracking.jpg" alt="跟踪视频中的蓝色物体"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></div><div class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">110</span>, <span class="number">110</span>])</div><div class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 1.捕获视频中的一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="comment"># 2.从BGR转换到HSV</span></div><div class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</div><div class="line"></div><div class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></div><div class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</div><div class="line"></div><div class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></div><div class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</div><div class="line">    cv2.imshow(<span class="string">'res'</span>, res)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
-<p>其中，bitwise_and()函数暂时不用管，后面会讲到。那蓝色的HSV值的lower和upper范围是怎么得到的呢？其实很简单，我们先把标准蓝色的值用cvtColor()转换下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></div><div class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">110</span>, <span class="number">110</span>])</div><div class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 1.捕获视频中的一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="comment"># 2.从BGR转换到HSV</span></div><div class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</div><div class="line"></div><div class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></div><div class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</div><div class="line"></div><div class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></div><div class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</div><div class="line">    cv2.imshow(<span class="string">'res'</span>, res)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>其中，<code>bitwise_and()</code>函数暂时不用管，后面会讲到。那蓝色的HSV值的上下限lower和upper范围是怎么得到的呢？其实很简单，我们先把标准蓝色的BGR值用<code>cvtColor()</code>转换下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">blue = np.uint8([[[<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>]]])</div><div class="line">hsv_blue = cv2.cvtColor(blue, cv2.COLOR_BGR2HSV)</div><div class="line">print(hsv_blue)  <span class="comment"># [[[120 255 255]]]</span></div></pre></td></tr></table></figure>
 <p>结果是[120, 255, 255]，所以，我们把蓝色的范围调整成了上面代码那样。</p>
 <blockquote>
 <p>经验之谈：<a href="https://baike.baidu.com/item/Lab/1514615" target="_blank" rel="external">Lab</a>颜色空间也经常用来做颜色识别，有兴趣的同学可以了解下。</p>
 </blockquote>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>cv2.cvtColor()函数用来进行颜色空间转换，常用BGR↔Gray，BGR↔HSV</li>
-<li>HSV/Lab颜色模型常用于颜色识别。要想知道某种颜色在HSV下的值，可以将它的BGR值用cvtColor()转换得到</li>
+<li><code>cv2.cvtColor()</code>函数用来进行颜色空间转换，常用BGR↔Gray，BGR↔HSV</li>
+<li>HSV颜色模型常用于颜色识别。要想知道某种颜色在HSV下的值，可以将它的BGR值用<code>cvtColor()</code>转换得到</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>尝试在视频中同时提取红色、蓝色、绿色的物体。（效果如下）</li>

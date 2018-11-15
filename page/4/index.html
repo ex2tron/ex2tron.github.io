@@ -154,15 +154,15 @@ var themeMenus = {};
 
           
             <div class="entry-summary" style="margin-left:0;">
-            学习打开摄像头捕获照片、播放本地视频、录制视频等。视频等可到源码处下载。
+            学习打开摄像头捕获照片、播放本地视频、录制视频等。图片/视频等可到源码处下载。
 
 目标
 打开摄像头并捕获照片
 播放本地视频，录制视频
 OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
 
-教程打开摄像头要使用摄像头，需要使用cv2.VideoCapture(0)创建VideoCapture对象，参数：0指的是摄像头的编号。如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1。
-1234567891011121314# 打开摄像头并灰度化显示import cv2capture = cv2.VideoCapture(0)while(True):    # 获取一帧    ret, frame = capture.read()    # 将这帧转换为...
+教程打开摄像头要使用摄像头，需要使用cv2.VideoCapture(0)创建VideoCapture对象，参数0指的是摄像头的编号，如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1，依此类推。
+1234567891011121314# 打开摄像头并灰度化显示import cv2capture = cv2.VideoCapture(0)while(True):    # 获取一帧    ret, frame = capture.read()    #...
           
 
         
@@ -221,12 +221,13 @@ OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
           
             <div class="entry-summary" style="margin-left:0;">
             学习如何使用Matplotlib显示OpenCV图像。
+
 Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去官网学习更多内容。
 显示灰度图12345678import cv2import matplotlib.pyplot as pltimg = cv2.imread('lena.jpg', 0)# 灰度图显示，cmap(color map)设置为grayplt.imshow(img, cmap='gray')plt.show()
 结果如下：
 
 显示彩色图OpenCV中的图像是以BGR的通道顺序存储的，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:
-12345678910111213141...
+1234567891011121314...
           
 
         
@@ -291,7 +292,8 @@ Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去官网�
 加载图片，显示图片，保存图片
 OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()
 
-教程图片大部分人可能都知道电脑上的彩色图是以RGB(红-绿-蓝，Red-Green-Blue)颜色模式表示的，但OpenCV中彩色图是以B-G-R通道存储的，灰度图只有一个通道，图像坐标的起始点...
+教程大部分人可能都知道电脑上的彩色图是以RGB(红-绿-蓝，Red-Green-Blue)颜色模式显示的，但OpenCV中彩色图是以B-G-R通道顺序存储的，灰度图只有一个通道。
+图像坐标的起始...
 
         
           <p class="article-more-link">
@@ -413,10 +415,10 @@ OpenCV函数：cv2.imread(), cv2.imshow(), cv2.imwrite()
           本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！
 相信大部分人知道的OpenCV都是用C++来开发的，那么为什么我推荐使用Python呢？
 
-本教程翻译自OpenCV官方英文教程，我按照使用度和难易度翻译，并重绘和编写了大量原创内容，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在引用处找到奥(⊙o⊙)
+本教程翻译自OpenCV官方英文教程，我按照使用度和难易度翻译，并重新编写了大量原创内容，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在引用处找到奥(⊙o⊙)
 
 
-Python照样快！众所周知，虽然Python语法简洁，...
+Python照样快！众所周知，虽然Python语法简洁，编...
 
         
           <p class="article-more-link">

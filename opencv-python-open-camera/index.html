@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="学习打开摄像头捕获照片、播放本地视频、录制视频等。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-03T12:38:03.497Z">
+<meta property="og:updated_time" content="2018-11-15T09:41:41.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程3：打开摄像头">
 <meta name="twitter:description" content="学习打开摄像头捕获照片、播放本地视频、录制视频等。">
@@ -153,20 +153,20 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a>视频等可到<a href="#引用">源码处</a>下载。</p>
+        <p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a>图片/视频等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>打开摄像头并捕获照片</li>
 <li>播放本地视频，录制视频</li>
 <li>OpenCV函数：<code>cv2.VideoCapture()</code>, <code>cv2.VideoWriter()</code></li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数：0指的是摄像头的编号。如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1。</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数0指的是摄像头的编号，如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1，依此类推。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打开摄像头并灰度化显示</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 获取一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line">    <span class="comment"># 将这帧转换为灰度图</span></div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <p><code>capture.read()</code>函数返回的第1个参数ret(return value缩写)是一个布尔值，表示当前这一帧是否获取正确。<code>cv2.cvtColor()</code>用来转换颜色，这里将彩色图转成灰度图。</p>
 <p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/3.3.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">VideoCaptureProperties</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加下面的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取捕获的分辨率</span></div><div class="line"><span class="comment"># propId可以直接写数字，也可以用OpenCV的符号表示</span></div><div class="line">width, height = capture.get(<span class="number">3</span>), capture.get(<span class="number">4</span>)</div><div class="line">print(width, height)</div><div class="line"></div><div class="line"><span class="comment"># 以原分辨率的一倍来捕获</span></div><div class="line">capture.set(cv2.CAP_PROP_FRAME_WIDTH, width * <span class="number">2</span>)</div><div class="line">capture.set(cv2.CAP_PROP_FRAME_HEIGHT, height * <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到</p>
+<p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到。</p>
 </blockquote>
 <h3 id="播放本地视频"><a href="#播放本地视频" class="headerlink" title="播放本地视频"></a>播放本地视频</h3><p>跟打开摄像头一样，如果把摄像头的编号换成视频的路径就可以播放本地视频了。回想一下<code>cv2.waitKey()</code>，它的参数表示暂停时间，所以这个值越大，视频播放速度越慢，反之，播放速度越快，通常设置为25或30。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 播放本地视频</span></div><div class="line">capture = cv2.VideoCapture(<span class="string">'demo_video.mp4'</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(capture.isOpened()):</div><div class="line">    ret, frame = capture.read()</div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">30</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
@@ -177,15 +177,15 @@ var themeMenus = {};
 <li>帧率<a href="https://baike.baidu.com/item/FPS/3227416" target="_blank" rel="external">FPS</a></li>
 <li>要保存的分辨率大小</li>
 </ul>
-<p>FourCC是用来指定视频编码方式的四字节码，所有的编码可参考<a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs</a>。如MJPG编码可以这样写：<code>cv2.VideoWriter_fourcc(*&#39;MJPG&#39;)</code>或<code>cv2.VideoWriter_fourcc(&#39;M&#39;,&#39;J&#39;,&#39;P&#39;,&#39;G&#39;)</code></p>
+<p>FourCC是用来指定视频编码方式的四字节码，所有的编码可参考<a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs</a>。如MJPG编码可以这样写： <code>cv2.VideoWriter_fourcc(*&#39;MJPG&#39;)</code>或<code>cv2.VideoWriter_fourcc(&#39;M&#39;,&#39;J&#39;,&#39;P&#39;,&#39;G&#39;)</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 定义编码方式并创建VideoWriter对象</span></div><div class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">'MJPG'</span>)</div><div class="line">outfile = cv2.VideoWriter(<span class="string">'output.avi'</span>, fourcc, <span class="number">25.</span>, (<span class="number">640</span>, <span class="number">480</span>))</div><div class="line"></div><div class="line"><span class="keyword">while</span>(capture.isOpened()):</div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ret:</div><div class="line">        outfile.write(frame)  <span class="comment"># 写入文件</span></div><div class="line">        cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>使用cv2.VideoCapture()创建视频对象，然后在循环中一帧帧显示图像。参数传入数字时，代表打开摄像头，传入本地视频路径时，表示播放本地视频</li>
-<li>cap.get(propId)获取视频属性，cap.set(propId,value)设置视频属性</li>
-<li>cv2.VideoWriter()创建视频写入对象，用来录制/保存视频</li>
+<li>使用<code>cv2.VideoCapture()</code>创建视频对象，然后在循环中一帧帧显示图像。参数传入数字时，代表打开摄像头，传入本地视频路径时，表示播放本地视频</li>
+<li><code>cap.get(propId)</code>获取视频属性，<code>cap.set(propId,value)</code>设置视频属性</li>
+<li><code>cv2.VideoWriter()</code>创建视频写入对象，用来录制/保存视频</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>请尝试先阅读<a href="/opencv-python-extra-trackbar/">番外篇：滑动条</a>，然后实现一个可以拖动滑块播放视频的功能。（提示：需要用到<code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）</li>
+<li>请先阅读<a href="/opencv-python-extra-trackbar/">番外篇：滑动条</a>，然后实现一个可以拖动滑块播放视频的功能。（提示：需要用到 <code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）。</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/03.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
