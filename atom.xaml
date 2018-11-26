@@ -1865,7 +1865,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/"/>
     <id>http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/</id>
     <published>2017-12-08T07:36:53.000Z</published>
-    <updated>2018-11-26T03:23:39.931Z</updated>
+    <updated>2018-11-26T03:58:17.731Z</updated>
     
     <content type="html"><![CDATA[<p>常见的2D图像变换从原理上讲主要包括基于2×3矩阵的<a href="https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">仿射变换</a>和基于3×3矩阵<a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>。<a id="more"></a></p>
 <hr>
@@ -1900,7 +1900,7 @@
 <blockquote>
 <p>经验之谈：OpenCV中默认按照逆时针旋转噢~</p>
 </blockquote>
-<p>总结一下：</p>
+<p>总结一下（<a href="http://pic.ex2tron.top/cv2_transformation_matrix_dof_summary.jpg" target="_blank" rel="external">原图[#计算机视觉：算法与应用p39]</a>）：</p>
 <table>
 <thead>
 <tr>
@@ -1960,6 +1960,7 @@
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8705.%20%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2%E5%92%8C%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2%E5%8E%9F%E7%90%86" target="_blank" rel="external">本节源码</a></li>
+<li><a href="http://pic.ex2tron.top/Computer%20Vision%EF%BC%9AAlgorithms%20and%20Applications.pdf" target="_blank" rel="external">计算机视觉：算法与应用</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">维基百科：仿射变换</a></li>
 <li><a href="https://www.zhihu.com/question/20666664" target="_blank" rel="external">如何通俗地讲解「仿射变换」这个概念？</a></li>
 </ul>
