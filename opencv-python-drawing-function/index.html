@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2018-11-23T04:28:28.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程8：绘图功能">
 <meta name="twitter:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" rel="gallery_cjosa78bx0022tw59ekio8zpz">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" rel="gallery_cjoxrudoa001xfo59eze5n96t">
         <img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" itemprop="image">
       </a>
     
@@ -169,24 +169,22 @@ var themeMenus = {};
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>绘制各种几何形状、添加文字</li>
-<li>OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.putText()</li>
+<li>OpenCV函数：<code>cv2.line()</code>, <code>cv2.circle()</code>, <code>cv2.rectangle()</code>, <code>cv2.ellipse()</code>, <code>cv2.putText()</code></li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>绘制形状的函数有一些共同的参数，提前在此说明一下：</p>
 <ul>
 <li>img：要绘制形状的图片</li>
-<li>color：绘制的颜色，绘制彩色就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行</li>
-<li>thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，传入-1表示填充形状</li>
+<li>color：绘制的颜色，彩色图就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行</li>
+<li>thickness：线宽，默认为1；<em>对于矩形/圆之类的封闭形状而言，传入-1表示填充形状</em></li>
 </ul>
-<blockquote>
-<p>模块导入和显示图片的通用代码，相信你已经很熟悉了，为节约篇幅，后面我会省略掉噢：</p>
-</blockquote>
+<p>需要导入的模块和显示图片的通用代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" alt="绘制各种几何形状"></p>
 <p>上图就是本教程绘制的最终效果，下面一步步来看：</p>
-<h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画线只需知道起点和终点的坐标就行：</p>
+<h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画直线只需指定起点和终点的坐标就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建一副黑色的图片</span></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></div><div class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：所有绘图函数均会直接影响原图片，这点要注意</p>
+<p>经验之谈：所有绘图函数均会直接影响原图片，这点要注意。</p>
 </blockquote>
 <h3 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h3><p>画矩形需要知道左上角和右下角的坐标：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个绿色边框的矩形，参数2：左上角坐标，参数3：右下角坐标</span></div><div class="line">cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</div></pre></td></tr></table></figure>
@@ -201,7 +199,7 @@ var themeMenus = {};
 <li>参数6：endAngle–椭圆的结束角度</li>
 </ul>
 <blockquote>
-<p>经验之谈：这里的角度是以顺时针方向计算的</p>
+<p>经验之谈：这里的角度是以顺时针方向计算的。</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在图中心画一个填充的半圆</span></div><div class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
 <h3 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h3><p>画多边形需要指定一系列多边形的顶点坐标，相当于从第一个点到第二个点画直线，再从第二个点到第三个点画直线….</p>

@@ -1770,30 +1770,28 @@
     <link href="http://ex2tron.wang/opencv-python-drawing-function/"/>
     <id>http://ex2tron.wang/opencv-python-drawing-function/</id>
     <published>2017-12-09T03:29:48.000Z</published>
-    <updated>2018-11-02T02:51:48.375Z</updated>
+    <updated>2018-11-23T04:28:28.667Z</updated>
     
     <content type="html"><![CDATA[<p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>绘制各种几何形状、添加文字</li>
-<li>OpenCV函数：cv2.line(), cv2.circle(), cv2.rectangle(), cv2.ellipse(), cv2.putText()</li>
+<li>OpenCV函数：<code>cv2.line()</code>, <code>cv2.circle()</code>, <code>cv2.rectangle()</code>, <code>cv2.ellipse()</code>, <code>cv2.putText()</code></li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>绘制形状的函数有一些共同的参数，提前在此说明一下：</p>
 <ul>
 <li>img：要绘制形状的图片</li>
-<li>color：绘制的颜色，绘制彩色就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行</li>
-<li>thickness：线宽，默认为1；对于矩形/圆之类的封闭形状而言，传入-1表示填充形状</li>
+<li>color：绘制的颜色，彩色图就传入BGR的一组值，如(255,0,0)；灰度图，传入一个灰度值就行</li>
+<li>thickness：线宽，默认为1；<em>对于矩形/圆之类的封闭形状而言，传入-1表示填充形状</em></li>
 </ul>
-<blockquote>
-<p>模块导入和显示图片的通用代码，相信你已经很熟悉了，为节约篇幅，后面我会省略掉噢：</p>
-</blockquote>
+<p>需要导入的模块和显示图片的通用代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" alt="绘制各种几何形状"></p>
 <p>上图就是本教程绘制的最终效果，下面一步步来看：</p>
-<h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画线只需知道起点和终点的坐标就行：</p>
+<h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画直线只需指定起点和终点的坐标就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建一副黑色的图片</span></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></div><div class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：所有绘图函数均会直接影响原图片，这点要注意</p>
+<p>经验之谈：所有绘图函数均会直接影响原图片，这点要注意。</p>
 </blockquote>
 <h3 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h3><p>画矩形需要知道左上角和右下角的坐标：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个绿色边框的矩形，参数2：左上角坐标，参数3：右下角坐标</span></div><div class="line">cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</div></pre></td></tr></table></figure>
@@ -1808,7 +1806,7 @@
 <li>参数6：endAngle–椭圆的结束角度</li>
 </ul>
 <blockquote>
-<p>经验之谈：这里的角度是以顺时针方向计算的</p>
+<p>经验之谈：这里的角度是以顺时针方向计算的。</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在图中心画一个填充的半圆</span></div><div class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
 <h3 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h3><p>画多边形需要指定一系列多边形的顶点坐标，相当于从第一个点到第二个点画直线，再从第二个点到第三个点画直线….</p>
@@ -1867,29 +1865,84 @@
     <link href="http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/"/>
     <id>http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/</id>
     <published>2017-12-08T07:36:53.000Z</published>
-    <updated>2018-11-22T07:23:14.401Z</updated>
+    <updated>2018-11-26T03:23:39.931Z</updated>
     
-    <content type="html"><![CDATA[<p>图像的几何变换从原理上讲主要包括<a href="https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">仿射变换</a>和<a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>常见的2D图像变换从原理上讲主要包括基于2×3矩阵的<a href="https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">仿射变换</a>和基于3×3矩阵<a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>。<a id="more"></a></p>
 <hr>
-<h2 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h2><p>除了常见的缩放、平移、旋转和翻转外，我们如何实现任意的图像变换呢？</p>
+<h2 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h2><p>基本的图像变换就是二维坐标的变换：从一种二维坐标(x,y)到另一种二维坐标(u,v)的线性变换：</p>
+<p>$$<br>\begin{matrix}<br>   u=a_1x+b_1y+c_1 \newline<br>   v=a_2x+b_2y+c_2<br>  \end{matrix}<br>$$<br>如果写成矩阵的形式，就是：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right]<br>$$<br>作如下定义：<br>$$<br>R=\left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right], t=\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right],T=\left[<br> \begin{matrix}<br>   R &amp; t<br>  \end{matrix}<br>  \right]<br>$$<br>矩阵T(2×3)就称为仿射变换的变换矩阵，R为线性变换矩阵，t为平移矩阵，简单来说，仿射变换就是线性变换+平移。变换后直线依然是直线，平行线依然是平行线，直线间的相对位置关系不变。<br>因为只需三个点就可以确定一个平行四边形，所以<strong>非共线的三个对应点便可确定唯一的一个仿射变换</strong>，线性变换4个自由度+平移2个自由度→<strong>仿射变换自由度为6</strong>。</p>
 <p><img src="http://pic.ex2tron.top/cv2_warp_affine_image_sample_introduction2.jpg" alt=""></p>
-<p><a href="https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">仿射变换</a>（Affine Transformation）指的是从一种二维坐标(x,y)到另一种二维坐标(u,v)的线性变换：<br>$$<br>\begin{matrix}<br>   u=a_1x+b_1y+c_1 \newline<br>   v=a_2x+b_2y+c_2<br>  \end{matrix}<br>$$<br>如果写成矩阵的形式，就是：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right]<br>$$<br>作如下定义：<br>$$<br>A=\left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right], B=\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right],T=\left[<br> \begin{matrix}<br>   A &amp; B<br>  \end{matrix}<br>  \right]<br>$$<br>矩阵T(2×3)称为仿射变换的变换矩阵，A为线性变换矩阵，B为平移矩阵，简单来说，仿射变换就是线性变换+平移。仿射变换后直线依然是直线，平行线依然是平行线，直线间的相对位置关系不变。因为只需三个点就可以确定一个平行四边形，所以<strong>非共线的三个对应点便可确定唯一的一个仿射变换</strong>。先来看个例子：</p>
+<p>来看下OpenCV中如何实现仿射变换：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 变换前的三个点</span></div><div class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</div><div class="line"><span class="comment"># 变换后的三个点</span></div><div class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成变换矩阵</span></div><div class="line">M = cv2.getAffineTransform(pts1, pts2)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>三个点我已经在图中标记了出来。用<code>cv2.getAffineTransform()</code>生成变换矩阵，接下来再用<code>cv2.warpAffine()</code>实现变换。</p>
 <blockquote>
-<p>三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（<a href="#练习">练习</a>）</p>
+<p>思考：三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（<a href="#练习">练习</a>）</p>
 </blockquote>
 <p><img src="http://pic.ex2tron.top/cv2_affine_transformation_drawing.jpg" alt="仿射变换前后对比图"></p>
-<p>其实平移、旋转、缩放和翻转等变换就是对应了不同的仿射变换矩阵：</p>
-<p>1.平移：</p>
-<p><img src="http://pic.ex2tron.top/cv2_warp_affine_shift_sample.jpg" alt=""></p>
-<p>平移就是x和y方向上的直接移动，所以仿射变换可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   1 &amp; 0  \newline<br>   0 &amp; 1<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   t_x \newline<br>   t_y<br>  \end{matrix}<br>  \right]<br>$$<br>2.缩放：</p>
-<p><img src="http://pic.ex2tron.top/cv2_warp_affine_scale_sampel.jpg" alt=""></p>
-<p>缩放是x和y方向的尺度（倍数）变换，并不包含平移，所以可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   s_x &amp; 0 \newline<br>   0 &amp; s_y<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$<br>3.旋转：</p>
-<p>旋转是坐标轴方向饶原点旋转一定的角度θ，同样不包含平移，如顺时针旋转可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \cos \theta &amp; -\sin \theta \newline<br>   \sin \theta &amp; \cos \theta<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$<br>在OpenCV中，可以指定旋转缩放比和旋转中心，默认按照逆时针旋转。</p>
-<p><img src="http://pic.ex2tron.top/cv2_warp_affine_rotation_sample.jpg" alt=""></p>
-<p>若缩放比例为scale，旋转角度为θ，旋转中心是$ (center_x,center_y) $，则仿射变换可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \alpha &amp; \beta \newline<br>   -\beta &amp; \alpha<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   (1-\alpha)center_x-\beta center_y \newline<br>   \beta center_x+(1-\alpha)center_y<br>  \end{matrix}<br>  \right]<br>$$<br>其中，<br>$$<br>\alpha=scale \cdot \cos \theta,\beta=scale \cdot \sin \theta<br>$$<br>4.翻转：</p>
-<p>翻转是x或y某个方向或全部方向上取反，比如这里以垂直翻转为例：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   1 &amp; 0 \newline<br>   0 &amp; -1<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>其实平移、旋转、缩放和翻转等变换就是对应了不同的仿射变换矩阵，下面分别来看下。</p>
+<h3 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h3><p><img src="http://pic.ex2tron.top/cv2_warp_affine_shift_sample.jpg" alt=""></p>
+<p>平移就是x和y方向上的直接移动，可以上下/左右移动，自由度为2，变换矩阵可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   1 &amp; 0  \newline<br>   0 &amp; 1<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   t_x \newline<br>   t_y<br>  \end{matrix}<br>  \right]<br>$$</p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p><img src="http://pic.ex2tron.top/cv2_warp_affine_rotation_sample.jpg" alt=""></p>
+<p>旋转是坐标轴方向饶原点旋转一定的角度θ，自由度为1，不包含平移，如顺时针旋转可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \cos \theta &amp; -\sin \theta \newline<br>   \sin \theta &amp; \cos \theta<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
+<blockquote>
+<p>思考：如果不是绕原点，而是可变点，自由度是多少呢？（请看下文刚体变换）</p>
+</blockquote>
+<h3 id="翻转"><a href="#翻转" class="headerlink" title="翻转"></a>翻转</h3><p>翻转是x或y某个方向或全部方向上取反，自由度为2，比如这里以垂直翻转为例：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   1 &amp; 0 \newline<br>   0 &amp; -1<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
+<h3 id="刚体变换"><a href="#刚体变换" class="headerlink" title="刚体变换"></a>刚体变换</h3><p>旋转+平移也称刚体变换（Rigid Transform），就是说如果<strong>图像变换前后两点间的距离仍然保持不变</strong>，那么这种变化就称为刚体变换。刚体变换包括了平移、旋转和翻转，自由度为3。变换矩阵可以表示为：</p>
+<p>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \cos \theta &amp; -\sin \theta \newline<br>   \sin \theta &amp; \cos \theta<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   t_x  \newline<br>   t_y<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>由于只是旋转和平移，刚体变换保持了直线间的长度不变，所以也称欧式变换（变化前后保持欧氏距离）。</p>
+<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p><img src="http://pic.ex2tron.top/cv2_warp_affine_scale_sampel.jpg" alt=""></p>
+<p>缩放是x和y方向的尺度（倍数）变换，在有些资料上非等比例的缩放也称为拉伸/挤压，等比例缩放自由度为1，非等比例缩放自由度为2，矩阵可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   s_x &amp; 0 \newline<br>   0 &amp; s_y<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
+<h3 id="相似变换"><a href="#相似变换" class="headerlink" title="相似变换"></a>相似变换</h3><p>相似变换又称缩放旋转，相似变换包含了旋转、等比例缩放和平移等变换，自由度为4。在OpenCV中，旋转就是用相似变换实现的：</p>
+<p>若缩放比例为scale，旋转角度为θ，旋转中心是$ (center_x,center_y) $，则仿射变换可以表示为：</p>
+<p>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \alpha &amp; \beta \newline<br>   -\beta &amp; \alpha<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   (1-\alpha)center_x-\beta center_y \newline<br>   \beta center_x+(1-\alpha)center_y<br>  \end{matrix}<br>  \right]<br>$$<br>其中，<br>$$<br>\alpha=scale \cdot \cos \theta,\beta=scale \cdot \sin \theta<br>$$</p>
+<p><strong>相似变换相比刚体变换加了缩放，所以并不会保持欧氏距离不变，但直线间的夹角依然不变。</strong></p>
+<blockquote>
+<p>经验之谈：OpenCV中默认按照逆时针旋转噢~</p>
+</blockquote>
+<p>总结一下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变换</th>
+<th style="text-align:center">矩阵</th>
+<th style="text-align:center">自由度</th>
+<th style="text-align:center">保持性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">平移</td>
+<td style="text-align:center">[I, t]（2×3）</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">方向/长度/夹角/平行性/直线性</td>
+</tr>
+<tr>
+<td style="text-align:center">刚性</td>
+<td style="text-align:center">[R, t]（2×3）</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">长度/夹角/平行性/直线性</td>
+</tr>
+<tr>
+<td style="text-align:center">相似</td>
+<td style="text-align:center">[sR, t]（2×3）</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">夹角/平行性/直线性</td>
+</tr>
+<tr>
+<td style="text-align:center">仿射</td>
+<td style="text-align:center">[T]（2×3）</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">平行性/直线性</td>
+</tr>
+<tr>
+<td style="text-align:center">透视</td>
+<td style="text-align:center">[T]（3×3）</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">直线性</td>
+</tr>
+</tbody>
+</table>
 <h2 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h2><p>前面仿射变换后依然是平行四边形，并不能做到任意的变换。</p>
 <p><img src="http://pic.ex2tron.top/cv2_warp_perspective_image_sample4.jpg" alt=""></p>
 <p><a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>（Perspective Transformation）是将二维的图片投影到一个三维视平面上，然后再转换到二维坐标下，所以也称为投影映射（Projective Mapping）。简单来说就是二维→三维→二维的一个过程。<br>$$<br>\begin{matrix}<br>   X=a_1 x + b_1 y + c_1 \newline<br>   Y=a_2 x + b_2 y + c_2  \newline<br>   Z=a_3 x + b_3 y + c_3<br>  \end{matrix}<br>$$<br>这次我写成齐次矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   X \newline<br>   Y \newline<br>   Z<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1 &amp; c_1  \newline<br>   a_2 &amp; b_2 &amp; c_2  \newline<br>   a_3 &amp; b_3 &amp; c_3<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y \newline<br>   1<br>  \end{matrix}<br>  \right]<br>$$<br>其中，$ \left[<br> \begin{matrix}<br>   a_1 &amp; b_1   \newline<br>   a_2 &amp; b_2  \newline<br>  \end{matrix}<br>  \right]  $表示线性变换，$ \left[<br> \begin{matrix}<br>   a_3 &amp; b_3<br>  \end{matrix}<br>  \right]  $产生透视变换，其余表示平移变换，因此仿射变换是透视变换的子集。接下来再通过除以Z轴转换成二维坐标：<br>$$<br>x^{’}=\frac{X}{Z}=\frac{a_1x+b_1y+c_1}{a_3x+b_3y+c_3 }<br>$$</p>
@@ -1914,7 +1967,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;图像的几何变换从原理上讲主要包括&lt;a href=&quot;https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;仿射变换&lt;/a&gt;和&lt;a href=&quot;https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;透视变换&lt;/a&gt;。
+      &lt;p&gt;常见的2D图像变换从原理上讲主要包括基于2×3矩阵的&lt;a href=&quot;https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;仿射变换&lt;/a&gt;和基于3×3矩阵&lt;a href=&quot;https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;透视变换&lt;/a&gt;。
     
     </summary>
     
@@ -1927,9 +1980,7 @@
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="仿射变换" scheme="http://ex2tron.wang/tags/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2/"/>
-    
-      <category term="透视变换" scheme="http://ex2tron.wang/tags/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2/"/>
+      <category term="图像变换" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
