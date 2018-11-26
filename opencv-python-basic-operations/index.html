@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg">
-<meta property="og:updated_time" content="2018-11-15T10:48:50.754Z">
+<meta property="og:updated_time" content="2018-11-26T08:49:03.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程4：图像基本操作">
 <meta name="twitter:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjoxs9lq0001l1459up12t3jj">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjoye5nb8001nq059vv83h48g">
         <img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" itemprop="image">
       </a>
     
@@ -202,8 +202,8 @@ var themeMenus = {};
 <p><code>split()</code>函数比较耗时，<strong>更高效的方式是用numpy中的索引</strong>，如提取B通道：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = img[:, :, <span class="number">0</span>]</div><div class="line">cv2.imshow(<span class="string">'blue'</span>, b)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li><code>img[y,x]</code>获取/设置像素点值，<code>img.shape</code>：图片的形状（行数、列数、通道数）,<code>img.dtype</code>：图像的数据类型</li>
-<li><code>img[y1:y2,x1:x2]</code>进行ROI截取，<code>cv2.split()/cv2.merge()</code>通道分割/合并。更推荐的获取单通道方式：<code>b = img[:, :, 0]</code></li>
+<li><code>img[y,x]</code>获取/设置像素点值，<code>img.shape</code>：图片的形状（行数、列数、通道数）,<code>img.dtype</code>：图像的数据类型。</li>
+<li><code>img[y1:y2,x1:x2]</code>进行ROI截取，<code>cv2.split()/cv2.merge()</code>通道分割/合并。更推荐的获取单通道方式：<code>b = img[:, :, 0]</code>。</li>
 </ul>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>打开lena.jpg，将帽子部分（高：25~120，宽：50~220）的红色通道截取出来并显示。</li>

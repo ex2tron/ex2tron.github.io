@@ -478,13 +478,12 @@ OpenCV函数：cv2.erode(), cv2.dilate(), cv2.morphologyEx()
           <div class="entry-summary">
           学习使用Canny获取图像的边缘。图片等可到源码处下载。
 
+Canny J . A Computational Approach To Edge Detection[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1986, PAMI-8(6):679-698.
+
+
 目标
 Canny边缘检测的简单概念
-OpenCV函数：cv2.Canny()
-
-教程废话不多说，直接上12img = cv2.imread('handwriting.jpg', 0)edges = cv2.Canny(img, 30, 70)  # canny边缘检测
-
-cv2.Canny()进行边缘检测，参数2、3表示最低、高阈值...
+O...
 
         
           <p class="article-more-link">
@@ -544,10 +543,8 @@ cv2.Canny()进行边缘检测，参数2、3表示最低、高阈值...
           <div class="entry-summary">
           了解图像梯度和边缘检测的相关概念。图片等可到源码处下载。
 还记得前面平滑图像中提到的滤波与模糊的区别吗？我们说低通滤波器是模糊，高通滤波器是锐化，这节我们就来看看高通滤波器。
-图像梯度
-本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。
 
-如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的...
+图像梯度如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导...
 
         
           <p class="article-more-link">
@@ -611,10 +608,10 @@ cv2.Canny()进行边缘检测，参数2、3表示最低、高阈值...
 模糊/平滑图片来消除图片噪声
 OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFilter()
 
-教程
-本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。
+教程滤波与模糊
+推荐大家先阅读：番外篇：卷积基础(图片边框)，有助于理解卷积和滤波的概念。
 
-滤波与模糊推荐大家先阅读：番外篇：卷积基础(图片...
+关于滤波和模糊，很多人分不清，我来给大家理理...
 
         
           <p class="article-more-link">
@@ -673,13 +670,10 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
           </div>
           <div class="entry-summary">
           了解卷积/滤波的基础知识，给图片添加边框。如果你已了解相关理论，请直接跳到添加边框部分。
-卷积的概念其实很好理解，下面我就用图文给大家做个最简单的解释，绝对轻松加愉快的辣o(￣▽￣)o
-卷积
-本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。
+卷积的概念其实很好理解，下面我就给大家做个最简单的解释，绝对轻松加愉快的辣o(￣▽￣)o
+卷积什么是二维卷积呢？看下面一张图就一目了然：
 
-什么是二维卷积呢？看下面一张图就一目了然：
-
-卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如...
+卷积就是循环对图像跟一个核逐个元素相乘再求和得到另外一副图像的操作，比如结果图中第一个元素5是怎么算的呢？原图中3×3的区域与3×3的核逐个元素相乘再相加：$$5=...
 
         
           <p class="article-more-link">
@@ -695,7 +689,7 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卷积/">卷积</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/边框/">边框</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卷积/">卷积</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
 
       
             
@@ -1030,7 +1024,7 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 13.33px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 11.67px;">变量</a> <a href="/tags/变量命名/" style="font-size: 10px;">变量命名</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像变换/" style="font-size: 10px;">图像变换</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图像金字塔/" style="font-size: 10px;">图像金字塔</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/尺度/" style="font-size: 10px;">尺度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 15px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 11.67px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边框/" style="font-size: 10px;">边框</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a> <a href="/tags/驼峰/" style="font-size: 10px;">驼峰</a>
+      <a href="/tags/007/" style="font-size: 10px;">007</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/CCD/" style="font-size: 10px;">CCD</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 13.33px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Harris/" style="font-size: 10px;">Harris</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Marvel/" style="font-size: 10px;">Marvel</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/Shi-Tomasi/" style="font-size: 10px;">Shi-Tomasi</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/传记片/" style="font-size: 10px;">传记片</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点控制/" style="font-size: 10px;">单点控制</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/变量/" style="font-size: 11.67px;">变量</a> <a href="/tags/变量命名/" style="font-size: 10px;">变量命名</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像变换/" style="font-size: 10px;">图像变换</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图像金字塔/" style="font-size: 10px;">图像金字塔</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/复仇者联盟/" style="font-size: 10px;">复仇者联盟</a> <a href="/tags/奥斯卡/" style="font-size: 10px;">奥斯卡</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/尺度/" style="font-size: 10px;">尺度</a> <a href="/tags/布列松/" style="font-size: 10px;">布列松</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/时间之旅/" style="font-size: 10px;">时间之旅</a> <a href="/tags/构建法/" style="font-size: 15px;">构建法</a> <a href="/tags/查表法/" style="font-size: 10px;">查表法</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/漫威/" style="font-size: 10px;">漫威</a> <a href="/tags/焦距/" style="font-size: 10px;">焦距</a> <a href="/tags/特征/" style="font-size: 10px;">特征</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/表驱动法/" style="font-size: 10px;">表驱动法</a> <a href="/tags/视角/" style="font-size: 10px;">视角</a> <a href="/tags/角点检测/" style="font-size: 11.67px;">角点检测</a> <a href="/tags/计量/" style="font-size: 10px;">计量</a> <a href="/tags/诺兰/" style="font-size: 10px;">诺兰</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/邦德/" style="font-size: 10px;">邦德</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a> <a href="/tags/驼峰/" style="font-size: 10px;">驼峰</a>
     </div>
   </div>
 

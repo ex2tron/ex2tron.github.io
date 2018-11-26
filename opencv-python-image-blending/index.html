@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习图片间的数学运算，图像混合。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2018-11-26T07:09:15.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程9：图像混合">
 <meta name="twitter:description" content="学习图片间的数学运算，图像混合。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" rel="gallery_cjoxs9lq0001z1459i2pbu0bq">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" rel="gallery_cjoye5nbj0022q059ry5c689r">
         <img src="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" itemprop="image">
       </a>
     
@@ -169,18 +169,20 @@ var themeMenus = {};
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>图片间的数学运算，如相加、按位运算等</li>
-<li>OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()</li>
+<li>OpenCV函数：<code>cv2.add()</code>, <code>cv2.addWeighted()</code>, <code>cv2.bitwise_and()</code></li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>首先，恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油(ง •_•)ง</p>
-<h3 id="图片相加"><a href="#图片相加" class="headerlink" title="图片相加"></a>图片相加</h3><p>要叠加两张图片，可以用<code>cv2.add()</code>函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用<code>res = img + img1</code>相加，但这两者的结果并不相同：</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><blockquote>
+<p>首先恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油(ง •_•)ง</p>
+</blockquote>
+<h3 id="图片相加"><a href="#图片相加" class="headerlink" title="图片相加"></a>图片相加</h3><p>要叠加两张图片，可以用<code>cv2.add()</code>函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用res = img + img1相加，但这两者的结果并不相同：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = np.uint8([<span class="number">250</span>])</div><div class="line">y = np.uint8([<span class="number">10</span>])</div><div class="line">print(cv2.add(x, y))  <span class="comment"># 250+10 = 260 =&gt; 255</span></div><div class="line">print(x + y)  <span class="comment"># 250+10 = 260 % 256 = 4</span></div></pre></td></tr></table></figure>
-<p>如果是二值化图片（只有0和255），两者结果是一样的（用numpy的方式更简便一些）。</p>
+<p>如果是二值化图片（只有0和255两种值），两者结果是一样的（用numpy的方式更简便一些）。</p>
 <h3 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h3><p>图像混合<code>cv2.addWeighted()</code>也是一种图片相加的操作，只不过两幅图片的权重不一样，γ相当于一个修正值：</p>
-<p><code>dst = α*img1 + β*img2 + γ</code></p>
+<p>$$<br>dst = \alpha\times img1+\beta\times img2 + \gamma<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img1 = cv2.imread(<span class="string">'lena_small.jpg'</span>)</div><div class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</div><div class="line">res = cv2.addWeighted(img1, <span class="number">0.6</span>, img2, <span class="number">0.4</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" alt="图像混合"></p>
 <blockquote>
-<p>经验之谈：α和β都等于1时，就相当于图片相加</p>
+<p>经验之谈：α和β都等于1时，就相当于图片相加。</p>
 </blockquote>
 <h3 id="按位操作"><a href="#按位操作" class="headerlink" title="按位操作"></a>按位操作</h3><p>按位操作包括按位与/或/非/异或操作，有什么用途呢？比如说我们要实现下图的效果：</p>
 <p><img src="http://pic.ex2tron.top/cv2_bitwise_operations_demo.jpg" alt=""></p>
@@ -188,9 +190,12 @@ var themeMenus = {};
 <p><img src="http://pic.ex2tron.top/cv2_understand_mask.jpg" alt="掩膜概念"></p>
 <p>所以我们的思路就是把原图中要放logo的区域抠出来，再把logo放进去就行了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">img1 = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 把logo放在左上角，所以我们只关心这一块区域</span></div><div class="line">rows, cols = img2.shape[:<span class="number">2</span>]</div><div class="line">roi = img1[:rows, :cols]</div><div class="line"></div><div class="line"><span class="comment"># 创建掩膜</span></div><div class="line">img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, mask = cv2.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">mask_inv = cv2.bitwise_not(mask)</div><div class="line"></div><div class="line"><span class="comment"># 保留除logo外的背景</span></div><div class="line">img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)</div><div class="line">dst = cv2.add(img1_bg, img2)  <span class="comment"># 进行融合</span></div><div class="line">img1[:rows, :cols] = dst  <span class="comment"># 融合后放在原图上</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经验之谈：掩膜的概念在图像混合/叠加的场景下使用较多，可以多多练习噢！</p>
+</blockquote>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>cv2.add()用来叠加两幅图片，cv2.addWeighted()也是叠加两幅图片，但两幅图片的权重不一样</li>
-<li>cv2.bitwise_and(), cv2.bitwise_not(), cv2.bitwise_or(), cv2.bitwise_xor()分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡</li>
+<li><code>cv2.add()</code>用来叠加两幅图片，<code>cv2.addWeighted()</code>也是叠加两幅图片，但两幅图片的权重不一样。</li>
+<li><code>cv2.bitwise_and()</code>, <code>cv2.bitwise_not()</code>, <code>cv2.bitwise_or()</code>, <code>cv2.bitwise_xor()</code>分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。</li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/09.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></li>
