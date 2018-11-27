@@ -27,7 +27,7 @@
 <meta property="og:description" content="理解尺度、图像金字塔和尺度空间的概念。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg">
-<meta property="og:updated_time" content="2018-11-22T07:34:11.217Z">
+<meta property="og:updated_time" content="2018-11-27T10:23:58.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇12：尺度空间与图像金字塔">
 <meta name="twitter:description" content="理解尺度、图像金字塔和尺度空间的概念。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" rel="gallery_cjoye5nbn0027q059h3vwckrg">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" rel="gallery_cjozp58i90026wo59i7vm2hh8">
         <img src="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" itemprop="image">
       </a>
     
@@ -166,6 +166,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p>理解尺度、图像金字塔和尺度空间的概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
 <h2 id="理解尺度"><a href="#理解尺度" class="headerlink" title="理解尺度"></a>理解尺度</h2><p>我们先要明确尺度的概念：<strong>一副图像，只有在一定的尺度范围内，描述其中的物体才是有意义的。</strong>啥意思呢，比如说你面前的人，你是米级的距离看到的，如果从千米级或微米级看，你是感知不到人的，你看到的可能是城市或细胞。就如同百度/谷歌地图，不同尺度变换下，所获取的信息点不同。</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" alt=""></p>
 <p>所以，图像的尺度并非指图像的大小，而是模拟人由近到远观看目标物体的过程，越远，尺度越大，图像也就越模糊。</p>

@@ -297,9 +297,10 @@ I’ve always believed with hard work and a little bit of luck, it’s only a ma
           </div>
           <div class="entry-summary">
           理解尺度、图像金字塔和尺度空间的概念。图片等可到源码处下载。
+
 理解尺度我们先要明确尺度的概念：一副图像，只有在一定的尺度范围内，描述其中的物体才是有意义的。啥意思呢，比如说你面前的人，你是米级的距离看到的，如果从千米级或微米级看，你是感知不到人的，你看到的可能是城市或细胞。就如同百度/谷歌地图，不同尺度变换下，所获取的信息点不同。
 
-所以，图像的尺度并非指图像的大小，而是模拟人由近到远观看目...
+所以，图像的尺度并非指图像的大小，而是模拟人由近到远观看...
 
         
           <p class="article-more-link">
@@ -421,6 +422,7 @@ Look up at the stars, not down at your feet. ——Stephen Hawking
           </div>
           <div class="entry-summary">
           学习Shi-Tomasi角点检测算法。图片等可到源码处下载。
+
 目标
 Shi-Tomasi角点检测算法的原理
 OpenCV函数：cv2.goodFeaturesToTrack()
@@ -428,7 +430,7 @@ OpenCV函数：cv2.goodFeaturesToTrack()
 教程理解算法
 本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。
 
-Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM-...
+Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：$$R = detM...
 
         
           <p class="article-more-link">
@@ -487,6 +489,7 @@ Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点�
           </div>
           <div class="entry-summary">
           学习一种角点特征的检测方法：Harris。图片等可到源码处下载。
+
 目标
 Harris角点检测的原理
 OpenCV函数：cv2.cornerHarris()
@@ -498,7 +501,7 @@ OpenCV函数：cv2.cornerHarris()
 
 
 Harris角点检测算法就是基于这个原理，常见的角点类型如上图。
-代码示例...
+代码示...
 
         
           <p class="article-more-link">
@@ -628,10 +631,9 @@ Harris角点检测算法就是基于这个原理，常见的角点类型如上�
 分别使用霍夫线变换和圆变换检测图像中的直线和圆
 OpenCV函数：cv2.HoughLines(), cv2.HoughLinesP(), cv2.HoughCircles()
 
-教程理解霍夫变换
-本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。
+教程理解霍夫变换霍夫变换常用来在图像中提取直线和圆等几何形状，我来做个简易的解释：
 
-霍夫变换常用来在图像...
+学过几何的都知道，直线可以分别用直角...
 
         
           <p class="article-more-link">
@@ -698,7 +700,7 @@ OpenCV函数：cv2.matchTemplate(), cv2.minMaxLoc()
 教程模板匹配模板匹配就是用来在大图中找小图，也就是说在一副图像中寻找另外一张模板图像的位置：
 
 用cv2.matchTemplate()实现模板匹配。首先我们来读入图片和模板：
-123img = cv2....
+1234567import...
 
         
           <p class="article-more-link">
@@ -763,10 +765,9 @@ OpenCV函数：cv2.matchTemplate(), cv2.minMaxLoc()
 （自适应）直方图均衡化
 OpenCV函数：cv2.calcHist(), cv2.equalizeHist()
 
-教程啥叫直方图直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：
+教程啥叫直方图直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的有多少个……直方图是一种分析图片的手段：
 
 在计算直方图之前，有几个术语先来了解一下：
-
 ...
 
         

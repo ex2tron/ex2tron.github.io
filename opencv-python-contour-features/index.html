@@ -27,7 +27,7 @@
 <meta property="og:description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
+<meta property="og:updated_time" content="2018-11-27T11:16:51.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程14：轮廓特征">
 <meta name="twitter:description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
@@ -137,7 +137,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" rel="gallery_cjoye5na9000sq059jil1iaju">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" rel="gallery_cjozp58gy000pwo59he0o7gcm">
         <img src="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" itemprop="image">
       </a>
     
@@ -169,28 +169,29 @@ var themeMenus = {};
 <hr>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>计算物体的周长、面积、质心、最小外接矩形等</li>
-<li>OpenCV函数：cv2.contourArea(), cv2.arcLength(), cv2.approxPolyDP() 等</li>
+<li>OpenCV函数：<code>cv2.contourArea()</code>, <code>cv2.arcLength()</code>, <code>cv2.approxPolyDP()</code> 等</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 以数字3的轮廓为例</span></div><div class="line">cnt = contours[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_31_handwriting_sample.jpg" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 以数字3的轮廓为例</span></div><div class="line">cnt = contours[<span class="number">0</span>]</div></pre></td></tr></table></figure>
 <p>为了便于绘制，我们创建出两幅彩色图，并把轮廓画在第一幅图上：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img_color1 = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">img_color2 = np.copy(img_color1)</div><div class="line">cv2.drawContours(img_color1, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <h3 id="轮廓面积"><a href="#轮廓面积" class="headerlink" title="轮廓面积"></a>轮廓面积</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">area = cv2.contourArea(cnt)  <span class="comment"># 4386.5</span></div></pre></td></tr></table></figure>
 <p>注意轮廓特征计算的结果并不等同于像素点的个数，而是根据几何方法算出来的，所以有小数。</p>
 <blockquote>
-<p>如果统计二值图中像素点个数，应尽量避免循环，可以使用<code>cv2.countNonZero()</code>，更加高效</p>
+<p>如果统计二值图中像素点个数，应尽量避免循环，<strong>可以使用<code>cv2.countNonZero()</code></strong>，更加高效。</p>
 </blockquote>
 <h3 id="轮廓周长"><a href="#轮廓周长" class="headerlink" title="轮廓周长"></a>轮廓周长</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perimeter = cv2.arcLength(cnt, <span class="keyword">True</span>)  <span class="comment"># 585.7</span></div></pre></td></tr></table></figure>
 <p>参数2表示轮廓是否封闭，显然我们的轮廓是封闭的，所以是True。</p>
 <h3 id="图像矩"><a href="#图像矩" class="headerlink" title="图像矩"></a>图像矩</h3><p>矩可以理解为图像的各类几何特征，详情请参考：[<a href="http://en.wikipedia.org/wiki/Image_moment" target="_blank" rel="external">Image Moments</a>]</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">M = cv2.moments(cnt)</div></pre></td></tr></table></figure>
-<p>M中包含了很多轮廓的特征信息，比如<code>M[&#39;m00&#39;]</code>表示轮廓面积，与前面<code>cv2.contourArea()</code>计算结果是一样的。质心也可以用算：</p>
+<p>M中包含了很多轮廓的特征信息，比如M[‘m00’]表示轮廓面积，与前面<code>cv2.contourArea()</code>计算结果是一样的。质心也可以用它来算：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cx, cy = M[<span class="string">'m10'</span>] / M[<span class="string">'m00'</span>], M[<span class="string">'m01'</span>] / M[<span class="string">'m00'</span>]  <span class="comment"># (205, 281)</span></div></pre></td></tr></table></figure>
 <h3 id="外接矩形"><a href="#外接矩形" class="headerlink" title="外接矩形"></a>外接矩形</h3><p>形状的外接矩形有两种，如下图，绿色的叫外接矩形，表示不考虑旋转并且能包含整个轮廓的矩形。蓝色的叫最小外接矩，考虑了旋转：</p>
 <p><img src="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x, y, w, h = cv2.boundingRect(cnt)  <span class="comment"># 外接矩形</span></div><div class="line">cv2.rectangle(img_color1, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rect = cv2.minAreaRect(cnt)  <span class="comment"># 最小外接矩形</span></div><div class="line">box = np.int0(cv2.boxPoints(rect))  <span class="comment"># 矩形的四个角点取整</span></div><div class="line">cv2.drawContours(img_color1, [box], <span class="number">0</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>其中<code>np.int0(x)</code>是把x取整的操作，比如377.93就会变成377，也可以用<code>x.astype(np.int)</code></p>
+<p>其中np.int0(x)是把x取整的操作，比如377.93就会变成377，也可以用x.astype(np.int)。</p>
 <h3 id="最小外接圆"><a href="#最小外接圆" class="headerlink" title="最小外接圆"></a>最小外接圆</h3><p>外接圆跟外接矩形一样，找到一个能包围物体的最小圆：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(x, y), radius = cv2.minEnclosingCircle(cnt)</div><div class="line">(x, y, radius) = np.int0((x, y, radius))  <span class="comment"># 圆心和半径取整</span></div><div class="line">cv2.circle(img_color2, (x, y), radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_min_enclosing_circle.jpg" alt=""></p>
@@ -205,14 +206,14 @@ var themeMenus = {};
 <p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
 <p>形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，大家如果感兴趣，可以参考：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="external">Hu-Moments</a></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>前面我们是对图片中的数字3进行轮廓特征计算的，大家换成数字1看看</li>
-<li>（选做）用形状匹配比较两个字母或数字（这相当于很简单的一个<a href="https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&amp;fromid=25995&amp;fromtitle=OCR" target="_blank" rel="external">OCR</a>噢）</li>
+<li>前面我们是对图片中的数字3进行轮廓特征计算的，大家换成数字1看看。</li>
+<li>（选做）用形状匹配比较两个字母或数字（这相当于很简单的一个<a href="https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&amp;fromid=25995&amp;fromtitle=OCR" target="_blank" rel="external">OCR</a>噢）。</li>
 </ol>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>常用的轮廓特征：</p>
 <ul>
-<li>cv2.contourArea()算面积，cv2.arcLength()算周长，cv2.boundingRect()算外接矩</li>
-<li>cv2.minAreaRect()算最小外接矩，cv2.minEnclosingCircle()算最小外接圆</li>
-<li>cv2.matchShapes()进行形状匹配</li>
+<li><code>cv2.contourArea()</code>算面积，<code>cv2.arcLength()</code>算周长，<code>cv2.boundingRect()</code>算外接矩。</li>
+<li><code>cv2.minAreaRect()</code>算最小外接矩，<code>cv2.minEnclosingCircle()</code>算最小外接圆。</li>
+<li><code>cv2.matchShapes()</code>进行形状匹配。</li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/14.%20%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81" target="_blank" rel="external">本节源码</a></li>
