@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
 
@@ -10,10 +11,15 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>【视觉与图像】摄像头篇2：焦距和视角 | ex2tron&#39;s Blog</title>
+  <title>
+    
+    【视觉与图像】摄像头篇2：焦距和视角 |
+    
+    ex2tron&#39;s Blog
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
   
   
   
@@ -33,39 +39,78 @@
 <meta name="twitter:description" content="焦距镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/lens_theory_diagram_.jpg">
   
-    <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
   <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
   <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
   <link rel="stylesheet" href="/css/style.css">
 
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+  <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/my.css">
 
-</head>
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 
+</head>
 <script>
 var themeMenus = {};
 
@@ -137,7 +182,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/lens_theory_diagram_.jpg" rel="gallery_cjp26dfix004orc5902r6fxbo">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/lens_theory_diagram_.jpg" rel="gallery_cjp2798do004oec59pauadqo6">
         <img src="http://pic.ex2tron.top/lens_theory_diagram_.jpg" itemprop="image">
       </a>
     
