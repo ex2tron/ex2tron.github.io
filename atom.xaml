@@ -1727,6 +1727,213 @@
   </entry>
   
   <entry>
+    <title>Python+OpenCV教程拓展挑战：PyQt编写GUI界面</title>
+    <link href="http://ex2tron.wang/opencv-python-using_pyqt_create_gui/"/>
+    <id>http://ex2tron.wang/opencv-python-using_pyqt_create_gui/</id>
+    <published>2017-12-09T09:30:34.000Z</published>
+    <updated>2018-11-29T05:41:11.413Z</updated>
+    
+    <content type="html"><![CDATA[<p>拓展挑战：编写GUI图像处理应用程序。<a id="more"></a></p>
+<hr>
+<h2 id="挑战内容"><a href="#挑战内容" class="headerlink" title="挑战内容"></a>挑战内容</h2><p>前面我们学习的OpenCV内容都是运行在命令行中的，没有界面，所以本次的拓展挑战内容便是：</p>
+<blockquote>
+<p><strong>了解Python编写<a href="https://baike.baidu.com/item/GUI" target="_blank" rel="external">GUI</a>界面的方法，使用PyQt5编写如下的图像处理应用程序，实现打开摄像头、捕获图片、读取本地图片、灰度化和Otsu自动阈值分割的功能。</strong></p>
+</blockquote>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt_gui_sample.jpg" alt=""></p>
+<p><strong>挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，</strong>不然…我也没办法(￣▽￣)”</p>
+<hr>
+<h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>目前我们学的内容都是跑在命令行中的，并没有界面，那么”脚本语言”Python如何搭建GUI界面呢？</p>
+</blockquote>
+<p>其实Python支持多种图形界面库，如<a href="https://wiki.python.org/moin/TkInter" target="_blank" rel="external">Tk(Tkinter)</a>、<a href="https://www.wxpython.org/" target="_blank" rel="external">wxPython</a>、<a href="https://wiki.python.org/moin/PyQt" target="_blank" rel="external">PyQt</a>等，虽然Python自带Tkinter，无需额外安装包，但我更推荐使用PyQt，一是因为它完全基于Qt，跨平台，功能强大，有助于了解Qt的语法，二是Qt提供了Qt Designer设计工具，界面设计上可以拖控件搞定，非常方便，大大节省时间。</p>
+<ul>
+<li>最新版本：PyQt 5.x</li>
+<li>官网（可能需要翻墙）：<a href="https://www.riverbankcomputing.com/software/pyqt/" target="_blank" rel="external">https://www.riverbankcomputing.com/software/pyqt/</a></li>
+</ul>
+<p>大家感兴趣的话，除去官网，下面是一些可参考的资源：</p>
+<ul>
+<li><a href="https://wiki.python.org/moin/PyQt" target="_blank" rel="external">Python Wiki: PyQt</a></li>
+<li><a href="https://wiki.python.org/moin/PyQt/Tutorials" target="_blank" rel="external">PyQt/Tutorials</a></li>
+<li>PyQt5 tutorial：<a href="http://zetcode.com/gui/pyqt5/" target="_blank" rel="external">英文原版</a></li>
+<li>PyQt4 tutorial：<a href="http://www.qaulau.com/books/PyQt4_Tutorial/index.html" target="_blank" rel="external">中文版</a>、<a href="http://zetcode.com/gui/pyqt4/" target="_blank" rel="external">英文原版</a></li>
+<li><a href="https://doc.qt.io/qt-5/" target="_blank" rel="external">Qt5 Documentation</a></li>
+<li>Broadview中文参考书：<a href="https://www.amazon.cn/dp/B075VWFYFH/ref=sr_1_1?ie=UTF8&amp;qid=1543407852&amp;sr=8-1&amp;keywords=PyQt5%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E4%B8%8E%E5%AE%9E%E6%88%98" target="_blank" rel="external">PyQt5快速开发与实战</a></li>
+<li><a href="http://eric-ide.python-projects.org/" target="_blank" rel="external">Eric</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pyqt5</div></pre></td></tr></table></figure>
+<p>下载速度慢的话，可以到<a href="https://pypi.org/project/PyQt5/#files" target="_blank" rel="external">PyPI</a>上下载离线版安装。另外我推荐使用Qt Designer来设计界面，如果你装的是Anaconda的话，就已经自带了designer.exe，例如我的在：D:\ProgramData\Anaconda3\Library\bin\，如果是普通的Python环境，则需要自行安装：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pyqt5-tools</div></pre></td></tr></table></figure>
+<p>安装完成后，designer.exe应该在Python安装目录下：xxx\Lib\site-packages\pyqt5_tools\。</p>
+<p>可以使用下面的代码生成一个简单的界面：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QApplication, QWidget</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app = QApplication(sys.argv)</div><div class="line"></div><div class="line">    window = QWidget()</div><div class="line">    window.setWindowTitle(<span class="string">'Hello World!'</span>)</div><div class="line">    window.show()</div><div class="line"></div><div class="line">    sys.exit(app.exec_())</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_hello_world_sample.jpg" alt=""></p>
+<h3 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h3><p>根据我们的挑战内容，解决思路是使用Qt Designer来设计界面，使用Python完成代码逻辑。打开designer.exe，会弹出创建新窗体的窗口，我们直接点击“create”：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_designer_main_ui.jpg" alt=""></p>
+<p>界面的左侧是Qt的常用控件”Widget Box”，右侧有一个控件属性窗口”Property Editor”，其余暂时用不到。本例中我们只用到了”Push Button”控件和”Label”控件：最上面的三个Label控件用于显示图片，可以在属性窗口调整它的大小，我们统一调整到150×150：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_main_ui_rough.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_designer_property_windows.jpg" alt=""></p>
+<p>另外，控件上显示的文字”text”属性和控件的名字”objectName”属性需要修改，便于显示和代码调用：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">控件</th>
+<th style="text-align:center">显示内容text</th>
+<th style="text-align:center">控件名objectName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PushButton</td>
+<td style="text-align:center">打开摄像头</td>
+<td style="text-align:center">btnOpenCamera</td>
+</tr>
+<tr>
+<td style="text-align:center">PushButton</td>
+<td style="text-align:center">捕获图片</td>
+<td style="text-align:center">btnCapture</td>
+</tr>
+<tr>
+<td style="text-align:center">PushButton</td>
+<td style="text-align:center">打开图片</td>
+<td style="text-align:center">btnReadImage</td>
+</tr>
+<tr>
+<td style="text-align:center">PushButton</td>
+<td style="text-align:center">灰度化</td>
+<td style="text-align:center">btnGray</td>
+</tr>
+<tr>
+<td style="text-align:center">PushButton</td>
+<td style="text-align:center">阈值分割(Otsu)</td>
+<td style="text-align:center">btnThreshold</td>
+</tr>
+<tr>
+<td style="text-align:center">Label</td>
+<td style="text-align:center">摄像头</td>
+<td style="text-align:center">labelCamera</td>
+</tr>
+<tr>
+<td style="text-align:center">Label</td>
+<td style="text-align:center">捕获图</td>
+<td style="text-align:center">labelCapture</td>
+</tr>
+<tr>
+<td style="text-align:center">Label</td>
+<td style="text-align:center">结果图</td>
+<td style="text-align:center">labelResult</td>
+</tr>
+</tbody>
+</table>
+<p>这样大致界面就出来了，很简单：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_main_ui_word.jpg" alt=""></p>
+<h3 id="按钮事件"><a href="#按钮事件" class="headerlink" title="按钮事件"></a>按钮事件</h3><p>如果你之前有过一些GUI开发经验，比如MFC，WinForm等，就知道GUI是通过事件驱动的，什么意思呢？比如前面我们已经设计好了界面，接下来就需要实现打开摄像头到阈值分割这5个按钮的功能，那么就需要给每个按钮指定一个”函数”，逻辑代码写在这个函数里面。这种函数就称为事件，Qt中称为槽连接。</p>
+<p>点击Designer工具栏的”Edit Signals/Slots”按钮，进入槽函数编辑界面，点击旁边的”Edit Widgets”恢复正常视图：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_designer_edit_singals_slots.jpg" alt=""></p>
+<p>然后点击按钮并拖动，当产生类似于电路中的接地符号时释放鼠标，参看下面动图：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_how_to_create_slots.gif" alt=""></p>
+<p>在弹出的配置窗口中，可以看到左侧是按钮的常用事件，我们选择点击事件”clicked()”，然后添加一个名为”btnOpenCamera_Clicked()”的槽函数：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_how_to_create_slots2.gif" alt=""></p>
+<p>重复上面的步骤，给五个按钮添加五个槽函数，最终结果如下：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_main_click_event.jpg" alt=""></p>
+<p>到此，我们就完成了界面设计的所有工作，按下Ctrl+S保存当前窗口为.ui文件。.ui文件其实是按照XML格式标记的内容，可以用文本编辑器将.ui文件打开看看。</p>
+<h3 id="ui文件转py代码"><a href="#ui文件转py代码" class="headerlink" title="ui文件转py代码"></a>ui文件转py代码</h3><p>因为我们是用Designer工具设计出的界面，并非Python敲代码设计的，所以要想真正运行，需要使用pyuic5将ui文件转成py文件。pyuic5.exe默认在%\Scripts\下，比如我的是在：D:\ProgramData\Anaconda3\Scripts\。</p>
+<p>打开cmd命令行，切换到ui文件的保存目录。Windows下有个小技巧，可以在目录的地址栏输入cmd，一步切换到当前目录：</p>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt5_pyuic_quick_cmd.gif" alt=""></p>
+<p>然后执行这条指令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyuic5 -o mainForm.py using_pyqt_create_ui.ui</div></pre></td></tr></table></figure>
+<p>如果出现pyuic5不是内部命令的错误，说明pyuic5的路径没有在环境变量里，添加一下即可。执行正常的话，就会生成mainForm.py文件，里面应该包含一个名为”Ui_MainWindow”的类。</p>
+<h3 id="编写逻辑代码"><a href="#编写逻辑代码" class="headerlink" title="编写逻辑代码"></a>编写逻辑代码</h3><blockquote>
+<p>经验之谈：mainForm.py文件是根据ui文件生成的，也就是说重新生成会覆盖掉。所以为了使界面与逻辑分离，我们需要新建一个逻辑文件。</p>
+</blockquote>
+<p>在同一工作目录下新建一个”mainEntry.py”的文件，存放逻辑代码。代码中的每部分我都写得比较独立，没有封装成函数，便于理解。代码看上去很长，但很简单，可以每个模块单独看，有几个需要注意的地方我做了注释：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</div><div class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> PyQt5.QtGui <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QFileDialog, QMainWindow</div><div class="line"></div><div class="line"><span class="keyword">from</span> mainForm <span class="keyword">import</span> Ui_MainWindow</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PyQtMainEntry</span><span class="params">(QMainWindow, Ui_MainWindow)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        self.setupUi(self)</div><div class="line"></div><div class="line">        self.camera = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line">        self.is_camera_opened = <span class="keyword">False</span>  <span class="comment"># 摄像头有没有打开标记</span></div><div class="line"></div><div class="line">        <span class="comment"># 定时器：30ms捕获一帧</span></div><div class="line">        self._timer = QtCore.QTimer(self)</div><div class="line">        self._timer.timeout.connect(self._queryFrame)</div><div class="line">        self._timer.setInterval(<span class="number">30</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnOpenCamera_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        打开和关闭摄像头</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        self.is_camera_opened = ~self.is_camera_opened</div><div class="line">        <span class="keyword">if</span> self.is_camera_opened:</div><div class="line">            self.btnOpenCamera.setText(<span class="string">"关闭摄像头"</span>)</div><div class="line">            self._timer.start()</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.btnOpenCamera.setText(<span class="string">"打开摄像头"</span>)</div><div class="line">            self._timer.stop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnCapture_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        捕获图片</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="comment"># 摄像头未打开，不执行任何操作</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.is_camera_opened:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        self.captured = self.frame</div><div class="line"></div><div class="line">        <span class="comment"># 后面这几行代码几乎都一样，可以尝试封装成一个函数</span></div><div class="line">        rows, cols, channels = self.captured.shape</div><div class="line">        bytesPerLine = channels * cols</div><div class="line">        <span class="comment"># Qt显示图片时，需要先转换成QImgage类型</span></div><div class="line">        QImg = QImage(self.captured.data, cols, rows, bytesPerLine, QImage.Format_RGB888)</div><div class="line">        self.labelCapture.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelCapture.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnReadImage_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        从本地读取图片</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="comment"># 打开文件选取对话框</span></div><div class="line">        filename,  _ = QFileDialog.getOpenFileName(self, <span class="string">'打开图片'</span>)</div><div class="line">        <span class="keyword">if</span> filename:</div><div class="line">            self.captured = cv2.imread(str(filename))</div><div class="line">            <span class="comment"># OpenCV图像以BGR通道存储，显示时需要从BGR转到RGB</span></div><div class="line">            self.captured = cv2.cvtColor(self.captured, cv2.COLOR_BGR2RGB)</div><div class="line"></div><div class="line">            rows, cols, channels = self.captured.shape</div><div class="line">            bytesPerLine = channels * cols</div><div class="line">            QImg = QImage(self.captured.data, cols, rows, bytesPerLine, QImage.Format_RGB888)</div><div class="line">            self.labelCapture.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">                self.labelCapture.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnGray_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        灰度化</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="comment"># 如果没有捕获图片，则不执行操作</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">"captured"</span>):</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        self.cpatured = cv2.cvtColor(self.captured, cv2.COLOR_RGB2GRAY)</div><div class="line"></div><div class="line">        rows, columns = self.cpatured.shape</div><div class="line">        bytesPerLine = columns</div><div class="line">        <span class="comment"># 灰度图是单通道，所以需要用Format_Indexed8</span></div><div class="line">        QImg = QImage(self.cpatured.data, columns, rows, bytesPerLine, QImage.Format_Indexed8)</div><div class="line">        self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnThreshold_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        Otsu自动阈值分割</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">"captured"</span>):</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        _, self.cpatured = cv2.threshold(</div><div class="line">            self.cpatured, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line">        rows, columns = self.cpatured.shape</div><div class="line">        bytesPerLine = columns</div><div class="line">        <span class="comment"># 阈值分割图也是单通道，也需要用Format_Indexed8</span></div><div class="line">        QImg = QImage(self.cpatured.data, columns, rows, bytesPerLine, QImage.Format_Indexed8)</div><div class="line">        self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line"><span class="meta">    @QtCore.pyqtSlot()</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_queryFrame</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        循环捕获图片</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        ret, self.frame = self.camera.read()</div><div class="line"></div><div class="line">        img_rows, img_cols, channels = self.frame.shape</div><div class="line">        bytesPerLine = channels * img_cols</div><div class="line"></div><div class="line">        cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB, self.frame)</div><div class="line">        QImg = QImage(self.frame.data, img_cols, img_rows, bytesPerLine, QImage.Format_RGB888)</div><div class="line">        self.labelCamera.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelCamera.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app = QtWidgets.QApplication(sys.argv)</div><div class="line">    window = PyQtMainEntry()</div><div class="line">    window.show()</div><div class="line">    sys.exit(app.exec_())</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_pyqt_gui_sample2.jpg" alt=""></p>
+<p>本文只是抛砖引玉，介绍了PyQt5的简单使用，想要深入学习，可以参考本文开头的参考资料噢(●ˇ∀ˇ●)</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E6%8C%91%E6%88%98%E4%BB%BB%E5%8A%A12%EF%BC%9APyQt5%E7%BC%96%E5%86%99GUI%E7%95%8C%E9%9D%A2" target="_blank" rel="external">本节源码</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拓展挑战：编写GUI图像处理应用程序。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="PyQt" scheme="http://ex2tron.wang/tags/PyQt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python+OpenCV教程挑战任务：画动态时钟</title>
+    <link href="http://ex2tron.wang/opencv-python-draw_a_clock/"/>
+    <id>http://ex2tron.wang/opencv-python-draw_a_clock/</id>
+    <published>2017-12-09T09:29:34.000Z</published>
+    <updated>2018-11-29T05:41:21.989Z</updated>
+    
+    <content type="html"><![CDATA[<p>挑战任务：使用OpenCV绘制一个随系统时间动态变化的时钟。<a id="more"></a></p>
+<hr>
+<h2 id="挑战内容"><a href="#挑战内容" class="headerlink" title="挑战内容"></a>挑战内容</h2><blockquote>
+<p><strong>完成如下图所展示的动态时钟，时钟需随系统时间变化，中间显示当前日期。</strong></p>
+</blockquote>
+<p><img src="http://pic.ex2tron.top/cv2_draw_clock_dynamic_sample.gif" alt=""></p>
+<p>其实本次任务涉及的OpenCV知识并不多，但有助于提升大家的编程实践能力。<strong>挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，</strong>不然…我也没办法(￣▽￣)”</p>
+<hr>
+<h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>本次挑战任务旨在提升大家的动手实践能力，解决实际问题，所以我们得先有个解题思路和方案。观察下常见的时钟表盘：</p>
+<p><img src="http://pic.ex2tron.top/cv2_draw_clock_actual_clock_sample.jpg" alt=""></p>
+<p>整个表盘只有3根表针在动，所以可以先画出静态表盘，然后获取系统当前时间，根据时间实时动态绘制3根表针就解决了。</p>
+<h3 id="绘制表盘"><a href="#绘制表盘" class="headerlink" title="绘制表盘"></a>绘制表盘</h3><p>表盘上只有60条分/秒刻线和12条小时刻线，当然还有表盘的外部轮廓圆，也就是重点在如何画72根线。前面我们使用OpenCV画直线的时候，需知道直线的起点和终点坐标，那么画72根线就变成了获取72组坐标。</p>
+<p>在平面坐标系下，已知半径和角度的话，A点的坐标可以表示为：<br>$$<br>\begin{matrix}<br>   x=r\times \cos\alpha \newline<br>   y=r\times \sin\alpha<br>\end{matrix}<br>$$<br><img src="http://pic.ex2tron.top/cv2_draw_clock_center_shift.jpg" alt=""></p>
+<p>先只考虑将坐标系原点移动到左上角，角度依然是平面坐标系中的逆时针计算，那么新坐标是：</p>
+<p>$$<br>\begin{matrix}<br>   x=r+r\times \cos\alpha \newline<br>   y=r+r\times \sin\alpha<br>\end{matrix}<br>$$</p>
+<p>对于60条分/秒刻线，刻线间的夹角是360°/60=6°，对于时刻刻线，角度是360°/12=30°，这样就得到了72组起点坐标，那怎么得到终点坐标呢？其实同样的原理，用一个同心的小圆来计算得到B点：</p>
+<p><img src="http://pic.ex2tron.top/cv2_draw_clock_a_b_position.jpg" alt=""></p>
+<p>通过A/B两点就可以画出直线：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">margin = <span class="number">5</span>  <span class="comment"># 上下左右边距</span></div><div class="line">radius = <span class="number">220</span>  <span class="comment"># 圆的半径</span></div><div class="line">center = (center_x, center_y) = (<span class="number">225</span>, <span class="number">225</span>)  <span class="comment"># 圆心</span></div><div class="line"></div><div class="line"><span class="comment"># 1. 新建一个画板并填充成白色</span></div><div class="line">img = np.zeros((<span class="number">450</span>, <span class="number">450</span>, <span class="number">3</span>), np.uint8)</div><div class="line">img[:] = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2. 画出圆盘</span></div><div class="line">cv2.circle(img, center, radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), thickness=<span class="number">5</span>)</div><div class="line"></div><div class="line">pt1 = []</div><div class="line"></div><div class="line"><span class="comment"># 3. 画出60条秒和分钟的刻线</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">60</span>):</div><div class="line">    <span class="comment"># 最外部圆，计算A点</span></div><div class="line">    x1 = center_x+(radius-margin)*math.cos(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    y1 = center_y+(radius-margin)*math.sin(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    pt1.append((int(x1), int(y1)))</div><div class="line"></div><div class="line">    <span class="comment"># 同心小圆，计算B点</span></div><div class="line">    x2 = center_x+(radius<span class="number">-15</span>)*math.cos(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    y2 = center_y+(radius<span class="number">-15</span>)*math.sin(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line"></div><div class="line">    cv2.line(img, pt1[i], (int(x2), int(y2)), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), thickness=<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 4. 画出12条小时的刻线</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>):</div><div class="line">    <span class="comment"># 12条小时刻线应该更长一点</span></div><div class="line">    x = center_x+(radius<span class="number">-25</span>)*math.cos(i*<span class="number">30</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    y = center_y+(radius<span class="number">-25</span>)*math.sin(i*<span class="number">30</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    <span class="comment"># 这里用到了前面的pt1</span></div><div class="line">    cv2.line(img, pt1[i*<span class="number">5</span>], (int(x), int(y)), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), thickness=<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment"># 到这里基本的表盘图就已经画出来了</span></div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_draw_clock_blank_clock.jpg" alt=""></p>
+<h3 id="角度换算"><a href="#角度换算" class="headerlink" title="角度换算"></a>角度换算</h3><p>接下来算是一个小难点，首先<strong>时钟的起始坐标在正常二维坐标系的90°方向，其次时钟跟图像一样，都是顺时针计算角度的</strong>，所以三者需要统一下：</p>
+<p><img src="http://pic.ex2tron.top/cv2_draw_clock_different_clock_contrast.jpg" alt=""></p>
+<p>因为角度是完全对称的，顺逆时针没有影响，所以平面坐标系完全不用理会，放在这里只是便于大家理解。对于时钟坐标和图像坐标，时钟0的0°对应图像的270°，时钟15的90°对应图像的360°，时钟30的180°对应图像的450°（360°+90°）…</p>
+<p>所以两者之间的关系便是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">计算角度 = 时钟角度+270°</div><div class="line">计算角度 = 计算角度 if 计算角度&lt;=360° else 计算角度-360°</div></pre></td></tr></table></figure>
+<h3 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h3><p>Python中如何获取当前时间和添加日期文字都比较简单，看代码就行，我就不解释了。代码中角度计算我换了一种方式，其实是一样的，看你能不能看懂(●ˇ∀ˇ●)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(<span class="number">1</span>):</div><div class="line">    <span class="comment"># 不断拷贝表盘图，才能更新绘制，不然会重叠在一起</span></div><div class="line">    temp = np.copy(img)</div><div class="line"></div><div class="line">    <span class="comment"># 5. 获取系统时间，画出动态的时-分-秒三条刻线</span></div><div class="line">    now_time = datetime.datetime.now()</div><div class="line">    hour, minute, second = now_time.hour, now_time.minute, now_time.second</div><div class="line"></div><div class="line">    <span class="comment"># 画秒刻线</span></div><div class="line">    <span class="comment"># OpenCV中的角度是顺时针计算的，所以需要转换下</span></div><div class="line">    sec_angle = second*<span class="number">6</span>+<span class="number">270</span> <span class="keyword">if</span> second &lt;= <span class="number">15</span> <span class="keyword">else</span> (second<span class="number">-15</span>)*<span class="number">6</span></div><div class="line">    sec_x = center_x+(radius-margin)*math.cos(sec_angle*np.pi/<span class="number">180.0</span>)</div><div class="line">    sec_y = center_y+(radius-margin)*math.sin(sec_angle*np.pi/<span class="number">180.0</span>)</div><div class="line">    cv2.line(temp, center, (int(sec_x), int(sec_y)), (<span class="number">203</span>, <span class="number">222</span>, <span class="number">166</span>), <span class="number">2</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 画分刻线</span></div><div class="line">    min_angle = minute*<span class="number">6</span>+<span class="number">270</span> <span class="keyword">if</span> minute &lt;= <span class="number">15</span> <span class="keyword">else</span> (minute<span class="number">-15</span>)*<span class="number">6</span></div><div class="line">    min_x = center_x+(radius<span class="number">-35</span>)*math.cos(min_angle*np.pi/<span class="number">180.0</span>)</div><div class="line">    min_y = center_y+(radius<span class="number">-35</span>)*math.sin(min_angle*np.pi/<span class="number">180.0</span>)</div><div class="line">    cv2.line(temp, center, (int(min_x), int(min_y)), (<span class="number">186</span>, <span class="number">199</span>, <span class="number">137</span>), <span class="number">8</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 画时刻线</span></div><div class="line">    hour_angle = hour*<span class="number">30</span>+<span class="number">270</span> <span class="keyword">if</span> hour &lt;= <span class="number">3</span> <span class="keyword">else</span> (hour<span class="number">-3</span>)*<span class="number">30</span></div><div class="line">    hour_x = center_x+(radius<span class="number">-65</span>)*math.cos(hour_angle*np.pi/<span class="number">180.0</span>)</div><div class="line">    hour_y = center_y+(radius<span class="number">-65</span>)*math.sin(hour_angle*np.pi/<span class="number">180.0</span>)</div><div class="line">    cv2.line(temp, center, (int(hour_x), int(hour_y)), (<span class="number">169</span>, <span class="number">198</span>, <span class="number">26</span>), <span class="number">15</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 6. 添加当前日期文字</span></div><div class="line">    font = cv2.FONT_HERSHEY_SIMPLEX</div><div class="line">    time_str = now_time.strftime(<span class="string">"%d/%m/%Y"</span>)</div><div class="line">    cv2.putText(img, time_str, (<span class="number">135</span>, <span class="number">275</span>), font, <span class="number">1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'clocking'</span>, temp)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:  <span class="comment"># 按下ESC键退出</span></div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_draw_clock_sample.jpg" alt=""></p>
+<p>本此挑战旨在锻炼一步步解决实际问题的思路（虽然有点数学知识(￣▽￣)”），大家再接再厉噢！</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E6%8C%91%E6%88%98%E4%BB%BB%E5%8A%A11%EF%BC%9A%E7%94%BB%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F" target="_blank" rel="external">本节源码</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;挑战任务：使用OpenCV绘制一个随系统时间动态变化的时钟。
+    
+    </summary>
+    
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="PyQt" scheme="http://ex2tron.wang/tags/PyQt/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python+OpenCV教程番外篇6：鼠标绘图</title>
     <link href="http://ex2tron.wang/opencv-python-extra-drawing-with-mouse/"/>
     <id>http://ex2tron.wang/opencv-python-extra-drawing-with-mouse/</id>
@@ -1793,7 +2000,7 @@
     <link href="http://ex2tron.wang/opencv-python-drawing-function/"/>
     <id>http://ex2tron.wang/opencv-python-drawing-function/</id>
     <published>2017-12-09T03:29:48.000Z</published>
-    <updated>2018-11-26T06:50:00.119Z</updated>
+    <updated>2018-11-29T02:04:50.554Z</updated>
     
     <content type="html"><![CDATA[<p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1833,7 +2040,7 @@
 <li>参数6：endAngle—椭圆的结束角度</li>
 </ul>
 <blockquote>
-<p>经验之谈：这里的角度是以顺时针方向计算的。</p>
+<p>经验之谈：OpenCV中原点在左上角，所以这里的角度是以顺时针方向计算的。</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在图中心画一个填充的半圆</span></div><div class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
 <h3 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h3><p>画多边形需要指定一系列多边形的顶点坐标，相当于从第一个点到第二个点画直线，再从第二个点到第三个点画直线….</p>
@@ -2084,7 +2291,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-otsu-thresholding/"/>
     <id>http://ex2tron.wang/opencv-python-extra-otsu-thresholding/</id>
     <published>2017-12-08T04:48:05.000Z</published>
-    <updated>2018-11-26T11:24:17.395Z</updated>
+    <updated>2018-11-28T09:52:24.255Z</updated>
     
     <content type="html"><![CDATA[<p>大部分图像处理任务都需要先进行二值化操作，阈值的选取很关键，Otsu阈值法会自动计算阈值。<a id="more"></a></p>
 <p><a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>（日本人大津展之提出的，也可称大津算法）非常适用于双峰图片，啥意思呢？</p>
@@ -2102,10 +2309,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">images = [img, <span class="number">0</span>, th1, img, <span class="number">0</span>, th2, blur, <span class="number">0</span>, th3]</div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">'Global(v=100)'</span>,</div><div class="line">          <span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>,</div><div class="line">          <span class="string">'Gaussian filtered Image'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="comment"># 绘制原图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">1</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制直方图plt.hist，ravel函数将数组降成一维</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">2</span>)</div><div class="line">    plt.hist(images[i * <span class="number">3</span>].ravel(), <span class="number">256</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">1</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line"></div><div class="line">    <span class="comment"># 绘制阈值图</span></div><div class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">3</span>)</div><div class="line">    plt.imshow(images[i * <span class="number">3</span> + <span class="number">2</span>], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">2</span>], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/cv2_otsu_vs_simple_thresholding.jpg" alt="固定阈值 vs Otsu阈值"></p>
 <p>可以看到，Otsu阈值明显优于固定阈值，省去了不断尝试阈值判断效果好坏的过程。其中，绘制直方图时，使用了numpy中的<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">ravel()</a>函数，它会将原矩阵压缩成一维数组，便于画直方图。</p>
-<h2 id="番外小篇：Otsu算法详解"><a href="#番外小篇：Otsu算法详解" class="headerlink" title="番外小篇：Otsu算法详解"></a>番外小篇：Otsu算法详解</h2><blockquote>
-<p>本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。</p>
-</blockquote>
-<p>Otsu阈值法将整幅图分为前景（目标）和背景，以下是一些符号规定：</p>
+<h2 id="Otsu算法详解"><a href="#Otsu算法详解" class="headerlink" title="Otsu算法详解"></a>Otsu算法详解</h2><p>Otsu阈值法将整幅图分为前景（目标）和背景，以下是一些符号规定：</p>
 <ul>
 <li>$ T $：分割阈值</li>
 <li>$ N_0 $：前景像素点数</li>
@@ -3300,7 +3504,7 @@
     <link href="http://ex2tron.wang/opencv-python/"/>
     <id>http://ex2tron.wang/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2018-11-22T06:13:59.653Z</updated>
+    <updated>2018-11-29T05:42:32.290Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://pic.ex2tron.top/cv2_python_opencv_cover_gif2.gif" alt=""></p>
 <h4 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h4><ol>
@@ -3313,6 +3517,7 @@
 <li><a href="/opencv-python-image-geometric-transformation/">图像几何变换</a>（旋转/平移/缩放/翻转） | <a href="/opencv-python-extra-warpaffine-warpperspective/">番外篇5：仿射变换与透视变换</a></li>
 <li><a href="/opencv-python-drawing-function/">绘图功能</a>（画线/画圆/画矩形/添加文字） | <a href="/opencv-python-extra-drawing-with-mouse/">番外篇6：鼠标绘图</a></li>
 </ol>
+<p><a href="/opencv-python-draw_a_clock/"><strong>挑战任务：画动态时钟</strong></a> | <a href="/opencv-python-using_pyqt_create_gui/"><strong>拓展挑战：PyQt5编写GUI界面</strong></a></p>
 <h4 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h4><ol>
 <li><a href="/opencv-python-image-blending/">图像混合</a>（算数运算/混合/按位运算） | <a href="/opencv-python-extra-contrast-brightness/">番外篇7：亮度与对比度</a></li>
 <li><a href="/opencv-python-smoothing-images/">平滑图像</a>（卷积/滤波/模糊/降噪） | <a href="/opencv-python-extra-padding-and-convolution/">番外篇8：卷积基础(图片边框)</a></li>
