@@ -368,9 +368,9 @@
     <link href="http://ex2tron.wang/opencv-python-lane_detection/"/>
     <id>http://ex2tron.wang/opencv-python-lane_detection/</id>
     <published>2017-12-28T03:38:11.000Z</published>
-    <updated>2018-11-30T05:24:19.742Z</updated>
+    <updated>2018-11-30T05:29:58.573Z</updated>
     
-    <content type="html"><![CDATA[<p>拓展挑战：实际公路的车道线检测。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+    <content type="html"><![CDATA[<p>挑战任务：实际公路的车道线检测。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
 <h2 id="挑战内容"><a href="#挑战内容" class="headerlink" title="挑战内容"></a>挑战内容</h2><blockquote>
 <p><strong>1. 在所提供的公路图片上检测出车道线并标记：</strong></p>
@@ -384,7 +384,7 @@
 <hr>
 <h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>要检测出当前车道，就是要检测出左右两条车道直线。由于无人车一直保持在当前车道，那么无人车上的相机拍摄的视频中，车道线的位置应该基本固定在某一个范围内：</p>
 <p><img src="http://pic.ex2tron.top/cv2_lane_detection_roi_sample.jpg" alt=""></p>
-<p>如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，这样就可以将所有的线分为两组，每组中再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：</p>
+<p>如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可以将所有的线分为两组，每组中再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：</p>
 <ol>
 <li>灰度化</li>
 <li>高斯模糊</li>
@@ -443,7 +443,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;拓展挑战：实际公路的车道线检测。
+      &lt;p&gt;挑战任务：实际公路的车道线检测。
     
     </summary>
     
