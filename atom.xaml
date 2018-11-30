@@ -368,7 +368,7 @@
     <link href="http://ex2tron.wang/opencv-python-lane_detection/"/>
     <id>http://ex2tron.wang/opencv-python-lane_detection/</id>
     <published>2017-12-28T03:38:11.000Z</published>
-    <updated>2018-11-30T05:29:58.573Z</updated>
+    <updated>2018-11-30T07:28:13.732Z</updated>
     
     <content type="html"><![CDATA[<p>挑战任务：实际公路的车道线检测。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -384,7 +384,7 @@
 <hr>
 <h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>要检测出当前车道，就是要检测出左右两条车道直线。由于无人车一直保持在当前车道，那么无人车上的相机拍摄的视频中，车道线的位置应该基本固定在某一个范围内：</p>
 <p><img src="http://pic.ex2tron.top/cv2_lane_detection_roi_sample.jpg" alt=""></p>
-<p>如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可以将所有的线分为两组，每组中再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：</p>
+<p>如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可将所有的线分为两组，每组再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：</p>
 <ol>
 <li>灰度化</li>
 <li>高斯模糊</li>
@@ -1975,7 +1975,7 @@
     <link href="http://ex2tron.wang/opencv-python-draw_a_clock/"/>
     <id>http://ex2tron.wang/opencv-python-draw_a_clock/</id>
     <published>2017-12-09T09:29:34.000Z</published>
-    <updated>2018-11-30T04:04:58.300Z</updated>
+    <updated>2018-11-30T07:30:40.462Z</updated>
     
     <content type="html"><![CDATA[<p>挑战任务：使用OpenCV绘制一个随系统时间动态变化的时钟。<a id="more"></a></p>
 <hr>
@@ -1988,12 +1988,12 @@
 <hr>
 <h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>本次挑战任务旨在提升大家的动手实践能力，解决实际问题，所以我们得先有个解题思路和方案。观察下常见的时钟表盘：</p>
 <p><img src="http://pic.ex2tron.top/cv2_draw_clock_actual_clock_sample.jpg" alt=""></p>
-<p>整个表盘只有3根表针在动，所以可以先画出静态表盘，然后获取系统当前时间，根据时间实时动态绘制3根表针就解决了。</p>
+<p>整个表盘其实只有3根表针在动，所以可以先画出静态表盘，然后获取系统当前时间，根据时间实时动态绘制3根表针就解决了。</p>
 <h3 id="绘制表盘"><a href="#绘制表盘" class="headerlink" title="绘制表盘"></a>绘制表盘</h3><p>表盘上只有60条分/秒刻线和12条小时刻线，当然还有表盘的外部轮廓圆，也就是重点在如何画72根线。前面我们使用OpenCV画直线的时候，需知道直线的起点和终点坐标，那么画72根线就变成了获取72组坐标。</p>
 <p>在平面坐标系下，已知半径和角度的话，A点的坐标可以表示为：<br>$$<br>\begin{matrix}<br>   x=r\times \cos\alpha \newline<br>   y=r\times \sin\alpha<br>\end{matrix}<br>$$<br><img src="http://pic.ex2tron.top/cv2_draw_clock_center_shift.jpg" alt=""></p>
 <p>先只考虑将坐标系原点移动到左上角，角度依然是平面坐标系中的逆时针计算，那么新坐标是：</p>
 <p>$$<br>\begin{matrix}<br>   x=r+r\times \cos\alpha \newline<br>   y=r+r\times \sin\alpha<br>\end{matrix}<br>$$</p>
-<p>对于60条分/秒刻线，刻线间的夹角是360°/60=6°，对于时刻刻线，角度是360°/12=30°，这样就得到了72组起点坐标，那怎么得到终点坐标呢？其实同样的原理，用一个同心的小圆来计算得到B点：</p>
+<p>对于60条分/秒刻线，刻线间的夹角是360°/60=6°，对于小时刻线，角度是360°/12=30°，这样就得到了72组起点坐标，那怎么得到终点坐标呢？其实同样的原理，用一个同心的小圆来计算得到B点：</p>
 <p><img src="http://pic.ex2tron.top/cv2_draw_clock_a_b_position.jpg" alt=""></p>
 <p>通过A/B两点就可以画出直线：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">margin = <span class="number">5</span>  <span class="comment"># 上下左右边距</span></div><div class="line">radius = <span class="number">220</span>  <span class="comment"># 圆的半径</span></div><div class="line">center = (center_x, center_y) = (<span class="number">225</span>, <span class="number">225</span>)  <span class="comment"># 圆心</span></div><div class="line"></div><div class="line"><span class="comment"># 1. 新建一个画板并填充成白色</span></div><div class="line">img = np.zeros((<span class="number">450</span>, <span class="number">450</span>, <span class="number">3</span>), np.uint8)</div><div class="line">img[:] = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2. 画出圆盘</span></div><div class="line">cv2.circle(img, center, radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), thickness=<span class="number">5</span>)</div><div class="line"></div><div class="line">pt1 = []</div><div class="line"></div><div class="line"><span class="comment"># 3. 画出60条秒和分钟的刻线</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">60</span>):</div><div class="line">    <span class="comment"># 最外部圆，计算A点</span></div><div class="line">    x1 = center_x+(radius-margin)*math.cos(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    y1 = center_y+(radius-margin)*math.sin(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    pt1.append((int(x1), int(y1)))</div><div class="line"></div><div class="line">    <span class="comment"># 同心小圆，计算B点</span></div><div class="line">    x2 = center_x+(radius<span class="number">-15</span>)*math.cos(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    y2 = center_y+(radius<span class="number">-15</span>)*math.sin(i*<span class="number">6</span>*np.pi/<span class="number">180.0</span>)</div><div class="line"></div><div class="line">    cv2.line(img, pt1[i], (int(x2), int(y2)), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), thickness=<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 4. 画出12条小时的刻线</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>):</div><div class="line">    <span class="comment"># 12条小时刻线应该更长一点</span></div><div class="line">    x = center_x+(radius<span class="number">-25</span>)*math.cos(i*<span class="number">30</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    y = center_y+(radius<span class="number">-25</span>)*math.sin(i*<span class="number">30</span>*np.pi/<span class="number">180.0</span>)</div><div class="line">    <span class="comment"># 这里用到了前面的pt1</span></div><div class="line">    cv2.line(img, pt1[i*<span class="number">5</span>], (int(x), int(y)), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), thickness=<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment"># 到这里基本的表盘图就已经画出来了</span></div></pre></td></tr></table></figure>
@@ -2984,7 +2984,7 @@
     <link href="http://ex2tron.wang/opencv-python-introduction-and-installation/"/>
     <id>http://ex2tron.wang/opencv-python-introduction-and-installation/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2018-11-15T11:21:16.107Z</updated>
+    <updated>2018-11-30T11:48:29.530Z</updated>
     
     <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
 <p>相信大部分人知道的OpenCV都是用C++来开发的，那么为什么我推荐使用Python呢？</p>
@@ -3012,7 +3012,7 @@
 <p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
 </blockquote>
 <p>要安装OpenCV，只需cmd下的一条指令：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install opencv-python</div></pre></td></tr></table></figure>
 <p>pip是Python的包管理器，如果你还没安装Python，强烈推荐安装<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>，它包含了大量的科学计算包，不用后期一个个安装。即使你已经装了Python也没有影响，Anaconda相当于虚拟环境，互不干扰。</p>
 <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p>进入Anaconda<a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网</a>，下载最新版本的安装文件，速度比较慢的话，可以去<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external">清华开源镜像站</a>。</p>
 <ul>
@@ -3022,7 +3022,7 @@
 </li>
 </ul>
 <h3 id="安装测试"><a href="#安装测试" class="headerlink" title="安装测试"></a>安装测试</h3><p>Python安装好之后，可以在cmd中输入<code>python --version</code>来查看Python的版本信息。对于OpenCV，可以打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。要查看OpenCV的版本，可以：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(cv2.__version__)  <span class="comment"># '3.4.1'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(cv2.__version__)  <span class="comment"># '3.4.1'</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)，或者直接在命令行里敲，自己习惯就行。</p>
 </blockquote>
