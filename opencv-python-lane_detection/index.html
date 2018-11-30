@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    python+opencv教程挑战任务：车道检测 |
+    
+    ex2tron&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="拓展挑战：实际公路的车道线检测。">
+<meta name="keywords" content="OpenCV,Python,图像处理,车道检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+OpenCV教程挑战任务：车道检测">
+<meta property="og:url" content="http://ex2tron.wang/opencv-python-lane_detection/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="拓展挑战：实际公路的车道线检测。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg">
+<meta property="og:updated_time" content="2018-11-30T05:24:19.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python+OpenCV教程挑战任务：车道检测">
+<meta name="twitter:description" content="拓展挑战：实际公路的车道线检测。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg">
+  
+  <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python-OpenCV教程挑战任务3：车道检测" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" rel="gallery_cjp3l40py0022xs59hadtk03d">
+        <img src="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python+OpenCV教程挑战任务：车道检测
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/opencv-python-lane_detection/" class="article-date">
+	  <time datetime="2017-12-28T03:38:11.000Z" itemprop="datePublished">December 28, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>拓展挑战：实际公路的车道线检测。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<h2 id="挑战内容"><a href="#挑战内容" class="headerlink" title="挑战内容"></a>挑战内容</h2><blockquote>
+<p><strong>1. 在所提供的公路图片上检测出车道线并标记：</strong></p>
+</blockquote>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" alt=""></p>
+<blockquote>
+<p><strong>2. 在所提供的公路视频上检测出车道线并标记：</strong></p>
+</blockquote>
+<p><video id="video" controls <source="" src="http://pic.ex2tron.top/cv2_white_lane_green_mark.mp4" type="video/mp4"><br></video><br>本次挑战内容来自Udacity自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。</p>
+<p><strong>挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，</strong>不然…我也没办法(￣▽￣)”</p>
+<hr>
+<h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>要检测出当前车道，就是要检测出左右两条车道直线。由于无人车一直保持在当前车道，那么无人车上的相机拍摄的视频中，车道线的位置应该基本固定在某一个范围内：</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_roi_sample.jpg" alt=""></p>
+<p>如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，这样就可以将所有的线分为两组，每组中再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：</p>
+<ol>
+<li>灰度化</li>
+<li>高斯模糊</li>
+<li>Canny边缘检测</li>
+<li>不规则ROI区域截取</li>
+<li>霍夫直线检测</li>
+<li>车道计算</li>
+</ol>
+<p>对于视频来说，只要一幅图能检查出来，合成下就可以了，问题不大。</p>
+<h3 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h3><p>灰度化和滤波操作是大部分图像处理的必要步骤。灰度化不必多说，因为不是基于色彩信息识别的任务，所以没有必要用彩色图，可以大大减少计算量。而滤波会削弱图像噪点，排除干扰信息。另外，根据前面学习的知识，边缘提取是基于图像梯度的，梯度对噪声很敏感，所以平滑滤波操作必不可少。</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_gray_blur_result.jpg" alt="原图 vs 灰度滤波图"></p>
+<p>这次的代码我们分模块来写，规范一点。其中<code>process_an_image()</code>是主要的图像处理流程：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 高斯滤波核大小</span></div><div class="line">blur_ksize = <span class="number">5</span></div><div class="line"><span class="comment"># Canny边缘检测高低阈值</span></div><div class="line">canny_lth = <span class="number">50</span></div><div class="line">canny_hth = <span class="number">150</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></div><div class="line">    gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)</div><div class="line">    blur_gray = cv2.GaussianBlur(gray, (blur_ksize, blur_ksize), <span class="number">1</span>)</div><div class="line">    edges = cv2.Canny(blur_gray, canny_lth, canny_hth)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    img = cv2.imread(<span class="string">'test_pictures/lane.jpg'</span>)</div><div class="line">    result = process_an_image(img)</div><div class="line">    cv2.imshow(<span class="string">"lane"</span>, np.hstack((img, result)))</div><div class="line">    cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_canny_result.jpg" alt="边缘检测结果图"></p>
+<h3 id="ROI截取"><a href="#ROI截取" class="headerlink" title="ROI截取"></a>ROI截取</h3><p>按照前面描述的方案，只需保留边缘图中的红线部分区域用于后续的霍夫直线检测，其余都是无用的信息：</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_canny_roi_reserve.jpg" alt=""></p>
+<p>如何实现呢？还记得图像混合中的这张图吗？</p>
+<p><img src="http://pic.ex2tron.top/cv2_understand_mask.jpg" alt=""></p>
+<p> 我们可以创建一个梯形的mask掩膜，然后与边缘检测结果图混合运算，掩膜中白色的部分保留，黑色的部分舍弃。梯形的四个坐标需要手动标记：</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_mask_sample.jpg" alt="掩膜mask"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></div><div class="line"></div><div class="line">    <span class="comment"># 2. 标记四个坐标点用于ROI截取</span></div><div class="line">    rows, cols = edges.shape</div><div class="line">    points = np.array([[(<span class="number">0</span>, rows), (<span class="number">460</span>, <span class="number">325</span>), (<span class="number">520</span>, <span class="number">325</span>), (cols, rows)]])</div><div class="line">    <span class="comment"># [[[0 540], [460 325], [520 325], [960 540]]]</span></div><div class="line">    roi_edges = roi_mask(edges, points)</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">roi_mask</span><span class="params">(img, corner_points)</span>:</span></div><div class="line">    <span class="comment"># 创建掩膜</span></div><div class="line">    mask = np.zeros_like(img)</div><div class="line">    cv2.fillPoly(mask, corner_points, <span class="number">255</span>)</div><div class="line"></div><div class="line">    masked_img = cv2.bitwise_and(img, mask)</div><div class="line">    <span class="keyword">return</span> masked_img</div></pre></td></tr></table></figure>
+<p>这样，结果图”roi_edges”应该是：</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_masked_roi_edges.jpg" alt="只保留关键区域的边缘检测图"></p>
+<h3 id="霍夫直线提取"><a href="#霍夫直线提取" class="headerlink" title="霍夫直线提取"></a>霍夫直线提取</h3><p>为了方便后续计算直线的斜率，我们使用统计概率霍夫直线变换（因为它能直接得到直线的起点和终点坐标）。霍夫变换的参数比较多，可以放在代码开头，便于修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 霍夫变换参数</span></div><div class="line">rho = <span class="number">1</span></div><div class="line">theta = np.pi / <span class="number">180</span></div><div class="line">threshold = <span class="number">15</span></div><div class="line">min_line_len = <span class="number">40</span></div><div class="line">max_line_gap = <span class="number">20</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></div><div class="line"></div><div class="line">    <span class="comment"># 2. 标记四个坐标点用于ROI截取</span></div><div class="line"></div><div class="line">    <span class="comment"># 3. 霍夫直线提取</span></div><div class="line">    drawing, lines = hough_lines(roi_edges, rho, theta, threshold, min_line_len, max_line_gap)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hough_lines</span><span class="params">(img, rho, theta, threshold, min_line_len, max_line_gap)</span>:</span></div><div class="line">    <span class="comment"># 统计概率霍夫直线变换</span></div><div class="line">    lines = cv2.HoughLinesP(img, rho, theta, threshold, minLineLength=min_line_len, maxLineGap=max_line_gap)</div><div class="line"></div><div class="line">    <span class="comment"># 新建一副空白画布</span></div><div class="line">    drawing = np.zeros((img.shape[<span class="number">0</span>], img.shape[<span class="number">1</span>], <span class="number">3</span>), dtype=np.uint8)</div><div class="line">    <span class="comment"># draw_lines(drawing, lines)     # 画出直线检测结果</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> drawing, lines</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_lines</span><span class="params">(img, lines, color=[<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>], thickness=<span class="number">1</span>)</span>:</span></div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">        <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line:</div><div class="line">            cv2.line(img, (x1, y1), (x2, y2), color, thickness)</div></pre></td></tr></table></figure>
+<p><code>draw_lines()</code>是用来画直线检测的结果，后面我们会接着处理直线，所以这里注释掉了，可以取消注释看下效果：</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_hough_lines_direct_result.jpg" alt="霍夫变换结果图"></p>
+<p>对本例的这张测试图来说，如果打印出直线的条数<code>print(len(lines))</code>，应该是有16条。</p>
+<h3 id="车道计算"><a href="#车道计算" class="headerlink" title="车道计算"></a>车道计算</h3><p>这部分应该算是本次挑战任务的核心内容了：前面通过霍夫变换得到了多条直线的起点和终点，我们的目的是通过某种算法只得到左右两条车道线。</p>
+<p><strong>第一步、根据斜率正负划分某条线是左车道还是右车道。</strong><br>$$<br>斜率=\frac{y_2-y_1}{x_2-x_1}(\leq0:左,&gt;0:右)<br>$$</p>
+<blockquote>
+<p>经验之谈：再次强调，斜率计算是在图像坐标系下，所以斜率正负/左右跟平面坐标有区别。</p>
+</blockquote>
+<p><strong>第二步、迭代计算各直线斜率与斜率均值的差，排除掉差值过大的异常数据。</strong></p>
+<p>注意这里迭代的含义，意思是第一次计算完斜率均值并排除掉异常值后，再在剩余的斜率中取均值，继续排除……这样迭代下去。</p>
+<p><strong>第三步、最小二乘法拟合左右车道线。</strong></p>
+<p>经过第二步的筛选，就只剩下可能的左右车道线了，这样只需从多条直线中拟合出一条就行。拟合方法有很多种，最常用的便是最小二乘法，它通过最小化误差的平方和来寻找数据的最佳匹配函数。</p>
+<p>具体来说，假设目前可能的左车道线有6条，也就是12个坐标点，包括12个x和12个y，我们的目的是拟合出这样一条直线：<br>$$<br>f(x_i) = ax_i+b<br>$$<br>使得误差平方和最小：<br>$$<br>E=\sum(f(x_i)-y_i)^2<br>$$</p>
+<p>Python中可以直接使用<code>np.polyfit()</code>进行最小二乘法拟合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></div><div class="line"></div><div class="line">    <span class="comment"># 2. 标记四个坐标点用于ROI截取</span></div><div class="line"></div><div class="line">    <span class="comment"># 3. 霍夫直线提取</span></div><div class="line"></div><div class="line">    <span class="comment"># 4. 车道拟合计算</span></div><div class="line">    draw_lanes(drawing, lines)</div><div class="line"></div><div class="line">    <span class="comment"># 5. 最终将结果合在原图上</span></div><div class="line">    result = cv2.addWeighted(img, <span class="number">0.9</span>, drawing, <span class="number">0.2</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_lanes</span><span class="params">(img, lines, color=[<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>], thickness=<span class="number">8</span>)</span>:</span></div><div class="line">    <span class="comment"># a. 划分左右车道</span></div><div class="line">    left_lines, right_lines = [], []</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">        <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line:</div><div class="line">            k = (y2 - y1) / (x2 - x1)</div><div class="line">            <span class="keyword">if</span> k &lt; <span class="number">0</span>:</div><div class="line">                left_lines.append(line)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                right_lines.append(line)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (len(left_lines) &lt;= <span class="number">0</span> <span class="keyword">or</span> len(right_lines) &lt;= <span class="number">0</span>):</div><div class="line">        <span class="keyword">return</span></div><div class="line"></div><div class="line">    <span class="comment"># b. 清理异常数据</span></div><div class="line">    clean_lines(left_lines, <span class="number">0.1</span>)</div><div class="line">    clean_lines(right_lines, <span class="number">0.1</span>)</div><div class="line"></div><div class="line">    <span class="comment"># c. 得到左右车道线点的集合，拟合直线</span></div><div class="line">    left_points = [(x1, y1) <span class="keyword">for</span> line <span class="keyword">in</span> left_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</div><div class="line">    left_points = left_points + [(x2, y2) <span class="keyword">for</span> line <span class="keyword">in</span> left_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</div><div class="line">    right_points = [(x1, y1) <span class="keyword">for</span> line <span class="keyword">in</span> right_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</div><div class="line">    right_points = right_points + [(x2, y2) <span class="keyword">for</span> line <span class="keyword">in</span> right_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</div><div class="line"></div><div class="line">    left_results = least_squares_fit(left_points, <span class="number">325</span>, img.shape[<span class="number">0</span>])</div><div class="line">    right_results = least_squares_fit(right_points, <span class="number">325</span>, img.shape[<span class="number">0</span>])</div><div class="line"></div><div class="line">    <span class="comment"># 注意这里点的顺序</span></div><div class="line">    vtxs = np.array([[left_results[<span class="number">1</span>], left_results[<span class="number">0</span>], right_results[<span class="number">0</span>], right_results[<span class="number">1</span>]]])</div><div class="line">    <span class="comment"># d. 填充车道区域</span></div><div class="line">    cv2.fillPoly(img, vtxs, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>))</div><div class="line"></div><div class="line">    <span class="comment"># 或者只画车道线</span></div><div class="line">    <span class="comment"># cv2.line(img, left_results[0], left_results[1], (0, 255, 0), thickness)</span></div><div class="line">    <span class="comment"># cv2.line(img, right_results[0], right_results[1], (0, 255, 0), thickness)</span></div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_lines</span><span class="params">(lines, threshold)</span>:</span></div><div class="line">    <span class="comment"># 迭代计算斜率均值，排除掉与差值差异较大的数据</span></div><div class="line">    slope = [(y2 - y1) / (x2 - x1) <span class="keyword">for</span> line <span class="keyword">in</span> lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</div><div class="line">    <span class="keyword">while</span> len(lines) &gt; <span class="number">0</span>:</div><div class="line">        mean = np.mean(slope)</div><div class="line">        diff = [abs(s - mean) <span class="keyword">for</span> s <span class="keyword">in</span> slope]</div><div class="line">        idx = np.argmax(diff)</div><div class="line">        <span class="keyword">if</span> diff[idx] &gt; threshold:</div><div class="line">            slope.pop(idx)</div><div class="line">            lines.pop(idx)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">            </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">least_squares_fit</span><span class="params">(point_list, ymin, ymax)</span>:</span></div><div class="line">    <span class="comment"># 最小二乘法拟合</span></div><div class="line">    x = [p[<span class="number">0</span>] <span class="keyword">for</span> p <span class="keyword">in</span> point_list]</div><div class="line">    y = [p[<span class="number">1</span>] <span class="keyword">for</span> p <span class="keyword">in</span> point_list]</div><div class="line"></div><div class="line">    <span class="comment"># polyfit第三个参数为拟合多项式的阶数，所以1代表线性</span></div><div class="line">    fit = np.polyfit(y, x, <span class="number">1</span>)</div><div class="line">    fit_fn = np.poly1d(fit)  <span class="comment"># 获取拟合的结果</span></div><div class="line"></div><div class="line">    xmin = int(fit_fn(ymin))</div><div class="line">    xmax = int(fit_fn(ymax))</div><div class="line"></div><div class="line">    <span class="keyword">return</span> [(xmin, ymin), (xmax, ymax)]</div></pre></td></tr></table></figure>
+<p>这段代码比较多，请每个步骤单独来看。最后得到的是左右两条车道线的起点和终点坐标，可以选择画出车道线，这里我直接填充了整个区域：</p>
+<p><img src="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" alt=""></p>
+<h3 id="视频处理"><a href="#视频处理" class="headerlink" title="视频处理"></a>视频处理</h3><p>搞定了一张图，视频也就没什么问题了，关键就是视频帧的提取和合成，为此，我们要用到Python的视频编辑包<a href="https://pypi.org/project/moviepy/#files" target="_blank" rel="external">moviepy</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install moviepy</div></pre></td></tr></table></figure>
+<p>另外还需要ffmpeg，首次运行moviepy时会自动下载，也可<a href="https://github.com/imageio/imageio-binaries/tree/master/ffmpeg" target="_blank" rel="external">手动</a>下载。</p>
+<p>只需在开头导入moviepy，然后将主函数改掉就可以了，其余代码不需要更改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 开头导入moviepy</span></div><div class="line"><span class="keyword">from</span> moviepy.editor <span class="keyword">import</span> VideoFileClip</div><div class="line"></div><div class="line"><span class="comment"># 主函数更改为：</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    output = <span class="string">'test_videos/output.mp4'</span></div><div class="line">    clip = VideoFileClip(<span class="string">"test_videos/cv2_white_lane.mp4"</span>)</div><div class="line">    out_clip = clip.fl_image(process_an_image)</div><div class="line">    out_clip.write_videofile(output, audio=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+<p>本文实现了车道检测的基础版本，如果你感兴趣的话，可以自行搜索或参考引用部分了解更多。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="http://pic.ex2tron.top/cv2_lane_detection_material.zip" target="_blank" rel="external">图片和视频素材</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E6%8C%91%E6%88%98%E4%BB%BB%E5%8A%A13%EF%BC%9A%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25354571" target="_blank" rel="external">从零开始学习无人驾驶技术 — 车道检测</a></li>
+<li><a href="https://blog.csdn.net/u010665216/article/details/80152458" target="_blank" rel="external">无人驾驶之高级车道线检测</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/车道检测/">车道检测</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/opencv-python-understand-features/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python+OpenCV教程18：理解特征
+        
+      </div>
+    </a>
+  
+  
+    <a href="/opencv-python-hough-transform/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python+OpenCV教程17：霍夫变换</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#挑战内容"><span class="nav-number">1.</span> <span class="nav-text">挑战内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挑战解答"><span class="nav-number">2.</span> <span class="nav-text">挑战解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案"><span class="nav-number">2.1.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像预处理"><span class="nav-number">2.2.</span> <span class="nav-text">图像预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROI截取"><span class="nav-number">2.3.</span> <span class="nav-text">ROI截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#霍夫直线提取"><span class="nav-number">2.4.</span> <span class="nav-text">霍夫直线提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#车道计算"><span class="nav-number">2.5.</span> <span class="nav-text">车道计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频处理"><span class="nav-number">2.6.</span> <span class="nav-text">视频处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2018
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
