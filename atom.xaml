@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2018-11-27T10:23:58.365Z</updated>
+  <updated>2018-12-03T07:45:27.124Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-image-pyramids/"/>
     <id>http://ex2tron.wang/opencv-python-extra-image-pyramids/</id>
     <published>2018-04-22T06:28:44.000Z</published>
-    <updated>2018-11-27T10:23:58.365Z</updated>
+    <updated>2018-12-03T07:45:27.124Z</updated>
     
     <content type="html"><![CDATA[<p>理解尺度、图像金字塔和尺度空间的概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -33,12 +33,12 @@
 <h3 id="局部不变性"><a href="#局部不变性" class="headerlink" title="局部不变性"></a>局部不变性</h3><p>前面我们说过什么是特征，其实图像本身的二维矩阵就是最全面的特征，但它不够具体，我们要抽取一些显著的特征，如我们学过的角点、边缘等。好的特征一般具有下面的性质：</p>
 <ul>
 <li><strong>尺度不变性</strong>：我们识别一个物体时，不管这个物体是近是远，都可以正确的辨认，也就是说在不同尺度的输入图像下都可以检测出匹配的关键点</li>
-<li><strong>旋转不变性</strong>：物体发生旋转时，我们也可以正确的辨认</li>
+<li><strong>旋转不变性</strong>：物体发生旋转时也可以正确的辨认</li>
 </ul>
 <p>这两个性质都称为特征的局部不变性。</p>
 <h2 id="图像金字塔"><a href="#图像金字塔" class="headerlink" title="图像金字塔"></a>图像金字塔</h2><h3 id="向下采样"><a href="#向下采样" class="headerlink" title="向下采样"></a>向下采样</h3><p>既然要考虑多尺度下的物体描述，那么如何为图像构建一系列不同尺度的图像集合呢？一种方法就是使用图像金字塔：</p>
 <p><img src="http://pic.ex2tron.top/cv2_understand_scale_image_pyramid.jpg" alt=""></p>
-<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/opencv-python-smoothing-images/">平滑图像</a>）：<br>$$<br>M = \frac{1}{16}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和列，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
+<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/opencv-python-smoothing-images/">平滑图像</a>）：<br>$$<br>M = \frac{1}{256}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和列，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
 <blockquote>
 <p>向下采样缩小图片实际上丢失了图片的一些信息。</p>
 </blockquote>
@@ -1828,7 +1828,7 @@
     <link href="http://ex2tron.wang/opencv-python-using-pyqt5-create-gui/"/>
     <id>http://ex2tron.wang/opencv-python-using-pyqt5-create-gui/</id>
     <published>2017-12-09T09:30:34.000Z</published>
-    <updated>2018-12-02T13:11:28.272Z</updated>
+    <updated>2018-12-02T13:37:44.709Z</updated>
     
     <content type="html"><![CDATA[<p>拓展挑战：编写GUI图像处理应用程序。<a id="more"></a></p>
 <hr>
@@ -1842,7 +1842,7 @@
 <h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
 <p>目前我们学的内容都是跑在命令行中的，并没有界面，那么”脚本语言”Python如何搭建GUI界面呢？</p>
 </blockquote>
-<p>其实Python支持多种图形界面库，如<a href="https://wiki.python.org/moin/TkInter" target="_blank" rel="external">Tk(Tkinter)</a>、<a href="https://www.wxpython.org/" target="_blank" rel="external">wxPython</a>、<a href="https://wiki.python.org/moin/PyQt" target="_blank" rel="external">PyQt</a>等，虽然Python自带Tkinter，无需额外安装包，但我更推荐使用PyQt，一是因为它完全基于Qt，跨平台，功能强大，有助于了解Qt的语法，二是Qt提供了Qt Designer设计工具，界面设计上可以拖控件搞定，非常方便，大大节省时间。</p>
+<p>其实Python支持多种图形界面库，如<a href="https://wiki.python.org/moin/TkInter" target="_blank" rel="external">Tk(Tkinter)</a>、<a href="https://www.wxpython.org/" target="_blank" rel="external">wxPython</a>、<a href="https://wiki.python.org/moin/PyQt" target="_blank" rel="external">PyQt</a>等，虽然Python自带Tkinter，无需额外安装包，但我更推荐使用PyQt，一是因为它完全基于Qt，跨平台，功能强大，有助于了解Qt的语法，二是Qt提供了Designer设计工具，界面设计上可以拖控件搞定，非常方便，大大节省时间。</p>
 <ul>
 <li>最新版本：PyQt 5.x</li>
 <li>官网（可能需要翻墙）：<a href="https://www.riverbankcomputing.com/software/pyqt/" target="_blank" rel="external">https://www.riverbankcomputing.com/software/pyqt/</a></li>
@@ -1854,11 +1854,11 @@
 <li>PyQt5 tutorial：<a href="http://zetcode.com/gui/pyqt5/" target="_blank" rel="external">英文原版</a></li>
 <li>PyQt4 tutorial：<a href="http://www.qaulau.com/books/PyQt4_Tutorial/index.html" target="_blank" rel="external">中文版</a>、<a href="http://zetcode.com/gui/pyqt4/" target="_blank" rel="external">英文原版</a></li>
 <li><a href="https://doc.qt.io/qt-5/" target="_blank" rel="external">Qt5 Documentation</a></li>
-<li>Broadview中文参考书：<a href="https://www.amazon.cn/dp/B075VWFYFH/ref=sr_1_1?ie=UTF8&amp;qid=1543407852&amp;sr=8-1&amp;keywords=PyQt5%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E4%B8%8E%E5%AE%9E%E6%88%98" target="_blank" rel="external">PyQt5快速开发与实战</a></li>
-<li><a href="http://eric-ide.python-projects.org/" target="_blank" rel="external">Eric</a></li>
+<li>中文参考书：<a href="https://www.amazon.cn/dp/B075VWFYFH/ref=sr_1_1?ie=UTF8&amp;qid=1543407852&amp;sr=8-1&amp;keywords=PyQt5%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E4%B8%8E%E5%AE%9E%E6%88%98" target="_blank" rel="external">PyQt5快速开发与实战</a></li>
+<li><a href="http://eric-ide.python-projects.org/" target="_blank" rel="external">基于Qt的Python IDE Eric</a></li>
 </ul>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pyqt5</div></pre></td></tr></table></figure>
-<p>下载速度慢的话，可以到<a href="https://pypi.org/project/PyQt5/#files" target="_blank" rel="external">PyPI</a>上下载离线版安装。另外我推荐使用Qt Designer来设计界面，如果你装的是Anaconda的话，就已经自带了designer.exe，例如我的在：D:\ProgramData\Anaconda3\Library\bin\，如果是普通的Python环境，则需要自行安装：</p>
+<p>下载速度慢的话，可以到<a href="https://pypi.org/project/PyQt5/#files" target="_blank" rel="external">PyPI</a>上下载离线版安装。另外我推荐使用Qt Designer来设计界面，如果你装的是Anaconda的话，就已经自带了designer.exe，例如我的是在：D:\ProgramData\Anaconda3\Library\bin\，如果是普通的Python环境，则需要自行安装：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pyqt5-tools</div></pre></td></tr></table></figure>
 <p>安装完成后，designer.exe应该在Python安装目录下：xxx\Lib\site-packages\pyqt5_tools\。</p>
 <p>可以使用下面的代码生成一个简单的界面：</p>
@@ -1869,7 +1869,7 @@
 <p>界面的左侧是Qt的常用控件”Widget Box”，右侧有一个控件属性窗口”Property Editor”，其余暂时用不到。本例中我们只用到了”Push Button”控件和”Label”控件：最上面的三个Label控件用于显示图片，可以在属性窗口调整它的大小，我们统一调整到150×150：</p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_main_ui_rough.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_designer_property_windows.jpg" alt=""></p>
-<p>另外，控件上显示的文字”text”属性和控件的名字”objectName”属性需要修改，便于显示和代码调用：</p>
+<p>另外，控件上显示的文字”text”属性和控件的名字”objectName”属性需要修改，便于显示和代码调用。可以按照下面我推荐的命名：</p>
 <table>
 <thead>
 <tr>
@@ -1923,8 +1923,8 @@
 </table>
 <p>这样大致界面就出来了，很简单：</p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_main_ui_word.jpg" alt=""></p>
-<h3 id="按钮事件"><a href="#按钮事件" class="headerlink" title="按钮事件"></a>按钮事件</h3><p>如果你之前有过一些GUI开发经验，比如MFC，WinForm等，就知道GUI是通过事件驱动的，什么意思呢？比如前面我们已经设计好了界面，接下来就需要实现打开摄像头到阈值分割这5个按钮的功能，那么就需要给每个按钮指定一个”函数”，逻辑代码写在这个函数里面。这种函数就称为事件，Qt中称为槽连接。</p>
-<p>点击Designer工具栏的”Edit Signals/Slots”按钮，进入槽函数编辑界面，点击旁边的”Edit Widgets”恢复正常视图：</p>
+<h3 id="按钮事件"><a href="#按钮事件" class="headerlink" title="按钮事件"></a>按钮事件</h3><p>如果你之前有过一些GUI开发经验，比如MFC，WinForm等，就知道GUI是通过事件驱动的，什么意思呢？比如前面我们已经设计好了界面，接下来就需要实现”打开摄像头”到”阈值分割”这5个按钮的功能，也就是给每个按钮指定一个”函数”，逻辑代码写在这个函数里面。这种函数就称为事件，Qt中称为槽连接。</p>
+<p>点击Designer工具栏的”Edit Signals/Slots”按钮，进入槽函数编辑界面，点击旁边的”Edit Widgets”可以恢复正常视图：</p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_designer_edit_singals_slots.jpg" alt=""></p>
 <p>然后点击按钮并拖动，当产生类似于电路中的接地符号时释放鼠标，参看下面动图：</p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_how_to_create_slots.gif" alt=""></p>
@@ -1933,14 +1933,14 @@
 <p>重复上面的步骤，给五个按钮添加五个槽函数，最终结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_main_click_event.jpg" alt=""></p>
 <p>到此，我们就完成了界面设计的所有工作，按下Ctrl+S保存当前窗口为.ui文件。.ui文件其实是按照XML格式标记的内容，可以用文本编辑器将.ui文件打开看看。</p>
-<h3 id="ui文件转py代码"><a href="#ui文件转py代码" class="headerlink" title="ui文件转py代码"></a>ui文件转py代码</h3><p>因为我们是用Designer工具设计出的界面，并非Python敲代码设计的，所以要想真正运行，需要使用pyuic5将ui文件转成py文件。pyuic5.exe默认在%\Scripts\下，比如我的是在：D:\ProgramData\Anaconda3\Scripts\。</p>
+<h3 id="ui文件转py代码"><a href="#ui文件转py代码" class="headerlink" title="ui文件转py代码"></a>ui文件转py代码</h3><p>因为我们是用Designer工具设计出的界面，并不是用Python代码敲出来的，所以要想真正运行，需要使用pyuic5将ui文件转成py文件。pyuic5.exe默认在%\Scripts\下，比如我的是在：D:\ProgramData\Anaconda3\Scripts\。</p>
 <p>打开cmd命令行，切换到ui文件的保存目录。Windows下有个小技巧，可以在目录的地址栏输入cmd，一步切换到当前目录：</p>
 <p><img src="http://pic.ex2tron.top/cv2_pyqt5_pyuic_quick_cmd.gif" alt=""></p>
 <p>然后执行这条指令：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyuic5 -o mainForm.py using_pyqt_create_ui.ui</div></pre></td></tr></table></figure>
-<p>如果出现pyuic5不是内部命令的错误，说明pyuic5的路径没有在环境变量里，添加一下即可。执行正常的话，就会生成mainForm.py文件，里面应该包含一个名为”Ui_MainWindow”的类。</p>
+<p>如果出现pyuic5不是内部命令的错误，说明pyuic5的路径没有在环境变量里，添加下就好了。执行正常的话，就会生成mainForm.py文件，里面应该包含一个名为”Ui_MainWindow”的类。</p>
 <h3 id="编写逻辑代码"><a href="#编写逻辑代码" class="headerlink" title="编写逻辑代码"></a>编写逻辑代码</h3><blockquote>
-<p>经验之谈：mainForm.py文件是根据ui文件生成的，也就是说重新生成会覆盖掉。所以为了使界面与逻辑分离，我们需要新建一个逻辑文件。</p>
+<p>经验之谈：mainForm.py文件是根据ui文件生成的，也就是说<strong>重新生成会覆盖掉</strong>。所以为了使界面与逻辑分离，我们需要新建一个逻辑文件。</p>
 </blockquote>
 <p>在同一工作目录下新建一个”mainEntry.py”的文件，存放逻辑代码。代码中的每部分我都写得比较独立，没有封装成函数，便于理解。代码看上去很长，但很简单，可以每个模块单独看，有几个需要注意的地方我做了注释：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</div><div class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> PyQt5.QtGui <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QFileDialog, QMainWindow</div><div class="line"></div><div class="line"><span class="keyword">from</span> mainForm <span class="keyword">import</span> Ui_MainWindow</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PyQtMainEntry</span><span class="params">(QMainWindow, Ui_MainWindow)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        self.setupUi(self)</div><div class="line"></div><div class="line">        self.camera = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line">        self.is_camera_opened = <span class="keyword">False</span>  <span class="comment"># 摄像头有没有打开标记</span></div><div class="line"></div><div class="line">        <span class="comment"># 定时器：30ms捕获一帧</span></div><div class="line">        self._timer = QtCore.QTimer(self)</div><div class="line">        self._timer.timeout.connect(self._queryFrame)</div><div class="line">        self._timer.setInterval(<span class="number">30</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnOpenCamera_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        打开和关闭摄像头</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        self.is_camera_opened = ~self.is_camera_opened</div><div class="line">        <span class="keyword">if</span> self.is_camera_opened:</div><div class="line">            self.btnOpenCamera.setText(<span class="string">"关闭摄像头"</span>)</div><div class="line">            self._timer.start()</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.btnOpenCamera.setText(<span class="string">"打开摄像头"</span>)</div><div class="line">            self._timer.stop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnCapture_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        捕获图片</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="comment"># 摄像头未打开，不执行任何操作</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.is_camera_opened:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        self.captured = self.frame</div><div class="line"></div><div class="line">        <span class="comment"># 后面这几行代码几乎都一样，可以尝试封装成一个函数</span></div><div class="line">        rows, cols, channels = self.captured.shape</div><div class="line">        bytesPerLine = channels * cols</div><div class="line">        <span class="comment"># Qt显示图片时，需要先转换成QImgage类型</span></div><div class="line">        QImg = QImage(self.captured.data, cols, rows, bytesPerLine, QImage.Format_RGB888)</div><div class="line">        self.labelCapture.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelCapture.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnReadImage_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        从本地读取图片</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="comment"># 打开文件选取对话框</span></div><div class="line">        filename,  _ = QFileDialog.getOpenFileName(self, <span class="string">'打开图片'</span>)</div><div class="line">        <span class="keyword">if</span> filename:</div><div class="line">            self.captured = cv2.imread(str(filename))</div><div class="line">            <span class="comment"># OpenCV图像以BGR通道存储，显示时需要从BGR转到RGB</span></div><div class="line">            self.captured = cv2.cvtColor(self.captured, cv2.COLOR_BGR2RGB)</div><div class="line"></div><div class="line">            rows, cols, channels = self.captured.shape</div><div class="line">            bytesPerLine = channels * cols</div><div class="line">            QImg = QImage(self.captured.data, cols, rows, bytesPerLine, QImage.Format_RGB888)</div><div class="line">            self.labelCapture.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">                self.labelCapture.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnGray_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        灰度化</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="comment"># 如果没有捕获图片，则不执行操作</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">"captured"</span>):</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        self.cpatured = cv2.cvtColor(self.captured, cv2.COLOR_RGB2GRAY)</div><div class="line"></div><div class="line">        rows, columns = self.cpatured.shape</div><div class="line">        bytesPerLine = columns</div><div class="line">        <span class="comment"># 灰度图是单通道，所以需要用Format_Indexed8</span></div><div class="line">        QImg = QImage(self.cpatured.data, columns, rows, bytesPerLine, QImage.Format_Indexed8)</div><div class="line">        self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">btnThreshold_Clicked</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        Otsu自动阈值分割</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">"captured"</span>):</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        _, self.cpatured = cv2.threshold(</div><div class="line">            self.cpatured, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line">        rows, columns = self.cpatured.shape</div><div class="line">        bytesPerLine = columns</div><div class="line">        <span class="comment"># 阈值分割图也是单通道，也需要用Format_Indexed8</span></div><div class="line">        QImg = QImage(self.cpatured.data, columns, rows, bytesPerLine, QImage.Format_Indexed8)</div><div class="line">        self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line"><span class="meta">    @QtCore.pyqtSlot()</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_queryFrame</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line"><span class="string">        循环捕获图片</span></div><div class="line"><span class="string">        '''</span></div><div class="line">        ret, self.frame = self.camera.read()</div><div class="line"></div><div class="line">        img_rows, img_cols, channels = self.frame.shape</div><div class="line">        bytesPerLine = channels * img_cols</div><div class="line"></div><div class="line">        cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB, self.frame)</div><div class="line">        QImg = QImage(self.frame.data, img_cols, img_rows, bytesPerLine, QImage.Format_RGB888)</div><div class="line">        self.labelCamera.setPixmap(QPixmap.fromImage(QImg).scaled(</div><div class="line">            self.labelCamera.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app = QtWidgets.QApplication(sys.argv)</div><div class="line">    window = PyQtMainEntry()</div><div class="line">    window.show()</div><div class="line">    sys.exit(app.exec_())</div></pre></td></tr></table></figure>
@@ -2987,21 +2987,20 @@
     <link href="http://ex2tron.wang/opencv-python-introduction-and-installation/"/>
     <id>http://ex2tron.wang/opencv-python-introduction-and-installation/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2018-12-02T11:52:24.410Z</updated>
+    <updated>2018-12-02T14:40:08.764Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！</strong><a id="more"></a></p>
-<p>相信大部分人知道的OpenCV都是用C++来开发的，那么为什么我推荐使用Python呢？</p>
+    <content type="html"><![CDATA[<p>相信大部分人知道的OpenCV都是用C++来开发的，那为什么我推荐使用Python呢？<a id="more"></a></p>
 <blockquote>
-<p>本教程翻译自<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">OpenCV官方英文教程</a>，我按照使用度和难易度翻译，并重新编写了大量原创内容，将不常用和较难的部分写成番外篇。每小节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到奥(⊙o⊙)</p>
+<p>本教程翻译自<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/index.html" target="_blank" rel="external">OpenCV官方英文教程</a>，我按照使用度和难易度翻译，重新编写了大量原创内容，将不常用和较难的部分写成番外篇，浅显易懂，很easy的辣。每节的源码、图片和练习题答案均可在<a href="#引用">引用</a>处找到噢(⊙o⊙)</p>
 </blockquote>
 <hr>
-<h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要的特性：它是一门胶水语言！Python可以很容易地扩展C/C++。<strong>OpenCV-Python</strong>就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快，而且更加容易编写。</p>
+<h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要的特性：它是一门胶水语言！Python可以很容易地扩展C/C++。<strong>OpenCV-Python</strong>就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快。</p>
 <p>我举两个简单的例子就一目了然了：一个是读入图片，另一个是调整图片的对比度和亮度：</p>
 <p><img src="http://pic.ex2tron.top/cv2_python_vs_cplus_speed.jpg" alt=""></p>
-<p><strong>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！</strong></p>
+<p><strong>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！</strong>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">Numpy</a>，相当于Python中的Matlab，为矩阵运算、科学计算提供了极大的便利性。</p>
 <h2 id="人工智能浪潮"><a href="#人工智能浪潮" class="headerlink" title="人工智能浪潮"></a>人工智能浪潮</h2><p>近些年，人工智能相关技术的快速发展大家有目共睹，不必多说。在编程语言方面，更多人希望的是具备高效开发效率、跨平台、高度扩展性的语言，尤其是一些AI巨头优先推出支持Python语言的深度学习框架，如Facebook的<a href="https://pytorch.org/" target="_blank" rel="external">PyTorch</a>、Google的<a href="https://tensorflow.google.cn/" target="_blank" rel="external">Tensorflow</a>等，可以说Python是名副其实的“网红语言”了。</p>
 <p><img src="http://pic.ex2tron.top/cv2_ai_ml_dl2.jpg" alt=""></p>
-<p>从<a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="external">TIOBE编程语言排行榜</a>也可以看到，Python发展迅猛，已经逼近C++的份额。这个排行榜每月更新，我就不截图了。</p>
+<p>从<a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="external">TIOBE编程语言排行榜</a>也可以看到，Python发展迅猛，已经逼近C++的份额。这个排行榜每月更新，我就不截图了，编写时TOP5：Java/C/C++/Python/C#。</p>
 <h2 id="人生苦短，我用Python"><a href="#人生苦短，我用Python" class="headerlink" title="人生苦短，我用Python"></a>人生苦短，我用Python</h2><ul>
 <li>如果你搞科研用，果断放弃C++（Matlab？出门左拐）</li>
 <li>如果你是快速原型开发，验证方案，果断放弃C++</li>
@@ -3010,7 +3009,7 @@
 <li>如果你担心Python写不了界面，那是你的问题o_o ….</li>
 <li>除非你的程序是MFC或已经用C++编写其他模块或是嵌入式设备，那就用C++吧</li>
 </ul>
-<p>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="external">Numpy</a>，相当于Python的Matlab，为矩阵运算、科学计算提供了极大的便利性。<strong>“人生苦短，我用Python！！！”</strong></p>
+<p><strong>“人生苦短，我用Python！！！”</strong></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
 <p>本教程编写时使用的软件版本是：OpenCV 3.x，Python 3.x。</p>
 </blockquote>
@@ -3021,17 +3020,17 @@
 <ul>
 <li><p>Windows版下载的是exe文件，双击可以直接安装，安装时记得勾选 <code>Add Anaconda to my PATH environment variable</code>，添加到环境变量中。</p>
 </li>
-<li><p>Linux版下载的是sh文件，下载完成后，终端切换到下载目录，执行<code>bash Anaconda3-xx.sh</code>，Linux版也会提示添加环境变量，记得输yes哈。</p>
+<li><p>Linux版下载的是sh文件，下载完成后，终端切换到下载目录，执行<code>bash Anaconda3-xx.sh</code>，Linux版也会提示添加环境变量，记得输yes就行。</p>
 </li>
 </ul>
-<h3 id="安装测试"><a href="#安装测试" class="headerlink" title="安装测试"></a>安装测试</h3><p>Python安装好之后，可以在cmd中输入<code>python --version</code>来查看Python的版本信息。对于OpenCV，可以打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。要查看OpenCV的版本，可以：</p>
+<h3 id="安装测试"><a href="#安装测试" class="headerlink" title="安装测试"></a>安装测试</h3><p>Python安装好之后，可以在cmd中输入<code>python --version</code>来查看Python的版本信息。对于OpenCV，打开Python的开发环境，输入<code>import cv2</code>，运行没有报错说明一切正常。要查看OpenCV的版本，可以：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">print</span>(cv2.__version__)  <span class="comment"># '3.4.1'</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/Jupyter Notebook(Anaconda自带)，或者直接在命令行里敲，自己习惯就行。</p>
+<p>Python开发环境我用的是<a href="http://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>，也可以用<a href="http://www.jetbrains.com/pycharm/" target="_blank" rel="external">PyCharm</a>/<a href="https://atom.io/" target="_blank" rel="external">Atom</a>/Jupyter Notebook(Anaconda自带)，或者直接在命令行里敲，自己习惯就行。</p>
 </blockquote>
 <h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
 <li>pip识别不了：环境变量中没有pip的目录，找到pip目录，添加到用户（或系统）变量的path中。</li>
-<li>下载速度很慢：可以<a href="https://pypi.org/search/?q=opencv-python" target="_blank" rel="external">到此处</a>下载离线版。下载完成后，cmd切换到下载目录，输入 <code>pip install 文件名</code>安装。</li>
+<li>下载速度很慢：可<a href="https://pypi.org/search/?q=opencv-python" target="_blank" rel="external">到此处</a>下载离线版。下载完成后，cmd切换到下载目录，输入 <code>pip install 文件名</code>安装。</li>
 </ol>
 <h2 id="学习软件"><a href="#学习软件" class="headerlink" title="学习软件"></a>学习软件</h2><p>为了便于学习OpenCV，我写了一个教学款软件<a href="https://github.com/ex2tron/LearnOpenCVEdu" target="_blank" rel="external">LearnOpenCVEdu</a>，目前只开发了一部分功能，有兴趣的童鞋可以支持一下噢😊</p>
 <p><img src="http://pic.ex2tron.top/cv2_learn_opencv_edu_soft_screenshot.jpg" alt="大家随手点个Star吧(●ˇ∀ˇ●)"></p>
@@ -3051,7 +3050,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;本教程绝对浅显易懂，非常easy的辣，大家尽可放心食用！&lt;/strong&gt;
+      &lt;p&gt;相信大部分人知道的OpenCV都是用C++来开发的，那为什么我推荐使用Python呢？
     
     </summary>
     
