@@ -13,7 +13,7 @@
   
   <title>
     
-    python+opencv教程18：理解特征 |
+    搭建自己的github/git服务器 |
     
     ex2tron&#39;s Blog
   </title>
@@ -24,20 +24,20 @@
   
   
   
-  <meta name="description" content="学习和了解图像特征的重要性。">
-<meta name="keywords" content="OpenCV,Python,图像处理,特征">
+  <meta name="description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
+<meta name="keywords" content="OpenCV,Github,Python,Git Sever">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+OpenCV教程18：理解特征">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-understand-features/index.html">
+<meta property="og:title" content="搭建自己的Github&#x2F;Git服务器">
+<meta property="og:url" content="http://ex2tron.wang/set-up-your-own-git-server/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="学习和了解图像特征的重要性。">
+<meta property="og:description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
+<meta property="og:image" content="http://pic.ex2tron.top/set_up_your_own_git_server.jpg">
+<meta property="og:updated_time" content="2018-12-30T13:31:35.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程18：理解特征">
-<meta name="twitter:description" content="学习和了解图像特征的重要性。">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_features.jpg">
+<meta name="twitter:title" content="搭建自己的Github&#x2F;Git服务器">
+<meta name="twitter:description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/set_up_your_own_git_server.jpg">
   
   <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -173,14 +173,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Python-OpenCV教程18：理解特征" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-搭建自己的Github-Git服务器" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_features.jpg" rel="gallery_cjp91d6gq0015k8591tplnrb1">
-        <img src="http://pic.ex2tron.top/cv2_understand_features.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" rel="gallery_cjqaxp81g004kpk596c9y00d5">
+        <img src="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" itemprop="image">
       </a>
     
   </div>
@@ -191,7 +191,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Python+OpenCV教程18：理解特征
+      搭建自己的Github/Git服务器
     </h1>
   
 
@@ -199,51 +199,43 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/opencv-python-understand-features/" class="article-date">
-	  <time datetime="2018-02-15T12:13:55.000Z" itemprop="datePublished">February 15, 2018</time>
+	Posted on <a href="/set-up-your-own-git-server/" class="article-date">
+	  <time datetime="2017-06-04T11:38:56.000Z" itemprop="datePublished">June 4, 2017</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习和了解图像特征的重要性。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
+        <p>Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。<a id="more"></a>但像我们这种穷苦的孩子，只能选择自己搭一个Git服务器咯。</p>
 <hr>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>理解图像特征</li>
-<li>图像特征的重要性和用途</li>
-</ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>回想一下，我们是不是总可以用一些词语来描述一件物体，比如说描述人脸，我们可以说脸上有两只眼睛，一个鼻子和一个嘴巴，这其实就是特征。对于计算机来说，图片本身的二维矩阵就是最完整的特征，但我们有时也需要像描述人脸那样，让计算机提取一些显著的特征。相信大部分人都玩过拼图游戏，一起来看看：</p>
-<h3 id="拼图游戏"><a href="#拼图游戏" class="headerlink" title="拼图游戏"></a>拼图游戏</h3><p>拼图游戏是根据散落的图片小块最终拼接成一副完整的图片。那么，你是怎么拼起来的呢？</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features_jigsaw_puzzle.jpg" alt=""></p>
-<p>虽然你很难让一个小朋友具体说出来是如何拼接的，但毫无疑问他们都能拼成功。我们可以说这一块跟另外一块很像：这块有个突出的部分，那块刚好有个凹进去的部分。这些小块间的相似性就是特征，试想一下，如果能让计算机找到这些小块间的特征，是不是也可以让计算机玩拼图游戏呢？</p>
-<h3 id="理解特征"><a href="#理解特征" class="headerlink" title="理解特征"></a>理解特征</h3><p>那计算机能理解的特征有哪些？如何找到这些特征呢？我们来看下这张图：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features_building.jpg" alt=""></p>
-<p>图的上面有6个小块，都是图中的某一部分。你能找到这6个小块在图中的具体位置吗？</p>
-<ul>
-<li><p>A和B很难确定具体的位置，因为它们在原图中的很多地方都有，可以把这些地方称为扁平的区域</p>
-</li>
-<li><p>C和D相对容易点，因为它们是建筑物的边缘。虽然也比较难确定具体位置，但可以找到一个大致的位置</p>
-<p><strong>可以说边缘是比扁平区域更好的一种特征</strong></p>
-</li>
-<li><p>最后，E和F就好找多了，因为它们是建筑物的角点。在角点位置上，不论将小块怎么移动，都会得到不同的结果</p>
-<p><strong>所以说角点是比边缘更好的一种特征</strong></p>
-</li>
-</ul>
-<p>可以简单地用下面这个图来表示这三种特征：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
-<ul>
-<li>蓝色方块代表的扁平区域很难定位，因为不论移动到哪儿，结果都一样</li>
-<li>黑色方块表示边缘，如果我们垂直移动它，它就会改变，但水平移动，结果仍然不变</li>
-<li>最后红色方块表示角点，随便移动它，它都会改变，说明它是唯一的。<strong>所以，角点对图像来说就是一个比较好的特征。</strong></li>
-</ul>
-<p>既然知道了啥叫特征，那么如何找到这些特征呢？其实不难发现，对于角点，我们可以通过移动图像中的一个小区域，找出图像中变化量最大的地方，这就叫<strong>特征检测</strong>。找到特征后，我们可以这样描述图片：图的上面是天空，下面是一个建筑物，建筑物外层是玻璃等等，这就叫<strong>特征描述</strong>。特征检测和特征描述就是我们接下来要学习的内容。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>角点相比扁平区域和边缘是一种更好的特征</li>
-<li>特征可以用来描述对象、追踪对象</li>
-</ul>
+<p>我们需要一台Linux电脑，可以当作局域网内的Github。当然如果你有阿里云之类的服务器的话就更好了，有网的地方就可以push/pull代码，我这里以自己的本地Ubuntu电脑为例：</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
+<p>一句话，没啥好说的(+_+)</p>
+<h2 id="新建git用户并配置"><a href="#新建git用户并配置" class="headerlink" title="新建git用户并配置"></a>新建git用户并配置</h2><p>创建用于运行Git服务的用户<code>git</code>，新建账号时，会提示你输入该用户的密码，其他保持默认即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo adduser git</div></pre></td></tr></table></figure>
+<p><code>adduser</code>指令会在/home目录下生成以git名命名的文件夹，代表git用户目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /home</div></pre></td></tr></table></figure>
+<p>在git用户目录下新建<code>.ssh</code>文件夹和<code>authorized_keys</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/.ssh</div><div class="line">touch /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>熟悉ssh的同学应该知道<code>authorized_keys</code>文件用于收集所有需要登录到此Git服务器的客户端公钥，一行一个。如果你已经生成过ssh密钥的话，Windows系统会在<code>C:\Users\用户名\.ssh\</code>，Linux系统一般在<code>/home/user/.ssh/</code>下，没有生成的话，可以用下面的指令生成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure>
+<p>将<code>id_rsa.pub</code>中的内容拷贝到服务器的authorized_keys文件中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"pub_key_content"</span> &gt; /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<h2 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h2><p>现在其实就跟Github一样的流程了，首先在建立一个新仓库，比如在<code>/home/git/repos</code>下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/repos</div><div class="line"><span class="built_in">cd</span> /home/git/repos/</div><div class="line">sudo git init --bare sample.git</div></pre></td></tr></table></figure>
+<p>然后将<code>sample.git</code>仓库的用户和组都改成<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R git:git sample.git</div></pre></td></tr></table></figure>
+<p>这样就建好了远程仓库，接下来你可以将已有的本地仓库关联或者克隆到本地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin git@server_ip:/home/git/repos/sample.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git@server_ip:/home/git/repos/sample.git</div></pre></td></tr></table></figure>
+<h2 id="还有点小问题"><a href="#还有点小问题" class="headerlink" title="还有点小问题~~~"></a>还有点小问题~~~</h2><p>前面新建用户的步骤完成后，<code>git</code>用户是可以直接在终端登陆服务器的，因此需要禁止<code>git</code>用户登陆shell，编辑<code>/etc/passwd</code>文件，找到git的一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</div></pre></td></tr></table></figure>
+<p>将启动环境改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</div></pre></td></tr></table></figure>
+<p><code>git-shell</code>是一个每次一登录就退出的程序，这样配置之后，<code>git</code>用户可以使用ssh管理仓库，但无法登陆shell。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_meaning/py_features_meaning.html" target="_blank" rel="external">Understanding Features</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="external">廖雪峰Git教程</a></li>
 </ul>
 
       
@@ -251,11 +243,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/特征/">特征</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git-Sever/">Git Sever</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
       
         <div id="donation_div"></div>
@@ -280,19 +272,19 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/opencv-python-harris-corner-detection/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/build-table-driven-methods/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Python+OpenCV教程19：Harris角点检测
+          构建：查表法
         
       </div>
     </a>
   
   
-    <a href="/opencv-python-lane-road-detection/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/vision-camera-focal-length-and-view/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Python+OpenCV教程挑战任务：车道检测</div>
+      <div class="article-nav-title">【视觉与图像】摄像头篇2：焦距和视角</div>
     </a>
   
 </nav>
@@ -306,7 +298,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拼图游戏"><span class="nav-number">2.1.</span> <span class="nav-text">拼图游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解特征"><span class="nav-number">2.2.</span> <span class="nav-text">理解特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">1.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建git用户并配置"><span class="nav-number">2.</span> <span class="nav-text">新建git用户并配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建仓库"><span class="nav-number">3.</span> <span class="nav-text">新建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有点小问题"><span class="nav-number">4.</span> <span class="nav-text">还有点小问题~~~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2018-12-03T07:45:27.124Z</updated>
+  <updated>2018-11-02T02:51:48.377Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -14,82 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Python+OpenCV教程番外篇12：尺度空间与图像金字塔</title>
-    <link href="http://ex2tron.wang/opencv-python-extra-image-pyramids/"/>
-    <id>http://ex2tron.wang/opencv-python-extra-image-pyramids/</id>
-    <published>2018-04-22T06:28:44.000Z</published>
-    <updated>2018-12-03T07:45:27.124Z</updated>
-    
-    <content type="html"><![CDATA[<p>理解尺度、图像金字塔和尺度空间的概念。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
-<hr>
-<h2 id="理解尺度"><a href="#理解尺度" class="headerlink" title="理解尺度"></a>理解尺度</h2><p>我们先要明确尺度的概念：<strong>一副图像，只有在一定的尺度范围内，描述其中的物体才是有意义的。</strong>啥意思呢，比如说你面前的人，你是米级的距离看到的，如果从千米级或微米级看，你是感知不到人的，你看到的可能是城市或细胞。就如同百度/谷歌地图，不同尺度变换下，所获取的信息点不同。</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_scale_different_view.jpg" alt=""></p>
-<p>所以，图像的尺度并非指图像的大小，而是模拟人由近到远观看目标物体的过程，越远，尺度越大，图像也就越模糊。</p>
-<p>那这跟图像处理有什么关系呢？我们要知道的是，<strong>计算机是无法预知图像中物体的尺度的</strong>，比如当拍摄高度不同时，下图中鼠标的尺度显然是不同的，采用传统的图像处理手段分析图片时就无法选择合适的参数。（这也是为什么工业应用中，为达到精度要求，摄像头的位置往往固定，图像处理参数也固定。）</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_scale_different_height.jpg" alt=""></p>
-<p>因此为了使视觉系统能够应对未知场景，需要考虑图像在多尺度下的目标物体描述。</p>
-<h3 id="局部不变性"><a href="#局部不变性" class="headerlink" title="局部不变性"></a>局部不变性</h3><p>前面我们说过什么是特征，其实图像本身的二维矩阵就是最全面的特征，但它不够具体，我们要抽取一些显著的特征，如我们学过的角点、边缘等。好的特征一般具有下面的性质：</p>
-<ul>
-<li><strong>尺度不变性</strong>：我们识别一个物体时，不管这个物体是近是远，都可以正确的辨认，也就是说在不同尺度的输入图像下都可以检测出匹配的关键点</li>
-<li><strong>旋转不变性</strong>：物体发生旋转时也可以正确的辨认</li>
-</ul>
-<p>这两个性质都称为特征的局部不变性。</p>
-<h2 id="图像金字塔"><a href="#图像金字塔" class="headerlink" title="图像金字塔"></a>图像金字塔</h2><h3 id="向下采样"><a href="#向下采样" class="headerlink" title="向下采样"></a>向下采样</h3><p>既然要考虑多尺度下的物体描述，那么如何为图像构建一系列不同尺度的图像集合呢？一种方法就是使用图像金字塔：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_scale_image_pyramid.jpg" alt=""></p>
-<p>如上图，图像金字塔是一系列图像的集合。层级越高，图像越小，所有图像来源于同一张原始图像。其生成方式也很简单，原始图像首先与一个高斯核进行卷积操作（高斯卷积参考：<a href="/opencv-python-smoothing-images/">平滑图像</a>）：<br>$$<br>M = \frac{1}{256}\left[<br> \begin{matrix}<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>6 &amp; 24 &amp; 36 &amp; 24 &amp; 6 \newline<br>4 &amp; 16 &amp; 24 &amp; 16 &amp; 4 \newline<br>   1 &amp; 4 &amp; 6 &amp; 4 &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$<br>其实就是使用高斯低通滤波器进行平滑处理，这样会使图像变模糊（效仿人的眼睛看远处的物体没有近处的清晰），然后去掉所有的偶数行和列，显然，结果图是原图的1/4，也就是：<br>$$<br>G_{i+1}=\frac{1}{4}G_i \tag{2}<br>$$</p>
-<blockquote>
-<p>向下采样缩小图片实际上丢失了图片的一些信息。</p>
-</blockquote>
-<h3 id="向上采样"><a href="#向上采样" class="headerlink" title="向上采样"></a>向上采样</h3><p>既然能缩小，那怎么向上采样来放大图像呢？</p>
-<p>向上采样过程与之前相反，首先将图片的横纵方向都扩充成原来的两倍，新增的行和列用0填充，然后使用同样的高斯核与放大后的图像进行卷积。OpenCV中使用<code>cv2.pyrUp()</code>和<code>cv2.pyrDown()</code>实现上下采样。</p>
-<blockquote>
-<p>因为缩放导致的信息丢失，所以向上和向下采样并不是互逆操作。</p>
-</blockquote>
-<p>上面不论向下采样还是向上采样都是用了高斯核，因此也称为高斯金字塔，这种方式信息损失较大，所以就出现了拉普拉斯金字塔，也就是高斯金字塔的修正版，不常用，下次有时间做个番外篇。</p>
-<h3 id="Python实例"><a href="#Python实例" class="headerlink" title="Python实例"></a>Python实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">lower = cv2.pyrDown(img)  <span class="comment"># 向下采样一级</span></div><div class="line">higher = cv2.pyrUp(img) <span class="comment"># 向上采样一级</span></div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'origin'</span>, img)</div><div class="line">cv2.imshow(<span class="string">'lower'</span>, lower)</div><div class="line">cv2.imshow(<span class="string">'higher'</span>, higher)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><img src="http://pic.ex2tron.top/cv2_understand_scale_pyrup_pyrdown.jpg" alt=""></p>
-<h3 id="与resize的关系"><a href="#与resize的关系" class="headerlink" title="与resize的关系"></a>与resize的关系</h3><p>还记得之前图像几何变换中的<code>cv2.resize()</code>函数吗？它也是用来缩放图片的，那跟图像金字塔有什么区别呢？其实就功能上来说并没有什么区别，不过<code>resize()</code>函数可以实现任意大小的图片缩放，而图像金字塔是4倍层级的缩放关系。图像金字塔一般就用于特征检测上，而<code>resize()</code>任何场景都可以使用。</p>
-<h2 id="多尺度空间"><a href="#多尺度空间" class="headerlink" title="多尺度空间"></a>多尺度空间</h2><p>可以看到，金字塔是通过同一卷积核生成多分辨率的图像集，它快速高效，并且占用存储空间小，但它缺乏理论基础，不能得到图像的最佳尺度。所以，就有了多尺度空间。</p>
-<p>多尺度空间是原始图像通过与不同的高斯核平滑卷积得到，在所有的尺度上具有相同的分辨率。</p>
-<blockquote>
-<p>简单来说，图像金字塔是用同一卷积核，层级生成多张不同大小的图像，而多尺度空间是原始图与不同的卷积核生成多张大小相同的图像。</p>
-</blockquote>
-<p>尺度空间可以用下面的公式表示：<br>$$<br>I_{scale}(x,y)=G(x,y)*I(x,y), I(x,y)为原图，G(x,y)为高斯核<br>$$</p>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>先对lena.jpg进行向下采样，再向上采样，对比一下结果和原图一样吗？为什么？</li>
-<li>CSDN上有篇博客：<a href="https://blog.csdn.net/xiaowei_cqu/article/details/8069548" target="_blank" rel="external">SIFT原理和源码分析</a>，讲解的非常专业完整，请有基础的同学阅读。（虽然珠玉在前，但基于这个系列的定位，我还是写了本篇通俗易懂的，~ o(<em>￣▽￣</em>)o）</li>
-</ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8712.%20%E5%B0%BA%E5%BA%A6%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%9B%BE%E5%83%8F%E9%87%91%E5%AD%97%E5%A1%94" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://blog.csdn.net/xiaowei_cqu/article/details/8069548" target="_blank" rel="external">SIFT原理和源码分析</a></li>
-<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_pyramids/py_pyramids.html#pyramids" target="_blank" rel="external">Image Pyramids</a></li>
-<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/pyramids/pyramids.html#pyramids" target="_blank" rel="external">图像金字塔</a></li>
-<li><a href="https://www.cnblogs.com/ct1104/p/4480928.html" target="_blank" rel="external">SIFT中的尺度空间和传统图像金字塔</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;理解尺度、图像金字塔和尺度空间的概念。
-    
-    </summary>
-    
-      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
-    
-    
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
-      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="尺度" scheme="http://ex2tron.wang/tags/%E5%B0%BA%E5%BA%A6/"/>
-    
-      <category term="图像金字塔" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E9%87%91%E5%AD%97%E5%A1%94/"/>
-    
-  </entry>
   
   <entry>
     <title>【片单】推荐几部优秀的传记电影</title>
@@ -140,226 +64,6 @@
     
     
       <category term="传记片" scheme="http://ex2tron.wang/tags/%E4%BC%A0%E8%AE%B0%E7%89%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python+OpenCV教程20：Shi-Tomasi角点检测</title>
-    <link href="http://ex2tron.wang/opencv-python-shi-tomasi-corner-detection/"/>
-    <id>http://ex2tron.wang/opencv-python-shi-tomasi-corner-detection/</id>
-    <published>2018-02-17T04:57:50.000Z</published>
-    <updated>2018-11-27T10:24:03.808Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习Shi-Tomasi角点检测算法。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
-<hr>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>Shi-Tomasi角点检测算法的原理</li>
-<li>OpenCV函数：cv2.goodFeaturesToTrack()</li>
-</ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h3><blockquote>
-<p>本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。</p>
-</blockquote>
-<p>Shi-Tomasi算法是对Harris角点检测的改进，回顾一下，Harris角点响应函数R：<br>$$<br>R = detM-k(traceM)^2=\lambda_1\lambda_2-k(\lambda_1+\lambda_2)^2<br>$$<br>可以看出Harris角点检测结果和k值有关，而Shi Jianbo和Tomasi两人发现角点的稳定性和M矩阵的较小特征值有关，所以在Shi-Tomasi算法中：<br>$$<br>R = min(\lambda_1,\lambda_2)<br>$$<br>接下来与Harris一致，将R与阈值比较，大于阈值的就是角点。改进后的算法可以用下图表示：</p>
-<p><img src="http://pic.ex2tron.top/cv2_shi_tomasi_R_judge.jpg" alt=""></p>
-<ul>
-<li>从图中可以看出当λ1和λ2都大于一个阈值λmin时，才被认为时角点。</li>
-</ul>
-<h3 id="OpenCV实现"><a href="#OpenCV实现" class="headerlink" title="OpenCV实现"></a>OpenCV实现</h3><p>因为Shi Jianbo和Tomasi两人在1994年发表的论文叫<a href="#引用">“Good features to track.”</a>，所以OpenCV中用函数<code>cv2.goodFeaturesToTrack()</code>来实现Shi-Tomasi算法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line"><span class="comment"># Shi-Tomasi角点检测</span></div><div class="line">corners = cv2.goodFeaturesToTrack(gray, <span class="number">20</span>, <span class="number">0.1</span>, <span class="number">10</span>)</div><div class="line">corners = np.int0(corners)  <span class="comment"># 12个角点坐标</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corners:</div><div class="line">    <span class="comment"># 压缩至一维：[[62,64]]-&gt;[62,64]</span></div><div class="line">    x, y = i.ravel()</div><div class="line">    cv2.circle(img, (x, y), <span class="number">4</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><img src="http://pic.ex2tron.top/cv2_corner_detection_shi_tomasi.jpg" alt=""></p>
-<p><strong>Shi-Tomasi算法的一个好处是，它可以直接得到角点的坐标值<code>corners</code>，</strong><code>numpy.ravel()</code>函数我们之前已经用过了，用于将二维矩阵压缩成一维。由于Shi-Tomasi也是基于灰度图像的，所以图片要先进行颜色转换。</p>
-<p>函数原型：<code>cv2.goodFeaturesToTrack(image,maxCorners,qualityLevel,minDistance)</code></p>
-<ul>
-<li>算法首先进行角点检测，类似Harris算法，返回一个角点检测的浮点型响应结果，浮点值越高，越有可能是角点</li>
-<li>其次需要指定最多找多少个角点，也就是第2个参数<code>maxCorners</code></li>
-<li>然后输入阈值参数<code>qualityLevel</code>，范围在0~1之间，这个值跟Harris算法中的阈值<code>0.01×dst.max()</code>含义相同，可以理解成角点的概率，只有大于这个阈值的点才会被认为是角点</li>
-<li>最后再指定角点间的最小距离<code>minDistance</code></li>
-</ul>
-<p>前面的代码示例中，我们试图在图中寻找20个角点，并且角点之间的距离不小于10个像素，结果我们得到12个角点的坐标，因为最多就找到了12个。</p>
-<p>函数还有一些可选参数，并不常用，可参考：<a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#ga1d6bb77486c8f92d79c8793ad995d541" target="_blank" rel="external">goodFeaturesToTrack()</a></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>Shi-Tomasi角点检测算法是对Harris算法的改进</li>
-<li>Shi-Tomasi算法可以直接得到角点的坐标</li>
-</ul>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
-<li>对同一张图，对比Harris算法和Shi-Tomasi的优缺点</li>
-</ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/20.%20Shi-Tomasi%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_shi_tomasi/py_shi_tomasi.html" target="_blank" rel="external">Shi-Tomasi Corner Detector &amp; Good Features to Track</a></li>
-<li><a href="http://xueshu.baidu.com/s?wd=paperuri%3A%28464826818a7c84224579a4828f476bc8%29&amp;filter=sc_long_sign&amp;sc_ks_para=q%3DGood%20features%20to%20track&amp;sc_us=&amp;tn=SE_baiduxueshu_c1gjeupa&amp;ie=utf-8" target="_blank" rel="external">Shi, Jianbo, and Tomasi. “Good features to track.” <em>Computer Vision and Pattern Recognition, 1994. Proceedings CVPR ‘94.  1994 IEEE Computer Society Conference on</em> IEEE, 2002:593-600.</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学习Shi-Tomasi角点检测算法。
-    
-    </summary>
-    
-      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
-    
-    
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
-      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="角点检测" scheme="http://ex2tron.wang/tags/%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
-    
-      <category term="Shi-Tomasi" scheme="http://ex2tron.wang/tags/Shi-Tomasi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python+OpenCV教程19：Harris角点检测</title>
-    <link href="http://ex2tron.wang/opencv-python-harris-corner-detection/"/>
-    <id>http://ex2tron.wang/opencv-python-harris-corner-detection/</id>
-    <published>2018-02-16T04:29:54.000Z</published>
-    <updated>2018-11-27T10:24:10.402Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习一种角点特征的检测方法：Harris。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
-<hr>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>Harris角点检测的原理</li>
-<li>OpenCV函数：cv2.cornerHarris()</li>
-</ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="角点类型"><a href="#角点类型" class="headerlink" title="角点类型"></a>角点类型</h3><blockquote>
-<p>本小节包含MathJax公式，页面显示有问题可刷新或更换浏览器噢(●ˇ∀ˇ●)。</p>
-</blockquote>
-<p><a href="/opencv-python-understand-features/">上节</a>中，我们知道了在角点处沿各个方向移动，像素值都会变化：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
-<p><img src="http://pic.ex2tron.top/cv2_corner_type.jpg" alt=""></p>
-<p>Harris角点检测算法就是基于这个原理，常见的角点类型如上图。</p>
-<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>我们先来看下OpenCV中Harris角点检测的示例，后面再详细介绍算法的推导。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'chessboard.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 1. Harris角点检测基于灰度图像</span></div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"><span class="comment"># 2. Harris角点检测</span></div><div class="line">dst = cv2.cornerHarris(gray, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0.04</span>)</div><div class="line"><span class="comment"># 3. 角点标记为红色（阈值可动态调整）</span></div><div class="line">img[dst &gt; <span class="number">0.01</span> * dst.max()] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>]</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'dst'</span>, img)</div><div class="line">cv2.waitKey()</div></pre></td></tr></table></figure>
-<p><img src="http://pic.ex2tron.top/cv2_corner_detector_chessboard_small.jpg" alt=""></p>
-<p>使用<a href="https://docs.opencv.org/3.4.1/dd/d1a/group__imgproc__feature.html#gac1fc3598018010880e370e2f709b4345" target="_blank" rel="external"><code>cv2.cornerHarris(src,blockSize,ksize,k,borderType)</code></a>函数实现Harris角点检测：</p>
-<ul>
-<li><code>src</code>：单通道8位或浮点型源图片</li>
-<li><code>blockSize</code>：邻域大小(int)</li>
-<li><code>ksize</code>：Sobel算子的孔径参数(int)</li>
-<li><code>k</code>：Harris算子参数(double)</li>
-<li><code>borderType</code>：边框类型，可选参数，之前讲过，参考：<a href="/opencv-python-extra-padding-and-convolution/">卷积基础-图片边框</a></li>
-</ul>
-<p>由于<strong>Harris角点检测算法是基于灰度图像的</strong>，所以首先进行了颜色空间转换。函数的后3个参数在之后推导算法时再来解释。函数的输出<code>dst</code>是一个浮点型图像，大小跟输入相同，表示Harris角点检测的结果，浮点值越高，表示越可能是角点。所以在角点标记的时候，设定了一个阈值范围：0.01×最高浮点值，只要大于这个阈值就标记为角点。</p>
-<p>下面我们来详细看下Harris算法的原理，涉及的数学知识较多，可以作为番外篇阅读：</p>
-<h3 id="理解算法"><a href="#理解算法" class="headerlink" title="理解算法"></a>理解算法</h3><h4 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h4><p>在推导之前，先来回顾一下简单的数学知识（其实我也早TMD忘光了( ╯□╰ )）。</p>
-<p>首先对于一个二阶矩阵：<br>$$<br>M = \left[<br> \begin{matrix}<br>   \lambda_1 &amp; 0 \newline<br>   0 &amp; \lambda_2<br>  \end{matrix}<br>  \right]<br>$$<br>λ1和λ2称为M矩阵的特征值，那么M的行列式值和M的迹分别为：<br>$$<br>detM = \lambda_1*\lambda_2  ，<br>traceM = \lambda_1+\lambda_2<br>$$<br>再来看下椭圆的表示形式：</p>
-<p><img src="http://pic.ex2tron.top/cv2_ellipse_curve_demo.jpg" alt=""></p>
-<p>数学中，我们用\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)表示，其实我们可以写成矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   x &amp; y<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   \frac{1}{a^2} &amp; 0  \newline<br>   0 &amp; \frac{1}{b^2}<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   x  \newline<br>   y<br>  \end{matrix}<br>  \right]=1<br>$$<br>把中间的矩阵当作M，这样我们就可以得到一个椭圆半轴与特征值的关系：显然，特征值λ越大，半轴a或b越短。</p>
-<p>另外，我们还要用到泰勒展开，一阶泰勒展开：<br>$$<br>f(x+\Delta x) = f(x)+f\prime(x)\Delta x+\cdots+\frac{f\prime^n(x)}{n!}\Delta x+R_n(x)<br>$$<br>二阶泰勒展开：<br>$$<br>f(x+\Delta x,y+\Delta y)=f(x,y)+f_x(x,y)\Delta x+f_y(x,y)\Delta y+\cdots+R_n(x,y)<br>$$</p>
-<h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>Harris角点检测简单来说就是先选取一个矩形块，移动这个矩形块，然后计算像素间的差值。这个矩形块称为窗口，一般矩形块内的像素点权重不同，比如中间的像素点权重明显大于周边像素。综上，Harris算法模型可以用如下公式表示：</p>
-<p>$$<br>E(u,v)=\sum\limits_{x,y\in W}w(x,y)[I(x+u,y+v)-I(x,y)]^2<br>$$<br>其中W表示窗口，w(x,y)就是窗口内像素点的权重，一般取高斯函数。我们把上面的公式用泰勒级数展开：<br>$$<br>I(x+u,y+v)\approx I(x,y)+I_xu+I_yv<br>$$<br>那么带入原公式：<br>$$<br>E(u,v)=\sum w(x,y)(I_xu+I_yv)^2<br>$$<br>其中，后面的一项我们可以展开后用矩阵的方式表示：<br>$$<br>(I_xu+I_yv)^2=I_x^2u^2+I_y^2v^2+2I_xI_yuv= \left[<br> \begin{matrix}<br>  u &amp; v<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   I_x^2 &amp; I_xI_y \newline<br>   I_xI_y &amp; I_y^2<br>  \end{matrix}<br>  \right]\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right]<br>$$<br>这样：<br>$$<br>E(u,v)=  \left[<br> \begin{matrix}<br>  u &amp; v<br>  \end{matrix}<br>  \right]{\sum w(x,y)\left[<br> \begin{matrix}<br>   I_x^2 &amp; I_xI_y \newline<br>   I_xI_y &amp; I_y^2<br>  \end{matrix}<br>  \right]}\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right] = \left[<br> \begin{matrix}<br> u &amp; v<br>  \end{matrix}<br>  \right]M\left[<br> \begin{matrix}<br>   u  \newline<br>   v<br>  \end{matrix}<br>  \right]<br>$$<br>M矩阵称为梯度协方差矩阵。同样地，我们把上面表达式当作一个椭圆的形式来看，假设λ1和λ2是M矩阵的两个特征值，那么<strong>Harris算法就根据这两个特征值判断角点</strong>：</p>
-<p><img src="http://pic.ex2tron.top/cv2_harris_theroy_lambda_judge.jpg" alt=""></p>
-<ul>
-<li><strong>λ1和λ2都很小且两个值比较接近时，说明椭圆的两个半轴很长，所以可以视为扁平区域</strong></li>
-<li><strong>λ1和λ2一大一小且差距较大时，说明两个半轴一个长一个短，所以是边缘或线段</strong></li>
-<li><strong>λ1和λ2都很大时，说明椭圆两个半轴都很短，所以可以看作是角点</strong></li>
-</ul>
-<p>其实E(u,v)的表达式并不是标准的椭圆，但是可以类比理解。</p>
-<p>上面的计算量还是很大的，所以为了计算方便，Harris给出了一个角点响应函数R：<br>$$<br>R = detM-k(traceM)^2<br>$$<br><code>k</code>就是之前<code>cv2.cornerHarris()</code>函数中的Harris算子参数，一般取0.04~0.06。而之前的<code>ksize</code>参数表示的就是使用Sobel算子计算梯度时的卷积核大小（参考：<a href="/opencv-python-extra-image-gradients/">番外篇：图像梯度</a>），<code>blockSize</code>表示的就是<code>blockSize×blockSize</code>的窗口邻域大小。这样只需判断R的值就好了：</p>
-<p><img src="http://pic.ex2tron.top/cv2_harris_theroy_R_judge.jpg" alt=""></p>
-<p>怎么样，看懂了吗？如果不懂也没关系，暂时会用之后，慢慢理解(❤ ω ❤)</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>Harris角点检测是一种基于灰度图像的角点检测方法</li>
-<li>其原理是通过移动窗口，计算移动时窗口内像素间的差值来判断</li>
-</ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/19.%20Harris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html" target="_blank" rel="external">Harris Corner Detection</a></li>
-<li><a href="http://xueshu.baidu.com/s?wd=A+Combined+Corner+and+Edge+Detector&amp;rsv_bp=0&amp;tn=SE_baiduxueshu_c1gjeupa&amp;rsv_spt=3&amp;ie=utf-8&amp;f=8&amp;rsv_sug2=1&amp;sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D&amp;rsv_n=2" target="_blank" rel="external">Harris, C. “A combined corner and edge detector.” <em>Proc Alvey Vision Conf</em> 1988.3(1988):147-151.</a></li>
-<li><a href="https://blog.csdn.net/hujingshuang/article/details/46829627" target="_blank" rel="external">【特征检测】Harris角点检测中的数学推导</a></li>
-<li><a href=""><a href="http://www.cnblogs.com/polly333/p/5416172.html" target="_blank" rel="external">Harris角点算法</a></a></li>
-<li><a href="https://wenku.baidu.com/view/b0a2788acc22bcd126ff0c48.html" target="_blank" rel="external">Harris角点算法PPT</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学习一种角点特征的检测方法：Harris。
-    
-    </summary>
-    
-      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
-    
-    
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
-      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="角点检测" scheme="http://ex2tron.wang/tags/%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/"/>
-    
-      <category term="Harris" scheme="http://ex2tron.wang/tags/Harris/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python+OpenCV教程18：理解特征</title>
-    <link href="http://ex2tron.wang/opencv-python-understand-features/"/>
-    <id>http://ex2tron.wang/opencv-python-understand-features/</id>
-    <published>2018-02-15T12:13:55.000Z</published>
-    <updated>2018-11-02T02:51:48.374Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习和了解图像特征的重要性。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
-<hr>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>理解图像特征</li>
-<li>图像特征的重要性和用途</li>
-</ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>回想一下，我们是不是总可以用一些词语来描述一件物体，比如说描述人脸，我们可以说脸上有两只眼睛，一个鼻子和一个嘴巴，这其实就是特征。对于计算机来说，图片本身的二维矩阵就是最完整的特征，但我们有时也需要像描述人脸那样，让计算机提取一些显著的特征。相信大部分人都玩过拼图游戏，一起来看看：</p>
-<h3 id="拼图游戏"><a href="#拼图游戏" class="headerlink" title="拼图游戏"></a>拼图游戏</h3><p>拼图游戏是根据散落的图片小块最终拼接成一副完整的图片。那么，你是怎么拼起来的呢？</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features_jigsaw_puzzle.jpg" alt=""></p>
-<p>虽然你很难让一个小朋友具体说出来是如何拼接的，但毫无疑问他们都能拼成功。我们可以说这一块跟另外一块很像：这块有个突出的部分，那块刚好有个凹进去的部分。这些小块间的相似性就是特征，试想一下，如果能让计算机找到这些小块间的特征，是不是也可以让计算机玩拼图游戏呢？</p>
-<h3 id="理解特征"><a href="#理解特征" class="headerlink" title="理解特征"></a>理解特征</h3><p>那计算机能理解的特征有哪些？如何找到这些特征呢？我们来看下这张图：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features_building.jpg" alt=""></p>
-<p>图的上面有6个小块，都是图中的某一部分。你能找到这6个小块在图中的具体位置吗？</p>
-<ul>
-<li><p>A和B很难确定具体的位置，因为它们在原图中的很多地方都有，可以把这些地方称为扁平的区域</p>
-</li>
-<li><p>C和D相对容易点，因为它们是建筑物的边缘。虽然也比较难确定具体位置，但可以找到一个大致的位置</p>
-<p><strong>可以说边缘是比扁平区域更好的一种特征</strong></p>
-</li>
-<li><p>最后，E和F就好找多了，因为它们是建筑物的角点。在角点位置上，不论将小块怎么移动，都会得到不同的结果</p>
-<p><strong>所以说角点是比边缘更好的一种特征</strong></p>
-</li>
-</ul>
-<p>可以简单地用下面这个图来表示这三种特征：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_features.jpg" alt=""></p>
-<ul>
-<li>蓝色方块代表的扁平区域很难定位，因为不论移动到哪儿，结果都一样</li>
-<li>黑色方块表示边缘，如果我们垂直移动它，它就会改变，但水平移动，结果仍然不变</li>
-<li>最后红色方块表示角点，随便移动它，它都会改变，说明它是唯一的。<strong>所以，角点对图像来说就是一个比较好的特征。</strong></li>
-</ul>
-<p>既然知道了啥叫特征，那么如何找到这些特征呢？其实不难发现，对于角点，我们可以通过移动图像中的一个小区域，找出图像中变化量最大的地方，这就叫<strong>特征检测</strong>。找到特征后，我们可以这样描述图片：图的上面是天空，下面是一个建筑物，建筑物外层是玻璃等等，这就叫<strong>特征描述</strong>。特征检测和特征描述就是我们接下来要学习的内容。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>角点相比扁平区域和边缘是一种更好的特征</li>
-<li>特征可以用来描述对象、追踪对象</li>
-</ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_meaning/py_features_meaning.html" target="_blank" rel="external">Understanding Features</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;学习和了解图像特征的重要性。
-    
-    </summary>
-    
-      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
-    
-    
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
-      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="特征" scheme="http://ex2tron.wang/tags/%E7%89%B9%E5%BE%81/"/>
     
   </entry>
   
@@ -2987,7 +2691,7 @@
     <link href="http://ex2tron.wang/opencv-python-introduction-and-installation/"/>
     <id>http://ex2tron.wang/opencv-python-introduction-and-installation/</id>
     <published>2017-12-06T07:50:59.000Z</published>
-    <updated>2018-12-02T14:40:08.764Z</updated>
+    <updated>2018-12-04T13:48:43.191Z</updated>
     
     <content type="html"><![CDATA[<p>相信大部分人知道的OpenCV都是用C++来开发的，那为什么我推荐使用Python呢？<a id="more"></a></p>
 <blockquote>
@@ -3039,12 +2743,22 @@
 </blockquote>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/01.%20%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85" target="_blank" rel="external">本节源码</a></li>
+</ul>
+<h3 id="网络资料"><a href="#网络资料" class="headerlink" title="网络资料"></a>网络资料</h3><ul>
 <li><a href="https://docs.opencv.org/" target="_blank" rel="external"><strong>OpenCV Docs官方文档</strong></a></li>
 <li><a href="https://github.com/opencv/opencv" target="_blank" rel="external">OpenCV 官方Github</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html" target="_blank" rel="external">官方英文教程：OpenCV-Python Tutorials</a></li>
 <li><a href="http://www.learnopencv.com" target="_blank" rel="external">LearnOpenCV</a>、<a href="https://github.com/spmallick/learnopencv" target="_blank" rel="external">LearnOpenCV Github</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy-dev/user/quickstart.html" target="_blank" rel="external">Numpy Quickstart Tutorial</a></li>
 <li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html" target="_blank" rel="external">OpenCV 中文教程</a></li>
+</ul>
+<h3 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h3><ul>
+<li><a href="http://programmingcomputervision.com/" target="_blank" rel="external">Programming Computer Vision with Python</a>、<a href="https://www.amazon.cn/dp/B00L3Y3NEM/ref=sr_1_1?ie=UTF8&amp;qid=1543929834&amp;sr=8-1&amp;keywords=Python+%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89" target="_blank" rel="external">中文书</a></li>
+<li><a href="https://www.pyimagesearch.com/practical-python-opencv/" target="_blank" rel="external">https://www.pyimagesearch.com/practical-python-opencv/</a></li>
+</ul>
+<h3 id="名校视觉研究所-课程"><a href="#名校视觉研究所-课程" class="headerlink" title="名校视觉研究所/课程"></a>名校视觉研究所/课程</h3><ul>
+<li><a href="http://graphics.cs.cmu.edu/" target="_blank" rel="external">卡内基梅隆大学</a></li>
+<li><a href="https://www.cs.toronto.edu/~guerzhoy/320/" target="_blank" rel="external">多伦多大学</a></li>
 </ul>
 ]]></content>
     
@@ -3604,11 +3318,11 @@
   </entry>
   
   <entry>
-    <title>【视觉与图像】OpenCV篇：Python+OpenCV实用教程</title>
+    <title>【视觉与图像】Python+OpenCV教程</title>
     <link href="http://ex2tron.wang/opencv-python/"/>
     <id>http://ex2tron.wang/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2018-12-02T13:14:31.680Z</updated>
+    <updated>2018-12-30T13:31:22.565Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://pic.ex2tron.top/cv2_python_opencv_cover_gif2.gif" alt=""></p>
 <h4 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h4><ol>
@@ -3634,11 +3348,6 @@
 <li><a href="/opencv-python-hough-transform/"> 霍夫变换</a>（提取直线/圆）</li>
 </ol>
 <p><a href="/opencv-python-lane-road-detection/"><strong>挑战任务：车道检测</strong></a> </p>
-<h4 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h4><ol>
-<li><a href="/opencv-python-understand-features/">理解特征</a>（特征/特征作用）</li>
-<li><a href="/opencv-python-harris-corner-detection/">Harris角点检测</a>（Harris/角点检测/原理）</li>
-<li><a href="/opencv-python-shi-tomasi-corner-detection/">Shi-Tomasi角点检测</a>（Shi-Tomasi/角点检测/原理） | <a href="/opencv-python-extra-image-pyramids/">番外篇12：尺度空间与图像金字塔</a></li>
-</ol>
 ]]></content>
     
     <summary type="html">
@@ -3995,9 +3704,10 @@
     <link href="http://ex2tron.wang/tools-markdown-in-vscode/"/>
     <id>http://ex2tron.wang/tools-markdown-in-vscode/</id>
     <published>2017-09-11T07:11:22.000Z</published>
-    <updated>2018-11-02T02:51:48.427Z</updated>
+    <updated>2018-12-30T11:44:40.838Z</updated>
     
     <content type="html"><![CDATA[<p>Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客<a id="more"></a>。关于Markdown相较富文本的优势，我就不细说了。</p>
+<hr>
 <h2 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h2><p>支持Markdown的工具有很多，大家可以参考网上，如这篇文章：<a href="https://sspai.com/post/32483" target="_blank" rel="external">码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点</a>。就我自己目前在Windows上使用的而言有：<a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a>、<a href="http://note.youdao.com/" target="_blank" rel="external">有道云笔记</a>、<a href="https://www.typora.io/#windows" target="_blank" rel="external">Typora</a>、<a href="https://code.visualstudio.com" target="_blank" rel="external">VSCode</a></p>
 <p>简书本身就是一个博客平台，有道云笔记是类似OneNote和印象笔迹的应用。如果你已经在使用这两个平台的话，就不用多说了。但如果只是想用一个单纯的Markdown编辑器的话，推荐极致简洁的Typora。虽说界面简洁，但功能强大，不仅内置了常见的一些Markdown样式，还支持PDF/HTML等多种格式导出：</p>
 <p><img src="http://pic.ex2tron.top/markdown_in_typora.png" alt="markdown_in_typora"></p>
@@ -4176,7 +3886,7 @@
     <link href="http://ex2tron.wang/qt-opencv-installation-guide/"/>
     <id>http://ex2tron.wang/qt-opencv-installation-guide/</id>
     <published>2017-07-27T00:17:00.000Z</published>
-    <updated>2018-11-02T02:51:48.376Z</updated>
+    <updated>2018-12-30T13:26:19.626Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Windows下的配置"><a href="#Windows下的配置" class="headerlink" title="Windows下的配置"></a>Windows下的配置</h2><blockquote>
 <p><em>念念不忘，必有回响。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
@@ -4185,25 +3895,25 @@
 <p><a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">Qt官方下载</a> </p>
 <p><img src="http://pic.ex2tron.top/qt_opencv_environment_demo1.jpg" alt=""></p>
 <p>首先用CMake编译OpenCV3.2，参考：<a href="/cmake-make-opencv/">CMake编译OpenCV3.2（Qt平台）</a>。针对Qt5.8+OpenCV3.2我已经编译好了，可以直接<a href="https://pan.baidu.com/s/1miaCDL2" target="_blank" rel="external">下载</a>。</p>
-<p>编译好之后，把下面三个文件夹提取出来放在一个新目录下，比如：D:\QtOpenCV</p>
+<p>编译好之后，把下面三个文件夹提取出来放在一个新目录下，比如：<code>D:\QtOpenCV</code></p>
 <ol>
 <li>OpenCV安装目录下的build\include文件夹</li>
 <li>CMake生成后的lib文件夹</li>
 <li>CMake生成后的bin文件夹</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/qt_opencv_environment_demo2.jpg" alt=""></p>
-<p>放好之后，将上图<strong>bin的路径（D:\QtOpenCV\bin）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
+<p>放好之后，将上图<strong>bin的路径（<code>D:\QtOpenCV\bin</code>）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
 <p>然后打开Qt的pro文件，在<code>SOURCES</code>前面添加如下的OpenCV的依赖项：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> INCLUDEPATH 头文件路径</span></div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="meta">#</span><span class="bash"> LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</span></div><div class="line"><span class="meta">#</span><span class="bash"> 使用下面方法包含所有库</span></div><div class="line"><span class="meta">#</span><span class="bash"> LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</span></div><div class="line"><span class="meta">#</span><span class="bash"> 或使用下面方法只包含要使用的库</span></div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># INCLUDEPATH 头文件路径</span></div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="comment"># LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</span></div><div class="line"><span class="comment"># 使用下面方法包含所有库</span></div><div class="line"><span class="comment"># LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</span></div><div class="line"><span class="comment"># 或使用下面方法只包含要使用的库</span></div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
 <p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/BlogCode/tree/master/OpenCV-C++-Sample" target="_blank" rel="external">C++ OpenCV示例</a></p>
 <h2 id="Ubuntu下的配置"><a href="#Ubuntu下的配置" class="headerlink" title="Ubuntu下的配置"></a>Ubuntu下的配置</h2><p>Ubuntu下如果不用CMake自行安装的话，就简单多了，在终端里面输入下面几条指令就搞定了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 安装Qt5</span></div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="meta">#</span><span class="bash"> 安装opencv</span></div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装Qt5</span></div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="comment"># 安装opencv</span></div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
 <p>同样，在Qt的pro文件中添加OpenCV的依赖项就可以调用了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INCLUDEPATH += /usr/include\</div><div class="line">		/usr/include/opencv\</div><div class="line">		/usr/include/opencv2</div><div class="line">LIBS  += -L/usr/lib\</div><div class="line">	-llibopencv_highgui\</div><div class="line">	-llibopencv_core\</div><div class="line">	-llibopencv_imgproc\</div><div class="line">	-llibopencv_calib3d</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INCLUDEPATH += /usr/include\</div><div class="line">		/usr/include/opencv\</div><div class="line">		/usr/include/opencv2</div><div class="line">LIBS  += -L/usr/lib\</div><div class="line">	-llibopencv_highgui\</div><div class="line">	-llibopencv_core\</div><div class="line">	-llibopencv_imgproc\</div><div class="line">	-llibopencv_calib3d</div></pre></td></tr></table></figure>
 <p>如果<code>LIBS</code>像上面这样加不进去的话，可以一个一个加，比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/libopencv_highgui.so</div><div class="line">LIBS  += -L/usr/lib/libopencv_core.so</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/libopencv_highgui.so</div><div class="line">LIBS  += -L/usr/lib/libopencv_core.so</div></pre></td></tr></table></figure>
 <p>另外，不同版本和不同平台库的位置可能不同，比如树莓派下，库文件可能在：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -4230,7 +3940,7 @@
     <link href="http://ex2tron.wang/cmake-make-opencv/"/>
     <id>http://ex2tron.wang/cmake-make-opencv/</id>
     <published>2017-07-26T14:25:29.000Z</published>
-    <updated>2018-11-02T02:51:48.374Z</updated>
+    <updated>2018-12-30T13:22:45.411Z</updated>
     
     <content type="html"><![CDATA[<p>最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。<a id="more"></a></p>
 <ul>
@@ -4344,6 +4054,64 @@
       <category term="表驱动法" scheme="http://ex2tron.wang/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
     
       <category term="查表法" scheme="http://ex2tron.wang/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建自己的Github/Git服务器</title>
+    <link href="http://ex2tron.wang/set-up-your-own-git-server/"/>
+    <id>http://ex2tron.wang/set-up-your-own-git-server/</id>
+    <published>2017-06-04T11:38:56.000Z</published>
+    <updated>2018-12-30T13:31:35.069Z</updated>
+    
+    <content type="html"><![CDATA[<p>Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。<a id="more"></a>但像我们这种穷苦的孩子，只能选择自己搭一个Git服务器咯。</p>
+<hr>
+<p>我们需要一台Linux电脑，可以当作局域网内的Github。当然如果你有阿里云之类的服务器的话就更好了，有网的地方就可以push/pull代码，我这里以自己的本地Ubuntu电脑为例：</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
+<p>一句话，没啥好说的(+_+)</p>
+<h2 id="新建git用户并配置"><a href="#新建git用户并配置" class="headerlink" title="新建git用户并配置"></a>新建git用户并配置</h2><p>创建用于运行Git服务的用户<code>git</code>，新建账号时，会提示你输入该用户的密码，其他保持默认即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo adduser git</div></pre></td></tr></table></figure>
+<p><code>adduser</code>指令会在/home目录下生成以git名命名的文件夹，代表git用户目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /home</div></pre></td></tr></table></figure>
+<p>在git用户目录下新建<code>.ssh</code>文件夹和<code>authorized_keys</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/.ssh</div><div class="line">touch /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>熟悉ssh的同学应该知道<code>authorized_keys</code>文件用于收集所有需要登录到此Git服务器的客户端公钥，一行一个。如果你已经生成过ssh密钥的话，Windows系统会在<code>C:\Users\用户名\.ssh\</code>，Linux系统一般在<code>/home/user/.ssh/</code>下，没有生成的话，可以用下面的指令生成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure>
+<p>将<code>id_rsa.pub</code>中的内容拷贝到服务器的authorized_keys文件中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"pub_key_content"</span> &gt; /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<h2 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h2><p>现在其实就跟Github一样的流程了，首先在建立一个新仓库，比如在<code>/home/git/repos</code>下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/repos</div><div class="line"><span class="built_in">cd</span> /home/git/repos/</div><div class="line">sudo git init --bare sample.git</div></pre></td></tr></table></figure>
+<p>然后将<code>sample.git</code>仓库的用户和组都改成<code>git</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R git:git sample.git</div></pre></td></tr></table></figure>
+<p>这样就建好了远程仓库，接下来你可以将已有的本地仓库关联或者克隆到本地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin git@server_ip:/home/git/repos/sample.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git@server_ip:/home/git/repos/sample.git</div></pre></td></tr></table></figure>
+<h2 id="还有点小问题"><a href="#还有点小问题" class="headerlink" title="还有点小问题~~~"></a>还有点小问题~~~</h2><p>前面新建用户的步骤完成后，<code>git</code>用户是可以直接在终端登陆服务器的，因此需要禁止<code>git</code>用户登陆shell，编辑<code>/etc/passwd</code>文件，找到git的一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</div></pre></td></tr></table></figure>
+<p>将启动环境改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</div></pre></td></tr></table></figure>
+<p><code>git-shell</code>是一个每次一登录就退出的程序，这样配置之后，<code>git</code>用户可以使用ssh管理仓库，但无法登陆shell。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="external">廖雪峰Git教程</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Github" scheme="http://ex2tron.wang/tags/Github/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="Git Sever" scheme="http://ex2tron.wang/tags/Git-Sever/"/>
     
   </entry>
   

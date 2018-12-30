@@ -32,13 +32,12 @@
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="Windows下的配置 念念不忘，必有回响。——《一代宗师》  我电脑上安装的Qt版本信息：Qt 5.8/Qt Creator 4.2.1/MinGW 5.3.0">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://pic.ex2tron.top/qt_opencv_environment_demo1.jpg">
-<meta property="og:image" content="http://pic.ex2tron.top/qt_opencv_environment_demo2.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.376Z">
+<meta property="og:image" content="http://pic.ex2tron.top/qt_opencv_cmake_windows_setup.jpg">
+<meta property="og:updated_time" content="2018-12-30T13:26:19.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt+OpenCV环境搭建">
 <meta name="twitter:description" content="Windows下的配置 念念不忘，必有回响。——《一代宗师》  我电脑上安装的Qt版本信息：Qt 5.8/Qt Creator 4.2.1/MinGW 5.3.0">
-<meta name="twitter:image" content="http://pic.ex2tron.top/qt_opencv_environment_demo1.jpg">
+<meta name="twitter:image" content="http://pic.ex2tron.top/qt_opencv_cmake_windows_setup.jpg">
   
   <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
   
@@ -177,6 +176,16 @@ var themeMenus = {};
           <section id="main" style="float:none;"><article id="post-Qt-OpenCV环境搭建" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/qt_opencv_cmake_windows_setup.jpg" rel="gallery_cjqaxp80k0034pk59nws88nfo">
+        <img src="http://pic.ex2tron.top/qt_opencv_cmake_windows_setup.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
     
       <header class="article-header">
         
@@ -205,25 +214,25 @@ var themeMenus = {};
 <p><a href="http://download.qt.io/archive/qt/" target="_blank" rel="external">Qt官方下载</a> </p>
 <p><img src="http://pic.ex2tron.top/qt_opencv_environment_demo1.jpg" alt=""></p>
 <p>首先用CMake编译OpenCV3.2，参考：<a href="/cmake-make-opencv/">CMake编译OpenCV3.2（Qt平台）</a>。针对Qt5.8+OpenCV3.2我已经编译好了，可以直接<a href="https://pan.baidu.com/s/1miaCDL2" target="_blank" rel="external">下载</a>。</p>
-<p>编译好之后，把下面三个文件夹提取出来放在一个新目录下，比如：D:\QtOpenCV</p>
+<p>编译好之后，把下面三个文件夹提取出来放在一个新目录下，比如：<code>D:\QtOpenCV</code></p>
 <ol>
 <li>OpenCV安装目录下的build\include文件夹</li>
 <li>CMake生成后的lib文件夹</li>
 <li>CMake生成后的bin文件夹</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/qt_opencv_environment_demo2.jpg" alt=""></p>
-<p>放好之后，将上图<strong>bin的路径（D:\QtOpenCV\bin）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
+<p>放好之后，将上图<strong>bin的路径（<code>D:\QtOpenCV\bin</code>）添加到系统环境变量</strong>，此时最好重启资源管理器或注销一下，以使得环境变量更改生效。</p>
 <p>然后打开Qt的pro文件，在<code>SOURCES</code>前面添加如下的OpenCV的依赖项：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> INCLUDEPATH 头文件路径</span></div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="meta">#</span><span class="bash"> LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</span></div><div class="line"><span class="meta">#</span><span class="bash"> 使用下面方法包含所有库</span></div><div class="line"><span class="meta">#</span><span class="bash"> LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</span></div><div class="line"><span class="meta">#</span><span class="bash"> 或使用下面方法只包含要使用的库</span></div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># INCLUDEPATH 头文件路径</span></div><div class="line">INCLUDEPATH +=  D:\QtOpenCV\include\opencv\</div><div class="line">                D:\QtOpenCV\include\opencv2\</div><div class="line">                D:\QtOpenCV\include</div><div class="line"><span class="comment"># LIBS 库文件，-L指定库路径 -llib指定程序用到的lib库</span></div><div class="line"><span class="comment"># 使用下面方法包含所有库</span></div><div class="line"><span class="comment"># LIBS += -L D:\QtOpenCV\lib\libopencv_*.a</span></div><div class="line"><span class="comment"># 或使用下面方法只包含要使用的库</span></div><div class="line">LIBS += -L D:\QtOpenCV\lib\</div><div class="line">        -llibopencv_highgui320.dll.a\</div><div class="line">	-llibopencv_imgproc320.dll.a</div></pre></td></tr></table></figure>
 <p>这样就配置完成啦，这里有一些OpenCV的示例代码，可以参考一下：<a href="https://github.com/ex2tron/BlogCode/tree/master/OpenCV-C++-Sample" target="_blank" rel="external">C++ OpenCV示例</a></p>
 <h2 id="Ubuntu下的配置"><a href="#Ubuntu下的配置" class="headerlink" title="Ubuntu下的配置"></a>Ubuntu下的配置</h2><p>Ubuntu下如果不用CMake自行安装的话，就简单多了，在终端里面输入下面几条指令就搞定了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 安装Qt5</span></div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="meta">#</span><span class="bash"> 安装opencv</span></div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装Qt5</span></div><div class="line">sudo apt-get install cmake qt5-default qtcreator</div><div class="line"><span class="comment"># 安装opencv</span></div><div class="line">sudo apt-get install libopencv-dev</div><div class="line">sudo apt-get install libcv-dev</div></pre></td></tr></table></figure>
 <p>同样，在Qt的pro文件中添加OpenCV的依赖项就可以调用了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INCLUDEPATH += /usr/include\</div><div class="line">		/usr/include/opencv\</div><div class="line">		/usr/include/opencv2</div><div class="line">LIBS  += -L/usr/lib\</div><div class="line">	-llibopencv_highgui\</div><div class="line">	-llibopencv_core\</div><div class="line">	-llibopencv_imgproc\</div><div class="line">	-llibopencv_calib3d</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INCLUDEPATH += /usr/include\</div><div class="line">		/usr/include/opencv\</div><div class="line">		/usr/include/opencv2</div><div class="line">LIBS  += -L/usr/lib\</div><div class="line">	-llibopencv_highgui\</div><div class="line">	-llibopencv_core\</div><div class="line">	-llibopencv_imgproc\</div><div class="line">	-llibopencv_calib3d</div></pre></td></tr></table></figure>
 <p>如果<code>LIBS</code>像上面这样加不进去的话，可以一个一个加，比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/libopencv_highgui.so</div><div class="line">LIBS  += -L/usr/lib/libopencv_core.so</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/libopencv_highgui.so</div><div class="line">LIBS  += -L/usr/lib/libopencv_core.so</div></pre></td></tr></table></figure>
 <p>另外，不同版本和不同平台库的位置可能不同，比如树莓派下，库文件可能在：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="entry-meta entry-footer">
