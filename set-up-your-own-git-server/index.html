@@ -33,7 +33,7 @@
 <meta property="og:description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/set_up_your_own_git_server.jpg">
-<meta property="og:updated_time" content="2018-12-30T13:31:35.069Z">
+<meta property="og:updated_time" content="2018-12-31T03:07:21.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建自己的Github&#x2F;Git服务器">
 <meta name="twitter:description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" rel="gallery_cjqaxp81g004kpk596c9y00d5">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" rel="gallery_cjqbtigzb004gqs59au2rsy3c">
         <img src="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" itemprop="image">
       </a>
     
@@ -221,7 +221,7 @@ var themeMenus = {};
 <p>熟悉ssh的同学应该知道<code>authorized_keys</code>文件用于收集所有需要登录到此Git服务器的客户端公钥，一行一个。如果你已经生成过ssh密钥的话，Windows系统会在<code>C:\Users\用户名\.ssh\</code>，Linux系统一般在<code>/home/user/.ssh/</code>下，没有生成的话，可以用下面的指令生成：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure>
 <p>将<code>id_rsa.pub</code>中的内容拷贝到服务器的authorized_keys文件中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"pub_key_content"</span> &gt; /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"pub_key_content"</span> &gt;&gt; /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
 <h2 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h2><p>现在其实就跟Github一样的流程了，首先在建立一个新仓库，比如在<code>/home/git/repos</code>下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/repos</div><div class="line"><span class="built_in">cd</span> /home/git/repos/</div><div class="line">sudo git init --bare sample.git</div></pre></td></tr></table></figure>
 <p>然后将<code>sample.git</code>仓库的用户和组都改成<code>git</code>：</p>
