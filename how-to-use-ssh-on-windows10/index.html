@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    如何使用windows 10的openssh client和server |
+    
+    ex2tron&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。">
+<meta name="keywords" content="Build,Windows10,SSH,SSH-Server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用Windows 10的OpenSSH Client和Server">
+<meta property="og:url" content="http://ex2tron.wang/how-to-use-ssh-on-windows10/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg">
+<meta property="og:updated_time" content="2019-01-03T05:26:48.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何使用Windows 10的OpenSSH Client和Server">
+<meta name="twitter:description" content="SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg">
+  
+  <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-如何使用Windows 10的OpenSSH Client和Server" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg" rel="gallery_cjqg651yi004h4059l0qkih0r">
+        <img src="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      如何使用Windows 10的OpenSSH Client和Server
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/how-to-use-ssh-on-windows10/" class="article-date">
+	  <time datetime="2019-01-02T13:00:54.000Z" itemprop="datePublished">January 2, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。<a id="more"></a></p>
+<hr>
+<iframe src="//player.bilibili.com/player.html?aid=39769302&cid=69862435&page=1" width="640" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>新版Windows 10（1803及以上）都已预装了OpenSSH Client，但默认并没有装SSH Server。要测试有没有安装的话，可以打开命令行cmd，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh -V</div><div class="line"><span class="comment"># OpenSSH_for_Windows_7.6p1, LibreSSL 2.6.4</span></div></pre></td></tr></table></figure>
+<p>如果你的Win10版本较低的话，可能没有预装，也没有关系，下面来看。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Windows 10开始菜单搜索“管理可选功能”，或打开Windows 10的设置，找到应用和功能，并选择“管理可选功能”：</p>
+<p><img src="http://pic.ex2tron.top/win10-ssh-client-app-features.jpg" alt=""></p>
+<p>在管理可选功能页面，点击“添加功能”，找到<code>OpenSSH 客户端</code>和<code>OpenSSH 服务器</code>，客户端没有的话，说明已经安装了：</p>
+<p><img src="http://pic.ex2tron.top/win10-ssh-client-app-features-add-server-client.jpg" alt="lient"></p>
+<p>如果你只是想使用SSH连接服务器，而不是把自己的电脑当作服务器的话，Server是不需要安装的。安装路径是在<code>C:\Windows\System32\OpenSSH\</code>目录下，可以看到除了SSH，Windows 10也自带了scp，sftp等很实用的工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dir C:\Windows\System32\OpenSSH</div><div class="line"><span class="comment"># scp.exe</span></div><div class="line"><span class="comment"># sftp.exe</span></div><div class="line"><span class="comment"># ssh-keygen.exe</span></div><div class="line"><span class="comment"># ……</span></div></pre></td></tr></table></figure>
+<h2 id="SSH-Client的使用"><a href="#SSH-Client的使用" class="headerlink" title="SSH Client的使用"></a>SSH Client的使用</h2><p>安装好之后，就和正常使用SSH没有区别了，比如局域网内有台服务器IP地址是<code>192.168.1.110</code>，那么在Win10 cmd下输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@192.168.1.110</div></pre></td></tr></table></figure>
+<p>客户端的使用跟Linux下SSH的使用一致，就不赘述了。主要来看下Win10上Server的配置。</p>
+<h2 id="SSH-Server的使用"><a href="#SSH-Server的使用" class="headerlink" title="SSH Server的使用"></a>SSH Server的使用</h2><p>安装好<code>OpenSSH Server</code>后，Win10开始菜单搜索服务，打开服务，找到<code>OpenSSH SSH Server</code>，目前它的状态是手动并已停止服务：</p>
+<p><img src="http://pic.ex2tron.top/win10-ssh-sever-services-status.jpg" alt=""></p>
+<p>我们可以右键启动服务，如果你经常用到它的话，可以在属性中设置为自动启动。</p>
+<p>要检测SSH服务有没有运行的话，可以在cmd中输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -a | findstr 22</div><div class="line"><span class="comment"># TCP    0.0.0.0:22             ex2tronSurface:0       LISTENING</span></div></pre></td></tr></table></figure>
+<p>确认开启后，本机Win10就可以接收外部SSH连接了。在cmd输入<code>ipconfig</code>，获取现在Win10的IP，比如是<code>192.168.1.199</code>，用另一台任意操作系统的电脑使用SSH便可连接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@192.168.1.199</div></pre></td></tr></table></figure>
+<p>注意此时用户名和密码是你Win10的用户名和密码。</p>
+<h2 id="sshd-配置文件"><a href="#sshd-配置文件" class="headerlink" title="sshd 配置文件"></a>sshd 配置文件</h2><p>SSH服务开启后，默认的配置文件在<code>C:\Windows\System32\OpenSSH\</code>目录下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dir C:\Windows\System32\OpenSSH\</div><div class="line"><span class="comment"># sshd_config_default</span></div></pre></td></tr></table></figure>
+<p>但实际运行的配置文件是<code>C:\ProgramData\ssh\sshd_config</code>，熟悉SSH的同学对里面的配置项应该都了解，比如ssh默认启动路径<code>ChrootDirectory</code>。默认情况下，ssh连接后，启动路径是Windows的个人文件夹，如<code>C:\Users\ex2tron</code>，我一般会更改到我的工作路径，如：<code>D:\Surface</code>，就可以这样修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ChrootDirectory D:\Surface</div></pre></td></tr></table></figure>
+<p>其他配置项常用的有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">PermitRootLogin # 是否允许root登陆</div><div class="line">PasswordAuthentication # 是否运行使用密码登陆，如果你已经建立好ssh公钥的话，可以设置为no免密登陆，更安全</div><div class="line">PermitEmptyPasswords # 是否允许空密码</div><div class="line">AuthorizedKeysFile # ssh公钥目录</div></pre></td></tr></table></figure>
+<p>配置完之后一定记得重启<code>ssh server</code>，否则是不会生效的。一种方法是服务里面，右键选择重启：</p>
+<p><img src="http://pic.ex2tron.top/win10-ssh-server-config-reboot-service.jpg" alt=""></p>
+<p>还有一种就是在cmd下直接重启，cmd需以管理员权限打开：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">net stop sshd</div><div class="line">net start sshd</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Build/">Build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH-Server/">SSH-Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/a-gift-for-2019-moviequotes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2018最后一个工作日，一份小礼物</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#版本说明"><span class="nav-number">1.</span> <span class="nav-text">版本说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-Client的使用"><span class="nav-number">3.</span> <span class="nav-text">SSH Client的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-Server的使用"><span class="nav-number">4.</span> <span class="nav-text">SSH Server的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshd-配置文件"><span class="nav-number">5.</span> <span class="nav-text">sshd 配置文件</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2019
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
