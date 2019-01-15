@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-01-03T05:26:48.490Z</updated>
+  <updated>2019-01-15T15:58:44.844Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>No giving and expecting, no hurt and disappointment.</title>
+    <link href="http://ex2tron.wang/what-will-be-just-let-it-go/"/>
+    <id>http://ex2tron.wang/what-will-be-just-let-it-go/</id>
+    <published>2019-01-14T09:34:37.000Z</published>
+    <updated>2019-01-15T15:58:44.844Z</updated>
+    
+    <content type="html"><![CDATA[<p>For the first time, lost two ‘friends’ who don’t understand me and like to assume my character subjectively. So hurt, they don’t ‘care’, maybe I should too. Only all the efforts and expectations become cheap words and regrets. </p>
+<p>Just hurt and disappointment. Farewell. </p>
+<p><img src="http://pic.ex2tron.top/lost%20_lost_lost.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;For the first time, lost two ‘friends’ who don’t understand me and like to assume my character subjectively. So hurt, they don’t ‘care’, 
+    
+    </summary>
+    
+      <category term="五味杂粮" scheme="http://ex2tron.wang/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
+    
+    
+      <category term="life" scheme="http://ex2tron.wang/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>如何使用Windows 10的OpenSSH Client和Server</title>
@@ -81,16 +106,15 @@
     <link href="http://ex2tron.wang/a-gift-for-2019-moviequotes/"/>
     <id>http://ex2tron.wang/a-gift-for-2019-moviequotes/</id>
     <published>2018-12-29T10:00:31.000Z</published>
-    <updated>2019-01-02T15:09:40.833Z</updated>
+    <updated>2019-01-15T15:56:21.666Z</updated>
     
     <content type="html"><![CDATA[<center><a href="http://moviequotes.ex2tron.wang" target="_blank" rel="external"><strong>moviequotes.ex2tron.wang</strong></a></center>
 
 <hr>
-<p><img src="http://pic.ex2tron.top/bye_2018_dog_hi_2019_pig3.jpg" alt=""></p>
 <blockquote>
 <p>2018是感伤的一年，很多人离我们而去，太多的不开心…好在就要结束了。今天是最后一个工作日（其实在学校我每天都在放假(●ˇ∀ˇ●)），特送上一份小礼物给大家：<a href="http://moviequotes.ex2tron.wang" target="_blank" rel="external">MovieQuotes</a></p>
 </blockquote>
-<p>这是个简单的电影经典台词网站，灵感来自我以前在腾讯学习Scrapy时的一个网站<a href="http://quotes.toscrape.com" target="_blank" rel="external">quotes.toscrape.com</a>，这上面是一些名人名句。因为我平常喜欢看电影，写博客的时候也经常在开头放一句经典台词，所以平时搜集了不少，于是就有了这个网站。网站本身很简单，用Python和Django搭的，没什么难的东西，下面是一些截图：</p>
+<p><a id="more"></a>这是个简单的电影经典台词网站，灵感来自我以前在腾讯学习Scrapy时的一个网站<a href="http://quotes.toscrape.com" target="_blank" rel="external">quotes.toscrape.com</a>，这上面是一些名人名句。因为我平常喜欢看电影，写博客的时候也经常在开头放一句经典台词，所以平时搜集了不少，于是就有了这个网站。网站本身很简单，用Python和Django搭的，没什么难的东西，下面是一些截图：</p>
 <p><img src="http://pic.ex2tron.top/moviequotes_phone_ui_demo2.jpg" alt="手机 显示效果图"></p>
 <p>各位看官不要嫌UI丑啊，我是完全模仿原网站做的。后期如果有时间我会更换一套自己的UI。</p>
 <p><img src="http://pic.ex2tron.top/moviequotes_pc_ui_demo.jpg" alt="PC 显示效果图"></p>
@@ -101,7 +125,11 @@
     
       &lt;center&gt;&lt;a href=&quot;http://moviequotes.ex2tron.wang&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;moviequotes.ex2tron.wang&lt;/strong&gt;&lt;/a&gt;&lt;/center&gt;
 
-&lt;hr
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2018是感伤的一年，很多人离我们而去，太多的不开心…好在就要结束了。今天是最后一个工作日（其实在学校我每天都在放假(●ˇ∀ˇ●)），特送上一份小礼物给大家：&lt;a href=&quot;http://moviequotes.ex2tron.wang&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MovieQuotes&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
     
     </summary>
     
