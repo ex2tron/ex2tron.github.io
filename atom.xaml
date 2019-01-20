@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-01-20T13:12:42.350Z</updated>
+  <updated>2019-01-20T13:19:31.471Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>小技巧：在环境变量中隐藏密码和密钥等信息</title>
+    <title>使用环境变量避免在代码中写明密码和密钥等重要信息</title>
     <link href="http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/"/>
     <id>http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/</id>
     <published>2019-01-19T14:29:07.000Z</published>
-    <updated>2019-01-20T13:12:42.350Z</updated>
+    <updated>2019-01-20T13:19:31.471Z</updated>
     
     <content type="html"><![CDATA[<p>很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。<a id="more"></a>有很多隐藏密码的技巧，环境变量便是其中之一。</p>
 <hr>
