@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    ubuntu上安装windows10双系统步骤及常见问题 |
+    
+    ex2tron&#39;s Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="之前想装个Windows10+Ubuntu的双系统，网上有很多教程是Windows上怎么安装Ubuntu的，可我电脑TMD本身就是Ubuntu啊，在Ubuntu上安装Windows的资料相对较少，真是神坑。下面分享下我的教程：">
+<meta name="keywords" content="Build,Windows,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu上安装Windows10双系统步骤及常见问题">
+<meta property="og:url" content="http://ex2tron.wang/install-windows10-on-ubuntu/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Blog">
+<meta property="og:description" content="之前想装个Windows10+Ubuntu的双系统，网上有很多教程是Windows上怎么安装Ubuntu的，可我电脑TMD本身就是Ubuntu啊，在Ubuntu上安装Windows的资料相对较少，真是神坑。下面分享下我的教程：">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/ubuntu_windows_cover_image.jpg">
+<meta property="og:updated_time" content="2019-03-17T13:45:03.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu上安装Windows10双系统步骤及常见问题">
+<meta name="twitter:description" content="之前想装个Windows10+Ubuntu的双系统，网上有很多教程是Windows上怎么安装Ubuntu的，可我电脑TMD本身就是Ubuntu啊，在Ubuntu上安装Windows的资料相对较少，真是神坑。下面分享下我的教程：">
+<meta name="twitter:image" content="http://pic.ex2tron.top/ubuntu_windows_cover_image.jpg">
+  
+  <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Blog" rel="home"> ex2tron&#39;s Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Ubuntu上安装Windows10双系统步骤及常见问题" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/ubuntu_windows_cover_image.jpg" rel="gallery_cjtczs7n9002xmg597uv0dhi8">
+        <img src="http://pic.ex2tron.top/ubuntu_windows_cover_image.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Ubuntu上安装Windows10双系统步骤及常见问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/install-windows10-on-ubuntu/" class="article-date">
+	  <time datetime="2019-03-17T12:42:59.000Z" itemprop="datePublished">March 17, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前想装个Windows10+Ubuntu的双系统，网上有很多教程是Windows上怎么安装Ubuntu的，可我电脑TMD本身就是Ubuntu啊，在Ubuntu上安装Windows的资料相对较少，真是神坑。下面分享下我的教程：<a id="more"></a></p>
+<blockquote>
+<p><em>The world is full of lonely people waiting to make the first move.</em>  ——<a href="https://movie.douban.com/subject/27060077/" target="_blank" rel="external">《Green Book》</a><br><br><em>世界上有太多孤独的人害怕先踏出第一步。</em>——<a href="https://movie.douban.com/subject/27060077/" target="_blank" rel="external">《绿皮书》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<hr>
+<p>分区和安装有风险，不熟悉的同学请提前<strong>备份数据</strong>并<strong>谨慎操作</strong>！！！</p>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>分区是最为关键的步骤，一般有两种情况：</p>
+<ol>
+<li><p>你的电脑上已经有一个单独的不用的分区，比如有的电脑上是SSD+HDD的，这种情况下你可以将Windows直接安装在这个分区上，最后只要添加下引导就行。</p>
+</li>
+<li><p>如果不是上面的情况，也就是整个硬盘都在为Ubuntu所使用，就要分出一个区来：</p>
+</li>
+</ol>
+<p><strong>简单的分区方式（简单的不行可以看后面复杂的）</strong></p>
+<p>Ubuntu上安装<code>gparted</code>图形化分区工具：<code>sudo apt install gparted</code>。打开之后，选择要分区的区域，比如我要从<code>/dev/sda1</code>中分区，然后点击菜单栏的调整分区大小按钮：</p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_install_gparted.jpg" alt=""></p>
+<p>如果出来的界面某些项是灰色的（就像上图这样），说明不可以用这种方式分区。</p>
+<p><strong>略微复杂的方式</strong></p>
+<p>需要一个Ubuntu的U盘镜像（不必跟你原来的Ubuntu系统同版本），以普通的装机方式进入安装程序后，到安装类型这一步，千万不要乱选，一定要选<strong>其他选项</strong>：</p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_disk_part_with_install_ubuntu.jpg" alt=""></p>
+<p>然后选择你要分区的区域，点击下方的更改：</p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_disk_part_with_install_ubuntu2.jpg" alt=""></p>
+<p>在弹出的更改区域大小中，输入新分区的大小，点击OK，成功之后，<strong>就退出安装</strong>，不要再安装一个Ubuntu了：</p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_disk_part_with_install_ubuntu3.jpg" alt=""></p>
+<p>前面就实现了分区，但Windows的分区格式跟Ubuntu不一样，所以需要回到Ubuntu系统，打开gparted，将分区转换成ntfs格式，用于安装Windows：</p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_convert_ntfs2.jpg" alt=""></p>
+<h3 id="安装Windows"><a href="#安装Windows" class="headerlink" title="安装Windows"></a>安装Windows</h3><p>这一步就是正常的Windows安装流程（不赘述，安装的时候记得选择我们刚分好的区）</p>
+<h3 id="引导项修复"><a href="#引导项修复" class="headerlink" title="引导项修复"></a>引导项修复</h3><p>安装完Windows后，Ubuntu的引导项就不见了。最简单的方法是在Windows上安装使用<a href="https://neosmart.net/EasyBCD/" target="_blank" rel="external">EasyBCD</a>引导Ubuntu：</p>
+<p><strong>首先添加引导项，一定记得选Swap交换分区</strong></p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_boot_grub_add.jpg" alt=""></p>
+<p><strong><img src="http://pic.ex2tron.top/ubuntu_windows_boot_grub_add2.jpg" alt=""></strong></p>
+<p><strong>然后点击“编辑引导菜单”并保存设置</strong></p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_boot_grub_add3.jpg" alt=""></p>
+<p>这样就完成了全部安装流程。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>问题1：如果开机选择Ubuntu系统时出现：</strong></p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_cannot_bootin_ubuntu.jpg" alt=""></p>
+<p>解决方案：进入Windows系统，使用EasyBCD重新引导即可，具体步骤：</p>
+<ul>
+<li>先将原有的Ubuntu引导项删除</li>
+</ul>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_delete_boot_option.jpg" alt=""></p>
+<ul>
+<li>然后重复之前添加引导项的步骤即可。</li>
+</ul>
+<p><strong>问题2：使用刻录的Ubuntu U盘镜像安装系统时出现：</strong></p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_install_ubuntu_problem.jpg" alt=""></p>
+<p>解决方案：按下<strong>tab键</strong>，会弹出如下提示：</p>
+<p><img src="http://pic.ex2tron.top/ubuntu_windows_install_ubuntu_problem2.jpg" alt=""></p>
+<p>按照提示，输入<code>live live-install</code>回车即可。</p>
+<blockquote>
+<p>喜欢的朋友记得一键三连，转发评论打赏噢！(●ˇ∀ˇ●)</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Build/">Build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/hiding-passwds-secret-keys-in-environment-variables/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用环境变量避免在代码中写明密码和密钥等重要信息</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤"><span class="nav-number">1.</span> <span class="nav-text">安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分区"><span class="nav-number">1.1.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Windows"><span class="nav-number">1.2.</span> <span class="nav-text">安装Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引导项修复"><span class="nav-number">1.3.</span> <span class="nav-text">引导项修复</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">2.</span> <span class="nav-text">常见问题</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            2019
+              ex2tron&#39;s Blog All Rights Reserved.
+                
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>Hosted by
+              <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

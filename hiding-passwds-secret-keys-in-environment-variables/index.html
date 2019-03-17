@@ -33,7 +33,7 @@
 <meta property="og:description" content="很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/hiding_info_cover.jpg">
-<meta property="og:updated_time" content="2019-01-20T13:28:12.053Z">
+<meta property="og:updated_time" content="2019-01-20T13:36:44.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用环境变量避免在代码中写明密码和密钥等重要信息">
 <meta name="twitter:description" content="很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hiding_info_cover.jpg" rel="gallery_cjr4xtiet004i5k59j89lc6br">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hiding_info_cover.jpg" rel="gallery_cjtczs7nv0040mg59ap12x8x5">
         <img src="http://pic.ex2tron.top/hiding_info_cover.jpg" itemprop="image">
       </a>
     
@@ -217,7 +217,7 @@ var themeMenus = {};
 <p>我们看下如何使用环境变量隐藏这些信息：</p>
 <h2 id="Linux下隐藏方式"><a href="#Linux下隐藏方式" class="headerlink" title="Linux下隐藏方式"></a>Linux下隐藏方式</h2><p>Linux系统的运行是以各种可自由编辑的配置文件为基础的，以Ubuntu为例，我们可以编辑当前用户的终端配置文件<code>.bashrc</code>。</p>
 <blockquote>
-<p>大部分配置文件位于当前用户目录下，如果在其他的目录的话，可以直接输入cd快速切换。</p>
+<p>大部分配置文件位于当前用户目录下，如果在其他目录的话，可以直接输入cd快速切换。</p>
 </blockquote>
 <p>在<code>.bashrc</code>文件的末尾添加下面两句，注意等号左右无空格噢：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export DB_USER="ex2tron"</div><div class="line">export DB_PASSWD="ex2tron12345"</div></pre></td></tr></table></figure>
@@ -290,6 +290,15 @@ var themeMenus = {};
   
     
 <nav id="article-nav">
+  
+    <a href="/install-windows10-on-ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu上安装Windows10双系统步骤及常见问题
+        
+      </div>
+    </a>
   
   
     <a href="/what-will-be-just-let-it-go/" id="article-nav-older" class="article-nav-link-wrap">
