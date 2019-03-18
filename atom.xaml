@@ -3554,7 +3554,7 @@
     <link href="http://yoursite.com/hexo-blog-with-github-pages-4/"/>
     <id>http://yoursite.com/hexo-blog-with-github-pages-4/</id>
     <published>2017-09-13T14:11:12.000Z</published>
-    <updated>2019-03-18T15:29:31.596Z</updated>
+    <updated>2019-03-18T15:38:22.279Z</updated>
     
     <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。</p>
 <hr>
@@ -3610,6 +3610,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
 <p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下。此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，当然别忘了将你的域名解析到服务器IP噢，awesome！</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://ex2tron.wang/hexo-blog-with-github-pages-3/" target="_blank" rel="external">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
 <li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
 </ul>
 <blockquote>
@@ -3641,9 +3642,9 @@
     <link href="http://yoursite.com/hexo-blog-with-github-pages-3/"/>
     <id>http://yoursite.com/hexo-blog-with-github-pages-3/</id>
     <published>2017-09-13T13:25:24.000Z</published>
-    <updated>2019-03-18T15:09:59.156Z</updated>
+    <updated>2019-03-18T15:33:11.434Z</updated>
     
-    <content type="html"><![CDATA[<p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>嫌<code>username.github.io</code>不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
 <p><img src="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg" alt=""></p>
 <p>查找你想购买的域名，比如我购买<code>`ex2tron.top</code>这个域名。.top域名的价格还是很便宜的，划算：</p>
@@ -3669,7 +3670,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。
+      &lt;p&gt;嫌&lt;code&gt;username.github.io&lt;/code&gt;不够高大上？？那就来个高大上的独立域名吧。
     
     </summary>
     
