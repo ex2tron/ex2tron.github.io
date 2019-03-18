@@ -201,16 +201,16 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
 <p>查看git有没有安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version # 没安装的话：sudo apt install git</div></pre></td></tr></table></figure>
-<p>这里建议添加一个名为git的新用户，而不是直接使用root，当然直接使用root也木有问题。</p>
+<p>这里建议添加一个名为git的新用户，而不是直接使用root，当然直接使用root也木有问题的辣。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
 <p>切换到git用户，并新建用户目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd ~</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
-<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
+<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具，可参考：<a href="http://ex2tron.wang/how-to-use-ssh-on-windows10/" target="_blank" rel="external">如何使用Windows 10的OpenSSH Client和Server</a>）：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:/home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
 <p>这个时候可以退出ssh连接，并使用git用户直接登录了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
 <h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><blockquote>
-<p>此处可参考我之前的blog：<a href="http://ex2tron.wang/set-up-your-own-git-server/" target="_blank" rel="external">搭建自己的Github/Git服务器</a></p>
+<p>此处可参考我之前的Blog：<a href="http://ex2tron.wang/set-up-your-own-git-server/" target="_blank" rel="external">搭建自己的Github/Git服务器</a></p>
 </blockquote>
 <p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div><div class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</div></pre></td></tr></table></figure>
