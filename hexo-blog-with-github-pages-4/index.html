@@ -244,7 +244,7 @@ var themeMenus = {};
 <p>创建并编辑一个新的钩子文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo touch post-receive</div><div class="line">sudo vim post-receive</div></pre></td></tr></table></figure>
 <p>在其中加入两行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
 <p>赋予可执行权限给文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x post-receive</div></pre></td></tr></table></figure>
 <p>保证git用户有权限访问<code>/var/www/html/</code>目录</p>
