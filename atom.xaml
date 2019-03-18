@@ -3554,18 +3554,18 @@
     <link href="47.101.182.43/hexo-blog-with-github-pages-4/"/>
     <id>47.101.182.43/hexo-blog-with-github-pages-4/</id>
     <published>2017-09-13T14:11:12.000Z</published>
-    <updated>2019-03-18T13:52:31.479Z</updated>
+    <updated>2019-03-18T14:29:41.456Z</updated>
     
     <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。</p>
 <hr>
 <p>前面我们购买了独立域名<code>www.ex2tron.top</code>，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！</p>
 <blockquote>
-<p>说明：我以之前购买过一台阿里云服务器为例，并且之前我已经使用了apache部署了一个web引用，而不是使用nginx，不过部署流程都类似。</p>
+<p>说明：以阿里云服务器为例，之前我已经使用了apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。也可以使用nginx，部署流程都类似。</p>
 </blockquote>
 <h2 id="服务器环境配置"><a href="#服务器环境配置" class="headerlink" title="服务器环境配置"></a>服务器环境配置</h2><p>用<code>ssh user@ip</code>连接到服务器后，先更新下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
-<p>安装git和apache：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt install git</div><div class="line">sudo apt install apache2</div></pre></td></tr></table></figure>
+<p>查看git有没有安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version # 没安装的话：sudo apt install git</div></pre></td></tr></table></figure>
 <p>这里建议添加一个git的新用户，而不是直接使用root账号，当然直接使用root也木有问题。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
 <p>切换到git用户，并新建用户目录：</p>
@@ -3575,12 +3575,34 @@
 <p>这个时候可以退出ssh连接，并使用git用户登录了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
 <h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div><div class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</div></pre></td></tr></table></figure>
 <p>接下来需要修改本地hexo的配置文件<code>_config.yml</code>。首先url更改为你的服务器ip：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: 47.101.xxx.xxx</div></pre></td></tr></table></figure>
 <p>然后修改deploy选项，如果你将博客推送到多个地方的话，直接新增一条就行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@47.101.182.43:/home/git/hexoblog.git</div></pre></td></tr></table></figure>
 <p>现在可以运行<code>hexo g -d</code>正常push了。</p>
+<p>如果<code>hexo d</code>推送的时候出现如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">remote: fatal: Unable to create temporary file &apos;/home/git/hexoblog.git/./objects/pack/tmp_pack_XXXXXX&apos;: Permission denied</div><div class="line">fatal: sha1 file &apos;&lt;stdout&gt;&apos; write error: Broken pipe</div></pre></td></tr></table></figure>
+<p>这就是git权限的原因，你有可能少执行了这句话噢：<code>sudo chown -R git:git hexoblog.git</code></p>
+<h2 id="apache2配置"><a href="#apache2配置" class="headerlink" title="apache2配置"></a>apache2配置</h2><p>首先自然是安装apache2咯：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install apache2</div></pre></td></tr></table></figure>
+<p>在<code>/var/www/</code>下面创建网站的根目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/www/html/hexoblog</div></pre></td></tr></table></figure>
+<p>正常来说，这是我们第一次使用apache配置，后面会讲到我的情况。编辑apache2的配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apache2/sites-available/000-default.conf</div></pre></td></tr></table></figure>
+<p>找到<code>DocumentRoot</code>项，并做如下更改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DocumentRoot /var/www/html/hexoblog</div></pre></td></tr></table></figure>
+<p>最后重启apache生效：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
+<p>前面提到过，我已经在apache2配置过一个web应用和域名了，这个时候可以在conf文件中新增一项配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># 之前的：</div><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">	......</div><div class="line">&lt;/VirtualHost&gt;</div><div class="line"># 新增的：</div><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">        ServerName www.ex2tron.top</div><div class="line">        ServerAlias www.ex2tron.top</div><div class="line">        DocumentRoot /var/www/html/hexoblog/</div><div class="line">        &lt;Directory &quot;/var/www/html/hexoblog/&quot;&gt;</div><div class="line">                Order deny,allow</div><div class="line">                Allow from all</div><div class="line">        &lt;/Directory&gt;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+<h2 id="创建Git钩子"><a href="#创建Git钩子" class="headerlink" title="创建Git钩子"></a>创建Git钩子</h2><p>现在远程仓库创建好了，但是需要将Hexo的静态HTML文件传送到<code>/var/www/html/hexoblog</code>下面才行。切换到远程仓库hexoblog下面：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /home/git/hexoblog.git/hooks/</div></pre></td></tr></table></figure>
+<p>创建并编辑一个新的钩子文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo touch post-receive</div><div class="line">sudo vim post-receive</div></pre></td></tr></table></figure>
+<p>在其中加入两行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
+<p>保证git用户有权限访问<code>/var/www/html/</code>目录</p>
 <p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
 <p><img src="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg" alt=""></p>
@@ -3597,12 +3619,12 @@
 &lt;hr&gt;
 &lt;p&gt;前面我们购买了独立域名&lt;code&gt;www.ex2tron.top&lt;/code&gt;，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;说明：我以之前购买过一台阿里云服务器为例，并且之前我已经使用了apache部署了一个web引用，而不是使用nginx，不过部署流程都类似。&lt;/p&gt;
+&lt;p&gt;说明：以阿里云服务器为例，之前我已经使用了apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。也可以使用nginx，部署流程都类似。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;服务器环境配置&quot;&gt;&lt;a href=&quot;#服务器环境配置&quot; class=&quot;headerlink&quot; title=&quot;服务器环境配置&quot;&gt;&lt;/a&gt;服务器环境配置&lt;/h2&gt;&lt;p&gt;用&lt;code&gt;ssh user@ip&lt;/code&gt;连接到服务器后，先更新下：&lt;/p&gt;
 &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt update&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt upgrade&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;安装git和apache：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt install git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt install apache2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;查看git有没有安装：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git --version # 没安装的话：sudo apt install git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;这里建议添加一个git的新用户，而不是直接使用root账号，当然直接使用root也木有问题。&lt;/p&gt;
 &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;adduser git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;adduser ex2tron sudo # 添加到sudo中&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;切换到git用户，并新建用户目录：&lt;/p&gt;
@@ -3612,12 +3634,34 @@
 &lt;p&gt;这个时候可以退出ssh连接，并使用git用户登录了：&lt;/p&gt;
 &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ssh git@ip&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;Git远程仓库及同步&quot;&gt;&lt;a href=&quot;#Git远程仓库及同步&quot; class=&quot;headerlink&quot; title=&quot;Git远程仓库及同步&quot;&gt;&lt;/a&gt;Git远程仓库及同步&lt;/h2&gt;&lt;p&gt;跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;mkdir /home/git/hexoblog.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd /home/git/hexoblog.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git init --bare # 初始化仓库&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;mkdir /home/git/hexoblog.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd /home/git/hexoblog.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git init --bare # 初始化仓库&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;接下来需要修改本地hexo的配置文件&lt;code&gt;_config.yml&lt;/code&gt;。首先url更改为你的服务器ip：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;url: 47.101.xxx.xxx&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;然后修改deploy选项，如果你将博客推送到多个地方的话，直接新增一条就行：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;deploy:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- type: git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  repo: git@47.101.182.43:/home/git/hexoblog.git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;现在可以运行&lt;code&gt;hexo g -d&lt;/code&gt;正常push了。&lt;/p&gt;
+&lt;p&gt;如果&lt;code&gt;hexo d&lt;/code&gt;推送的时候出现如下错误：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;remote: fatal: Unable to create temporary file &amp;apos;/home/git/hexoblog.git/./objects/pack/tmp_pack_XXXXXX&amp;apos;: Permission denied&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fatal: sha1 file &amp;apos;&amp;lt;stdout&amp;gt;&amp;apos; write error: Broken pipe&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这就是git权限的原因，你有可能少执行了这句话噢：&lt;code&gt;sudo chown -R git:git hexoblog.git&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;apache2配置&quot;&gt;&lt;a href=&quot;#apache2配置&quot; class=&quot;headerlink&quot; title=&quot;apache2配置&quot;&gt;&lt;/a&gt;apache2配置&lt;/h2&gt;&lt;p&gt;首先自然是安装apache2咯：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt install apache2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在&lt;code&gt;/var/www/&lt;/code&gt;下面创建网站的根目录：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo mkdir /var/www/html/hexoblog&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;正常来说，这是我们第一次使用apache配置，后面会讲到我的情况。编辑apache2的配置文件：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo vim /etc/apache2/sites-available/000-default.conf&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;找到&lt;code&gt;DocumentRoot&lt;/code&gt;项，并做如下更改：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;DocumentRoot /var/www/html/hexoblog&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;最后重启apache生效：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo service apache2 restart&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;前面提到过，我已经在apache2配置过一个web应用和域名了，这个时候可以在conf文件中新增一项配置：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;# 之前的：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	......&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# 新增的：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ServerName www.ex2tron.top&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ServerAlias www.ex2tron.top&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        DocumentRoot /var/www/html/hexoblog/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;Directory &amp;quot;/var/www/html/hexoblog/&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                Order deny,allow&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                Allow from all&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;/Directory&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;创建Git钩子&quot;&gt;&lt;a href=&quot;#创建Git钩子&quot; class=&quot;headerlink&quot; title=&quot;创建Git钩子&quot;&gt;&lt;/a&gt;创建Git钩子&lt;/h2&gt;&lt;p&gt;现在远程仓库创建好了，但是需要将Hexo的静态HTML文件传送到&lt;code&gt;/var/www/html/hexoblog&lt;/code&gt;下面才行。切换到远程仓库hexoblog下面：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;cd /home/git/hexoblog.git/hooks/&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;创建并编辑一个新的钩子文件：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo touch post-receive&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo vim post-receive&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在其中加入两行：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt;!/bin/bash&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;保证git用户有权限访问&lt;code&gt;/var/www/html/&lt;/code&gt;目录&lt;/p&gt;
 &lt;p&gt;嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。
     
     </summary>
