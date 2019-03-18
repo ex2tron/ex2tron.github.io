@@ -13,7 +13,7 @@
   
   <title>
     
-    hexo+github pages轻松搭博客(3)：绑定独立域名 |
+    hexo+github pages轻松搭博客(4)：自有服务器部署 |
     
     ex2tron&#39;s Blog
   </title>
@@ -24,24 +24,21 @@
   
   
   
-  <meta name="description" content="嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。">
-<meta name="keywords" content="Hexo,Github">
+  <meta name="description" content="将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：我以之前购买过一台阿里云服务器为例，">
+<meta name="keywords" content="Hexo,Github,阿里云">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo+Github Pages轻松搭博客(3)：绑定独立域名">
-<meta property="og:url" content="47.101.182.43/hexo-blog-with-github-pages-3/index.html">
+<meta property="og:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
+<meta property="og:url" content="47.101.182.43/hexo-blog-with-github-pages-4/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。">
+<meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：我以之前购买过一台阿里云服务器为例，">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_wanwang_top_domain_price.png">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_dns_domain_aliyun_navigation.jpg">
-<meta property="og:image" content="http://pic.ex2tron.top/hexo_add_new_dns_for_new_domain.jpg">
-<meta property="og:image" content="http://pic.ex2tron.top/hexo_github_dns_domain_settings.jpg">
-<meta property="og:image" content="http://pic.ex2tron.top/hexo_source_directory_cname_file.jpg">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.374Z">
+<meta property="og:updated_time" content="2019-03-18T13:52:31.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(3)：绑定独立域名">
-<meta name="twitter:description" content="嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。">
+<meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
+<meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：我以之前购买过一台阿里云服务器为例，">
 <meta name="twitter:image" content="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg">
   
   <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
@@ -178,7 +175,7 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Hexo-Github-Pages轻松搭博客-3：绑定独立域名" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Hexo-Github-Pages轻松搭博客-4-：自有服务器部署" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -186,7 +183,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hexo+Github Pages轻松搭博客(3)：绑定独立域名
+      Hexo+Github Pages轻松搭博客(4)：自有服务器部署
     </h1>
   
 
@@ -194,15 +191,40 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/hexo-blog-with-github-pages-3/" class="article-date">
-	  <time datetime="2017-09-13T13:25:24.000Z" itemprop="datePublished">September 13, 2017</time>
+	Posted on <a href="/hexo-blog-with-github-pages-4/" class="article-date">
+	  <time datetime="2017-09-13T14:11:12.000Z" itemprop="datePublished">September 13, 2017</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
+        <p>将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。</p>
+<hr>
+<p>前面我们购买了独立域名<code>www.ex2tron.top</code>，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！</p>
+<blockquote>
+<p>说明：我以之前购买过一台阿里云服务器为例，并且之前我已经使用了apache部署了一个web引用，而不是使用nginx，不过部署流程都类似。</p>
+</blockquote>
+<h2 id="服务器环境配置"><a href="#服务器环境配置" class="headerlink" title="服务器环境配置"></a>服务器环境配置</h2><p>用<code>ssh user@ip</code>连接到服务器后，先更新下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
+<p>安装git和apache：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt install git</div><div class="line">sudo apt install apache2</div></pre></td></tr></table></figure>
+<p>这里建议添加一个git的新用户，而不是直接使用root账号，当然直接使用root也木有问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
+<p>切换到git用户，并新建用户目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd ~</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
+<p>然后将本地PC上ssh的id_rsa.pub内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:~/.git/authorized_keys</div></pre></td></tr></table></figure>
+<p>这个时候可以退出ssh连接，并使用git用户登录了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
+<h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div></pre></td></tr></table></figure>
+<p>接下来需要修改本地hexo的配置文件<code>_config.yml</code>。首先url更改为你的服务器ip：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: 47.101.xxx.xxx</div></pre></td></tr></table></figure>
+<p>然后修改deploy选项，如果你将博客推送到多个地方的话，直接新增一条就行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@47.101.182.43:/home/git/hexoblog.git</div></pre></td></tr></table></figure>
+<p>现在可以运行<code>hexo g -d</code>正常push了。</p>
+<p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
 <p><img src="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg" alt=""></p>
 <p>查找你想购买的域名，比如我购买<code>`ex2tron.top</code>这个域名。.top域名的价格还是很便宜的，划算：</p>
@@ -210,20 +232,6 @@ var themeMenus = {};
 <p>购买需要登陆阿里云的账号。购买成功后，按照提示进行实名认证和拍照备案，认证过程需要几天。</p>
 <h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名认证完成后，登陆<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云控制台</a>，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：</p>
 <p><img src="http://pic.ex2tron.top/hexo_dns_domain_aliyun_navigation.jpg" alt=""></p>
-<p>选择你的域名，点击”解析设置”，我们添加三条解析：</p>
-<ul>
-<li>记录类型：CNAME，主机记录：www，路线：默认，记录值：<code>username.github.io</code></li>
-<li>记录类型：A，主机记录：@，路线：默认，记录值：<code>192.30.252.153</code></li>
-<li>记录类型：A，主机记录：@，路线：默认，记录值：<code>192.30.252.154</code></li>
-</ul>
-<p><img src="http://pic.ex2tron.top/hexo_add_new_dns_for_new_domain.jpg" alt=""></p>
-<p>（图上文字小的话，可以点击查看大图）</p>
-<p><img src="http://pic.ex2tron.top/hexo_github_dns_domain_settings.jpg" alt=""></p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>设置完成后，在本地的hexo博客的source目录下，新建一个名为CNAME的文件（没有任何后缀），编辑文件内容为你的域名，如<code>ex2tron.top</code>。这里如果在域名上加<code>www</code>的话，访问时会跳转到<code>www.ex2tron.top</code>，为了简洁起见，我这里就不加了。</p>
-<p><img src="http://pic.ex2tron.top/hexo_source_directory_cname_file.jpg" alt=""></p>
-<p>配置完成后，重新发布博客就可以用独立域名<a href="http://ex2tron.top" target="_blank" rel="external">ex2tron.top</a>来访问博客辣( •̀ ω •́ )✧：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://blog.csdn.net/linshuhe1/article/details/73013730" target="_blank" rel="external">Hexo个人免费博客(五) 使用自己的域名</a></p>
 
       
     </div>
@@ -234,7 +242,7 @@ var themeMenus = {};
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阿里云/">阿里云</a></li></ul>
 
       
         <div id="donation_div"></div>
@@ -283,19 +291,19 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/hexo-blog-with-github-pages-4/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/tools-qiniuyun/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Hexo+Github Pages轻松搭博客(4)：自有服务器部署
+          【利器篇】七牛云——用做每月免费10G的图床
         
       </div>
     </a>
   
   
-    <a href="/hexo-blog-with-github-pages-2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/hexo-blog-with-github-pages-3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo+Github Pages轻松搭博客(2)：在Github上部署</div>
+      <div class="article-nav-title">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</div>
     </a>
   
 </nav>
@@ -309,7 +317,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#购买域名"><span class="nav-number">1.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名解析"><span class="nav-number">2.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">3.</span> <span class="nav-text">绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器环境配置"><span class="nav-number">1.</span> <span class="nav-text">服务器环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git远程仓库及同步"><span class="nav-number">2.</span> <span class="nav-text">Git远程仓库及同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#购买域名"><span class="nav-number">3.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名解析"><span class="nav-number">4.</span> <span class="nav-text">域名解析</span></a></li></ol>
     
     </div>
   </aside>
