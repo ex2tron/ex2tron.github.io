@@ -24,19 +24,19 @@
   
   
   
-  <meta name="description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：我以阿里云服务器为例，之前我已经使用a">
+  <meta name="description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：以阿里云服务器为例，之前我已经使用ap">
 <meta name="keywords" content="Hexo,Github,阿里云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
 <meta property="og:url" content="http://yoursite.com/hexo-blog-with-github-pages-4/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：我以阿里云服务器为例，之前我已经使用a">
+<meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：以阿里云服务器为例，之前我已经使用ap">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
-<meta property="og:updated_time" content="2019-03-18T15:24:36.943Z">
+<meta property="og:updated_time" content="2019-03-18T15:29:31.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
-<meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：我以阿里云服务器为例，之前我已经使用a">
+<meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：以阿里云服务器为例，之前我已经使用ap">
 <meta name="twitter:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
   
   <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjtei2rkj000bcs59imkdekub">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjtei8yvw000bak59v5zl9mhc">
         <img src="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" itemprop="image">
       </a>
     
@@ -211,8 +211,8 @@ var themeMenus = {};
 <hr>
 <p>前面我们购买了独立域名<code>www.ex2tron.top</code>，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！</p>
 <blockquote>
-<p>说明：我以阿里云服务器为例，之前我已经使用apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。当然你也可以使用nginx，部署流程都类似。</p>
-<p><strong>友情广告下那个web应用：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+<p>说明：以阿里云服务器为例，之前我已经使用apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。当然你也可以使用nginx，部署流程都类似。</p>
+<p><strong>友情广告下这个应用：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
 </blockquote>
 <h2 id="服务器环境配置"><a href="#服务器环境配置" class="headerlink" title="服务器环境配置"></a>服务器环境配置</h2><p>用<code>ssh user@ip</code>连接到服务器后，先更新下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
