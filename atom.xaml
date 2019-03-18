@@ -4,9 +4,9 @@
   <subtitle>Excelsior!</subtitle>
   <link href="/atom.xaml" rel="self"/>
   
-  <link href="47.101.182.43/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2019-03-17T14:25:22.170Z</updated>
-  <id>47.101.182.43/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>Tony Wong</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Ubuntu上安装Windows10双系统步骤及常见问题</title>
-    <link href="47.101.182.43/install-windows10-on-ubuntu/"/>
-    <id>47.101.182.43/install-windows10-on-ubuntu/</id>
+    <link href="http://yoursite.com/install-windows10-on-ubuntu/"/>
+    <id>http://yoursite.com/install-windows10-on-ubuntu/</id>
     <published>2019-03-17T12:42:59.000Z</published>
     <updated>2019-03-17T14:25:22.170Z</updated>
     
@@ -83,21 +83,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="47.101.182.43/tags/Build/"/>
+      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
     
-      <category term="Windows" scheme="47.101.182.43/tags/Windows/"/>
+      <category term="Windows" scheme="http://yoursite.com/tags/Windows/"/>
     
-      <category term="Ubuntu" scheme="47.101.182.43/tags/Ubuntu/"/>
+      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
     
   </entry>
   
   <entry>
     <title>使用环境变量避免在代码中写明密码和密钥等重要信息</title>
-    <link href="47.101.182.43/hiding-passwds-secret-keys-in-environment-variables/"/>
-    <id>47.101.182.43/hiding-passwds-secret-keys-in-environment-variables/</id>
+    <link href="http://yoursite.com/hiding-passwds-secret-keys-in-environment-variables/"/>
+    <id>http://yoursite.com/hiding-passwds-secret-keys-in-environment-variables/</id>
     <published>2019-01-19T14:29:07.000Z</published>
     <updated>2019-01-20T13:36:44.847Z</updated>
     
@@ -134,21 +134,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="47.101.182.43/tags/Build/"/>
+      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
     
-      <category term="hiding-info" scheme="47.101.182.43/tags/hiding-info/"/>
+      <category term="hiding-info" scheme="http://yoursite.com/tags/hiding-info/"/>
     
-      <category term="environment-variables" scheme="47.101.182.43/tags/environment-variables/"/>
+      <category term="environment-variables" scheme="http://yoursite.com/tags/environment-variables/"/>
     
   </entry>
   
   <entry>
     <title>No giving and expecting, no hurt and disappointment.</title>
-    <link href="47.101.182.43/what-will-be-just-let-it-go/"/>
-    <id>47.101.182.43/what-will-be-just-let-it-go/</id>
+    <link href="http://yoursite.com/what-will-be-just-let-it-go/"/>
+    <id>http://yoursite.com/what-will-be-just-let-it-go/</id>
     <published>2019-01-14T09:34:37.000Z</published>
     <updated>2019-03-17T13:34:27.883Z</updated>
     
@@ -163,17 +163,17 @@
     
     </summary>
     
-      <category term="五味杂粮" scheme="47.101.182.43/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
+      <category term="五味杂粮" scheme="http://yoursite.com/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
     
     
-      <category term="life" scheme="47.101.182.43/tags/life/"/>
+      <category term="life" scheme="http://yoursite.com/tags/life/"/>
     
   </entry>
   
   <entry>
     <title>如何使用Windows 10的OpenSSH Client和Server</title>
-    <link href="47.101.182.43/how-to-use-ssh-on-windows10/"/>
-    <id>47.101.182.43/how-to-use-ssh-on-windows10/</id>
+    <link href="http://yoursite.com/how-to-use-ssh-on-windows10/"/>
+    <id>http://yoursite.com/how-to-use-ssh-on-windows10/</id>
     <published>2019-01-02T13:00:54.000Z</published>
     <updated>2019-01-19T14:46:48.646Z</updated>
     
@@ -218,23 +218,23 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="47.101.182.43/tags/Build/"/>
+      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
     
-      <category term="Windows10" scheme="47.101.182.43/tags/Windows10/"/>
+      <category term="Windows10" scheme="http://yoursite.com/tags/Windows10/"/>
     
-      <category term="SSH" scheme="47.101.182.43/tags/SSH/"/>
+      <category term="SSH" scheme="http://yoursite.com/tags/SSH/"/>
     
-      <category term="SSH-Server" scheme="47.101.182.43/tags/SSH-Server/"/>
+      <category term="SSH-Server" scheme="http://yoursite.com/tags/SSH-Server/"/>
     
   </entry>
   
   <entry>
     <title>2018最后一个工作日，一份小礼物</title>
-    <link href="47.101.182.43/a-gift-for-2019-moviequotes/"/>
-    <id>47.101.182.43/a-gift-for-2019-moviequotes/</id>
+    <link href="http://yoursite.com/a-gift-for-2019-moviequotes/"/>
+    <id>http://yoursite.com/a-gift-for-2019-moviequotes/</id>
     <published>2018-12-29T10:00:31.000Z</published>
     <updated>2019-01-15T15:56:21.666Z</updated>
     
@@ -263,21 +263,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="47.101.182.43/tags/Build/"/>
+      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
     
-      <category term="Django" scheme="47.101.182.43/tags/Django/"/>
+      <category term="Django" scheme="http://yoursite.com/tags/Django/"/>
     
-      <category term="电影台词" scheme="47.101.182.43/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/"/>
+      <category term="电影台词" scheme="http://yoursite.com/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
     <title>【片单】推荐几部优秀的传记电影</title>
-    <link href="47.101.182.43/movie-biopic-collections/"/>
-    <id>47.101.182.43/movie-biopic-collections/</id>
+    <link href="http://yoursite.com/movie-biopic-collections/"/>
+    <id>http://yoursite.com/movie-biopic-collections/</id>
     <published>2018-03-15T05:46:50.000Z</published>
     <updated>2018-11-02T02:51:48.377Z</updated>
     
@@ -319,17 +319,17 @@
     
     </summary>
     
-      <category term="谈电影" scheme="47.101.182.43/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="传记片" scheme="47.101.182.43/tags/%E4%BC%A0%E8%AE%B0%E7%89%87/"/>
+      <category term="传记片" scheme="http://yoursite.com/tags/%E4%BC%A0%E8%AE%B0%E7%89%87/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程挑战任务：车道检测</title>
-    <link href="47.101.182.43/opencv-python-lane-road-detection/"/>
-    <id>47.101.182.43/opencv-python-lane-road-detection/</id>
+    <link href="http://yoursite.com/opencv-python-lane-road-detection/"/>
+    <id>http://yoursite.com/opencv-python-lane-road-detection/</id>
     <published>2017-12-28T03:38:11.000Z</published>
     <updated>2018-12-02T13:11:54.989Z</updated>
     
@@ -410,23 +410,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="车道检测" scheme="47.101.182.43/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/"/>
+      <category term="车道检测" scheme="http://yoursite.com/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程17：霍夫变换</title>
-    <link href="47.101.182.43/opencv-python-hough-transform/"/>
-    <id>47.101.182.43/opencv-python-hough-transform/</id>
+    <link href="http://yoursite.com/opencv-python-hough-transform/"/>
+    <id>http://yoursite.com/opencv-python-hough-transform/</id>
     <published>2017-12-28T03:35:11.000Z</published>
     <updated>2018-11-27T12:01:37.467Z</updated>
     
@@ -498,23 +498,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="霍夫变换" scheme="47.101.182.43/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"/>
+      <category term="霍夫变换" scheme="http://yoursite.com/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程16：模板匹配</title>
-    <link href="47.101.182.43/opencv-python-template-matching/"/>
-    <id>47.101.182.43/opencv-python-template-matching/</id>
+    <link href="http://yoursite.com/opencv-python-template-matching/"/>
+    <id>http://yoursite.com/opencv-python-template-matching/</id>
     <published>2017-12-27T08:45:31.000Z</published>
     <updated>2018-11-27T11:47:00.550Z</updated>
     
@@ -579,23 +579,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="模板匹配" scheme="47.101.182.43/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/"/>
+      <category term="模板匹配" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程15：直方图</title>
-    <link href="47.101.182.43/opencv-python-histograms/"/>
-    <id>47.101.182.43/opencv-python-histograms/</id>
+    <link href="http://yoursite.com/opencv-python-histograms/"/>
+    <id>http://yoursite.com/opencv-python-histograms/</id>
     <published>2017-12-23T09:48:30.000Z</published>
     <updated>2018-11-27T11:30:07.007Z</updated>
     
@@ -679,23 +679,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="直方图" scheme="47.101.182.43/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
+      <category term="直方图" scheme="http://yoursite.com/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程14：轮廓特征</title>
-    <link href="47.101.182.43/opencv-python-contour-features/"/>
-    <id>47.101.182.43/opencv-python-contour-features/</id>
+    <link href="http://yoursite.com/opencv-python-contour-features/"/>
+    <id>http://yoursite.com/opencv-python-contour-features/</id>
     <published>2017-12-20T10:46:19.000Z</published>
     <updated>2018-11-27T11:16:51.590Z</updated>
     
@@ -762,23 +762,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="轮廓" scheme="47.101.182.43/tags/%E8%BD%AE%E5%BB%93/"/>
+      <category term="轮廓" scheme="http://yoursite.com/tags/%E8%BD%AE%E5%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇11：凸包及更多轮廓特征</title>
-    <link href="47.101.182.43/opencv-python-extra-convex-hull/"/>
-    <id>47.101.182.43/opencv-python-extra-convex-hull/</id>
+    <link href="http://yoursite.com/opencv-python-extra-convex-hull/"/>
+    <id>http://yoursite.com/opencv-python-extra-convex-hull/</id>
     <published>2017-12-20T05:41:11.000Z</published>
     <updated>2018-11-27T11:20:50.247Z</updated>
     
@@ -815,23 +815,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="凸包" scheme="47.101.182.43/tags/%E5%87%B8%E5%8C%85/"/>
+      <category term="凸包" scheme="http://yoursite.com/tags/%E5%87%B8%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇10：轮廓层级</title>
-    <link href="47.101.182.43/opencv-python-extra-contours-hierarchy/"/>
-    <id>47.101.182.43/opencv-python-extra-contours-hierarchy/</id>
+    <link href="http://yoursite.com/opencv-python-extra-contours-hierarchy/"/>
+    <id>http://yoursite.com/opencv-python-extra-contours-hierarchy/</id>
     <published>2017-12-20T04:41:11.000Z</published>
     <updated>2018-11-27T10:56:12.299Z</updated>
     
@@ -906,23 +906,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="轮廓层级" scheme="47.101.182.43/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
+      <category term="轮廓层级" scheme="http://yoursite.com/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程13：轮廓</title>
-    <link href="47.101.182.43/opencv-python-contours/"/>
-    <id>47.101.182.43/opencv-python-contours/</id>
+    <link href="http://yoursite.com/opencv-python-contours/"/>
+    <id>http://yoursite.com/opencv-python-contours/</id>
     <published>2017-12-20T01:44:23.000Z</published>
     <updated>2018-11-27T11:03:06.885Z</updated>
     
@@ -972,23 +972,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="轮廓" scheme="47.101.182.43/tags/%E8%BD%AE%E5%BB%93/"/>
+      <category term="轮廓" scheme="http://yoursite.com/tags/%E8%BD%AE%E5%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程12：腐蚀与膨胀</title>
-    <link href="47.101.182.43/opencv-python-erode-and-dilate/"/>
-    <id>47.101.182.43/opencv-python-erode-and-dilate/</id>
+    <link href="http://yoursite.com/opencv-python-erode-and-dilate/"/>
+    <id>http://yoursite.com/opencv-python-erode-and-dilate/</id>
     <published>2017-12-19T12:52:23.000Z</published>
     <updated>2018-11-27T11:03:50.125Z</updated>
     
@@ -1056,27 +1056,27 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="腐蚀" scheme="47.101.182.43/tags/%E8%85%90%E8%9A%80/"/>
+      <category term="腐蚀" scheme="http://yoursite.com/tags/%E8%85%90%E8%9A%80/"/>
     
-      <category term="膨胀" scheme="47.101.182.43/tags/%E8%86%A8%E8%83%80/"/>
+      <category term="膨胀" scheme="http://yoursite.com/tags/%E8%86%A8%E8%83%80/"/>
     
-      <category term="形态学" scheme="47.101.182.43/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/"/>
+      <category term="形态学" scheme="http://yoursite.com/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程11：边缘检测</title>
-    <link href="47.101.182.43/opencv-python-edge-detection/"/>
-    <id>47.101.182.43/opencv-python-edge-detection/</id>
+    <link href="http://yoursite.com/opencv-python-edge-detection/"/>
+    <id>http://yoursite.com/opencv-python-edge-detection/</id>
     <published>2017-12-18T09:11:48.000Z</published>
     <updated>2018-11-26T14:10:20.553Z</updated>
     
@@ -1138,25 +1138,25 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="边缘" scheme="47.101.182.43/tags/%E8%BE%B9%E7%BC%98/"/>
+      <category term="边缘" scheme="http://yoursite.com/tags/%E8%BE%B9%E7%BC%98/"/>
     
-      <category term="Canny" scheme="47.101.182.43/tags/Canny/"/>
+      <category term="Canny" scheme="http://yoursite.com/tags/Canny/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇9：图像梯度</title>
-    <link href="47.101.182.43/opencv-python-extra-image-gradients/"/>
-    <id>47.101.182.43/opencv-python-extra-image-gradients/</id>
+    <link href="http://yoursite.com/opencv-python-extra-image-gradients/"/>
+    <id>http://yoursite.com/opencv-python-extra-image-gradients/</id>
     <published>2017-12-18T02:51:43.000Z</published>
     <updated>2018-11-26T14:09:07.566Z</updated>
     
@@ -1221,25 +1221,25 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="梯度" scheme="47.101.182.43/tags/%E6%A2%AF%E5%BA%A6/"/>
+      <category term="梯度" scheme="http://yoursite.com/tags/%E6%A2%AF%E5%BA%A6/"/>
     
-      <category term="Sobel" scheme="47.101.182.43/tags/Sobel/"/>
+      <category term="Sobel" scheme="http://yoursite.com/tags/Sobel/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程10：平滑图像</title>
-    <link href="47.101.182.43/opencv-python-smoothing-images/"/>
-    <id>47.101.182.43/opencv-python-smoothing-images/</id>
+    <link href="http://yoursite.com/opencv-python-smoothing-images/"/>
+    <id>http://yoursite.com/opencv-python-smoothing-images/</id>
     <published>2017-12-15T01:44:24.000Z</published>
     <updated>2018-11-26T08:51:03.803Z</updated>
     
@@ -1317,23 +1317,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="模糊" scheme="47.101.182.43/tags/%E6%A8%A1%E7%B3%8A/"/>
+      <category term="模糊" scheme="http://yoursite.com/tags/%E6%A8%A1%E7%B3%8A/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇8：卷积基础(图片边框)</title>
-    <link href="47.101.182.43/opencv-python-extra-padding-and-convolution/"/>
-    <id>47.101.182.43/opencv-python-extra-padding-and-convolution/</id>
+    <link href="http://yoursite.com/opencv-python-extra-padding-and-convolution/"/>
+    <id>http://yoursite.com/opencv-python-extra-padding-and-convolution/</id>
     <published>2017-12-14T08:27:45.000Z</published>
     <updated>2018-11-27T10:23:13.263Z</updated>
     
@@ -1390,23 +1390,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="卷积" scheme="47.101.182.43/tags/%E5%8D%B7%E7%A7%AF/"/>
+      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程9：图像混合</title>
-    <link href="47.101.182.43/opencv-python-image-blending/"/>
-    <id>47.101.182.43/opencv-python-image-blending/</id>
+    <link href="http://yoursite.com/opencv-python-image-blending/"/>
+    <id>http://yoursite.com/opencv-python-image-blending/</id>
     <published>2017-12-10T06:13:10.000Z</published>
     <updated>2018-11-26T07:09:15.316Z</updated>
     
@@ -1455,23 +1455,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="图像混合" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
+      <category term="图像混合" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇7：亮度与对比度</title>
-    <link href="47.101.182.43/opencv-python-extra-contrast-brightness/"/>
-    <id>47.101.182.43/opencv-python-extra-contrast-brightness/</id>
+    <link href="http://yoursite.com/opencv-python-extra-contrast-brightness/"/>
+    <id>http://yoursite.com/opencv-python-extra-contrast-brightness/</id>
     <published>2017-12-10T06:05:10.000Z</published>
     <updated>2018-11-26T07:48:31.783Z</updated>
     
@@ -1506,25 +1506,25 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="亮度" scheme="47.101.182.43/tags/%E4%BA%AE%E5%BA%A6/"/>
+      <category term="亮度" scheme="http://yoursite.com/tags/%E4%BA%AE%E5%BA%A6/"/>
     
-      <category term="对比度" scheme="47.101.182.43/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
+      <category term="对比度" scheme="http://yoursite.com/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程拓展挑战：PyQt编写GUI界面</title>
-    <link href="47.101.182.43/opencv-python-using-pyqt5-create-gui/"/>
-    <id>47.101.182.43/opencv-python-using-pyqt5-create-gui/</id>
+    <link href="http://yoursite.com/opencv-python-using-pyqt5-create-gui/"/>
+    <id>http://yoursite.com/opencv-python-using-pyqt5-create-gui/</id>
     <published>2017-12-09T09:30:34.000Z</published>
     <updated>2018-12-02T13:37:44.709Z</updated>
     
@@ -1655,23 +1655,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="PyQt" scheme="47.101.182.43/tags/PyQt/"/>
+      <category term="PyQt" scheme="http://yoursite.com/tags/PyQt/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程挑战任务：画动态时钟</title>
-    <link href="47.101.182.43/opencv-python-clock-drawing/"/>
-    <id>47.101.182.43/opencv-python-clock-drawing/</id>
+    <link href="http://yoursite.com/opencv-python-clock-drawing/"/>
+    <id>http://yoursite.com/opencv-python-clock-drawing/</id>
     <published>2017-12-09T09:29:34.000Z</published>
     <updated>2018-12-02T13:11:45.117Z</updated>
     
@@ -1719,23 +1719,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="PyQt" scheme="47.101.182.43/tags/PyQt/"/>
+      <category term="PyQt" scheme="http://yoursite.com/tags/PyQt/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇6：鼠标绘图</title>
-    <link href="47.101.182.43/opencv-python-extra-drawing-with-mouse/"/>
-    <id>47.101.182.43/opencv-python-extra-drawing-with-mouse/</id>
+    <link href="http://yoursite.com/opencv-python-extra-drawing-with-mouse/"/>
+    <id>http://yoursite.com/opencv-python-extra-drawing-with-mouse/</id>
     <published>2017-12-09T09:28:34.000Z</published>
     <updated>2018-11-26T06:57:25.327Z</updated>
     
@@ -1781,23 +1781,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="绘图" scheme="47.101.182.43/tags/%E7%BB%98%E5%9B%BE/"/>
+      <category term="绘图" scheme="http://yoursite.com/tags/%E7%BB%98%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程8：绘图功能</title>
-    <link href="47.101.182.43/opencv-python-drawing-function/"/>
-    <id>47.101.182.43/opencv-python-drawing-function/</id>
+    <link href="http://yoursite.com/opencv-python-drawing-function/"/>
+    <id>http://yoursite.com/opencv-python-drawing-function/</id>
     <published>2017-12-09T03:29:48.000Z</published>
     <updated>2018-11-29T02:04:50.554Z</updated>
     
@@ -1880,23 +1880,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="绘图" scheme="47.101.182.43/tags/%E7%BB%98%E5%9B%BE/"/>
+      <category term="绘图" scheme="http://yoursite.com/tags/%E7%BB%98%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Python-OpenCV教程番外篇5：仿射变换与透视变换</title>
-    <link href="47.101.182.43/opencv-python-extra-warpaffine-warpperspective/"/>
-    <id>47.101.182.43/opencv-python-extra-warpaffine-warpperspective/</id>
+    <link href="http://yoursite.com/opencv-python-extra-warpaffine-warpperspective/"/>
+    <id>http://yoursite.com/opencv-python-extra-warpaffine-warpperspective/</id>
     <published>2017-12-08T07:36:53.000Z</published>
     <updated>2018-11-26T12:06:04.508Z</updated>
     
@@ -2006,23 +2006,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="图像变换" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/"/>
+      <category term="图像变换" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程7：图像几何变换</title>
-    <link href="47.101.182.43/opencv-python-image-geometric-transformation/"/>
-    <id>47.101.182.43/opencv-python-image-geometric-transformation/</id>
+    <link href="http://yoursite.com/opencv-python-image-geometric-transformation/"/>
+    <id>http://yoursite.com/opencv-python-image-geometric-transformation/</id>
     <published>2017-12-08T06:36:53.000Z</published>
     <updated>2018-11-22T07:10:12.240Z</updated>
     
@@ -2072,23 +2072,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="几何变换" scheme="47.101.182.43/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
+      <category term="几何变换" scheme="http://yoursite.com/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇4：Otsu阈值法</title>
-    <link href="47.101.182.43/opencv-python-extra-otsu-thresholding/"/>
-    <id>47.101.182.43/opencv-python-extra-otsu-thresholding/</id>
+    <link href="http://yoursite.com/opencv-python-extra-otsu-thresholding/"/>
+    <id>http://yoursite.com/opencv-python-extra-otsu-thresholding/</id>
     <published>2017-12-08T04:48:05.000Z</published>
     <updated>2018-11-28T09:52:24.255Z</updated>
     
@@ -2144,23 +2144,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="阈值" scheme="47.101.182.43/tags/%E9%98%88%E5%80%BC/"/>
+      <category term="阈值" scheme="http://yoursite.com/tags/%E9%98%88%E5%80%BC/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程6：阈值分割</title>
-    <link href="47.101.182.43/opencv-python-image-thresholding/"/>
-    <id>47.101.182.43/opencv-python-image-thresholding/</id>
+    <link href="http://yoursite.com/opencv-python-image-thresholding/"/>
+    <id>http://yoursite.com/opencv-python-image-thresholding/</id>
     <published>2017-12-07T13:14:44.000Z</published>
     <updated>2018-11-15T14:24:42.840Z</updated>
     
@@ -2224,23 +2224,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="阈值" scheme="47.101.182.43/tags/%E9%98%88%E5%80%BC/"/>
+      <category term="阈值" scheme="http://yoursite.com/tags/%E9%98%88%E5%80%BC/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程5：颜色空间转换</title>
-    <link href="47.101.182.43/opencv-python-changing-colorspaces/"/>
-    <id>47.101.182.43/opencv-python-changing-colorspaces/</id>
+    <link href="http://yoursite.com/opencv-python-changing-colorspaces/"/>
+    <id>http://yoursite.com/opencv-python-changing-colorspaces/</id>
     <published>2017-12-07T07:21:19.000Z</published>
     <updated>2018-11-26T08:48:49.347Z</updated>
     
@@ -2296,23 +2296,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="HSV" scheme="47.101.182.43/tags/HSV/"/>
+      <category term="HSV" scheme="http://yoursite.com/tags/HSV/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程4：图像基本操作</title>
-    <link href="47.101.182.43/opencv-python-basic-operations/"/>
-    <id>47.101.182.43/opencv-python-basic-operations/</id>
+    <link href="http://yoursite.com/opencv-python-basic-operations/"/>
+    <id>http://yoursite.com/opencv-python-basic-operations/</id>
     <published>2017-12-07T04:13:15.000Z</published>
     <updated>2018-11-26T08:49:03.299Z</updated>
     
@@ -2371,23 +2371,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="ROI" scheme="47.101.182.43/tags/ROI/"/>
+      <category term="ROI" scheme="http://yoursite.com/tags/ROI/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇3：滑动条</title>
-    <link href="47.101.182.43/opencv-python-extra-trackbar/"/>
-    <id>47.101.182.43/opencv-python-extra-trackbar/</id>
+    <link href="http://yoursite.com/opencv-python-extra-trackbar/"/>
+    <id>http://yoursite.com/opencv-python-extra-trackbar/</id>
     <published>2017-12-06T14:23:11.000Z</published>
     <updated>2018-11-15T14:19:40.211Z</updated>
     
@@ -2420,23 +2420,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="滑动条" scheme="47.101.182.43/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
+      <category term="滑动条" scheme="http://yoursite.com/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程3：打开摄像头</title>
-    <link href="47.101.182.43/opencv-python-open-camera/"/>
-    <id>47.101.182.43/opencv-python-open-camera/</id>
+    <link href="http://yoursite.com/opencv-python-open-camera/"/>
+    <id>http://yoursite.com/opencv-python-open-camera/</id>
     <published>2017-12-06T08:38:02.000Z</published>
     <updated>2018-11-26T08:49:12.848Z</updated>
     
@@ -2487,21 +2487,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇2：Matplotlib显示图像</title>
-    <link href="47.101.182.43/opencv-python-extra-using-matplotlib/"/>
-    <id>47.101.182.43/opencv-python-extra-using-matplotlib/</id>
+    <link href="http://yoursite.com/opencv-python-extra-using-matplotlib/"/>
+    <id>http://yoursite.com/opencv-python-extra-using-matplotlib/</id>
     <published>2017-12-06T07:55:15.000Z</published>
     <updated>2018-11-15T14:21:09.863Z</updated>
     
@@ -2535,23 +2535,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="Matplotlib" scheme="47.101.182.43/tags/Matplotlib/"/>
+      <category term="Matplotlib" scheme="http://yoursite.com/tags/Matplotlib/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程2：基本元素-图片</title>
-    <link href="47.101.182.43/opencv-python-basic-element-image/"/>
-    <id>47.101.182.43/opencv-python-basic-element-image/</id>
+    <link href="http://yoursite.com/opencv-python-basic-element-image/"/>
+    <id>http://yoursite.com/opencv-python-basic-element-image/</id>
     <published>2017-12-06T07:52:06.000Z</published>
     <updated>2018-11-26T08:49:19.839Z</updated>
     
@@ -2616,21 +2616,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇1：代码性能优化</title>
-    <link href="47.101.182.43/opencv-python-extra-code-optimization/"/>
-    <id>47.101.182.43/opencv-python-extra-code-optimization/</id>
+    <link href="http://yoursite.com/opencv-python-extra-code-optimization/"/>
+    <id>http://yoursite.com/opencv-python-extra-code-optimization/</id>
     <published>2017-12-06T07:51:52.000Z</published>
     <updated>2018-10-04T09:48:22.868Z</updated>
     
@@ -2669,21 +2669,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程1：简介与安装</title>
-    <link href="47.101.182.43/opencv-python-introduction-and-installation/"/>
-    <id>47.101.182.43/opencv-python-introduction-and-installation/</id>
+    <link href="http://yoursite.com/opencv-python-introduction-and-installation/"/>
+    <id>http://yoursite.com/opencv-python-introduction-and-installation/</id>
     <published>2017-12-06T07:50:59.000Z</published>
     <updated>2018-12-04T13:48:43.191Z</updated>
     
@@ -2762,21 +2762,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>【片单】漫威宇宙电影合集</title>
-    <link href="47.101.182.43/movie-marvel-collections/"/>
-    <id>47.101.182.43/movie-marvel-collections/</id>
+    <link href="http://yoursite.com/movie-marvel-collections/"/>
+    <id>http://yoursite.com/movie-marvel-collections/</id>
     <published>2017-12-05T14:44:35.000Z</published>
     <updated>2018-10-03T04:35:04.890Z</updated>
     
@@ -2840,21 +2840,21 @@
     
     </summary>
     
-      <category term="谈电影" scheme="47.101.182.43/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="漫威" scheme="47.101.182.43/tags/%E6%BC%AB%E5%A8%81/"/>
+      <category term="漫威" scheme="http://yoursite.com/tags/%E6%BC%AB%E5%A8%81/"/>
     
-      <category term="Marvel" scheme="47.101.182.43/tags/Marvel/"/>
+      <category term="Marvel" scheme="http://yoursite.com/tags/Marvel/"/>
     
-      <category term="复仇者联盟" scheme="47.101.182.43/tags/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F/"/>
+      <category term="复仇者联盟" scheme="http://yoursite.com/tags/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F/"/>
     
   </entry>
   
   <entry>
     <title>【片单】007电影合集</title>
-    <link href="47.101.182.43/movie-007-collections/"/>
-    <id>47.101.182.43/movie-007-collections/</id>
+    <link href="http://yoursite.com/movie-007-collections/"/>
+    <id>http://yoursite.com/movie-007-collections/</id>
     <published>2017-12-05T13:53:37.000Z</published>
     <updated>2018-10-03T03:54:49.462Z</updated>
     
@@ -2933,19 +2933,19 @@
     
     </summary>
     
-      <category term="谈电影" scheme="47.101.182.43/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="007" scheme="47.101.182.43/tags/007/"/>
+      <category term="007" scheme="http://yoursite.com/tags/007/"/>
     
-      <category term="邦德" scheme="47.101.182.43/tags/%E9%82%A6%E5%BE%B7/"/>
+      <category term="邦德" scheme="http://yoursite.com/tags/%E9%82%A6%E5%BE%B7/"/>
     
   </entry>
   
   <entry>
     <title>【片单】历届奥斯卡最佳动画长片集</title>
-    <link href="47.101.182.43/movie-oscars-animated-collections/"/>
-    <id>47.101.182.43/movie-oscars-animated-collections/</id>
+    <link href="http://yoursite.com/movie-oscars-animated-collections/"/>
+    <id>http://yoursite.com/movie-oscars-animated-collections/</id>
     <published>2017-12-05T06:55:09.000Z</published>
     <updated>2018-11-02T02:51:48.376Z</updated>
     
@@ -3002,19 +3002,19 @@
     
     </summary>
     
-      <category term="谈电影" scheme="47.101.182.43/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="奥斯卡" scheme="47.101.182.43/tags/%E5%A5%A5%E6%96%AF%E5%8D%A1/"/>
+      <category term="奥斯卡" scheme="http://yoursite.com/tags/%E5%A5%A5%E6%96%AF%E5%8D%A1/"/>
     
-      <category term="动画" scheme="47.101.182.43/tags/%E5%8A%A8%E7%94%BB/"/>
+      <category term="动画" scheme="http://yoursite.com/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
   <entry>
     <title>Brand7 2.0更名&quot;品牌漆&quot;正式上架咯！</title>
-    <link href="47.101.182.43/brand7-2-release/"/>
-    <id>47.101.182.43/brand7-2-release/</id>
+    <link href="http://yoursite.com/brand7-2-release/"/>
+    <id>http://yoursite.com/brand7-2-release/</id>
     <published>2017-11-26T11:04:32.000Z</published>
     <updated>2018-11-02T02:51:48.371Z</updated>
     
@@ -3051,19 +3051,19 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Brand7" scheme="47.101.182.43/tags/Brand7/"/>
+      <category term="Brand7" scheme="http://yoursite.com/tags/Brand7/"/>
     
-      <category term="品牌漆" scheme="47.101.182.43/tags/%E5%93%81%E7%89%8C%E6%BC%86/"/>
+      <category term="品牌漆" scheme="http://yoursite.com/tags/%E5%93%81%E7%89%8C%E6%BC%86/"/>
     
   </entry>
   
   <entry>
     <title>软件+影视汁源贴(updating...)</title>
-    <link href="47.101.182.43/software-and-movies/"/>
-    <id>47.101.182.43/software-and-movies/</id>
+    <link href="http://yoursite.com/software-and-movies/"/>
+    <id>http://yoursite.com/software-and-movies/</id>
     <published>2017-11-15T11:53:46.000Z</published>
     <updated>2018-10-05T10:15:11.040Z</updated>
     
@@ -3169,19 +3169,19 @@
     
     </summary>
     
-      <category term="谈电影" scheme="47.101.182.43/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="软件" scheme="47.101.182.43/tags/%E8%BD%AF%E4%BB%B6/"/>
+      <category term="软件" scheme="http://yoursite.com/tags/%E8%BD%AF%E4%BB%B6/"/>
     
-      <category term="影视" scheme="47.101.182.43/tags/%E5%BD%B1%E8%A7%86/"/>
+      <category term="影视" scheme="http://yoursite.com/tags/%E5%BD%B1%E8%A7%86/"/>
     
   </entry>
   
   <entry>
     <title>计量史：时间之旅</title>
-    <link href="47.101.182.43/metrology-history-a-journey-of-time/"/>
-    <id>47.101.182.43/metrology-history-a-journey-of-time/</id>
+    <link href="http://yoursite.com/metrology-history-a-journey-of-time/"/>
+    <id>http://yoursite.com/metrology-history-a-journey-of-time/</id>
     <published>2017-11-08T13:35:51.000Z</published>
     <updated>2018-10-03T02:52:55.757Z</updated>
     
@@ -3208,19 +3208,19 @@
     
     </summary>
     
-      <category term="五味杂粮" scheme="47.101.182.43/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
+      <category term="五味杂粮" scheme="http://yoursite.com/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
     
     
-      <category term="计量" scheme="47.101.182.43/tags/%E8%AE%A1%E9%87%8F/"/>
+      <category term="计量" scheme="http://yoursite.com/tags/%E8%AE%A1%E9%87%8F/"/>
     
-      <category term="时间之旅" scheme="47.101.182.43/tags/%E6%97%B6%E9%97%B4%E4%B9%8B%E6%97%85/"/>
+      <category term="时间之旅" scheme="http://yoursite.com/tags/%E6%97%B6%E9%97%B4%E4%B9%8B%E6%97%85/"/>
     
   </entry>
   
   <entry>
     <title>摄影之魅：瞬间是一面&quot;镜子&quot;</title>
-    <link href="47.101.182.43/the-charm-of-photography-instant-is-a-mirror/"/>
-    <id>47.101.182.43/the-charm-of-photography-instant-is-a-mirror/</id>
+    <link href="http://yoursite.com/the-charm-of-photography-instant-is-a-mirror/"/>
+    <id>http://yoursite.com/the-charm-of-photography-instant-is-a-mirror/</id>
     <published>2017-11-08T12:56:32.000Z</published>
     <updated>2018-11-02T02:51:48.376Z</updated>
     
@@ -3256,19 +3256,19 @@
     
     </summary>
     
-      <category term="五味杂粮" scheme="47.101.182.43/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
+      <category term="五味杂粮" scheme="http://yoursite.com/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
     
     
-      <category term="摄影" scheme="47.101.182.43/tags/%E6%91%84%E5%BD%B1/"/>
+      <category term="摄影" scheme="http://yoursite.com/tags/%E6%91%84%E5%BD%B1/"/>
     
-      <category term="布列松" scheme="47.101.182.43/tags/%E5%B8%83%E5%88%97%E6%9D%BE/"/>
+      <category term="布列松" scheme="http://yoursite.com/tags/%E5%B8%83%E5%88%97%E6%9D%BE/"/>
     
   </entry>
   
   <entry>
     <title>numpy中几种矩阵的乘法</title>
-    <link href="47.101.182.43/multiply-in-numpy/"/>
-    <id>47.101.182.43/multiply-in-numpy/</id>
+    <link href="http://yoursite.com/multiply-in-numpy/"/>
+    <id>http://yoursite.com/multiply-in-numpy/</id>
     <published>2017-10-11T02:26:09.000Z</published>
     <updated>2018-10-03T04:01:24.241Z</updated>
     
@@ -3300,21 +3300,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="numpy" scheme="47.101.182.43/tags/numpy/"/>
+      <category term="numpy" scheme="http://yoursite.com/tags/numpy/"/>
     
-      <category term="矩阵" scheme="47.101.182.43/tags/%E7%9F%A9%E9%98%B5/"/>
+      <category term="矩阵" scheme="http://yoursite.com/tags/%E7%9F%A9%E9%98%B5/"/>
     
   </entry>
   
   <entry>
     <title>【视觉与图像】OpenCV篇：Python+OpenCV实用教程</title>
-    <link href="47.101.182.43/opencv-python/"/>
-    <id>47.101.182.43/opencv-python/</id>
+    <link href="http://yoursite.com/opencv-python/"/>
+    <id>http://yoursite.com/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
     <updated>2019-03-17T13:49:20.504Z</updated>
     
@@ -3351,21 +3351,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Python" scheme="47.101.182.43/tags/Python/"/>
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
     
-      <category term="图像处理" scheme="47.101.182.43/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>【利器篇】GitKraken：顶级酷炫Git图像化客户端</title>
-    <link href="47.101.182.43/tools-gitkraken/"/>
-    <id>47.101.182.43/tools-gitkraken/</id>
+    <link href="http://yoursite.com/tools-gitkraken/"/>
+    <id>http://yoursite.com/tools-gitkraken/</id>
     <published>2017-10-05T09:33:20.000Z</published>
     <updated>2018-11-02T02:51:48.375Z</updated>
     
@@ -3397,19 +3397,19 @@
     
     </summary>
     
-      <category term="利器篇" scheme="47.101.182.43/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="Git" scheme="47.101.182.43/tags/Git/"/>
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
     
-      <category term="GitKraken" scheme="47.101.182.43/tags/GitKraken/"/>
+      <category term="GitKraken" scheme="http://yoursite.com/tags/GitKraken/"/>
     
   </entry>
   
   <entry>
     <title>构建：变量</title>
-    <link href="47.101.182.43/build-variables/"/>
-    <id>47.101.182.43/build-variables/</id>
+    <link href="http://yoursite.com/build-variables/"/>
+    <id>http://yoursite.com/build-variables/</id>
     <published>2017-09-28T13:23:45.000Z</published>
     <updated>2018-11-02T02:51:48.373Z</updated>
     
@@ -3442,21 +3442,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="构建法" scheme="47.101.182.43/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
     
-      <category term="变量" scheme="47.101.182.43/tags/%E5%8F%98%E9%87%8F/"/>
+      <category term="变量" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F/"/>
     
-      <category term="作用域" scheme="47.101.182.43/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+      <category term="作用域" scheme="http://yoursite.com/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     
   </entry>
   
   <entry>
     <title>【片单】诺兰神作集</title>
-    <link href="47.101.182.43/movie-nolan-collections/"/>
-    <id>47.101.182.43/movie-nolan-collections/</id>
+    <link href="http://yoursite.com/movie-nolan-collections/"/>
+    <id>http://yoursite.com/movie-nolan-collections/</id>
     <published>2017-09-24T12:37:41.000Z</published>
     <updated>2018-10-03T04:21:56.006Z</updated>
     
@@ -3482,17 +3482,17 @@
     
     </summary>
     
-      <category term="谈电影" scheme="47.101.182.43/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="诺兰" scheme="47.101.182.43/tags/%E8%AF%BA%E5%85%B0/"/>
+      <category term="诺兰" scheme="http://yoursite.com/tags/%E8%AF%BA%E5%85%B0/"/>
     
   </entry>
   
   <entry>
     <title>【利器篇】七牛云——用做每月免费10G的图床</title>
-    <link href="47.101.182.43/tools-qiniuyun/"/>
-    <id>47.101.182.43/tools-qiniuyun/</id>
+    <link href="http://yoursite.com/tools-qiniuyun/"/>
+    <id>http://yoursite.com/tools-qiniuyun/</id>
     <published>2017-09-18T11:55:38.000Z</published>
     <updated>2018-11-02T02:51:48.378Z</updated>
     
@@ -3540,46 +3540,49 @@
     
     </summary>
     
-      <category term="利器篇" scheme="47.101.182.43/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="七牛" scheme="47.101.182.43/tags/%E4%B8%83%E7%89%9B/"/>
+      <category term="七牛" scheme="http://yoursite.com/tags/%E4%B8%83%E7%89%9B/"/>
     
-      <category term="图床" scheme="47.101.182.43/tags/%E5%9B%BE%E5%BA%8A/"/>
+      <category term="图床" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%BA%8A/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(4)：自有服务器部署</title>
-    <link href="47.101.182.43/hexo-blog-with-github-pages-4/"/>
-    <id>47.101.182.43/hexo-blog-with-github-pages-4/</id>
+    <link href="http://yoursite.com/hexo-blog-with-github-pages-4/"/>
+    <id>http://yoursite.com/hexo-blog-with-github-pages-4/</id>
     <published>2017-09-13T14:11:12.000Z</published>
-    <updated>2019-03-18T14:32:30.010Z</updated>
+    <updated>2019-03-18T14:46:18.418Z</updated>
     
-    <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。</p>
+    <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。</p>
 <hr>
 <p>前面我们购买了独立域名<code>www.ex2tron.top</code>，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！</p>
 <blockquote>
-<p>说明：以阿里云服务器为例，之前我已经使用了apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。也可以使用nginx，部署流程都类似。</p>
+<p>说明：我以阿里云服务器为例，之前我已经使用apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。当然你也可以使用nginx，部署流程都类似。</p>
 </blockquote>
 <h2 id="服务器环境配置"><a href="#服务器环境配置" class="headerlink" title="服务器环境配置"></a>服务器环境配置</h2><p>用<code>ssh user@ip</code>连接到服务器后，先更新下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
 <p>查看git有没有安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version # 没安装的话：sudo apt install git</div></pre></td></tr></table></figure>
-<p>这里建议添加一个git的新用户，而不是直接使用root账号，当然直接使用root也木有问题。</p>
+<p>这里建议添加一个名为git的新用户，而不是直接使用root，当然直接使用root也木有问题。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
 <p>切换到git用户，并新建用户目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd ~</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
-<p>然后将本地PC上ssh的id_rsa.pub内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具）：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:~/.git/authorized_keys</div></pre></td></tr></table></figure>
-<p>这个时候可以退出ssh连接，并使用git用户登录了：</p>
+<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:/home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>这个时候可以退出ssh连接，并使用git用户直接登录了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
-<h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
+<h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><blockquote>
+<p>此处可参考我之前的blog：<a href="http://ex2tron.wang/set-up-your-own-git-server/" target="_blank" rel="external">搭建自己的Github/Git服务器</a></p>
+</blockquote>
+<p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div><div class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</div></pre></td></tr></table></figure>
 <p>接下来需要修改本地hexo的配置文件<code>_config.yml</code>。首先url更改为你的服务器ip：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: 47.101.xxx.xxx</div></pre></td></tr></table></figure>
 <p>然后修改deploy选项，如果你将博客推送到多个地方的话，直接新增一条就行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@47.101.182.43:/home/git/hexoblog.git</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@47.101.xxx.xxx:/home/git/hexoblog.git</div></pre></td></tr></table></figure>
 <p>现在可以运行<code>hexo g -d</code>正常push了。</p>
 <p>如果<code>hexo d</code>推送的时候出现如下错误：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">remote: fatal: Unable to create temporary file &apos;/home/git/hexoblog.git/./objects/pack/tmp_pack_XXXXXX&apos;: Permission denied</div><div class="line">fatal: sha1 file &apos;&lt;stdout&gt;&apos; write error: Broken pipe</div></pre></td></tr></table></figure>
@@ -3604,87 +3607,34 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
 <p>赋予可执行权限给文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x post-receive</div></pre></td></tr></table></figure>
-<p>保证git用户有权限访问<code>/var/www/html/</code>目录</p>
-<p>嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
-<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
-<p><img src="http://pic.ex2tron.top/hexo_wanwang_home_page.jpg" alt=""></p>
-<p>查找你想购买的域名，比如我购买<code>`ex2tron.top</code>这个域名。.top域名的价格还是很便宜的，划算：</p>
-<p><img src="http://pic.ex2tron.top/hexo_wanwang_top_domain_price.png" alt=""></p>
-<p>购买需要登陆阿里云的账号。购买成功后，按照提示进行实名认证和拍照备案，认证过程需要几天。</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名认证完成后，登陆<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云控制台</a>，在左侧导航栏找到”域名与网站（万网）”——“云解析DNS”：</p>
-<p><img src="http://pic.ex2tron.top/hexo_dns_domain_aliyun_navigation.jpg" alt=""></p>
+<p>最后一定要确保git用户有权限操作博客目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
+<p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下，此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，awesome！</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;将博客放在Github上有很多优点，比如免费、易管理、xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。&lt;/p&gt;
+      &lt;p&gt;将博客放在Github上有很多优点，比如免费、易管理、免费&lt;code&gt;xxx.github.io&lt;/code&gt;的域名等，但访问速度嘛，就比较一般了。对于那些喜欢折腾的童鞋，如果你有一台自己的服务器的话，也可以把博客部署在云上。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;前面我们购买了独立域名&lt;code&gt;www.ex2tron.top&lt;/code&gt;，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;说明：以阿里云服务器为例，之前我已经使用了apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。也可以使用nginx，部署流程都类似。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;服务器环境配置&quot;&gt;&lt;a href=&quot;#服务器环境配置&quot; class=&quot;headerlink&quot; title=&quot;服务器环境配置&quot;&gt;&lt;/a&gt;服务器环境配置&lt;/h2&gt;&lt;p&gt;用&lt;code&gt;ssh user@ip&lt;/code&gt;连接到服务器后，先更新下：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt update&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt upgrade&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;查看git有没有安装：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git --version # 没安装的话：sudo apt install git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这里建议添加一个git的新用户，而不是直接使用root账号，当然直接使用root也木有问题。&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;adduser git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;adduser ex2tron sudo # 添加到sudo中&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;切换到git用户，并新建用户目录：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;su git # 切换git用户&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd ~&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;mkdir .ssh &amp;amp;&amp;amp; cd .ssh&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后将本地PC上ssh的id_rsa.pub内容复制到该目录的&lt;code&gt;authorized_keys&lt;/code&gt;文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具）：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;scp .ssh/id_rsa.pub user@ip:~/.git/authorized_keys&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这个时候可以退出ssh连接，并使用git用户登录了：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ssh git@ip&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;Git远程仓库及同步&quot;&gt;&lt;a href=&quot;#Git远程仓库及同步&quot; class=&quot;headerlink&quot; title=&quot;Git远程仓库及同步&quot;&gt;&lt;/a&gt;Git远程仓库及同步&lt;/h2&gt;&lt;p&gt;跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;mkdir /home/git/hexoblog.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd /home/git/hexoblog.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git init --bare # 初始化仓库&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;接下来需要修改本地hexo的配置文件&lt;code&gt;_config.yml&lt;/code&gt;。首先url更改为你的服务器ip：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;url: 47.101.xxx.xxx&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后修改deploy选项，如果你将博客推送到多个地方的话，直接新增一条就行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;deploy:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- type: git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  repo: git@47.101.182.43:/home/git/hexoblog.git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;现在可以运行&lt;code&gt;hexo g -d&lt;/code&gt;正常push了。&lt;/p&gt;
-&lt;p&gt;如果&lt;code&gt;hexo d&lt;/code&gt;推送的时候出现如下错误：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;remote: fatal: Unable to create temporary file &amp;apos;/home/git/hexoblog.git/./objects/pack/tmp_pack_XXXXXX&amp;apos;: Permission denied&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;fatal: sha1 file &amp;apos;&amp;lt;stdout&amp;gt;&amp;apos; write error: Broken pipe&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这就是git权限的原因，你有可能少执行了这句话噢：&lt;code&gt;sudo chown -R git:git hexoblog.git&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;apache2配置&quot;&gt;&lt;a href=&quot;#apache2配置&quot; class=&quot;headerlink&quot; title=&quot;apache2配置&quot;&gt;&lt;/a&gt;apache2配置&lt;/h2&gt;&lt;p&gt;首先自然是安装apache2咯：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt install apache2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在&lt;code&gt;/var/www/&lt;/code&gt;下面创建网站的根目录：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo mkdir /var/www/html/hexoblog&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;正常来说，这是我们第一次使用apache配置，后面会讲到我的情况。编辑apache2的配置文件：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo vim /etc/apache2/sites-available/000-default.conf&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;找到&lt;code&gt;DocumentRoot&lt;/code&gt;项，并做如下更改：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;DocumentRoot /var/www/html/hexoblog&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;最后重启apache生效：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo service apache2 restart&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;前面提到过，我已经在apache2配置过一个web应用和域名了，这个时候可以在conf文件中新增一项配置：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;# 之前的：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	......&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# 新增的：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ServerName www.ex2tron.top&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ServerAlias www.ex2tron.top&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        DocumentRoot /var/www/html/hexoblog/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;Directory &amp;quot;/var/www/html/hexoblog/&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                Order deny,allow&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                Allow from all&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;/Directory&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;创建Git钩子&quot;&gt;&lt;a href=&quot;#创建Git钩子&quot; class=&quot;headerlink&quot; title=&quot;创建Git钩子&quot;&gt;&lt;/a&gt;创建Git钩子&lt;/h2&gt;&lt;p&gt;现在远程仓库创建好了，但是需要将Hexo的静态HTML文件传送到&lt;code&gt;/var/www/html/hexoblog&lt;/code&gt;下面才行。切换到远程仓库hexoblog下面：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;cd /home/git/hexoblog.git/hooks/&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;创建并编辑一个新的钩子文件：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo touch post-receive&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo vim post-receive&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在其中加入两行：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt;!/bin/bash&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;赋予可执行权限给文件：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo chmod +x post-receive&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;保证git用户有权限访问&lt;code&gt;/var/www/html/&lt;/code&gt;目录&lt;/p&gt;
-&lt;p&gt;嫌username.github.io不够高大上？？那就来个高大上的独立域名吧。
+&lt;p&gt;前面我们购买了独立域名
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="47.101.182.43/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
-      <category term="Github" scheme="47.101.182.43/tags/Github/"/>
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
     
-      <category term="阿里云" scheme="47.101.182.43/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+      <category term="阿里云" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(3)：绑定独立域名</title>
-    <link href="47.101.182.43/hexo-blog-with-github-pages-3/"/>
-    <id>47.101.182.43/hexo-blog-with-github-pages-3/</id>
+    <link href="http://yoursite.com/hexo-blog-with-github-pages-3/"/>
+    <id>http://yoursite.com/hexo-blog-with-github-pages-3/</id>
     <published>2017-09-13T13:25:24.000Z</published>
     <updated>2018-11-02T02:51:48.374Z</updated>
     
@@ -3718,19 +3668,19 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="47.101.182.43/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
-      <category term="Github" scheme="47.101.182.43/tags/Github/"/>
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(2)：在Github上部署</title>
-    <link href="47.101.182.43/hexo-blog-with-github-pages-2/"/>
-    <id>47.101.182.43/hexo-blog-with-github-pages-2/</id>
+    <link href="http://yoursite.com/hexo-blog-with-github-pages-2/"/>
+    <id>http://yoursite.com/hexo-blog-with-github-pages-2/</id>
     <published>2017-09-13T12:15:47.000Z</published>
     <updated>2018-11-02T02:51:48.421Z</updated>
     
@@ -3764,19 +3714,19 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="47.101.182.43/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
-      <category term="Github" scheme="47.101.182.43/tags/Github/"/>
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(1)</title>
-    <link href="47.101.182.43/hexo-blog-with-github-pages-1/"/>
-    <id>47.101.182.43/hexo-blog-with-github-pages-1/</id>
+    <link href="http://yoursite.com/hexo-blog-with-github-pages-1/"/>
+    <id>http://yoursite.com/hexo-blog-with-github-pages-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
     <updated>2018-11-02T02:51:48.374Z</updated>
     
@@ -3816,19 +3766,19 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="47.101.182.43/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
-      <category term="Github" scheme="47.101.182.43/tags/Github/"/>
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>【利器篇】用VS Code写Markdown</title>
-    <link href="47.101.182.43/tools-markdown-in-vscode/"/>
-    <id>47.101.182.43/tools-markdown-in-vscode/</id>
+    <link href="http://yoursite.com/tools-markdown-in-vscode/"/>
+    <id>http://yoursite.com/tools-markdown-in-vscode/</id>
     <published>2017-09-11T07:11:22.000Z</published>
     <updated>2018-12-30T11:44:40.838Z</updated>
     
@@ -3868,19 +3818,19 @@
     
     </summary>
     
-      <category term="利器篇" scheme="47.101.182.43/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="Markdown" scheme="47.101.182.43/tags/Markdown/"/>
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
     
-      <category term="VSCode" scheme="47.101.182.43/tags/VSCode/"/>
+      <category term="VSCode" scheme="http://yoursite.com/tags/VSCode/"/>
     
   </entry>
   
   <entry>
     <title>【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具</title>
-    <link href="47.101.182.43/tools-mycli/"/>
-    <id>47.101.182.43/tools-mycli/</id>
+    <link href="http://yoursite.com/tools-mycli/"/>
+    <id>http://yoursite.com/tools-mycli/</id>
     <published>2017-09-11T06:32:14.000Z</published>
     <updated>2018-11-02T02:51:48.375Z</updated>
     
@@ -3905,19 +3855,19 @@
     
     </summary>
     
-      <category term="利器篇" scheme="47.101.182.43/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="MyCLI" scheme="47.101.182.43/tags/MyCLI/"/>
+      <category term="MyCLI" scheme="http://yoursite.com/tags/MyCLI/"/>
     
-      <category term="MySQL" scheme="47.101.182.43/tags/MySQL/"/>
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>博客新篇章！Brave New World</title>
-    <link href="47.101.182.43/new-chapter!/"/>
-    <id>47.101.182.43/new-chapter!/</id>
+    <link href="http://yoursite.com/new-chapter!/"/>
+    <id>http://yoursite.com/new-chapter!/</id>
     <published>2017-08-23T12:56:32.000Z</published>
     <updated>2018-10-03T02:57:25.775Z</updated>
     
@@ -4009,8 +3959,8 @@
   
   <entry>
     <title>Qt+OpenCV环境搭建</title>
-    <link href="47.101.182.43/qt-opencv-installation-guide/"/>
-    <id>47.101.182.43/qt-opencv-installation-guide/</id>
+    <link href="http://yoursite.com/qt-opencv-installation-guide/"/>
+    <id>http://yoursite.com/qt-opencv-installation-guide/</id>
     <published>2017-07-27T00:17:00.000Z</published>
     <updated>2018-12-30T13:26:19.626Z</updated>
     
@@ -4050,21 +4000,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="CMake" scheme="47.101.182.43/tags/CMake/"/>
+      <category term="CMake" scheme="http://yoursite.com/tags/CMake/"/>
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Qt" scheme="47.101.182.43/tags/Qt/"/>
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
   </entry>
   
   <entry>
     <title>CMake编译OpenCV3.2（Qt平台）</title>
-    <link href="47.101.182.43/cmake-make-opencv/"/>
-    <id>47.101.182.43/cmake-make-opencv/</id>
+    <link href="http://yoursite.com/cmake-make-opencv/"/>
+    <id>http://yoursite.com/cmake-make-opencv/</id>
     <published>2017-07-26T14:25:29.000Z</published>
     <updated>2018-12-30T13:22:45.411Z</updated>
     
@@ -4107,21 +4057,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="CMake" scheme="47.101.182.43/tags/CMake/"/>
+      <category term="CMake" scheme="http://yoursite.com/tags/CMake/"/>
     
-      <category term="OpenCV" scheme="47.101.182.43/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
     
-      <category term="Qt" scheme="47.101.182.43/tags/Qt/"/>
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
   </entry>
   
   <entry>
     <title>构建：查表法</title>
-    <link href="47.101.182.43/build-table-driven-methods/"/>
-    <id>47.101.182.43/build-table-driven-methods/</id>
+    <link href="http://yoursite.com/build-table-driven-methods/"/>
+    <id>http://yoursite.com/build-table-driven-methods/</id>
     <published>2017-06-13T10:54:04.000Z</published>
     <updated>2018-11-02T02:51:48.377Z</updated>
     
@@ -4172,21 +4122,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="构建法" scheme="47.101.182.43/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
     
-      <category term="表驱动法" scheme="47.101.182.43/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
+      <category term="表驱动法" scheme="http://yoursite.com/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
     
-      <category term="查表法" scheme="47.101.182.43/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
+      <category term="查表法" scheme="http://yoursite.com/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>搭建自己的Github/Git服务器</title>
-    <link href="47.101.182.43/set-up-your-own-git-server/"/>
-    <id>47.101.182.43/set-up-your-own-git-server/</id>
+    <link href="http://yoursite.com/set-up-your-own-git-server/"/>
+    <id>http://yoursite.com/set-up-your-own-git-server/</id>
     <published>2017-06-04T11:38:56.000Z</published>
     <updated>2019-01-02T15:09:51.567Z</updated>
     
@@ -4228,21 +4178,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="47.101.182.43/tags/Build/"/>
+      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
     
-      <category term="Github" scheme="47.101.182.43/tags/Github/"/>
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
     
-      <category term="Git Sever" scheme="47.101.182.43/tags/Git-Sever/"/>
+      <category term="Git Sever" scheme="http://yoursite.com/tags/Git-Sever/"/>
     
   </entry>
   
   <entry>
     <title>【视觉与图像】摄像头篇2：焦距和视角</title>
-    <link href="47.101.182.43/vision-camera-focal-length-and-view/"/>
-    <id>47.101.182.43/vision-camera-focal-length-and-view/</id>
+    <link href="http://yoursite.com/vision-camera-focal-length-and-view/"/>
+    <id>http://yoursite.com/vision-camera-focal-length-and-view/</id>
     <published>2017-05-16T12:41:16.000Z</published>
     <updated>2018-11-02T02:51:48.385Z</updated>
     
@@ -4270,19 +4220,19 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="焦距" scheme="47.101.182.43/tags/%E7%84%A6%E8%B7%9D/"/>
+      <category term="焦距" scheme="http://yoursite.com/tags/%E7%84%A6%E8%B7%9D/"/>
     
-      <category term="视角" scheme="47.101.182.43/tags/%E8%A7%86%E8%A7%92/"/>
+      <category term="视角" scheme="http://yoursite.com/tags/%E8%A7%86%E8%A7%92/"/>
     
   </entry>
   
   <entry>
     <title>【视觉与图像】摄像头篇1：CCD靶面尺寸</title>
-    <link href="47.101.182.43/vision-camera-ccd-size/"/>
-    <id>47.101.182.43/vision-camera-ccd-size/</id>
+    <link href="http://yoursite.com/vision-camera-ccd-size/"/>
+    <id>http://yoursite.com/vision-camera-ccd-size/</id>
     <published>2017-05-15T02:29:52.000Z</published>
     <updated>2018-11-02T02:51:48.378Z</updated>
     
@@ -4378,17 +4328,17 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="47.101.182.43/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="CCD" scheme="47.101.182.43/tags/CCD/"/>
+      <category term="CCD" scheme="http://yoursite.com/tags/CCD/"/>
     
   </entry>
   
   <entry>
     <title>构建：单点控制</title>
-    <link href="47.101.182.43/build-single-point-control/"/>
-    <id>47.101.182.43/build-single-point-control/</id>
+    <link href="http://yoursite.com/build-single-point-control/"/>
+    <id>http://yoursite.com/build-single-point-control/</id>
     <published>2017-04-23T06:57:09.000Z</published>
     <updated>2018-11-02T02:51:48.378Z</updated>
     
@@ -4441,21 +4391,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="构建法" scheme="47.101.182.43/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
     
-      <category term="变量" scheme="47.101.182.43/tags/%E5%8F%98%E9%87%8F/"/>
+      <category term="变量" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F/"/>
     
-      <category term="单点控制" scheme="47.101.182.43/tags/%E5%8D%95%E7%82%B9%E6%8E%A7%E5%88%B6/"/>
+      <category term="单点控制" scheme="http://yoursite.com/tags/%E5%8D%95%E7%82%B9%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   
   <entry>
     <title>构建：命名法</title>
-    <link href="47.101.182.43/build-how-to-name-your-variables/"/>
-    <id>47.101.182.43/build-how-to-name-your-variables/</id>
+    <link href="http://yoursite.com/build-how-to-name-your-variables/"/>
+    <id>http://yoursite.com/build-how-to-name-your-variables/</id>
     <published>2015-03-31T02:45:33.000Z</published>
     <updated>2018-11-02T03:28:49.814Z</updated>
     
@@ -4505,14 +4455,14 @@
     
     </summary>
     
-      <category term="Build篇" scheme="47.101.182.43/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
     
     
-      <category term="构建法" scheme="47.101.182.43/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
+      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
     
-      <category term="变量命名" scheme="47.101.182.43/tags/%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D/"/>
+      <category term="变量命名" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D/"/>
     
-      <category term="驼峰" scheme="47.101.182.43/tags/%E9%A9%BC%E5%B3%B0/"/>
+      <category term="驼峰" scheme="http://yoursite.com/tags/%E9%A9%BC%E5%B3%B0/"/>
     
   </entry>
   
