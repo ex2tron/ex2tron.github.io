@@ -4,9 +4,9 @@
   <subtitle>Excelsior!</subtitle>
   <link href="/atom.xaml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://ex2tron.wang/"/>
   <updated>2019-03-17T14:25:22.170Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://ex2tron.wang/</id>
   
   <author>
     <name>Tony Wong</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Ubuntu上安装Windows10双系统步骤及常见问题</title>
-    <link href="http://yoursite.com/install-windows10-on-ubuntu/"/>
-    <id>http://yoursite.com/install-windows10-on-ubuntu/</id>
+    <link href="http://ex2tron.wang/install-windows10-on-ubuntu/"/>
+    <id>http://ex2tron.wang/install-windows10-on-ubuntu/</id>
     <published>2019-03-17T12:42:59.000Z</published>
     <updated>2019-03-17T14:25:22.170Z</updated>
     
@@ -83,21 +83,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
+      <category term="Build" scheme="http://ex2tron.wang/tags/Build/"/>
     
-      <category term="Windows" scheme="http://yoursite.com/tags/Windows/"/>
+      <category term="Windows" scheme="http://ex2tron.wang/tags/Windows/"/>
     
-      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
+      <category term="Ubuntu" scheme="http://ex2tron.wang/tags/Ubuntu/"/>
     
   </entry>
   
   <entry>
     <title>使用环境变量避免在代码中写明密码和密钥等重要信息</title>
-    <link href="http://yoursite.com/hiding-passwds-secret-keys-in-environment-variables/"/>
-    <id>http://yoursite.com/hiding-passwds-secret-keys-in-environment-variables/</id>
+    <link href="http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/"/>
+    <id>http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/</id>
     <published>2019-01-19T14:29:07.000Z</published>
     <updated>2019-01-20T13:36:44.847Z</updated>
     
@@ -134,46 +134,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
+      <category term="Build" scheme="http://ex2tron.wang/tags/Build/"/>
     
-      <category term="hiding-info" scheme="http://yoursite.com/tags/hiding-info/"/>
+      <category term="hiding-info" scheme="http://ex2tron.wang/tags/hiding-info/"/>
     
-      <category term="environment-variables" scheme="http://yoursite.com/tags/environment-variables/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>No giving and expecting, no hurt and disappointment.</title>
-    <link href="http://yoursite.com/what-will-be-just-let-it-go/"/>
-    <id>http://yoursite.com/what-will-be-just-let-it-go/</id>
-    <published>2019-01-14T09:34:37.000Z</published>
-    <updated>2019-03-17T13:34:27.883Z</updated>
-    
-    <content type="html"><![CDATA[<p>For the first time, lost two ‘friends’ who don’t understand me and like to assume my character subjectively. So hurt, they don’t ‘care’, maybe I should too. Only all the efforts and expectations become cheap words and regrets. </p>
-<p>Just hurt and disappointment. Farewell. </p>
-<p><img src="http://pic.ex2tron.top/lost%20_lost_lost.jpg" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;For the first time, lost two ‘friends’ who don’t understand me and like to assume my character subjectively. So hurt, they don’t ‘care’, 
-    
-    </summary>
-    
-      <category term="五味杂粮" scheme="http://yoursite.com/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
-    
-    
-      <category term="life" scheme="http://yoursite.com/tags/life/"/>
+      <category term="environment-variables" scheme="http://ex2tron.wang/tags/environment-variables/"/>
     
   </entry>
   
   <entry>
     <title>如何使用Windows 10的OpenSSH Client和Server</title>
-    <link href="http://yoursite.com/how-to-use-ssh-on-windows10/"/>
-    <id>http://yoursite.com/how-to-use-ssh-on-windows10/</id>
+    <link href="http://ex2tron.wang/how-to-use-ssh-on-windows10/"/>
+    <id>http://ex2tron.wang/how-to-use-ssh-on-windows10/</id>
     <published>2019-01-02T13:00:54.000Z</published>
     <updated>2019-01-19T14:46:48.646Z</updated>
     
@@ -218,23 +193,23 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
+      <category term="Build" scheme="http://ex2tron.wang/tags/Build/"/>
     
-      <category term="Windows10" scheme="http://yoursite.com/tags/Windows10/"/>
+      <category term="Windows10" scheme="http://ex2tron.wang/tags/Windows10/"/>
     
-      <category term="SSH" scheme="http://yoursite.com/tags/SSH/"/>
+      <category term="SSH" scheme="http://ex2tron.wang/tags/SSH/"/>
     
-      <category term="SSH-Server" scheme="http://yoursite.com/tags/SSH-Server/"/>
+      <category term="SSH-Server" scheme="http://ex2tron.wang/tags/SSH-Server/"/>
     
   </entry>
   
   <entry>
     <title>2018最后一个工作日，一份小礼物</title>
-    <link href="http://yoursite.com/a-gift-for-2019-moviequotes/"/>
-    <id>http://yoursite.com/a-gift-for-2019-moviequotes/</id>
+    <link href="http://ex2tron.wang/a-gift-for-2019-moviequotes/"/>
+    <id>http://ex2tron.wang/a-gift-for-2019-moviequotes/</id>
     <published>2018-12-29T10:00:31.000Z</published>
     <updated>2019-01-15T15:56:21.666Z</updated>
     
@@ -263,21 +238,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
+      <category term="Build" scheme="http://ex2tron.wang/tags/Build/"/>
     
-      <category term="Django" scheme="http://yoursite.com/tags/Django/"/>
+      <category term="Django" scheme="http://ex2tron.wang/tags/Django/"/>
     
-      <category term="电影台词" scheme="http://yoursite.com/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/"/>
+      <category term="电影台词" scheme="http://ex2tron.wang/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/"/>
     
   </entry>
   
   <entry>
     <title>【片单】推荐几部优秀的传记电影</title>
-    <link href="http://yoursite.com/movie-biopic-collections/"/>
-    <id>http://yoursite.com/movie-biopic-collections/</id>
+    <link href="http://ex2tron.wang/movie-biopic-collections/"/>
+    <id>http://ex2tron.wang/movie-biopic-collections/</id>
     <published>2018-03-15T05:46:50.000Z</published>
     <updated>2018-11-02T02:51:48.377Z</updated>
     
@@ -319,17 +294,17 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="传记片" scheme="http://yoursite.com/tags/%E4%BC%A0%E8%AE%B0%E7%89%87/"/>
+      <category term="传记片" scheme="http://ex2tron.wang/tags/%E4%BC%A0%E8%AE%B0%E7%89%87/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程挑战任务：车道检测</title>
-    <link href="http://yoursite.com/opencv-python-lane-road-detection/"/>
-    <id>http://yoursite.com/opencv-python-lane-road-detection/</id>
+    <link href="http://ex2tron.wang/opencv-python-lane-road-detection/"/>
+    <id>http://ex2tron.wang/opencv-python-lane-road-detection/</id>
     <published>2017-12-28T03:38:11.000Z</published>
     <updated>2018-12-02T13:11:54.989Z</updated>
     
@@ -410,23 +385,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="车道检测" scheme="http://yoursite.com/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/"/>
+      <category term="车道检测" scheme="http://ex2tron.wang/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程17：霍夫变换</title>
-    <link href="http://yoursite.com/opencv-python-hough-transform/"/>
-    <id>http://yoursite.com/opencv-python-hough-transform/</id>
+    <link href="http://ex2tron.wang/opencv-python-hough-transform/"/>
+    <id>http://ex2tron.wang/opencv-python-hough-transform/</id>
     <published>2017-12-28T03:35:11.000Z</published>
     <updated>2018-11-27T12:01:37.467Z</updated>
     
@@ -498,23 +473,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="霍夫变换" scheme="http://yoursite.com/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"/>
+      <category term="霍夫变换" scheme="http://ex2tron.wang/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程16：模板匹配</title>
-    <link href="http://yoursite.com/opencv-python-template-matching/"/>
-    <id>http://yoursite.com/opencv-python-template-matching/</id>
+    <link href="http://ex2tron.wang/opencv-python-template-matching/"/>
+    <id>http://ex2tron.wang/opencv-python-template-matching/</id>
     <published>2017-12-27T08:45:31.000Z</published>
     <updated>2018-11-27T11:47:00.550Z</updated>
     
@@ -579,23 +554,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="模板匹配" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/"/>
+      <category term="模板匹配" scheme="http://ex2tron.wang/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程15：直方图</title>
-    <link href="http://yoursite.com/opencv-python-histograms/"/>
-    <id>http://yoursite.com/opencv-python-histograms/</id>
+    <link href="http://ex2tron.wang/opencv-python-histograms/"/>
+    <id>http://ex2tron.wang/opencv-python-histograms/</id>
     <published>2017-12-23T09:48:30.000Z</published>
     <updated>2018-11-27T11:30:07.007Z</updated>
     
@@ -679,23 +654,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="直方图" scheme="http://yoursite.com/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
+      <category term="直方图" scheme="http://ex2tron.wang/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程14：轮廓特征</title>
-    <link href="http://yoursite.com/opencv-python-contour-features/"/>
-    <id>http://yoursite.com/opencv-python-contour-features/</id>
+    <link href="http://ex2tron.wang/opencv-python-contour-features/"/>
+    <id>http://ex2tron.wang/opencv-python-contour-features/</id>
     <published>2017-12-20T10:46:19.000Z</published>
     <updated>2018-11-27T11:16:51.590Z</updated>
     
@@ -762,23 +737,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="轮廓" scheme="http://yoursite.com/tags/%E8%BD%AE%E5%BB%93/"/>
+      <category term="轮廓" scheme="http://ex2tron.wang/tags/%E8%BD%AE%E5%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇11：凸包及更多轮廓特征</title>
-    <link href="http://yoursite.com/opencv-python-extra-convex-hull/"/>
-    <id>http://yoursite.com/opencv-python-extra-convex-hull/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-convex-hull/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-convex-hull/</id>
     <published>2017-12-20T05:41:11.000Z</published>
     <updated>2018-11-27T11:20:50.247Z</updated>
     
@@ -815,23 +790,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="凸包" scheme="http://yoursite.com/tags/%E5%87%B8%E5%8C%85/"/>
+      <category term="凸包" scheme="http://ex2tron.wang/tags/%E5%87%B8%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇10：轮廓层级</title>
-    <link href="http://yoursite.com/opencv-python-extra-contours-hierarchy/"/>
-    <id>http://yoursite.com/opencv-python-extra-contours-hierarchy/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-contours-hierarchy/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-contours-hierarchy/</id>
     <published>2017-12-20T04:41:11.000Z</published>
     <updated>2018-11-27T10:56:12.299Z</updated>
     
@@ -906,23 +881,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="轮廓层级" scheme="http://yoursite.com/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
+      <category term="轮廓层级" scheme="http://ex2tron.wang/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程13：轮廓</title>
-    <link href="http://yoursite.com/opencv-python-contours/"/>
-    <id>http://yoursite.com/opencv-python-contours/</id>
+    <link href="http://ex2tron.wang/opencv-python-contours/"/>
+    <id>http://ex2tron.wang/opencv-python-contours/</id>
     <published>2017-12-20T01:44:23.000Z</published>
     <updated>2018-11-27T11:03:06.885Z</updated>
     
@@ -972,23 +947,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="轮廓" scheme="http://yoursite.com/tags/%E8%BD%AE%E5%BB%93/"/>
+      <category term="轮廓" scheme="http://ex2tron.wang/tags/%E8%BD%AE%E5%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程12：腐蚀与膨胀</title>
-    <link href="http://yoursite.com/opencv-python-erode-and-dilate/"/>
-    <id>http://yoursite.com/opencv-python-erode-and-dilate/</id>
+    <link href="http://ex2tron.wang/opencv-python-erode-and-dilate/"/>
+    <id>http://ex2tron.wang/opencv-python-erode-and-dilate/</id>
     <published>2017-12-19T12:52:23.000Z</published>
     <updated>2018-11-27T11:03:50.125Z</updated>
     
@@ -1056,27 +1031,27 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="腐蚀" scheme="http://yoursite.com/tags/%E8%85%90%E8%9A%80/"/>
+      <category term="腐蚀" scheme="http://ex2tron.wang/tags/%E8%85%90%E8%9A%80/"/>
     
-      <category term="膨胀" scheme="http://yoursite.com/tags/%E8%86%A8%E8%83%80/"/>
+      <category term="膨胀" scheme="http://ex2tron.wang/tags/%E8%86%A8%E8%83%80/"/>
     
-      <category term="形态学" scheme="http://yoursite.com/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/"/>
+      <category term="形态学" scheme="http://ex2tron.wang/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程11：边缘检测</title>
-    <link href="http://yoursite.com/opencv-python-edge-detection/"/>
-    <id>http://yoursite.com/opencv-python-edge-detection/</id>
+    <link href="http://ex2tron.wang/opencv-python-edge-detection/"/>
+    <id>http://ex2tron.wang/opencv-python-edge-detection/</id>
     <published>2017-12-18T09:11:48.000Z</published>
     <updated>2018-11-26T14:10:20.553Z</updated>
     
@@ -1138,25 +1113,25 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="边缘" scheme="http://yoursite.com/tags/%E8%BE%B9%E7%BC%98/"/>
+      <category term="边缘" scheme="http://ex2tron.wang/tags/%E8%BE%B9%E7%BC%98/"/>
     
-      <category term="Canny" scheme="http://yoursite.com/tags/Canny/"/>
+      <category term="Canny" scheme="http://ex2tron.wang/tags/Canny/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇9：图像梯度</title>
-    <link href="http://yoursite.com/opencv-python-extra-image-gradients/"/>
-    <id>http://yoursite.com/opencv-python-extra-image-gradients/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-image-gradients/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-image-gradients/</id>
     <published>2017-12-18T02:51:43.000Z</published>
     <updated>2018-11-26T14:09:07.566Z</updated>
     
@@ -1221,25 +1196,25 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="梯度" scheme="http://yoursite.com/tags/%E6%A2%AF%E5%BA%A6/"/>
+      <category term="梯度" scheme="http://ex2tron.wang/tags/%E6%A2%AF%E5%BA%A6/"/>
     
-      <category term="Sobel" scheme="http://yoursite.com/tags/Sobel/"/>
+      <category term="Sobel" scheme="http://ex2tron.wang/tags/Sobel/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程10：平滑图像</title>
-    <link href="http://yoursite.com/opencv-python-smoothing-images/"/>
-    <id>http://yoursite.com/opencv-python-smoothing-images/</id>
+    <link href="http://ex2tron.wang/opencv-python-smoothing-images/"/>
+    <id>http://ex2tron.wang/opencv-python-smoothing-images/</id>
     <published>2017-12-15T01:44:24.000Z</published>
     <updated>2018-11-26T08:51:03.803Z</updated>
     
@@ -1317,23 +1292,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="模糊" scheme="http://yoursite.com/tags/%E6%A8%A1%E7%B3%8A/"/>
+      <category term="模糊" scheme="http://ex2tron.wang/tags/%E6%A8%A1%E7%B3%8A/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇8：卷积基础(图片边框)</title>
-    <link href="http://yoursite.com/opencv-python-extra-padding-and-convolution/"/>
-    <id>http://yoursite.com/opencv-python-extra-padding-and-convolution/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-padding-and-convolution/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-padding-and-convolution/</id>
     <published>2017-12-14T08:27:45.000Z</published>
     <updated>2018-11-27T10:23:13.263Z</updated>
     
@@ -1390,23 +1365,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="卷积" scheme="http://yoursite.com/tags/%E5%8D%B7%E7%A7%AF/"/>
+      <category term="卷积" scheme="http://ex2tron.wang/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程9：图像混合</title>
-    <link href="http://yoursite.com/opencv-python-image-blending/"/>
-    <id>http://yoursite.com/opencv-python-image-blending/</id>
+    <link href="http://ex2tron.wang/opencv-python-image-blending/"/>
+    <id>http://ex2tron.wang/opencv-python-image-blending/</id>
     <published>2017-12-10T06:13:10.000Z</published>
     <updated>2018-11-26T07:09:15.316Z</updated>
     
@@ -1455,23 +1430,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="图像混合" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
+      <category term="图像混合" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇7：亮度与对比度</title>
-    <link href="http://yoursite.com/opencv-python-extra-contrast-brightness/"/>
-    <id>http://yoursite.com/opencv-python-extra-contrast-brightness/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-contrast-brightness/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-contrast-brightness/</id>
     <published>2017-12-10T06:05:10.000Z</published>
     <updated>2018-11-26T07:48:31.783Z</updated>
     
@@ -1506,25 +1481,25 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="亮度" scheme="http://yoursite.com/tags/%E4%BA%AE%E5%BA%A6/"/>
+      <category term="亮度" scheme="http://ex2tron.wang/tags/%E4%BA%AE%E5%BA%A6/"/>
     
-      <category term="对比度" scheme="http://yoursite.com/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
+      <category term="对比度" scheme="http://ex2tron.wang/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程拓展挑战：PyQt编写GUI界面</title>
-    <link href="http://yoursite.com/opencv-python-using-pyqt5-create-gui/"/>
-    <id>http://yoursite.com/opencv-python-using-pyqt5-create-gui/</id>
+    <link href="http://ex2tron.wang/opencv-python-using-pyqt5-create-gui/"/>
+    <id>http://ex2tron.wang/opencv-python-using-pyqt5-create-gui/</id>
     <published>2017-12-09T09:30:34.000Z</published>
     <updated>2018-12-02T13:37:44.709Z</updated>
     
@@ -1655,23 +1630,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="PyQt" scheme="http://yoursite.com/tags/PyQt/"/>
+      <category term="PyQt" scheme="http://ex2tron.wang/tags/PyQt/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程挑战任务：画动态时钟</title>
-    <link href="http://yoursite.com/opencv-python-clock-drawing/"/>
-    <id>http://yoursite.com/opencv-python-clock-drawing/</id>
+    <link href="http://ex2tron.wang/opencv-python-clock-drawing/"/>
+    <id>http://ex2tron.wang/opencv-python-clock-drawing/</id>
     <published>2017-12-09T09:29:34.000Z</published>
     <updated>2018-12-02T13:11:45.117Z</updated>
     
@@ -1719,23 +1694,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="PyQt" scheme="http://yoursite.com/tags/PyQt/"/>
+      <category term="PyQt" scheme="http://ex2tron.wang/tags/PyQt/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇6：鼠标绘图</title>
-    <link href="http://yoursite.com/opencv-python-extra-drawing-with-mouse/"/>
-    <id>http://yoursite.com/opencv-python-extra-drawing-with-mouse/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-drawing-with-mouse/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-drawing-with-mouse/</id>
     <published>2017-12-09T09:28:34.000Z</published>
     <updated>2018-11-26T06:57:25.327Z</updated>
     
@@ -1781,23 +1756,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="绘图" scheme="http://yoursite.com/tags/%E7%BB%98%E5%9B%BE/"/>
+      <category term="绘图" scheme="http://ex2tron.wang/tags/%E7%BB%98%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程8：绘图功能</title>
-    <link href="http://yoursite.com/opencv-python-drawing-function/"/>
-    <id>http://yoursite.com/opencv-python-drawing-function/</id>
+    <link href="http://ex2tron.wang/opencv-python-drawing-function/"/>
+    <id>http://ex2tron.wang/opencv-python-drawing-function/</id>
     <published>2017-12-09T03:29:48.000Z</published>
     <updated>2018-11-29T02:04:50.554Z</updated>
     
@@ -1880,23 +1855,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="绘图" scheme="http://yoursite.com/tags/%E7%BB%98%E5%9B%BE/"/>
+      <category term="绘图" scheme="http://ex2tron.wang/tags/%E7%BB%98%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Python-OpenCV教程番外篇5：仿射变换与透视变换</title>
-    <link href="http://yoursite.com/opencv-python-extra-warpaffine-warpperspective/"/>
-    <id>http://yoursite.com/opencv-python-extra-warpaffine-warpperspective/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/</id>
     <published>2017-12-08T07:36:53.000Z</published>
     <updated>2018-11-26T12:06:04.508Z</updated>
     
@@ -2006,23 +1981,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="图像变换" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/"/>
+      <category term="图像变换" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程7：图像几何变换</title>
-    <link href="http://yoursite.com/opencv-python-image-geometric-transformation/"/>
-    <id>http://yoursite.com/opencv-python-image-geometric-transformation/</id>
+    <link href="http://ex2tron.wang/opencv-python-image-geometric-transformation/"/>
+    <id>http://ex2tron.wang/opencv-python-image-geometric-transformation/</id>
     <published>2017-12-08T06:36:53.000Z</published>
     <updated>2018-11-22T07:10:12.240Z</updated>
     
@@ -2072,23 +2047,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="几何变换" scheme="http://yoursite.com/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
+      <category term="几何变换" scheme="http://ex2tron.wang/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇4：Otsu阈值法</title>
-    <link href="http://yoursite.com/opencv-python-extra-otsu-thresholding/"/>
-    <id>http://yoursite.com/opencv-python-extra-otsu-thresholding/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-otsu-thresholding/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-otsu-thresholding/</id>
     <published>2017-12-08T04:48:05.000Z</published>
     <updated>2018-11-28T09:52:24.255Z</updated>
     
@@ -2144,23 +2119,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="阈值" scheme="http://yoursite.com/tags/%E9%98%88%E5%80%BC/"/>
+      <category term="阈值" scheme="http://ex2tron.wang/tags/%E9%98%88%E5%80%BC/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程6：阈值分割</title>
-    <link href="http://yoursite.com/opencv-python-image-thresholding/"/>
-    <id>http://yoursite.com/opencv-python-image-thresholding/</id>
+    <link href="http://ex2tron.wang/opencv-python-image-thresholding/"/>
+    <id>http://ex2tron.wang/opencv-python-image-thresholding/</id>
     <published>2017-12-07T13:14:44.000Z</published>
     <updated>2018-11-15T14:24:42.840Z</updated>
     
@@ -2224,23 +2199,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="阈值" scheme="http://yoursite.com/tags/%E9%98%88%E5%80%BC/"/>
+      <category term="阈值" scheme="http://ex2tron.wang/tags/%E9%98%88%E5%80%BC/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程5：颜色空间转换</title>
-    <link href="http://yoursite.com/opencv-python-changing-colorspaces/"/>
-    <id>http://yoursite.com/opencv-python-changing-colorspaces/</id>
+    <link href="http://ex2tron.wang/opencv-python-changing-colorspaces/"/>
+    <id>http://ex2tron.wang/opencv-python-changing-colorspaces/</id>
     <published>2017-12-07T07:21:19.000Z</published>
     <updated>2018-11-26T08:48:49.347Z</updated>
     
@@ -2296,23 +2271,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="HSV" scheme="http://yoursite.com/tags/HSV/"/>
+      <category term="HSV" scheme="http://ex2tron.wang/tags/HSV/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程4：图像基本操作</title>
-    <link href="http://yoursite.com/opencv-python-basic-operations/"/>
-    <id>http://yoursite.com/opencv-python-basic-operations/</id>
+    <link href="http://ex2tron.wang/opencv-python-basic-operations/"/>
+    <id>http://ex2tron.wang/opencv-python-basic-operations/</id>
     <published>2017-12-07T04:13:15.000Z</published>
     <updated>2018-11-26T08:49:03.299Z</updated>
     
@@ -2371,23 +2346,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="ROI" scheme="http://yoursite.com/tags/ROI/"/>
+      <category term="ROI" scheme="http://ex2tron.wang/tags/ROI/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇3：滑动条</title>
-    <link href="http://yoursite.com/opencv-python-extra-trackbar/"/>
-    <id>http://yoursite.com/opencv-python-extra-trackbar/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-trackbar/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-trackbar/</id>
     <published>2017-12-06T14:23:11.000Z</published>
     <updated>2018-11-15T14:19:40.211Z</updated>
     
@@ -2420,23 +2395,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="滑动条" scheme="http://yoursite.com/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
+      <category term="滑动条" scheme="http://ex2tron.wang/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程3：打开摄像头</title>
-    <link href="http://yoursite.com/opencv-python-open-camera/"/>
-    <id>http://yoursite.com/opencv-python-open-camera/</id>
+    <link href="http://ex2tron.wang/opencv-python-open-camera/"/>
+    <id>http://ex2tron.wang/opencv-python-open-camera/</id>
     <published>2017-12-06T08:38:02.000Z</published>
     <updated>2018-11-26T08:49:12.848Z</updated>
     
@@ -2487,21 +2462,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇2：Matplotlib显示图像</title>
-    <link href="http://yoursite.com/opencv-python-extra-using-matplotlib/"/>
-    <id>http://yoursite.com/opencv-python-extra-using-matplotlib/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-using-matplotlib/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-using-matplotlib/</id>
     <published>2017-12-06T07:55:15.000Z</published>
     <updated>2018-11-15T14:21:09.863Z</updated>
     
@@ -2535,23 +2510,23 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="Matplotlib" scheme="http://yoursite.com/tags/Matplotlib/"/>
+      <category term="Matplotlib" scheme="http://ex2tron.wang/tags/Matplotlib/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程2：基本元素-图片</title>
-    <link href="http://yoursite.com/opencv-python-basic-element-image/"/>
-    <id>http://yoursite.com/opencv-python-basic-element-image/</id>
+    <link href="http://ex2tron.wang/opencv-python-basic-element-image/"/>
+    <id>http://ex2tron.wang/opencv-python-basic-element-image/</id>
     <published>2017-12-06T07:52:06.000Z</published>
     <updated>2018-11-26T08:49:19.839Z</updated>
     
@@ -2616,21 +2591,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程番外篇1：代码性能优化</title>
-    <link href="http://yoursite.com/opencv-python-extra-code-optimization/"/>
-    <id>http://yoursite.com/opencv-python-extra-code-optimization/</id>
+    <link href="http://ex2tron.wang/opencv-python-extra-code-optimization/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-code-optimization/</id>
     <published>2017-12-06T07:51:52.000Z</published>
     <updated>2018-10-04T09:48:22.868Z</updated>
     
@@ -2669,21 +2644,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Python+OpenCV教程1：简介与安装</title>
-    <link href="http://yoursite.com/opencv-python-introduction-and-installation/"/>
-    <id>http://yoursite.com/opencv-python-introduction-and-installation/</id>
+    <link href="http://ex2tron.wang/opencv-python-introduction-and-installation/"/>
+    <id>http://ex2tron.wang/opencv-python-introduction-and-installation/</id>
     <published>2017-12-06T07:50:59.000Z</published>
     <updated>2018-12-04T13:48:43.191Z</updated>
     
@@ -2762,21 +2737,21 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>【片单】漫威宇宙电影合集</title>
-    <link href="http://yoursite.com/movie-marvel-collections/"/>
-    <id>http://yoursite.com/movie-marvel-collections/</id>
+    <link href="http://ex2tron.wang/movie-marvel-collections/"/>
+    <id>http://ex2tron.wang/movie-marvel-collections/</id>
     <published>2017-12-05T14:44:35.000Z</published>
     <updated>2018-10-03T04:35:04.890Z</updated>
     
@@ -2840,21 +2815,21 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="漫威" scheme="http://yoursite.com/tags/%E6%BC%AB%E5%A8%81/"/>
+      <category term="漫威" scheme="http://ex2tron.wang/tags/%E6%BC%AB%E5%A8%81/"/>
     
-      <category term="Marvel" scheme="http://yoursite.com/tags/Marvel/"/>
+      <category term="Marvel" scheme="http://ex2tron.wang/tags/Marvel/"/>
     
-      <category term="复仇者联盟" scheme="http://yoursite.com/tags/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F/"/>
+      <category term="复仇者联盟" scheme="http://ex2tron.wang/tags/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F/"/>
     
   </entry>
   
   <entry>
     <title>【片单】007电影合集</title>
-    <link href="http://yoursite.com/movie-007-collections/"/>
-    <id>http://yoursite.com/movie-007-collections/</id>
+    <link href="http://ex2tron.wang/movie-007-collections/"/>
+    <id>http://ex2tron.wang/movie-007-collections/</id>
     <published>2017-12-05T13:53:37.000Z</published>
     <updated>2018-10-03T03:54:49.462Z</updated>
     
@@ -2933,19 +2908,19 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="007" scheme="http://yoursite.com/tags/007/"/>
+      <category term="007" scheme="http://ex2tron.wang/tags/007/"/>
     
-      <category term="邦德" scheme="http://yoursite.com/tags/%E9%82%A6%E5%BE%B7/"/>
+      <category term="邦德" scheme="http://ex2tron.wang/tags/%E9%82%A6%E5%BE%B7/"/>
     
   </entry>
   
   <entry>
     <title>【片单】历届奥斯卡最佳动画长片集</title>
-    <link href="http://yoursite.com/movie-oscars-animated-collections/"/>
-    <id>http://yoursite.com/movie-oscars-animated-collections/</id>
+    <link href="http://ex2tron.wang/movie-oscars-animated-collections/"/>
+    <id>http://ex2tron.wang/movie-oscars-animated-collections/</id>
     <published>2017-12-05T06:55:09.000Z</published>
     <updated>2018-11-02T02:51:48.376Z</updated>
     
@@ -3002,19 +2977,19 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="奥斯卡" scheme="http://yoursite.com/tags/%E5%A5%A5%E6%96%AF%E5%8D%A1/"/>
+      <category term="奥斯卡" scheme="http://ex2tron.wang/tags/%E5%A5%A5%E6%96%AF%E5%8D%A1/"/>
     
-      <category term="动画" scheme="http://yoursite.com/tags/%E5%8A%A8%E7%94%BB/"/>
+      <category term="动画" scheme="http://ex2tron.wang/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
   <entry>
     <title>Brand7 2.0更名&quot;品牌漆&quot;正式上架咯！</title>
-    <link href="http://yoursite.com/brand7-2-release/"/>
-    <id>http://yoursite.com/brand7-2-release/</id>
+    <link href="http://ex2tron.wang/brand7-2-release/"/>
+    <id>http://ex2tron.wang/brand7-2-release/</id>
     <published>2017-11-26T11:04:32.000Z</published>
     <updated>2018-11-02T02:51:48.371Z</updated>
     
@@ -3051,19 +3026,19 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Brand7" scheme="http://yoursite.com/tags/Brand7/"/>
+      <category term="Brand7" scheme="http://ex2tron.wang/tags/Brand7/"/>
     
-      <category term="品牌漆" scheme="http://yoursite.com/tags/%E5%93%81%E7%89%8C%E6%BC%86/"/>
+      <category term="品牌漆" scheme="http://ex2tron.wang/tags/%E5%93%81%E7%89%8C%E6%BC%86/"/>
     
   </entry>
   
   <entry>
     <title>软件+影视汁源贴(updating...)</title>
-    <link href="http://yoursite.com/software-and-movies/"/>
-    <id>http://yoursite.com/software-and-movies/</id>
+    <link href="http://ex2tron.wang/software-and-movies/"/>
+    <id>http://ex2tron.wang/software-and-movies/</id>
     <published>2017-11-15T11:53:46.000Z</published>
     <updated>2018-10-05T10:15:11.040Z</updated>
     
@@ -3169,19 +3144,19 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="软件" scheme="http://yoursite.com/tags/%E8%BD%AF%E4%BB%B6/"/>
+      <category term="软件" scheme="http://ex2tron.wang/tags/%E8%BD%AF%E4%BB%B6/"/>
     
-      <category term="影视" scheme="http://yoursite.com/tags/%E5%BD%B1%E8%A7%86/"/>
+      <category term="影视" scheme="http://ex2tron.wang/tags/%E5%BD%B1%E8%A7%86/"/>
     
   </entry>
   
   <entry>
     <title>计量史：时间之旅</title>
-    <link href="http://yoursite.com/metrology-history-a-journey-of-time/"/>
-    <id>http://yoursite.com/metrology-history-a-journey-of-time/</id>
+    <link href="http://ex2tron.wang/metrology-history-a-journey-of-time/"/>
+    <id>http://ex2tron.wang/metrology-history-a-journey-of-time/</id>
     <published>2017-11-08T13:35:51.000Z</published>
     <updated>2018-10-03T02:52:55.757Z</updated>
     
@@ -3208,19 +3183,19 @@
     
     </summary>
     
-      <category term="五味杂粮" scheme="http://yoursite.com/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
+      <category term="五味杂粮" scheme="http://ex2tron.wang/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
     
     
-      <category term="计量" scheme="http://yoursite.com/tags/%E8%AE%A1%E9%87%8F/"/>
+      <category term="计量" scheme="http://ex2tron.wang/tags/%E8%AE%A1%E9%87%8F/"/>
     
-      <category term="时间之旅" scheme="http://yoursite.com/tags/%E6%97%B6%E9%97%B4%E4%B9%8B%E6%97%85/"/>
+      <category term="时间之旅" scheme="http://ex2tron.wang/tags/%E6%97%B6%E9%97%B4%E4%B9%8B%E6%97%85/"/>
     
   </entry>
   
   <entry>
     <title>摄影之魅：瞬间是一面&quot;镜子&quot;</title>
-    <link href="http://yoursite.com/the-charm-of-photography-instant-is-a-mirror/"/>
-    <id>http://yoursite.com/the-charm-of-photography-instant-is-a-mirror/</id>
+    <link href="http://ex2tron.wang/the-charm-of-photography-instant-is-a-mirror/"/>
+    <id>http://ex2tron.wang/the-charm-of-photography-instant-is-a-mirror/</id>
     <published>2017-11-08T12:56:32.000Z</published>
     <updated>2018-11-02T02:51:48.376Z</updated>
     
@@ -3256,65 +3231,19 @@
     
     </summary>
     
-      <category term="五味杂粮" scheme="http://yoursite.com/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
+      <category term="五味杂粮" scheme="http://ex2tron.wang/categories/%E4%BA%94%E5%91%B3%E6%9D%82%E7%B2%AE/"/>
     
     
-      <category term="摄影" scheme="http://yoursite.com/tags/%E6%91%84%E5%BD%B1/"/>
+      <category term="摄影" scheme="http://ex2tron.wang/tags/%E6%91%84%E5%BD%B1/"/>
     
-      <category term="布列松" scheme="http://yoursite.com/tags/%E5%B8%83%E5%88%97%E6%9D%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>numpy中几种矩阵的乘法</title>
-    <link href="http://yoursite.com/multiply-in-numpy/"/>
-    <id>http://yoursite.com/multiply-in-numpy/</id>
-    <published>2017-10-11T02:26:09.000Z</published>
-    <updated>2018-10-03T04:01:24.241Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。<a id="more"></a></p>
-<blockquote>
-<p><em>With great power comes great responsibility</em>  ——<a href="https://movie.douban.com/subject/1306612/" target="_blank" rel="external">《Spider-Man》</a><br><br><em>能力越大，责任越大。</em>——<a href="https://movie.douban.com/subject/1306612/" target="_blank" rel="external">《蜘蛛侠》</a></p>
-</blockquote>
-<hr>
-<p>首先，这里规定一下，我们用numpy定义矩阵时全部采用标准的形式，举例如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 不推荐的方式</span></div><div class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div><div class="line">print(a.shape)</div><div class="line"><span class="comment"># 推荐的方式</span></div><div class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">print(b.shape)</div></pre></td></tr></table></figure>
-<p>上面代码a的形状是<code>(3,)</code>，b的形状<code>(1,3)</code>，即1行3列的一个矩阵。</p>
-<h2 id="np-dot"><a href="#np-dot" class="headerlink" title="np.dot"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html" target="_blank" rel="external">np.dot</a></h2><p><code>np.dot(A,B)</code>就是实现同线性代数里面的矩阵乘法，也就是说，A的列数要等于B的行数才可以相乘：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">b = np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>]])</div><div class="line">print(np.dot(a,b))</div></pre></td></tr></table></figure>
-<p>a是<code>(2,3)</code>，b是<code>(3,1)</code>，所以输出结果是：[[14], [32]]。</p>
-<h2 id="np-multiply"><a href="#np-multiply" class="headerlink" title="np.multiply"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.multiply.html" target="_blank" rel="external">np.multiply</a></h2><p>np.multiply(A,B)和A*B效果一样，实现对应位置元素相乘。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 示例一</span></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">b = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">print(a*b)</div><div class="line">print(np.multiply(a,b))</div><div class="line"></div><div class="line"><span class="comment"># 示例二</span></div><div class="line">c = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">d = np.array([[<span class="number">1</span>],[<span class="number">2</span>]])</div><div class="line">print(c*d)</div><div class="line">print(np.multiply(c,d))</div></pre></td></tr></table></figure>
-<p>示例一输出结果是<code>[[4 10 18]]</code>，即<code>[[1*4 2*5 3*6]]</code>。<br>示例二输出结果是<code>[[1  2  3], [8 10 12]]</code>，这里涉及到一个numpy中<a href="http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="external">广播</a>的概念：因为c是(2,3)，而d是(2,1)，为了实现对应元素相乘，numpy会把d的列复制扩展成(2,3)，于是就有了上面的结果。</p>
-<h2 id="np-inner"><a href="#np-inner" class="headerlink" title="np.inner"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.inner.html#numpy.inner" target="_blank" rel="external">np.inner</a></h2><p>np.inner(A,B) 实现A,B的内积，要求A,B矩阵最后一维是相同的，如果是2维矩阵，即A,B矩阵的列数要相同。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">b = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">print(np.inner(a,b))</div></pre></td></tr></table></figure>
-<p>结果为<code>[[32]]</code>，即<code>1*4 + 2*10 + 3*6</code>。</p>
-<h2 id="np-outer"><a href="#np-outer" class="headerlink" title="np.outer"></a><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.outer.html#numpy.outer" target="_blank" rel="external">np.outer</a></h2><p>np.outer(A,B)即A,B的外积：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">b = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line">print(np.outer(a,b))</div></pre></td></tr></table></figure>
-<p>结果为<code>[[4  5  6], [8 10 12], [12 15 18]]</code>，即<code>[[1*4 1*5 1*6], [2*4 2*5 2*6], [3*4 3*5 3*6]]</code>。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近在手动实现神经网络模型的时候，老是混淆numpy中几种矩阵乘法区别，所以特此记录一下。
-    
-    </summary>
-    
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
-    
-    
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-      <category term="numpy" scheme="http://yoursite.com/tags/numpy/"/>
-    
-      <category term="矩阵" scheme="http://yoursite.com/tags/%E7%9F%A9%E9%98%B5/"/>
+      <category term="布列松" scheme="http://ex2tron.wang/tags/%E5%B8%83%E5%88%97%E6%9D%BE/"/>
     
   </entry>
   
   <entry>
     <title>【视觉与图像】OpenCV篇：Python+OpenCV实用教程</title>
-    <link href="http://yoursite.com/opencv-python/"/>
-    <id>http://yoursite.com/opencv-python/</id>
+    <link href="http://ex2tron.wang/opencv-python/"/>
+    <id>http://ex2tron.wang/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
     <updated>2019-03-17T13:49:20.504Z</updated>
     
@@ -3351,44 +3280,50 @@
     
     </summary>
     
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
-    <title>【利器篇】GitKraken：顶级酷炫Git图像化客户端</title>
-    <link href="http://yoursite.com/tools-gitkraken/"/>
-    <id>http://yoursite.com/tools-gitkraken/</id>
+    <title>【利器】GitKraken：酷炫的Git GUI客户端</title>
+    <link href="http://ex2tron.wang/tools-gitkraken/"/>
+    <id>http://ex2tron.wang/tools-gitkraken/</id>
     <published>2017-10-05T09:33:20.000Z</published>
-    <updated>2018-11-02T02:51:48.375Z</updated>
+    <updated>2019-03-19T05:11:08.444Z</updated>
     
     <content type="html"><![CDATA[<p>不喜欢敲命令？那么这款酷炫的Git客户端让你逼格满满！<a id="more"></a></p>
 <blockquote>
 <p><em>真正的忘记是不需要努力的。</em>——<a href="https://movie.douban.com/subject/5045678/" target="_blank" rel="external">《大鱼海棠》</a></p>
 </blockquote>
 <hr>
-<p>首先废话一段：以前我上班的时候，公司里的<a href="https://baike.baidu.com/item/scm/2039966" target="_blank" rel="external">SCM</a>用的是perforce，你应该、可能没听过( ╯□╰ )。总之，就是集中式版本管理系统，相比于git的分布式有很多缺陷，具体可以看廖雪峰的这篇文章：“<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374027586935cf69c53637d8458c9aec27dd546a6cd6000" target="_blank" rel="external">集中式vs分布式</a>”。但作为一款商业软件，perforce提供的优秀客户端体验还是相当不错的。使用git后，一直都是敲命令的，一是因为习惯，毕竟码代码逼格高嘛，二是因为git的GUI客户端要不很丑，要不功能捉急，总之不想用。之后，在微博上看到这款软件，又同类似的<a href="http://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a>相比体验了一下，无奈，我，还是喜欢颜值高的~ o(<em>￣▽￣</em>)o另外，以前外教老师提问说《加勒比海盗2》中的那个怪物叫啥，阅片无数的我，那天竟然没回答上，装逼失败，所以对这只“挪威海怪kraken”影响特别深刻。好了，开始正题吧，扯远了~</p>
-<p>官网/下载：<a href="https://www.gitkraken.com/" target="_blank" rel="external">GitKraken</a></p>
+<p>废话一段先：以前上班的时候，公司里版本管理系统用的是perforce，你应该、可能没听过( ╯□╰ )。总之，就是集中式版本管理系统，相比于git的分布式有很多缺陷，具体可以看“<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374027586935cf69c53637d8458c9aec27dd546a6cd6000" target="_blank" rel="external">集中式vs分布式</a>”。但作为一款商业软件，perforce提供的优秀客户端体验还是相当不错的。使用git后，一直都是敲命令的，一是因为习惯，毕竟码代码逼格高嘛，二是因为git的GUI客户端要不很丑，要不功能捉急，总之不想用。之后，体验了这个软件，又同类似的<a href="http://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a>对比了下，无奈，我，还是喜欢颜值高的~ o(<em>￣▽￣</em>)o另外，以前外教老师提问说《加勒比海盗2》中的那个怪物叫啥，阅片无数的我，那天竟然没回答上，装逼失败，所以对这只“挪威海怪kraken”影响特别深刻。好了，开始正题吧~</p>
+<ul>
+<li>官网/下载：<a href="https://www.gitkraken.com/" target="_blank" rel="external">GitKraken</a></li>
+</ul>
 <p>GitKraken对Windows/Linux/Mac三大主流平台都支持，其方便之处在于，它不需要安装配置，双击打开就可以了。打开之后，可以选择用Github账号登陆，需要Github授权：</p>
-<p><img src="http://pic.ex2tron.top/gitkraken_sign_in_with_github.png" alt="gitkraken_sign_in_with_github"></p>
+<p><img src="http://pic.ex2tron.top/gitkraken_sign_in_with_github.png" alt="使用Github授权登录"></p>
 <h2 id="打开-克隆-初始化"><a href="#打开-克隆-初始化" class="headerlink" title="打开/克隆/初始化"></a>打开/克隆/初始化</h2><p>GitKranken支持打开本地仓库，从指定的URL或Github、Gitlab、Bitbucket等上面直接克隆。前面我们已经用Github直接登陆了，所以，从Github克隆时，会直接列出你当前的所有仓库项目，非常方便。当然，也可以连接到Gitlab/Bitbucket平台：</p>
-<p><img src="http://pic.ex2tron.top/gitkraken_clone_from_github.png" alt="gitkraken_clone_from_github"></p>
-<p>初始化/新建项目也非常方便，在<code>Init</code>选项中，可以选择初始化一个本地仓库或类似Github之类的远程仓库。GitKraken初始化时还提供了.gitignore的文件的相关模板：</p>
-<p><img src="http://pic.ex2tron.top/gitkraken_init_github_repo.png" alt="gitkraken_init_github_repo"></p>
+<p><img src="http://pic.ex2tron.top/gitkraken_clone_from_github.png" alt=""></p>
+<p>初始化/新建项目也非常方便，在Init选项中，可以选择初始化一个本地仓库或类似Github之类的远程仓库。GitKraken初始化时还提供了.gitignore的文件的相关模板：</p>
+<p><img src="http://pic.ex2tron.top/gitkraken_init_github_repo.png" alt=""></p>
 <h2 id="界面-功能"><a href="#界面-功能" class="headerlink" title="界面/功能"></a>界面/功能</h2><p>打开一个仓库后，主界面如下图，酷炫简洁，顶部提供了常用的Git功能，就不细说了。我主要提及一下，如何进行版本差分：</p>
-<p><img src="http://pic.ex2tron.top/gitkraken_main_ui.png" alt="gitkraken_main_ui"></p>
+<p><img src="http://pic.ex2tron.top/gitkraken_main_ui.png" alt=""></p>
 <p>在提交日志的主界面，如果要比较任意两个版本之间的差分，按住Ctrl键，选择要比较的版本，右边会自动列出两个版本之间所修改的文件，点击文件就可以看到diff了：</p>
-<p><img src="http://pic.ex2tron.top/gitkraken_view_commits_diff.png" alt="gitkraken_view_commits_diff"></p>
-<p><img src="http://pic.ex2tron.top/gitkraken_view_file_diff.png" alt="gitkraken_view_file_diff"></p>
+<p><img src="http://pic.ex2tron.top/gitkraken_view_commits_diff.png" alt=""></p>
+<p><img src="http://pic.ex2tron.top/gitkraken_view_file_diff.png" alt=""></p>
 <p>当然，最新版本（本文使用的是3.1版本）的GitKraken提供了Merge和Diff工具的自定义（File-Preferences-General中设置），比如说我最常用的Merge工具是WinMerge，就可以在这里配置。</p>
 <p>抛砖引玉，大致介绍了一下，其实熟悉Git的话，这个工具使用起来还是蛮简单的~ o(<em>￣▽￣</em>)o</p>
+<p><em>2019年3月19日更新：最近我一直用VSCode，集成的git功能再加上gitlens这款插件，体验也很棒。</em></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3397,66 +3332,19 @@
     
     </summary>
     
-      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://ex2tron.wang/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+      <category term="Git" scheme="http://ex2tron.wang/tags/Git/"/>
     
-      <category term="GitKraken" scheme="http://yoursite.com/tags/GitKraken/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构建：变量</title>
-    <link href="http://yoursite.com/build-variables/"/>
-    <id>http://yoursite.com/build-variables/</id>
-    <published>2017-09-28T13:23:45.000Z</published>
-    <updated>2018-11-02T02:51:48.373Z</updated>
-    
-    <content type="html"><![CDATA[<p>如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。<a id="more"></a></p>
-<blockquote>
-<p><em>Why do we fall, Bruce? So we can learn to pick ourselves up.</em>  ——《<a href="https://movie.douban.com/subject/1309069/" target="_blank" rel="external">Batman Begins</a>》<br><br><em>我们为何会跌倒？这样我们才可以学会自己爬起来。</em>——《<a href="https://movie.douban.com/subject/1309069/" target="_blank" rel="external">蝙蝠侠：侠影之谜</a>》</p>
-</blockquote>
-<hr>
-<p>如果一个变量在代码中很分散，阅读者在同一时间内考虑的代码行数势必会增加，编写者引入Bug的概率也会增大。那么，该如何从减少变量的作用域角度提高代码质量呢？</p>
-<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
-<h3 id="变量跨度与存活时间"><a href="#变量跨度与存活时间" class="headerlink" title="变量跨度与存活时间"></a>变量跨度与存活时间</h3><h4 id="建议一：把对变量的引用尽可能集中在一起，使变量局部化"><a href="#建议一：把对变量的引用尽可能集中在一起，使变量局部化" class="headerlink" title="建议一：把对变量的引用尽可能集中在一起，使变量局部化"></a>建议一：把对变量的引用尽可能集中在一起，使变量局部化</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line">a = <span class="number">0</span>; </div><div class="line">b = <span class="number">0</span>;</div><div class="line">c = <span class="number">0</span>;</div><div class="line">a = b + c;</div><div class="line">b += <span class="number">1</span>;</div></pre></td></tr></table></figure>
-<p>跨度（span）是衡量变量不同引用点靠近程度的一种方法。比如说上面的代码，对a的第一次引用和第二次引用之间有2行代码，那么变量a的跨度就是2。引用多次的话，可以取平均跨度。如b的第一次和第二次引用之间行数为1，第二次和第三次引用之间行数为0，所以平均跨度span(b)=(1+0)/2=0.5。</p>
-<p>另外一个概念是：存活时间（live time）。跟跨度类似，不过存活时间只跟变量第一次和最后一次引用有关。比如对于上面代码中的b变量，跨度是0.5，但是存活时间是4条语句。</p>
-<p>显然，我们的目标就是<strong>缩短变量的跨度和存活时间</strong>。如果用这两个概念考察全局变量，就会发现全局变量的跨度和存活时间都很长，这也是为什么避免使用全局变量的原因之一。</p>
-<h3 id="减小作用域的建议"><a href="#减小作用域的建议" class="headerlink" title="减小作用域的建议"></a>减小作用域的建议</h3><h4 id="建议二：把相关语句放在一起"><a href="#建议二：把相关语句放在一起" class="headerlink" title="建议二：把相关语句放在一起"></a>建议二：把相关语句放在一起</h4><p>把变量的引用点集中在一起，使代码易于自上而下的阅读，举例来说：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line"><span class="comment">//跳来跳去的糟糕代码</span></div><div class="line">MarketingData marketingData;</div><div class="line">SalesData salesData;</div><div class="line">TravelData travelData;</div><div class="line"></div><div class="line">travelData.ComputeWeekly();</div><div class="line">salesData.ComputeWeekly();</div><div class="line">marketingData.ComputeWeekly();</div><div class="line"></div><div class="line">salesData.ComputeAnnually();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line"></div><div class="line">salesData.print();</div><div class="line">travelData.print();</div><div class="line">marketingData.print();</div></pre></td></tr></table></figure>
-<p>显然，如果你要想知道marketingData的计算流程，就必须在这段代码的不同行数跳跃。所以，这样组织代码会更好：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//组织良好，从上而下阅读</span></div><div class="line">MarketingData marketingData;</div><div class="line">marketingData.ComputeWeekly();</div><div class="line">marketingData.ComputeAnnually();</div><div class="line">marketingData.print();</div><div class="line"></div><div class="line">SalesData salesData;</div><div class="line">salesData.ComputeWeekly();</div><div class="line">salesData.ComputeAnnually();</div><div class="line">salesData.print();</div><div class="line"></div><div class="line">TravelData travelData;</div><div class="line">travelData.ComputeWeekly();</div><div class="line">travelData.ComputeAnnually();</div><div class="line">travelData.print();</div></pre></td></tr></table></figure>
-<p>《代码大全》中介绍了一种简便的检查相关语句是否组成得当的方法，把你的代码片段打印出来，然后把相关的语句画上框，组织得当的话， 这些框是不会重叠的：</p>
-<p><img src="http://pic.ex2tron.top/good_grouping_related_statements.png" alt="good_grouping_related_statements"></p>
-<h4 id="建议三：把相关语句提取成单独的子程序"><a href="#建议三：把相关语句提取成单独的子程序" class="headerlink" title="建议三：把相关语句提取成单独的子程序"></a>建议三：把相关语句提取成单独的子程序</h4><p>更短的子程序相比长的子程序，变量的跨度和存活时间更小。比如，可以尝试这样重构上面的代码：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//重构，提取子程序</span></div><div class="line">ComputeMarketingData();</div><div class="line"></div><div class="line">ComputeSalesData();</div><div class="line"></div><div class="line">ComputeTravelData();</div></pre></td></tr></table></figure>
-<h4 id="建议四：开始使用最小的作用域，然后根据需求再扩展"><a href="#建议四：开始使用最小的作用域，然后根据需求再扩展" class="headerlink" title="建议四：开始使用最小的作用域，然后根据需求再扩展"></a>建议四：开始使用最小的作用域，然后根据需求再扩展</h4><p>一句话解释就是：<strong>把全局变量转换为成员局部变量要比局部变量转换为全局变量难的多</strong>。因此，在设计程序时，如果对变量的作用域犹豫不决时，优先倾向于最小的作用域。</p>
-<h4 id="建议五：循环开始之前再去初始化循环变量"><a href="#建议五：循环开始之前再去初始化循环变量" class="headerlink" title="建议五：循环开始之前再去初始化循环变量"></a>建议五：循环开始之前再去初始化循环变量</h4><p>一个不好的编程习惯就是在程序开头初始化好循环所使用的变量，如<code>int i = 0,j = 0;</code>。而在很后面才使用到循环。这样做的坏处一是查看循环时需要跳到开头才知道循环变量的值，另外，如果要修改这个循环，往往会忘记同时修改循环变量。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;如果你仔细回想一下，平日阅读代码的时候，是什么占用了你大量的时间和精力？毫无疑问：变量。
-    
-    </summary>
-    
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
-    
-    
-      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
-    
-      <category term="变量" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F/"/>
-    
-      <category term="作用域" scheme="http://yoursite.com/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+      <category term="GitKraken" scheme="http://ex2tron.wang/tags/GitKraken/"/>
     
   </entry>
   
   <entry>
     <title>【片单】诺兰神作集</title>
-    <link href="http://yoursite.com/movie-nolan-collections/"/>
-    <id>http://yoursite.com/movie-nolan-collections/</id>
+    <link href="http://ex2tron.wang/movie-nolan-collections/"/>
+    <id>http://ex2tron.wang/movie-nolan-collections/</id>
     <published>2017-09-24T12:37:41.000Z</published>
     <updated>2018-10-03T04:21:56.006Z</updated>
     
@@ -3482,56 +3370,60 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://yoursite.com/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
     
     
-      <category term="诺兰" scheme="http://yoursite.com/tags/%E8%AF%BA%E5%85%B0/"/>
+      <category term="诺兰" scheme="http://ex2tron.wang/tags/%E8%AF%BA%E5%85%B0/"/>
     
   </entry>
   
   <entry>
-    <title>【利器篇】七牛云——用做每月免费10G的图床</title>
-    <link href="http://yoursite.com/tools-qiniuyun/"/>
-    <id>http://yoursite.com/tools-qiniuyun/</id>
+    <title>【利器】七牛云：每月免费10G的图床</title>
+    <link href="http://ex2tron.wang/tools-qiniuyun/"/>
+    <id>http://ex2tron.wang/tools-qiniuyun/</id>
     <published>2017-09-18T11:55:38.000Z</published>
-    <updated>2018-11-02T02:51:48.378Z</updated>
+    <updated>2019-03-19T05:19:00.916Z</updated>
     
     <content type="html"><![CDATA[<p>随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。<a id="more"></a></p>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>在<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>之前，我使用过国外的<a href="https://www.getcloudapp.com/" target="_blank" rel="external">Cloud App</a>和<a href="https://www.aliyun.com/product/oss?utm_content=se_877546" target="_blank" rel="external">阿里云的oss对象存储</a>。</p>
+<hr>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>在<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>之前，我使用过国外的<a href="https://www.getcloudapp.com/" target="_blank" rel="external">Cloud App</a>和<a href="https://www.aliyun.com/product/oss?utm_content=se_877546" target="_blank" rel="external">阿里云的OSS对象存储</a>。</p>
 <ol>
 <li><p>首先，国外的东西在国内稳定性和速度都是相对较差的，我试着在阿里云和Cloud App上上传同一张图片并生成外链，Cloud App要比阿里的加载速度延迟1-2s，阿里基本秒开。</p>
 </li>
-<li><p>阿里的oss对象存储虽然很稳定，但是并不提供免费的空间。相对来说，七牛云提供的每月10G免费流量，对于博客来说，绰绰有余了。</p>
+<li><p>阿里的OSS对象存储虽然很稳定，但是并不提供免费的空间。相对来说，七牛云提供的每月10G免费流量，对于博客来说，绰绰有余了。</p>
 </li>
 <li><p>另外，七牛云提供了诸多的图片处理接口，如水印、格式转换、缩放等，很实用，很强大。</p>
 </li>
 </ol>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>注册并登陆<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>，在七牛云的产品列表中，添加一个<code>对象存储</code>，如这里取名为<code>picblog</code>：</p>
-<p><img src="http://pic.ex2tron.top/create_new_bucket.png" alt="create_new_bucket"></p>
+<p><img src="http://pic.ex2tron.top/create_new_bucket.png" alt="创建新的存储空间"></p>
 <p>创建好之后，七牛云会自动生成一个测试域名：</p>
-<p><img src="http://pic.ex2tron.top/test_domain_name.png" alt="test_domain_name"></p>
-<p>这个域名就是你文件的前缀了。比如，我们点击<code>内容管理</code>，点击<code>上传文件</code>，选择一幅图片上传。上传完成后，复制该文件的外链地址：</p>
-<p><img src="http://pic.ex2tron.top/copy_file_link.png" alt="copy_file_link"></p>
-<p>这个地址就是你的图片地址辣，你可以在浏览器中访问该地址，比如你可以访问我的这个：<a href="http://pic.ex2tron.top/mycli_demo.gif" target="_blank" rel="external">mysql_demo</a></p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><h3 id="添加二级域名"><a href="#添加二级域名" class="headerlink" title="添加二级域名"></a>添加二级域名</h3><p>如同前面那张图上所说，七牛云默认的测试域名有很多限制。所以，你如果已经购买了域名的话，可以在这里绑定自己的二级域名，这样既好记又方便管理。</p>
+<p><img src="http://pic.ex2tron.top/test_domain_name.png" alt="测试域名"></p>
+<p>这个域名就是你文件的前缀了。比如，我们点击”内容管理”，点击”上传文件”，选择一幅图片上传。上传完成后，复制该文件的外链地址：</p>
+<p><img src="http://pic.ex2tron.top/copy_file_link.png" alt="拷贝外链地址"></p>
+<p>这个地址就是你的外链地址辣，你可以在浏览器中直接访问，比如：<a href="http://pic.ex2tron.top/mycli_demo.gif" target="_blank" rel="external">mysql_demo</a></p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><h3 id="添加二级域名"><a href="#添加二级域名" class="headerlink" title="添加二级域名"></a>添加二级域名</h3><p>七牛云默认的测试域名有时间限制，貌似一个月就过期不能用了。所以，你如果已经购买了域名的话，可以在这里绑定自己的二级域名，这样既好记又方便管理。</p>
 <p>比如，这里我已经在万网上购买了<code>ex2tron.xin</code>的域名，这里我演示如何将七牛云的存储空间绑定<code>pic.ex2tron.xin</code>这个域名。</p>
-<p>在七牛云的存储空间页面，点击<code>绑定域名</code>，只需要在加速域名处填写要绑定的域名，其他项保持默认即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">加速域名： pic.ex2tron.xin</div></pre></td></tr></table></figure></p>
-<p><img src="http://pic.ex2tron.top/bucket_binding_domain_name.png" alt="bucket_binding_domain_name"></p>
+<p>在七牛云的存储空间页面，点击”绑定域名”，只需要在加速域名处填写要绑定的域名，其他项保持默认即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">加速域名： pic.ex2tron.xin</div></pre></td></tr></table></figure></p>
+<p><img src="http://pic.ex2tron.top/bucket_binding_domain_name.png" alt="自定义域名"></p>
 <p>创建后，系统会配置一段时间，等待处理完成，会显示一个诸如<code>xxx.qiniudns.com</code>的CNAME记录值，记下此值，后面要用到。</p>
-<p><img src="http://pic.ex2tron.top/cname_for_binding.png" alt="cname_for_binding"></p>
+<p><img src="http://pic.ex2tron.top/cname_for_binding.png" alt=""></p>
 <h3 id="添加域名解析"><a href="#添加域名解析" class="headerlink" title="添加域名解析"></a>添加域名解析</h3><p>打开万网的域名控制台，添加一条CNAME的解析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">记录类型：CNAME</div><div class="line">主机记录：pic</div><div class="line">记录值：xxx.qiniudns.com</div><div class="line"># 其他选型保持默认</div></pre></td></tr></table></figure></p>
-<p><img src="http://pic.ex2tron.top/add_dns_for_qiniu.png" alt="add_dns_for_qiniu"></p>
+<p><img src="http://pic.ex2tron.top/add_dns_for_qiniu.png" alt="添加域名解析"></p>
 <p>这样，你上传的图片外链就是：<code>http://pic.ex2tron.xin/filename.png</code>之类的了。</p>
-<h2 id="添加图片样式"><a href="#添加图片样式" class="headerlink" title="添加图片样式"></a>添加图片样式</h2><p>利用七牛云做图床的另外一个强大之处在于丰富的图片样式。点击<code>图片样式</code>-<code>新建图片样式</code>，七牛云提供了如下很多种场景：</p>
-<p><img src="http://pic.ex2tron.top/api_for_image_process.png" alt="api_for_image_process"></p>
-<p>比如，这里我们选择<code>指定宽高，强行缩放+打图片水印</code>，然后添加一个文字水印，可以调整文字的字体样式，位置等等：</p>
-<p><img src="http://pic.ex2tron.top/add_water_mark_api.png" alt="add_water_mark_api"></p>
+<h2 id="添加图片样式"><a href="#添加图片样式" class="headerlink" title="添加图片样式"></a>添加图片样式</h2><p>利用七牛云做图床的另外一个强大之处在于丰富的图片样式。点击”图片样式”-“新建图片样式”，七牛云提供了如下很多种场景：</p>
+<p><img src="http://pic.ex2tron.top/api_for_image_process.png" alt="添加图片样式"></p>
+<p>比如，这里我们选择”指定宽高，强行缩放+打图片水印”，然后添加一个文字水印，可以调整文字的字体样式，位置等等：</p>
+<p><img src="http://pic.ex2tron.top/add_water_mark_api.png" alt="水印功能"></p>
 <p>调整好之后，为样式取个名称，如<code>webpic</code>，这样，只要在原来外链的后面添加<code>-webpic</code>就可以了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://pic.ex2tron.xin/filename.png-webpic</div></pre></td></tr></table></figure>
-<p>其中<code>-</code>这个连接符可以通过存储空间控制面板的<code>样式分隔符设置</code>中进行修改。</p>
+<p>其中<code>-</code>这个连接符可以通过存储空间控制面板的”样式分隔符设置”中进行修改。</p>
 <h2 id="图床工具"><a href="#图床工具" class="headerlink" title="图床工具"></a>图床工具</h2><p>对于七牛云，每张图片都在网页端上传还是比较麻烦的，所以用一些图床客户端工具会更加快速。</p>
 <p>这里推荐使用<a href="http://mpic.lzhaofu.cn/" target="_blank" rel="external">MPic</a>图床神器。打开软件后，设置好自己的AK和SK（可在七牛云的个人中心-密钥管理中看到）。MPic支持文件拖拽上传，点击复制就可以复制外链，非常方便：</p>
-<p><img src="http://pic.ex2tron.top/mpic_qiniu.png" alt="mpic_qiniu"></p>
+<p><img src="http://pic.ex2tron.top/mpic_qiniu.png" alt="第三方七牛云工具"></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3540,21 +3432,21 @@
     
     </summary>
     
-      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://ex2tron.wang/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="七牛" scheme="http://yoursite.com/tags/%E4%B8%83%E7%89%9B/"/>
+      <category term="七牛" scheme="http://ex2tron.wang/tags/%E4%B8%83%E7%89%9B/"/>
     
-      <category term="图床" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%BA%8A/"/>
+      <category term="图床" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%BA%8A/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(4)：自有服务器部署</title>
-    <link href="http://yoursite.com/hexo-blog-with-github-pages-4/"/>
-    <id>http://yoursite.com/hexo-blog-with-github-pages-4/</id>
+    <link href="http://ex2tron.wang/hexo-blog-with-github-pages-4/"/>
+    <id>http://ex2tron.wang/hexo-blog-with-github-pages-4/</id>
     <published>2017-09-13T14:11:12.000Z</published>
-    <updated>2019-03-18T15:38:22.279Z</updated>
+    <updated>2019-03-19T04:59:51.014Z</updated>
     
     <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。</p>
 <hr>
@@ -3571,16 +3463,18 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
 <p>切换到git用户，并新建用户目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
-<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具，可参考：<a href="http://ex2tron.wang/how-to-use-ssh-on-windows10/" target="_blank" rel="external">如何使用Windows 10的OpenSSH Client和Server</a>）：</p>
+<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具，可参考：<a href="http://ex2tron.wang/how-to-use-ssh-on-windows10/">如何使用Windows 10的OpenSSH Client和Server</a>）：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:/home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
 <p>这个时候可以退出ssh连接，并使用git用户直接登录了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
 <h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><blockquote>
-<p>此处可参考我之前的Blog：<a href="http://ex2tron.wang/set-up-your-own-git-server/" target="_blank" rel="external">搭建自己的Github/Git服务器</a></p>
+<p>此处可参考我之前的Blog：<a href="http://ex2tron.wang/set-up-your-own-git-server/">搭建自己的Github/Git服务器</a></p>
 </blockquote>
 <p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div><div class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</div></pre></td></tr></table></figure>
-<p>接下来需要修改本地Hexo的配置文件<code>_config.yml</code>。在<code>deploy</code>项这里，如果你将博客推送到多个平台的话，直接新增一条就行：</p>
+<p>接下来需要修改本地Hexo的配置文件<code>_config.yml</code>。首先将<code>url</code>改成你的服务器公网ip或域名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: http://www.ex2tron.top/</div></pre></td></tr></table></figure>
+<p>其次在<code>deploy</code>项这里，如果你将博客推送到多个平台的话，直接新增一条就行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@47.101.xxx.xxx:/home/git/hexoblog.git</div></pre></td></tr></table></figure>
 <p>现在可以运行<code>hexo g -d</code>正常push了。</p>
 <p>如果<code>hexo d</code>推送的时候出现如下错误：</p>
@@ -3610,7 +3504,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
 <p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下。此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，当然别忘了将你的域名解析到服务器IP噢，awesome！</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://ex2tron.wang/hexo-blog-with-github-pages-3/" target="_blank" rel="external">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
+<li><a href="http://ex2tron.wang/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
 <li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
 </ul>
 <blockquote>
@@ -3626,21 +3520,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://ex2tron.wang/tags/Hexo/"/>
     
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+      <category term="Github" scheme="http://ex2tron.wang/tags/Github/"/>
     
-      <category term="阿里云" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+      <category term="阿里云" scheme="http://ex2tron.wang/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(3)：绑定独立域名</title>
-    <link href="http://yoursite.com/hexo-blog-with-github-pages-3/"/>
-    <id>http://yoursite.com/hexo-blog-with-github-pages-3/</id>
+    <link href="http://ex2tron.wang/hexo-blog-with-github-pages-3/"/>
+    <id>http://ex2tron.wang/hexo-blog-with-github-pages-3/</id>
     <published>2017-09-13T13:25:24.000Z</published>
     <updated>2019-03-18T15:33:11.434Z</updated>
     
@@ -3674,19 +3568,19 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://ex2tron.wang/tags/Hexo/"/>
     
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+      <category term="Github" scheme="http://ex2tron.wang/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+Github Pages轻松搭博客(2)：在Github上部署</title>
-    <link href="http://yoursite.com/hexo-blog-with-github-pages-2/"/>
-    <id>http://yoursite.com/hexo-blog-with-github-pages-2/</id>
+    <link href="http://ex2tron.wang/hexo-blog-with-github-pages-2/"/>
+    <id>http://ex2tron.wang/hexo-blog-with-github-pages-2/</id>
     <published>2017-09-13T12:15:47.000Z</published>
     <updated>2019-03-18T15:09:55.364Z</updated>
     
@@ -3720,21 +3614,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://ex2tron.wang/tags/Hexo/"/>
     
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+      <category term="Github" scheme="http://ex2tron.wang/tags/Github/"/>
     
   </entry>
   
   <entry>
-    <title>Hexo+Github Pages轻松搭博客(1)</title>
-    <link href="http://yoursite.com/hexo-blog-with-github-pages-1/"/>
-    <id>http://yoursite.com/hexo-blog-with-github-pages-1/</id>
+    <title>Hexo+Github Pages轻松搭博客(1)：安装Hexo</title>
+    <link href="http://ex2tron.wang/hexo-blog-with-github-pages-1/"/>
+    <id>http://ex2tron.wang/hexo-blog-with-github-pages-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
-    <updated>2019-03-18T15:09:49.887Z</updated>
+    <updated>2019-03-19T04:39:32.129Z</updated>
     
     <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
 <blockquote>
@@ -3772,50 +3666,46 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://ex2tron.wang/tags/Hexo/"/>
     
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+      <category term="Github" scheme="http://ex2tron.wang/tags/Github/"/>
     
   </entry>
   
   <entry>
-    <title>【利器篇】用VS Code写Markdown</title>
-    <link href="http://yoursite.com/tools-markdown-in-vscode/"/>
-    <id>http://yoursite.com/tools-markdown-in-vscode/</id>
+    <title>【利器】用VS Code写Markdown</title>
+    <link href="http://ex2tron.wang/tools-markdown-in-vscode/"/>
+    <id>http://ex2tron.wang/tools-markdown-in-vscode/</id>
     <published>2017-09-11T07:11:22.000Z</published>
-    <updated>2018-12-30T11:44:40.838Z</updated>
+    <updated>2019-03-19T05:24:06.835Z</updated>
     
     <content type="html"><![CDATA[<p>Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客<a id="more"></a>。关于Markdown相较富文本的优势，我就不细说了。</p>
 <hr>
 <h2 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h2><p>支持Markdown的工具有很多，大家可以参考网上，如这篇文章：<a href="https://sspai.com/post/32483" target="_blank" rel="external">码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点</a>。就我自己目前在Windows上使用的而言有：<a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a>、<a href="http://note.youdao.com/" target="_blank" rel="external">有道云笔记</a>、<a href="https://www.typora.io/#windows" target="_blank" rel="external">Typora</a>、<a href="https://code.visualstudio.com" target="_blank" rel="external">VSCode</a></p>
-<p>简书本身就是一个博客平台，有道云笔记是类似OneNote和印象笔迹的应用。如果你已经在使用这两个平台的话，就不用多说了。但如果只是想用一个单纯的Markdown编辑器的话，推荐极致简洁的Typora。虽说界面简洁，但功能强大，不仅内置了常见的一些Markdown样式，还支持PDF/HTML等多种格式导出：</p>
-<p><img src="http://pic.ex2tron.top/markdown_in_typora.png" alt="markdown_in_typora"></p>
+<p>简书本身就是一个博客平台，有道云笔记是类似OneNote和印象笔迹的应用。如果你已经在使用这两个平台的话，就不用多说了。但如果只是想用一个单纯的Markdown编辑器的话，推荐极致简洁的Typora。虽说界面简洁，但功能强大，不仅内置了常见的一些Markdown样式，还支持PDF/HTML等多种格式导出，我常用的就是Typora：</p>
+<p><img src="http://pic.ex2tron.top/markdown_in_typora.png" alt=""></p>
 <p>你是一枚文青的话，千万不要错过这款编辑器。不过，对于程序猿来说，VSCode才显得更有味道。</p>
-<h2 id="用VSCode写Markdown"><a href="#用VSCode写Markdown" class="headerlink" title="用VSCode写Markdown"></a>用VSCode写Markdown</h2><p>VSCode就不过多介绍了，我之前也写过关于它的介绍：</p>
-<ul>
-<li><p><a href="http://ex2tron.lofter.com/post/1d7338a1_86f8f92" target="_blank" rel="external">Visual Studio Code Preview初体验</a></p>
-</li>
-<li><p><a href="http://ex2tron.lofter.com/post/1d7338a1_870beb7" target="_blank" rel="external">Visual Studio Code Preview深度体验、使用技巧</a></p>
-</li>
-</ul>
-<p>现在版本的VSCode默认已经支持Markdown预览，不需要下载插件。用VSCode打开md文件或将当前文件更改为Markdown格式就可以开始书写了：</p>
-<p><img src="http://pic.ex2tron.top/markdown_in_vscode.png" alt="markdown_in_vscode"></p>
+<h2 id="用VSCode写Markdown"><a href="#用VSCode写Markdown" class="headerlink" title="用VSCode写Markdown"></a>用VSCode写Markdown</h2><p>VSCode是目前很火的一款编辑器，就不过多介绍了。现在版本的VSCode默认已经支持Markdown预览，无需下载插件。用VSCode打开md文件或将当前文件更改为Markdown格式就可以开始书写了：</p>
+<p><img src="http://pic.ex2tron.top/markdown_in_vscode.png" alt=""></p>
 <p>VSCode支持两种预览方式：</p>
 <ul>
-<li>按下Ctrl+K V，像上图一样左右同步实时预览</li>
-<li>按下Ctrl+Shift+V，只预览最终渲染结果</li>
+<li>按下<code>Ctrl+K V</code>，像上图一样左右同步实时预览</li>
+<li>按下<code>Ctrl+Shift+V</code>，只预览最终渲染结果</li>
 </ul>
-<p><img src="http://pic.ex2tron.top/editor_preview_Synchronization.gif" alt="editor_preview_Synchronization"></p>
-<p>如上图，编写和预览界面是实时同步的，不需要的话，可以按下Ctrl+,组合键，添加如下两条设置：</p>
+<p><img src="http://pic.ex2tron.top/editor_preview_Synchronization.gif" alt=""></p>
+<p>如上图，编写和预览界面是实时同步的，不需要的话，可以按下<code>Ctrl+,</code>组合键，添加如下两条设置：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">"markdown.preview.scrollEditorWithPreview": false,</div><div class="line">"markdown.preview.scrollPreviewWithEditorSelection": false</div></pre></td></tr></table></figure>
-<p>另外，目前VSCode预览样式中，中文的显示很别扭，这里推荐下载<a href="https://github.com/ex2tron/BlogCode/blob/master/markdown-github.css" target="_blank" rel="external">Github风格的CSS</a></p>
-<p>下载完成后，配置css文件的设置如下即可：</p>
+<p>另外，目前VSCode预览样式中，中文的显示很别扭。所以可以下载第三方的CSS样式，这里推荐<a href="https://github.com/ex2tron/BlogCode/blob/master/markdown-github.css" target="_blank" rel="external">Github风格的CSS</a></p>
+<p>下载完成后，配置CSS文件的设置如下即可：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"markdown.styles": [</div><div class="line">    <span class="string">"file:///D:/markdown-github.css"</span></div><div class="line">]</div></pre></td></tr></table></figure>
-<p>另外，VSCode中有很多Markdown相关的插件，如”Markdown All in One”和”Markdown Theme Kit”等，大家可以下载下来尝试一下哈！</p>
+<p>另外，VSCode中有很多Markdown相关的插件，如<code>Markdown All in One</code>和<code>Markdown Theme Kit</code>等，大家可以下载下来尝试一下哈！</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://code.visualstudio.com/docs/languages/markdown" target="_blank" rel="external">Markdown editing with Visual Studio Code</a></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3824,30 +3714,33 @@
     
     </summary>
     
-      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://ex2tron.wang/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+      <category term="Markdown" scheme="http://ex2tron.wang/tags/Markdown/"/>
     
-      <category term="VSCode" scheme="http://yoursite.com/tags/VSCode/"/>
+      <category term="VSCode" scheme="http://ex2tron.wang/tags/VSCode/"/>
     
   </entry>
   
   <entry>
-    <title>【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具</title>
-    <link href="http://yoursite.com/tools-mycli/"/>
-    <id>http://yoursite.com/tools-mycli/</id>
+    <title>【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具</title>
+    <link href="http://ex2tron.wang/tools-mycli/"/>
+    <id>http://ex2tron.wang/tools-mycli/</id>
     <published>2017-09-11T06:32:14.000Z</published>
-    <updated>2018-11-02T02:51:48.375Z</updated>
+    <updated>2019-03-19T05:02:42.142Z</updated>
     
     <content type="html"><![CDATA[<p>mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。<a id="more"></a></p>
-<p>mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。</p>
-<p>官网：<a href="http://www.mycli.net/" target="_blank" rel="external">MyCLI</a></p>
+<hr>
+<p>mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。</p>
+<ul>
+<li>官网：<a href="http://www.mycli.net/" target="_blank" rel="external">MyCLI</a></li>
+</ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>其实mycli是一个Python的包，所以你已经安装了Python(pip)的话，用下面一条指令就好了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mycli</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mycli</div></pre></td></tr></table></figure>
 <p>如果出现问题，可以参考<a href="http://www.mycli.net/" target="_blank" rel="external">官网</a>，有详细的说明。</p>
 <p><img src="http://pic.ex2tron.top/install_mycli.png" alt="install_mycli"></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装好之后，在cmd下，将以往登陆MySQL用的mysql换成mycli就可以了：</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装好之后，在命令行下，将以往登陆MySQL用的mysql换成mycli，不用加<code>-p</code>选项就可以了：</p>
 <p><img src="http://pic.ex2tron.top/login_with_mycli.png" alt="login_with_mycli"></p>
 <p>好了，大家觉得好用的话，欢迎扩散噢！</p>
 <blockquote>
@@ -3861,19 +3754,19 @@
     
     </summary>
     
-      <category term="利器篇" scheme="http://yoursite.com/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
+      <category term="利器篇" scheme="http://ex2tron.wang/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="MyCLI" scheme="http://yoursite.com/tags/MyCLI/"/>
+      <category term="MyCLI" scheme="http://ex2tron.wang/tags/MyCLI/"/>
     
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+      <category term="MySQL" scheme="http://ex2tron.wang/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>博客新篇章！Brave New World</title>
-    <link href="http://yoursite.com/new-chapter!/"/>
-    <id>http://yoursite.com/new-chapter!/</id>
+    <link href="http://ex2tron.wang/new-chapter!/"/>
+    <id>http://ex2tron.wang/new-chapter!/</id>
     <published>2017-08-23T12:56:32.000Z</published>
     <updated>2018-10-03T02:57:25.775Z</updated>
     
@@ -3965,8 +3858,8 @@
   
   <entry>
     <title>Qt+OpenCV环境搭建</title>
-    <link href="http://yoursite.com/qt-opencv-installation-guide/"/>
-    <id>http://yoursite.com/qt-opencv-installation-guide/</id>
+    <link href="http://ex2tron.wang/qt-opencv-installation-guide/"/>
+    <id>http://ex2tron.wang/qt-opencv-installation-guide/</id>
     <published>2017-07-27T00:17:00.000Z</published>
     <updated>2018-12-30T13:26:19.626Z</updated>
     
@@ -4006,21 +3899,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="CMake" scheme="http://yoursite.com/tags/CMake/"/>
+      <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+      <category term="Qt" scheme="http://ex2tron.wang/tags/Qt/"/>
     
   </entry>
   
   <entry>
     <title>CMake编译OpenCV3.2（Qt平台）</title>
-    <link href="http://yoursite.com/cmake-make-opencv/"/>
-    <id>http://yoursite.com/cmake-make-opencv/</id>
+    <link href="http://ex2tron.wang/cmake-make-opencv/"/>
+    <id>http://ex2tron.wang/cmake-make-opencv/</id>
     <published>2017-07-26T14:25:29.000Z</published>
     <updated>2018-12-30T13:22:45.411Z</updated>
     
@@ -4063,86 +3956,21 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="CMake" scheme="http://yoursite.com/tags/CMake/"/>
+      <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
     
-      <category term="OpenCV" scheme="http://yoursite.com/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构建：查表法</title>
-    <link href="http://yoursite.com/build-table-driven-methods/"/>
-    <id>http://yoursite.com/build-table-driven-methods/</id>
-    <published>2017-06-13T10:54:04.000Z</published>
-    <updated>2018-11-02T02:51:48.377Z</updated>
-    
-    <content type="html"><![CDATA[<p>每次谈到查表，我都会先想到下面这个简单的例子：<a id="more"></a></p>
-<blockquote>
-<p><em>宁在一思进，莫在一思停。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
-</blockquote>
-<p><em>本文内容是我阅读《代码大全：表驱动法p411》时的笔记，加入了自己的案例和总结。</em></p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>如果你需要根据月份计算当月的天数（不考虑闰年），你会怎么写？</p>
-<p>如果使用if语句，你的代码可能会像这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python示例（其他语言中Switch/case也一样）</span></div><div class="line"><span class="keyword">if</span> (month == <span class="number">1</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">2</span>):</div><div class="line">    day = <span class="number">28</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">3</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">4</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">5</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">6</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">7</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">8</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">9</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span>(month == <span class="number">10</span>):</div><div class="line">    day = <span class="number">31</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">11</span>):</div><div class="line">    day = <span class="number">30</span></div><div class="line"><span class="keyword">elif</span> (month == <span class="number">12</span>):</div><div class="line">    day = <span class="number">31</span></div></pre></td></tr></table></figure>
-<p>很显然，这是一种既冗长又比较笨的方法，那如何更简洁和优雅呢？这就要用到“表”了，为什么强调简洁和优雅？因为人生苦短呀( ╯□╰ )：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dayOfMonth = [<span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>]</div><div class="line">day = dayOfMonth[month - <span class="number">1</span>]</div></pre></td></tr></table></figure>
-<p>怎么样，2行够简洁了吗？</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p><strong>表驱动法：从表中查找信息而不是使用逻辑语句（if/else/switch/case），也可称查表法。</strong></p>
-</blockquote>
-<p>对于简单的情况，逻辑判断更简单和易理解，但数据量和逻辑链增大的时候，查表法在灵活性、可维护性等方面有着显著的优势。</p>
-<p><strong>查表法的核心在于如果构建表</strong>。前面的例子中，月份不重复，以月份为索引建立一个数组即可。但如果逻辑判断是个区间，比如对于下面的考试成绩，应该如何建表呢？</p>
-<p>90-100分：优 | 70-90分：良 | 60-70分：及格 | 60分以下：不及格</p>
-<h3 id="直接查表"><a href="#直接查表" class="headerlink" title="直接查表"></a>直接查表</h3><p>月份的例子就是直接查表，查询的信息（月份）可以直接转为表中的索引，一目了然。下面再看个例子：</p>
-<p>有一个根据汽车速度计算转弯距离的程序：速度30马以下，距离为固定值a；100马以上也为固定值b；31~99之间，每个速度对应1个数值。这时如何建表呢？</p>
-<p><strong>1.重复数据，直接使用键值</strong></p>
-<p>第一种方式可以把a复制31次，100以上也复制多次，那表应该像这样：</p>
-<p><img src="http://pic.ex2tron.top/repeat_key_table_driven_method.jpg" alt=""></p>
-<p>显然，这种方式很蠢，不仅有很多冗余的数据，而且很容易出错。</p>
-<p><strong>2.转换键值</strong></p>
-<p>我们可以用一个函数将键值做下转换：因为0~30是同一值，所以将0~30转成一个键值，100以上转成一个键值，中间的数据本身作为键值。对于这种转换，可以一句话搞定：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">newKey = max(min(<span class="number">100</span>, speed), <span class="number">30</span>)</div></pre></td></tr></table></figure>
-<p>其他语言中<code>max/min</code>函数一般在Math相关模块中可以找到。这样完整的代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">distanceOfSpeed = [a, n31, n32, ……, n99, b]</div><div class="line">result = distanceOfSpeed[max(min(<span class="number">100</span>, speed), <span class="number">30</span>) - <span class="number">30</span>]</div></pre></td></tr></table></figure>
-<h3 id="阶梯查表"><a href="#阶梯查表" class="headerlink" title="阶梯查表"></a>阶梯查表</h3><p>前面考试成绩的例子，不同的成绩范围对应不同的数据，如同台阶一样：</p>
-<p><img src="http://pic.ex2tron.top/stair_table_look_up_method.jpg" alt=""></p>
-<p>这时可以使用阶梯查表：表内的数据是对应不同的数据范围，而不是对应不同的数据点。阶梯法查表就是循环检查每个区间的上限。当分数第一次超过某个区间的上限时，就可以得到想要的等级（留心端点的值噢：&lt;和&lt;=的区别）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Python语言示例</span></div><div class="line">scoreLimit = [<span class="number">60.0</span>, <span class="number">70.0</span>, <span class="number">90.0</span>, <span class="number">100.0</span>]</div><div class="line">grade = [<span class="string">"不及格"</span>, <span class="string">"及格"</span>, <span class="string">"良"</span>, <span class="string">"优"</span>]</div><div class="line"></div><div class="line">score, index, result = <span class="number">45</span>, <span class="number">0</span>, <span class="string">'优'</span></div><div class="line"><span class="comment"># 这个条件语句很重要噢！</span></div><div class="line"><span class="keyword">while</span> (result == <span class="string">'优'</span> <span class="keyword">and</span> index &lt; len(grade) - <span class="number">1</span>):</div><div class="line">    <span class="keyword">if</span> (score &lt; scoreLimit[index]):</div><div class="line">        result = grade[index]</div><div class="line">    index += <span class="number">1</span></div><div class="line"></div><div class="line">print(result) <span class="comment"># 不及格</span></div></pre></td></tr></table></figure>
-<p>这种阶梯方法很适合处理区间、等级评价和键值无规则的场合。</p>
-<p>除了上面两种方法外，还有索引查表法：相当于书的目录。先从目录中找到页码，再根据页码找到对应的记录。在程序中，就是先建一张索引表，从索引表中找出值，再在主表中查到数据，数据库经常用到，这里不详细介绍了。</p>
-<p><strong>另外，可以将表存储在外部，这样可以在不更改逻辑代码的情况下，改变表的值。</strong></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/blob/master/Build/build_table_driven_methods.py" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">旧版：构建法——表驱动法</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;每次谈到查表，我都会先想到下面这个简单的例子：
-    
-    </summary>
-    
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
-    
-    
-      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
-    
-      <category term="表驱动法" scheme="http://yoursite.com/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95/"/>
-    
-      <category term="查表法" scheme="http://yoursite.com/tags/%E6%9F%A5%E8%A1%A8%E6%B3%95/"/>
+      <category term="Qt" scheme="http://ex2tron.wang/tags/Qt/"/>
     
   </entry>
   
   <entry>
     <title>搭建自己的Github/Git服务器</title>
-    <link href="http://yoursite.com/set-up-your-own-git-server/"/>
-    <id>http://yoursite.com/set-up-your-own-git-server/</id>
+    <link href="http://ex2tron.wang/set-up-your-own-git-server/"/>
+    <id>http://ex2tron.wang/set-up-your-own-git-server/</id>
     <published>2017-06-04T11:38:56.000Z</published>
     <updated>2019-01-02T15:09:51.567Z</updated>
     
@@ -4184,291 +4012,14 @@
     
     </summary>
     
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="Build" scheme="http://yoursite.com/tags/Build/"/>
+      <category term="Build" scheme="http://ex2tron.wang/tags/Build/"/>
     
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+      <category term="Github" scheme="http://ex2tron.wang/tags/Github/"/>
     
-      <category term="Git Sever" scheme="http://yoursite.com/tags/Git-Sever/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【视觉与图像】摄像头篇2：焦距和视角</title>
-    <link href="http://yoursite.com/vision-camera-focal-length-and-view/"/>
-    <id>http://yoursite.com/vision-camera-focal-length-and-view/</id>
-    <published>2017-05-16T12:41:16.000Z</published>
-    <updated>2018-11-02T02:51:48.385Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="焦距"><a href="#焦距" class="headerlink" title="焦距"></a>焦距</h2><p>镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。<a id="more"></a>如上图中所示，<strong>焦距就是透镜中心点到CCD焦平面的距离</strong>。按照焦距可否调节，镜头可分为定焦镜头和变焦镜头。</p>
-<blockquote>
-<p><em>当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。</em>——<a href="https://movie.douban.com/subject/1292328/" target="_blank" rel="external">《东邪西毒》</a></p>
-</blockquote>
-<p>玩过单反摄影的人都知道相机上有个焦平面标记，这就是胶片时代为了精准对焦用的，有相机的童鞋可以拿出来看看：</p>
-<p><img src="http://pic.ex2tron.top/lens_focal_plane.jpg" alt=""></p>
-<h2 id="可视角"><a href="#可视角" class="headerlink" title="可视角"></a>可视角</h2><p>显然，焦距的大小决定了视场角的大小（也称视野范围FOV：Field of View）。<strong>同样的CCD尺寸下，焦距越大，视角越小。同理，相同的焦距下，CCD尺寸越大，可视角越大。</strong></p>
-<p>举例来说，一张4:3比例（CCD比例假设也为4:3）的照片中，要把身高为1.75m的人拍到，那么对角线距离是2.19m左右：</p>
-<p><img src="http://pic.ex2tron.top/lens_camera_angle_demo.jpg" alt=""></p>
-<p>把上图中的黑线部分提取出来，摄像头跟拍摄人物间的距离计算如下：</p>
-<p><img src="http://pic.ex2tron.top/lens_camera_angle.jpg" alt=""></p>
-<p>购买摄像头时，如果没有说明镜头的可视角，但知道CCD尺寸和焦距，可按照上图简单计算。</p>
-<p>比如1/2.7inch的CCD（4:3），焦距为3.6mm，那么根据<a href="/vision-camera-ccd-size/">上篇博客</a>，w=6.592/2=3.296mm，d=3.6mm，所以可视角=2*α=84.95°。</p>
-<p>当然，<strong>焦距越大，视角越小，摄像头也能看得更远</strong>。比如下图是某款1/3inch CCD监控摄像头的可视角和监控范围图：</p>
-<p><img src="http://pic.ex2tron.top/lens_distance_angle.jpg" alt=""></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="http://www.360doc.com/content/13/0104/10/3535222_258105657.shtml" target="_blank" rel="external">监控摄像头镜头焦距与可视角度换算表</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;焦距&quot;&gt;&lt;a href=&quot;#焦距&quot; class=&quot;headerlink&quot; title=&quot;焦距&quot;&gt;&lt;/a&gt;焦距&lt;/h2&gt;&lt;p&gt;镜头是由一组光学凹凸透镜组成的：光透过透镜后，聚焦在CCD上形成影像（小孔成像）。
-    
-    </summary>
-    
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
-    
-    
-      <category term="焦距" scheme="http://yoursite.com/tags/%E7%84%A6%E8%B7%9D/"/>
-    
-      <category term="视角" scheme="http://yoursite.com/tags/%E8%A7%86%E8%A7%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【视觉与图像】摄像头篇1：CCD靶面尺寸</title>
-    <link href="http://yoursite.com/vision-camera-ccd-size/"/>
-    <id>http://yoursite.com/vision-camera-ccd-size/</id>
-    <published>2017-05-15T02:29:52.000Z</published>
-    <updated>2018-11-02T02:51:48.378Z</updated>
-    
-    <content type="html"><![CDATA[<p>对于机器视觉和图像处理的任务，通常都从选择一款好的摄像头开始的。<a id="more"></a>如果摄像头选的恰当，就能获取到一幅“好”的图像，这点很重要。</p>
-<blockquote>
-<p><em>如果你不出去走走，你就会以为这就是全世界。</em>——<a href="https://movie.douban.com/subject/1291828/" target="_blank" rel="external">《天堂电影院》</a></p>
-</blockquote>
-<p>所以我们就摄像头的几个重要参数来深入说明一下，首先看下CCD尺寸，开始入坑吧：</p>
-<h2 id="CCD尺寸"><a href="#CCD尺寸" class="headerlink" title="CCD尺寸"></a>CCD尺寸</h2><p>CCD靶面尺寸就是相机中CCD图像传感器芯片的大小：</p>
-<p><img src="http://pic.ex2tron.top/ccd_inch_calculate_method.jpg" alt=""></p>
-<p>玩过摄影的人应该都知道<a href="https://baike.baidu.com/item/135相机" target="_blank" rel="external">135相机</a>和<a href="https://baike.baidu.com/item/全画幅相机" target="_blank" rel="external">全画幅相机</a>，全画幅相机指的就是CCD/CMOS长宽为36×24mm的数码相机。胶片时代，135胶卷（柯达生产）的画幅就是36×24mm，算上胶卷的开孔，高度是35mm，所以135相机也叫35mm相机。</p>
-<p><strong>显然，CCD尺寸越大，感光面积就越大，能捕获的光也就越多。另外，相同分辨率大小下，CCD面积越大，单个像素感光点之间的间隔也就越大，信噪比越低。</strong> </p>
-<h3 id="常见尺寸"><a href="#常见尺寸" class="headerlink" title="常见尺寸"></a>常见尺寸</h3><p>这里列举几种典型的CCD尺寸：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">规格</th>
-<th style="text-align:left">长宽比</th>
-<th style="text-align:left">尺寸mm</th>
-<th style="text-align:left">对角线mm</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">全画幅</td>
-<td style="text-align:left">3:2</td>
-<td style="text-align:left">36×24</td>
-<td style="text-align:left">43.3</td>
-</tr>
-<tr>
-<td style="text-align:left">APS-C</td>
-<td style="text-align:left">3:2</td>
-<td style="text-align:left">24.9×16.6</td>
-<td style="text-align:left">29.3</td>
-</tr>
-<tr>
-<td style="text-align:left">4/3英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">18×13.5</td>
-<td style="text-align:left">22.5</td>
-</tr>
-<tr>
-<td style="text-align:left">1英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">12.8×9.6</td>
-<td style="text-align:left">16</td>
-</tr>
-<tr>
-<td style="text-align:left">2/3英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">8.8×6.6</td>
-<td style="text-align:left">11</td>
-</tr>
-<tr>
-<td style="text-align:left">1/2英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">6.4×4.8</td>
-<td style="text-align:left">8</td>
-</tr>
-<tr>
-<td style="text-align:left">1/2.7英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">5.27×3.96</td>
-<td style="text-align:left">6.592</td>
-</tr>
-<tr>
-<td style="text-align:left">1/3英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">4.8×3.6</td>
-<td style="text-align:left">6</td>
-</tr>
-<tr>
-<td style="text-align:left">1/4英寸</td>
-<td style="text-align:left">4:3</td>
-<td style="text-align:left">3.2×2.4</td>
-<td style="text-align:left">4</td>
-</tr>
-</tbody>
-</table>
-<p>要注意的是，这里的<strong>1英寸并不等于实际中的25.4毫米</strong>。其实最初是为了避免圆形图像裁剪成矩形显示时四个角发暗，才搞出了对角线16mm为1英寸的说法：</p>
-<p><img src="http://pic.ex2tron.top/actual_ccd_inch.jpg" alt=""></p>
-<h3 id="宽高比"><a href="#宽高比" class="headerlink" title="宽高比"></a>宽高比</h3><p>另外，CCD靶面除了尺寸之外，还需要注意它的宽高比/长宽比。目前主流的CCD大多是4:3和3:2比例，还有16:9等比例的CCD。<strong>如果一个CCD的宽高比为4:3，那么只有分辨率宽高比也是4:3的情况下（如：640*480），才能全像素输出，拍摄16：9的图像时，像素会有损失。</strong></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="http://www.360doc.com/content/14/0509/09/237615_376009079.shtml" target="_blank" rel="external">CCD尺寸对应表</a></li>
-<li><a href="http://www.360doc.com/content/16/0229/07/248984_538174911.shtml" target="_blank" rel="external">科普：CCD/CMOS靶面尺寸型号标准</a></li>
-<li><a href="http://blog.sina.com.cn/s/blog_64822c3b0101awwo.html" target="_blank" rel="external">【CCD尺寸】各尺寸CCD大小比对图 全幅、半幅、M4/3、2/3、1/2.3、1/2.7</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;对于机器视觉和图像处理的任务，通常都从选择一款好的摄像头开始的。
-    
-    </summary>
-    
-      <category term="机器视觉" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
-    
-    
-      <category term="CCD" scheme="http://yoursite.com/tags/CCD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构建：单点控制</title>
-    <link href="http://yoursite.com/build-single-point-control/"/>
-    <id>http://yoursite.com/build-single-point-control/</id>
-    <published>2017-04-23T06:57:09.000Z</published>
-    <updated>2018-11-02T02:51:48.378Z</updated>
-    
-    <content type="html"><![CDATA[<p>常常被程序猿忽略的一个问题是：其实你只在10％时间里写代码，90％的时间在调试和阅读代码！！！<a id="more"></a> </p>
-<blockquote>
-<p><em>So do you want to take a leap of faith or become an old man, filled with regret, waiting for die alone?</em>——<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">《Inception》</a><br><br><em>你愿意放手一搏，还是要等到年华老去，心中充满遗憾，孤单地迈向黄泉路？</em>——《<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">盗梦空间</a>》</p>
-</blockquote>
-<p>所以，程序猿的痛点就是：Bug。显然，掌握良好的软件构建思想是很重要的辣~ o(<em>￣▽￣</em>)o。</p>
-<blockquote>
-<p>任何一种能够对可能发生改变的事物进行集中控制的技术，都是减少维护工作量的好技术。（代码大全，P308）</p>
-</blockquote>
-<p>以下面几种常见的提升软件质量的方法来说：</p>
-<h4 id="建议一：使用有具体含义的常量名、避免“神秘数值”"><a href="#建议一：使用有具体含义的常量名、避免“神秘数值”" class="headerlink" title="建议一：使用有具体含义的常量名、避免“神秘数值”"></a>建议一：使用有具体含义的常量名、避免“神秘数值”</h4><p>如果你在看代码的时候，突然冒出一个10000、9206、‘a’，而且旁边没有注释，你一定会说：what the fu*k( ╯□╰ )。即使是源码的编写者，在隔一段时间再去看他自己的代码时，也不会马上理解它的意思。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line"><span class="comment">//含义不明确，且不易修改的代码</span></div><div class="line"><span class="keyword">int</span>[] ReceivedDatas = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000</span>];</div><div class="line"></div><div class="line"><span class="comment">//含义更加清晰，且易修改的代码</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_RECEIVED_LENGTH = <span class="number">1000</span>;</div><div class="line"><span class="keyword">int</span>[] ReceivedDatas = <span class="keyword">new</span> <span class="keyword">int</span>[MAX_RECEIVED_LENGTH];</div></pre></td></tr></table></figure>
-<p>这样做的好处是显而易见的：</p>
-<ul>
-<li><strong>修改会变得更容易</strong>：当接收的最大值从1000变到2000的时候，我们就不需要找出代码中所有的1000，一个个把他们改成2000</li>
-<li><strong>提高代码可读性</strong>：即使你代码里的某个数你认为永远不会变化，这样方法也有助于提高可读性</li>
-</ul>
-<h4 id="建议二：使用结构体组织数据"><a href="#建议二：使用结构体组织数据" class="headerlink" title="建议二：使用结构体组织数据"></a>建议二：使用结构体组织数据</h4><p>在<a href="https://baike.baidu.com/item/OOP/1152915?fr=aladdin" target="_blank" rel="external">OOP</a>面向对象编程中，类其实是一个组织、封装数据成员和操作的绝佳手段。但有时使用结构体来组织并操作<strong>成块的数据</strong>会更加方便。</p>
-<p>举例来说，对于下面一堆变量：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//C#语言示例</span></div><div class="line"><span class="comment">//无组织，混乱的一堆变量</span></div><div class="line">id = txtId;</div><div class="line">name = txtName;</div><div class="line">score = txtScore;</div><div class="line">bonus = txtBonus;</div><div class="line">department = txtDepartment;</div><div class="line">payment = txtPayment;</div></pre></td></tr></table></figure>
-<p>我们看不出变量的含义及其数据关联，但如果我们使用结构体来组织这些变量：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用结构体组织过的变量</span></div><div class="line">student.id = txtId;</div><div class="line">student.name = txtName;</div><div class="line">student.score = txtScore;</div><div class="line"></div><div class="line">employee.bonus = txtBonus;</div><div class="line">employee.department = txtDepartment;</div><div class="line">employee.payment = txtPayment;</div></pre></td></tr></table></figure>
-<p>使用结构体来组织数据，除了可以从中看出更多的数据信息之外，还有下面的好处：</p>
-<ul>
-<li><strong>简化对数据块的操作：</strong></li>
-</ul>
-<p>如果采用之前不用结构体的方法，那交换两组数据的代码量就有可能是：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//交换两组变量的值</span></div><div class="line">tempId = id;</div><div class="line">tempName = name;</div><div class="line">tempScore = score;</div><div class="line"></div><div class="line">id = newId;</div><div class="line">name = newName;</div><div class="line">score = newScore;</div><div class="line"></div><div class="line">newId = tempId;</div><div class="line">newName = tempName;</div><div class="line">newScore = tempScore;</div></pre></td></tr></table></figure>
-<p>显然，这种方式实在是太可怕了，这还只是3个变量的情况。那使用结构体呢？</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用结构体交换两组变量</span></div><div class="line">tempStudent = oldStudent;</div><div class="line">oldStudent = newStudent;</div><div class="line">newStudent = tempStudent;</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>简化参数列表：</strong></li>
-</ul>
-<p>如果说我们有一个处理Student这一组变量的函数，不使用结构体：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//未使用结构体调用函数</span></div><div class="line">DealStudent(<span class="keyword">int</span> id,<span class="keyword">string</span> name,<span class="keyword">float</span> score,<span class="keyword">string</span> phone,<span class="keyword">string</span> address);</div></pre></td></tr></table></figure>
-<p>显然，我们需要将参数一个个传入，并且位置一一对应。而使用结构体就要简单很多：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用结构体调用函数</span></div><div class="line">DealStudent(Student student);</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>单点控制，减少维护：</strong></li>
-</ul>
-<p>在上面的简化数据块和参数列表的例子中，如果我们要给学生添加一个班级变量，假如不使用结构体，我们就<strong>需要对每一处调用这组变量的地方都做出改动。显然，改动越大，变化越大，出错的概率也会越大。</strong></p>
-<p>而使用结构体，我们只需要在定义结构体的地方，增加一个班级变量。如果有子函数处理，也只需要增加对班级变量的处理。因此，不仅使代码更加容易阅读，提高了相关变量的关联性，也减少了维护的成本。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;常常被程序猿忽略的一个问题是：其实你只在10％时间里写代码，90％的时间在调试和阅读代码！！！
-    
-    </summary>
-    
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
-    
-    
-      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
-    
-      <category term="变量" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F/"/>
-    
-      <category term="单点控制" scheme="http://yoursite.com/tags/%E5%8D%95%E7%82%B9%E6%8E%A7%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构建：命名法</title>
-    <link href="http://yoursite.com/build-how-to-name-your-variables/"/>
-    <id>http://yoursite.com/build-how-to-name-your-variables/</id>
-    <published>2015-03-31T02:45:33.000Z</published>
-    <updated>2018-11-02T03:28:49.814Z</updated>
-    
-    <content type="html"><![CDATA[<p>软件开发都需要遵循一定的编程规范！<a id="more"></a></p>
-<blockquote>
-<p><em>每个人都会经过这个阶段，见到一座山，就想知道山后面是什么。我很想告诉他，可能翻过山后面，你会发现没什么特别。</em>——《<a href="https://movie.douban.com/subject/1292328/" target="_blank" rel="external">东邪西毒</a>》</p>
-</blockquote>
-<hr>
-<p>我们都知道编程过程中，需要遵守一定的编程规范。对于变量的命名规范，有些是编程语言本身的规则，如C#中变量名中不能包含空格、小数点等等，有些则是开发人员或企业的编程风格或制约。</p>
-<p>目前形成的最为常用的变量命名规约主要有三种：</p>
-<ul>
-<li>驼峰式大小写/小驼峰命名法（Lower Camel Case）</li>
-<li>Pascal命名法/大驼峰命名法（Pascal Case/Upper Camel Case）</li>
-<li>匈牙利命名法（Hungarian）</li>
-</ul>
-<h3 id="驼峰命名法"><a href="#驼峰命名法" class="headerlink" title="驼峰命名法"></a>驼峰命名法</h3><p><a href="https://baike.baidu.com/item/%E9%AA%86%E9%A9%BC%E5%91%BD%E5%90%8D%E6%B3%95?fromtitle=%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95&amp;fromid=7560610" target="_blank" rel="external">驼峰式大小写</a>来自<a href="https://baike.baidu.com/item/perl" target="_blank" rel="external">Perl</a>语言。组成变量名的第一个单词以小写字母开头，其余单词都以大写字母开头，单词之间不以空格分隔或连接号（-）下划线（_）连接。</p>
-<blockquote>
-<p>如：<code>gender</code>、<code>myName</code>、<code>studentInfoNumber</code></p>
-</blockquote>
-<p>因为这些高低起伏的字符很像骆驼的侧影，所以称为小驼峰命名法。</p>
-<p>以前的命名规约常使用下划线作为变量名中各个单词之间的分隔符，又称为下划线法，如<code>input_student_name()</code>、<code>employee_counter</code>。这种形式是从C出现后流行使用的，目前在嵌入式/Unix等C编程环境下，还较为普遍。</p>
-<h3 id="Pascal命名法"><a href="#Pascal命名法" class="headerlink" title="Pascal命名法"></a>Pascal命名法</h3><p><a href="https://baike.baidu.com/item/%E5%B8%95%E6%96%AF%E5%8D%A1%E5%91%BD%E5%90%8D%E6%B3%95/9464494" target="_blank" rel="external">帕斯卡命名法</a>又称大驼峰式命名法，源自于<a href="https://baike.baidu.com/item/pascal/241171" target="_blank" rel="external">Pascal</a>语言的命名惯例。与驼峰命名法类似，只不过组成变量名的所有单词首字母都大写。</p>
-<blockquote>
-<p>如：<code>Gender</code>、<code>MyName</code>、<code>StudentInfoNumber</code></p>
-</blockquote>
-<p>这样组合方式可以让开发人员很明确的看出变量的字母组合。</p>
-<h3 id="匈牙利命名法"><a href="#匈牙利命名法" class="headerlink" title="匈牙利命名法"></a>匈牙利命名法</h3><p><a href="https://baike.baidu.com/item/%E5%8C%88%E7%89%99%E5%88%A9%E5%91%BD%E5%90%8D%E6%B3%95" target="_blank" rel="external">匈牙利命名法</a>基本规则是：变量名=属性+类型+对象描述，这种方法要求在每个变量名的前面加上表示变量数据类型或用途的小写字母，它包括系统匈牙利命名法和匈牙利应用命名法：</p>
-<ul>
-<li>系统匈牙利命名法中，前缀字母说明变量的数据类型</li>
-</ul>
-<blockquote>
-<p>如：<code>iGender</code>、<code>strMyName</code>，i代表int型，str代表string型</p>
-</blockquote>
-<ul>
-<li>匈牙利应用命名法中，前缀说明变量用途</li>
-</ul>
-<blockquote>
-<p>如：<code>pCircleSize</code>，p代表指针。</p>
-</blockquote>
-<p>当然，这种方法在面向对象编程（OOP, Object Oriented Programming）中基本不被采用，因为类似.net/Java这种语言中有上百种类型，很容易混淆，但可以了解一下。</p>
-<p>C#中类名、类的属性和方法常采用Pascal命名法，变量、对象常采用驼峰命名法。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;软件开发都需要遵循一定的编程规范！
-    
-    </summary>
-    
-      <category term="Build篇" scheme="http://yoursite.com/categories/Build%E7%AF%87/"/>
-    
-    
-      <category term="构建法" scheme="http://yoursite.com/tags/%E6%9E%84%E5%BB%BA%E6%B3%95/"/>
-    
-      <category term="变量命名" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D/"/>
-    
-      <category term="驼峰" scheme="http://yoursite.com/tags/%E9%A9%BC%E5%B3%B0/"/>
+      <category term="Git Sever" scheme="http://ex2tron.wang/tags/Git-Sever/"/>
     
   </entry>
   

@@ -13,7 +13,7 @@
   
   <title>
     
-    【利器篇】mycli：自动补全和语法高亮的mysql命令行工具 |
+    【利器】mycli：自动补全和语法高亮的mysql命令行工具 |
     
     ex2tron&#39;s Blog
   </title>
@@ -27,15 +27,15 @@
   <meta name="description" content="mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。">
 <meta name="keywords" content="MyCLI,MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具">
-<meta property="og:url" content="http://yoursite.com/tools-mycli/index.html">
+<meta property="og:title" content="【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具">
+<meta property="og:url" content="http://ex2tron.wang/tools-mycli/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
 <meta property="og:description" content="mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/mycli_demo.gif">
-<meta property="og:updated_time" content="2018-11-02T02:51:48.375Z">
+<meta property="og:updated_time" content="2019-03-19T05:02:42.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具">
+<meta name="twitter:title" content="【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具">
 <meta name="twitter:description" content="mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/mycli_demo.gif">
   
@@ -173,13 +173,13 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/mycli_demo.gif" rel="gallery_cjteiked8003bbc59p0ko1vyb">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/mycli_demo.gif" rel="gallery_cjtfc389j0032sg59oxemccg9">
         <img src="http://pic.ex2tron.top/mycli_demo.gif" itemprop="image">
       </a>
     
@@ -191,7 +191,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      【利器篇】MyCLI：自动补全和语法高亮的MySQL命令行工具
+      【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具
     </h1>
   
 
@@ -208,13 +208,16 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p>mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。<a id="more"></a></p>
-<p>mycli不仅会提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。</p>
-<p>官网：<a href="http://www.mycli.net/" target="_blank" rel="external">MyCLI</a></p>
+<hr>
+<p>mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。</p>
+<ul>
+<li>官网：<a href="http://www.mycli.net/" target="_blank" rel="external">MyCLI</a></li>
+</ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>其实mycli是一个Python的包，所以你已经安装了Python(pip)的话，用下面一条指令就好了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mycli</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install mycli</div></pre></td></tr></table></figure>
 <p>如果出现问题，可以参考<a href="http://www.mycli.net/" target="_blank" rel="external">官网</a>，有详细的说明。</p>
 <p><img src="http://pic.ex2tron.top/install_mycli.png" alt="install_mycli"></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装好之后，在cmd下，将以往登陆MySQL用的mysql换成mycli就可以了：</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装好之后，在命令行下，将以往登陆MySQL用的mysql换成mycli，不用加<code>-p</code>选项就可以了：</p>
 <p><img src="http://pic.ex2tron.top/login_with_mycli.png" alt="login_with_mycli"></p>
 <p>好了，大家觉得好用的话，欢迎扩散噢！</p>
 <blockquote>
@@ -283,7 +286,7 @@ var themeMenus = {};
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【利器篇】用VS Code写Markdown
+          【利器】用VS Code写Markdown
         
       </div>
     </a>
