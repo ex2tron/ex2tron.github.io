@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-17T14:25:22.170Z</updated>
+  <updated>2019-03-19T09:56:31.404Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/install-windows10-on-ubuntu/"/>
     <id>http://ex2tron.wang/install-windows10-on-ubuntu/</id>
     <published>2019-03-17T12:42:59.000Z</published>
-    <updated>2019-03-17T14:25:22.170Z</updated>
+    <updated>2019-03-19T09:56:31.404Z</updated>
     
     <content type="html"><![CDATA[<p>之前想装个Windows10+Ubuntu的双系统，网上有很多教程是Windows上怎么安装Ubuntu的，可我电脑TMD本身就是Ubuntu啊，在Ubuntu上安装Windows的资料相对较少，真是神坑。下面分享下我的教程：<a id="more"></a></p>
 <blockquote>
@@ -29,6 +29,10 @@
 </blockquote>
 <hr>
 <p>分区和安装有风险，不熟悉的同学请提前<strong>备份数据</strong>并<strong>谨慎操作</strong>！！！</p>
+<ul>
+<li>Ubuntu 16.04.5</li>
+<li>Windows 10 1809</li>
+</ul>
 <h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>分区是最为关键的步骤，一般有两种情况：</p>
 <ol>
 <li><p>你的电脑上已经有一个单独的不用的分区，比如有的电脑上是SSD+HDD的，这种情况下你可以将Windows直接安装在这个分区上，最后只要添加下引导就行。</p>
@@ -73,7 +77,7 @@
 <p><img src="http://pic.ex2tron.top/ubuntu_windows_install_ubuntu_problem2.jpg" alt=""></p>
 <p>按照提示，输入<code>live live-install</code>回车即可。</p>
 <blockquote>
-<p>喜欢的朋友记得一键三连，转发评论打赏噢！(●ˇ∀ˇ●) Excelsior!</p>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -99,7 +103,7 @@
     <link href="http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/"/>
     <id>http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/</id>
     <published>2019-01-19T14:29:07.000Z</published>
-    <updated>2019-01-20T13:36:44.847Z</updated>
+    <updated>2019-03-19T09:58:42.411Z</updated>
     
     <content type="html"><![CDATA[<p>很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。<a id="more"></a>有很多隐藏密码的技巧，环境变量便是其中之一。</p>
 <hr>
@@ -122,9 +126,9 @@
 <p>在环境变量界面，可以在用户环境变量下点击新建，新建两个变量用来存储数据库用户名和密码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DB_USER			ex2tron</div><div class="line">DB_PASSWD		ex2tron12345</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/hiding_info_add_new_variable.jpg" alt=""></p>
-<p>编辑好之后，代码跟前面的修改方式一样。</p>
+<p>编辑好之后，代码跟前面的修改方式一样。如果打印出来为空，说明环境变量没有生效，可以重启你的IDE。</p>
 <blockquote>
-<p>如果打印出来为空，说明环境变量没有生效，可以重启你的IDE。</p>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -150,7 +154,7 @@
     <link href="http://ex2tron.wang/how-to-use-ssh-on-windows10/"/>
     <id>http://ex2tron.wang/how-to-use-ssh-on-windows10/</id>
     <published>2019-01-02T13:00:54.000Z</published>
-    <updated>2019-01-19T14:46:48.646Z</updated>
+    <updated>2019-03-19T09:57:51.350Z</updated>
     
     <content type="html"><![CDATA[<p>SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。<a id="more"></a></p>
 <hr>
@@ -185,7 +189,11 @@
 <p>配置完之后一定记得重启<code>ssh server</code>，否则是不会生效的。一种方法是服务里面，右键选择重启：</p>
 <p><img src="http://pic.ex2tron.top/win10-ssh-server-config-reboot-service.jpg" alt=""></p>
 <p>还有一种就是在cmd下直接重启，cmd需以管理员权限打开：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">net stop sshd</div><div class="line">net start sshd</div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">net stop sshd</div><div class="line">net start sshd</div></pre></td></tr></table></figure>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
+]]></content>
     
     <summary type="html">
     
@@ -211,7 +219,7 @@
     <link href="http://ex2tron.wang/a-gift-for-2019-moviequotes/"/>
     <id>http://ex2tron.wang/a-gift-for-2019-moviequotes/</id>
     <published>2018-12-29T10:00:31.000Z</published>
-    <updated>2019-01-15T15:56:21.666Z</updated>
+    <updated>2019-03-19T09:58:15.240Z</updated>
     
     <content type="html"><![CDATA[<center><a href="http://moviequotes.ex2tron.wang" target="_blank" rel="external"><strong>moviequotes.ex2tron.wang</strong></a></center>
 
@@ -224,6 +232,9 @@
 <p>各位看官不要嫌UI丑啊，我是完全模仿原网站做的。后期如果有时间我会更换一套自己的UI。</p>
 <p><img src="http://pic.ex2tron.top/moviequotes_pc_ui_demo.jpg" alt="PC 显示效果图"></p>
 <p>其实每句电影台词配一张截图最好了，不过加上去有点丑，所以没放出来。另外，多用户登陆注册和分享的功能同样也没放出来，目前一切从简。有想要贡献词条的同学可以联系我噢，最后<strong>祝大家元旦快乐！</strong>(☆▽☆)</p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -254,7 +265,7 @@
     <link href="http://ex2tron.wang/movie-biopic-collections/"/>
     <id>http://ex2tron.wang/movie-biopic-collections/</id>
     <published>2018-03-15T05:46:50.000Z</published>
-    <updated>2018-11-02T02:51:48.377Z</updated>
+    <updated>2019-03-19T10:03:03.932Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><em>Look up at the stars, not down at your feet.</em> ——<a href="https://baike.baidu.com/item/斯蒂芬·威廉·霍金?fromtitle=%E9%9C%8D%E9%87%91&amp;fromid=171893" target="_blank" rel="external"><em>Stephen Hawking</em></a></p>
@@ -283,6 +294,9 @@
 <p><a href="ed2k://|file|%E5%90%AF%E5%8A%9F.1080p.HD%E5%9B%BD%E8%AF%AD%E4%B8%AD%E5%AD%97%E3%80%906v%E7%94%B5%E5%BD%B1www.6vhao.net%E3%80%91.mkv|807501501|E87261DF2946615885BD941BEAB689DF|h=WL4KAS6KIYAZSXOUSX4UB4NB35O6COGQ|/" target="_blank" rel="external"><strong>启功(The Calligraphy Master)</strong></a> | 启功 | <a href="https://movie.douban.com/subject/26440017/" target="_blank" rel="external">豆瓣7.6</a></p>
 <p><img src="http://pic.ex2tron.top/qigong.jpg" alt=""></p>
 <p>其实还有很多好的传记片，上面这几个是看过能立马想起来的，有机会再补充！</p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -2217,7 +2231,7 @@
     <link href="http://ex2tron.wang/opencv-python-changing-colorspaces/"/>
     <id>http://ex2tron.wang/opencv-python-changing-colorspaces/</id>
     <published>2017-12-07T07:21:19.000Z</published>
-    <updated>2018-11-26T08:48:49.347Z</updated>
+    <updated>2019-03-20T05:40:05.259Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2478,7 +2492,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-using-matplotlib/"/>
     <id>http://ex2tron.wang/opencv-python-extra-using-matplotlib/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2018-11-15T14:21:09.863Z</updated>
+    <updated>2019-03-20T05:40:36.563Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <hr>
@@ -2753,16 +2767,14 @@
     <link href="http://ex2tron.wang/movie-marvel-collections/"/>
     <id>http://ex2tron.wang/movie-marvel-collections/</id>
     <published>2017-12-05T14:44:35.000Z</published>
-    <updated>2018-10-03T04:35:04.890Z</updated>
+    <updated>2019-03-20T05:41:53.273Z</updated>
     
     <content type="html"><![CDATA[<p>十年，17部电影，超过130亿美元的总票房，漫威宇宙电影合集下载！！！<a id="more"></a></p>
 <blockquote>
 <p><em>Excelsior!</em>  ——<a href="https://baike.baidu.com/item/%E6%96%AF%E5%9D%A6%C2%B7%E6%9D%8E?fromtitle=%E6%96%AF%E5%9D%A6%E6%9D%8E" target="_blank" rel="external">斯坦·李</a></p>
 </blockquote>
 <p>漫威电影宇宙MCU的成绩有目共睹，在十周年《复仇者联盟3》上映之前，来补一波吧！</p>
-<blockquote>
-<p>大部分片源来自人人影视字幕组，点击片名即可下载</p>
-</blockquote>
+<p><strong>大部分片源来自人人影视字幕组，点击片名即可下载。</strong></p>
 <p>MCU观影指南：</p>
 <h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><ul>
 <li><p>2008<a href="ed2k://|file|Iron.Man.%E9%92%A2%E9%93%81%E4%BE%A0.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.X264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|2361675752|A57750EDD6B523F23E23DF9D123FA998|h=3PEOFILFEMS624ZBPUHMPBMDQEQ6FR4L|/" target="_blank" rel="external">《钢铁侠1》</a></p>
@@ -2807,6 +2819,9 @@
 </li>
 </ul>
 <p><img src="http://img5.mtime.cn/pi/2017/07/26/151208.45265741_1000X1000.jpg" alt="无限战争！！！"></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -2831,7 +2846,7 @@
     <link href="http://ex2tron.wang/movie-007-collections/"/>
     <id>http://ex2tron.wang/movie-007-collections/</id>
     <published>2017-12-05T13:53:37.000Z</published>
-    <updated>2018-10-03T03:54:49.462Z</updated>
+    <updated>2019-03-19T10:02:52.471Z</updated>
     
     <content type="html"><![CDATA[<p>作为风靡全球的一系列谍战电影，007怎能不看呢？007电影合集下载！<a id="more"></a></p>
 <blockquote>
@@ -2900,6 +2915,9 @@
 <li><p><a href="ed2k://|file|Spectre.2015.007%EF%BC%9A%E5%B9%BD%E7%81%B5%E5%85%9A.720p.Chi_Eng.ZMZ-BD-MP4.mp4|2215389133|466424a3435fbcb4e15f4f8a61062c5e|h=rwj5asfdefs3xoh5c56c7pchcm42aoww|/" target="_blank" rel="external">24. 幽灵党 (2015)</a></p>
 </li>
 </ul>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -2922,7 +2940,7 @@
     <link href="http://ex2tron.wang/movie-oscars-animated-collections/"/>
     <id>http://ex2tron.wang/movie-oscars-animated-collections/</id>
     <published>2017-12-05T06:55:09.000Z</published>
-    <updated>2018-11-02T02:51:48.376Z</updated>
+    <updated>2019-03-20T05:36:25.791Z</updated>
     
     <content type="html"><![CDATA[<p>历届奥斯卡最佳动画长片合集下载！！！<a id="more"></a></p>
 <blockquote>
@@ -2931,44 +2949,31 @@
 <p>奥斯卡最佳动画长片奖设立于2002年，由当时的奥斯卡最佳动画奖细分出来。</p>
 <p>天马行空的创意、顶级技术效果、发现生活的美好……都是我喜欢动画的原因。我一直很喜欢国内早期的动画片，三个和尚、小蝌蚪找妈妈和大闹天宫…然而国漫之后一直没啥起色。每次看到喜羊羊，熊出没，我就…同时好莱坞三大动画工作室，迪士尼（皮克斯）、梦工厂、蓝天工作室每年都在制作着世界顶级动画作品。而奥斯卡最佳动画长片更是代表了每年作品中的佼佼者。</p>
 <blockquote>
-<p>大部分片源来自人人影视字幕组，点击片名即可下载</p>
+<p>大部分片源来自<a href="http://www.zimuzu.io/" target="_blank" rel="external">人人影视字幕组</a>，点击片名即可下载</p>
 </blockquote>
 <ul>
-<li><p>第90届奥斯卡最佳动画长片（2018）：<a href="ed2k://|file|寻梦环游记.Coco.2017.中英字幕.BDrip.AAC.720p.x264-人人影视.mp4|1521653731|2fb11dee0d3ca31eb67b2cb4bef62903|h=6owadvdgnwa6oc723nku3yvkyecbguyr|/" target="_blank" rel="external">寻梦环游记</a></p>
-</li>
-<li><p>第89届奥斯卡最佳动画长片（2017）：<a href="ed2k://|file|Zootopia.2016.%E7%96%AF%E7%8B%82%E5%8A%A8%E7%89%A9%E5%9F%8E.720p.Chi_Eng.ZMZ-BD-MP4.mp4|1624450533|b2bd5f3bbccb67d70e1b6b2309e986c9|h=bluqdoehhs6nwianhaqbebr54732rubc|/" target="_blank" rel="external">疯狂动物城</a></p>
-</li>
-<li><p>第88届奥斯卡最佳动画长片（2016）：<a href="ed2k://|file|%E5%A4%B4%E8%84%91%E7%89%B9%E5%B7%A5%E9%98%9F.Inside.Out.2015.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.720p.BluRay.x264.%E6%B7%B1%E5%BD%B1%E5%AD%97%E5%B9%95%E7%BB%84.mkv|2344293745|74B8904467BC963BD950C988A6FDEC18|h=YJEWNF4JLIOYQR5F2E5V2KFU7DYRWNL7|/" target="_blank" rel="external">头脑特工队</a></p>
-</li>
-<li><p>第87届奥斯卡最佳动画长片（2015）：<a href="ed2k://|file|%E8%B6%85%E8%83%BD%E9%99%86%E6%88%98%E9%98%9F.Big.Hero.6.2014.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.BDrip.720p.x264.%E6%B7%B1%E5%BD%B1%E8%AE%BA%E5%9D%9B%E7%BF%BB%E8%AF%91%E5%88%B6%E4%BD%9CV3.mkv|2343923616|5D6DB02D89D32CF3557D6D76AC16CDC9|h=UBUWZG7RMFUR6PYY6VLXI3QXCJOLPWRF|/" target="_blank" rel="external">超能陆战队</a></p>
-</li>
-<li><p>第86届奥斯卡最佳动画长片（2014）：<a href="ed2k://|file|Frozen.2013.%E5%86%B0%E9%9B%AA%E5%A5%87%E7%BC%98.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.%E8%8B%B1%E5%8F%B0%E7%B2%A4%E9%9F%B3%E8%BD%A8.HR-HDTV.AC3.1024X576.x264.V2.mkv|2264858962|f571467d174f0114530ac1bc6c190704|h=lsmudzlfsfxqu3722q6qkwq7jgusxcz7|/" target="_blank" rel="external">冰雪奇缘</a></p>
-</li>
-<li><p>第85届奥斯卡最佳动画长片（2013）：<a href="ed2k://|file|Brave.2012.%E5%8B%87%E6%95%A2%E4%BC%A0%E8%AF%B4.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1534863000|2c388a9be43845a24266a4192369d0d3|h=uwcjzvg3guwhs6kejbd664h5bvhxodag|/" target="_blank" rel="external">勇敢传说</a></p>
-</li>
-<li><p>第84届奥斯卡最佳动画长片（2012）：<a href="ed2k://|file|Rango.2011.兰戈.双语字幕.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|2338210117|fbfac876f4a05a0d5f8ea31936076f36|h=65uxzqomklc657ixx7bt6wvyfsnlkmqo|/" target="_blank" rel="external">兰戈</a></p>
-</li>
-<li><p>第83届奥斯卡最佳动画长片（2011）：<a href="ed2k://|file|Toy.Story.3.2010.玩具总动员3.国粤英四音轨.双语字幕.HR-HDTV.AC3.1024x576.X264-人人影视制作.mkv|2562839788|2728791516D400440ABE73C30844F00B|h=2TTNRGE7AAMPC4UPOMBSA4STOEXZLLH3|/" target="_blank" rel="external">玩具总动员3</a></p>
-</li>
-<li><p>第82届奥斯卡最佳动画长片（2010）：<a href="ed2k://|file|Up.2009.%E9%A3%9E%E5%B1%8B%E7%8E%AF%E6%B8%B8%E8%AE%B0.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1649439684|B1085779D40C6FC46481EB2403D9AD75|h=TKRZ4AQURPGCFW4HIIPMZLHWSLYO3V6N|/" target="_blank" rel="external">飞屋环游记</a></p>
-</li>
-<li><p>第81届奥斯卡最佳动画长片（2009）：<a href="ed2k://|file|WALL.E.2008.%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%80%BB%E5%8A%A8%E5%91%98.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.%E5%9B%BD%E8%8B%B1%E7%B2%A4%E9%9F%B3%E8%BD%A8.HR-HDTV.AC3.1024x576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|2187264769|b2e470cc0fa2ffb7e02c60f8d462776a|h=n47eq7i5ogxuozbu2pi3k7udsx3hdtmc|/" target="_blank" rel="external">机器人总动员</a></p>
-</li>
-<li><p>第80届奥斯卡最佳动画长片（2008）：<a href="ed2k://|file|Ratatouille.2007.料理鼠王.双语字幕.HR-HDTV.AAC.1024X576.x264-人人影视制作.mkv|1657757497|923296BE4AC33A8CEEB74A1EFE9FD66F|h=RSE3N54Y6XPJYW4I5KCG7SDGM72CXVVY|/" target="_blank" rel="external">料理鼠王</a></p>
-</li>
-<li><p>第79届奥斯卡最佳动画长片（2007）：<a href="ed2k://|file|Happy.Feet.2006.快乐的大脚.双语字幕.HR-HDTV.AC3.1024X576.x265-人人影视制作.mkv|1820193043|465E969D87F3B285706A9F6CE0D219EA|h=IG2GHKLNHQXG6CTBGK22BGOCDWHONGOH|/" target="_blank" rel="external">快乐的大脚</a></p>
-</li>
-<li><p>第78届奥斯卡最佳动画长片（2006）：<a href="ed2k://|file|Wallace.And.Gromit.In.The.Curse.Of.The.Were.Rabbit.2005.超级无敌掌门狗-人兔的诅咒.双语字幕.HR-HDTV.AC3.1024x576.x264-人人影视制作.mkv|1328004580|B7BC8BD27B1AD8A5A1D43E47EFD3B28C|h=KBUCKHKJQPNWZSWMAVU2BDLRSM4H7IBP|/" target="_blank" rel="external">超级无敌掌门狗-人兔的诅咒</a></p>
-</li>
-<li><p>第77届奥斯卡最佳动画长片（2005）：<a href="ed2k://|file|The.Incredibles.2004.超人总动员.双语字幕.HR-HDTV.AC3.1024X576.x264-人人影视制作.V2.mkv|1848359019|F669872941DE396E5C4B543D00093998|h=54ZKL3GGEADMYHU3QBWWVDSIIKVBHS2R|/" target="_blank" rel="external">超人总动员</a></p>
-</li>
-<li><p>第76届奥斯卡最佳动画长片（2004）：<a href="ed2k://|file|Finding.Nemo.2003.海底总动员.双语字幕.国英音轨.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|1823609402|58d66fdfd69a3b8b6ad16ef752b722ad|h=457m2rl73pet7st7t4pjqmwonqpxzwas|/" target="_blank" rel="external">海底总动员</a></p>
-</li>
-<li><p>第75届奥斯卡最佳动画长片（2003）：<a href="ed2k://|file|Spirited.Away.2001.千与千寻.国粤日音轨.双语字幕.HR-HDTV.AC3.1024X550.x264-人人影视制作.mkv|2339461922|f169fab09a5f8a1f54cf066e1068d31a|h=zz2i6uhgdezy7f3tfrag4lppg4zqsc4u|/" target="_blank" rel="external">千与千寻</a></p>
-</li>
-<li><p>第74届奥斯卡最佳动画长片（2002）：<a href="ed2k://|file|Shrek.2001.怪物史莱克.双语字幕.HR-HDTV.AAC.1024X576.x264-YYeTs人人影视.mkv|1393402562|CA0EEB980750D5EFFB6E8F0CB727AD8C|h=INABIQQFAGANNSVI24O65OOMO5H7BMYB|/" target="_blank" rel="external">怪物史瑞克</a></p>
-</li>
+<li>第91届奥斯卡最佳动画长片（2019）：<a href="magnet:?xt=urn:btih:D438A6AD433EBE94357E467880062DCD7AE3698A" target="_blank" rel="external">蜘蛛侠：平行宇宙</a></li>
+<li>第90届奥斯卡最佳动画长片（2018）：<a href="ed2k://|file|寻梦环游记.Coco.2017.中英字幕.BDrip.AAC.720p.x264-人人影视.mp4|1521653731|2fb11dee0d3ca31eb67b2cb4bef62903|h=6owadvdgnwa6oc723nku3yvkyecbguyr|/" target="_blank" rel="external">寻梦环游记</a></li>
+<li>第89届奥斯卡最佳动画长片（2017）：<a href="ed2k://|file|Zootopia.2016.%E7%96%AF%E7%8B%82%E5%8A%A8%E7%89%A9%E5%9F%8E.720p.Chi_Eng.ZMZ-BD-MP4.mp4|1624450533|b2bd5f3bbccb67d70e1b6b2309e986c9|h=bluqdoehhs6nwianhaqbebr54732rubc|/" target="_blank" rel="external">疯狂动物城</a></li>
+<li>第88届奥斯卡最佳动画长片（2016）：<a href="ed2k://|file|%E5%A4%B4%E8%84%91%E7%89%B9%E5%B7%A5%E9%98%9F.Inside.Out.2015.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.720p.BluRay.x264.%E6%B7%B1%E5%BD%B1%E5%AD%97%E5%B9%95%E7%BB%84.mkv|2344293745|74B8904467BC963BD950C988A6FDEC18|h=YJEWNF4JLIOYQR5F2E5V2KFU7DYRWNL7|/" target="_blank" rel="external">头脑特工队</a></li>
+<li>第87届奥斯卡最佳动画长片（2015）：<a href="ed2k://|file|%E8%B6%85%E8%83%BD%E9%99%86%E6%88%98%E9%98%9F.Big.Hero.6.2014.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.BDrip.720p.x264.%E6%B7%B1%E5%BD%B1%E8%AE%BA%E5%9D%9B%E7%BF%BB%E8%AF%91%E5%88%B6%E4%BD%9CV3.mkv|2343923616|5D6DB02D89D32CF3557D6D76AC16CDC9|h=UBUWZG7RMFUR6PYY6VLXI3QXCJOLPWRF|/" target="_blank" rel="external">超能陆战队</a></li>
+<li>第86届奥斯卡最佳动画长片（2014）：<a href="ed2k://|file|Frozen.2013.%E5%86%B0%E9%9B%AA%E5%A5%87%E7%BC%98.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.%E8%8B%B1%E5%8F%B0%E7%B2%A4%E9%9F%B3%E8%BD%A8.HR-HDTV.AC3.1024X576.x264.V2.mkv|2264858962|f571467d174f0114530ac1bc6c190704|h=lsmudzlfsfxqu3722q6qkwq7jgusxcz7|/" target="_blank" rel="external">冰雪奇缘</a></li>
+<li>第85届奥斯卡最佳动画长片（2013）：<a href="ed2k://|file|Brave.2012.%E5%8B%87%E6%95%A2%E4%BC%A0%E8%AF%B4.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1534863000|2c388a9be43845a24266a4192369d0d3|h=uwcjzvg3guwhs6kejbd664h5bvhxodag|/" target="_blank" rel="external">勇敢传说</a></li>
+<li>第84届奥斯卡最佳动画长片（2012）：<a href="ed2k://|file|Rango.2011.兰戈.双语字幕.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|2338210117|fbfac876f4a05a0d5f8ea31936076f36|h=65uxzqomklc657ixx7bt6wvyfsnlkmqo|/" target="_blank" rel="external">兰戈</a></li>
+<li>第83届奥斯卡最佳动画长片（2011）：<a href="ed2k://|file|Toy.Story.3.2010.玩具总动员3.国粤英四音轨.双语字幕.HR-HDTV.AC3.1024x576.X264-人人影视制作.mkv|2562839788|2728791516D400440ABE73C30844F00B|h=2TTNRGE7AAMPC4UPOMBSA4STOEXZLLH3|/" target="_blank" rel="external">玩具总动员3</a></li>
+<li>第82届奥斯卡最佳动画长片（2010）：<a href="ed2k://|file|Up.2009.%E9%A3%9E%E5%B1%8B%E7%8E%AF%E6%B8%B8%E8%AE%B0.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.HR-HDTV.AC3.1024X576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|1649439684|B1085779D40C6FC46481EB2403D9AD75|h=TKRZ4AQURPGCFW4HIIPMZLHWSLYO3V6N|/" target="_blank" rel="external">飞屋环游记</a></li>
+<li>第81届奥斯卡最佳动画长片（2009）：<a href="ed2k://|file|WALL.E.2008.%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%80%BB%E5%8A%A8%E5%91%98.%E5%8F%8C%E8%AF%AD%E5%AD%97%E5%B9%95.%E5%9B%BD%E8%8B%B1%E7%B2%A4%E9%9F%B3%E8%BD%A8.HR-HDTV.AC3.1024x576.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%88%B6%E4%BD%9C.mkv|2187264769|b2e470cc0fa2ffb7e02c60f8d462776a|h=n47eq7i5ogxuozbu2pi3k7udsx3hdtmc|/" target="_blank" rel="external">机器人总动员</a></li>
+<li>第80届奥斯卡最佳动画长片（2008）：<a href="ed2k://|file|Ratatouille.2007.料理鼠王.双语字幕.HR-HDTV.AAC.1024X576.x264-人人影视制作.mkv|1657757497|923296BE4AC33A8CEEB74A1EFE9FD66F|h=RSE3N54Y6XPJYW4I5KCG7SDGM72CXVVY|/" target="_blank" rel="external">料理鼠王</a></li>
+<li>第79届奥斯卡最佳动画长片（2007）：<a href="ed2k://|file|Happy.Feet.2006.快乐的大脚.双语字幕.HR-HDTV.AC3.1024X576.x265-人人影视制作.mkv|1820193043|465E969D87F3B285706A9F6CE0D219EA|h=IG2GHKLNHQXG6CTBGK22BGOCDWHONGOH|/" target="_blank" rel="external">快乐的大脚</a></li>
+<li>第78届奥斯卡最佳动画长片（2006）：<a href="ed2k://|file|Wallace.And.Gromit.In.The.Curse.Of.The.Were.Rabbit.2005.超级无敌掌门狗-人兔的诅咒.双语字幕.HR-HDTV.AC3.1024x576.x264-人人影视制作.mkv|1328004580|B7BC8BD27B1AD8A5A1D43E47EFD3B28C|h=KBUCKHKJQPNWZSWMAVU2BDLRSM4H7IBP|/" target="_blank" rel="external">超级无敌掌门狗-人兔的诅咒</a></li>
+<li>第77届奥斯卡最佳动画长片（2005）：<a href="ed2k://|file|The.Incredibles.2004.超人总动员.双语字幕.HR-HDTV.AC3.1024X576.x264-人人影视制作.V2.mkv|1848359019|F669872941DE396E5C4B543D00093998|h=54ZKL3GGEADMYHU3QBWWVDSIIKVBHS2R|/" target="_blank" rel="external">超人总动员</a></li>
+<li>第76届奥斯卡最佳动画长片（2004）：<a href="ed2k://|file|Finding.Nemo.2003.海底总动员.双语字幕.国英音轨.HR-HDTV.AC3.1024X576.x264-人人影视制作.mkv|1823609402|58d66fdfd69a3b8b6ad16ef752b722ad|h=457m2rl73pet7st7t4pjqmwonqpxzwas|/" target="_blank" rel="external">海底总动员</a></li>
+<li>第75届奥斯卡最佳动画长片（2003）：<a href="ed2k://|file|Spirited.Away.2001.千与千寻.国粤日音轨.双语字幕.HR-HDTV.AC3.1024X550.x264-人人影视制作.mkv|2339461922|f169fab09a5f8a1f54cf066e1068d31a|h=zz2i6uhgdezy7f3tfrag4lppg4zqsc4u|/" target="_blank" rel="external">千与千寻</a></li>
+<li>第74届奥斯卡最佳动画长片（2002）：<a href="ed2k://|file|Shrek.2001.怪物史莱克.双语字幕.HR-HDTV.AAC.1024X576.x264-YYeTs人人影视.mkv|1393402562|CA0EEB980750D5EFFB6E8F0CB727AD8C|h=INABIQQFAGANNSVI24O65OOMO5H7BMYB|/" target="_blank" rel="external">怪物史瑞克</a></li>
 </ul>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -2991,7 +2996,7 @@
     <link href="http://ex2tron.wang/brand7-2-release/"/>
     <id>http://ex2tron.wang/brand7-2-release/</id>
     <published>2017-11-26T11:04:32.000Z</published>
-    <updated>2018-11-02T02:51:48.371Z</updated>
+    <updated>2019-03-19T10:00:29.323Z</updated>
     
     <content type="html"><![CDATA[<p>隔了一年更新，良心都有点痛了( ╯□╰ )<a id="more"></a></p>
 <blockquote>
@@ -3018,6 +3023,9 @@
 <p><img src="http://pic.ex2tron.top/brand7_v2_startui.jpg" alt="新的启动界面"></p>
 <p><img src="http://pic.ex2tron.top/brand7_v2_share.jpg" alt="分享界面"></p>
 <p>可以在Win10应用商店中搜索“品牌漆”进行下载，或<a href="https://www.microsoft.com/store/productId/9NBLGGH546QC" target="_blank" rel="external">点击此处</a>。</p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3040,7 +3048,7 @@
     <link href="http://ex2tron.wang/software-and-movies/"/>
     <id>http://ex2tron.wang/software-and-movies/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2018-10-05T10:15:11.040Z</updated>
+    <updated>2019-03-19T09:59:34.951Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -3136,6 +3144,9 @@
 <li><a href="/movie-marvel-collections/">漫威电影合集</a>、<a href="/movie-007-collections/">007电影合集</a></li>
 <li><a href="/movie-nolan-collections/">诺兰电影合集</a>、<a href="/movie-oscars-animated-collections/">历届奥斯卡最佳动画长片合集</a></li>
 </ul>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3158,7 +3169,7 @@
     <link href="http://ex2tron.wang/metrology-history-a-journey-of-time/"/>
     <id>http://ex2tron.wang/metrology-history-a-journey-of-time/</id>
     <published>2017-11-08T13:35:51.000Z</published>
-    <updated>2018-10-03T02:52:55.757Z</updated>
+    <updated>2019-03-19T09:59:51.153Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章也是我一年前研一《计量史》课上的小论文，感觉不错，也放在博客上，哈哈。<a id="more"></a></p>
 <blockquote>
@@ -3175,6 +3186,9 @@
 <p>虽然当今社会的物质财富已经相对丰富，但大多数人却丧失了求真求知，我们经常被当下的现实琐碎问题所困。这种局限使得人们疲于现实，而缺少创造和求知的勇气。假设我们可以做一次时间的旅行，<em>“水母、鳄鱼胚胎、星云、犹他州的峡谷和木卫三；第一缕生命的信号、细菌、细胞起源、初恋感觉、意识诞生、人类进化、生与死。”</em>（纪录片《<a href="https://baike.baidu.com/item/时间之旅/4524703" target="_blank" rel="external">时间之旅</a>》）从宇宙大爆炸的那一刻开始到人类高级智慧的诞生，就注定了人类在漫漫时间长河中探索和认识这个世界的过程。在这个漫长的过程中，时间见证了无数人的探索求真精神，有始有终，从阿尔法到欧米伽，驱动着人类的进步。</p>
 <p>我想时间就是一个很好的例子，来溯源支配当今社会行为准则的起源与内涵。正如同天平这种衡器的诞生以及后人对它的不断改进与完善，就是人们对公平与公正追求的一种体现。这种以此来扩充我们见识的过程，有助于锻炼我们的思维，突破一些困扰我们的现实问题，尝试新思路，并最终试图解决我们一直在思考的问题：自我存在。起码这种思维方法对我自己很有帮助：我是工作后考的研究生。考研期间，我没有用智能手机，由于一个人很难坚持下来，于是尝试每天早上7：15到7：45期间用静坐的方式来保持心态的平和。这种方法却意外之外了我的一笔人生财富，因为静坐的时候，我会尝试去想一些平静的事，慢慢地就会回忆起那些很久之前早就遗忘的事情。我想那个时候我就在进行着一趟回溯自己的时间之旅。每件事，好的，坏的都有始有终，总会过去，自己的心态也就变得好起来。静坐之后，洗漱完，8点准时出发，开始一天的学习生活……到现在读研期间，我依旧保持了考研时的一些习惯。</p>
 <h2 id="III-结束语"><a href="#III-结束语" class="headerlink" title="III. 结束语"></a>III. 结束语</h2><p>正如同泰伦斯•马力克执导的纪录片《<a href="https://baike.baidu.com/item/时间之旅/4524703" target="_blank" rel="external">时间之旅</a>》所传达的哲学信息：“<strong>如果你在寻找上帝，仔细观察时间的一切就够了。</strong>”我想这就是时间对我们个体的意义。</p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3197,7 +3211,7 @@
     <link href="http://ex2tron.wang/the-charm-of-photography-instant-is-a-mirror/"/>
     <id>http://ex2tron.wang/the-charm-of-photography-instant-is-a-mirror/</id>
     <published>2017-11-08T12:56:32.000Z</published>
-    <updated>2018-11-02T02:51:48.376Z</updated>
+    <updated>2019-03-19T10:00:05.593Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章其实是我一年前研一《摄影艺术》课上的小论文，感觉写的还行，放在博客上。<a id="more"></a></p>
 <blockquote>
@@ -3223,6 +3237,9 @@
 <p>“Not everyone can become a great artist, but a great artist can come from anywhere.”, “Everyone Can Cook！”（《料理鼠王》电影台词）</p>
 </blockquote>
 <p>“摄影艺术”这门课程改变了我很多的认识和想法，或许最大的感受便是：“Everyone Can Shoot！”每个人都有对其生活环境、人生观、世界观、价值观的独特理解，每个人也都可以拿起手中的设备拍出自己独特的风格。对大师作品的品鉴和艺术赏析都有助于提升自身的艺术品位，但关键在于去拍、去学习、去发现、去创造。我想这门课程给了我信心可以站在巨人的肩膀上努力拍出自己的作品，毕竟<strong>摄影是自由的，这才是摄影术之魅力！</strong></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3296,7 +3313,7 @@
     <link href="http://ex2tron.wang/tools-gitkraken/"/>
     <id>http://ex2tron.wang/tools-gitkraken/</id>
     <published>2017-10-05T09:33:20.000Z</published>
-    <updated>2019-03-19T05:11:08.444Z</updated>
+    <updated>2019-03-19T10:06:37.558Z</updated>
     
     <content type="html"><![CDATA[<p>不喜欢敲命令？那么这款酷炫的Git客户端让你逼格满满！<a id="more"></a></p>
 <blockquote>
@@ -3346,7 +3363,7 @@
     <link href="http://ex2tron.wang/movie-nolan-collections/"/>
     <id>http://ex2tron.wang/movie-nolan-collections/</id>
     <published>2017-09-24T12:37:41.000Z</published>
-    <updated>2018-10-03T04:21:56.006Z</updated>
+    <updated>2019-03-20T05:37:05.337Z</updated>
     
     <content type="html"><![CDATA[<p>有的导演，虽然没拿过奥斯卡，作品不多，但每部却都被影迷奉为神作，没错，说的就是诺神。<a id="more"></a>：<a href="https://baike.baidu.com/item/克里斯托弗·诺兰" target="_blank" rel="external">克里斯托弗·诺兰</a></p>
 <h2 id="克里斯托弗·诺兰"><a href="#克里斯托弗·诺兰" class="headerlink" title="克里斯托弗·诺兰"></a>克里斯托弗·诺兰</h2><p>今天周末，回顾了下诺神的<a href="https://movie.douban.com/subject/1851857/" target="_blank" rel="external">蝙蝠侠</a>和<a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="external">盗梦空间</a>，加上前段时间刚看完<a href="https://movie.douban.com/subject/26607693/" target="_blank" rel="external">敦刻尔克</a>，按耐不住，就分享下诺兰的神作电影下载链接吧。</p>
@@ -3362,6 +3379,9 @@
 <h3 id="蝙蝠侠-侠影之谜-Batman-Begins"><a href="#蝙蝠侠-侠影之谜-Batman-Begins" class="headerlink" title="蝙蝠侠.侠影之谜 | Batman Begins"></a><a href="ed2k://|file|蝙蝠侠.侠影之谜.Batman.Begins.2005.BD-720p.1280X720.中英双语-电波字幕组.mkv|2490413875|E8FA6BDC8DD5A22E1582728C2B34B5E3|h=D2EEMY7CD7GJ33GNLHEMFSPQVPC3IZ6I|/" target="_blank" rel="external">蝙蝠侠.侠影之谜 | Batman Begins</a></h3><p><img src="https://image.tmdb.org/t/p/w740_and_h416_bestv2/v0p5dxVa9Giq6e0h31VifY0dWOX.jpg" alt="Batman Begins"></p>
 <h3 id="记忆碎片-Memento"><a href="#记忆碎片-Memento" class="headerlink" title="记忆碎片 | Memento"></a><a href="ed2k://|file|Memento.10th.Anniversary.2000.记忆碎片.双语字幕.HR-HDTV.AC3.1024X544.X264-人人影视制作.mkv|1944503362|EDA2166CB8699364B9062F7F9CB700EC|h=ETS47DE4SLODZQSZ5LU2RVF6V5VA36GW|/" target="_blank" rel="external">记忆碎片 | Memento</a></h3><p><img src="https://image.tmdb.org/t/p/w740_and_h416_bestv2/oBUznaSdjkY3HtQUzAxgdIZqh4w.jpg" alt="Memento"></p>
 <p>p.s.本文所有的图片均来自<a href="https://www.themoviedb.org/" target="_blank" rel="external">TMDB</a>，如果你觉得很酷炫的话，我会在后期开发一款专门下载影视壁纸的APP，敬请期待！</p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3382,7 +3402,7 @@
     <link href="http://ex2tron.wang/tools-qiniuyun/"/>
     <id>http://ex2tron.wang/tools-qiniuyun/</id>
     <published>2017-09-18T11:55:38.000Z</published>
-    <updated>2019-03-19T05:19:00.916Z</updated>
+    <updated>2019-03-20T05:48:45.531Z</updated>
     
     <content type="html"><![CDATA[<p>随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。<a id="more"></a></p>
 <hr>
@@ -3446,9 +3466,9 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-4/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-4/</id>
     <published>2017-09-13T14:11:12.000Z</published>
-    <updated>2019-03-19T04:59:51.014Z</updated>
+    <updated>2019-03-19T10:05:35.951Z</updated>
     
-    <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。</p>
+    <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。<a id="more"></a></p>
 <hr>
 <p>前面我们购买了独立域名<code>www.ex2tron.top</code>，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！</p>
 <blockquote>
@@ -3503,20 +3523,18 @@
 <p>最后一定要确保git用户有权限操作博客目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
 <p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下。此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，当然别忘了将你的域名解析到服务器IP噢，awesome！</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="http://ex2tron.wang/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
 <li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
 </ul>
 <blockquote>
-<p>喜欢的朋友记得一键三连，转发评论打赏噢！(●ˇ∀ˇ●) Excelsior!</p>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;将博客放在Github上有很多优点，比如免费、易管理、免费&lt;code&gt;xxx.github.io&lt;/code&gt;的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;前面我们购买了独立域名&lt;co
+      &lt;p&gt;将博客放在Github上有很多优点，比如免费、易管理、免费&lt;code&gt;xxx.github.io&lt;/code&gt;的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。
     
     </summary>
     
@@ -3536,7 +3554,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-3/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-3/</id>
     <published>2017-09-13T13:25:24.000Z</published>
-    <updated>2019-03-18T15:33:11.434Z</updated>
+    <updated>2019-03-19T09:57:05.485Z</updated>
     
     <content type="html"><![CDATA[<p>嫌<code>username.github.io</code>不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
@@ -3560,6 +3578,9 @@
 <p>配置完成后，重新发布博客就可以用独立域名<a href="http://ex2tron.top" target="_blank" rel="external">ex2tron.top</a>来访问博客辣( •̀ ω •́ )✧：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://blog.csdn.net/linshuhe1/article/details/73013730" target="_blank" rel="external">Hexo个人免费博客(五) 使用自己的域名</a></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3582,7 +3603,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-2/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-2/</id>
     <published>2017-09-13T12:15:47.000Z</published>
-    <updated>2019-03-18T15:09:55.364Z</updated>
+    <updated>2019-03-19T09:57:12.739Z</updated>
     
     <content type="html"><![CDATA[<p>使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！<a id="more"></a></p>
 <p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<code>/var/www/html/</code>下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</p>
@@ -3606,6 +3627,9 @@
 <li><p>如果你没配置过ssh导致部署失败（可以通过<code>ssh -T username@example.com</code>来测试ssh有无配置成功），可以参考这篇文章：<a href="http://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="external">针对github权限导致hexo部署失败的解决方案</a></p>
 </li>
 </ol>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3628,7 +3652,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-1/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
-    <updated>2019-03-19T04:39:32.129Z</updated>
+    <updated>2019-03-19T09:56:57.479Z</updated>
     
     <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
 <blockquote>
@@ -3658,6 +3682,9 @@
 <li><p><a href="http://blog.csdn.net/cl534854121/article/details/76121066" target="_blank" rel="external">Hexo+Github搭建个人博客(一)——开始搭建</a></p>
 </li>
 </ul>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3764,104 +3791,11 @@
   </entry>
   
   <entry>
-    <title>博客新篇章！Brave New World</title>
-    <link href="http://ex2tron.wang/new-chapter!/"/>
-    <id>http://ex2tron.wang/new-chapter!/</id>
-    <published>2017-08-23T12:56:32.000Z</published>
-    <updated>2018-10-03T02:57:25.775Z</updated>
-    
-    <content type="html"><![CDATA[<p>从2014/08/23在lofter上写我的<a href="http://ex2tron.lofter.com/post/1d7338a1_86b724e" target="_blank" rel="external">第一篇博客</a>开始，已经过去了整整三年……<a id="more"></a></p>
-<h2 id="再见，lofter"><a href="#再见，lofter" class="headerlink" title="再见，lofter"></a>再见，lofter</h2><p>lofter是一个非常不错的轻博客平台，我喜欢它的设计和定位。但lofter终究不适合程序猿，长久以来不支持markdown也让我很头痛。现在，终于还是要说再见了!</p>
-<blockquote>
-<p><a href="http://ex2tron.lofter.com" target="_blank" rel="external">http://ex2tron.lofter.com</a></p>
-</blockquote>
-<h2 id="旧的66篇博客"><a href="#旧的66篇博客" class="headerlink" title="旧的66篇博客"></a>旧的66篇博客</h2><h3 id="【Code-编程-开发】"><a href="#【Code-编程-开发】" class="headerlink" title="【Code/编程/开发】"></a>【Code/编程/开发】</h3><p><a href="http://www.lofter.com/lpost/1d7338a1_f50d92d" target="_blank" rel="external">构建法、单点控制</a></p>
-<p><a href="http://www.lofter.com/lpost/1d7338a1_10204bea" target="_blank" rel="external">构建法、表驱动法</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f0c9638" target="_blank" rel="external">【云端漫步】一起上“阿里云”（1）、购买学生党套餐</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_fea154c" target="_blank" rel="external">【云端漫步】一起上“阿里云”（2）、远程登陆服务器</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_ffa2f60" target="_blank" rel="external">【云端漫步】一起上“阿里云”（3）、LAMP环境搭建</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_ffad954" target="_blank" rel="external">【云端漫步】一起上“阿里云”（4）、搭建Git服务器</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_10171f1e" target="_blank" rel="external">【云端漫步】一起上“阿里云”（5）、域名购买和解析</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f59f87a" target="_blank" rel="external">Python多字节二进制文件读取</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_eaa8b0d" target="_blank" rel="external">C#中集合List的深浅拷贝</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_eb8cdad" target="_blank" rel="external">C#中常用的集合List去重方法</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f59ed25" target="_blank" rel="external">C#多字节二进制文件读取</a></p>
-<p><a href="http://www.lofter.com/lpost/1d7338a1_da4b787" target="_blank" rel="external">深入理解C#（01）：堆栈、值类型和引用类型、值传递和引用传递</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bee8" target="_blank" rel="external">宽字符</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c86dd" target="_blank" rel="external">编程命名法</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8b70ad4" target="_blank" rel="external">编程字体推荐</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a9009ce" target="_blank" rel="external">Json序列化与反序列化（1）-JavaScriptSerializer</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cb8b36b" target="_blank" rel="external">Json序列化与反序列化（2）-Json.Net</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cc1a00c" target="_blank" rel="external">Json序列化与反序列化（3）-DataContractJsonSerializer</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86b7467" target="_blank" rel="external">CR与LF（操作系统“下一行”的不同）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86f8f92" target="_blank" rel="external">Visual Studio Code Preview初体验</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870beb7" target="_blank" rel="external">Visual Studio Code Preview深度体验、使用技巧</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_ca1a61f" target="_blank" rel="external">Brand7-品牌漆上架商店啦！</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c388b82" target="_blank" rel="external">UWP应用Brand7开发小记（1）、判断App是否是第一次启动</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c665a5c" target="_blank" rel="external">UWP应用Brand7开发小记（2）、用Excel和Json初始化本地数据源Part1</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c66b082" target="_blank" rel="external">UWP应用Brand7开发小记（2）、用Excel和Json初始化本地数据源Part2</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c7ae2f8" target="_blank" rel="external">UWP 应用Brand7开发小记（3）、判断GridView的滚动方向</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_c7f56c1" target="_blank" rel="external">UWP应用Brand7开发小记（4）、集合控件的虚拟化问题</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cccfc2d" target="_blank" rel="external">UWP 应用Brand7开发小记（5）、控件嵌入标题栏</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cc38035" target="_blank" rel="external">MySQL学习小记（1）-不能启动MySQL服务</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_cca3bd7" target="_blank" rel="external">MySQL学习小记（2）-添加远程访问权限详解</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_d3d0794" target="_blank" rel="external">MySQL学习小记（3）-外键的使用</a></p>
-<p><a href="http://www.lofter.com/lpost/1d7338a1_d5494fc" target="_blank" rel="external">MySQL学习小记（4）-最大连接数</a></p>
-<p><a href="http://www.lofter.com/lpost/1d7338a1_10c4cf02" target="_blank" rel="external">MySQL学习小记（5）-主从服务器同步</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dd19e" target="_blank" rel="external">VS至强插件ReSharper指南01、安装入门</a></p>
-<h3 id="【视觉与图像】"><a href="#【视觉与图像】" class="headerlink" title="【视觉与图像】"></a>【视觉与图像】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_fa820b3" target="_blank" rel="external">【视觉与图像】摄像头篇（1）、CCD靶面尺寸</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_fad34dc" target="_blank" rel="external">【视觉与图像】摄像头篇（2）、焦距和视角</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_10bc7d39" target="_blank" rel="external">CMake编译OpenCV3.2（Qt平台）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_10bc7e4e" target="_blank" rel="external">Qt+OpenCV环境搭建</a></p>
-<h3 id="【Design-演示-设计】"><a href="#【Design-演示-设计】" class="headerlink" title="【Design/演示/设计】"></a>【Design/演示/设计】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c7385" target="_blank" rel="external">玩转PPT放映第一篇、演示者视图</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dc94e" target="_blank" rel="external">玩转PPT放映第二篇、快捷键</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bc93" target="_blank" rel="external">玩转PPT放映第三篇、自定义放映</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86d9038" target="_blank" rel="external">【PPT动画】钟摆效果</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_87060ac" target="_blank" rel="external">【PPT动画】模糊渐变切换效果</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c72ce" target="_blank" rel="external">【PPT动画】制作左、右浮入效果</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8700201" target="_blank" rel="external">PPT制作画中画效果</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bdfa" target="_blank" rel="external">PPT绘制长阴影图标</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86c9304" target="_blank" rel="external">PPT三维立体图形绘制</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dd125" target="_blank" rel="external">PPT巧用矩形等分区域（黄金分割线）</a></p>
-<h3 id="【Lens-摄影-影视】"><a href="#【Lens-摄影-影视】" class="headerlink" title="【Lens/摄影/影视】"></a>【Lens/摄影/影视】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_eaa874a" target="_blank" rel="external">家乡 | 黑白 | PENTAX K-50 | 看见不一样</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dc98c" target="_blank" rel="external">看见，时光（延时摄影短片）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a483017" target="_blank" rel="external">我那时的“计量”（一），黑白质感</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a526318" target="_blank" rel="external">我那时的“计量”（二），迎新色彩</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a1952f4" target="_blank" rel="external">Lumia 1520 by iPhone6s</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a93fda1" target="_blank" rel="external">历届奥斯卡最佳动画长片下载（1）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a9207ea" target="_blank" rel="external">历届奥斯卡最佳动画长片下载（2）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8bc8efc" target="_blank" rel="external">「精品」皮克斯15部动画长片下载</a></p>
-<h3 id="【Other-科普-发现】"><a href="#【Other-科普-发现】" class="headerlink" title="【Other/科普/发现】"></a>【Other/科普/发现】</h3><p><a href="http://ex2tron.lofter.com/post/1d7338a1_86b724e" target="_blank" rel="external">PPI与DPI</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_87060f2" target="_blank" rel="external">USB接口类型（2.0概述）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_f078121" target="_blank" rel="external">Type-C和USB3.0（3.1）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_dda20a4" target="_blank" rel="external">发现Win10 Bug两枚（均得微软官方确认，一枚已解决）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_9f2bdda" target="_blank" rel="external">再战之后，这场旅途，只属于我</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_a1b9c49" target="_blank" rel="external">Win8以上系统安装PL2303驱动</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86f6444" target="_blank" rel="external">硬盘容量计算的差别</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_8700192" target="_blank" rel="external">硬盘整数分区原理及计算（附工具下载）</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870619b" target="_blank" rel="external">详解Windows运行组件第一篇、原理篇</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_870bd17" target="_blank" rel="external">详解Windows运行组件第二篇、自定义运行指令</a></p>
-<p><a href="http://ex2tron.lofter.com/post/1d7338a1_86dd0c5" target="_blank" rel="external">Windows 10技术预览版体验视频</a></p>
-<blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从2014/08/23在lofter上写我的&lt;a href=&quot;http://ex2tron.lofter.com/post/1d7338a1_86b724e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;第一篇博客&lt;/a&gt;开始，已经过去了整整三年……
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Qt+OpenCV环境搭建</title>
     <link href="http://ex2tron.wang/qt-opencv-installation-guide/"/>
     <id>http://ex2tron.wang/qt-opencv-installation-guide/</id>
     <published>2017-07-27T00:17:00.000Z</published>
-    <updated>2018-12-30T13:26:19.626Z</updated>
+    <updated>2019-03-19T09:58:56.626Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Windows下的配置"><a href="#Windows下的配置" class="headerlink" title="Windows下的配置"></a>Windows下的配置</h2><blockquote>
 <p><em>念念不忘，必有回响。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
@@ -3888,7 +3822,11 @@
 <p>如果<code>LIBS</code>像上面这样加不进去的话，可以一个一个加，比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/libopencv_highgui.so</div><div class="line">LIBS  += -L/usr/lib/libopencv_core.so</div></pre></td></tr></table></figure>
 <p>另外，不同版本和不同平台库的位置可能不同，比如树莓派下，库文件可能在：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
+]]></content>
     
     <summary type="html">
     
@@ -3915,7 +3853,7 @@
     <link href="http://ex2tron.wang/cmake-make-opencv/"/>
     <id>http://ex2tron.wang/cmake-make-opencv/</id>
     <published>2017-07-26T14:25:29.000Z</published>
-    <updated>2018-12-30T13:22:45.411Z</updated>
+    <updated>2019-03-19T09:59:06.955Z</updated>
     
     <content type="html"><![CDATA[<p>最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。<a id="more"></a></p>
 <ul>
@@ -3948,6 +3886,9 @@
 <p>编译好之后，再执行<code>mingw32-make install</code>就完成了。</p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo8.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo9.jpg" alt=""></p>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -3972,7 +3913,7 @@
     <link href="http://ex2tron.wang/set-up-your-own-git-server/"/>
     <id>http://ex2tron.wang/set-up-your-own-git-server/</id>
     <published>2017-06-04T11:38:56.000Z</published>
-    <updated>2019-01-02T15:09:51.567Z</updated>
+    <updated>2019-03-19T09:58:02.883Z</updated>
     
     <content type="html"><![CDATA[<p>Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。<a id="more"></a>但像我们这种穷苦的孩子，只能选择自己搭一个Git服务器咯。</p>
 <hr>
@@ -4004,6 +3945,9 @@
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="external">廖雪峰Git教程</a></li>
 </ul>
+<blockquote>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">

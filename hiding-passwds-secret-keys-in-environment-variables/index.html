@@ -33,7 +33,7 @@
 <meta property="og:description" content="很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/hiding_info_cover.jpg">
-<meta property="og:updated_time" content="2019-01-20T13:36:44.847Z">
+<meta property="og:updated_time" content="2019-03-19T09:58:42.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用环境变量避免在代码中写明密码和密钥等重要信息">
 <meta name="twitter:description" content="很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hiding_info_cover.jpg" rel="gallery_cjtfc389v003qsg59fq2acxwt">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hiding_info_cover.jpg" rel="gallery_cjtgsjdrb003q1859cqpl6mlj">
         <img src="http://pic.ex2tron.top/hiding_info_cover.jpg" itemprop="image">
       </a>
     
@@ -204,6 +204,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -228,9 +232,9 @@ var themeMenus = {};
 <p>在环境变量界面，可以在用户环境变量下点击新建，新建两个变量用来存储数据库用户名和密码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DB_USER			ex2tron</div><div class="line">DB_PASSWD		ex2tron12345</div></pre></td></tr></table></figure>
 <p><img src="http://pic.ex2tron.top/hiding_info_add_new_variable.jpg" alt=""></p>
-<p>编辑好之后，代码跟前面的修改方式一样。</p>
+<p>编辑好之后，代码跟前面的修改方式一样。如果打印出来为空，说明环境变量没有生效，可以重启你的IDE。</p>
 <blockquote>
-<p>如果打印出来为空，说明环境变量没有生效，可以重启你的IDE。</p>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
 </blockquote>
 
       
@@ -333,16 +337,22 @@ var themeMenus = {};
             2019
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
-          <div>
+          <!-- <div>
             <p>Hosted by
               <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
             </p>
-          </div>
+          </div> -->
         </div>
 </footer>
 
@@ -424,6 +434,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 

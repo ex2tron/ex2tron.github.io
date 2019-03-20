@@ -24,19 +24,19 @@
   
   
   
-  <meta name="description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：以阿里云服务器为例，之前我已经使用ap">
+  <meta name="description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。">
 <meta name="keywords" content="Hexo,Github,阿里云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
 <meta property="og:url" content="http://ex2tron.wang/hexo-blog-with-github-pages-4/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Blog">
-<meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：以阿里云服务器为例，之前我已经使用ap">
+<meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
-<meta property="og:updated_time" content="2019-03-19T04:59:51.014Z">
+<meta property="og:updated_time" content="2019-03-19T10:05:35.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
-<meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。  前面我们购买了独立域名www.ex2tron.top，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！  说明：以阿里云服务器为例，之前我已经使用ap">
+<meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
   
   <link rel="alternate" href="/atom.xml" title="ex2tron&#39;s Blog" type="application/atom+xml">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjtfc387n000bsg59v9hg6m2p">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjtgsjdp0000b1859hl9jknn1">
         <img src="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" itemprop="image">
       </a>
     
@@ -204,10 +204,14 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。</p>
+        <p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。<a id="more"></a></p>
 <hr>
 <p>前面我们购买了独立域名<code>www.ex2tron.top</code>，并将域名解析到了Github。现在我们要把博客放在云服务器上，并且将域名解析到这台服务器，好，开干！</p>
 <blockquote>
@@ -262,12 +266,12 @@ var themeMenus = {};
 <p>最后一定要确保git用户有权限操作博客目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
 <p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下。此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，当然别忘了将你的域名解析到服务器IP噢，awesome！</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="http://ex2tron.wang/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
 <li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
 </ul>
 <blockquote>
-<p>喜欢的朋友记得一键三连，转发评论打赏噢！(●ˇ∀ˇ●) Excelsior!</p>
+<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
 </blockquote>
 
       
@@ -354,7 +358,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器环境配置"><span class="nav-number">1.</span> <span class="nav-text">服务器环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git远程仓库及同步"><span class="nav-number">2.</span> <span class="nav-text">Git远程仓库及同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apache2配置"><span class="nav-number">3.</span> <span class="nav-text">apache2配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Git钩子"><span class="nav-number">4.</span> <span class="nav-text">创建Git钩子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器环境配置"><span class="nav-number">1.</span> <span class="nav-text">服务器环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git远程仓库及同步"><span class="nav-number">2.</span> <span class="nav-text">Git远程仓库及同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apache2配置"><span class="nav-number">3.</span> <span class="nav-text">apache2配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Git钩子"><span class="nav-number">4.</span> <span class="nav-text">创建Git钩子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
@@ -370,16 +374,22 @@ var themeMenus = {};
             2019
               ex2tron&#39;s Blog All Rights Reserved.
                 
+                  <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                  
           </div>
           <!-- <div class="site-credit">
             Theme by
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
-          <div>
+          <!-- <div>
             <p>Hosted by
               <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
             </p>
-          </div>
+          </div> -->
         </div>
 </footer>
 
@@ -461,6 +471,9 @@ var themeMenus = {};
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 
 
 
