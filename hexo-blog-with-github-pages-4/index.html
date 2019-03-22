@@ -33,7 +33,7 @@
 <meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
-<meta property="og:updated_time" content="2019-03-19T10:05:35.951Z">
+<meta property="og:updated_time" content="2019-03-22T05:35:10.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
 <meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjtiqu45q000bzw59aor0f6jz">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjtjp2yvp000bdo592wmrn78z">
         <img src="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" itemprop="image">
       </a>
     
@@ -227,12 +227,12 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
 <p>切换到git用户，并新建用户目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
-<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具，可参考：<a href="http://ex2tron.wang/how-to-use-ssh-on-windows10/">如何使用Windows 10的OpenSSH Client和Server</a>）：</p>
+<p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具，可参考：<a href="/how-to-use-ssh-on-windows10/">如何使用Windows 10的OpenSSH Client和Server</a>）：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:/home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
 <p>这个时候可以退出ssh连接，并使用git用户直接登录了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
 <h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><blockquote>
-<p>此处可参考我之前的Blog：<a href="http://ex2tron.wang/set-up-your-own-git-server/">搭建自己的Github/Git服务器</a></p>
+<p>此处可参考我之前的Blog：<a href="/set-up-your-own-git-server/">搭建自己的Github/Git服务器</a></p>
 </blockquote>
 <p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div><div class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</div></pre></td></tr></table></figure>
@@ -268,7 +268,7 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
 <p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下。此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，当然别忘了将你的域名解析到服务器IP噢，awesome！</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="http://ex2tron.wang/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
+<li><a href="/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
 <li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
 </ul>
 <blockquote>
