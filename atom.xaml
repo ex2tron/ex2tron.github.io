@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-24T14:30:07.694Z</updated>
+  <updated>2019-03-24T14:32:00.079Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/"/>
     <id>http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/</id>
     <published>2019-03-24T08:16:35.000Z</published>
-    <updated>2019-03-24T14:30:07.694Z</updated>
+    <updated>2019-03-24T14:32:00.079Z</updated>
     
     <content type="html"><![CDATA[<p>程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！<a id="more"></a></p>
 <hr>
-<p>然鹅…我们有Qiang啊~。自动动手，丰衣足食啊，我们来购买一台境外服务器，搭建ss(Shadowsocks)服务并启用BBR进行加速，畅游全网！</p>
+<p>然鹅…我们有Qiang啊~。自动动手，丰衣足食，我们来买一台境外服务器，搭建ss(Shadowsocks)服务并启用BBR进行加速，畅游全网！</p>
 <blockquote>
 <p><em>After all… tomorrow is another day.</em>  ——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《Gone with the Wind》</a><br><br><em>毕竟，明天又是新的一天。</em>——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《乱世佳人》</a></p>
 <p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
 </blockquote>
-<h2 id="境外服务器"><a href="#境外服务器" class="headerlink" title="境外服务器"></a>境外服务器</h2><p>有很多服务器提供商可供选择，网友们用的最多的是<a href="https://bwh88.net/index.php" target="_blank" rel="external">搬瓦工(Bandwagonhost)</a>和<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>，其实只要是境外的云服务器基本都可以，比如阿里云香港、亚马逊云<a href="https://aws.amazon.com/cn/" target="_blank" rel="external">AWS</a>，微软<a href="https://azure.microsoft.com/zh-cn/" target="_blank" rel="external">Azure</a>。只不过前两者性价比高、操作起来都比较简单，另外现在Vultr上注册充值＄10就送＄50，有效期30天（所以对于普通用户没什么卵用），Vultr的界面设计也更加友好一些，所以我就以它为例了。</p>
+<h2 id="境外服务器"><a href="#境外服务器" class="headerlink" title="境外服务器"></a>境外服务器</h2><p>有很多服务器提供商可供选择，网友们用的最多的是<a href="https://bwh88.net/index.php" target="_blank" rel="external">搬瓦工(Bandwagonhost)</a>和<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>，其实只要是境外的云服务器基本都可以，比如阿里云香港、亚马逊云<a href="https://aws.amazon.com/cn/" target="_blank" rel="external">AWS</a>，微软<a href="https://azure.microsoft.com/zh-cn/" target="_blank" rel="external">Azure</a>。只不过前两者性价比高、操作起来都比较简单，另外现在Vultr上注册充值＄10就送＄50，有效期30天（所以对于普通用户并没什么卵用），Vultr的界面设计也更加友好一些，所以我就以它为例了。</p>
 <h3 id="注册登录"><a href="#注册登录" class="headerlink" title="注册登录"></a>注册登录</h3><ul>
 <li>官网：<a href="https://www.vultr.com/" target="_blank" rel="external">https://www.vultr.com/</a></li>
 </ul>
