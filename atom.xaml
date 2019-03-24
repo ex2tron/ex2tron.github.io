@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ex2tron&#39;s Blog</title>
-  <subtitle>Excelsior!</subtitle>
+  <title>ex2tron&#39;s Tech Blog</title>
+  <subtitle>生命不息，折腾不止，Excelsior!</subtitle>
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-23T14:16:09.224Z</updated>
+  <updated>2019-03-24T14:29:01.188Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -16,11 +16,101 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【云服务】飞起来！Vultr 10分钟快速搭梯子并启用BBR加速</title>
+    <link href="http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/"/>
+    <id>http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/</id>
+    <published>2019-03-24T08:16:35.000Z</published>
+    <updated>2019-03-24T14:29:01.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！<a id="more"></a></p>
+<hr>
+<p>然鹅…我们有Qiang啊~。自动动手，丰衣足食啊，我们来购买一台境外服务器，搭建ss(Shadowsocks)服务并启用BBR进行加速，畅游全网！</p>
+<blockquote>
+<p><em>After all… tomorrow is another day.</em>  ——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《Gone with the Wind》</a><br><br><em>毕竟，明天又是新的一天。</em>——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《乱世佳人》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<h2 id="境外服务器"><a href="#境外服务器" class="headerlink" title="境外服务器"></a>境外服务器</h2><p>有很多服务器提供商可供选择，网友们用的最多的是<a href="https://bwh88.net/index.php" target="_blank" rel="external">搬瓦工(Bandwagonhost)</a>和<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>，其实只要是境外的云服务器基本都可以，比如阿里云香港、亚马逊云<a href="https://aws.amazon.com/cn/" target="_blank" rel="external">AWS</a>，微软<a href="https://azure.microsoft.com/zh-cn/" target="_blank" rel="external">Azure</a>。只不过前两者性价比高、操作起来都比较简单，另外现在Vultr上注册充值＄10就送＄50，有效期30天（所以对于普通用户没什么卵用），Vultr的界面设计也更加友好一些，所以我就以它为例了。</p>
+<h3 id="注册登录"><a href="#注册登录" class="headerlink" title="注册登录"></a>注册登录</h3><ul>
+<li>官网：<a href="https://www.vultr.com/" target="_blank" rel="external">https://www.vultr.com/</a></li>
+</ul>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_official_site.jpg" alt=""></p>
+<p>输入邮箱和密码便可，注意密码的要求，必须包含一个大写字母，创建时会提醒。</p>
+<h3 id="充值"><a href="#充值" class="headerlink" title="充值"></a>充值</h3><p>进入之后，点击左侧导航栏的账单”Billing”，最少充值＄10，大概67块，可以选择支付宝或微信，很是人性化了，点赞。另外左侧显示赠送的＄50美元，并且30天后过期。</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_billing_alipay.jpg" alt=""></p>
+<h3 id="选购服务器配置"><a href="#选购服务器配置" class="headerlink" title="选购服务器配置"></a>选购服务器配置</h3><p>充值后，就要选择你的服务器了。</p>
+<p>第一步是服务器的位置，不同位置的服务器配置不一样，可以尽量选近一点，不过我建议多点点看，哪个地方有便宜的配置就选哪个，比如：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_step1.jpg" alt=""></p>
+<p>第二步选系统，常用CentOS和Ubuntu，这里我以CentOS为例：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_step2.jpg" alt=""></p>
+<p>第三步是选服务器配置，不同地区的配置不太一样，按照自己的需求选择即可，不过个人用选最低配足够，比如我选每月＄3.5的，有500GB流量，非常够用了。</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_step3.jpg" alt=""></p>
+<p>后面几步可以不用管，直接点最底部的”Deploy Now”：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_final_step.jpg" alt=""></p>
+<h3 id="服务器控制台"><a href="#服务器控制台" class="headerlink" title="服务器控制台"></a>服务器控制台</h3><p>这样你就有了一台境外服务器了。点击服务器进去可以看到服务器的账号密码/IP地址等信息，这里需要记录下来，方便后面SSH连接使用：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_server_info.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_server_info2.jpg" alt=""></p>
+<h2 id="ss服务搭建"><a href="#ss服务搭建" class="headerlink" title="ss服务搭建"></a>ss服务搭建</h2><h3 id="SSH连接工具"><a href="#SSH连接工具" class="headerlink" title="SSH连接工具"></a>SSH连接工具</h3><p>连接工具在我之前的博客说过，大部分Linux系统/新版Windows 10都自带SSH工具，无需额外的软件，在命令行中直接使用即可<code>ssh root@ip</code>。如果没有或是喜欢用第三方软件的话，这里推荐三个：</p>
+<ul>
+<li><a href="https://www.netsarang.com/en/xshell/" target="_blank" rel="external">XShell</a></li>
+<li><a href="https://putty.org/" target="_blank" rel="external">Putty</a></li>
+<li><a href="https://www.vandyke.com/products/securecrt/" target="_blank" rel="external">SecureCRT</a></li>
+</ul>
+<h3 id="脚本一键搭建"><a href="#脚本一键搭建" class="headerlink" title="脚本一键搭建"></a>脚本一键搭建</h3><p>为方便一键搭建服务，<a href="https://github.com/teddysun/shadowsocks_install" target="_blank" rel="external">Github(@teddysun)</a>已经编写了自动化脚本。所以首先下载脚本并赋予可执行权限：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget –no-check-certificate -O shadowsocks.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</div><div class="line">chmod +x shadowsocks.sh</div></pre></td></tr></table></figure>
+<p>接下来运行脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shadowsocks.sh</div></pre></td></tr></table></figure>
+<p>最开始需要设置ss服务的密码和端口号：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">############################################################</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> One click Install Shadowsocks-Python server               <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> Intro: https://teddysun.com/342.html                      <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> Author: Teddysun &lt;i@teddysun.com&gt;                         <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> Github: https://github.com/shadowsocks/shadowsocks        <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">############################################################</span></span></div><div class="line"></div><div class="line">Please enter password for shadowsocks-python</div><div class="line">(Default password: teddysun.com):</div><div class="line"></div><div class="line">Please enter a port for shadowsocks-python [1-65535]</div><div class="line">(Default port: 16200):</div></pre></td></tr></table></figure>
+<p>然后选择加密方式，我们选最常用的7：<code>aes-256-cfb</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Please select stream cipher for shadowsocks-python:</div><div class="line">1) aes-256-gcm</div><div class="line">2) aes-192-gcm</div><div class="line">3) aes-128-gcm</div><div class="line">4) aes-256-ctr</div><div class="line">5) aes-192-ctr</div><div class="line">6) aes-128-ctr</div><div class="line">7) aes-256-cfb</div><div class="line">8) aes-192-cfb</div><div class="line">9) aes-128-cfb</div><div class="line">10) camellia-128-cfb</div><div class="line">11) camellia-192-cfb</div><div class="line">12) camellia-256-cfb</div><div class="line">13) chacha20-ietf-poly1305</div><div class="line">14) chacha20-ietf</div><div class="line">15) chacha20</div><div class="line">16) rc4-md5</div><div class="line">Which cipher you'd select(Default: aes-256-gcm):</div><div class="line"></div><div class="line">Press any key to start...or Press Ctrl+C to cancel</div></pre></td></tr></table></figure>
+<p>然后按任意键开始安装。稍等片刻，便可安装完成并显示你的VPN信息，这些信息便是你ss客户端需要的连接信息了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Congratulations, Shadowsocks-python server install completed!</div><div class="line">Your Server IP        :  xxx.xxx.xxx.xxx </div><div class="line">Your Server Port      :  8888 </div><div class="line">Your Password         :  ***************</div><div class="line">Your Encryption Method:  aes-256-cfb </div><div class="line"></div><div class="line">Welcome to visit:https://teddysun.com/342.html</div><div class="line">Enjoy it!</div></pre></td></tr></table></figure>
+<h2 id="开始爬梯子"><a href="#开始爬梯子" class="headerlink" title="开始爬梯子"></a>开始爬梯子</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>在<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="external">shadowsocks-windows</a>上下载最新的客户端。打开无需安装，填写IP、密码和端口之后点击OK：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_shadowsocks_windows_client.jpg" alt=""></p>
+<p>会在右下角显示一个飞机图标，右键，选择”Enable System Proxy”启动代理就可以科学上网辣，爽起来吧~</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_shadowsocks_windows_client_enable.jpg" alt=""></p>
+<h3 id="安卓手机"><a href="#安卓手机" class="headerlink" title="安卓手机"></a>安卓手机</h3><p>安卓手机上可以在谷歌Play商店下载ss的APP。但，等下，我TMD不是还没有翻墙吗，怎么进Play商店？o_o ….我写这篇博客时的最新版本：<a href="http://pic.ex2tron.top/Shadowsocks_4.6.5.apk" target="_blank" rel="external">Shadowsocks 4.6.5</a>。同样填写IP、密码和端口号即可：</p>
+<p>穷，没有iPhone，所以没试，用iPhone的同学请Google：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_shadowsocks_android_client2.jpg" alt=""></p>
+<h3 id="BBR加速上网"><a href="#BBR加速上网" class="headerlink" title="BBR加速上网"></a>BBR加速上网</h3><p>虽然前面梯子是搭好了，但速度其实一般。利用<code>Google BBR(Bottleneck Bandwidth and RTT)</code>加速算法，能够显著提高宽带利用率，有兴趣的可以Google下。</p>
+<p>当然，<a href="https://github.com/teddysun/across" target="_blank" rel="external">Github(@teddysun)</a>同样编写了安装的自动化脚本，步骤与之前相同：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
+<p>运行后会打印出你的系统信息，按任意键开始安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">---------- System Information ----------</div><div class="line"> OS      : CentOS 7.6.1810</div><div class="line"> Arch    : x86_64 (64 Bit)</div><div class="line"> Kernel  : 3.10.0-957.1.3.el7.x86_64</div><div class="line">----------------------------------------</div><div class="line"> Auto install latest kernel for TCP BBR</div><div class="line"></div><div class="line"> URL: https://teddysun.com/489.html</div><div class="line">----------------------------------------</div><div class="line"></div><div class="line">Press any key to start...or Press Ctrl+C to cancel</div></pre></td></tr></table></figure>
+<p>安装后需要重启服务器，重启后，可以用<code>lsmod | grep bbr</code>验证有没有成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Info: The system needs to reboot.</div><div class="line">Do you want to restart system? [y/n]</div><div class="line"></div><div class="line">[root@vultr ~]# lsmod | grep bbr</div><div class="line">tcp_bbr                20480  7</div></pre></td></tr></table></figure>
+<p>然后再刷下<a href="https://www.youtube.com/" target="_blank" rel="external">YouTube</a>，有没有起飞呢(●ˇ∀ˇ●)</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_youtube_test-min.gif" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://www.zhihu.com/question/43566997" target="_blank" rel="external">哪家的云服务器比较稳定，服务好,性价比高的推荐！？</a></li>
+<li><a href="https://www.vultrcn.com/" target="_blank" rel="external">Vultr中文网</a></li>
+</ul>
+<blockquote>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="Vultr" scheme="http://ex2tron.wang/tags/Vultr/"/>
+    
+      <category term="梯子" scheme="http://ex2tron.wang/tags/%E6%A2%AF%E5%AD%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>速度UP！Python/Ubuntu/NodeJS/树莓派等更换国内源汇总</title>
     <link href="http://ex2tron.wang/python-ubuntu-nodejs-change-sources/"/>
     <id>http://ex2tron.wang/python-ubuntu-nodejs-change-sources/</id>
     <published>2019-03-21T07:08:09.000Z</published>
-    <updated>2019-03-23T14:16:09.224Z</updated>
+    <updated>2019-03-24T06:13:50.747Z</updated>
     
     <content type="html"><![CDATA[<p>在Python/Linux/Node.js开发中，要经常下载各种各样的的包，然而由于默认的安装源大部分是在国外的服务器上，所以下载速度嘛……<a id="more"></a></p>
 <blockquote>
@@ -97,11 +187,12 @@
 </table>
 <h3 id="自动化脚本"><a href="#自动化脚本" class="headerlink" title="自动化脚本"></a>自动化脚本</h3><p>为了方便在Ubuntu常见的版本上更换源，我写了个自动化小脚本：<a href="https://github.com/ex2tron/MyLibsAndSamples/blob/master/016.Ubuntu%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90%28Shell%29/UbuntuAutoChangeSource.sh" target="_blank" rel="external">UbuntuAutoChangeSource.sh</a>。脚本会自动检测Ubuntu系统版本，然后选择你想更换的镜像源就可以了：</p>
 <p><img src="http://pic.ex2tron.top/python_ubuntu_node_auto_scripts.gif" alt=""></p>
-<h2 id="树莓派Raspbian"><a href="#树莓派Raspbian" class="headerlink" title="树莓派Raspbian"></a>树莓派Raspbian</h2><h3 id="常用源"><a href="#常用源" class="headerlink" title="常用源"></a>常用源</h3><ul>
+<h2 id="树莓派Raspbian"><a href="#树莓派Raspbian" class="headerlink" title="树莓派Raspbian"></a>树莓派Raspbian</h2><h3 id="常用源"><a href="#常用源" class="headerlink" title="常用源"></a>常用源</h3><p>树莓派支持的OS很多，经常用的也是官方推荐的是<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">Raspbian</a>。官网上有个镜像列表：<a href="http://www.raspbian.org/RaspbianMirrors，国内常用：" target="_blank" rel="external">http://www.raspbian.org/RaspbianMirrors，国内常用：</a></p>
+<ul>
 <li>清华大学：<a href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a> | <a href="https://mirror.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="external">使用帮助</a></li>
 <li>中国科学技术大学：<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a> | <a href="http://mirrors.ustc.edu.cn/help/raspbian.html" target="_blank" rel="external">使用帮助</a></li>
 </ul>
-<h3 id="更换方法"><a href="#更换方法" class="headerlink" title="更换方法"></a>更换方法</h3><p>树莓派支持的OS很多，经常用的也是官方推荐的是<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">Raspbian</a>。同样，源列表存储在 <code>/etc/apt/sources.list</code>中，所以最好先备份下：</p>
+<h3 id="更换方法"><a href="#更换方法" class="headerlink" title="更换方法"></a>更换方法</h3><p>源列表同样存储在 <code>/etc/apt/sources.list</code>中，所以最好先备份下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</div></pre></td></tr></table></figure>
 <p>更换时也跟版本有关，比如基于Debian 9 Stretch构建的<code>Raspbian 2018-11-13</code>版本修改成清华大学的源（可将原先的用#注释掉，也可以覆盖修改，反正已经备份了）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</div><div class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</div></pre></td></tr></table></figure>
@@ -129,7 +220,7 @@
 <li><a href="https://wiki.ubuntu.com/DevelopmentCodeNames" target="_blank" rel="external">Ubuntu官网版本号及代号说明：DevelopmentCodeNames</a></li>
 </ul>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -161,7 +252,7 @@
     <link href="http://ex2tron.wang/install-windows10-on-ubuntu/"/>
     <id>http://ex2tron.wang/install-windows10-on-ubuntu/</id>
     <published>2019-03-17T12:42:59.000Z</published>
-    <updated>2019-03-19T09:56:31.404Z</updated>
+    <updated>2019-03-24T06:13:50.754Z</updated>
     
     <content type="html"><![CDATA[<p>之前想装个Windows10+Ubuntu的双系统，网上有很多教程是Windows上怎么安装Ubuntu的，可我电脑TMD本身就是Ubuntu啊，在Ubuntu上安装Windows的资料相对较少，真是神坑。下面分享下我的教程：<a id="more"></a></p>
 <blockquote>
@@ -218,7 +309,7 @@
 <p><img src="http://pic.ex2tron.top/ubuntu_windows_install_ubuntu_problem2.jpg" alt=""></p>
 <p>按照提示，输入<code>live live-install</code>回车即可。</p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -244,7 +335,7 @@
     <link href="http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/"/>
     <id>http://ex2tron.wang/hiding-passwds-secret-keys-in-environment-variables/</id>
     <published>2019-01-19T14:29:07.000Z</published>
-    <updated>2019-03-19T09:58:42.411Z</updated>
+    <updated>2019-03-24T06:13:50.746Z</updated>
     
     <content type="html"><![CDATA[<p>很多人会在代码中直接明码写上数据库用户名/密码、API Key这些重要信息，这种方式很不安全，因为别人在看到代码后是可以直接使用这些信息的。<a id="more"></a>有很多隐藏密码的技巧，环境变量便是其中之一。</p>
 <hr>
@@ -269,7 +360,7 @@
 <p><img src="http://pic.ex2tron.top/hiding_info_add_new_variable.jpg" alt=""></p>
 <p>编辑好之后，代码跟前面的修改方式一样。如果打印出来为空，说明环境变量没有生效，可以重启你的IDE。</p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -295,7 +386,7 @@
     <link href="http://ex2tron.wang/how-to-use-ssh-on-windows10/"/>
     <id>http://ex2tron.wang/how-to-use-ssh-on-windows10/</id>
     <published>2019-01-02T13:00:54.000Z</published>
-    <updated>2019-03-19T09:57:51.350Z</updated>
+    <updated>2019-03-24T06:13:50.747Z</updated>
     
     <content type="html"><![CDATA[<p>SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。<a id="more"></a></p>
 <hr>
@@ -332,7 +423,7 @@
 <p>还有一种就是在cmd下直接重启，cmd需以管理员权限打开：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">net stop sshd</div><div class="line">net start sshd</div></pre></td></tr></table></figure>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -360,7 +451,7 @@
     <link href="http://ex2tron.wang/a-gift-for-2019-moviequotes/"/>
     <id>http://ex2tron.wang/a-gift-for-2019-moviequotes/</id>
     <published>2018-12-29T10:00:31.000Z</published>
-    <updated>2019-03-19T09:58:15.240Z</updated>
+    <updated>2019-03-24T06:13:50.744Z</updated>
     
     <content type="html"><![CDATA[<center><a href="http://moviequotes.ex2tron.wang" target="_blank" rel="external"><strong>moviequotes.ex2tron.wang</strong></a></center>
 
@@ -374,7 +465,7 @@
 <p><img src="http://pic.ex2tron.top/moviequotes_pc_ui_demo.jpg" alt="PC 显示效果图"></p>
 <p>其实每句电影台词配一张截图最好了，不过加上去有点丑，所以没放出来。另外，多用户登陆注册和分享的功能同样也没放出来，目前一切从简。有想要贡献词条的同学可以联系我噢，最后<strong>祝大家元旦快乐！</strong>(☆▽☆)</p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -2853,7 +2944,7 @@
     <link href="http://ex2tron.wang/brand7-2-release/"/>
     <id>http://ex2tron.wang/brand7-2-release/</id>
     <published>2017-11-26T11:04:32.000Z</published>
-    <updated>2019-03-19T10:00:29.323Z</updated>
+    <updated>2019-03-24T06:13:50.745Z</updated>
     
     <content type="html"><![CDATA[<p>隔了一年更新，良心都有点痛了( ╯□╰ )<a id="more"></a></p>
 <blockquote>
@@ -2881,7 +2972,7 @@
 <p><img src="http://pic.ex2tron.top/brand7_v2_share.jpg" alt="分享界面"></p>
 <p>可以在Win10应用商店中搜索“品牌漆”进行下载，或<a href="https://www.microsoft.com/store/productId/9NBLGGH546QC" target="_blank" rel="external">点击此处</a>。</p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -2905,7 +2996,7 @@
     <link href="http://ex2tron.wang/software-and-movies/"/>
     <id>http://ex2tron.wang/software-and-movies/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2019-03-22T12:28:34.145Z</updated>
+    <updated>2019-03-24T14:24:10.044Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -3008,7 +3099,7 @@
 <li><a href="http://my.ex2tron.wang/movie-biopic-collections/" target="_blank" rel="external">传记电影推荐</a></li>
 </ul>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3032,7 +3123,7 @@
     <link href="http://ex2tron.wang/opencv-python/"/>
     <id>http://ex2tron.wang/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2019-03-17T13:49:20.504Z</updated>
+    <updated>2019-03-24T14:24:07.131Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://pic.ex2tron.top/cv2_python_opencv_cover_gif2.gif" alt=""></p>
 <h4 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h4><ol>
@@ -3083,7 +3174,7 @@
     <link href="http://ex2tron.wang/tools-gitkraken/"/>
     <id>http://ex2tron.wang/tools-gitkraken/</id>
     <published>2017-10-05T09:33:20.000Z</published>
-    <updated>2019-03-19T10:06:37.558Z</updated>
+    <updated>2019-03-24T06:13:50.744Z</updated>
     
     <content type="html"><![CDATA[<p>不喜欢敲命令？那么这款酷炫的Git客户端让你逼格满满！<a id="more"></a></p>
 <blockquote>
@@ -3109,7 +3200,7 @@
 <p>抛砖引玉，大致介绍了一下，其实熟悉Git的话，这个工具使用起来还是蛮简单的~ o(<em>￣▽￣</em>)o</p>
 <p><em>2019年3月19日更新：最近我一直用VSCode，集成的git功能再加上gitlens这款插件，体验也很棒。</em></p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3133,7 +3224,7 @@
     <link href="http://ex2tron.wang/tools-qiniuyun/"/>
     <id>http://ex2tron.wang/tools-qiniuyun/</id>
     <published>2017-09-18T11:55:38.000Z</published>
-    <updated>2019-03-20T05:48:45.531Z</updated>
+    <updated>2019-03-24T06:13:50.754Z</updated>
     
     <content type="html"><![CDATA[<p>随着越来越多的人开始使用Markdown写自己的独立博客，一个好用稳定的图床是必不可少的了。<a id="more"></a></p>
 <hr>
@@ -3173,7 +3264,7 @@
 <p>这里推荐使用<a href="http://mpic.lzhaofu.cn/" target="_blank" rel="external">MPic</a>图床神器。打开软件后，设置好自己的AK和SK（可在七牛云的个人中心-密钥管理中看到）。MPic支持文件拖拽上传，点击复制就可以复制外链，非常方便：</p>
 <p><img src="http://pic.ex2tron.top/mpic_qiniu.png" alt="第三方七牛云工具"></p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3197,7 +3288,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-4/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-4/</id>
     <published>2017-09-13T14:11:12.000Z</published>
-    <updated>2019-03-22T11:46:41.332Z</updated>
+    <updated>2019-03-24T06:13:50.745Z</updated>
     
     <content type="html"><![CDATA[<p>将博客放在Github上有很多优点，比如免费、易管理、免费<code>xxx.github.io</code>的域名等，但访问速度嘛，就比较一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器的话，也可以把博客部署在云上。<a id="more"></a></p>
 <hr>
@@ -3259,7 +3350,7 @@
 <li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
 </ul>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3285,7 +3376,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-3/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-3/</id>
     <published>2017-09-13T13:25:24.000Z</published>
-    <updated>2019-03-19T09:57:05.485Z</updated>
+    <updated>2019-03-24T06:13:50.746Z</updated>
     
     <content type="html"><![CDATA[<p>嫌<code>username.github.io</code>不够高大上？？那就来个高大上的独立域名吧。<a id="more"></a></p>
 <h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>域名可以去很多地方购买，非.com/.cn的域名也比较便宜，我这里以万网为例，打开<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>主页：</p>
@@ -3310,7 +3401,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://blog.csdn.net/linshuhe1/article/details/73013730" target="_blank" rel="external">Hexo个人免费博客(五) 使用自己的域名</a></p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3334,7 +3425,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-2/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-2/</id>
     <published>2017-09-13T12:15:47.000Z</published>
-    <updated>2019-03-19T09:57:12.739Z</updated>
+    <updated>2019-03-24T06:13:50.744Z</updated>
     
     <content type="html"><![CDATA[<p>使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！<a id="more"></a></p>
 <p>如果你已经有配置好的云服务器，直接可以将Hexo博客生成的public目录文件放在服务器上就好了。比如我购买的是阿里云服务器（apache），只需要将public下的文件放在<code>/var/www/html/</code>下面就可以用你服务器地址访问博客了。很容易，不过，考虑到云服务器的价格，这里我们还是用免费的Github吧。</p>
@@ -3359,7 +3450,7 @@
 </li>
 </ol>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3383,7 +3474,7 @@
     <link href="http://ex2tron.wang/hexo-blog-with-github-pages-1/"/>
     <id>http://ex2tron.wang/hexo-blog-with-github-pages-1/</id>
     <published>2017-09-13T08:07:06.000Z</published>
-    <updated>2019-03-19T09:56:57.479Z</updated>
+    <updated>2019-03-24T06:13:50.745Z</updated>
     
     <content type="html"><![CDATA[<p>想用Github Pages轻松搭建自己的博客，用Hexo，10分钟！<a id="more"></a></p>
 <blockquote>
@@ -3414,7 +3505,7 @@
 </li>
 </ul>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3438,7 +3529,7 @@
     <link href="http://ex2tron.wang/tools-markdown-in-vscode/"/>
     <id>http://ex2tron.wang/tools-markdown-in-vscode/</id>
     <published>2017-09-11T07:11:22.000Z</published>
-    <updated>2019-03-19T05:24:06.835Z</updated>
+    <updated>2019-03-24T06:13:50.746Z</updated>
     
     <content type="html"><![CDATA[<p>Markdown以其简洁、优雅整齐的风格，成为目前非常流行的博客文件格式。甚至有人说：每个人都应该用Markdown写博客<a id="more"></a>。关于Markdown相较富文本的优势，我就不细说了。</p>
 <hr>
@@ -3462,7 +3553,7 @@
 <p>另外，VSCode中有很多Markdown相关的插件，如<code>Markdown All in One</code>和<code>Markdown Theme Kit</code>等，大家可以下载下来尝试一下哈！</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://code.visualstudio.com/docs/languages/markdown" target="_blank" rel="external">Markdown editing with Visual Studio Code</a></p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3486,7 +3577,7 @@
     <link href="http://ex2tron.wang/tools-mycli/"/>
     <id>http://ex2tron.wang/tools-mycli/</id>
     <published>2017-09-11T06:32:14.000Z</published>
-    <updated>2019-03-19T05:02:42.142Z</updated>
+    <updated>2019-03-24T06:13:50.746Z</updated>
     
     <content type="html"><![CDATA[<p>mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。<a id="more"></a></p>
 <hr>
@@ -3502,7 +3593,7 @@
 <p><img src="http://pic.ex2tron.top/login_with_mycli.png" alt="login_with_mycli"></p>
 <p>好了，大家觉得好用的话，欢迎扩散噢！</p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3526,7 +3617,7 @@
     <link href="http://ex2tron.wang/qt-opencv-installation-guide/"/>
     <id>http://ex2tron.wang/qt-opencv-installation-guide/</id>
     <published>2017-07-27T00:17:00.000Z</published>
-    <updated>2019-03-19T09:58:56.626Z</updated>
+    <updated>2019-03-24T06:13:50.746Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Windows下的配置"><a href="#Windows下的配置" class="headerlink" title="Windows下的配置"></a>Windows下的配置</h2><blockquote>
 <p><em>念念不忘，必有回响。</em>——<a href="https://movie.douban.com/subject/3821067/" target="_blank" rel="external">《一代宗师》</a></p>
@@ -3555,7 +3646,7 @@
 <p>另外，不同版本和不同平台库的位置可能不同，比如树莓派下，库文件可能在：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LIBS  += -L/usr/lib/arm-linux-gnueabihf\</div></pre></td></tr></table></figure>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3584,7 +3675,7 @@
     <link href="http://ex2tron.wang/cmake-make-opencv/"/>
     <id>http://ex2tron.wang/cmake-make-opencv/</id>
     <published>2017-07-26T14:25:29.000Z</published>
-    <updated>2019-03-19T09:59:06.955Z</updated>
+    <updated>2019-03-24T06:13:50.780Z</updated>
     
     <content type="html"><![CDATA[<p>最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。<a id="more"></a></p>
 <ul>
@@ -3618,7 +3709,7 @@
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo8.jpg" alt=""></p>
 <p><img src="http://pic.ex2tron.top/cmake_opencv_qt_demo9.jpg" alt=""></p>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     
@@ -3644,7 +3735,7 @@
     <link href="http://ex2tron.wang/set-up-your-own-git-server/"/>
     <id>http://ex2tron.wang/set-up-your-own-git-server/</id>
     <published>2017-06-04T11:38:56.000Z</published>
-    <updated>2019-03-19T09:58:02.883Z</updated>
+    <updated>2019-03-24T06:13:50.746Z</updated>
     
     <content type="html"><![CDATA[<p>Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。<a id="more"></a>但像我们这种穷苦的孩子，只能选择自己搭一个Git服务器咯。</p>
 <hr>
@@ -3677,7 +3768,7 @@
 <li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="external">廖雪峰Git教程</a></li>
 </ul>
 <blockquote>
-<p><em>Never give up. Never stop fighting. Excelsior!</em></p>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
 ]]></content>
     

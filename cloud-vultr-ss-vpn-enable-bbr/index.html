@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【云服务】飞起来！vultr 10分钟快速搭梯子并启用bbr加速 |
+    
+    ex2tron&#39;s Tech Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！">
+<meta name="keywords" content="Vultr,梯子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【云服务】飞起来！Vultr 10分钟快速搭梯子并启用BBR加速">
+<meta property="og:url" content="http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:description" content="程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/cloud_vultr_ss_vpn_enable_bbr_cover-min.gif">
+<meta property="og:updated_time" content="2019-03-24T14:29:01.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【云服务】飞起来！Vultr 10分钟快速搭梯子并启用BBR加速">
+<meta name="twitter:description" content="程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！">
+<meta name="twitter:image" content="http://pic.ex2tron.top/cloud_vultr_ss_vpn_enable_bbr_cover-min.gif">
+  
+  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【云服务】飞起来！vultr 10分钟快速搭梯子并启用BBR加速" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cloud_vultr_ss_vpn_enable_bbr_cover-min.gif" rel="gallery_cjtn0qa080032v0590362pn5i">
+        <img src="http://pic.ex2tron.top/cloud_vultr_ss_vpn_enable_bbr_cover-min.gif" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【云服务】飞起来！Vultr 10分钟快速搭梯子并启用BBR加速
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/cloud-vultr-ss-vpn-enable-bbr/" class="article-date">
+	  <time datetime="2019-03-24T08:16:35.000Z" itemprop="datePublished">March 24, 2019</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！<a id="more"></a></p>
+<hr>
+<p>然鹅…我们有Qiang啊~。自动动手，丰衣足食啊，我们来购买一台境外服务器，搭建ss(Shadowsocks)服务并启用BBR进行加速，畅游全网！</p>
+<blockquote>
+<p><em>After all… tomorrow is another day.</em>  ——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《Gone with the Wind》</a><br><br><em>毕竟，明天又是新的一天。</em>——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《乱世佳人》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<h2 id="境外服务器"><a href="#境外服务器" class="headerlink" title="境外服务器"></a>境外服务器</h2><p>有很多服务器提供商可供选择，网友们用的最多的是<a href="https://bwh88.net/index.php" target="_blank" rel="external">搬瓦工(Bandwagonhost)</a>和<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>，其实只要是境外的云服务器基本都可以，比如阿里云香港、亚马逊云<a href="https://aws.amazon.com/cn/" target="_blank" rel="external">AWS</a>，微软<a href="https://azure.microsoft.com/zh-cn/" target="_blank" rel="external">Azure</a>。只不过前两者性价比高、操作起来都比较简单，另外现在Vultr上注册充值＄10就送＄50，有效期30天（所以对于普通用户没什么卵用），Vultr的界面设计也更加友好一些，所以我就以它为例了。</p>
+<h3 id="注册登录"><a href="#注册登录" class="headerlink" title="注册登录"></a>注册登录</h3><ul>
+<li>官网：<a href="https://www.vultr.com/" target="_blank" rel="external">https://www.vultr.com/</a></li>
+</ul>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_official_site.jpg" alt=""></p>
+<p>输入邮箱和密码便可，注意密码的要求，必须包含一个大写字母，创建时会提醒。</p>
+<h3 id="充值"><a href="#充值" class="headerlink" title="充值"></a>充值</h3><p>进入之后，点击左侧导航栏的账单”Billing”，最少充值＄10，大概67块，可以选择支付宝或微信，很是人性化了，点赞。另外左侧显示赠送的＄50美元，并且30天后过期。</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_billing_alipay.jpg" alt=""></p>
+<h3 id="选购服务器配置"><a href="#选购服务器配置" class="headerlink" title="选购服务器配置"></a>选购服务器配置</h3><p>充值后，就要选择你的服务器了。</p>
+<p>第一步是服务器的位置，不同位置的服务器配置不一样，可以尽量选近一点，不过我建议多点点看，哪个地方有便宜的配置就选哪个，比如：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_step1.jpg" alt=""></p>
+<p>第二步选系统，常用CentOS和Ubuntu，这里我以CentOS为例：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_step2.jpg" alt=""></p>
+<p>第三步是选服务器配置，不同地区的配置不太一样，按照自己的需求选择即可，不过个人用选最低配足够，比如我选每月＄3.5的，有500GB流量，非常够用了。</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_step3.jpg" alt=""></p>
+<p>后面几步可以不用管，直接点最底部的”Deploy Now”：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_purchase_final_step.jpg" alt=""></p>
+<h3 id="服务器控制台"><a href="#服务器控制台" class="headerlink" title="服务器控制台"></a>服务器控制台</h3><p>这样你就有了一台境外服务器了。点击服务器进去可以看到服务器的账号密码/IP地址等信息，这里需要记录下来，方便后面SSH连接使用：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_server_info.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_server_info2.jpg" alt=""></p>
+<h2 id="ss服务搭建"><a href="#ss服务搭建" class="headerlink" title="ss服务搭建"></a>ss服务搭建</h2><h3 id="SSH连接工具"><a href="#SSH连接工具" class="headerlink" title="SSH连接工具"></a>SSH连接工具</h3><p>连接工具在我之前的博客说过，大部分Linux系统/新版Windows 10都自带SSH工具，无需额外的软件，在命令行中直接使用即可<code>ssh root@ip</code>。如果没有或是喜欢用第三方软件的话，这里推荐三个：</p>
+<ul>
+<li><a href="https://www.netsarang.com/en/xshell/" target="_blank" rel="external">XShell</a></li>
+<li><a href="https://putty.org/" target="_blank" rel="external">Putty</a></li>
+<li><a href="https://www.vandyke.com/products/securecrt/" target="_blank" rel="external">SecureCRT</a></li>
+</ul>
+<h3 id="脚本一键搭建"><a href="#脚本一键搭建" class="headerlink" title="脚本一键搭建"></a>脚本一键搭建</h3><p>为方便一键搭建服务，<a href="https://github.com/teddysun/shadowsocks_install" target="_blank" rel="external">Github(@teddysun)</a>已经编写了自动化脚本。所以首先下载脚本并赋予可执行权限：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget –no-check-certificate -O shadowsocks.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</div><div class="line">chmod +x shadowsocks.sh</div></pre></td></tr></table></figure>
+<p>接下来运行脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shadowsocks.sh</div></pre></td></tr></table></figure>
+<p>最开始需要设置ss服务的密码和端口号：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">############################################################</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> One click Install Shadowsocks-Python server               <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> Intro: https://teddysun.com/342.html                      <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> Author: Teddysun &lt;i@teddysun.com&gt;                         <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> Github: https://github.com/shadowsocks/shadowsocks        <span class="comment">#</span></span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">############################################################</span></span></div><div class="line"></div><div class="line">Please enter password for shadowsocks-python</div><div class="line">(Default password: teddysun.com):</div><div class="line"></div><div class="line">Please enter a port for shadowsocks-python [1-65535]</div><div class="line">(Default port: 16200):</div></pre></td></tr></table></figure>
+<p>然后选择加密方式，我们选最常用的7：<code>aes-256-cfb</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Please select stream cipher for shadowsocks-python:</div><div class="line">1) aes-256-gcm</div><div class="line">2) aes-192-gcm</div><div class="line">3) aes-128-gcm</div><div class="line">4) aes-256-ctr</div><div class="line">5) aes-192-ctr</div><div class="line">6) aes-128-ctr</div><div class="line">7) aes-256-cfb</div><div class="line">8) aes-192-cfb</div><div class="line">9) aes-128-cfb</div><div class="line">10) camellia-128-cfb</div><div class="line">11) camellia-192-cfb</div><div class="line">12) camellia-256-cfb</div><div class="line">13) chacha20-ietf-poly1305</div><div class="line">14) chacha20-ietf</div><div class="line">15) chacha20</div><div class="line">16) rc4-md5</div><div class="line">Which cipher you'd select(Default: aes-256-gcm):</div><div class="line"></div><div class="line">Press any key to start...or Press Ctrl+C to cancel</div></pre></td></tr></table></figure>
+<p>然后按任意键开始安装。稍等片刻，便可安装完成并显示你的VPN信息，这些信息便是你ss客户端需要的连接信息了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Congratulations, Shadowsocks-python server install completed!</div><div class="line">Your Server IP        :  xxx.xxx.xxx.xxx </div><div class="line">Your Server Port      :  8888 </div><div class="line">Your Password         :  ***************</div><div class="line">Your Encryption Method:  aes-256-cfb </div><div class="line"></div><div class="line">Welcome to visit:https://teddysun.com/342.html</div><div class="line">Enjoy it!</div></pre></td></tr></table></figure>
+<h2 id="开始爬梯子"><a href="#开始爬梯子" class="headerlink" title="开始爬梯子"></a>开始爬梯子</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>在<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="external">shadowsocks-windows</a>上下载最新的客户端。打开无需安装，填写IP、密码和端口之后点击OK：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_shadowsocks_windows_client.jpg" alt=""></p>
+<p>会在右下角显示一个飞机图标，右键，选择”Enable System Proxy”启动代理就可以科学上网辣，爽起来吧~</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_shadowsocks_windows_client_enable.jpg" alt=""></p>
+<h3 id="安卓手机"><a href="#安卓手机" class="headerlink" title="安卓手机"></a>安卓手机</h3><p>安卓手机上可以在谷歌Play商店下载ss的APP。但，等下，我TMD不是还没有翻墙吗，怎么进Play商店？o_o ….我写这篇博客时的最新版本：<a href="http://pic.ex2tron.top/Shadowsocks_4.6.5.apk" target="_blank" rel="external">Shadowsocks 4.6.5</a>。同样填写IP、密码和端口号即可：</p>
+<p>穷，没有iPhone，所以没试，用iPhone的同学请Google：</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_shadowsocks_android_client2.jpg" alt=""></p>
+<h3 id="BBR加速上网"><a href="#BBR加速上网" class="headerlink" title="BBR加速上网"></a>BBR加速上网</h3><p>虽然前面梯子是搭好了，但速度其实一般。利用<code>Google BBR(Bottleneck Bandwidth and RTT)</code>加速算法，能够显著提高宽带利用率，有兴趣的可以Google下。</p>
+<p>当然，<a href="https://github.com/teddysun/across" target="_blank" rel="external">Github(@teddysun)</a>同样编写了安装的自动化脚本，步骤与之前相同：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
+<p>运行后会打印出你的系统信息，按任意键开始安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">---------- System Information ----------</div><div class="line"> OS      : CentOS 7.6.1810</div><div class="line"> Arch    : x86_64 (64 Bit)</div><div class="line"> Kernel  : 3.10.0-957.1.3.el7.x86_64</div><div class="line">----------------------------------------</div><div class="line"> Auto install latest kernel for TCP BBR</div><div class="line"></div><div class="line"> URL: https://teddysun.com/489.html</div><div class="line">----------------------------------------</div><div class="line"></div><div class="line">Press any key to start...or Press Ctrl+C to cancel</div></pre></td></tr></table></figure>
+<p>安装后需要重启服务器，重启后，可以用<code>lsmod | grep bbr</code>验证有没有成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Info: The system needs to reboot.</div><div class="line">Do you want to restart system? [y/n]</div><div class="line"></div><div class="line">[root@vultr ~]# lsmod | grep bbr</div><div class="line">tcp_bbr                20480  7</div></pre></td></tr></table></figure>
+<p>然后再刷下<a href="https://www.youtube.com/" target="_blank" rel="external">YouTube</a>，有没有起飞呢(●ˇ∀ˇ●)</p>
+<p><img src="http://pic.ex2tron.top/cloud_vultr_youtube_test-min.gif" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://www.zhihu.com/question/43566997" target="_blank" rel="external">哪家的云服务器比较稳定，服务好,性价比高的推荐！？</a></li>
+<li><a href="https://www.vultrcn.com/" target="_blank" rel="external">Vultr中文网</a></li>
+</ul>
+<blockquote>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vultr/">Vultr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/梯子/">梯子</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/python-ubuntu-nodejs-change-sources/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">速度UP！Python/Ubuntu/NodeJS/树莓派等更换国内源汇总</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#境外服务器"><span class="nav-number">1.</span> <span class="nav-text">境外服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册登录"><span class="nav-number">1.1.</span> <span class="nav-text">注册登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#充值"><span class="nav-number">1.2.</span> <span class="nav-text">充值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选购服务器配置"><span class="nav-number">1.3.</span> <span class="nav-text">选购服务器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器控制台"><span class="nav-number">1.4.</span> <span class="nav-text">服务器控制台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ss服务搭建"><span class="nav-number">2.</span> <span class="nav-text">ss服务搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH连接工具"><span class="nav-number">2.1.</span> <span class="nav-text">SSH连接工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本一键搭建"><span class="nav-number">2.2.</span> <span class="nav-text">脚本一键搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始爬梯子"><span class="nav-number">3.</span> <span class="nav-text">开始爬梯子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">3.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安卓手机"><span class="nav-number">3.2.</span> <span class="nav-text">安卓手机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BBR加速上网"><span class="nav-number">3.3.</span> <span class="nav-text">BBR加速上网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2019
+              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              Made by ex2tron | 2019
+                <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+                <!--  -->
+                  <!-- <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span> -->
+                  <!--  -->
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp | 电影台词分享：
+              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
