@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-25T10:30:50.629Z</updated>
+  <updated>2019-03-25T13:43:20.864Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -16,11 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>串口传输中对float数据的处理</title>
+    <link href="http://ex2tron.wang/float-data-in-serialport/"/>
+    <id>http://ex2tron.wang/float-data-in-serialport/</id>
+    <published>2019-03-25T08:16:35.000Z</published>
+    <updated>2019-03-25T13:43:20.864Z</updated>
+    
+    <content type="html"><![CDATA[<p>我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。<a id="more"></a>完整代码可到<a href="#引用">源码处</a>下载。</p>
+<hr>
+<blockquote>
+<p><em>爱你所爱，行你所行，听从你心，无问西东。</em>——<a href="https://movie.douban.com/subject/6874741/" target="_blank" rel="external">《无问西东》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<p>他的想法是整数部分和小数部分分开发，比如100.3，1个字节代表整数部分，1个字节代表小数部分，那如果是300.421呢？超出了1个字节的表示范围，负数-3.14又该怎么发呢？当然可以设置多个字节表示数据，然后单独设置1个字节表示正负，但显然这种方式即麻烦又不合理。</p>
+<p>其实，float类型数据，无论正负/大小，它都是占用4个字节的。因此，下位机可以将传感器数据转成4个字节，上位机再把四个字节转成float即可，并且转换在C和C#等语言中都是一句话的事。</p>
+<ul>
+<li><a href="http://lostphp.com/hexconvert/" target="_blank" rel="external">IEE 754浮点数16进制在线转换</a></li>
+</ul>
+<h2 id="大小端模式"><a href="#大小端模式" class="headerlink" title="大小端模式"></a>大小端模式</h2><p><a href="https://baike.baidu.com/item/大小端模式" target="_blank" rel="external">大小端模式</a>大家应该比较熟悉了，大端模式是高字节存放在低地址中，低字节存放在高地址中。类似我们正常的从左到右阅读，数据由小到大，小端模式反之。这里之所以提及，是因为有时候不同的系统/工具得到的结果是反的，此时不用在意，是没错的。</p>
+<h2 id="C语言-下位机"><a href="#C语言-下位机" class="headerlink" title="C语言/下位机"></a>C语言/下位机</h2><ul>
+<li><a href="https://c.runoob.com/compile/11" target="_blank" rel="external">菜鸟C在线工具</a></li>
+</ul>
+<p>下位机一般是C语言编写的，可以将传感器数据转成字节数组，C中也就是字符数组，有多种方式：</p>
+<blockquote>
+<p>有的单片机芯片，当使用unsigned char时，串口发送不了，此时可以去掉unsigned试下。</p>
+</blockquote>
+<h3 id="方法一：强制指针类型转换"><a href="#方法一：强制指针类型转换" class="headerlink" title="方法一：强制指针类型转换"></a>方法一：强制指针类型转换</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// float -&gt; char []</span></div><div class="line"><span class="keyword">float</span> sensorData = <span class="number">-3.14</span>;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> *arr = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)(&amp;sensorData);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%02X,%02X,%02X,%02X\n"</span>, arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>], arr[<span class="number">3</span>]);</div><div class="line"><span class="comment">// 结果：C3,F5,48,C0</span></div></pre></td></tr></table></figure>
+<p>如果想保存到char数组中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> charArr[<span class="number">4</span>], i;</div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) charArr[i] = *arr++;</div></pre></td></tr></table></figure>
+<p>接下来反向转换：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// char [] -&gt; float</span></div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> sBuf[<span class="number">4</span>];</div><div class="line">sBuf[<span class="number">0</span>] = <span class="number">0xC3</span>;</div><div class="line">sBuf[<span class="number">1</span>] = <span class="number">0xF5</span>;</div><div class="line">sBuf[<span class="number">2</span>] = <span class="number">0x48</span>;</div><div class="line">sBuf[<span class="number">3</span>] = <span class="number">0xC0</span>;</div><div class="line"><span class="keyword">float</span> *data = (<span class="keyword">float</span>*)(&amp;sBuf);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>, *data); <span class="comment">// 结果：-3.140000</span></div></pre></td></tr></table></figure>
+<h3 id="方法二：使用联合体"><a href="#方法二：使用联合体" class="headerlink" title="方法二：使用联合体"></a>方法二：使用联合体</h3><p>利用联合体共享内存的原理，可以在联合体内同时定义float和char数组类型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">union</span> &#123;</div><div class="line">    <span class="keyword">float</span> data;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> arr[<span class="number">4</span>];</div><div class="line">&#125; dataFormat;</div></pre></td></tr></table></figure>
+<p>然后转换就比较简单了：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// float -&gt; char []</span></div><div class="line">dataFormat.data = <span class="number">-3.14</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%02X,%02X,%02X,%02X\n"</span>, dataFormat.arr[<span class="number">0</span>], dataFormat.arr[<span class="number">1</span>], dataFormat.arr[<span class="number">2</span>], dataFormat.arr[<span class="number">3</span>]);</div><div class="line"><span class="comment">// 结果：C3,F5,48,C0</span></div></pre></td></tr></table></figure>
+<p>反向转：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// char [] -&gt; float</span></div><div class="line">dataFormat.arr[<span class="number">0</span>] = <span class="number">0xC3</span>;</div><div class="line">dataFormat.arr[<span class="number">1</span>] = <span class="number">0xF5</span>;</div><div class="line">dataFormat.arr[<span class="number">2</span>] = <span class="number">0x48</span>;</div><div class="line">dataFormat.arr[<span class="number">3</span>] = <span class="number">0xC0</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>, dataFormat.data); <span class="comment">// 结果：-3.140000</span></div></pre></td></tr></table></figure>
+<p>C语言还是很深奥的，上面两种是最通俗易懂的方式，更多牛逼的方式尽在Google…＞﹏＜</p>
+<h2 id="C-上位机"><a href="#C-上位机" class="headerlink" title="C#/上位机"></a>C#/上位机</h2><ul>
+<li><a href="https://c.runoob.com/compile/14" target="_blank" rel="external">菜鸟C#在线工具</a></li>
+</ul>
+<p>我一般使用C#编写上位机，所以以它为例。一般这类语言中都有自带的函数可以一句解决，比如C#中用<code>BitConverter.ToSingle()</code>和<code>BitConverter.GetBytes()</code>便可实现转换：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// byte[] -&gt; float</span></div><div class="line"><span class="keyword">byte</span>[] recData = &#123;<span class="number">0xC3</span>,<span class="number">0XF5</span>,<span class="number">0X48</span>,<span class="number">0XC0</span>&#125;;</div><div class="line"><span class="keyword">float</span> sensorData = BitConverter.ToSingle(recData,<span class="number">0</span>); </div><div class="line">Console.WriteLine(sensorData); <span class="comment">// 结果：-3.14</span></div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// float -&gt; byte[]</span></div><div class="line"><span class="keyword">float</span> sData = <span class="number">-3.14</span>f;</div><div class="line"><span class="keyword">byte</span>[] rData = BitConverter.GetBytes(sData);</div><div class="line"><span class="keyword">foreach</span> (<span class="keyword">byte</span> data <span class="keyword">in</span> rData) Console.Write(<span class="string">"&#123;0:X000&#125;,"</span>, data);</div><div class="line"><span class="comment">// 结果：C3,F5,48,C0,</span></div><div class="line"><span class="comment">// 判断大小端：Console.WriteLine(BitConverter.IsLittleEndian);</span></div></pre></td></tr></table></figure>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ol>
+<li>既然知道了float数据怎么处理，那int/double呢？（原理是一样的）</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Float-In-SerialPort" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/float" target="_blank" rel="external">Microsoft float (C# Reference)</a></li>
+<li><a href="https://blog.csdn.net/sijigang/article/details/1546117" target="_blank" rel="external">浮点型(FLOAT)与CHAR型转换</a></li>
+<li><a href="https://blog.csdn.net/sygdp21/article/details/20476697" target="_blank" rel="external">float型数据与字节数组的转化</a></li>
+</ul>
+<blockquote>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="串口" scheme="http://ex2tron.wang/tags/%E4%B8%B2%E5%8F%A3/"/>
+    
+      <category term="float" scheme="http://ex2tron.wang/tags/float/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【云服务】起飞！Vultr 10分钟快速搭梯子并启用BBR加速</title>
     <link href="http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/"/>
     <id>http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/</id>
     <published>2019-03-24T08:16:35.000Z</published>
-    <updated>2019-03-25T10:30:50.629Z</updated>
+    <updated>2019-03-25T13:01:13.257Z</updated>
     
     <content type="html"><![CDATA[<p>程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！<a id="more"></a></p>
 <hr>
@@ -579,9 +652,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -667,9 +740,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -748,9 +821,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -848,9 +921,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -931,9 +1004,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -984,9 +1057,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1075,9 +1148,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1141,9 +1214,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1225,9 +1298,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1307,9 +1380,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1390,9 +1463,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1486,9 +1559,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1559,9 +1632,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1624,9 +1697,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1675,9 +1748,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1824,9 +1897,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1888,9 +1961,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1950,9 +2023,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2049,9 +2122,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2175,9 +2248,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2241,9 +2314,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2313,9 +2386,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2393,9 +2466,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2465,9 +2538,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2540,9 +2613,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2589,9 +2662,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2656,9 +2729,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2704,9 +2777,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2785,9 +2858,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2838,9 +2911,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2931,9 +3004,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -3161,9 +3234,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -3662,9 +3735,9 @@
       <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="Qt" scheme="http://ex2tron.wang/tags/Qt/"/>
     
@@ -3722,9 +3795,9 @@
       <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="Qt" scheme="http://ex2tron.wang/tags/Qt/"/>
     
