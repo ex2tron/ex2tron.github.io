@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-24T14:48:43.234Z</updated>
+  <updated>2019-03-25T10:30:50.629Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/"/>
     <id>http://ex2tron.wang/cloud-vultr-ss-vpn-enable-bbr/</id>
     <published>2019-03-24T08:16:35.000Z</published>
-    <updated>2019-03-24T14:48:43.234Z</updated>
+    <updated>2019-03-25T10:30:50.629Z</updated>
     
     <content type="html"><![CDATA[<p>程序猿除了码代码，平常最多的操作就是解决问题Bug/查资料了，Google/Stackoverflow基本上能解决很多问题（不要提CSDN＞﹏＜），Youtube再看看高清视频，一个字：爽！<a id="more"></a></p>
 <hr>
@@ -29,9 +29,9 @@
 <p><em>After all… tomorrow is another day.</em>  ——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《Gone with the Wind》</a><br><br><em>毕竟，明天又是新的一天。</em>——<a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="external">《乱世佳人》</a></p>
 <p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
 </blockquote>
-<h2 id="境外服务器"><a href="#境外服务器" class="headerlink" title="境外服务器"></a>境外服务器</h2><p>有很多服务器提供商可供选择，网友们用的最多的是<a href="https://bwh88.net/index.php" target="_blank" rel="external">搬瓦工(Bandwagonhost)</a>和<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>，其实只要是境外的云服务器基本都可以，比如阿里云香港、亚马逊云<a href="https://aws.amazon.com/cn/" target="_blank" rel="external">AWS</a>，微软<a href="https://azure.microsoft.com/zh-cn/" target="_blank" rel="external">Azure</a>。只不过前两者性价比高、操作起来都比较简单，另外现在Vultr上注册充值＄10就送＄50，有效期30天（所以对于普通用户并没什么卵用），Vultr的界面设计也更加友好一些，所以我就以它为例了。</p>
+<h2 id="境外服务器"><a href="#境外服务器" class="headerlink" title="境外服务器"></a>境外服务器</h2><p>有很多服务器提供商可供选择，网友们用的最多的是<a href="https://bwh88.net/index.php" target="_blank" rel="external">搬瓦工(Bandwagonhost)</a>和<a href="https://www.vultr.com/?ref=7984374" target="_blank" rel="external">Vultr</a>，其实只要是境外的云服务器基本都可以，比如阿里云香港、亚马逊云<a href="https://aws.amazon.com/cn/" target="_blank" rel="external">AWS</a>，微软<a href="https://azure.microsoft.com/zh-cn/" target="_blank" rel="external">Azure</a>。只不过前两者性价比高、操作起来都比较简单，另外现在Vultr上注册充值＄10就送＄50，有效期30天（所以对于普通用户并没什么卵用），Vultr的界面设计也更加友好一些，所以我就以它为例了。</p>
 <h3 id="注册登录"><a href="#注册登录" class="headerlink" title="注册登录"></a>注册登录</h3><ul>
-<li>官网：<a href="https://www.vultr.com/" target="_blank" rel="external">https://www.vultr.com/</a></li>
+<li>官网：<a href="https://www.vultr.com/?ref=7984374" target="_blank" rel="external">https://www.vultr.com/?ref=7984374</a></li>
 </ul>
 <p><img src="http://pic.ex2tron.top/cloud_vultr_official_site.jpg" alt=""></p>
 <p>输入邮箱和密码便可，注意密码的要求，必须包含一个大写字母，创建时会提醒。</p>
@@ -110,7 +110,7 @@
     <link href="http://ex2tron.wang/python-ubuntu-nodejs-change-sources/"/>
     <id>http://ex2tron.wang/python-ubuntu-nodejs-change-sources/</id>
     <published>2019-03-21T07:08:09.000Z</published>
-    <updated>2019-03-24T06:13:50.747Z</updated>
+    <updated>2019-03-25T02:25:23.734Z</updated>
     
     <content type="html"><![CDATA[<p>在Python/Linux/Node.js开发中，要经常下载各种各样的的包，然而由于默认的安装源大部分是在国外的服务器上，所以下载速度嘛……<a id="more"></a></p>
 <blockquote>
@@ -230,7 +230,7 @@
     
     </summary>
     
-      <category term="Build" scheme="http://ex2tron.wang/categories/Build/"/>
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
@@ -579,9 +579,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -667,9 +667,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -748,9 +748,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -848,9 +848,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -931,9 +931,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -984,9 +984,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1075,9 +1075,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1141,9 +1141,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1225,9 +1225,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1307,9 +1307,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1390,9 +1390,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1486,9 +1486,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1559,9 +1559,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1624,9 +1624,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1675,9 +1675,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1824,9 +1824,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1888,9 +1888,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -1950,9 +1950,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2049,9 +2049,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2175,9 +2175,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2241,9 +2241,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2313,9 +2313,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2393,9 +2393,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2465,9 +2465,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2540,9 +2540,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2589,9 +2589,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2656,9 +2656,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2704,9 +2704,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2785,9 +2785,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2838,9 +2838,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2931,9 +2931,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -2996,7 +2996,7 @@
     <link href="http://ex2tron.wang/software-and-movies/"/>
     <id>http://ex2tron.wang/software-and-movies/</id>
     <published>2017-11-15T11:53:46.000Z</published>
-    <updated>2019-03-24T14:24:10.044Z</updated>
+    <updated>2019-03-25T02:25:56.163Z</updated>
     
     <content type="html"><![CDATA[<p>经常有人跟我要一些软件和电影的资源，毕竟我是老司机( ╯□╰ )特此整理，有时间会不断更新。<a id="more"></a></p>
 <blockquote>
@@ -3109,7 +3109,7 @@
     
     </summary>
     
-      <category term="谈电影" scheme="http://ex2tron.wang/categories/%E8%B0%88%E7%94%B5%E5%BD%B1/"/>
+      <category term="杂谈篇" scheme="http://ex2tron.wang/categories/%E6%9D%82%E8%B0%88%E7%AF%87/"/>
     
     
       <category term="软件" scheme="http://ex2tron.wang/tags/%E8%BD%AF%E4%BB%B6/"/>
@@ -3161,9 +3161,9 @@
       <category term="机器视觉" scheme="http://ex2tron.wang/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
     
-      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
-    
       <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
     
       <category term="图像处理" scheme="http://ex2tron.wang/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
@@ -3662,9 +3662,9 @@
       <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
     
       <category term="Qt" scheme="http://ex2tron.wang/tags/Qt/"/>
     
@@ -3722,22 +3722,23 @@
       <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
-    
       <category term="OpenCV" scheme="http://ex2tron.wang/tags/OpenCV/"/>
+    
+      <category term="CMake" scheme="http://ex2tron.wang/tags/CMake/"/>
     
       <category term="Qt" scheme="http://ex2tron.wang/tags/Qt/"/>
     
   </entry>
   
   <entry>
-    <title>搭建自己的Github/Git服务器</title>
+    <title>【云服务】搭建自己的Github/Git服务器</title>
     <link href="http://ex2tron.wang/set-up-your-own-git-server/"/>
     <id>http://ex2tron.wang/set-up-your-own-git-server/</id>
     <published>2017-06-04T11:38:56.000Z</published>
-    <updated>2019-03-24T06:13:50.746Z</updated>
+    <updated>2019-03-25T02:20:42.719Z</updated>
     
     <content type="html"><![CDATA[<p>Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。<a id="more"></a>但像我们这种穷苦的孩子，只能选择自己搭一个Git服务器咯。</p>
+<p><strong>2019-1-8更新：微软收购Github后，私有代码库从此免费！！喜大普奔啊！</strong></p>
 <hr>
 <p>我们需要一台Linux电脑，可以当作局域网内的Github。当然如果你有阿里云之类的服务器的话就更好了，有网的地方就可以push/pull代码，我这里以自己的本地Ubuntu电脑为例：</p>
 <h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
