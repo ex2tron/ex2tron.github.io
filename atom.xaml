@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-25T13:43:20.864Z</updated>
+  <updated>2019-03-25T13:46:51.593Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://ex2tron.wang/float-data-in-serialport/"/>
     <id>http://ex2tron.wang/float-data-in-serialport/</id>
     <published>2019-03-25T08:16:35.000Z</published>
-    <updated>2019-03-25T13:43:20.864Z</updated>
+    <updated>2019-03-25T13:46:51.593Z</updated>
     
-    <content type="html"><![CDATA[<p>我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。<a id="more"></a>完整代码可到<a href="#引用">源码处</a>下载。</p>
+    <content type="html"><![CDATA[<p>我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。<a id="more"></a></p>
 <hr>
 <blockquote>
 <p><em>爱你所爱，行你所行，听从你心，无问西东。</em>——<a href="https://movie.douban.com/subject/6874741/" target="_blank" rel="external">《无问西东》</a></p>
 <p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
 </blockquote>
 <p>他的想法是整数部分和小数部分分开发，比如100.3，1个字节代表整数部分，1个字节代表小数部分，那如果是300.421呢？超出了1个字节的表示范围，负数-3.14又该怎么发呢？当然可以设置多个字节表示数据，然后单独设置1个字节表示正负，但显然这种方式即麻烦又不合理。</p>
-<p>其实，float类型数据，无论正负/大小，它都是占用4个字节的。因此，下位机可以将传感器数据转成4个字节，上位机再把四个字节转成float即可，并且转换在C和C#等语言中都是一句话的事。</p>
+<p>其实，float类型数据，无论正负/大小，它都是占用4个字节的。因此，下位机可以将传感器数据转成4个字节，上位机再把四个字节转成float即可，并且转换在C和C#等语言中都是一句话的事。完整代码可到<a href="#引用">源码处</a>下载。</p>
 <ul>
 <li><a href="http://lostphp.com/hexconvert/" target="_blank" rel="external">IEE 754浮点数16进制在线转换</a></li>
 </ul>
