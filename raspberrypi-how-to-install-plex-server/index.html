@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【树莓派】用plex打造家庭影音中心 |
+    
+    ex2tron&#39;s Tech Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="电脑下载了部电影，晚上想在手机上看，老婆也想看（啥？！），拷贝？想在手机上看以前的电影或者硬盘里存的视频/照片，拷贝？使用云盘存储呢？速度、容量、播放码率、重复占用本地容量都是问题。如果有一块存放资源的硬盘，家人都可以高速访问它，何乐而不为呢？我说的不是NAS噢~">
+<meta name="keywords" content="树莓派,Plex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【树莓派】用PLEX打造家庭影音中心">
+<meta property="og:url" content="http://ex2tron.wang/raspberrypi-how-to-install-plex-server/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:description" content="电脑下载了部电影，晚上想在手机上看，老婆也想看（啥？！），拷贝？想在手机上看以前的电影或者硬盘里存的视频/照片，拷贝？使用云盘存储呢？速度、容量、播放码率、重复占用本地容量都是问题。如果有一块存放资源的硬盘，家人都可以高速访问它，何乐而不为呢？我说的不是NAS噢~">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/raspberry_pi_plex_install_cover2.jpg">
+<meta property="og:updated_time" content="2019-03-27T12:51:19.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【树莓派】用PLEX打造家庭影音中心">
+<meta name="twitter:description" content="电脑下载了部电影，晚上想在手机上看，老婆也想看（啥？！），拷贝？想在手机上看以前的电影或者硬盘里存的视频/照片，拷贝？使用云盘存储呢？速度、容量、播放码率、重复占用本地容量都是问题。如果有一块存放资源的硬盘，家人都可以高速访问它，何乐而不为呢？我说的不是NAS噢~">
+<meta name="twitter:image" content="http://pic.ex2tron.top/raspberry_pi_plex_install_cover2.jpg">
+  
+  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【树莓派】用PLEX打造家庭影音中心" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/raspberry_pi_plex_install_cover2.jpg" rel="gallery_cjtr7lamt00b4rs59qeuzdfvd">
+        <img src="http://pic.ex2tron.top/raspberry_pi_plex_install_cover2.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【树莓派】用PLEX打造家庭影音中心
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/raspberrypi-how-to-install-plex-server/" class="article-date">
+	  <time datetime="2019-03-27T14:43:35.000Z" itemprop="datePublished">March 27, 2019</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>电脑下载了部电影，晚上想在手机上看，老婆也想看（啥？！），拷贝？想在手机上看以前的电影或者硬盘里存的视频/照片，拷贝？使用云盘存储呢？速度、容量、播放码率、重复占用本地容量都是问题。如果有一块存放资源的硬盘，家人都可以高速访问它，何乐而不为呢？我说的不是NAS噢~<a id="more"></a></p>
+<blockquote>
+<p><em>May the force be with you.</em>  ——<a href="https://movie.douban.com/subject/1293838/" target="_blank" rel="external">《Star Wars》</a><br><em>愿原力与你同在！</em>——<a href="https://movie.douban.com/subject/1293838/" target="_blank" rel="external">《星球大战》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<hr>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><ul>
+<li>树莓派 3B+</li>
+<li>Raspbian 9.4 (Stretch)</li>
+<li>PMS：1.15.2.793 armhf</li>
+<li>移动硬盘：1TB</li>
+</ul>
+<h2 id="什么是Plex"><a href="#什么是Plex" class="headerlink" title="什么是Plex"></a>什么是Plex</h2><p>Plex主打流媒体传输服务，简单来说，有一台放满资料的设备，通过安装 <code>PMS(Plex Media Server)</code>，就可以打通Windows/Linux/Mac电脑、电视TV、Android/IOS手机、PS/XBOX游戏主机等等设备。Plex是在服务端解码，然后实现串流，所以在树莓派上安装Plex服务的话，受性能限制，720P以下的感觉还行，流畅播放，再高就有点吃不消了。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_what_is_plex.jpg" alt=""></p>
+<p>相比<a href="https://www.zhihu.com/question/30096498" target="_blank" rel="external">Kodi</a>，Plex的界面美观简单、交互优秀、服务完整，配置起来对新手也友好。p.s想了解更多Plex的东西可以看下<a href="#引用">引用</a>，这篇我主要分享下树莓派上的安装和挂载U盘等技术问题。</p>
+<h2 id="安装PMS"><a href="#安装PMS" class="headerlink" title="安装PMS"></a>安装PMS</h2><p><strong>官网已经有了基于armhf/ARMv7并支持树莓派的安装包了，非常方便！</strong></p>
+<p>之所以强调上面这句话，是因为网上大部分资料都是基于<a href="https://dev2day.de/plex-media-server-arm/" target="_blank" rel="external">dev2day.de</a>的版本，装起来略微麻烦一点，就连这个包的<a href="https://github.com/uglymagoo/" target="_blank" rel="external">作者</a>都表示：</p>
+<blockquote>
+<p>Plex now provides official packages. So, this project is considered EOL by me.</p>
+</blockquote>
+<p>官方的版本装起来就很容易了，安装之前，大家需要到<a href="https://plex.tv/" target="_blank" rel="external">Plex官网</a>先注册个账号。</p>
+<p>第一步：更新树莓派到最新。可以更换成<a href="/python-ubuntu-nodejs-change-sources/">国内源</a>，速度会快很多。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 更换清华大学源</span></div><div class="line">sudo sed -i 's|raspbian.raspberrypi.org|mirrors.tuna.tsinghua.edu.cn/raspbian|g' /etc/apt/sources.list</div><div class="line"><span class="meta">#</span><span class="bash"> 更新系统</span></div><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div><div class="line"><span class="meta">#</span><span class="bash"> 最好重启一下</span></div><div class="line">reboot</div></pre></td></tr></table></figure>
+<p>更新后，最好重启一下，有时候也会提示重启。</p>
+<p>第二步：下载官方包并安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://downloads.plex.tv/plex-media-server-new/1.15.2.793-782228f99/debian/plexmediaserver_1.15.2.793-782228f99_armhf.deb</div></pre></td></tr></table></figure>
+<p>下载慢的话，可以到官网下载离线版：<a href="https://www.plex.tv/media-server-downloads/" target="_blank" rel="external">https://www.plex.tv/media-server-downloads/</a>，注意选择ARMv7版本（armhf与ARMv7、ARMv8等区别可参考<a href="#引用">引用</a>）。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_download_plex.jpg" alt=""></p>
+<p>deb的包安装大家应该很熟悉了，一句话：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg -i plexmediaserver_1.15.2.793-782228f99_armhf.deb</div></pre></td></tr></table></figure>
+<p>最后看下服务有没有启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl status plexmediaserver</div></pre></td></tr></table></figure>
+<p>如果出现running的提示 ，就说明服务运行正常：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">● plexmediaserver.service - Plex Media Server</div><div class="line">   Loaded: loaded (/lib/systemd/system/plexmediaserver.service; enabled; vendor preset: enabled)</div><div class="line">   Active: active (running) since Wed 2019-03-27 17:30:23 CST; 2h 51min ago</div></pre></td></tr></table></figure>
+<p>此时可以在菜单里面启动，或者直接在浏览器中输入：<a href="http://localhost:32400/web/" target="_blank" rel="external">http://localhost:32400/web/</a></p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_start_from_gui2.jpg" alt=""></p>
+<p>首次启动需要你登录Plex账号：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_login_in_plex2.jpg" alt=""></p>
+<p>设置服务器的名称：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_name_your_server2.jpg" alt=""></p>
+<p>在添加资料库这里，默认是不支持树莓派上挂载的U盘和移动硬盘（what？我的pian都在硬盘里啊），别担心，我们后续解决。现在先不添加，直接下一步：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_add_your_lib2.jpg" alt=""></p>
+<p>点击完成就进入Plex的控制面板了，局域网内的任何设备在浏览器中访问<a href="https://app.plex.tv/" target="_blank" rel="external">https://app.plex.tv</a>也可以。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_config_complete2.jpg" alt=""></p>
+<h2 id="外挂U盘或移动硬盘"><a href="#外挂U盘或移动硬盘" class="headerlink" title="外挂U盘或移动硬盘"></a>外挂U盘或移动硬盘</h2><p> 现在总不能把电影、资料啥的都存在树莓派的TF卡里吧。解决方法也很简单：使用分区的唯一标识码（<a href="https://baike.baidu.com/item/UUID" target="_blank" rel="external">Universally Unique Identifier/UUID</a>）在fstab文件中自动挂载分区。</p>
+<p>首先在树莓派上插入移动硬盘，打印出其状态信息，比如我的设备地址是<code>/dev/sda1</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cat /proc/mounts</div><div class="line"><span class="meta">#</span><span class="bash"> /dev/sda1 /media/pi/ex2tronMovie fuseblk rw,nosuid,nodev,relatime,user_id=0,group_id=0,default_permissions,allow_other,blksize=4096 0 0</span></div></pre></td></tr></table></figure>
+<p>安装<a href="https://baike.baidu.com/item/NTFS-3G" target="_blank" rel="external">NTFS-3G</a>驱动程序：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install ntfs-3g</div></pre></td></tr></table></figure>
+<p>使用<a href="https://linoxide.com/linux-command/linux-id-command/" target="_blank" rel="external">id</a>指令打印出<code>User ID(UID)</code>和<code>Group ID(GID)</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">id -g pi  # 1000</div><div class="line">id -u pi  # 1000</div></pre></td></tr></table></figure>
+<p>再打印出硬盘分区的UUID，比如我的是：<code>B6A28862A2882947</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -l /dev/disk/by-uuid</div><div class="line"><span class="meta">#</span><span class="bash"> lrwxrwxrwx 1 root root 10 3月  27 16:13 B6A28862A2882947 -&gt; ../../sda1</span></div></pre></td></tr></table></figure>
+<p>现在创建一个挂载硬盘的目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /media/usb1</div></pre></td></tr></table></figure>
+<p>Linux系统开机时会读取<code>/etc/fstab</code>文件中的内容，然后根据配置挂载磁盘。所以编辑这个文件，在末尾新增一条配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UUID=B6A28862A2882947 /media/usb1 auto nofail,uid=1000,gid=1000,noatime 0 0</div></pre></td></tr></table></figure>
+<p>其中三个id根据前面打印出来的实际情况填写。</p>
+<p>接下来先卸载、再重新挂载硬盘，最后重启树莓派生效：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo umount /dev/sda1</div><div class="line">sudo mount -a</div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+<h2 id="添加资源库"><a href="#添加资源库" class="headerlink" title="添加资源库"></a>添加资源库</h2><p>重启后，打开Plex网页面板，在左侧点击”添加资源库”，选择usb1，哇啦，出来咯：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_add_libraries.png" alt=""></p>
+<p>我里面放了几部电影，添加后，Plex会自动解码并检索影片的相关信息，比如影片封面/资料等：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_my_movies2.jpg" alt=""></p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_my_movies_detail2.jpg" alt=""></p>
+<p><strong>一个字：爽~！</strong></p>
+<p>最后，我测试了下在局域网内其他设备上的播放速度表现，如预期，720P 2G以下的流畅播放，表现不错。其他的嘛，”要什么自行车！！！”</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_actual_running2.jpg" alt=""></p>
+<p>关于Plex设置远程访问和更多配置玩法，大家自行探索啊，不是本文的重点，有时间我也会分享下我的经验。p.s.看看我这个”电影达人”的片(●ˇ∀ˇ●)：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_pi_plex_all_movies2.jpg" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://forums.plex.tv/t/read-me-first-about-server-armv7-and-armv8-ubuntu-debian/226567" target="_blank" rel="external">About Server ARMv7 and ARMv8 Ubuntu / Debian</a></li>
+<li><a href="https://dev2day.de/plex-media-server-arm/" target="_blank" rel="external">Plex Media Server on Debian armhf</a></li>
+<li><a href="https://flixed.io/install-plex-raspberry-pi/" target="_blank" rel="external">How to Install Plex on a Raspberry Pi – Raspberry Pi Plex Server</a></li>
+<li><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=214655" target="_blank" rel="external">HOWTO - Using Raspberry Pi 3+ as Plex Media Server</a></li>
+<li><a href="http://support.plex.tv/articles/categories/media-preparation/" target="_blank" rel="external">官方：更好的命名你的资源文件</a></li>
+<li><a href="http://shumeipai.nxez.com/2019/01/17/fstab-and-mobile-hard-disk-mounting-method.html" target="_blank" rel="external">树莓派实验室：浅析 fstab 与移动硬盘挂载方法</a></li>
+<li><a href="https://www.vediotalk.com/?p=267" target="_blank" rel="external">VLOG丨树莓派Raspberry Pi 3安装PLEX…</a>]</li>
+<li><a href="http://www.howtoip.com/how-to-set-up-plex-and-watch-your-movies-on-any-device/" target="_blank" rel="external">如何设置Plex（并在任何设备上观看您的电影）</a></li>
+<li><a href="https://post.smzdm.com/p/552816/" target="_blank" rel="external">树莓派PI3的充分利用 篇三：搞定树莓派端的Plex服务端…</a></li>
+</ul>
+<blockquote>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plex/">Plex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/float-data-in-serialport/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">串口传输中对float数据的处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#版本说明"><span class="nav-number">1.</span> <span class="nav-text">版本说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Plex"><span class="nav-number">2.</span> <span class="nav-text">什么是Plex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装PMS"><span class="nav-number">3.</span> <span class="nav-text">安装PMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外挂U盘或移动硬盘"><span class="nav-number">4.</span> <span class="nav-text">外挂U盘或移动硬盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加资源库"><span class="nav-number">5.</span> <span class="nav-text">添加资源库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2019
+              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              Made by ex2tron | 2019
+                <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+                <!--  -->
+                  <!-- <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span> -->
+                  <!--  -->
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp | 电影台词分享：
+              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
