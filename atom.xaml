@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-03-27T12:51:19.919Z</updated>
+  <updated>2019-03-27T12:54:49.179Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【树莓派】用PLEX打造家庭影音中心</title>
+    <title>【树莓派】用PLEX打造家庭影音中心！</title>
     <link href="http://ex2tron.wang/raspberrypi-how-to-install-plex-server/"/>
     <id>http://ex2tron.wang/raspberrypi-how-to-install-plex-server/</id>
     <published>2019-03-27T14:43:35.000Z</published>
-    <updated>2019-03-27T12:51:19.919Z</updated>
+    <updated>2019-03-27T12:54:49.179Z</updated>
     
     <content type="html"><![CDATA[<p>电脑下载了部电影，晚上想在手机上看，老婆也想看（啥？！），拷贝？想在手机上看以前的电影或者硬盘里存的视频/照片，拷贝？使用云盘存储呢？速度、容量、播放码率、重复占用本地容量都是问题。如果有一块存放资源的硬盘，家人都可以高速访问它，何乐而不为呢？我说的不是NAS噢~<a id="more"></a></p>
 <blockquote>
