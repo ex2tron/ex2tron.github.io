@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-04-04T08:24:31.499Z</updated>
+  <updated>2019-04-04T08:28:06.845Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/raspberrypi-as-router/"/>
     <id>http://ex2tron.wang/raspberrypi-as-router/</id>
     <published>2019-04-03T03:16:34.000Z</published>
-    <updated>2019-04-04T08:24:31.499Z</updated>
+    <updated>2019-04-04T08:28:06.845Z</updated>
     
     <content type="html"><![CDATA[<p>树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。<a id="more"></a></p>
 <blockquote>
@@ -139,6 +139,9 @@
 <li><a href="http://blog.lxx1.com/3294" target="_blank" rel="external">树莓派安装 OpenWrt 打造超级路由器</a></li>
 <li><a href="https://www.vediotalk.com/?p=956" target="_blank" rel="external">VLOG丨树莓派(raspberrypi Pi1-Pi3)安装OPENWRT LEDE秒变xxx</a></li>
 </ul>
+<blockquote>
+<p><em>生命不息，折腾不止，Excelsior!</em></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
