@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-04-04T08:46:29.441Z</updated>
+  <updated>2019-04-04T08:57:04.880Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【树莓派】打造全能无线路由器(2/2B)</title>
+    <title>【树莓派】变身全能无线路由器(2/2B)</title>
     <link href="http://ex2tron.wang/raspberrypi-as-router/"/>
     <id>http://ex2tron.wang/raspberrypi-as-router/</id>
     <published>2019-04-03T03:16:34.000Z</published>
-    <updated>2019-04-04T08:46:29.441Z</updated>
+    <updated>2019-04-04T08:57:04.880Z</updated>
     
     <content type="html"><![CDATA[<p>树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。<a id="more"></a></p>
 <blockquote>
