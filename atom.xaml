@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-04-04T08:28:06.845Z</updated>
+  <updated>2019-04-04T08:46:29.441Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/raspberrypi-as-router/"/>
     <id>http://ex2tron.wang/raspberrypi-as-router/</id>
     <published>2019-04-03T03:16:34.000Z</published>
-    <updated>2019-04-04T08:28:06.845Z</updated>
+    <updated>2019-04-04T08:46:29.441Z</updated>
     
     <content type="html"><![CDATA[<p>树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。<a id="more"></a></p>
 <blockquote>
@@ -122,6 +122,7 @@
 <li>USB无线网卡驱动：<code>kmod-rtl8192cu</code></li>
 <li>无线配置工具：<code>wireless-tools</code></li>
 </ul>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_chinese_language_pkg.jpg" alt=""></p>
 <h3 id="配置无线"><a href="#配置无线" class="headerlink" title="配置无线"></a>配置无线</h3><p>安装中文包后，后台自动变成了中文。此时菜单栏’网络’中会多出个’无线’，点击进入：</p>
 <p><img src="http://pic.ex2tron.top/raspberry_as_router_wireless_interface.jpg" alt=""></p>
 <p>默认情况下，无线并没有启用，只需点击启用就可以了：</p>
