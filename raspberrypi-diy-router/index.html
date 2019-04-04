@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【树莓派】打造全能无线路由器(2/2b) |
+    
+    ex2tron&#39;s Tech Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。">
+<meta name="keywords" content="树莓派,OpenWrt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【树莓派】打造全能无线路由器(2&#x2F;2B)">
+<meta property="og:url" content="http://ex2tron.wang/raspberrypi-diy-router/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:description" content="树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/raspberry_as_router_cover.gif">
+<meta property="og:updated_time" content="2019-04-04T08:23:00.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【树莓派】打造全能无线路由器(2&#x2F;2B)">
+<meta name="twitter:description" content="树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。">
+<meta name="twitter:image" content="http://pic.ex2tron.top/raspberry_as_router_cover.gif">
+  
+  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【树莓派】安装Android-TV，秒变电视盒子" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/raspberry_as_router_cover.gif" rel="gallery_cju2dihdk00b4i059frllaauu">
+        <img src="http://pic.ex2tron.top/raspberry_as_router_cover.gif" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【树莓派】打造全能无线路由器(2/2B)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/raspberrypi-diy-router/" class="article-date">
+	  <time datetime="2019-04-03T03:16:34.000Z" itemprop="datePublished">April 3, 2019</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>树莓派能做的事情实在是太多了，今天我们就来把它改造成一台全能的无线路由器。要知道树莓派的Soc性能可比廉价路由器高出不少。<a id="more"></a></p>
+<blockquote>
+<p><em>人在顺境时候的友谊，可能不是那么坚固的。</em>  ——<a href="https://movie.douban.com/subject/30163509/" target="_blank" rel="external">《飞驰人生》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<hr>
+<h2 id="硬件-软件版本说明"><a href="#硬件-软件版本说明" class="headerlink" title="硬件/软件版本说明"></a>硬件/软件版本说明</h2><p>我一开始是用3B+的，但官方的固件烧写后不断重启，有问题，网上很多人也遇到。虽然通过烧写开发版固件解决了，但本文还是先以官方固件为主，后续再写篇3B+的。</p>
+<ul>
+<li>树莓派 2B</li>
+<li>OS：OpenWrt 18.06.2 </li>
+<li>TF卡：闪迪SanDisk 16GB C10</li>
+<li>USB无线网卡：EDUP EP-N8508GS</li>
+</ul>
+<h2 id="WAN、LAN、WLAN区别"><a href="#WAN、LAN、WLAN区别" class="headerlink" title="WAN、LAN、WLAN区别"></a>WAN、LAN、WLAN区别</h2><p>在开干之前，有几个小概念还是要了解一下：</p>
+<ul>
+<li><a href="https://baike.baidu.com/item/LAN" target="_blank" rel="external">LAN</a>：<code>Local Area Network</code>局域网</li>
+<li><a href="https://baike.baidu.com/item/wan" target="_blank" rel="external">WAN</a>：<code>Wide Area Network</code>广域网</li>
+<li><a href="https://baike.baidu.com/item/wlan" target="_blank" rel="external">WLAN</a>：<code>Wireless Local Area Networks</code>无线局域网</li>
+</ul>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_understand_wan_lan_wlan.jpg" alt=""></p>
+<p>简单来说，LAN就是用来组建有线局域网，而WLAN是用来组建无线局域网的。要使局域网内的设备访问外网，就需要WAN口接入网络运营商或者上层网络。感兴趣的可参考<a href="#引用">引用</a>。</p>
+<h2 id="安装配置OpenWrt"><a href="#安装配置OpenWrt" class="headerlink" title="安装配置OpenWrt"></a>安装配置OpenWrt</h2><p>OpenWrt官网提供了树莓派系列的相关资料和最新固件下载：</p>
+<ul>
+<li><a href="https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi" target="_blank" rel="external">https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>SoC</th>
+<th>CPU MHz</th>
+<th>WLAN Hardware</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi 2B</td>
+<td>Broadcom BCM2836</td>
+<td>900</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p>首先明确下我们要做的事情：将树莓派的有线网口作为新路由器的WAN口，由于2/2B不带无线网卡，所以将USB无线网卡作为WLAN产生WIFI。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_purpose.jpg" alt=""></p>
+<h3 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h3><p>安装固件和升级固件任意下载一个即可：</p>
+<ul>
+<li>安装固件：<a href="http://downloads.openwrt.org/releases/18.06.2/targets/brcm2708/bcm2709/openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-factory.img.gz" target="_blank" rel="external">openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-factory.img.gz</a></li>
+<li>升级固件：<a href="http://downloads.openwrt.org/releases/18.06.2/targets/brcm2708/bcm2709/openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-sysupgrade.img.gz" target="_blank" rel="external">openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-sysupgrade.img.gz</a></li>
+</ul>
+<h3 id="固件烧写"><a href="#固件烧写" class="headerlink" title="固件烧写"></a>固件烧写</h3><p>Windows系统的话，可以使用<a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="external">Win32DiskImager</a>或<a href="https://www.balena.io/etcher/" target="_blank" rel="external">Etcher</a>，操作都很简单，选择固件和TF卡，点击烧写就可以了。后者的颜值更高一些，我喜欢(●ˇ∀ˇ●)</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_etcher.jpg" alt=""></p>
+<h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><p>现在跟玩传统树莓派一样，接上电源、显示屏和键盘后，正常开机，都是终端界面，不需要鼠标。</p>
+<p>启动后，根据提示，按下回车，就可以进入终端界面：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Please press Enter to activate this console.</div><div class="line"></div><div class="line"> _______                     ________        __      </div><div class="line"> |       |.-----.-----.-----.|  |  |  |.----.|  |_    </div><div class="line"> |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|   </div><div class="line"> |_______||   __|_____|__|__||________||__|  |____|   </div><div class="line">          |__| W I R E L E S S   F R E E D O M        </div><div class="line"> -----------------------------------------------------</div><div class="line"> OpenWrt 18.06.2, r7676-cddd7b4c77                   </div><div class="line"> -----------------------------------------------------</div><div class="line">=== WARNING! =====================================    </div><div class="line">There is no root password defined on this device!     </div><div class="line">Use the "passwd" command to set up a new password     </div><div class="line">in order to prevent unauthorized SSH logins.          </div><div class="line">--------------------------------------------------    </div><div class="line">root@OpenWrt:~#</div></pre></td></tr></table></figure>
+<h3 id="进入路由器后台"><a href="#进入路由器后台" class="headerlink" title="进入路由器后台"></a>进入路由器后台</h3><p>进入后台有多种方式，我归纳为两种：网线直连的方式和终端操作的方式。推荐终端操作，虽然看上去复杂了点，但其实更快捷。</p>
+<h4 id="方法1：网线直连"><a href="#方法1：网线直连" class="headerlink" title="方法1：网线直连"></a>方法1：网线直连</h4><p>将网线的一端插入树莓派，另一端插入电脑，断开电脑的其他有线或无线连接。待网络成功识别后，浏览器中访问<code>192.168.1.1</code>便可进入后台。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_direct_connect.jpg" alt=""></p>
+<p>默认没有密码直接登录，进入之后，需要让树莓派连接到已有的网络中：点击 ‘Network’ - ‘Interface’ - ‘Add new interface’，这里我让树莓派接入家里路由器LAN口分出的有线网络，所以协议选择 ‘DHCP client’，点击 ‘Submit’提交。</p>
+<p>如果你打算将树莓派接入网络运营商设备，可能需要输入宽带账号密码，协议选择’PPPoE’。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_add_wan_interface.jpg" alt=""></p>
+<p>点击’Submit’提交之后再点击’Save &amp; Apply’，会弹出30s的配置应用时间。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_configure_waiting_time.jpg" alt=""></p>
+<p>此时拔掉树莓派与电脑的直连网线，插入有线网。编辑<code>/etc/config/network</code>网络配置文件，将lan配置的ifname一行注释掉：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/config/network</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">config interface 'lan'</div><div class="line">        option type 'bridge'</div><div class="line"><span class="meta">#</span><span class="bash">       option ifname <span class="string">'eth0'</span></span></div><div class="line">        option proto 'static'</div><div class="line">        option ipaddr '192.168.1.1'</div><div class="line">        option netmask '255.255.255.0'</div><div class="line">        option ip6assign '60'</div></pre></td></tr></table></figure>
+<p>用<code>ifconfig</code>查看树莓派的IP地址，如<code>192.168.1.112</code>，在局域网内的其他设备上访问此IP就可以进入树莓派的路由器后台。</p>
+<h4 id="方法2：终端操作"><a href="#方法2：终端操作" class="headerlink" title="方法2：终端操作"></a>方法2：终端操作</h4><p>其实方法1本身就是更改<code>/etc/config/network</code>文件，所以可以直接在终端编辑，添加一个广域网wan口配置，并将lan的ifname一行注释掉：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/config/network</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">config interface 'lan'</div><div class="line">        option type 'bridge'</div><div class="line"><span class="meta">#</span><span class="bash">       option ifname <span class="string">'eth0'</span></span></div><div class="line">        option proto 'static'</div><div class="line">        option ipaddr '192.168.1.1'</div><div class="line">        option netmask '255.255.255.0'</div><div class="line">        option ip6assign '60'</div><div class="line"></div><div class="line">config interface 'wan'</div><div class="line">        option proto 'dhcp'</div><div class="line">        option ifname 'eth0'</div></pre></td></tr></table></figure>
+<p>如果树莓派接的是家里路由器LAN口出来的网线，一般配置成DHCP协议就可以了。如果是直接从网络运营商设备出来的网线，则可能需要输入宽带账号密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">config interface 'wan'</div><div class="line">        option proto 'pppoe'</div><div class="line">        option ifname 'eth0'</div><div class="line">        option username 'xxxxxx'</div><div class="line">        option password 'xxxxxx'</div></pre></td></tr></table></figure>
+<p>添加完之后，使用<code>/etc/init.d/network restart</code>重启网络服务，使用ifconfig查看ip地址：如<code>192.168.1.112</code>，然后在局域网内的其他设备上输入此IP便可以访问OpenWrt 的后台了。</p>
+<p>如果访问有问题，可以关闭防火墙试下：<code>/etc/init.d/firewall stop</code></p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_terminal_configure.jpg" alt=""></p>
+<p>不论使用哪种方法，进入之后，默认都是没有密码的。为安全起见，这里先设置个密码，点击 ‘Go to password configuration…’，输入密码后，直接点击 ‘Save &amp; Apply’，其他不用管。</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_change_password.jpg" alt=""></p>
+<h3 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h3><p>树莓派成功联网后，需要下载一些插件。一方面官方的源亲测是不包含USB网卡驱动和中文插件的，不知道什么原因，另一方面国内的源速度会快很多，所以这里统一换成中科大的源。</p>
+<ul>
+<li>中国科学技术大学开源镜像站 LEDE：<a href="http://mirrors.ustc.edu.cn/help/lede.html" target="_blank" rel="external">使用帮助</a></li>
+</ul>
+<p>可以在终端操作，也可以在Web后台操作：</p>
+<h4 id="Web后台操作"><a href="#Web后台操作" class="headerlink" title="Web后台操作"></a>Web后台操作</h4><p>进入路由器后台，依次点击 ‘System’ - ‘Software’ - ‘Configuration’，在 ‘Distribution feeds’下面我们更换成国内的源，注意版本噢（最好先将原有的备份下）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">src/gz openwrt_core http://mirrors.ustc.edu.cn/lede/releases/18.06.2/targets/brcm2708/bcm2709/packages</div><div class="line">src/gz openwrt_base http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/base</div><div class="line">src/gz openwrt_luci http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/luci</div><div class="line">src/gz openwrt_packages http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/packages</div><div class="line">src/gz openwrt_routing http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/routing</div><div class="line">src/gz openwrt_telephony http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/telephony</div></pre></td></tr></table></figure>
+<p>然后切换到 ‘Actions’标签下，点击 ‘Update lists’便可以获取所有可用的ipk包：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_achieve_all_aviable_pkgs.jpg" alt=""></p>
+<h4 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h4><p>首先将原有的源配置文件备份：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.bak</div></pre></td></tr></table></figure>
+<p>然后用sed命令替换掉源地址：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i 's|downloads.openwrt.org|mirrors.ustc.edu.cn/lede|g' /etc/opkg/distfeeds.conf</div></pre></td></tr></table></figure>
+<p>最后记得执行更新：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opkg update</div></pre></td></tr></table></figure>
+<h3 id="安装必要的软件包"><a href="#安装必要的软件包" class="headerlink" title="安装必要的软件包"></a>安装必要的软件包</h3><p>在路由器后台的 ‘System’ - ‘Software’下面的 ‘Filter’中搜索要安装的软件包，或者在终端输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opkg install pkg_name</div></pre></td></tr></table></figure>
+<p>都可以安装，主要装3个包：</p>
+<ul>
+<li>路由器后台中文插件：<code>luci-i18n-base-zh-cn</code></li>
+<li>USB无线网卡驱动：<code>kmod-rtl8192cu</code></li>
+<li>无线配置工具：<code>wireless-tools</code></li>
+</ul>
+<h3 id="配置无线"><a href="#配置无线" class="headerlink" title="配置无线"></a>配置无线</h3><p>安装中文包后，后台自动变成了中文。此时菜单栏’网络’中会多出个’无线’，点击进入：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_wireless_interface.jpg" alt=""></p>
+<p>默认情况下，无线并没有启用，只需点击启用就可以了：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_wireless_enable.jpg" alt=""></p>
+<p>不过还有点小问题，首先这个WiFi没密码，其次也没网。点击’编辑’，将网络来源选择为WAN：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_network_source.jpg" alt=""></p>
+<p>其次在’无线安全’这里给WiFi设置个密码，最后保存就可以了：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_wireless_password.jpg" alt=""></p>
+<p>现在手机或电脑可以连接上试试辣：</p>
+<p><img src="http://pic.ex2tron.top/raspberry_as_router_phone_connect.jpg" alt=""></p>
+<h3 id="万能路由器"><a href="#万能路由器" class="headerlink" title="万能路由器"></a>万能路由器</h3><p>之所以称之为’万能路由器’，是因为OpenWrt不仅完全开源，可玩性很高，而且第三方插件非常丰富，比如可以科学上网的shadowsocks，安装配置之后，全天24h出国旅游不成问题呀（有空写篇( $ _ $ )）。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://jingyan.baidu.com/article/3c343ff7e862850d3679637b.html" target="_blank" rel="external">LAN、WAN、WLAN的区别</a></li>
+<li><a href="https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi" target="_blank" rel="external">OpenWrt Raspberry Pi</a></li>
+<li><a href="http://blog.lxx1.com/3294" target="_blank" rel="external">树莓派安装 OpenWrt 打造超级路由器</a></li>
+<li><a href="https://www.vediotalk.com/?p=956" target="_blank" rel="external">VLOG丨树莓派(raspberrypi Pi1-Pi3)安装OPENWRT LEDE秒变xxx</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenWrt/">OpenWrt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/raspberrypi-how-to-install-plex-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【树莓派】用PLEX打造家庭影音中心！</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件-软件版本说明"><span class="nav-number">1.</span> <span class="nav-text">硬件/软件版本说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WAN、LAN、WLAN区别"><span class="nav-number">2.</span> <span class="nav-text">WAN、LAN、WLAN区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置OpenWrt"><span class="nav-number">3.</span> <span class="nav-text">安装配置OpenWrt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载固件"><span class="nav-number">3.1.</span> <span class="nav-text">下载固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固件烧写"><span class="nav-number">3.2.</span> <span class="nav-text">固件烧写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入系统"><span class="nav-number">3.3.</span> <span class="nav-text">进入系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入路由器后台"><span class="nav-number">3.4.</span> <span class="nav-text">进入路由器后台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：网线直连"><span class="nav-number">3.4.1.</span> <span class="nav-text">方法1：网线直连</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2：终端操作"><span class="nav-number">3.4.2.</span> <span class="nav-text">方法2：终端操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换源"><span class="nav-number">3.5.</span> <span class="nav-text">更换源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web后台操作"><span class="nav-number">3.5.1.</span> <span class="nav-text">Web后台操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终端操作"><span class="nav-number">3.5.2.</span> <span class="nav-text">终端操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装必要的软件包"><span class="nav-number">3.6.</span> <span class="nav-text">安装必要的软件包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置无线"><span class="nav-number">3.7.</span> <span class="nav-text">配置无线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#万能路由器"><span class="nav-number">3.8.</span> <span class="nav-text">万能路由器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2019
+              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              Made by ex2tron | 2019
+                <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+                <!--  -->
+                  <!-- <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span> -->
+                  <!--  -->
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp | 电影台词分享：
+              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

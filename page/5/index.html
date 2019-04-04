@@ -166,6 +166,71 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程番外篇1：代码性能优化"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/opencv-python-extra-code-optimization/">Python+OpenCV教程番外篇1：代码性能优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/opencv-python-extra-code-optimization/" class="article-date">
+	  <time datetime="2017-12-06T07:51:52.000Z" itemprop="datePublished">December 6, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习如何评估和优化代码性能。（本节还没更新完…………）
+完成一项任务很重要，高效地完成更重要。图像处理是对矩阵的操作，数据量巨大。如果代码写的不好，性能差距将很大，所以这节我们来了解下如何评估和提升代码性能。
+评估代码运行时间123456import cv2start = cv2.getTickCount()# 这里写测试代码...end = cv2.getTickCount()print((end - start) / cv2.getTickFrequency())
+这段代码就是用来测量程序运行时间的（单位：s），其中cv2.getTickCount()函数得到电脑启动以来的时钟周期数，cv2.getTickFrequency()返回你电脑的主频，前后相减再除以主频就是你代码的运行时...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/opencv-python-extra-code-optimization/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+                  
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程1：简介与安装"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -760,74 +825,6 @@ Markdown编辑器支持Markdown的工具有很多，大家可以参考网上，�
 <!-- Table of Contents -->
 
   
-    <article id="post-【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/tools-mycli/">【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/tools-mycli/" class="article-date">
-	  <time datetime="2017-09-11T06:32:14.000Z" itemprop="datePublished">September 11, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <a href="/tools-mycli/"><img width="250" height="175" src="http://pic.ex2tron.top/mycli_demo.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          mycli是MySQL命令行工具，支持关键字语法高亮和自动补全，看上面的动图你就知道了。
-
-mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库名、表名、字段名都可以提示，非常方便。如果你经常在命令行里码MySQL命令，相信这款工具一定会让你满意。
-
-官网：MyCLI
-
-安装其实mycli是一个Python的包，所以你已经安装了Python(pip)的话，用下面一条指令就好了：...
-
-        
-          <p class="article-more-link">
-            <a href="/tools-mycli/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/利器篇/">利器篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyCLI/">MyCLI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
-
-      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-      
-                  
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -931,6 +928,21 @@ mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库�
 
             
               <div class="widget-entry-thumbnail">
+                <a href="/raspberrypi-diy-router/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/raspberry_as_router_cover.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/raspberrypi-diy-router/">【树莓派】打造全能无线路由器(2/2B)</a></h6>
+              <span>April 3, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
                 <a href="/raspberrypi-how-to-install-plex-server/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/raspberry_pi_plex_install_cover2.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
@@ -1002,21 +1014,6 @@ mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/hiding-passwds-secret-keys-in-environment-variables/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/hiding_info_cover.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/hiding-passwds-secret-keys-in-environment-variables/">使用环境变量避免在代码中写明密码和密钥等重要信息</a></h6>
-              <span>January 19, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1026,7 +1023,7 @@ mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈篇/">杂谈篇</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈篇/">杂谈篇</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1036,7 +1033,7 @@ mycli不仅能在命令行中提示MySQL的关键字，更牛掰的是数据库�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.67px;">PyQt</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像变换/" style="font-size: 10px;">图像变换</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a> <a href="/tags/梯子/" style="font-size: 10px;">梯子</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/电影台词/" style="font-size: 10px;">电影台词</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/车道检测/" style="font-size: 10px;">车道检测</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/阿里云/" style="font-size: 10px;">阿里云</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
+      <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 20px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.67px;">PyQt</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像变换/" style="font-size: 10px;">图像变换</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/树莓派/" style="font-size: 11.67px;">树莓派</a> <a href="/tags/梯子/" style="font-size: 10px;">梯子</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/电影台词/" style="font-size: 10px;">电影台词</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/车道检测/" style="font-size: 10px;">车道检测</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/阿里云/" style="font-size: 10px;">阿里云</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
     </div>
   </div>
 
