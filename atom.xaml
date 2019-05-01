@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-04-04T08:57:04.880Z</updated>
+  <updated>2019-05-01T14:02:49.946Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Depth-Python】Base64</title>
+    <link href="http://ex2tron.wang/base64/"/>
+    <id>http://ex2tron.wang/base64/</id>
+    <published>2019-04-28T14:20:53.000Z</published>
+    <updated>2019-05-01T14:02:49.946Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？<a id="more"></a></p>
+<blockquote>
+<p><em>Valar Morghulis, Valar Dohaeris.</em>  ——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《Game of Thrones》</a><br><em>凡人皆有一死，凡人皆须侍奉。</em>——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《权力的游戏 》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<hr>
+<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>Base64是一种用64个可打印字符来表示二进制数据的一种方法。</p>
+<p>原理其实很简单，首先定义一个长度为64的字符数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">base = [<span class="string">'A'</span>, <span class="string">'B'</span>, ..., <span class="string">'Z'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, ..., <span class="string">'z'</span>, <span class="string">'0'</span>, <span class="string">'1'</span>, ..., <span class="string">'9'</span>, <span class="string">'+'</span>, <span class="string">'/'</span>]</div></pre></td></tr></table></figure>
+<p>标准的Base64编码是由26个大写字母、26个小写字母、[0-9]10个数字、’+’、’/‘共64个字符组成的。你也可以自定义这些字符来实现自己的Base64编码。</p>
+<p>将原二进制数据每3个字节为一组进行划分，一共3×8=24bit，划分成4组，也就是每组6bit，6bit可表示的长度为2^6=64，这就是Base64名称的由来。然后将每组6bit对应的值作为索引，在前面定义的数组中查表，就得到了编码后对应的4个字符。</p>
+<p>比如，把”Man”进行Base64编码：</p>
+<p><img src="http://pic.ex2tron.top/depth_python_base64_sample2.jpg" alt=""></p>
+<p>Python中可以直接用内置的<a href="#接口文档">base64</a>模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line">print(base64.b64encode(<span class="string">b'Man'</span>))  <span class="comment"># 'TWFu'</span></div><div class="line"><span class="comment"># 或：base64.b64encode(b'\x4D\x61\x6E')</span></div><div class="line">print(base64.b64decode(<span class="string">'TWFu'</span>))  <span class="comment"># 'man'</span></div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/depth_python_base64_index_table.jpg" alt="@维基百科 Base64"></p>
+<h3 id="不是3的倍数"><a href="#不是3的倍数" class="headerlink" title="不是3的倍数"></a>不是3的倍数</h3><p>Base64是每3个字节编码的，遇到不足3个字节的情况时，会在末尾补0，再在末尾加个1个或2个 ‘=’号表示补了多少个字节，解码时再将’=’去掉。</p>
+<p>比如参考前面的’Man’，对’M’单独进行编码：第一组还是原有的6bit，结果是字符’T’；第二组只剩下’01’，补充4个0，即’010000’，索引值为16，对应的字符是’Q’；第三和第四组都是0了，所以再加两个’=’，最终结果是’TQ==’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(base64.b64encode(<span class="string">b'M'</span>))  <span class="comment"># 'TQ=='</span></div></pre></td></tr></table></figure>
+<p><strong>总之，Base64编码后的长度永远是4的倍数！</strong></p>
+<h3 id="URL中特殊字符的处理"><a href="#URL中特殊字符的处理" class="headerlink" title="URL中特殊字符的处理"></a>URL中特殊字符的处理</h3><p>标准Base64编码中会出现’+’和’/‘字符，如果在url中使用，url编码器会转换成’%2B’和’%2F’，解码或数据库存储时需要将%再次转换。为避免出错并简化操作，提出了一种可用于url的改进Base64编码：将’+’和’/‘分别改成’-‘和’_’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(base64.b64encode(<span class="string">b'\xFB\xfe'</span>))  <span class="comment"># '+/4='</span></div><div class="line">print(base64.urlsafe_b64encode(<span class="string">b'\xFB\xfe'</span>))  <span class="comment"># '-_4='</span></div></pre></td></tr></table></figure>
+<h3 id="图片Base64编码"><a href="#图片Base64编码" class="headerlink" title="图片Base64编码"></a>图片Base64编码</h3><p>图片的Base64编码用的较多。Python打开文件时，指定’rb’参数，可以获取原始的二进制数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'lena.jpg'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> pic:</div><div class="line">    pic_str_data = base64.b64encode(pic.read())</div><div class="line"></div><div class="line">print(pic_str_data)</div></pre></td></tr></table></figure>
+<h3 id="中文Base64编码"><a href="#中文Base64编码" class="headerlink" title="中文Base64编码"></a>中文Base64编码</h3><p>Base64只跟二进制有关系，跟字符集无关。对于中文的话，按照你使用的字符集（比如utf-8）编码成二进制后再用Base64就可以了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ch_bytes = <span class="string">'中'</span>.encode(<span class="string">'utf-8'</span>) <span class="comment"># b'\xe4\xb8\xad'</span></div><div class="line"><span class="comment"># encode()默认是utf-8，可省略</span></div><div class="line">print(ch_bytes.decode()) <span class="comment"># '中'</span></div><div class="line"></div><div class="line">print(base64.b64encode(ch_bytes))</div></pre></td></tr></table></figure>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>作为一种二进制到字符串的编码方式，Base64可以编码任意的二进制数据，便于文本显示和接口处理；但因为是将3个字节编码成4个字节，二进制数据长度相当于增加了1/3=33%左右。</p>
+<h2 id="手动实现Base64"><a href="#手动实现Base64" class="headerlink" title="手动实现Base64"></a>手动实现Base64</h2><p>当然我们也可以实现自己的Base64编码，不过一般没有必要。比如下面是我自己实现的标准Base64编码，效率慢了8倍左右，仅供学习参考，网上也有其他方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> string</div><div class="line"></div><div class="line"><span class="comment"># 定义64字符</span></div><div class="line">base_charset = string.ascii_uppercase+string.ascii_lowercase+string.digits+<span class="string">"+/"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_b64_encode</span><span class="params">(ori_bytes)</span>:</span></div><div class="line">    ret, ori_len = <span class="string">""</span>, len(ori_bytes)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, ori_len, <span class="number">3</span>):</div><div class="line">        <span class="comment"># 第一组</span></div><div class="line">        first = (ori_bytes[i] &amp; <span class="number">0xFC</span>) &gt;&gt; <span class="number">2</span></div><div class="line">        ret += base_charset[first]</div><div class="line"></div><div class="line">        <span class="comment"># 第二组</span></div><div class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &gt;= ori_len:</div><div class="line">            second = (ori_bytes[i] &amp; <span class="number">0x03</span>)*<span class="number">16</span></div><div class="line">            ret += base_charset[second] + <span class="string">"=="</span></div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">        second = (ori_bytes[i] &amp; <span class="number">0x03</span>)*<span class="number">16</span> + ((ori_bytes[i+<span class="number">1</span>] &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>)</div><div class="line">        ret += base_charset[second]</div><div class="line"></div><div class="line">        <span class="comment"># 第三组</span></div><div class="line">        <span class="keyword">if</span> i+<span class="number">2</span> &gt;= ori_len:</div><div class="line">            third = (ori_bytes[i+<span class="number">1</span>] &amp; <span class="number">0x0F</span>)*<span class="number">4</span></div><div class="line">            ret += base_charset[third] + <span class="string">"="</span></div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">        third = (ori_bytes[i+<span class="number">1</span>] &amp; <span class="number">0x0F</span>)*<span class="number">4</span> + ((ori_bytes[i+<span class="number">2</span>] &amp; <span class="number">0xC0</span>) &gt;&gt; <span class="number">6</span>)</div><div class="line">        ret += base_charset[third]</div><div class="line"></div><div class="line">        <span class="comment"># 第四组</span></div><div class="line">        fourth = ori_bytes[i+<span class="number">2</span>] &amp; <span class="number">0x3F</span></div><div class="line">        ret += base_charset[fourth]</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ret</div><div class="line"></div><div class="line">print(my_b64_encode(<span class="string">b'ManM'</span>))  <span class="comment"># TWFuTQ==</span></div></pre></td></tr></table></figure>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.python.org/3/library/base64.html" target="_blank" rel="external">Python base64</a></li>
+<li><a href="https://docs.python.org/3/library/string.html" target="_blank" rel="external">Python string</a></li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/DepthPython/Base64" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Base64" target="_blank" rel="external">维基百科 Base64</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431954588961d6b6f51000ca4279a3415ce14ed9d709000" target="_blank" rel="external">廖雪峰Python教程</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="Base64" scheme="http://ex2tron.wang/tags/Base64/"/>
+    
+  </entry>
   
   <entry>
     <title>【树莓派】变身全能无线路由器(2/2B)</title>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【depth-python】base64 |
+    
+    ex2tron&#39;s Tech Blog
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？">
+<meta name="keywords" content="Python,Base64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Depth-Python】Base64">
+<meta property="og:url" content="http://ex2tron.wang/base64/index.html">
+<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:description" content="我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.ex2tron.top/depth_python_base64_cover.jpg">
+<meta property="og:updated_time" content="2019-05-01T14:02:49.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Depth-Python】Base64">
+<meta name="twitter:description" content="我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？">
+<meta name="twitter:image" content="http://pic.ex2tron.top/depth_python_base64_cover.jpg">
+  
+  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+</head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【Depth-Python】理解Base64" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/depth_python_base64_cover.jpg" rel="gallery_cjv5ajw880032h4590gz4h90j">
+        <img src="http://pic.ex2tron.top/depth_python_base64_cover.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Depth-Python】Base64
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/base64/" class="article-date">
+	  <time datetime="2019-04-28T14:20:53.000Z" itemprop="datePublished">April 28, 2019</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？<a id="more"></a></p>
+<blockquote>
+<p><em>Valar Morghulis, Valar Dohaeris.</em>  ——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《Game of Thrones》</a><br><em>凡人皆有一死，凡人皆须侍奉。</em>——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《权力的游戏 》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<hr>
+<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>Base64是一种用64个可打印字符来表示二进制数据的一种方法。</p>
+<p>原理其实很简单，首先定义一个长度为64的字符数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">base = [<span class="string">'A'</span>, <span class="string">'B'</span>, ..., <span class="string">'Z'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, ..., <span class="string">'z'</span>, <span class="string">'0'</span>, <span class="string">'1'</span>, ..., <span class="string">'9'</span>, <span class="string">'+'</span>, <span class="string">'/'</span>]</div></pre></td></tr></table></figure>
+<p>标准的Base64编码是由26个大写字母、26个小写字母、[0-9]10个数字、’+’、’/‘共64个字符组成的。你也可以自定义这些字符来实现自己的Base64编码。</p>
+<p>将原二进制数据每3个字节为一组进行划分，一共3×8=24bit，划分成4组，也就是每组6bit，6bit可表示的长度为2^6=64，这就是Base64名称的由来。然后将每组6bit对应的值作为索引，在前面定义的数组中查表，就得到了编码后对应的4个字符。</p>
+<p>比如，把”Man”进行Base64编码：</p>
+<p><img src="http://pic.ex2tron.top/depth_python_base64_sample2.jpg" alt=""></p>
+<p>Python中可以直接用内置的<a href="#接口文档">base64</a>模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line">print(base64.b64encode(<span class="string">b'Man'</span>))  <span class="comment"># 'TWFu'</span></div><div class="line"><span class="comment"># 或：base64.b64encode(b'\x4D\x61\x6E')</span></div><div class="line">print(base64.b64decode(<span class="string">'TWFu'</span>))  <span class="comment"># 'man'</span></div></pre></td></tr></table></figure>
+<p><img src="http://pic.ex2tron.top/depth_python_base64_index_table.jpg" alt="@维基百科 Base64"></p>
+<h3 id="不是3的倍数"><a href="#不是3的倍数" class="headerlink" title="不是3的倍数"></a>不是3的倍数</h3><p>Base64是每3个字节编码的，遇到不足3个字节的情况时，会在末尾补0，再在末尾加个1个或2个 ‘=’号表示补了多少个字节，解码时再将’=’去掉。</p>
+<p>比如参考前面的’Man’，对’M’单独进行编码：第一组还是原有的6bit，结果是字符’T’；第二组只剩下’01’，补充4个0，即’010000’，索引值为16，对应的字符是’Q’；第三和第四组都是0了，所以再加两个’=’，最终结果是’TQ==’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(base64.b64encode(<span class="string">b'M'</span>))  <span class="comment"># 'TQ=='</span></div></pre></td></tr></table></figure>
+<p><strong>总之，Base64编码后的长度永远是4的倍数！</strong></p>
+<h3 id="URL中特殊字符的处理"><a href="#URL中特殊字符的处理" class="headerlink" title="URL中特殊字符的处理"></a>URL中特殊字符的处理</h3><p>标准Base64编码中会出现’+’和’/‘字符，如果在url中使用，url编码器会转换成’%2B’和’%2F’，解码或数据库存储时需要将%再次转换。为避免出错并简化操作，提出了一种可用于url的改进Base64编码：将’+’和’/‘分别改成’-‘和’_’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(base64.b64encode(<span class="string">b'\xFB\xfe'</span>))  <span class="comment"># '+/4='</span></div><div class="line">print(base64.urlsafe_b64encode(<span class="string">b'\xFB\xfe'</span>))  <span class="comment"># '-_4='</span></div></pre></td></tr></table></figure>
+<h3 id="图片Base64编码"><a href="#图片Base64编码" class="headerlink" title="图片Base64编码"></a>图片Base64编码</h3><p>图片的Base64编码用的较多。Python打开文件时，指定’rb’参数，可以获取原始的二进制数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'lena.jpg'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> pic:</div><div class="line">    pic_str_data = base64.b64encode(pic.read())</div><div class="line"></div><div class="line">print(pic_str_data)</div></pre></td></tr></table></figure>
+<h3 id="中文Base64编码"><a href="#中文Base64编码" class="headerlink" title="中文Base64编码"></a>中文Base64编码</h3><p>Base64只跟二进制有关系，跟字符集无关。对于中文的话，按照你使用的字符集（比如utf-8）编码成二进制后再用Base64就可以了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ch_bytes = <span class="string">'中'</span>.encode(<span class="string">'utf-8'</span>) <span class="comment"># b'\xe4\xb8\xad'</span></div><div class="line"><span class="comment"># encode()默认是utf-8，可省略</span></div><div class="line">print(ch_bytes.decode()) <span class="comment"># '中'</span></div><div class="line"></div><div class="line">print(base64.b64encode(ch_bytes))</div></pre></td></tr></table></figure>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>作为一种二进制到字符串的编码方式，Base64可以编码任意的二进制数据，便于文本显示和接口处理；但因为是将3个字节编码成4个字节，二进制数据长度相当于增加了1/3=33%左右。</p>
+<h2 id="手动实现Base64"><a href="#手动实现Base64" class="headerlink" title="手动实现Base64"></a>手动实现Base64</h2><p>当然我们也可以实现自己的Base64编码，不过一般没有必要。比如下面是我自己实现的标准Base64编码，效率慢了8倍左右，仅供学习参考，网上也有其他方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> string</div><div class="line"></div><div class="line"><span class="comment"># 定义64字符</span></div><div class="line">base_charset = string.ascii_uppercase+string.ascii_lowercase+string.digits+<span class="string">"+/"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_b64_encode</span><span class="params">(ori_bytes)</span>:</span></div><div class="line">    ret, ori_len = <span class="string">""</span>, len(ori_bytes)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, ori_len, <span class="number">3</span>):</div><div class="line">        <span class="comment"># 第一组</span></div><div class="line">        first = (ori_bytes[i] &amp; <span class="number">0xFC</span>) &gt;&gt; <span class="number">2</span></div><div class="line">        ret += base_charset[first]</div><div class="line"></div><div class="line">        <span class="comment"># 第二组</span></div><div class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &gt;= ori_len:</div><div class="line">            second = (ori_bytes[i] &amp; <span class="number">0x03</span>)*<span class="number">16</span></div><div class="line">            ret += base_charset[second] + <span class="string">"=="</span></div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">        second = (ori_bytes[i] &amp; <span class="number">0x03</span>)*<span class="number">16</span> + ((ori_bytes[i+<span class="number">1</span>] &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>)</div><div class="line">        ret += base_charset[second]</div><div class="line"></div><div class="line">        <span class="comment"># 第三组</span></div><div class="line">        <span class="keyword">if</span> i+<span class="number">2</span> &gt;= ori_len:</div><div class="line">            third = (ori_bytes[i+<span class="number">1</span>] &amp; <span class="number">0x0F</span>)*<span class="number">4</span></div><div class="line">            ret += base_charset[third] + <span class="string">"="</span></div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">        third = (ori_bytes[i+<span class="number">1</span>] &amp; <span class="number">0x0F</span>)*<span class="number">4</span> + ((ori_bytes[i+<span class="number">2</span>] &amp; <span class="number">0xC0</span>) &gt;&gt; <span class="number">6</span>)</div><div class="line">        ret += base_charset[third]</div><div class="line"></div><div class="line">        <span class="comment"># 第四组</span></div><div class="line">        fourth = ori_bytes[i+<span class="number">2</span>] &amp; <span class="number">0x3F</span></div><div class="line">        ret += base_charset[fourth]</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ret</div><div class="line"></div><div class="line">print(my_b64_encode(<span class="string">b'ManM'</span>))  <span class="comment"># TWFuTQ==</span></div></pre></td></tr></table></figure>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.python.org/3/library/base64.html" target="_blank" rel="external">Python base64</a></li>
+<li><a href="https://docs.python.org/3/library/string.html" target="_blank" rel="external">Python string</a></li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/DepthPython/Base64" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Base64" target="_blank" rel="external">维基百科 Base64</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431954588961d6b6f51000ca4279a3415ce14ed9d709000" target="_blank" rel="external">廖雪峰Python教程</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Base64/">Base64</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/raspberrypi-as-router/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【树莓派】变身全能无线路由器(2/2B)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Base64"><span class="nav-number">1.</span> <span class="nav-text">Base64</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不是3的倍数"><span class="nav-number">1.1.</span> <span class="nav-text">不是3的倍数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL中特殊字符的处理"><span class="nav-number">1.2.</span> <span class="nav-text">URL中特殊字符的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片Base64编码"><span class="nav-number">1.3.</span> <span class="nav-text">图片Base64编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文Base64编码"><span class="nav-number">1.4.</span> <span class="nav-text">中文Base64编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">1.5.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手动实现Base64"><span class="nav-number">2.</span> <span class="nav-text">手动实现Base64</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">3.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2019
+              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              Made by ex2tron | 2019
+                <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+                <!--  -->
+                  <!-- <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span> -->
+                  <!--  -->
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp | 电影台词分享：
+              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
