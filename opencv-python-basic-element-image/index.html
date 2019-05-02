@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习如何加载图片，显示并保存图片。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
-<meta property="og:updated_time" content="2018-11-26T08:49:19.839Z">
+<meta property="og:updated_time" content="2019-05-02T15:14:14.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程2：基本元素-图片">
 <meta name="twitter:description" content="学习如何加载图片，显示并保存图片。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" rel="gallery_cjv5ajw6p0019h459jttu2z7w">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" rel="gallery_cjv6swoqc0015bk59zmm55lpv">
         <img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" itemprop="image">
       </a>
     
@@ -258,9 +258,16 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li><p>打开lena.jpg并显示，如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
 </li>
-<li><p>Matplotlib是Python中常用的一个绘图库，请学习<a href="/opencv-python-extra-using-matplotlib/">番外篇：Matplotlib显示图像</a>。</p>
+<li><p>Matplotlib是Python中常用的一个绘图库，请学习<a href="/opencv-python-extra-high-quality-save-and-using-matplotlib/">番外篇：无损保存和Matplotlib使用</a>。</p>
 </li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d3/d63/classcv_1_1Mat.html" target="_blank" rel="external">Mat Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56" target="_blank" rel="external">cv2.imread()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga453d42fe4cb60e5723281a89973ee563" target="_blank" rel="external">cv2.imshow()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b" target="_blank" rel="external">cv.namedWindow()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/02.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></li>
@@ -328,11 +335,11 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/opencv-python-extra-using-matplotlib/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/opencv-python-extra-high-quality-save-and-using-matplotlib/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Python+OpenCV教程番外篇2：Matplotlib显示图像
+          Python+OpenCV教程番外篇2：无损保存和Matplotlib使用
         
       </div>
     </a>
@@ -354,7 +361,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载图片"><span class="nav-number">2.1.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示图片"><span class="nav-number">2.2.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存图片"><span class="nav-number">2.3.</span> <span class="nav-text">保存图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载图片"><span class="nav-number">2.1.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示图片"><span class="nav-number">2.2.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存图片"><span class="nav-number">2.3.</span> <span class="nav-text">保存图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">5.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

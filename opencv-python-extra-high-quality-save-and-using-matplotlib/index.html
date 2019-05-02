@@ -13,7 +13,7 @@
   
   <title>
     
-    python+opencv教程番外篇2：matplotlib显示图像 |
+    python+opencv教程番外篇2：无损保存和matplotlib使用 |
     
     ex2tron&#39;s Tech Blog
   </title>
@@ -24,19 +24,19 @@
   
   
   
-  <meta name="description" content="学习如何使用Matplotlib显示OpenCV图像。">
+  <meta name="description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
 <meta name="keywords" content="OpenCV,Python,图像处理,Matplotlib">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+OpenCV教程番外篇2：Matplotlib显示图像">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-using-matplotlib/index.html">
+<meta property="og:title" content="Python+OpenCV教程番外篇2：无损保存和Matplotlib使用">
+<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/index.html">
 <meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
-<meta property="og:description" content="学习如何使用Matplotlib显示OpenCV图像。">
+<meta property="og:description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
-<meta property="og:updated_time" content="2019-03-20T05:40:36.563Z">
+<meta property="og:updated_time" content="2019-05-02T15:24:52.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程番外篇2：Matplotlib显示图像">
-<meta name="twitter:description" content="学习如何使用Matplotlib显示OpenCV图像。">
+<meta name="twitter:title" content="Python+OpenCV教程番外篇2：无损保存和Matplotlib使用">
+<meta name="twitter:description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
   
   <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
@@ -173,13 +173,13 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Python-OpenCV教程番外篇2：Matplotlib显示图像" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Python-OpenCV教程番外篇2：无损保存和Matplotlib使用" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" rel="gallery_cjv5ajw7l0028h459lsbfiew6">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" rel="gallery_cjv6swor20025bk5960psize7">
         <img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" itemprop="image">
       </a>
     
@@ -191,7 +191,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Python+OpenCV教程番外篇2：Matplotlib显示图像
+      Python+OpenCV教程番外篇2：无损保存和Matplotlib使用
     </h1>
   
 
@@ -199,7 +199,7 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/opencv-python-extra-using-matplotlib/" class="article-date">
+	Posted on <a href="/opencv-python-extra-high-quality-save-and-using-matplotlib/" class="article-date">
 	  <time datetime="2017-12-06T07:55:15.000Z" itemprop="datePublished">December 6, 2017</time>
 	</a>
 
@@ -212,16 +212,57 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
+        <p>了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <hr>
-<p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
+<h2 id="无损保存"><a href="#无损保存" class="headerlink" title="无损保存"></a>无损保存</h2><p>事实上，我们日常看到的大部分图片都是压缩过的，那么都有哪些常见的图片格式呢？</p>
+<h3 id="常用图片格式"><a href="#常用图片格式" class="headerlink" title="常用图片格式"></a>常用图片格式</h3><ul>
+<li><p><a href="https://baike.baidu.com/item/BMP/35116" target="_blank" rel="external">bmp</a></p>
+<ul>
+<li>全称：Bitmap</li>
+<li><strong>不压缩</strong></li>
+</ul>
+</li>
+<li><p><a href="https://baike.baidu.com/item/JPEG" target="_blank" rel="external">jpg</a></p>
+<ul>
+<li>全称：Joint Photographic Experts Group</li>
+<li><strong>有损压缩方式</strong></li>
+</ul>
+</li>
+<li><p><a href="https://baike.baidu.com/item/PNG" target="_blank" rel="external">png</a></p>
+<ul>
+<li>全称：Portable Network Graphics</li>
+<li><strong>无损压缩方式</strong></li>
+</ul>
+</li>
+</ul>
+<p>简单来说，同一个文件保存成不同的格式后，文件大小上bmp肯定是最大的，而png和jpg，不同的压缩比结果会有所不同。可以用画图工具新建一副100×100的图像，分别保存成这三种格式来验证：</p>
+<p><img src="http://pic.ex2tron.top/cv2_high_save_mspaint_format.jpg" alt=""></p>
+<h3 id="高质量保存"><a href="#高质量保存" class="headerlink" title="高质量保存"></a>高质量保存</h3><p>用cv2.imwrite()保存图片时，可以传入第三个参数，用于控制保存质量：</p>
+<ul>
+<li><code>cv2.IMWRITE_JPEG_QUALITY</code>：jpg质量控制，取值0~100，值越大，质量越好，默认为95</li>
+<li><code>cv2.IMWRITE_PNG_COMPRESSION</code>：png质量控制，取值0~9，值越大，压缩比越高，默认为1</li>
+</ul>
+<p>还有诸如<code>CV_IMWRITE_WEBP_QUALITY</code>的参量，不常用，请参考：<a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="external">ImwriteFlags</a>。</p>
+<p>举例来说，原图lena.jpg的分辨率是350×350，大小49.7KB。我们把它转成不同格式看下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">new_img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># bmp</span></div><div class="line">cv2.imwrite(<span class="string">'img_bmp.bmp'</span>,new_img) <span class="comment"># 文件大小：359KB</span></div><div class="line"></div><div class="line"><span class="comment"># jpg 默认95%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg95.jpg'</span>,new_img) <span class="comment"># 文件大小：52.3KB</span></div><div class="line"><span class="comment"># jpg 20%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg20.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">20</span>]) <span class="comment"># 文件大小：8.01KB</span></div><div class="line"><span class="comment"># jpg 100%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg100.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">100</span>]) <span class="comment"># 文件大小：82.5KB</span></div><div class="line"></div><div class="line"><span class="comment"># png 默认1压缩比</span></div><div class="line">cv2.imwrite(<span class="string">'img_png1.png'</span>,new_img) <span class="comment"># 文件大小：240KB</span></div><div class="line"><span class="comment"># png 9压缩比</span></div><div class="line">cv2.imwrite(<span class="string">'img_png9.png'</span>,new_img,[int(cv2.IMWRITE_PNG_COMPRESSION),<span class="number">9</span>]) <span class="comment"># 文件大小：207KB</span></div></pre></td></tr></table></figure>
+<p>可以看到：</p>
+<ul>
+<li>bmp文件是最大的，没有任何压缩（1个像素点1byte，3通道的彩色图总大小：350×350×3/1024 ≈ 359 KB）</li>
+<li>jpg/png本身就有压缩的，所以就算是100%的质量保存，体积也比bmp小很多</li>
+<li>jpg的容量优势很明显，这也是它为什么如此流行的原因</li>
+</ul>
+<blockquote>
+<p>思考：为什么原图49.7KB，保存成bmp或其他格式反而大了呢？</p>
+</blockquote>
+<p>这是个很有趣的问题，很多童鞋都问过我。这里需要明确的是保存新格式时，<strong>容量大小跟原图的容量没有直接关系，而是取决于原图的分辨率大小和原图本身的内容（压缩方式）</strong>，所以lena.jpg保存成不压缩的bmp格式时，容量大小就是固定的350×350×3/1024 ≈ 359 KB；另外，容量变大不代表画质提升噢，不然就逆天了~~~</p>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
 <h2 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
 <h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"></div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <blockquote>
-<p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，下面解释下：</p>
+<p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，说明一下：</p>
 </blockquote>
 <p>熟悉Python的童鞋应该知道，对一个字符串s翻转可以这样写：<code>s[::-1]</code>，’abc’变成’cba’，-1表示逆序。图片是二维的，所以完整地复制一副图像就是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img2 = img[:,:] <span class="comment"># 写全就是：img2 = img[0:height,0:width]</span></div></pre></td></tr></table></figure>
@@ -230,8 +271,13 @@ var themeMenus = {};
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h2 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h2><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> pli</div><div class="line"></div><div class="line">img = pli.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">plt.imshow(img)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片，需放在show()函数之前</span></div><div class="line">plt.savefig(<span class="string">'lena2.jpg'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="external">ImwriteFlags</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20Matplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20%E6%97%A0%E6%8D%9F%E4%BF%9D%E5%AD%98%E5%92%8CMatplotlib%E4%BD%BF%E7%94%A8" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://segmentfault.com/a/1190000013589397" target="_blank" rel="external">聊一聊几种常用web图片格式</a></li>
 <li><a href="www.matplotlib.org/">Matplotlib官网</a></li>
 </ul>
 
@@ -323,7 +369,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示灰度图"><span class="nav-number">1.</span> <span class="nav-text">显示灰度图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示彩色图"><span class="nav-number">2.</span> <span class="nav-text">显示彩色图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载和保存图片"><span class="nav-number">3.</span> <span class="nav-text">加载和保存图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#无损保存"><span class="nav-number">1.</span> <span class="nav-text">无损保存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用图片格式"><span class="nav-number">1.1.</span> <span class="nav-text">常用图片格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高质量保存"><span class="nav-number">1.2.</span> <span class="nav-text">高质量保存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-number">2.</span> <span class="nav-text">Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示灰度图"><span class="nav-number">3.</span> <span class="nav-text">显示灰度图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示彩色图"><span class="nav-number">4.</span> <span class="nav-text">显示彩色图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载和保存图片"><span class="nav-number">5.</span> <span class="nav-text">加载和保存图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">6.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">7.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

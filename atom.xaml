@@ -2869,7 +2869,7 @@
     <link href="http://ex2tron.wang/opencv-python-basic-operations/"/>
     <id>http://ex2tron.wang/opencv-python-basic-operations/</id>
     <published>2017-12-07T04:13:15.000Z</published>
-    <updated>2018-11-26T08:49:03.299Z</updated>
+    <updated>2019-05-02T15:19:40.475Z</updated>
     
     <content type="html"><![CDATA[<p>学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2895,7 +2895,7 @@
 <p><code>img.dtype</code>获取图像数据类型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.dtype)  <span class="comment"># uint8</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码应该对这个属性加以判断。</p>
+<p>经验之谈：多数错误是因为数据类型不对导致的，所以健壮的代码应该对这个属性加以判断。</p>
 </blockquote>
 <p><code>img.size</code>获取图像总像素数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*247*3=194883</span></div></pre></td></tr></table></figure>
@@ -2914,6 +2914,10 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>打开lena.jpg，将帽子部分（高：25~120，宽：50~220）的红色通道截取出来并显示。</li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0547c7fed86152d7e9d0096029c8518a" target="_blank" rel="external">cv2.split()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga7d7b4d6c6ee504b30a20b1680029c7b4" target="_blank" rel="external">cv2.merge()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/04.%20%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops" target="_blank" rel="external">Basic Operations on Images</a></li>
@@ -2944,7 +2948,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-trackbar/"/>
     <id>http://ex2tron.wang/opencv-python-extra-trackbar/</id>
     <published>2017-12-06T14:23:11.000Z</published>
-    <updated>2018-11-15T14:19:40.211Z</updated>
+    <updated>2019-05-02T15:07:50.631Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用滑动条动态调整参数。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2962,6 +2966,10 @@
 <p><img src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.createTrackbar()</code>用来创建滑动条，可以在回调函数中或使用<code>cv2.getTrackbarPos()</code>得到滑块的位置</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#gaf78d2155d30b728fc413803745b67a9b" target="_blank" rel="external">cv2.createTrackbar()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga122632e9e91b9ec06943472c55d9cda8" target="_blank" rel="external">cv2.getTrackbarPos()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8703.%20%E6%BB%91%E5%8A%A8%E6%9D%A1" target="_blank" rel="external">本节源码</a></li>
@@ -2993,7 +3001,7 @@
     <link href="http://ex2tron.wang/opencv-python-open-camera/"/>
     <id>http://ex2tron.wang/opencv-python-open-camera/</id>
     <published>2017-12-06T08:38:02.000Z</published>
-    <updated>2018-11-26T08:49:12.848Z</updated>
+    <updated>2019-05-02T15:09:34.866Z</updated>
     
     <content type="html"><![CDATA[<p>学习打开摄像头捕获照片、播放本地视频、录制视频等。<a id="more"></a>图片/视频等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -3005,7 +3013,7 @@
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数0指的是摄像头的编号，如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1，依此类推。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打开摄像头并灰度化显示</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 获取一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line">    <span class="comment"># 将这帧转换为灰度图</span></div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <p><code>capture.read()</code>函数返回的第1个参数ret(return value缩写)是一个布尔值，表示当前这一帧是否获取正确。<code>cv2.cvtColor()</code>用来转换颜色，这里将彩色图转成灰度图。</p>
-<p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/3.3.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">VideoCaptureProperties</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加下面的代码：</p>
+<p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/4.0.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">VideoCaptureProperties</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加下面的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取捕获的分辨率</span></div><div class="line"><span class="comment"># propId可以直接写数字，也可以用OpenCV的符号表示</span></div><div class="line">width, height = capture.get(<span class="number">3</span>), capture.get(<span class="number">4</span>)</div><div class="line">print(width, height)</div><div class="line"></div><div class="line"><span class="comment"># 以原分辨率的一倍来捕获</span></div><div class="line">capture.set(cv2.CAP_PROP_FRAME_WIDTH, width * <span class="number">2</span>)</div><div class="line">capture.set(cv2.CAP_PROP_FRAME_HEIGHT, height * <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到。</p>
@@ -3029,6 +3037,11 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>请先阅读<a href="/opencv-python-extra-trackbar/">番外篇：滑动条</a>，然后实现一个可以拖动滑块播放视频的功能。（提示：需要用到 <code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）。</li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d8/dfe/classcv_1_1VideoCapture.html" target="_blank" rel="external">VideoCapture Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/dd/d9e/classcv_1_1VideoWriter.html" target="_blank" rel="external">VideoWriter Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="external">cv2.cvtColor()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/03.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs by FOURCC</a></li>
@@ -3054,22 +3067,63 @@
   </entry>
   
   <entry>
-    <title>Python+OpenCV教程番外篇2：Matplotlib显示图像</title>
-    <link href="http://ex2tron.wang/opencv-python-extra-using-matplotlib/"/>
-    <id>http://ex2tron.wang/opencv-python-extra-using-matplotlib/</id>
+    <title>Python+OpenCV教程番外篇2：无损保存和Matplotlib使用</title>
+    <link href="http://ex2tron.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/"/>
+    <id>http://ex2tron.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2019-03-20T05:40:36.563Z</updated>
+    <updated>2019-05-02T15:24:52.324Z</updated>
     
-    <content type="html"><![CDATA[<p>学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
+    <content type="html"><![CDATA[<p>了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <hr>
-<p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
+<h2 id="无损保存"><a href="#无损保存" class="headerlink" title="无损保存"></a>无损保存</h2><p>事实上，我们日常看到的大部分图片都是压缩过的，那么都有哪些常见的图片格式呢？</p>
+<h3 id="常用图片格式"><a href="#常用图片格式" class="headerlink" title="常用图片格式"></a>常用图片格式</h3><ul>
+<li><p><a href="https://baike.baidu.com/item/BMP/35116" target="_blank" rel="external">bmp</a></p>
+<ul>
+<li>全称：Bitmap</li>
+<li><strong>不压缩</strong></li>
+</ul>
+</li>
+<li><p><a href="https://baike.baidu.com/item/JPEG" target="_blank" rel="external">jpg</a></p>
+<ul>
+<li>全称：Joint Photographic Experts Group</li>
+<li><strong>有损压缩方式</strong></li>
+</ul>
+</li>
+<li><p><a href="https://baike.baidu.com/item/PNG" target="_blank" rel="external">png</a></p>
+<ul>
+<li>全称：Portable Network Graphics</li>
+<li><strong>无损压缩方式</strong></li>
+</ul>
+</li>
+</ul>
+<p>简单来说，同一个文件保存成不同的格式后，文件大小上bmp肯定是最大的，而png和jpg，不同的压缩比结果会有所不同。可以用画图工具新建一副100×100的图像，分别保存成这三种格式来验证：</p>
+<p><img src="http://pic.ex2tron.top/cv2_high_save_mspaint_format.jpg" alt=""></p>
+<h3 id="高质量保存"><a href="#高质量保存" class="headerlink" title="高质量保存"></a>高质量保存</h3><p>用cv2.imwrite()保存图片时，可以传入第三个参数，用于控制保存质量：</p>
+<ul>
+<li><code>cv2.IMWRITE_JPEG_QUALITY</code>：jpg质量控制，取值0~100，值越大，质量越好，默认为95</li>
+<li><code>cv2.IMWRITE_PNG_COMPRESSION</code>：png质量控制，取值0~9，值越大，压缩比越高，默认为1</li>
+</ul>
+<p>还有诸如<code>CV_IMWRITE_WEBP_QUALITY</code>的参量，不常用，请参考：<a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="external">ImwriteFlags</a>。</p>
+<p>举例来说，原图lena.jpg的分辨率是350×350，大小49.7KB。我们把它转成不同格式看下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">new_img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># bmp</span></div><div class="line">cv2.imwrite(<span class="string">'img_bmp.bmp'</span>,new_img) <span class="comment"># 文件大小：359KB</span></div><div class="line"></div><div class="line"><span class="comment"># jpg 默认95%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg95.jpg'</span>,new_img) <span class="comment"># 文件大小：52.3KB</span></div><div class="line"><span class="comment"># jpg 20%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg20.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">20</span>]) <span class="comment"># 文件大小：8.01KB</span></div><div class="line"><span class="comment"># jpg 100%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg100.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">100</span>]) <span class="comment"># 文件大小：82.5KB</span></div><div class="line"></div><div class="line"><span class="comment"># png 默认1压缩比</span></div><div class="line">cv2.imwrite(<span class="string">'img_png1.png'</span>,new_img) <span class="comment"># 文件大小：240KB</span></div><div class="line"><span class="comment"># png 9压缩比</span></div><div class="line">cv2.imwrite(<span class="string">'img_png9.png'</span>,new_img,[int(cv2.IMWRITE_PNG_COMPRESSION),<span class="number">9</span>]) <span class="comment"># 文件大小：207KB</span></div></pre></td></tr></table></figure>
+<p>可以看到：</p>
+<ul>
+<li>bmp文件是最大的，没有任何压缩（1个像素点1byte，3通道的彩色图总大小：350×350×3/1024 ≈ 359 KB）</li>
+<li>jpg/png本身就有压缩的，所以就算是100%的质量保存，体积也比bmp小很多</li>
+<li>jpg的容量优势很明显，这也是它为什么如此流行的原因</li>
+</ul>
+<blockquote>
+<p>思考：为什么原图49.7KB，保存成bmp或其他格式反而大了呢？</p>
+</blockquote>
+<p>这是个很有趣的问题，很多童鞋都问过我。这里需要明确的是保存新格式时，<strong>容量大小跟原图的容量没有直接关系，而是取决于原图的分辨率大小和原图本身的内容（压缩方式）</strong>，所以lena.jpg保存成不压缩的bmp格式时，容量大小就是固定的350×350×3/1024 ≈ 359 KB；另外，容量变大不代表画质提升噢，不然就逆天了~~~</p>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
 <h2 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
 <h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"></div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <blockquote>
-<p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，下面解释下：</p>
+<p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，说明一下：</p>
 </blockquote>
 <p>熟悉Python的童鞋应该知道，对一个字符串s翻转可以这样写：<code>s[::-1]</code>，’abc’变成’cba’，-1表示逆序。图片是二维的，所以完整地复制一副图像就是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img2 = img[:,:] <span class="comment"># 写全就是：img2 = img[0:height,0:width]</span></div></pre></td></tr></table></figure>
@@ -3078,15 +3132,20 @@
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h2 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h2><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> pli</div><div class="line"></div><div class="line">img = pli.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">plt.imshow(img)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片，需放在show()函数之前</span></div><div class="line">plt.savefig(<span class="string">'lena2.jpg'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="external">ImwriteFlags</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20Matplotlib%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20%E6%97%A0%E6%8D%9F%E4%BF%9D%E5%AD%98%E5%92%8CMatplotlib%E4%BD%BF%E7%94%A8" target="_blank" rel="external">本节源码</a></li>
+<li><a href="https://segmentfault.com/a/1190000013589397" target="_blank" rel="external">聊一聊几种常用web图片格式</a></li>
 <li><a href="www.matplotlib.org/">Matplotlib官网</a></li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;学习如何使用Matplotlib显示OpenCV图像。
+      &lt;p&gt;了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。
     
     </summary>
     
@@ -3108,7 +3167,7 @@
     <link href="http://ex2tron.wang/opencv-python-basic-element-image/"/>
     <id>http://ex2tron.wang/opencv-python-basic-element-image/</id>
     <published>2017-12-06T07:52:06.000Z</published>
-    <updated>2018-11-26T08:49:19.839Z</updated>
+    <updated>2019-05-02T15:14:14.117Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何加载图片，显示并保存图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -3156,9 +3215,16 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li><p>打开lena.jpg并显示，如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序。</p>
 </li>
-<li><p>Matplotlib是Python中常用的一个绘图库，请学习<a href="/opencv-python-extra-using-matplotlib/">番外篇：Matplotlib显示图像</a>。</p>
+<li><p>Matplotlib是Python中常用的一个绘图库，请学习<a href="/opencv-python-extra-high-quality-save-and-using-matplotlib/">番外篇：无损保存和Matplotlib使用</a>。</p>
 </li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d3/d63/classcv_1_1Mat.html" target="_blank" rel="external">Mat Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56" target="_blank" rel="external">cv2.imread()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga453d42fe4cb60e5723281a89973ee563" target="_blank" rel="external">cv2.imshow()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b" target="_blank" rel="external">cv.namedWindow()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/02.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></li>
@@ -3513,14 +3579,14 @@
     <link href="http://ex2tron.wang/opencv-python/"/>
     <id>http://ex2tron.wang/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2019-03-24T14:48:39.730Z</updated>
+    <updated>2019-05-01T14:46:17.131Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://pic.ex2tron.top/cv2_python_opencv_cover_gif2.gif" alt=""></p>
 <h4 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h4><ol>
 <li><a href="/opencv-python-introduction-and-installation/">简介与安装</a>（了解安装OpenCV-Python） | <a href="/opencv-python-extra-code-optimization/">番外篇1：代码性能优化</a></li>
-<li><a href="/opencv-python-basic-element-image/">基本元素-图片</a>（图片载入/显示/保存） | <a href="/opencv-python-extra-using-matplotlib/">番外篇2：Matplotlib显示图像</a></li>
+<li><a href="/opencv-python-basic-element-image/">基本元素-图片</a>（图片载入/显示/保存） | <a href="/opencv-python-extra-high-quality-save-and-using-matplotlib/">番外篇2：无损保存和Matplotlib使用</a></li>
 <li><a href="/opencv-python-open-camera/">打开摄像头</a>（打开摄像头捕获图片/播放保存视频） | <a href="/opencv-python-extra-trackbar/">番外篇3：滑动条</a></li>
-<li><a href="/opencv-python-basic-operations/">图像基本操作</a>（访问像素点/ROI/通道分离合并）</li>
+<li><a href="/opencv-python-basic-operations/">图像基本操作</a>（访问像素点/ROI/通道分离合并/图片属性）</li>
 <li><a href="/opencv-python-changing-colorspaces/">颜色空间转换</a>（颜色空间转换/追踪特定颜色物体）</li>
 <li><a href="/opencv-python-image-thresholding/">阈值分割</a>（阈值分割/二值化） | <a href="/opencv-python-extra-otsu-thresholding/">番外篇4：Otsu阈值法</a></li>
 <li><a href="/opencv-python-image-geometric-transformation/">图像几何变换</a>（旋转/平移/缩放/翻转） | <a href="/opencv-python-extra-warpaffine-warpperspective/">番外篇5：仿射变换与透视变换</a></li>

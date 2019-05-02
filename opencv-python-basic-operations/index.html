@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg">
-<meta property="og:updated_time" content="2018-11-26T08:49:03.299Z">
+<meta property="og:updated_time" content="2019-05-02T15:19:40.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程4：图像基本操作">
 <meta name="twitter:description" content="学习获取和修改像素点的值，ROI感兴趣区域，通道分离合并等基本操作。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjv5ajw6u001eh459wh04yiyf">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" rel="gallery_cjv6swoqf001bbk592e5zu13k">
         <img src="http://pic.ex2tron.top/cv2_lena_face_roi_crop.jpg" itemprop="image">
       </a>
     
@@ -236,7 +236,7 @@ var themeMenus = {};
 <p><code>img.dtype</code>获取图像数据类型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.dtype)  <span class="comment"># uint8</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码应该对这个属性加以判断。</p>
+<p>经验之谈：多数错误是因为数据类型不对导致的，所以健壮的代码应该对这个属性加以判断。</p>
 </blockquote>
 <p><code>img.size</code>获取图像总像素数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(img.size)  <span class="comment"># 263*247*3=194883</span></div></pre></td></tr></table></figure>
@@ -255,6 +255,10 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>打开lena.jpg，将帽子部分（高：25~120，宽：50~220）的红色通道截取出来并显示。</li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0547c7fed86152d7e9d0096029c8518a" target="_blank" rel="external">cv2.split()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga7d7b4d6c6ee504b30a20b1680029c7b4" target="_blank" rel="external">cv2.merge()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/04.%20%E5%9B%BE%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops" target="_blank" rel="external">Basic Operations on Images</a></li>
@@ -348,7 +352,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取和修改像素点值"><span class="nav-number">2.1.</span> <span class="nav-text">获取和修改像素点值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片属性"><span class="nav-number">2.2.</span> <span class="nav-text">图片属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROI"><span class="nav-number">2.3.</span> <span class="nav-text">ROI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通道分割与合并"><span class="nav-number">2.4.</span> <span class="nav-text">通道分割与合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取和修改像素点值"><span class="nav-number">2.1.</span> <span class="nav-text">获取和修改像素点值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片属性"><span class="nav-number">2.2.</span> <span class="nav-text">图片属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROI"><span class="nav-number">2.3.</span> <span class="nav-text">ROI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通道分割与合并"><span class="nav-number">2.4.</span> <span class="nav-text">通道分割与合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">5.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

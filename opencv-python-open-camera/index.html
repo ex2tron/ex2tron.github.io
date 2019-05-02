@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
 <meta property="og:description" content="学习打开摄像头捕获照片、播放本地视频、录制视频等。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-26T08:49:12.848Z">
+<meta property="og:updated_time" content="2019-05-02T15:09:34.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程3：打开摄像头">
 <meta name="twitter:description" content="学习打开摄像头捕获照片、播放本地视频、录制视频等。">
@@ -210,7 +210,7 @@ var themeMenus = {};
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h3><p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数0指的是摄像头的编号，如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1，依此类推。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打开摄像头并灰度化显示</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 获取一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line">    <span class="comment"># 将这帧转换为灰度图</span></div><div class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, gray)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <p><code>capture.read()</code>函数返回的第1个参数ret(return value缩写)是一个布尔值，表示当前这一帧是否获取正确。<code>cv2.cvtColor()</code>用来转换颜色，这里将彩色图转成灰度图。</p>
-<p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/3.3.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">VideoCaptureProperties</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加下面的代码：</p>
+<p>另外，通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a href="https://docs.opencv.org/4.0.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d" target="_blank" rel="external">VideoCaptureProperties</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值。比如说，我们在while之前添加下面的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取捕获的分辨率</span></div><div class="line"><span class="comment"># propId可以直接写数字，也可以用OpenCV的符号表示</span></div><div class="line">width, height = capture.get(<span class="number">3</span>), capture.get(<span class="number">4</span>)</div><div class="line">print(width, height)</div><div class="line"></div><div class="line"><span class="comment"># 以原分辨率的一倍来捕获</span></div><div class="line">capture.set(cv2.CAP_PROP_FRAME_WIDTH, width * <span class="number">2</span>)</div><div class="line">capture.set(cv2.CAP_PROP_FRAME_HEIGHT, height * <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到。</p>
@@ -234,6 +234,11 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>请先阅读<a href="/opencv-python-extra-trackbar/">番外篇：滑动条</a>，然后实现一个可以拖动滑块播放视频的功能。（提示：需要用到 <code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）。</li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d8/dfe/classcv_1_1VideoCapture.html" target="_blank" rel="external">VideoCapture Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/dd/d9e/classcv_1_1VideoWriter.html" target="_blank" rel="external">VideoWriter Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="external">cv2.cvtColor()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/03.%20%E6%89%93%E5%BC%80%E6%91%84%E5%83%8F%E5%A4%B4" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://www.fourcc.org/codecs.php" target="_blank" rel="external">Video Codecs by FOURCC</a></li>
@@ -312,9 +317,9 @@ var themeMenus = {};
     </a>
   
   
-    <a href="/opencv-python-extra-using-matplotlib/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/opencv-python-extra-high-quality-save-and-using-matplotlib/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Python+OpenCV教程番外篇2：Matplotlib显示图像</div>
+      <div class="article-nav-title">Python+OpenCV教程番外篇2：无损保存和Matplotlib使用</div>
     </a>
   
 </nav>
@@ -328,7 +333,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开摄像头"><span class="nav-number">2.1.</span> <span class="nav-text">打开摄像头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#播放本地视频"><span class="nav-number">2.2.</span> <span class="nav-text">播放本地视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#录制视频"><span class="nav-number">2.3.</span> <span class="nav-text">录制视频</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开摄像头"><span class="nav-number">2.1.</span> <span class="nav-text">打开摄像头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#播放本地视频"><span class="nav-number">2.2.</span> <span class="nav-text">播放本地视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#录制视频"><span class="nav-number">2.3.</span> <span class="nav-text">录制视频</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">5.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
