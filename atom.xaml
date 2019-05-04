@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-05-01T14:02:49.946Z</updated>
+  <updated>2019-05-04T12:27:55.827Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -16,15 +16,152 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【Depth-Python】处理命令行参数和选项的几种方式</title>
+    <link href="http://ex2tron.wang/command-line-arguments-in-python/"/>
+    <id>http://ex2tron.wang/command-line-arguments-in-python/</id>
+    <published>2019-05-03T02:30:18.000Z</published>
+    <updated>2019-05-04T12:27:55.827Z</updated>
+    
+    <content type="html"><![CDATA[<p>设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：<strong>从外部获取配置参量，而不是直接修改代码</strong>。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：<a href="https://click.palletsprojects.com/en/7.x/" target="_blank" rel="external">click</a>。<a id="more"></a></p>
+<p>一般来说内置就够用了，所以本节主要看下内置的三种方式。</p>
+<blockquote>
+<p><em>Louis, I think this is the beginning of a beautiful friendship.</em>  ——<a href="https://movie.douban.com/subject/1296753/" target="_blank" rel="external">《Casablanca》</a><br><em>路易，我想这是美好友谊的开始。</em>——<a href="https://movie.douban.com/subject/1296753/" target="_blank" rel="external">《卡萨布兰卡》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+</blockquote>
+<hr>
+<h2 id="sys-argv"><a href="#sys-argv" class="headerlink" title="sys.argv"></a>sys.argv</h2><p>这是最常用的一种方式，命令行传入的参数全部存储在sys.argv(argument values)这个列表中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line">print(type(sys.argv)) <span class="comment"># list</span></div></pre></td></tr></table></figure>
+<p>需要注意的是，Python后面跟的第一个文本是第一个参数，所以一般<strong>脚本名是第一个参数</strong>。如下面脚本名为<code>using_sys_argv.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">"参数个数：\t%s"</span>%len(sys.argv))</div><div class="line">print(<span class="string">'脚本名：\t%s'</span>%sys.argv[<span class="number">0</span>])</div><div class="line">print(<span class="string">'参数列表：'</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(sys.argv)):</div><div class="line">    print(<span class="string">'\t\t参数%s: %s'</span>%(i,sys.argv[i]))</div></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>python using_sys_argv.py</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">参数个数：      1</div><div class="line">脚本名：        using_sys_argv.py</div><div class="line">参数列表：</div></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>python using_sys_argv.py tencent wang</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">参数个数：      3</div><div class="line">脚本名：        using_sys_argv.py</div><div class="line">参数列表：</div><div class="line">                参数1: tencent</div><div class="line">                参数2: wang</div></pre></td></tr></table></figure>
+<p><strong>这种方式虽然很简单，但不能很好地识别命令行选项</strong>，需要自己写额外代码，如：</p>
+<ul>
+<li>运行<code>python using_sys_argv.py -c tencent --name wang</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">参数个数：      5</div><div class="line">脚本名：        using_sys_argv.py</div><div class="line">参数列表：</div><div class="line">                参数1: -c</div><div class="line">                参数2: tencent</div><div class="line">                参数3: --name</div><div class="line">                参数4: wang</div></pre></td></tr></table></figure>
+<p>如上，sys.argv统一识别成了参数量。</p>
+<h2 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h2><p>argparse是Python内置的模块，它会从sys.argv中正确<strong>解析出命令行选项和参数，并自动生成帮助和使用信息</strong>。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>argparse使用基本是三个步骤：</p>
+<ul>
+<li>创建<code>ArgumentParser()</code>解析器对象</li>
+<li>使用<code>add_argument()</code>添加参数</li>
+<li>使用<code>parse_args()</code>解析参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line"><span class="comment"># 1.定义解析器</span></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"><span class="comment"># 2.添加参数</span></div><div class="line">parser.add_argument(<span class="string">'integer'</span>,type=int,help=<span class="string">'base number x'</span>)</div><div class="line"><span class="comment"># 3.解析参数</span></div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line">print(args.integer)</div></pre></td></tr></table></figure>
+<p>上面就是argparse的一个简单示例，运行下看看效果：</p>
+<ul>
+<li>直接运行<code>python using_argparse.py</code>，会报错：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">usage: using_argparse.py [-h] <span class="built_in">integer</span></div><div class="line">using_argparse.py: error: the following arguments are required: <span class="built_in">integer</span></div></pre></td></tr></table></figure>
+<p>提示通过<code>-h</code>获取帮助，并且<code>integer</code>这个参数是必须的。</p>
+<ul>
+<li>运行<code>python using_argparse.py -h</code>，显示帮助文档：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">usage: using_argparse.py [-h] <span class="built_in">integer</span></div><div class="line"></div><div class="line">positional arguments:</div><div class="line">  <span class="built_in">integer</span>     base number x</div><div class="line"></div><div class="line">optional arguments:</div><div class="line">  -h, --<span class="built_in">help</span>  show this <span class="built_in">help</span> message and <span class="built_in">exit</span></div></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>python using_argparse.py 100</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">100</div></pre></td></tr></table></figure>
+<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>平常使用最多的应该是添加短选项<code>-</code>或长选项<code>--</code>的可选参数，比如要计算一个数的n次方：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line"><span class="comment"># 1.定义解析器</span></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"><span class="comment"># 2.添加位置参数</span></div><div class="line">parser.add_argument(<span class="string">'integer'</span>,type=int,help=<span class="string">'base number x'</span>)</div><div class="line"><span class="comment"># 添加可选参数</span></div><div class="line">parser.add_argument(<span class="string">'--powern'</span>,type=int,help=<span class="string">'n power of a number'</span>)</div><div class="line"><span class="comment"># 3.解析参数</span></div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line"><span class="keyword">if</span> args.powern: <span class="comment"># 判断可选参数</span></div><div class="line">    print(args.integer**args.powern)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(args.integer)</div></pre></td></tr></table></figure>
+<p>此时不加<code>--powern</code>的运行结果跟之前一样，添加后，会计算x^n：</p>
+<ul>
+<li>运行<code>python using_argparse.py 100 --powern 2</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">10000</div></pre></td></tr></table></figure>
+<h3 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h3><p>虽说主要通过三个方法实现，但方法的参数很多，我们挑几个常用的说下，更多请参考<a href="#接口文档">接口文档</a>。</p>
+<ul>
+<li><strong>ArgumentParser()</strong></li>
+</ul>
+<p><img src="http://pic.ex2tron.top/depth_python_argparse_argumentparser_method.jpg" alt=""></p>
+<p>其中最常用的是<code>description</code>项，在脚本帮助文档中起说明作用，如前面代码更改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser = argparse.ArgumentParser(description=<span class="string">'Basic Operations of an Integer.'</span>)</div></pre></td></tr></table></figure>
+<p>此时运行<code>python using_argparse.py -h</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">usage: using_argparse.py [-h] [--powern POWERN] <span class="built_in">integer</span></div><div class="line"></div><div class="line">Basic Operations of an Integer.</div><div class="line"></div><div class="line">positional arguments:</div><div class="line">……</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>add_argument()</strong></li>
+</ul>
+<p><img src="http://pic.ex2tron.top/depth_python_argparse_add_argument_method.jpg" alt=""></p>
+<p>其中参量类型<code>type</code>和帮助信息<code>help</code>不用多讲，其他几个常用的说明一下：</p>
+<ol>
+<li><code>name of flags</code>，想让脚本同一个可选参数既支持短选项<code>-</code>又支持长选项<code>--</code>，可以：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>)</div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line">print(args.foo) <span class="comment"># 注意不是args.f噢！</span></div></pre></td></tr></table></figure>
+<p>这样的话，运行时<code>python script.py -f param</code>或<code>python script.py --foo param</code>都可以。</p>
+<p>2.<code>nargs</code>，要读取的命令行参数个数</p>
+<ul>
+<li><code>nargs=n</code>，表示要读取n个参数，如</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>运行时需要在<code>-f</code>后加两个参数：<code>python script.py -f p1 p2</code></p>
+<ul>
+<li><code>nargs=&#39;*&#39;/&#39;+&#39;</code>，将所有参数合在一个列表中（<code>*</code>号和<code>+</code>号的区别：<code>+</code>号需至少1个参数）：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="string">'+'</span>)</div></pre></td></tr></table></figure>
+<p>运行<code>python script.py -f p1 p2 p3</code>结果为：<code>foo=[&#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;]</code></p>
+<ul>
+<li><code>nargs=&#39;?&#39;</code>，参数没提供时，使用默认值（可选参数是const，位置参数是default）：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="string">'?'</span>,const=<span class="string">'param'</span>)</div><div class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
+<p>运行<code>python script.py -f</code>，结果为：<code>foo=&#39;param&#39;,integer=&#39;0&#39;</code></p>
+<p>3.<code>required</code>，默认情况下，argparse会把<code>-</code>和<code>--</code>的参数作为可选的，如果需要指定成必须的话，可以将required设置为True：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,required=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>运行<code>python script.py</code>会提示：<code>error: the following arguments are required: --foo/-f</code></p>
+<p>4.<code>choices</code>，限定参数值的范围，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</div></pre></td></tr></table></figure>
+<p>运行<code>python scipt.py -f param</code>会提示：<code>error: argument --foo/-f: invalid choice: &#39;param&#39; (choose from &#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;)</code></p>
+<ul>
+<li><strong>parse_args()</strong></li>
+</ul>
+<p><img src="http://pic.ex2tron.top/depth_python_argparse_parse_args_method.jpg" alt=""></p>
+<p>这个方法没啥好讲的，主要是第一个参数args，默认是从sys.argv取值，调试时也可以把命令行参数加上去，这样就不用在命令行中设置了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</div><div class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</div><div class="line"><span class="comment"># 直接在代码中传入命令行参数</span></div><div class="line">args = parser.parse_args([<span class="string">'100'</span>,<span class="string">'-f'</span>,<span class="string">'p1'</span>])</div></pre></td></tr></table></figure>
+<p>此时，在编辑器中直接运行或在命令行中不加参数运行：<code>python scipt.py</code>都能得到正确结果：<code>integer=&#39;100&#39;,foo=&#39;p1&#39;</code></p>
+<h2 id="getopt"><a href="#getopt" class="headerlink" title="getopt"></a>getopt</h2><p>Python还有一个getopt模块，它的设计与C语言中的getopt类似。Python官方建议是你如果不熟悉C中的getopt或者想写更少的代码的话，更推荐用argparse，所以不再详述，感兴趣可参考<a href="#接口文档">接口文档</a>：</p>
+<blockquote>
+<p>Note: The <a href="https://docs.python.org/3/library/getopt.html#module-getopt" target="_blank" rel="external"><code>getopt</code></a> module is a parser for command line options whose API is designed to be familiar to users of the C <code>getopt()</code> function. Users who are unfamiliar with the C <code>getopt()</code> function or who would like to write less code and get better help and error messages should consider using the <a href="https://docs.python.org/3/library/argparse.html#module-argparse" target="_blank" rel="external"><code>argparse</code></a> module instead.</p>
+</blockquote>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.python.org/3/library/sys.html" target="_blank" rel="external">Python sys</a></li>
+<li><a href="https://docs.python.org/zh-cn/3/library/argparse.html" target="_blank" rel="external">Python argparse</a></li>
+<li><a href="https://docs.python.org/3/library/getopt.html" target="_blank" rel="external">Python getopt</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：&lt;strong&gt;从外部获取配置参量，而不是直接修改代码&lt;/strong&gt;。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：&lt;a href=&quot;https://click.palletsprojects.com/en/7.x/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;click&lt;/a&gt;。
+    
+    </summary>
+    
+      <category term="Build篇" scheme="http://ex2tron.wang/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="Python" scheme="http://ex2tron.wang/tags/Python/"/>
+    
+      <category term="argv" scheme="http://ex2tron.wang/tags/argv/"/>
+    
+      <category term="命令行参数" scheme="http://ex2tron.wang/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【Depth-Python】Base64</title>
     <link href="http://ex2tron.wang/base64/"/>
     <id>http://ex2tron.wang/base64/</id>
     <published>2019-04-28T14:20:53.000Z</published>
-    <updated>2019-05-01T14:02:49.946Z</updated>
+    <updated>2019-05-04T12:06:08.275Z</updated>
     
     <content type="html"><![CDATA[<p>我们知道日常的图片、视频、pdf、exe等等这些文件都是二进制文件，如果用文本编辑器打开它们，基本都是乱码，那么有没有一种简单的二进制转成字符串的方式呢？<a id="more"></a></p>
 <blockquote>
-<p><em>Valar Morghulis, Valar Dohaeris.</em>  ——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《Game of Thrones》</a><br><em>凡人皆有一死，凡人皆须侍奉。</em>——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《权力的游戏 》</a></p>
+<p><em>Valar Morghulis, Valar Dohaeris.</em>  ——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《Game of Thrones》</a><br><em>凡人皆有一死，凡人皆须侍奉。</em>——<a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="external">《权力的游戏》</a></p>
 <p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
 </blockquote>
 <hr>
@@ -3071,7 +3208,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/"/>
     <id>http://ex2tron.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/</id>
     <published>2017-12-06T07:55:15.000Z</published>
-    <updated>2019-05-02T15:24:52.324Z</updated>
+    <updated>2019-05-02T15:29:42.678Z</updated>
     
     <content type="html"><![CDATA[<p>了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。<a id="more"></a></p>
 <hr>
@@ -3098,7 +3235,7 @@
 </ul>
 <p>简单来说，同一个文件保存成不同的格式后，文件大小上bmp肯定是最大的，而png和jpg，不同的压缩比结果会有所不同。可以用画图工具新建一副100×100的图像，分别保存成这三种格式来验证：</p>
 <p><img src="http://pic.ex2tron.top/cv2_high_save_mspaint_format.jpg" alt=""></p>
-<h3 id="高质量保存"><a href="#高质量保存" class="headerlink" title="高质量保存"></a>高质量保存</h3><p>用cv2.imwrite()保存图片时，可以传入第三个参数，用于控制保存质量：</p>
+<h3 id="高质量保存"><a href="#高质量保存" class="headerlink" title="高质量保存"></a>高质量保存</h3><p>用cv2.imwrite()保存图片时，可以传入第三个参数（请参考<a href="#接口文档">接口文档</a>），用于控制保存质量：</p>
 <ul>
 <li><code>cv2.IMWRITE_JPEG_QUALITY</code>：jpg质量控制，取值0~100，值越大，质量越好，默认为95</li>
 <li><code>cv2.IMWRITE_PNG_COMPRESSION</code>：png质量控制，取值0~9，值越大，压缩比越高，默认为1</li>
@@ -3117,10 +3254,10 @@
 </blockquote>
 <p>这是个很有趣的问题，很多童鞋都问过我。这里需要明确的是保存新格式时，<strong>容量大小跟原图的容量没有直接关系，而是取决于原图的分辨率大小和原图本身的内容（压缩方式）</strong>，所以lena.jpg保存成不压缩的bmp格式时，容量大小就是固定的350×350×3/1024 ≈ 359 KB；另外，容量变大不代表画质提升噢，不然就逆天了~~~</p>
 <h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
-<h2 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h3 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
-<h2 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h2><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
+<h3 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h3><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"></div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <blockquote>
 <p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，说明一下：</p>
@@ -3130,7 +3267,7 @@
 <p>而图片是有三个通道，相当于一个长度为3的字符串，所以通道翻转与图片复制组合起来便是<code>img[:,:,::-1]</code>。</p>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
-<h2 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h2><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
+<h3 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h3><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> pli</div><div class="line"></div><div class="line">img = pli.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">plt.imshow(img)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片，需放在show()函数之前</span></div><div class="line">plt.savefig(<span class="string">'lena2.jpg'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
 <li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
