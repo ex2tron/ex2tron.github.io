@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
-<meta property="og:updated_time" content="2018-11-29T02:04:50.554Z">
+<meta property="og:updated_time" content="2019-05-08T03:34:27.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程8：绘图功能">
 <meta name="twitter:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" rel="gallery_cjv9hgyk6001pe459rhjaqxci">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" rel="gallery_cjveoq2rb001mhs59k8pbcdqt">
         <img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" itemprop="image">
       </a>
     
@@ -269,7 +269,7 @@ var themeMenus = {};
 <li>参数5：文字大小（缩放比例）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加文字</span></div><div class="line">font = cv2.FONT_HERSHEY_SIMPLEX</div><div class="line">cv2.putText(img, <span class="string">'ex2tron'</span>, (<span class="number">10</span>, <span class="number">500</span>), font,</div><div class="line">            <span class="number">4</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">2</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
-<p>这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
+<p>字体可参考：<a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga0f9314ea6e35f99bb23f29567fc16e11" target="_blank" rel="external">HersheyFonts</a>。另外，这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.line()</code>画直线，<code>cv2.circle()</code>画圆，<code>cv2.rectangle()</code>画矩形，<code>cv2.ellipse()</code>画椭圆，<code>cv2.polylines()</code>画多边形，<code>cv2.putText()</code>添加文字。</li>
 <li>画多条直线时，<code>cv2.polylines()</code>要比<code>cv2.line()</code>高效很多。</li>
@@ -278,6 +278,14 @@ var themeMenus = {};
 <li>你能用已学的绘图功能画出OpenCV的logo吗？(提示：椭圆和圆)</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg" alt="OpenCV logo"></p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2" target="_blank" rel="external">cv2.line()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670" target="_blank" rel="external">cv2.circle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga07d2f74cadcf8e305e810ce8eed13bc9" target="_blank" rel="external">cv2.rectangle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga28b2267d35786f5f890ca167236cbc69" target="_blank" rel="external">cv2.ellipse()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga5126f47f883d730f633d74f07456c576" target="_blank" rel="external">cv2.putText()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga1ea127ffbbb7e0bfc4fd6fd2eb64263c" target="_blank" rel="external">cv2.polylines()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/08.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></li>
@@ -372,7 +380,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数说明"><span class="nav-number">2.1.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画线"><span class="nav-number">2.2.</span> <span class="nav-text">画线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画矩形"><span class="nav-number">2.3.</span> <span class="nav-text">画矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画圆"><span class="nav-number">2.4.</span> <span class="nav-text">画圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画椭圆"><span class="nav-number">2.5.</span> <span class="nav-text">画椭圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画多边形"><span class="nav-number">2.6.</span> <span class="nav-text">画多边形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文字"><span class="nav-number">2.7.</span> <span class="nav-text">添加文字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数说明"><span class="nav-number">2.1.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画线"><span class="nav-number">2.2.</span> <span class="nav-text">画线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画矩形"><span class="nav-number">2.3.</span> <span class="nav-text">画矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画圆"><span class="nav-number">2.4.</span> <span class="nav-text">画圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画椭圆"><span class="nav-number">2.5.</span> <span class="nav-text">画椭圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画多边形"><span class="nav-number">2.6.</span> <span class="nav-text">画多边形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文字"><span class="nav-number">2.7.</span> <span class="nav-text">添加文字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">5.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

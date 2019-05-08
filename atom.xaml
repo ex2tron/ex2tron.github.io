@@ -2100,7 +2100,7 @@
     <link href="http://ex2tron.wang/opencv-python-image-blending/"/>
     <id>http://ex2tron.wang/opencv-python-image-blending/</id>
     <published>2017-12-10T06:13:10.000Z</published>
-    <updated>2018-11-26T07:09:15.316Z</updated>
+    <updated>2019-05-08T03:39:10.332Z</updated>
     
     <content type="html"><![CDATA[<p>学习图片间的数学运算，图像混合。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2133,6 +2133,12 @@
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.add()</code>用来叠加两幅图片，<code>cv2.addWeighted()</code>也是叠加两幅图片，但两幅图片的权重不一样。</li>
 <li><code>cv2.bitwise_and()</code>, <code>cv2.bitwise_not()</code>, <code>cv2.bitwise_or()</code>, <code>cv2.bitwise_xor()</code>分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga10ac1bfb180e2cfda1701d06c24fdbd6" target="_blank" rel="external">cv2.add()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19" target="_blank" rel="external">cv2.addWeighted()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14" target="_blank" rel="external">cv2.bitwise_and()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0002cf8b418479f4cb49a75442baee2f" target="_blank" rel="external">cv2.bitwise_not()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/09.%20%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88" target="_blank" rel="external">本节源码</a></li>
@@ -2491,7 +2497,7 @@
     <link href="http://ex2tron.wang/opencv-python-drawing-function/"/>
     <id>http://ex2tron.wang/opencv-python-drawing-function/</id>
     <published>2017-12-09T03:29:48.000Z</published>
-    <updated>2018-11-29T02:04:50.554Z</updated>
+    <updated>2019-05-08T03:34:27.476Z</updated>
     
     <content type="html"><![CDATA[<p>学习画线、圆和矩形等多种几何形状，给图片添加文字。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2550,7 +2556,7 @@
 <li>参数5：文字大小（缩放比例）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加文字</span></div><div class="line">font = cv2.FONT_HERSHEY_SIMPLEX</div><div class="line">cv2.putText(img, <span class="string">'ex2tron'</span>, (<span class="number">10</span>, <span class="number">500</span>), font,</div><div class="line">            <span class="number">4</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">2</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
-<p>这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
+<p>字体可参考：<a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga0f9314ea6e35f99bb23f29567fc16e11" target="_blank" rel="external">HersheyFonts</a>。另外，这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.line()</code>画直线，<code>cv2.circle()</code>画圆，<code>cv2.rectangle()</code>画矩形，<code>cv2.ellipse()</code>画椭圆，<code>cv2.polylines()</code>画多边形，<code>cv2.putText()</code>添加文字。</li>
 <li>画多条直线时，<code>cv2.polylines()</code>要比<code>cv2.line()</code>高效很多。</li>
@@ -2559,6 +2565,14 @@
 <li>你能用已学的绘图功能画出OpenCV的logo吗？(提示：椭圆和圆)</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg" alt="OpenCV logo"></p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2" target="_blank" rel="external">cv2.line()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670" target="_blank" rel="external">cv2.circle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga07d2f74cadcf8e305e810ce8eed13bc9" target="_blank" rel="external">cv2.rectangle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga28b2267d35786f5f890ca167236cbc69" target="_blank" rel="external">cv2.ellipse()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga5126f47f883d730f633d74f07456c576" target="_blank" rel="external">cv2.putText()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga1ea127ffbbb7e0bfc4fd6fd2eb64263c" target="_blank" rel="external">cv2.polylines()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/08.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></li>
@@ -2716,7 +2730,7 @@
     <link href="http://ex2tron.wang/opencv-python-image-geometric-transformation/"/>
     <id>http://ex2tron.wang/opencv-python-image-geometric-transformation/</id>
     <published>2017-12-08T06:36:53.000Z</published>
-    <updated>2018-11-22T07:10:12.240Z</updated>
+    <updated>2019-05-08T03:19:07.243Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何旋转、平移、缩放和翻转图片。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2729,7 +2743,7 @@
 </blockquote>
 <h3 id="缩放图片"><a href="#缩放图片" class="headerlink" title="缩放图片"></a>缩放图片</h3><p>缩放就是调整图片的大小，使用<code>cv2.resize()</code>函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 按照指定的宽度、高度缩放图片</span></div><div class="line">res = cv2.resize(img, (<span class="number">132</span>, <span class="number">150</span>))</div><div class="line"><span class="comment"># 按照比例缩放，如x,y轴均放大一倍</span></div><div class="line">res2 = cv2.resize(img, <span class="keyword">None</span>, fx=<span class="number">2</span>, fy=<span class="number">2</span>, interpolation=cv2.INTER_LINEAR)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shrink'</span>, res), cv2.imshow(<span class="string">'zoom'</span>, res2)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/3.3.1/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
+<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
 <h3 id="翻转图片"><a href="#翻转图片" class="headerlink" title="翻转图片"></a>翻转图片</h3><p>镜像翻转图片，可以用<code>cv2.flip()</code>函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dst = cv2.flip(img, <span class="number">1</span>)</div></pre></td></tr></table></figure>
 <p>其中，参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</p>
@@ -2751,6 +2765,12 @@
 <li><code>cv2.resize()</code>缩放图片，可以按指定大小缩放，也可以按比例缩放。</li>
 <li><code>cv2.flip()</code>翻转图片，可以指定水平/垂直/水平垂直翻转三种方式。</li>
 <li>平移/旋转是靠仿射变换<code>cv2.warpAffine()</code>实现的。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d" target="_blank" rel="external">cv2.resize()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gaca7be533e3dac7feb70fc60635adf441" target="_blank" rel="external">cv2.filp()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga0203d9ee5fcd28d40dbc4a1ea4451983" target="_blank" rel="external">cv2.warpAffine()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#gafbbc470ce83812914a70abfb604f4326" target="_blank" rel="external">cv2.getRotationMatrix2D()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/07.%20%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
@@ -2854,7 +2874,7 @@
     <link href="http://ex2tron.wang/opencv-python-image-thresholding/"/>
     <id>http://ex2tron.wang/opencv-python-image-thresholding/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2018-11-15T14:24:42.840Z</updated>
+    <updated>2019-05-08T03:19:42.980Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2870,7 +2890,7 @@
 <li>参数1：要处理的原图，<strong>一般是灰度图</strong></li>
 <li>参数2：设定的阈值</li>
 <li>参数3：最大阈值，一般为255</li>
-<li>参数4：阈值的方式，主要有5种，详情：<a href="https://docs.opencv.org/3.3.1/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">ThresholdTypes</a></li>
+<li>参数4：阈值的方式，主要有5种，详情：<a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">ThresholdTypes</a></li>
 </ul>
 <p>下面结合代码理解下这5种阈值方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 应用5种不同的阈值方法</span></div><div class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">ret, th2 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV)</div><div class="line">ret, th3 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TRUNC)</div><div class="line">ret, th4 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TOZERO)</div><div class="line">ret, th5 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TOZERO_INV)</div><div class="line"></div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'BINARY'</span>, <span class="string">'BINARY_INV'</span>, <span class="string">'TRUNC'</span>, <span class="string">'TOZERO'</span>, <span class="string">'TOZERO_INV'</span>]</div><div class="line">images = [img, th1, th2, th3, th4, th5]</div><div class="line"></div><div class="line"><span class="comment"># 使用Matplotlib显示</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</div><div class="line">    plt.subplot(<span class="number">2</span>, <span class="number">3</span>, i + <span class="number">1</span>)</div><div class="line">    plt.imshow(images[i], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])  <span class="comment"># 隐藏坐标轴</span></div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
@@ -2904,6 +2924,10 @@
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>Otsu阈值是一种高效的二值化算法，请阅读<a href="/opencv-python-extra-otsu-thresholding/">番外篇：Otsu阈值法</a></li>
 </ol>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57" target="_blank" rel="external">cv2.threshold()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3" target="_blank" rel="external">cv2.adaptiveThreshold()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></li>
@@ -2934,7 +2958,7 @@
     <link href="http://ex2tron.wang/opencv-python-changing-colorspaces/"/>
     <id>http://ex2tron.wang/opencv-python-changing-colorspaces/</id>
     <published>2017-12-07T07:21:19.000Z</published>
-    <updated>2019-03-20T05:40:05.259Z</updated>
+    <updated>2019-05-08T03:03:42.330Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2976,6 +3000,11 @@
 <li>尝试在视频中同时提取红色、蓝色、绿色的物体。（效果如下）</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" alt="同时追踪3种颜色"></p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="external">cv2.cvtColor()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981" target="_blank" rel="external">cv2.inRange()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14" target="_blank" rel="external">cv2.bitwise_and()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/05.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="external">Changing Colorspaces</a></li>
@@ -3716,7 +3745,7 @@
     <link href="http://ex2tron.wang/opencv-python/"/>
     <id>http://ex2tron.wang/opencv-python/</id>
     <published>2017-10-10T14:22:13.000Z</published>
-    <updated>2019-05-01T14:46:17.131Z</updated>
+    <updated>2019-05-08T03:46:43.974Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://pic.ex2tron.top/cv2_python_opencv_cover_gif2.gif" alt=""></p>
 <h4 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h4><ol>
@@ -3931,7 +3960,7 @@
 <p>创建并编辑一个新的钩子文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo touch post-receive</div><div class="line">sudo vim post-receive</div></pre></td></tr></table></figure>
 <p>在其中加入两行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
 <p>赋予可执行权限给文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x post-receive</div></pre></td></tr></table></figure>
 <p>最后一定要确保git用户有权限操作博客目录：</p>

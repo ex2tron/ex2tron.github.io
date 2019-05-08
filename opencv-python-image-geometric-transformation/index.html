@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习如何旋转、平移、缩放和翻转图片。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
-<meta property="og:updated_time" content="2018-11-22T07:10:12.240Z">
+<meta property="og:updated_time" content="2019-05-08T03:19:07.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程7：图像几何变换">
 <meta name="twitter:description" content="学习如何旋转、平移、缩放和翻转图片。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" rel="gallery_cjv9hgyk2001me4591ubac47p">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" rel="gallery_cjveoq2r8001hhs591ykxep41">
         <img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" itemprop="image">
       </a>
     
@@ -223,7 +223,7 @@ var themeMenus = {};
 </blockquote>
 <h3 id="缩放图片"><a href="#缩放图片" class="headerlink" title="缩放图片"></a>缩放图片</h3><p>缩放就是调整图片的大小，使用<code>cv2.resize()</code>函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 按照指定的宽度、高度缩放图片</span></div><div class="line">res = cv2.resize(img, (<span class="number">132</span>, <span class="number">150</span>))</div><div class="line"><span class="comment"># 按照比例缩放，如x,y轴均放大一倍</span></div><div class="line">res2 = cv2.resize(img, <span class="keyword">None</span>, fx=<span class="number">2</span>, fy=<span class="number">2</span>, interpolation=cv2.INTER_LINEAR)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shrink'</span>, res), cv2.imshow(<span class="string">'zoom'</span>, res2)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/3.3.1/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
+<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
 <h3 id="翻转图片"><a href="#翻转图片" class="headerlink" title="翻转图片"></a>翻转图片</h3><p>镜像翻转图片，可以用<code>cv2.flip()</code>函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dst = cv2.flip(img, <span class="number">1</span>)</div></pre></td></tr></table></figure>
 <p>其中，参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</p>
@@ -245,6 +245,12 @@ var themeMenus = {};
 <li><code>cv2.resize()</code>缩放图片，可以按指定大小缩放，也可以按比例缩放。</li>
 <li><code>cv2.flip()</code>翻转图片，可以指定水平/垂直/水平垂直翻转三种方式。</li>
 <li>平移/旋转是靠仿射变换<code>cv2.warpAffine()</code>实现的。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d" target="_blank" rel="external">cv2.resize()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gaca7be533e3dac7feb70fc60635adf441" target="_blank" rel="external">cv2.filp()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga0203d9ee5fcd28d40dbc4a1ea4451983" target="_blank" rel="external">cv2.warpAffine()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#gafbbc470ce83812914a70abfb604f4326" target="_blank" rel="external">cv2.getRotationMatrix2D()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/07.%20%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
@@ -339,7 +345,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放图片"><span class="nav-number">2.1.</span> <span class="nav-text">缩放图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻转图片"><span class="nav-number">2.2.</span> <span class="nav-text">翻转图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平移图片"><span class="nav-number">2.3.</span> <span class="nav-text">平移图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转图片"><span class="nav-number">2.4.</span> <span class="nav-text">旋转图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放图片"><span class="nav-number">2.1.</span> <span class="nav-text">缩放图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻转图片"><span class="nav-number">2.2.</span> <span class="nav-text">翻转图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平移图片"><span class="nav-number">2.3.</span> <span class="nav-text">平移图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转图片"><span class="nav-number">2.4.</span> <span class="nav-text">旋转图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">4.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

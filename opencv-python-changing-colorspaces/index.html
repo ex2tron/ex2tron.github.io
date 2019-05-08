@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg">
-<meta property="og:updated_time" content="2019-03-20T05:40:05.259Z">
+<meta property="og:updated_time" content="2019-05-08T03:03:42.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程5：颜色空间转换">
 <meta name="twitter:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" rel="gallery_cjv9hgyjv001he459v0pfdl4l">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" rel="gallery_cjveoq2r4001chs59xn03y891">
         <img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" itemprop="image">
       </a>
     
@@ -252,6 +252,11 @@ var themeMenus = {};
 <li>尝试在视频中同时提取红色、蓝色、绿色的物体。（效果如下）</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" alt="同时追踪3种颜色"></p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="external">cv2.cvtColor()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981" target="_blank" rel="external">cv2.inRange()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14" target="_blank" rel="external">cv2.bitwise_and()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/05.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="external">Changing Colorspaces</a></li>
@@ -345,7 +350,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色空间转换"><span class="nav-number">2.1.</span> <span class="nav-text">颜色空间转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频中特定颜色物体追踪"><span class="nav-number">2.2.</span> <span class="nav-text">视频中特定颜色物体追踪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色空间转换"><span class="nav-number">2.1.</span> <span class="nav-text">颜色空间转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频中特定颜色物体追踪"><span class="nav-number">2.2.</span> <span class="nav-text">视频中特定颜色物体追踪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">5.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
