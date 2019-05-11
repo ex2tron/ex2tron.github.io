@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjveoq2qg000chs59dhbvi26k">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjvjhg1y6002zpg599fq05jcq">
         <img src="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" itemprop="image">
       </a>
     
@@ -260,7 +260,7 @@ var themeMenus = {};
 <p>创建并编辑一个新的钩子文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo touch post-receive</div><div class="line">sudo vim post-receive</div></pre></td></tr></table></figure>
 <p>在其中加入两行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
 <p>赋予可执行权限给文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x post-receive</div></pre></td></tr></table></figure>
 <p>最后一定要确保git用户有权限操作博客目录：</p>

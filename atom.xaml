@@ -1389,7 +1389,7 @@
     <link href="http://ex2tron.wang/opencv-python-contour-features/"/>
     <id>http://ex2tron.wang/opencv-python-contour-features/</id>
     <published>2017-12-20T10:46:19.000Z</published>
-    <updated>2018-11-27T11:16:51.590Z</updated>
+    <updated>2019-05-11T12:17:02.881Z</updated>
     
     <content type="html"><![CDATA[<p>学习计算轮廓特征，如面积、周长、最小外接矩形等。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1429,7 +1429,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">img_color = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)  <span class="comment"># 用于绘制的彩色图</span></div></pre></td></tr></table></figure>
 <p>图中有3条轮廓，我们用A/B/C表示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cnt_a, cnt_b, cnt_c = contours[<span class="number">0</span>], contours[<span class="number">1</span>], contours[<span class="number">2</span>]</div><div class="line">print(cv2.matchShapes(cnt_b, cnt_b, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.0</span></div><div class="line">print(cv2.matchShapes(cnt_b, cnt_c, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 2.17e-05</span></div><div class="line">print(cv2.matchShapes(cnt_b, cnt_a, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.418</span></div></pre></td></tr></table></figure>
-<p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
+<p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
 <p>形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，大家如果感兴趣，可以参考：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="external">Hu-Moments</a></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>前面我们是对图片中的数字3进行轮廓特征计算的，大家换成数字1看看。</li>
@@ -1440,6 +1440,17 @@
 <li><code>cv2.contourArea()</code>算面积，<code>cv2.arcLength()</code>算周长，<code>cv2.boundingRect()</code>算外接矩。</li>
 <li><code>cv2.minAreaRect()</code>算最小外接矩，<code>cv2.minEnclosingCircle()</code>算最小外接圆。</li>
 <li><code>cv2.matchShapes()</code>进行形状匹配。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga2c759ed9f497d4a618048a2f56dc97f1" target="_blank" rel="external">cv2.contourArea()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c" target="_blank" rel="external">cv2.arcLength()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga556a180f43cab22649c23ada36a8a139" target="_blank" rel="external">cv2.moments()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga103fcbda2f540f3ef1c042d6a9b35ac7" target="_blank" rel="external">cv2.boundingRect()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9" target="_blank" rel="external">cv2.minAreaRect()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8ce13c24081bbc7151e9326f412190f1" target="_blank" rel="external">cv2.minEnclosingCircle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf259efaad93098103d6c27b9e4900ffa" target="_blank" rel="external">cv2.fitEllipse()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317" target="_blank" rel="external">cv2.matchShapes()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">cv2.ShapeMatchModes</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/14.%20%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81" target="_blank" rel="external">本节源码</a></li>
@@ -1616,7 +1627,7 @@
     <link href="http://ex2tron.wang/opencv-python-contours/"/>
     <id>http://ex2tron.wang/opencv-python-contours/</id>
     <published>2017-12-20T01:44:23.000Z</published>
-    <updated>2018-11-27T11:03:06.885Z</updated>
+    <updated>2019-05-11T12:01:02.076Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何寻找并绘制轮廓。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1635,8 +1646,8 @@
 <h3 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h3><p>使用<code>cv2.findContours()</code>寻找轮廓：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>)</div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">ret, thresh = cv2.threshold(img_gray, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line"></div><div class="line"><span class="comment"># 寻找二值化图中的轮廓</span></div><div class="line">image, contours, hierarchy = cv2.findContours(</div><div class="line">    thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">print(len(contours))  <span class="comment"># 结果应该为2</span></div></pre></td></tr></table></figure>
 <ul>
-<li>参数2：轮廓的查找方式，一般使用cv2.RETR_TREE，表示提取所有的轮廓并建立轮廓间的层级。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a></li>
-<li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用cv2.CHAIN_APPROX_SIMPLE就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/3.3.1/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
+<li>参数2：轮廓的查找方式，一般使用cv2.RETR_TREE，表示提取所有的轮廓并建立轮廓间的层级。更多请参考：<a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">RetrievalModes</a></li>
+<li>参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用cv2.CHAIN_APPROX_SIMPLE就表示用尽可能少的像素点表示轮廓。更多请参考：<a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">ContourApproximationModes</a></li>
 <li>简便起见，这两个参数也可以直接用真值3和2表示。</li>
 </ul>
 <p>函数有3个返回值，image还是原来的二值化图片，hierarchy是轮廓间的层级关系（<a href="/opencv-python-extra-contours-hierarchy/">番外篇：轮廓层级</a>），这两个暂时不用理会。我们主要看contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标(x,y)。</p>
@@ -1651,6 +1662,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contours[<span class="number">1</span>]</div><div class="line">cv2.drawContours(img, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>轮廓特征非常有用，使用<code>cv2.findContours()</code>寻找轮廓，<code>cv2.drawContours()</code>绘制轮廓。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gadf1ad6a0b82947fa1fe3c3d497f260e0" target="_blank" rel="external">cv2.findContours()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71" target="_blank" rel="external">cv2.RetrievalModes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff" target="_blank" rel="external">cv2.ContourApproximationModes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga746c0625f1781f1ffc9056259103edbc" target="_blank" rel="external">cv2.drawContours()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/13.%20%E8%BD%AE%E5%BB%93" target="_blank" rel="external">本节源码</a></li>
@@ -1682,7 +1699,7 @@
     <link href="http://ex2tron.wang/opencv-python-erode-and-dilate/"/>
     <id>http://ex2tron.wang/opencv-python-erode-and-dilate/</id>
     <published>2017-12-19T12:52:23.000Z</published>
-    <updated>2018-11-27T11:03:50.125Z</updated>
+    <updated>2019-05-11T11:57:48.488Z</updated>
     
     <content type="html"><![CDATA[<p>学习常用形态学操作：腐蚀膨胀，开运算和闭运算。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1735,6 +1752,14 @@
 <li>先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体。</li>
 <li>先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢(⊙o⊙)。</li>
 </ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaeb1e0c1033e3f6b891a25d0511362aeb" target="_blank" rel="external">cv2.erode()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac342a1bb6eabf6f55c803b09268e36dc" target="_blank" rel="external">cv2.getStructuringElement()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga4ff0f3318642c4f469d0e11f242f3b6c" target="_blank" rel="external">cv2.dilate()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac2db39b56866583a95a5680313c314ad" target="_blank" rel="external">cv2.MorphShapes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f" target="_blank" rel="external">cv2.morphologyEx()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32" target="_blank" rel="external">cv2.MorphTypes</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/12.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></li>
 <li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm" target="_blank" rel="external">Morphological Operations</a></li>
@@ -1770,7 +1795,7 @@
     <link href="http://ex2tron.wang/opencv-python-edge-detection/"/>
     <id>http://ex2tron.wang/opencv-python-edge-detection/</id>
     <published>2017-12-18T09:11:48.000Z</published>
-    <updated>2018-11-26T14:10:20.553Z</updated>
+    <updated>2019-05-11T11:52:20.398Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用Canny获取图像的边缘。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <blockquote>
@@ -1815,6 +1840,9 @@
 <p><img src="http://pic.ex2tron.top/cv2_trackbar_maxval_minval_canny.gif" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>Canny是用的最多的边缘检测算法，用<code>cv2.Canny()</code>实现。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/dd/d1a/group__imgproc__feature.html#ga04723e007ed888ddf11d9ba04e2232de" target="_blank" rel="external">cv2.Canny()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/11.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" target="_blank" rel="external">本节源码</a></li>
@@ -1933,7 +1961,7 @@
     <link href="http://ex2tron.wang/opencv-python-smoothing-images/"/>
     <id>http://ex2tron.wang/opencv-python-smoothing-images/</id>
     <published>2017-12-15T01:44:24.000Z</published>
-    <updated>2018-11-26T08:51:03.803Z</updated>
+    <updated>2019-05-11T11:51:01.293Z</updated>
     
     <content type="html"><![CDATA[<p>学习模糊/平滑图像，消除噪点。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -1995,6 +2023,14 @@
 <li>要去除噪点的同时尽可能保留更多的边缘信息，使用双边滤波<code>cv2.bilateralFilter()</code>。</li>
 <li>线性滤波方式：均值滤波、方框滤波、高斯滤波（速度相对快）。</li>
 <li>非线性滤波方式：中值滤波、双边滤波（速度相对慢）。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37" target="_blank" rel="external">cv2.blur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gad533230ebf2d42509547d514f7d3fbc3" target="_blank" rel="external">cv2.boxFilter()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1" target="_blank" rel="external">cv2.GaussianBlur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external">cv2.getGaussianKernel()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga564869aa33e58769b4469101aac458f9" target="_blank" rel="external">cv2.medianBlur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed" target="_blank" rel="external">cv2.bilateralFilter()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
@@ -2802,7 +2838,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-otsu-thresholding/"/>
     <id>http://ex2tron.wang/opencv-python-extra-otsu-thresholding/</id>
     <published>2017-12-08T04:48:05.000Z</published>
-    <updated>2018-11-28T09:52:24.255Z</updated>
+    <updated>2019-05-11T11:47:00.408Z</updated>
     
     <content type="html"><![CDATA[<p>大部分图像处理任务都需要先进行二值化操作，阈值的选取很关键，Otsu阈值法会自动计算阈值。<a id="more"></a></p>
 <p><a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>（日本人大津展之提出的，也可称大津算法）非常适用于双峰图片，啥意思呢？</p>
@@ -2840,6 +2876,10 @@
 <p>将前述的1/2/3公式整合在一起，便是：</p>
 <p>$$<br>g=\omega_0\omega_1(\mu_0-\mu_1)^2<br>$$</p>
 <p><strong>$ g $就是前景与背景两类之间的方差，这个值越大，说明前景和背景的差别也就越大，效果越好。Otsu算法便是遍历阈值T，使得$ g $最大，所以又称为最大类间方差法。</strong>基本上双峰图片的阈值T在两峰之间的谷底。</p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">cv2.ThresholdTypes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1" target="_blank" rel="external">cv2.GaussianBlur()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8704.%20Otsu%E9%98%88%E5%80%BC%E6%B3%95" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">numpy.ravel</a></li>
@@ -2874,7 +2914,7 @@
     <link href="http://ex2tron.wang/opencv-python-image-thresholding/"/>
     <id>http://ex2tron.wang/opencv-python-image-thresholding/</id>
     <published>2017-12-07T13:14:44.000Z</published>
-    <updated>2019-05-08T03:19:42.980Z</updated>
+    <updated>2019-05-11T11:45:00.768Z</updated>
     
     <content type="html"><![CDATA[<p>学习使用不同的阈值方法”二值化”图像。<a id="more"></a>图片等可到<a href="#引用">源码处</a>下载。</p>
 <hr>
@@ -2927,6 +2967,7 @@
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
 <li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57" target="_blank" rel="external">cv2.threshold()</a></li>
 <li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3" target="_blank" rel="external">cv2.adaptiveThreshold()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">cv2.ThresholdTypes()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="external">本节源码</a></li>
@@ -3419,7 +3460,7 @@
     <link href="http://ex2tron.wang/opencv-python-extra-code-optimization/"/>
     <id>http://ex2tron.wang/opencv-python-extra-code-optimization/</id>
     <published>2017-12-06T07:51:52.000Z</published>
-    <updated>2018-10-04T09:48:22.868Z</updated>
+    <updated>2019-05-11T11:42:29.351Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
 <p>完成一项任务很重要，高效地完成更重要。图像处理是对矩阵的操作，数据量巨大。如果代码写的不好，性能差距将很大，所以这节我们来了解下如何评估和提升代码性能。</p>
@@ -3437,10 +3478,12 @@
 <ul>
 <li>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</li>
 <li>优先使用OpenCV/Numpy中封装好的函数</li>
-<li><p>尽量将数据向量化，变成Numpy的数据格式</p>
-</li>
-<li><p>尽量避免数组的复制操作</p>
-</li>
+<li>尽量将数据向量化，变成Numpy的数据格式</li>
+<li>尽量避免数组的复制操作</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#gae73f58000611a1af25dd36d496bf4487" target="_blank" rel="external">cv2.getTickCount()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#ga705441a9ef01f47acdc55d87fbe5090c" target="_blank" rel="external">cv2.getTickFrequency()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8701.%20%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" target="_blank" rel="external">本节源码</a></li>
@@ -3960,7 +4003,7 @@
 <p>创建并编辑一个新的钩子文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo touch post-receive</div><div class="line">sudo vim post-receive</div></pre></td></tr></table></figure>
 <p>在其中加入两行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
 <p>赋予可执行权限给文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x post-receive</div></pre></td></tr></table></figure>
 <p>最后一定要确保git用户有权限操作博客目录：</p>

@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_morphological.jpg">
-<meta property="og:updated_time" content="2018-11-27T11:03:50.125Z">
+<meta property="og:updated_time" content="2019-05-11T11:57:48.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程12：腐蚀与膨胀">
 <meta name="twitter:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_morphological.jpg" rel="gallery_cjveoq2qm000ihs59y5e4ldt1">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_morphological.jpg" rel="gallery_cjvjhg1we000epg59a4ya7atr">
         <img src="http://pic.ex2tron.top/cv2_understand_morphological.jpg" itemprop="image">
       </a>
     
@@ -262,6 +262,14 @@ var themeMenus = {};
 <li>形态学操作就是改变物体的形状，如腐蚀使物体”变瘦”，膨胀使物体”变胖”。</li>
 <li>先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体。</li>
 <li>先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢(⊙o⊙)。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaeb1e0c1033e3f6b891a25d0511362aeb" target="_blank" rel="external">cv2.erode()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac342a1bb6eabf6f55c803b09268e36dc" target="_blank" rel="external">cv2.getStructuringElement()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga4ff0f3318642c4f469d0e11f242f3b6c" target="_blank" rel="external">cv2.dilate()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac2db39b56866583a95a5680313c314ad" target="_blank" rel="external">cv2.MorphShapes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f" target="_blank" rel="external">cv2.morphologyEx()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32" target="_blank" rel="external">cv2.MorphTypes</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/12.%20%E8%85%90%E8%9A%80%E4%B8%8E%E8%86%A8%E8%83%80" target="_blank" rel="external">本节源码</a></li>
@@ -357,7 +365,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#啥叫形态学操作"><span class="nav-number">2.1.</span> <span class="nav-text">啥叫形态学操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#腐蚀"><span class="nav-number">2.2.</span> <span class="nav-text">腐蚀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#膨胀"><span class="nav-number">2.3.</span> <span class="nav-text">膨胀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开-闭运算"><span class="nav-number">2.4.</span> <span class="nav-text">开/闭运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他形态学操作"><span class="nav-number">2.5.</span> <span class="nav-text">其他形态学操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#啥叫形态学操作"><span class="nav-number">2.1.</span> <span class="nav-text">啥叫形态学操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#腐蚀"><span class="nav-number">2.2.</span> <span class="nav-text">腐蚀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#膨胀"><span class="nav-number">2.3.</span> <span class="nav-text">膨胀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开-闭运算"><span class="nav-number">2.4.</span> <span class="nav-text">开/闭运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他形态学操作"><span class="nav-number">2.5.</span> <span class="nav-text">其他形态学操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">4.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

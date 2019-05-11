@@ -33,7 +33,7 @@
 <meta property="og:description" content="学习模糊/平滑图像，消除噪点。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
-<meta property="og:updated_time" content="2018-11-26T08:51:03.803Z">
+<meta property="og:updated_time" content="2019-05-11T11:51:01.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程10：平滑图像">
 <meta name="twitter:description" content="学习模糊/平滑图像，消除噪点。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" rel="gallery_cjveoq2vm00aqhs59t46t83gl">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" rel="gallery_cjvjhg21f00ampg59if3bdmsb">
         <img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" itemprop="image">
       </a>
     
@@ -272,6 +272,14 @@ var themeMenus = {};
 <li>要去除噪点的同时尽可能保留更多的边缘信息，使用双边滤波<code>cv2.bilateralFilter()</code>。</li>
 <li>线性滤波方式：均值滤波、方框滤波、高斯滤波（速度相对快）。</li>
 <li>非线性滤波方式：中值滤波、双边滤波（速度相对慢）。</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37" target="_blank" rel="external">cv2.blur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gad533230ebf2d42509547d514f7d3fbc3" target="_blank" rel="external">cv2.boxFilter()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1" target="_blank" rel="external">cv2.GaussianBlur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external">cv2.getGaussianKernel()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga564869aa33e58769b4469101aac458f9" target="_blank" rel="external">cv2.medianBlur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed" target="_blank" rel="external">cv2.bilateralFilter()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
@@ -367,7 +375,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滤波与模糊"><span class="nav-number">2.1.</span> <span class="nav-text">滤波与模糊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均值滤波"><span class="nav-number">2.2.</span> <span class="nav-text">均值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方框滤波"><span class="nav-number">2.3.</span> <span class="nav-text">方框滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯滤波"><span class="nav-number">2.4.</span> <span class="nav-text">高斯滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中值滤波"><span class="nav-number">2.5.</span> <span class="nav-text">中值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双边滤波"><span class="nav-number">2.6.</span> <span class="nav-text">双边滤波</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#番外小篇：高斯滤波卷积核"><span class="nav-number">3.</span> <span class="nav-text">番外小篇：高斯滤波卷积核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滤波与模糊"><span class="nav-number">2.1.</span> <span class="nav-text">滤波与模糊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均值滤波"><span class="nav-number">2.2.</span> <span class="nav-text">均值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方框滤波"><span class="nav-number">2.3.</span> <span class="nav-text">方框滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯滤波"><span class="nav-number">2.4.</span> <span class="nav-text">高斯滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中值滤波"><span class="nav-number">2.5.</span> <span class="nav-text">中值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双边滤波"><span class="nav-number">2.6.</span> <span class="nav-text">双边滤波</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#番外小篇：高斯滤波卷积核"><span class="nav-number">3.</span> <span class="nav-text">番外小篇：高斯滤波卷积核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">5.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

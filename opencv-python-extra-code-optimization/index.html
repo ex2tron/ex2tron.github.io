@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
 <meta property="og:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-04T09:48:22.868Z">
+<meta property="og:updated_time" content="2019-05-11T11:42:29.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇1：代码性能优化">
 <meta name="twitter:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
@@ -216,10 +216,12 @@ var themeMenus = {};
 <ul>
 <li>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</li>
 <li>优先使用OpenCV/Numpy中封装好的函数</li>
-<li><p>尽量将数据向量化，变成Numpy的数据格式</p>
-</li>
-<li><p>尽量避免数组的复制操作</p>
-</li>
+<li>尽量将数据向量化，变成Numpy的数据格式</li>
+<li>尽量避免数组的复制操作</li>
+</ul>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#gae73f58000611a1af25dd36d496bf4487" target="_blank" rel="external">cv2.getTickCount()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#ga705441a9ef01f47acdc55d87fbe5090c" target="_blank" rel="external">cv2.getTickFrequency()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8701.%20%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" target="_blank" rel="external">本节源码</a></li>
@@ -316,7 +318,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#评估代码运行时间"><span class="nav-number">1.</span> <span class="nav-text">评估代码运行时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化原则"><span class="nav-number">2.</span> <span class="nav-text">优化原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#评估代码运行时间"><span class="nav-number">1.</span> <span class="nav-text">评估代码运行时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化原则"><span class="nav-number">2.</span> <span class="nav-text">优化原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">3.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>

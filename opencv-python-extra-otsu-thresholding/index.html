@@ -33,7 +33,7 @@
 <meta property="og:description" content="大部分图像处理任务都需要先进行二值化操作，阈值的选取很关键，Otsu阈值法会自动计算阈值。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg">
-<meta property="og:updated_time" content="2018-11-28T09:52:24.255Z">
+<meta property="og:updated_time" content="2019-05-11T11:47:00.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+OpenCV教程番外篇4：Otsu阈值法">
 <meta name="twitter:description" content="大部分图像处理任务都需要先进行二值化操作，阈值的选取很关键，Otsu阈值法会自动计算阈值。">
@@ -179,7 +179,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" rel="gallery_cjveoq2rx002dhs59rdjdax27">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" rel="gallery_cjvjhg1xf001ypg593te7jw7i">
         <img src="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" itemprop="image">
       </a>
     
@@ -248,6 +248,10 @@ var themeMenus = {};
 <p>将前述的1/2/3公式整合在一起，便是：</p>
 <p>$$<br>g=\omega_0\omega_1(\mu_0-\mu_1)^2<br>$$</p>
 <p><strong>$ g $就是前景与背景两类之间的方差，这个值越大，说明前景和背景的差别也就越大，效果越好。Otsu算法便是遍历阈值T，使得$ g $最大，所以又称为最大类间方差法。</strong>基本上双峰图片的阈值T在两峰之间的谷底。</p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">cv2.ThresholdTypes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1" target="_blank" rel="external">cv2.GaussianBlur()</a></li>
+</ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8704.%20Otsu%E9%98%88%E5%80%BC%E6%B3%95" target="_blank" rel="external">本节源码</a></li>
 <li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="external">numpy.ravel</a></li>
@@ -345,7 +349,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是双峰图片？"><span class="nav-number">1.</span> <span class="nav-text">什么是双峰图片？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Otsu算法详解"><span class="nav-number">3.</span> <span class="nav-text">Otsu算法详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是双峰图片？"><span class="nav-number">1.</span> <span class="nav-text">什么是双峰图片？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Otsu算法详解"><span class="nav-number">3.</span> <span class="nav-text">Otsu算法详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口文档"><span class="nav-number">4.</span> <span class="nav-text">接口文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
