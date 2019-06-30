@@ -5,7 +5,7 @@
   <link href="/atom.xaml" rel="self"/>
   
   <link href="http://ex2tron.wang/"/>
-  <updated>2019-06-30T15:58:34.567Z</updated>
+  <updated>2019-06-30T16:35:06.910Z</updated>
   <id>http://ex2tron.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ex2tron.wang/mighty-py-strip/"/>
     <id>http://ex2tron.wang/mighty-py-strip/</id>
     <published>2019-06-30T14:26:41.000Z</published>
-    <updated>2019-06-30T15:58:34.567Z</updated>
+    <updated>2019-06-30T16:35:06.910Z</updated>
     
     <content type="html"><![CDATA[<p>先来猜下Python中这句话的输出是啥<a id="more"></a>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4.mp4"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename.rstrip(<span class="string">".mp4"</span>)</div></pre></td></tr></table></figure>
