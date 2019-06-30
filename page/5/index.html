@@ -166,6 +166,76 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程3：打开摄像头"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/opencv-python-open-camera/">Python+OpenCV教程3：打开摄像头</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/opencv-python-open-camera/" class="article-date">
+	  <time datetime="2017-12-06T08:38:02.000Z" itemprop="datePublished">December 6, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            学习打开摄像头捕获照片、播放本地视频、录制视频等。图片/视频等可到源码处下载。
+
+目标
+打开摄像头并捕获照片
+播放本地视频，录制视频
+OpenCV函数：cv2.VideoCapture(), cv2.VideoWriter()
+
+教程打开摄像头要使用摄像头，需要使用cv2.VideoCapture(0)创建VideoCapture对象，参数0指的是摄像头的编号，如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1，依此类推。
+1234567891011121314# 打开摄像头并灰度化显示import cv2capture = cv2.VideoCapture(0)while(True):    # 获取一帧    ret, frame = capture.read()    #...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/opencv-python-open-camera/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+                  
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程番外篇2：无损保存和Matplotlib使用"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -783,70 +853,6 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
 <!-- Table of Contents -->
 
   
-    <article id="post-Hexo-Github-Pages轻松搭博客-2：在Github上部署"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/hexo-blog-with-github-pages-2/">Hexo+Github Pages轻松搭博客(2)：在Github上部署</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/hexo-blog-with-github-pages-2/" class="article-date">
-	  <time datetime="2017-09-13T12:15:47.000Z" itemprop="datePublished">September 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <a href="/hexo-blog-with-github-pages-2/"><img width="250" height="175" src="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          使用免费的Github Pages服务或者部署在自己服务器上，别人就可以访问你的博客啦！
-
-关联Github首先登陆Github，没有账号的话，先注册一个。新建一个名为username.github.io的仓库，username必须与你的账户名相同，比如我的就是ex2tron.github.io，这就是你博客的域名地址了（绑定独立域名之后再说）。新建时注意勾选”Initialize this...
-
-        
-          <p class="article-more-link">
-            <a href="/hexo-blog-with-github-pages-2/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-
-      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-      
-                  
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -949,13 +955,25 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
           <li class="clearfix">
 
             
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/mighty-py-strip/">【MightyPy】(l/r)strip函数的巨坑</a></h6>
+              <span>June 30, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
               <div class="widget-entry-thumbnail">
-                <a href="/command-line-arguments-in-python/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/depth_python_argparse_cover.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/mighty-py-command-line-arguments/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/depth_python_argparse_cover.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
 
-              <h6 style="margin: 0;"><a href="/command-line-arguments-in-python/">【Depth-Python】处理命令行参数和选项的几种方式</a></h6>
+              <h6 style="margin: 0;"><a href="/mighty-py-command-line-arguments/">【MightyPy】处理命令行参数和选项的几种方式</a></h6>
               <span>May 3, 2019</span>
             </div>
 
@@ -965,12 +983,12 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/base64/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/depth_python_base64_cover.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/mighty-py-base64/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/depth_python_base64_cover.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
 
-              <h6 style="margin: 0;"><a href="/base64/">【Depth-Python】Base64</a></h6>
+              <h6 style="margin: 0;"><a href="/mighty-py-base64/">【MightyPy】Base64</a></h6>
               <span>April 28, 2019</span>
             </div>
 
@@ -1021,21 +1039,6 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/cloud-vultr-ss-vpn-enable-bbr/" title=""><img width="50" height="50" src="http://pic.ex2tron.top/cloud_vultr_ss_vpn_enable_bbr_cover-min.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/cloud-vultr-ss-vpn-enable-bbr/">【云服务】起飞！Vultr 10分钟快速搭梯子并启用BBR加速</a></h6>
-              <span>March 24, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1045,7 +1048,7 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈篇/">杂谈篇</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build篇/">Build篇</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器篇/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器视觉/">机器视觉</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈篇/">杂谈篇</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1055,7 +1058,7 @@ Python照样快！众所周知，虽然Python语法简洁，编写高效，但�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 18.33px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.67px;">PyQt</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/argv/" style="font-size: 10px;">argv</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/命令行参数/" style="font-size: 10px;">命令行参数</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像变换/" style="font-size: 10px;">图像变换</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/树莓派/" style="font-size: 11.67px;">树莓派</a> <a href="/tags/梯子/" style="font-size: 10px;">梯子</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/电影台词/" style="font-size: 10px;">电影台词</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/车道检测/" style="font-size: 10px;">车道检测</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/阿里云/" style="font-size: 10px;">阿里云</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
+      <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.67px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 18.33px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.67px;">PyQt</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.67px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/argv/" style="font-size: 10px;">argv</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/lstrip/" style="font-size: 10px;">lstrip</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/rstrip/" style="font-size: 10px;">rstrip</a> <a href="/tags/strip/" style="font-size: 10px;">strip</a> <a href="/tags/七牛/" style="font-size: 10px;">七牛</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/亮度/" style="font-size: 10px;">亮度</a> <a href="/tags/几何变换/" style="font-size: 10px;">几何变换</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/卷积/" style="font-size: 10px;">卷积</a> <a href="/tags/命令行参数/" style="font-size: 10px;">命令行参数</a> <a href="/tags/品牌漆/" style="font-size: 10px;">品牌漆</a> <a href="/tags/图像变换/" style="font-size: 10px;">图像变换</a> <a href="/tags/图像处理/" style="font-size: 16.67px;">图像处理</a> <a href="/tags/图像混合/" style="font-size: 10px;">图像混合</a> <a href="/tags/图床/" style="font-size: 10px;">图床</a> <a href="/tags/对比度/" style="font-size: 10px;">对比度</a> <a href="/tags/形态学/" style="font-size: 10px;">形态学</a> <a href="/tags/影视/" style="font-size: 10px;">影视</a> <a href="/tags/树莓派/" style="font-size: 11.67px;">树莓派</a> <a href="/tags/梯子/" style="font-size: 10px;">梯子</a> <a href="/tags/梯度/" style="font-size: 10px;">梯度</a> <a href="/tags/模板匹配/" style="font-size: 10px;">模板匹配</a> <a href="/tags/模糊/" style="font-size: 10px;">模糊</a> <a href="/tags/滑动条/" style="font-size: 10px;">滑动条</a> <a href="/tags/电影台词/" style="font-size: 10px;">电影台词</a> <a href="/tags/直方图/" style="font-size: 10px;">直方图</a> <a href="/tags/绘图/" style="font-size: 11.67px;">绘图</a> <a href="/tags/腐蚀/" style="font-size: 10px;">腐蚀</a> <a href="/tags/膨胀/" style="font-size: 10px;">膨胀</a> <a href="/tags/车道检测/" style="font-size: 10px;">车道检测</a> <a href="/tags/轮廓/" style="font-size: 11.67px;">轮廓</a> <a href="/tags/轮廓层级/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/边缘/" style="font-size: 10px;">边缘</a> <a href="/tags/阈值/" style="font-size: 11.67px;">阈值</a> <a href="/tags/阿里云/" style="font-size: 10px;">阿里云</a> <a href="/tags/霍夫变换/" style="font-size: 10px;">霍夫变换</a>
     </div>
   </div>
 
