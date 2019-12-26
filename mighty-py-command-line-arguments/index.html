@@ -15,7 +15,7 @@
     
     【mightypy】处理命令行参数和选项的几种方式 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,23 @@
   
   
   <meta name="description" content="设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：从外部获取配置参量，而不是直接修改代码。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：click。">
-<meta name="keywords" content="Python,argv,命令行参数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【MightyPy】处理命令行参数和选项的几种方式">
-<meta property="og:url" content="http://ex2tron.wang/mighty-py-command-line-arguments/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/mighty-py-command-line-arguments/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：从外部获取配置参量，而不是直接修改代码。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：click。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/depth_python_argparse_cover.jpg">
-<meta property="og:updated_time" content="2019-06-30T15:58:44.596Z">
+<meta property="article:published_time" content="2019-05-03T02:30:18.000Z">
+<meta property="article:modified_time" content="2019-06-30T15:58:44.596Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="argv">
+<meta property="article:tag" content="命令行参数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【MightyPy】处理命令行参数和选项的几种方式">
-<meta name="twitter:description" content="设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：从外部获取配置参量，而不是直接修改代码。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：click。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/depth_python_argparse_cover.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +79,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +96,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +115,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +141,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/depth_python_argparse_cover.jpg" rel="gallery_cjxj6dyh500bc5w59u10joro9">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/depth_python_argparse_cover.jpg" target="_blank" rel="gallery_ck4mf0p1c001odktn772k7ylf noopener">
         <img src="http://pic.ex2tron.top/depth_python_argparse_cover.jpg" itemprop="image">
       </a>
     
@@ -212,30 +222,35 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：<strong>从外部获取配置参量，而不是直接修改代码</strong>。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：<a href="https://click.palletsprojects.com/en/7.x/" target="_blank" rel="external">click</a>。<a id="more"></a></p>
+        <p>设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：<strong>从外部获取配置参量，而不是直接修改代码</strong>。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：<a href="https://click.palletsprojects.com/en/7.x/" target="_blank" rel="noopener">click</a>。<a id="more"></a></p>
 <p>一般来说内置就够用了，所以本节主要看下内置的三种方式。</p>
 <blockquote>
-<p><em>Louis, I think this is the beginning of a beautiful friendship.</em>  ——<a href="https://movie.douban.com/subject/1296753/" target="_blank" rel="external">《Casablanca》</a><br><em>路易，我想这是美好友谊的开始。</em>——<a href="https://movie.douban.com/subject/1296753/" target="_blank" rel="external">《卡萨布兰卡》</a></p>
-<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+<p><em>Louis, I think this is the beginning of a beautiful friendship.</em>  ——<a href="https://movie.douban.com/subject/1296753/" target="_blank" rel="noopener">《Casablanca》</a><br><em>路易，我想这是美好友谊的开始。</em>——<a href="https://movie.douban.com/subject/1296753/" target="_blank" rel="noopener">《卡萨布兰卡》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener">MovieQuotes</a></strong></p>
 </blockquote>
 <hr>
 <h2 id="sys-argv"><a href="#sys-argv" class="headerlink" title="sys.argv"></a>sys.argv</h2><p>这是最常用的一种方式，命令行传入的参数全部存储在sys.argv(argument values)这个列表中：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line">print(type(sys.argv)) <span class="comment"># list</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(type(sys.argv)) <span class="comment"># list</span></span><br></pre></td></tr></table></figure>
+
 <p>需要注意的是，Python后面跟的第一个文本是第一个参数，所以一般<strong>脚本名是第一个参数</strong>。如下面脚本名为<code>using_sys_argv.py</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">"参数个数：\t%s"</span>%len(sys.argv))</div><div class="line">print(<span class="string">'脚本名：\t%s'</span>%sys.argv[<span class="number">0</span>])</div><div class="line">print(<span class="string">'参数列表：'</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(sys.argv)):</div><div class="line">    print(<span class="string">'\t\t参数%s: %s'</span>%(i,sys.argv[i]))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"参数个数：\t%s"</span>%len(sys.argv))</span><br><span class="line">print(<span class="string">'脚本名：\t%s'</span>%sys.argv[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">'参数列表：'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(sys.argv)):</span><br><span class="line">    print(<span class="string">'\t\t参数%s: %s'</span>%(i,sys.argv[i]))</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>运行<code>python using_sys_argv.py</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">参数个数：      1</div><div class="line">脚本名：        using_sys_argv.py</div><div class="line">参数列表：</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">参数个数：      1</span><br><span class="line">脚本名：        using_sys_argv.py</span><br><span class="line">参数列表：</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>运行<code>python using_sys_argv.py tencent wang</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">参数个数：      3</div><div class="line">脚本名：        using_sys_argv.py</div><div class="line">参数列表：</div><div class="line">                参数1: tencent</div><div class="line">                参数2: wang</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">参数个数：      3</span><br><span class="line">脚本名：        using_sys_argv.py</span><br><span class="line">参数列表：</span><br><span class="line">                参数1: tencent</span><br><span class="line">                参数2: wang</span><br></pre></td></tr></table></figure>
+
 <p><strong>这种方式虽然很简单，但不能很好地识别命令行选项</strong>，需要自己写额外代码，如：</p>
 <ul>
 <li>运行<code>python using_sys_argv.py -c tencent --name wang</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">参数个数：      5</div><div class="line">脚本名：        using_sys_argv.py</div><div class="line">参数列表：</div><div class="line">                参数1: -c</div><div class="line">                参数2: tencent</div><div class="line">                参数3: --name</div><div class="line">                参数4: wang</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">参数个数：      5</span><br><span class="line">脚本名：        using_sys_argv.py</span><br><span class="line">参数列表：</span><br><span class="line">                参数1: -c</span><br><span class="line">                参数2: tencent</span><br><span class="line">                参数3: --name</span><br><span class="line">                参数4: wang</span><br></pre></td></tr></table></figure>
+
 <p>如上，sys.argv统一识别成了参数量。</p>
 <h2 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h2><p>argparse是Python内置的模块，它会从sys.argv中正确<strong>解析出命令行选项和参数，并自动生成帮助和使用信息</strong>。</p>
 <h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>argparse使用基本是三个步骤：</p>
@@ -244,37 +259,45 @@ var themeMenus = {};
 <li>使用<code>add_argument()</code>添加参数</li>
 <li>使用<code>parse_args()</code>解析参数</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line"><span class="comment"># 1.定义解析器</span></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"><span class="comment"># 2.添加参数</span></div><div class="line">parser.add_argument(<span class="string">'integer'</span>,type=int,help=<span class="string">'base number x'</span>)</div><div class="line"><span class="comment"># 3.解析参数</span></div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line">print(args.integer)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.定义解析器</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"><span class="comment"># 2.添加参数</span></span><br><span class="line">parser.add_argument(<span class="string">'integer'</span>,type=int,help=<span class="string">'base number x'</span>)</span><br><span class="line"><span class="comment"># 3.解析参数</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">print(args.integer)</span><br></pre></td></tr></table></figure>
+
 <p>上面就是argparse的一个简单示例，运行下看看效果：</p>
 <ul>
 <li>直接运行<code>python using_argparse.py</code>，会报错：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">usage: using_argparse.py [-h] <span class="built_in">integer</span></div><div class="line">using_argparse.py: error: the following arguments are required: <span class="built_in">integer</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">usage: using_argparse.py [-h] <span class="built_in">integer</span></span><br><span class="line">using_argparse.py: error: the following arguments are required: <span class="built_in">integer</span></span><br></pre></td></tr></table></figure>
+
 <p>提示通过<code>-h</code>获取帮助，并且<code>integer</code>这个参数是必须的。</p>
 <ul>
 <li>运行<code>python using_argparse.py -h</code>，显示帮助文档：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">usage: using_argparse.py [-h] <span class="built_in">integer</span></div><div class="line"></div><div class="line">positional arguments:</div><div class="line">  <span class="built_in">integer</span>     base number x</div><div class="line"></div><div class="line">optional arguments:</div><div class="line">  -h, --<span class="built_in">help</span>  show this <span class="built_in">help</span> message and <span class="built_in">exit</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">usage: using_argparse.py [-h] <span class="built_in">integer</span></span><br><span class="line"></span><br><span class="line">positional arguments:</span><br><span class="line">  <span class="built_in">integer</span>     base number x</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --<span class="built_in">help</span>  show this <span class="built_in">help</span> message and <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>运行<code>python using_argparse.py 100</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">100</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100</span><br></pre></td></tr></table></figure>
+
 <h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>平常使用最多的应该是添加短选项<code>-</code>或长选项<code>--</code>的可选参数，比如要计算一个数的n次方：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line"><span class="comment"># 1.定义解析器</span></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"><span class="comment"># 2.添加位置参数</span></div><div class="line">parser.add_argument(<span class="string">'integer'</span>,type=int,help=<span class="string">'base number x'</span>)</div><div class="line"><span class="comment"># 添加可选参数</span></div><div class="line">parser.add_argument(<span class="string">'--powern'</span>,type=int,help=<span class="string">'n power of a number'</span>)</div><div class="line"><span class="comment"># 3.解析参数</span></div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line"><span class="keyword">if</span> args.powern: <span class="comment"># 判断可选参数</span></div><div class="line">    print(args.integer**args.powern)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(args.integer)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.定义解析器</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"><span class="comment"># 2.添加位置参数</span></span><br><span class="line">parser.add_argument(<span class="string">'integer'</span>,type=int,help=<span class="string">'base number x'</span>)</span><br><span class="line"><span class="comment"># 添加可选参数</span></span><br><span class="line">parser.add_argument(<span class="string">'--powern'</span>,type=int,help=<span class="string">'n power of a number'</span>)</span><br><span class="line"><span class="comment"># 3.解析参数</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> args.powern: <span class="comment"># 判断可选参数</span></span><br><span class="line">    print(args.integer**args.powern)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(args.integer)</span><br></pre></td></tr></table></figure>
+
 <p>此时不加<code>--powern</code>的运行结果跟之前一样，添加后，会计算x^n：</p>
 <ul>
 <li>运行<code>python using_argparse.py 100 --powern 2</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">10000</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10000</span><br></pre></td></tr></table></figure>
+
 <h3 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h3><p>虽说主要通过三个方法实现，但方法的参数很多，我们挑几个常用的说下，更多请参考<a href="#接口文档">接口文档</a>。</p>
 <ul>
 <li><strong>ArgumentParser()</strong></li>
 </ul>
 <p><img src="http://pic.ex2tron.top/depth_python_argparse_argumentparser_method.jpg" alt=""></p>
 <p>其中最常用的是<code>description</code>项，在脚本帮助文档中起说明作用，如前面代码更改为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser = argparse.ArgumentParser(description=<span class="string">'Basic Operations of an Integer.'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Basic Operations of an Integer.'</span>)</span><br></pre></td></tr></table></figure>
+
 <p>此时运行<code>python using_argparse.py -h</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">usage: using_argparse.py [-h] [--powern POWERN] <span class="built_in">integer</span></div><div class="line"></div><div class="line">Basic Operations of an Integer.</div><div class="line"></div><div class="line">positional arguments:</div><div class="line">……</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">usage: using_argparse.py [-h] [--powern POWERN] <span class="built_in">integer</span></span><br><span class="line"></span><br><span class="line">Basic Operations of an Integer.</span><br><span class="line"></span><br><span class="line">positional arguments:</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><strong>add_argument()</strong></li>
 </ul>
@@ -283,45 +306,52 @@ var themeMenus = {};
 <ol>
 <li><code>name of flags</code>，想让脚本同一个可选参数既支持短选项<code>-</code>又支持长选项<code>--</code>，可以：</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>)</div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line">print(args.foo) <span class="comment"># 注意不是args.f噢！</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">print(args.foo) <span class="comment"># 注意不是args.f噢！</span></span><br></pre></td></tr></table></figure>
+
 <p>这样的话，运行时<code>python script.py -f param</code>或<code>python script.py --foo param</code>都可以。</p>
 <p>2.<code>nargs</code>，要读取的命令行参数个数</p>
 <ul>
 <li><code>nargs=n</code>，表示要读取n个参数，如</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
 <p>运行时需要在<code>-f</code>后加两个参数：<code>python script.py -f p1 p2</code></p>
 <ul>
 <li><code>nargs=&#39;*&#39;/&#39;+&#39;</code>，将所有参数合在一个列表中（<code>*</code>号和<code>+</code>号的区别：<code>+</code>号需至少1个参数）：</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="string">'+'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="string">'+'</span>)</span><br></pre></td></tr></table></figure>
+
 <p>运行<code>python script.py -f p1 p2 p3</code>结果为：<code>foo=[&#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;]</code></p>
 <ul>
 <li><code>nargs=&#39;?&#39;</code>，参数没提供时，使用默认值（可选参数是const，位置参数是default）：</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="string">'?'</span>,const=<span class="string">'param'</span>)</div><div class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,nargs=<span class="string">'?'</span>,const=<span class="string">'param'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</span><br></pre></td></tr></table></figure>
+
 <p>运行<code>python script.py -f</code>，结果为：<code>foo=&#39;param&#39;,integer=&#39;0&#39;</code></p>
 <p>3.<code>required</code>，默认情况下，argparse会把<code>-</code>和<code>--</code>的参数作为可选的，如果需要指定成必须的话，可以将required设置为True：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,required=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,required=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
 <p>运行<code>python script.py</code>会提示：<code>error: the following arguments are required: --foo/-f</code></p>
 <p>4.<code>choices</code>，限定参数值的范围，如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</span><br></pre></td></tr></table></figure>
+
 <p>运行<code>python scipt.py -f param</code>会提示：<code>error: argument --foo/-f: invalid choice: &#39;param&#39; (choose from &#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;)</code></p>
 <ul>
 <li><strong>parse_args()</strong></li>
 </ul>
 <p><img src="http://pic.ex2tron.top/depth_python_argparse_parse_args_method.jpg" alt=""></p>
 <p>这个方法没啥好讲的，主要是第一个参数args，默认是从sys.argv取值，调试时也可以把命令行参数加上去，这样就不用在命令行中设置了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</div><div class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</div><div class="line"><span class="comment"># 直接在代码中传入命令行参数</span></div><div class="line">args = parser.parse_args([<span class="string">'100'</span>,<span class="string">'-f'</span>,<span class="string">'p1'</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</span><br><span class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</span><br><span class="line"><span class="comment"># 直接在代码中传入命令行参数</span></span><br><span class="line">args = parser.parse_args([<span class="string">'100'</span>,<span class="string">'-f'</span>,<span class="string">'p1'</span>])</span><br></pre></td></tr></table></figure>
+
 <p>此时，在编辑器中直接运行或在命令行中不加参数运行：<code>python scipt.py</code>都能得到正确结果：<code>integer=&#39;100&#39;,foo=&#39;p1&#39;</code></p>
 <h2 id="getopt"><a href="#getopt" class="headerlink" title="getopt"></a>getopt</h2><p>Python还有一个getopt模块，它的设计与C语言中的getopt类似。Python官方建议是你如果不熟悉C中的getopt或者想写更少的代码的话，更推荐用argparse，所以不再详述，感兴趣可参考<a href="#接口文档">接口文档</a>：</p>
 <blockquote>
-<p>Note: The <a href="https://docs.python.org/3/library/getopt.html#module-getopt" target="_blank" rel="external"><code>getopt</code></a> module is a parser for command line options whose API is designed to be familiar to users of the C <code>getopt()</code> function. Users who are unfamiliar with the C <code>getopt()</code> function or who would like to write less code and get better help and error messages should consider using the <a href="https://docs.python.org/3/library/argparse.html#module-argparse" target="_blank" rel="external"><code>argparse</code></a> module instead.</p>
+<p>Note: The <a href="https://docs.python.org/3/library/getopt.html#module-getopt" target="_blank" rel="noopener"><code>getopt</code></a> module is a parser for command line options whose API is designed to be familiar to users of the C <code>getopt()</code> function. Users who are unfamiliar with the C <code>getopt()</code> function or who would like to write less code and get better help and error messages should consider using the <a href="https://docs.python.org/3/library/argparse.html#module-argparse" target="_blank" rel="noopener"><code>argparse</code></a> module instead.</p>
 </blockquote>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.python.org/3/library/sys.html" target="_blank" rel="external">Python sys</a></li>
-<li><a href="https://docs.python.org/zh-cn/3/library/argparse.html" target="_blank" rel="external">Python argparse</a></li>
-<li><a href="https://docs.python.org/3/library/getopt.html" target="_blank" rel="external">Python getopt</a></li>
+<li><a href="https://docs.python.org/3/library/sys.html" target="_blank" rel="noopener">Python sys</a></li>
+<li><a href="https://docs.python.org/zh-cn/3/library/argparse.html" target="_blank" rel="noopener">Python argparse</a></li>
+<li><a href="https://docs.python.org/3/library/getopt.html" target="_blank" rel="noopener">Python getopt</a></li>
 </ul>
 
       
@@ -329,11 +359,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/argv/">argv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令行参数/">命令行参数</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/argv/" rel="tag">argv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" rel="tag">命令行参数</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -342,7 +372,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -426,7 +458,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -443,7 +475,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -459,7 +491,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -508,13 +542,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

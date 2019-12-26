@@ -557,11 +557,7 @@ object {
 	background: #ff2828;
 	}
 .entry-thumbnail {
-	float: left;
-	width: 250px;
-	height: auto;
-	margin: 0 20px 20px 0;
-	border: 5px solid #e6e6e6;
+	margin: 0 0 20px;
 	}
 .single-thumbnail {
 	margin-bottom: 20px;
@@ -571,9 +567,6 @@ object {
 	}
 .entry-content {
 	margin: 0 0 20px;
-	}
-.entry-summary {
-	margin: 0 0 20px 260px;
 	}
 .entry-footer {
 	clear: both;
@@ -1192,12 +1185,8 @@ body.search .page .entry-footer {
 	.site-content {
 		margin: 0;
 		}
-	.entry-thumbnail {
-		float: none;
-		margin: 0 auto 15px;
-		}
 	.entry-summary {
-		margin-left: 0;
+		margin: 0 0 30px;
 		}
 	.site-sidebar {
 		width: auto;

@@ -15,7 +15,7 @@
     
     python+opencv教程2：基本元素-图片 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,23 @@
   
   
   <meta name="description" content="学习如何加载图片，显示并保存图片。">
-<meta name="keywords" content="OpenCV,Python,图像处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程2：基本元素-图片">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-basic-element-image/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-basic-element-image/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习如何加载图片，显示并保存图片。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
-<meta property="og:updated_time" content="2019-05-02T15:14:14.117Z">
+<meta property="article:published_time" content="2017-12-06T07:52:06.000Z">
+<meta property="article:modified_time" content="2019-05-02T15:14:14.117Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程2：基本元素-图片">
-<meta name="twitter:description" content="学习如何加载图片，显示并保存图片。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +79,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +96,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +115,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +141,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" rel="gallery_cjxj6dyca001c5w59awe432f0">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" target="_blank" rel="gallery_ck4mf0p00000gdktnf25a7qyp noopener">
         <img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" itemprop="image">
       </a>
     
@@ -222,7 +232,8 @@ var themeMenus = {};
 <p>图像坐标的起始点是在左上角，所以行对应的是y，列对应的是x：</p>
 <p><img src="http://pic.ex2tron.top/cv2_image_coordinate_channels.jpg" alt=""></p>
 <h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 加载灰度图</span></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载灰度图</span></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>参数1：图片的文件名</p>
 <ul>
@@ -242,15 +253,18 @@ var themeMenus = {};
 <p>经验之谈：路径中不能有中文噢，并且没有加载成功的话是不会报错的，<code>print(img)</code>的结果为None，后面处理才会报错，算是个小坑。</p>
 </blockquote>
 <h3 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h3><p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cv2.imshow(<span class="string">'lena'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv2.imshow(<span class="string">'lena'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p>参数1是窗口的名字，参数2是要显示的图片。不同窗口之间用窗口名区分，所以窗口名相同就表示是同一个窗口，显示结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_show_lena_gray.jpg" alt=""></p>
 <p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code>（<a href="#练习">练习1</a>）。</p>
 <p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先定义窗口，后显示图片</span></div><div class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</div><div class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先定义窗口，后显示图片</span></span><br><span class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p>参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，表示窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，表示窗口大小可调整。图片比较大的时候，可以考虑用后者。</p>
 <h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><p>使用<code>cv2.imwrite()</code>保存图片，参数1是包含后缀名的文件名：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">'lena_gray.jpg'</span>, img)</span><br></pre></td></tr></table></figure>
+
 <p>Nice，是不是很简单呐，再接再厉噢(●’◡’●)</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.imread()</code>读入图片、<code>cv2.imshow()</code>显示图片、<code>cv2.imwrite()</code>保存图片。</li>
@@ -262,15 +276,15 @@ var themeMenus = {};
 </li>
 </ol>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d3/d63/classcv_1_1Mat.html" target="_blank" rel="external">Mat Object</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56" target="_blank" rel="external">cv2.imread()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga453d42fe4cb60e5723281a89973ee563" target="_blank" rel="external">cv2.imshow()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b" target="_blank" rel="external">cv.namedWindow()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/d63/classcv_1_1Mat.html" target="_blank" rel="noopener">Mat Object</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56" target="_blank" rel="noopener">cv2.imread()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga453d42fe4cb60e5723281a89973ee563" target="_blank" rel="noopener">cv2.imshow()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="noopener">cv2.imwrite()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b" target="_blank" rel="noopener">cv.namedWindow()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/02.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="external">Getting Started with Images</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/02.%20%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0-%E5%9B%BE%E7%89%87" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_image_display/py_image_display.html" target="_blank" rel="noopener">Getting Started with Images</a></li>
 </ul>
 
       
@@ -278,11 +292,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -291,7 +305,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -375,7 +391,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -392,7 +408,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -408,7 +424,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -457,13 +475,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

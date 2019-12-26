@@ -15,7 +15,7 @@
     
     【云服务】搭建自己的github/git服务器 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,23 @@
   
   
   <meta name="description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
-<meta name="keywords" content="Build,Github,Git Sever">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【云服务】搭建自己的Github&#x2F;Git服务器">
-<meta property="og:url" content="http://ex2tron.wang/set-up-your-own-git-server/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/set-up-your-own-git-server/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/set_up_your_own_git_server.jpg">
-<meta property="og:updated_time" content="2019-03-25T02:20:42.719Z">
+<meta property="article:published_time" content="2017-06-04T11:38:56.000Z">
+<meta property="article:modified_time" content="2019-03-25T02:20:42.719Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="Build">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="Git Sever">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【云服务】搭建自己的Github&#x2F;Git服务器">
-<meta name="twitter:description" content="Github是目前最流行的托管开源代码的远程仓库，但如果想要创建私有仓库，不公开代码的话，Github是收费的。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/set_up_your_own_git_server.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +79,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +96,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +115,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +141,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" rel="gallery_cjxj6dydl00395w59aad45j07">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" target="_blank" rel="gallery_ck4mf0p0f0016dktn3rw66zmi noopener">
         <img src="http://pic.ex2tron.top/set_up_your_own_git_server.jpg" itemprop="image">
       </a>
     
@@ -216,32 +226,44 @@ var themeMenus = {};
 <p><strong>2019-1-8更新：微软收购Github后，私有代码库从此免费！！喜大普奔啊！</strong></p>
 <hr>
 <p>我们需要一台Linux电脑，可以当作局域网内的Github。当然如果你有阿里云之类的服务器的话就更好了，有网的地方就可以push/pull代码，我这里以自己的本地Ubuntu电脑为例：</p>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
 <p>一句话，没啥好说的(+_+)</p>
 <h2 id="新建git用户并配置"><a href="#新建git用户并配置" class="headerlink" title="新建git用户并配置"></a>新建git用户并配置</h2><p>创建用于运行Git服务的用户<code>git</code>，新建账号时，会提示你输入该用户的密码，其他保持默认即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo adduser git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser git</span><br></pre></td></tr></table></figure>
+
 <p><code>adduser</code>指令会在/home目录下生成以git名命名的文件夹，代表git用户目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls /home</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /home</span><br></pre></td></tr></table></figure>
+
 <p>在git用户目录下新建<code>.ssh</code>文件夹和<code>authorized_keys</code>文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/.ssh</div><div class="line">touch /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/git/.ssh</span><br><span class="line">touch /home/git/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
 <p>熟悉ssh的同学应该知道<code>authorized_keys</code>文件用于收集所有需要登录到此Git服务器的客户端公钥，一行一个。如果你已经生成过ssh密钥的话，Windows系统会在<code>C:\Users\用户名\.ssh\</code>，Linux系统一般在<code>/home/user/.ssh/</code>下，没有生成的话，可以用下面的指令生成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
 <p>将<code>id_rsa.pub</code>中的内容拷贝到服务器的authorized_keys文件中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"pub_key_content"</span> &gt;&gt; /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"pub_key_content"</span> &gt;&gt; /home/git/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
 <h2 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h2><p>现在其实就跟Github一样的流程了，首先在建立一个新仓库，比如在<code>/home/git/repos</code>下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/repos</div><div class="line"><span class="built_in">cd</span> /home/git/repos/</div><div class="line">sudo git init --bare sample.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/git/repos</span><br><span class="line"><span class="built_in">cd</span> /home/git/repos/</span><br><span class="line">sudo git init --bare sample.git</span><br></pre></td></tr></table></figure>
+
 <p>然后将<code>sample.git</code>仓库的用户和组都改成<code>git</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R git:git sample.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R git:git sample.git</span><br></pre></td></tr></table></figure>
+
 <p>这样就建好了远程仓库，接下来你可以将已有的本地仓库关联或者克隆到本地：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin git@server_ip:/home/git/repos/sample.git</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git@server_ip:/home/git/repos/sample.git</div></pre></td></tr></table></figure>
-<h2 id="还有点小问题"><a href="#还有点小问题" class="headerlink" title="还有点小问题~~~"></a>还有点小问题~~~</h2><p>前面新建用户的步骤完成后，<code>git</code>用户是可以直接在终端登陆服务器的，因此需要禁止<code>git</code>用户登陆shell，编辑<code>/etc/passwd</code>文件，找到git的一行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@server_ip:/home/git/repos/sample.git</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@server_ip:/home/git/repos/sample.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="还有点小问题"><a href="#还有点小问题" class="headerlink" title="还有点小问题~"></a>还有点小问题<del>~</del></h2><p>前面新建用户的步骤完成后，<code>git</code>用户是可以直接在终端登陆服务器的，因此需要禁止<code>git</code>用户登陆shell，编辑<code>/etc/passwd</code>文件，找到git的一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</span><br></pre></td></tr></table></figure>
+
 <p>将启动环境改为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</span><br></pre></td></tr></table></figure>
+
 <p><code>git-shell</code>是一个每次一登录就退出的程序，这样配置之后，<code>git</code>用户可以使用ssh管理仓库，但无法登陆shell。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="external">廖雪峰Git教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="noopener">廖雪峰Git教程</a></li>
 </ul>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>
@@ -252,11 +274,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Build/">Build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git-Sever/">Git Sever</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Build/" rel="tag">Build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git-Sever/" rel="tag">Git Sever</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/" rel="tag">Github</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -265,7 +287,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -330,7 +354,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">1.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建git用户并配置"><span class="nav-number">2.</span> <span class="nav-text">新建git用户并配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建仓库"><span class="nav-number">3.</span> <span class="nav-text">新建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有点小问题"><span class="nav-number">4.</span> <span class="nav-text">还有点小问题~~~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">1.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建git用户并配置"><span class="nav-number">2.</span> <span class="nav-text">新建git用户并配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建仓库"><span class="nav-number">3.</span> <span class="nav-text">新建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有点小问题"><span class="nav-number">4.</span> <span class="nav-text">还有点小问题~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
@@ -344,7 +368,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -361,7 +385,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -377,7 +401,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -426,13 +452,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

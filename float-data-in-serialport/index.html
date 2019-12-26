@@ -15,7 +15,7 @@
     
     串口传输中对float数据的处理 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -24,22 +24,23 @@
   
   
   
-  <meta name="description" content="我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。">
-<meta name="keywords" content="串口,float">
+  <meta name="description" content="我本专业是搞控制的，软件上就是天天跟上&#x2F;下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="串口传输中对float数据的处理">
-<meta property="og:url" content="http://ex2tron.wang/float-data-in-serialport/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
-<meta property="og:description" content="我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。">
-<meta property="og:locale" content="en">
+<meta property="og:url" content="http://www.codec.wang/float-data-in-serialport/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
+<meta property="og:description" content="我本专业是搞控制的，软件上就是天天跟上&#x2F;下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/float-data-in-serialport_cover2.jpg">
-<meta property="og:updated_time" content="2019-03-25T13:46:51.593Z">
+<meta property="article:published_time" content="2019-03-25T08:16:35.000Z">
+<meta property="article:modified_time" content="2019-03-25T13:46:51.593Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="串口">
+<meta property="article:tag" content="float">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="串口传输中对float数据的处理">
-<meta name="twitter:description" content="我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/float-data-in-serialport_cover2.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +78,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +95,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +114,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +140,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +188,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/float-data-in-serialport_cover2.jpg" rel="gallery_cjxj6dydw003r5w597owz7t8y">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/float-data-in-serialport_cover2.jpg" target="_blank" rel="gallery_ck4mf0p0h001bdktnc9qkgzmy noopener">
         <img src="http://pic.ex2tron.top/float-data-in-serialport_cover2.jpg" itemprop="image">
       </a>
     
@@ -215,48 +224,56 @@ var themeMenus = {};
         <p>我本专业是搞控制的，软件上就是天天跟上/下位机、通讯协议打交道。一次，有个学弟问我，他单片机采集的温度是小数，串口应该怎么发，协议怎么设计。<a id="more"></a></p>
 <hr>
 <blockquote>
-<p><em>爱你所爱，行你所行，听从你心，无问西东。</em>——<a href="https://movie.douban.com/subject/6874741/" target="_blank" rel="external">《无问西东》</a></p>
-<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+<p><em>爱你所爱，行你所行，听从你心，无问西东。</em>——<a href="https://movie.douban.com/subject/6874741/" target="_blank" rel="noopener">《无问西东》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener">MovieQuotes</a></strong></p>
 </blockquote>
 <p>他的想法是整数部分和小数部分分开发，比如100.3，1个字节代表整数部分，1个字节代表小数部分，那如果是300.421呢？超出了1个字节的表示范围，负数-3.14又该怎么发呢？当然可以设置多个字节表示数据，然后单独设置1个字节表示正负，但显然这种方式即麻烦又不合理。</p>
 <p>其实，float类型数据，无论正负/大小，它都是占用4个字节的。因此，下位机可以将传感器数据转成4个字节，上位机再把四个字节转成float即可，并且转换在C和C#等语言中都是一句话的事。完整代码可到<a href="#引用">源码处</a>下载。</p>
 <ul>
-<li><a href="http://lostphp.com/hexconvert/" target="_blank" rel="external">IEE 754浮点数16进制在线转换</a></li>
+<li><a href="http://lostphp.com/hexconvert/" target="_blank" rel="noopener">IEE 754浮点数16进制在线转换</a></li>
 </ul>
-<h2 id="大小端模式"><a href="#大小端模式" class="headerlink" title="大小端模式"></a>大小端模式</h2><p><a href="https://baike.baidu.com/item/大小端模式" target="_blank" rel="external">大小端模式</a>大家应该比较熟悉了，大端模式是高字节存放在低地址中，低字节存放在高地址中。类似我们正常的从左到右阅读，数据由小到大，小端模式反之。这里之所以提及，是因为有时候不同的系统/工具得到的结果是反的，此时不用在意，是没错的。</p>
+<h2 id="大小端模式"><a href="#大小端模式" class="headerlink" title="大小端模式"></a>大小端模式</h2><p><a href="https://baike.baidu.com/item/大小端模式" target="_blank" rel="noopener">大小端模式</a>大家应该比较熟悉了，大端模式是高字节存放在低地址中，低字节存放在高地址中。类似我们正常的从左到右阅读，数据由小到大，小端模式反之。这里之所以提及，是因为有时候不同的系统/工具得到的结果是反的，此时不用在意，是没错的。</p>
 <h2 id="C语言-下位机"><a href="#C语言-下位机" class="headerlink" title="C语言/下位机"></a>C语言/下位机</h2><ul>
-<li><a href="https://c.runoob.com/compile/11" target="_blank" rel="external">菜鸟C在线工具</a></li>
+<li><a href="https://c.runoob.com/compile/11" target="_blank" rel="noopener">菜鸟C在线工具</a></li>
 </ul>
 <p>下位机一般是C语言编写的，可以将传感器数据转成字节数组，C中也就是字符数组，有多种方式：</p>
 <blockquote>
 <p>有的单片机芯片，当使用unsigned char时，串口发送不了，此时可以去掉unsigned试下。</p>
 </blockquote>
-<h3 id="方法一：强制指针类型转换"><a href="#方法一：强制指针类型转换" class="headerlink" title="方法一：强制指针类型转换"></a>方法一：强制指针类型转换</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// float -&gt; char []</span></div><div class="line"><span class="keyword">float</span> sensorData = <span class="number">-3.14</span>;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> *arr = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)(&amp;sensorData);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%02X,%02X,%02X,%02X\n"</span>, arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>], arr[<span class="number">3</span>]);</div><div class="line"><span class="comment">// 结果：C3,F5,48,C0</span></div></pre></td></tr></table></figure>
+<h3 id="方法一：强制指针类型转换"><a href="#方法一：强制指针类型转换" class="headerlink" title="方法一：强制指针类型转换"></a>方法一：强制指针类型转换</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// float -&gt; char []</span></span><br><span class="line"><span class="keyword">float</span> sensorData = <span class="number">-3.14</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> *arr = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)(&amp;sensorData);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%02X,%02X,%02X,%02X\n"</span>, arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>], arr[<span class="number">3</span>]);</span><br><span class="line"><span class="comment">// 结果：C3,F5,48,C0</span></span><br></pre></td></tr></table></figure>
+
 <p>如果想保存到char数组中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> charArr[<span class="number">4</span>], i;</div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) charArr[i] = *arr++;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> charArr[<span class="number">4</span>], i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) charArr[i] = *arr++;</span><br></pre></td></tr></table></figure>
+
 <p>接下来反向转换：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// char [] -&gt; float</span></div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> sBuf[<span class="number">4</span>];</div><div class="line">sBuf[<span class="number">0</span>] = <span class="number">0xC3</span>;</div><div class="line">sBuf[<span class="number">1</span>] = <span class="number">0xF5</span>;</div><div class="line">sBuf[<span class="number">2</span>] = <span class="number">0x48</span>;</div><div class="line">sBuf[<span class="number">3</span>] = <span class="number">0xC0</span>;</div><div class="line"><span class="keyword">float</span> *data = (<span class="keyword">float</span>*)(&amp;sBuf);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>, *data); <span class="comment">// 结果：-3.140000</span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// char [] -&gt; float</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> sBuf[<span class="number">4</span>];</span><br><span class="line">sBuf[<span class="number">0</span>] = <span class="number">0xC3</span>;</span><br><span class="line">sBuf[<span class="number">1</span>] = <span class="number">0xF5</span>;</span><br><span class="line">sBuf[<span class="number">2</span>] = <span class="number">0x48</span>;</span><br><span class="line">sBuf[<span class="number">3</span>] = <span class="number">0xC0</span>;</span><br><span class="line"><span class="keyword">float</span> *data = (<span class="keyword">float</span>*)(&amp;sBuf);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>, *data); <span class="comment">// 结果：-3.140000</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="方法二：使用联合体"><a href="#方法二：使用联合体" class="headerlink" title="方法二：使用联合体"></a>方法二：使用联合体</h3><p>利用联合体共享内存的原理，可以在联合体内同时定义float和char数组类型：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">union</span> &#123;</div><div class="line">    <span class="keyword">float</span> data;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> arr[<span class="number">4</span>];</div><div class="line">&#125; dataFormat;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> &#123;</span><br><span class="line">    <span class="keyword">float</span> data;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> arr[<span class="number">4</span>];</span><br><span class="line">&#125; dataFormat;</span><br></pre></td></tr></table></figure>
+
 <p>然后转换就比较简单了：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// float -&gt; char []</span></div><div class="line">dataFormat.data = <span class="number">-3.14</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%02X,%02X,%02X,%02X\n"</span>, dataFormat.arr[<span class="number">0</span>], dataFormat.arr[<span class="number">1</span>], dataFormat.arr[<span class="number">2</span>], dataFormat.arr[<span class="number">3</span>]);</div><div class="line"><span class="comment">// 结果：C3,F5,48,C0</span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// float -&gt; char []</span></span><br><span class="line">dataFormat.data = <span class="number">-3.14</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%02X,%02X,%02X,%02X\n"</span>, dataFormat.arr[<span class="number">0</span>], dataFormat.arr[<span class="number">1</span>], dataFormat.arr[<span class="number">2</span>], dataFormat.arr[<span class="number">3</span>]);</span><br><span class="line"><span class="comment">// 结果：C3,F5,48,C0</span></span><br></pre></td></tr></table></figure>
+
 <p>反向转：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// char [] -&gt; float</span></div><div class="line">dataFormat.arr[<span class="number">0</span>] = <span class="number">0xC3</span>;</div><div class="line">dataFormat.arr[<span class="number">1</span>] = <span class="number">0xF5</span>;</div><div class="line">dataFormat.arr[<span class="number">2</span>] = <span class="number">0x48</span>;</div><div class="line">dataFormat.arr[<span class="number">3</span>] = <span class="number">0xC0</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>, dataFormat.data); <span class="comment">// 结果：-3.140000</span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// char [] -&gt; float</span></span><br><span class="line">dataFormat.arr[<span class="number">0</span>] = <span class="number">0xC3</span>;</span><br><span class="line">dataFormat.arr[<span class="number">1</span>] = <span class="number">0xF5</span>;</span><br><span class="line">dataFormat.arr[<span class="number">2</span>] = <span class="number">0x48</span>;</span><br><span class="line">dataFormat.arr[<span class="number">3</span>] = <span class="number">0xC0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>, dataFormat.data); <span class="comment">// 结果：-3.140000</span></span><br></pre></td></tr></table></figure>
+
 <p>C语言还是很深奥的，上面两种是最通俗易懂的方式，更多牛逼的方式尽在Google…＞﹏＜</p>
 <h2 id="C-上位机"><a href="#C-上位机" class="headerlink" title="C#/上位机"></a>C#/上位机</h2><ul>
-<li><a href="https://c.runoob.com/compile/14" target="_blank" rel="external">菜鸟C#在线工具</a></li>
+<li><a href="https://c.runoob.com/compile/14" target="_blank" rel="noopener">菜鸟C#在线工具</a></li>
 </ul>
 <p>我一般使用C#编写上位机，所以以它为例。一般这类语言中都有自带的函数可以一句解决，比如C#中用<code>BitConverter.ToSingle()</code>和<code>BitConverter.GetBytes()</code>便可实现转换：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// byte[] -&gt; float</span></div><div class="line"><span class="keyword">byte</span>[] recData = &#123;<span class="number">0xC3</span>,<span class="number">0XF5</span>,<span class="number">0X48</span>,<span class="number">0XC0</span>&#125;;</div><div class="line"><span class="keyword">float</span> sensorData = BitConverter.ToSingle(recData,<span class="number">0</span>); </div><div class="line">Console.WriteLine(sensorData); <span class="comment">// 结果：-3.14</span></div></pre></td></tr></table></figure>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// float -&gt; byte[]</span></div><div class="line"><span class="keyword">float</span> sData = <span class="number">-3.14</span>f;</div><div class="line"><span class="keyword">byte</span>[] rData = BitConverter.GetBytes(sData);</div><div class="line"><span class="keyword">foreach</span> (<span class="keyword">byte</span> data <span class="keyword">in</span> rData) Console.Write(<span class="string">"&#123;0:X000&#125;,"</span>, data);</div><div class="line"><span class="comment">// 结果：C3,F5,48,C0,</span></div><div class="line"><span class="comment">// 判断大小端：Console.WriteLine(BitConverter.IsLittleEndian);</span></div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// byte[] -&gt; float</span></span><br><span class="line"><span class="keyword">byte</span>[] recData = &#123;<span class="number">0xC3</span>,<span class="number">0XF5</span>,<span class="number">0X48</span>,<span class="number">0XC0</span>&#125;;</span><br><span class="line"><span class="keyword">float</span> sensorData = BitConverter.ToSingle(recData,<span class="number">0</span>); </span><br><span class="line">Console.WriteLine(sensorData); <span class="comment">// 结果：-3.14</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// float -&gt; byte[]</span></span><br><span class="line"><span class="keyword">float</span> sData = <span class="number">-3.14f</span>;</span><br><span class="line"><span class="keyword">byte</span>[] rData = BitConverter.GetBytes(sData);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">byte</span> data <span class="keyword">in</span> rData) Console.Write(<span class="string">"&#123;0:X000&#125;,"</span>, data);</span><br><span class="line"><span class="comment">// 结果：C3,F5,48,C0,</span></span><br><span class="line"><span class="comment">// 判断大小端：Console.WriteLine(BitConverter.IsLittleEndian);</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ol>
 <li>既然知道了float数据怎么处理，那int/double呢？（原理是一样的）</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Float-In-SerialPort" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/float" target="_blank" rel="external">Microsoft float (C# Reference)</a></li>
-<li><a href="https://blog.csdn.net/sijigang/article/details/1546117" target="_blank" rel="external">浮点型(FLOAT)与CHAR型转换</a></li>
-<li><a href="https://blog.csdn.net/sygdp21/article/details/20476697" target="_blank" rel="external">float型数据与字节数组的转化</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Float-In-SerialPort" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/float" target="_blank" rel="noopener">Microsoft float (C# Reference)</a></li>
+<li><a href="https://blog.csdn.net/sijigang/article/details/1546117" target="_blank" rel="noopener">浮点型(FLOAT)与CHAR型转换</a></li>
+<li><a href="https://blog.csdn.net/sygdp21/article/details/20476697" target="_blank" rel="noopener">float型数据与字节数组的转化</a></li>
 </ul>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>
@@ -267,11 +284,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/float/">float</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/串口/">串口</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/float/" rel="tag">float</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%B2%E5%8F%A3/" rel="tag">串口</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -280,7 +297,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -350,7 +369,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大小端模式"><span class="nav-number">1.</span> <span class="nav-text">大小端模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C语言-下位机"><span class="nav-number">2.</span> <span class="nav-text">C语言/下位机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：强制指针类型转换"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：强制指针类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：使用联合体"><span class="nav-number">2.2.</span> <span class="nav-text">方法二：使用联合体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-上位机"><span class="nav-number">3.</span> <span class="nav-text">C#/上位机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">4.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大小端模式"><span class="nav-number">1.</span> <span class="nav-text">大小端模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C语言-下位机"><span class="nav-number">2.</span> <span class="nav-text">C语言&#x2F;下位机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：强制指针类型转换"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：强制指针类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：使用联合体"><span class="nav-number">2.2.</span> <span class="nav-text">方法二：使用联合体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-上位机"><span class="nav-number">3.</span> <span class="nav-text">C#&#x2F;上位机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">4.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
@@ -364,7 +383,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -381,7 +400,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -397,7 +416,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -446,13 +467,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

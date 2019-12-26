@@ -15,7 +15,7 @@
     
     python+opencv教程番外篇2：无损保存和matplotlib使用 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
-<meta name="keywords" content="OpenCV,Python,图像处理,Matplotlib">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程番外篇2：无损保存和Matplotlib使用">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-extra-high-quality-save-and-using-matplotlib/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
-<meta property="og:updated_time" content="2019-05-02T15:29:42.678Z">
+<meta property="article:published_time" content="2017-12-06T07:55:15.000Z">
+<meta property="article:modified_time" content="2019-05-02T15:29:42.678Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="Matplotlib">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程番外篇2：无损保存和Matplotlib使用">
-<meta name="twitter:description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" rel="gallery_cjxj6dycy00285w59e0xwnabn">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" target="_blank" rel="gallery_ck4mf0p09000udktngvxh2rw4 noopener">
         <img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" itemprop="image">
       </a>
     
@@ -216,19 +227,19 @@ var themeMenus = {};
 <hr>
 <h2 id="无损保存"><a href="#无损保存" class="headerlink" title="无损保存"></a>无损保存</h2><p>事实上，我们日常看到的大部分图片都是压缩过的，那么都有哪些常见的图片格式呢？</p>
 <h3 id="常用图片格式"><a href="#常用图片格式" class="headerlink" title="常用图片格式"></a>常用图片格式</h3><ul>
-<li><p><a href="https://baike.baidu.com/item/BMP/35116" target="_blank" rel="external">bmp</a></p>
+<li><p><a href="https://baike.baidu.com/item/BMP/35116" target="_blank" rel="noopener">bmp</a></p>
 <ul>
 <li>全称：Bitmap</li>
 <li><strong>不压缩</strong></li>
 </ul>
 </li>
-<li><p><a href="https://baike.baidu.com/item/JPEG" target="_blank" rel="external">jpg</a></p>
+<li><p><a href="https://baike.baidu.com/item/JPEG" target="_blank" rel="noopener">jpg</a></p>
 <ul>
 <li>全称：Joint Photographic Experts Group</li>
 <li><strong>有损压缩方式</strong></li>
 </ul>
 </li>
-<li><p><a href="https://baike.baidu.com/item/PNG" target="_blank" rel="external">png</a></p>
+<li><p><a href="https://baike.baidu.com/item/PNG" target="_blank" rel="noopener">png</a></p>
 <ul>
 <li>全称：Portable Network Graphics</li>
 <li><strong>无损压缩方式</strong></li>
@@ -242,9 +253,10 @@ var themeMenus = {};
 <li><code>cv2.IMWRITE_JPEG_QUALITY</code>：jpg质量控制，取值0~100，值越大，质量越好，默认为95</li>
 <li><code>cv2.IMWRITE_PNG_COMPRESSION</code>：png质量控制，取值0~9，值越大，压缩比越高，默认为1</li>
 </ul>
-<p>还有诸如<code>CV_IMWRITE_WEBP_QUALITY</code>的参量，不常用，请参考：<a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="external">ImwriteFlags</a>。</p>
+<p>还有诸如<code>CV_IMWRITE_WEBP_QUALITY</code>的参量，不常用，请参考：<a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="noopener">ImwriteFlags</a>。</p>
 <p>举例来说，原图lena.jpg的分辨率是350×350，大小49.7KB。我们把它转成不同格式看下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">new_img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># bmp</span></div><div class="line">cv2.imwrite(<span class="string">'img_bmp.bmp'</span>,new_img) <span class="comment"># 文件大小：359KB</span></div><div class="line"></div><div class="line"><span class="comment"># jpg 默认95%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg95.jpg'</span>,new_img) <span class="comment"># 文件大小：52.3KB</span></div><div class="line"><span class="comment"># jpg 20%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg20.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">20</span>]) <span class="comment"># 文件大小：8.01KB</span></div><div class="line"><span class="comment"># jpg 100%质量</span></div><div class="line">cv2.imwrite(<span class="string">'img_jpg100.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">100</span>]) <span class="comment"># 文件大小：82.5KB</span></div><div class="line"></div><div class="line"><span class="comment"># png 默认1压缩比</span></div><div class="line">cv2.imwrite(<span class="string">'img_png1.png'</span>,new_img) <span class="comment"># 文件大小：240KB</span></div><div class="line"><span class="comment"># png 9压缩比</span></div><div class="line">cv2.imwrite(<span class="string">'img_png9.png'</span>,new_img,[int(cv2.IMWRITE_PNG_COMPRESSION),<span class="number">9</span>]) <span class="comment"># 文件大小：207KB</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">new_img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bmp</span></span><br><span class="line">cv2.imwrite(<span class="string">'img_bmp.bmp'</span>,new_img) <span class="comment"># 文件大小：359KB</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># jpg 默认95%质量</span></span><br><span class="line">cv2.imwrite(<span class="string">'img_jpg95.jpg'</span>,new_img) <span class="comment"># 文件大小：52.3KB</span></span><br><span class="line"><span class="comment"># jpg 20%质量</span></span><br><span class="line">cv2.imwrite(<span class="string">'img_jpg20.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">20</span>]) <span class="comment"># 文件大小：8.01KB</span></span><br><span class="line"><span class="comment"># jpg 100%质量</span></span><br><span class="line">cv2.imwrite(<span class="string">'img_jpg100.jpg'</span>,new_img,[int(cv2.IMWRITE_JPEG_QUALITY),<span class="number">100</span>]) <span class="comment"># 文件大小：82.5KB</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># png 默认1压缩比</span></span><br><span class="line">cv2.imwrite(<span class="string">'img_png1.png'</span>,new_img) <span class="comment"># 文件大小：240KB</span></span><br><span class="line"><span class="comment"># png 9压缩比</span></span><br><span class="line">cv2.imwrite(<span class="string">'img_png9.png'</span>,new_img,[int(cv2.IMWRITE_PNG_COMPRESSION),<span class="number">9</span>]) <span class="comment"># 文件大小：207KB</span></span><br></pre></td></tr></table></figure>
+
 <p>可以看到：</p>
 <ul>
 <li>bmp文件是最大的，没有任何压缩（1个像素点1byte，3通道的彩色图总大小：350×350×3/1024 ≈ 359 KB）</li>
@@ -254,30 +266,34 @@ var themeMenus = {};
 <blockquote>
 <p>思考：为什么原图49.7KB，保存成bmp或其他格式反而大了呢？</p>
 </blockquote>
-<p>这是个很有趣的问题，很多童鞋都问过我。这里需要明确的是保存新格式时，<strong>容量大小跟原图的容量没有直接关系，而是取决于原图的分辨率大小和原图本身的内容（压缩方式）</strong>，所以lena.jpg保存成不压缩的bmp格式时，容量大小就是固定的350×350×3/1024 ≈ 359 KB；另外，容量变大不代表画质提升噢，不然就逆天了~~~</p>
+<p>这是个很有趣的问题，很多童鞋都问过我。这里需要明确的是保存新格式时，<strong>容量大小跟原图的容量没有直接关系，而是取决于原图的分辨率大小和原图本身的内容（压缩方式）</strong>，所以lena.jpg保存成不压缩的bmp格式时，容量大小就是固定的350×350×3/1024 ≈ 359 KB；另外，容量变大不代表画质提升噢，不然就逆天了<del>~</del></p>
 <h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>Matplotlib是Python的一个很常用的绘图库，有兴趣的可以去<a href="www.matplotlib.org/">官网</a>学习更多内容。</p>
-<h3 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></div><div class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h3 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></span><br><span class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
 <h3 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h3><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">img2 = img[:, :, ::<span class="number">-1</span>]</div><div class="line"><span class="comment"># 或使用</span></div><div class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></div><div class="line"></div><div class="line"><span class="comment"># 显示不正确的图</span></div><div class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </div><div class="line"></div><div class="line"><span class="comment"># 显示正确的图</span></div><div class="line">plt.subplot(<span class="number">122</span>)</div><div class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></div><div class="line">plt.imshow(img2)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">img2 = img[:, :, ::<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 或使用</span></span><br><span class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示不正确的图</span></span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示正确的图</span></span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></span><br><span class="line">plt.imshow(img2)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><code>img[:,:,0]</code>表示图片的蓝色通道，<code>img[:,:,::-1]</code>就表示BGR翻转，变成RGB，说明一下：</p>
 </blockquote>
 <p>熟悉Python的童鞋应该知道，对一个字符串s翻转可以这样写：<code>s[::-1]</code>，’abc’变成’cba’，-1表示逆序。图片是二维的，所以完整地复制一副图像就是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img2 = img[:,:] <span class="comment"># 写全就是：img2 = img[0:height,0:width]</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img2 = img[:,:] <span class="comment"># 写全就是：img2 = img[0:height,0:width]</span></span><br></pre></td></tr></table></figure>
+
 <p>而图片是有三个通道，相当于一个长度为3的字符串，所以通道翻转与图片复制组合起来便是<code>img[:,:,::-1]</code>。</p>
 <p>结果如下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_matplotlib_show_color_image.jpg" alt=""></p>
 <h3 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h3><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> pli</div><div class="line"></div><div class="line">img = pli.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">plt.imshow(img)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片，需放在show()函数之前</span></div><div class="line">plt.savefig(<span class="string">'lena2.jpg'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> pli</span><br><span class="line"></span><br><span class="line">img = pli.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">plt.imshow(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存图片，需放在show()函数之前</span></span><br><span class="line">plt.savefig(<span class="string">'lena2.jpg'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="external">cv2.imwrite()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="external">ImwriteFlags</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="noopener">cv2.imwrite()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/da8/group__imgcodecs.html#ga292d81be8d76901bff7988d18d2b42ac" target="_blank" rel="noopener">ImwriteFlags</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20%E6%97%A0%E6%8D%9F%E4%BF%9D%E5%AD%98%E5%92%8CMatplotlib%E4%BD%BF%E7%94%A8" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://segmentfault.com/a/1190000013589397" target="_blank" rel="external">聊一聊几种常用web图片格式</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8702.%20%E6%97%A0%E6%8D%9F%E4%BF%9D%E5%AD%98%E5%92%8CMatplotlib%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://segmentfault.com/a/1190000013589397" target="_blank" rel="noopener">聊一聊几种常用web图片格式</a></li>
 <li><a href="www.matplotlib.org/">Matplotlib官网</a></li>
 </ul>
 
@@ -286,11 +302,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matplotlib/">Matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matplotlib/" rel="tag">Matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -299,7 +315,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -383,7 +401,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -400,7 +418,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -416,7 +434,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -465,13 +485,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

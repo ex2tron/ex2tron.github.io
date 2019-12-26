@@ -15,7 +15,7 @@
     
     python+opencv教程17：霍夫变换 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习使用霍夫变换识别出图像中的直线和圆。">
-<meta name="keywords" content="OpenCV,Python,图像处理,霍夫变换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程17：霍夫变换">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-hough-transform/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-hough-transform/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习使用霍夫变换识别出图像中的直线和圆。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg">
-<meta property="og:updated_time" content="2018-11-27T12:01:37.467Z">
+<meta property="article:published_time" content="2017-12-28T03:35:11.000Z">
+<meta property="article:modified_time" content="2018-11-27T12:01:37.467Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="霍夫变换">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程17：霍夫变换">
-<meta name="twitter:description" content="学习使用霍夫变换识别出图像中的直线和圆。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" rel="gallery_cjxj6dyc300105w599k75g10y">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" target="_blank" rel="gallery_ck4mf0ozz000fdktn4xdbd11q noopener">
         <img src="http://pic.ex2tron.top/cv2_understand_hough_transform.jpg" itemprop="image">
       </a>
     
@@ -229,7 +240,8 @@ var themeMenus = {};
 <p>  <img src="http://pic.ex2tron.top/cv2_curve_of_r_theta.jpg" alt=""> </p>
 <p>OpenCV中首先计算(r,θ) 累加数，累加数超过一定值后就认为在同一直线上。</p>
 <h3 id="霍夫直线变换"><a href="#霍夫直线变换" class="headerlink" title="霍夫直线变换"></a>霍夫直线变换</h3><p>OpenCV中用<code>cv2.HoughLines()</code>在二值图上实现霍夫变换，函数返回的是一组直线的(r,θ)数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 1.加载图片，转为二值图</span></div><div class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>)</div><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line">edges = cv2.Canny(gray, <span class="number">50</span>, <span class="number">150</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2.霍夫直线变换</span></div><div class="line">lines = cv2.HoughLines(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.加载图片，转为二值图</span></span><br><span class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>)</span><br><span class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">edges = cv2.Canny(gray, <span class="number">50</span>, <span class="number">150</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.霍夫直线变换</span></span><br><span class="line">lines = cv2.HoughLines(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>)</span><br></pre></td></tr></table></figure>
+
 <p>函数中：</p>
 <ul>
 <li>参数1：要检测的二值图（一般是阈值分割或边缘检测后的图）</li>
@@ -237,28 +249,33 @@ var themeMenus = {};
 <li>参数3：角度θ的精度，值越小，考虑越多的线</li>
 <li>参数4：累加数阈值，值越小，考虑越多的线</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 3.将检测的线画出来（注意是极坐标噢）</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">    rho, theta = line[<span class="number">0</span>]</div><div class="line">    a = np.cos(theta)</div><div class="line">    b = np.sin(theta)</div><div class="line">    x0 = a * rho</div><div class="line">    y0 = b * rho</div><div class="line">    x1 = int(x0 + <span class="number">1000</span> * (-b))</div><div class="line">    y1 = int(y0 + <span class="number">1000</span> * (a))</div><div class="line">    x2 = int(x0 - <span class="number">1000</span> * (-b))</div><div class="line">    y2 = int(y0 - <span class="number">1000</span> * (a))</div><div class="line"></div><div class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3.将检测的线画出来（注意是极坐标噢）</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    rho, theta = line[<span class="number">0</span>]</span><br><span class="line">    a = np.cos(theta)</span><br><span class="line">    b = np.sin(theta)</span><br><span class="line">    x0 = a * rho</span><br><span class="line">    y0 = b * rho</span><br><span class="line">    x1 = int(x0 + <span class="number">1000</span> * (-b))</span><br><span class="line">    y1 = int(y0 + <span class="number">1000</span> * (a))</span><br><span class="line">    x2 = int(x0 - <span class="number">1000</span> * (-b))</span><br><span class="line">    y2 = int(y0 - <span class="number">1000</span> * (a))</span><br><span class="line"></span><br><span class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>))</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_hough_line_function.jpg" alt=""></p>
 <h3 id="统计概率霍夫直线变换"><a href="#统计概率霍夫直线变换" class="headerlink" title="统计概率霍夫直线变换"></a>统计概率霍夫直线变换</h3><p>前面的方法又称为标准霍夫变换，它会计算图像中的每一个点，计算量比较大，另外它得到的是整一条线（r和θ），并不知道原图中直线的端点。所以提出了统计概率霍夫直线变换(Probabilistic Hough Transform)，是一种改进的霍夫变换：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line"><span class="comment"># 3.统计概率霍夫线变换</span></div><div class="line">lines = cv2.HoughLinesP(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>,</div><div class="line">                        minLineLength=<span class="number">50</span>, maxLineGap=<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</span><br><span class="line"><span class="comment"># 3.统计概率霍夫线变换</span></span><br><span class="line">lines = cv2.HoughLinesP(edges, <span class="number">0.8</span>, np.pi / <span class="number">180</span>, <span class="number">90</span>,</span><br><span class="line">                        minLineLength=<span class="number">50</span>, maxLineGap=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
 <p>前面几个参数跟之前的一样，有两个可选参数：</p>
 <ul>
 <li><code>minLineLength</code>：最短长度阈值，比这个长度短的线会被排除</li>
 <li><code>maxLineGap</code>：同一直线两点之间的最大距离</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 3.将检测的线画出来</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">    x1, y1, x2, y2 = line[<span class="number">0</span>]</div><div class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3.将检测的线画出来</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    x1, y1, x2, y2 = line[<span class="number">0</span>]</span><br><span class="line">    cv2.line(drawing, (x1, y1), (x2, y2), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">1</span>, lineType=cv2.LINE_AA)</span><br></pre></td></tr></table></figure>
+
 <p><code>cv2.LINE_AA</code>在之前绘图功能中讲解过，表示抗锯齿线型。</p>
 <p><img src="http://pic.ex2tron.top/cv2_hough_lines_p_function.jpg" alt=""></p>
-<h3 id="霍夫圆变换"><a href="#霍夫圆变换" class="headerlink" title="霍夫圆变换"></a>霍夫圆变换</h3><p>霍夫圆变换跟直线变换类似，只不过线是用(r,θ)表示，圆是用(x_center,y_center,r)来表示，从二维变成了三维，数据量变大了很多；所以一般使用霍夫梯度法减少计算量，对该算法感兴趣的同学可参考：<a href="https://en.wikipedia.org/wiki/Circle_Hough_Transform" target="_blank" rel="external">Circle Hough Transform</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</div><div class="line"><span class="comment"># 2.霍夫圆变换</span></div><div class="line">circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, <span class="number">1</span>, <span class="number">20</span>, param2=<span class="number">30</span>)</div><div class="line">circles = np.int0(np.around(circles))</div></pre></td></tr></table></figure>
+<h3 id="霍夫圆变换"><a href="#霍夫圆变换" class="headerlink" title="霍夫圆变换"></a>霍夫圆变换</h3><p>霍夫圆变换跟直线变换类似，只不过线是用(r,θ)表示，圆是用(x_center,y_center,r)来表示，从二维变成了三维，数据量变大了很多；所以一般使用霍夫梯度法减少计算量，对该算法感兴趣的同学可参考：<a href="https://en.wikipedia.org/wiki/Circle_Hough_Transform" target="_blank" rel="noopener">Circle Hough Transform</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">drawing = np.zeros(img.shape[:], dtype=np.uint8)</span><br><span class="line"><span class="comment"># 2.霍夫圆变换</span></span><br><span class="line">circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, <span class="number">1</span>, <span class="number">20</span>, param2=<span class="number">30</span>)</span><br><span class="line">circles = np.int0(np.around(circles))</span><br></pre></td></tr></table></figure>
+
 <p>其中，</p>
 <ul>
-<li>参数2：变换方法，一般使用霍夫梯度法，详情：<a href="https://docs.opencv.org/3.3.1/d7/dbd/group__imgproc.html#ga073687a5b96ac7a3ab5802eb5510fe65" target="_blank" rel="external">HoughModes</a></li>
+<li>参数2：变换方法，一般使用霍夫梯度法，详情：<a href="https://docs.opencv.org/3.3.1/d7/dbd/group__imgproc.html#ga073687a5b96ac7a3ab5802eb5510fe65" target="_blank" rel="noopener">HoughModes</a></li>
 <li>参数3 dp=1：表示霍夫梯度法中累加器图像的分辨率与原图一致</li>
 <li>参数4：两个不同圆圆心的最短距离</li>
 <li>参数5：param2跟霍夫直线变换中的累加数阈值一样</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将检测的圆画出来</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> circles[<span class="number">0</span>, :]:</div><div class="line">    cv2.circle(drawing, (i[<span class="number">0</span>], i[<span class="number">1</span>]), i[<span class="number">2</span>], (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)  <span class="comment"># 画出外圆</span></div><div class="line">    cv2.circle(drawing, (i[<span class="number">0</span>], i[<span class="number">1</span>]), <span class="number">2</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)  <span class="comment"># 画出圆心</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将检测的圆画出来</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> circles[<span class="number">0</span>, :]:</span><br><span class="line">    cv2.circle(drawing, (i[<span class="number">0</span>], i[<span class="number">1</span>]), i[<span class="number">2</span>], (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)  <span class="comment"># 画出外圆</span></span><br><span class="line">    cv2.circle(drawing, (i[<span class="number">0</span>], i[<span class="number">1</span>]), <span class="number">2</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)  <span class="comment"># 画出圆心</span></span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_hough_circles_function.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>霍夫变换用来提取图像中的直线和圆等几何形状。</li>
@@ -266,11 +283,11 @@ var themeMenus = {};
 <li>霍夫圆变换：<code>cv2.HoughCircles()</code>。</li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/17.%20%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html" target="_blank" rel="external">Hough Line Transform</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghcircles/py_houghcircles.html" target="_blank" rel="external">Hough Circle Transform</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Hough_transform" target="_blank" rel="external">Hough transform</a></li>
-<li><a href="https://blog.csdn.net/YuYunTan/article/details/80141392" target="_blank" rel="external">经典霍夫变换（Hough Transform）</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/17.%20%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html" target="_blank" rel="noopener">Hough Line Transform</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghcircles/py_houghcircles.html" target="_blank" rel="noopener">Hough Circle Transform</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hough_transform" target="_blank" rel="noopener">Hough transform</a></li>
+<li><a href="https://blog.csdn.net/YuYunTan/article/details/80141392" target="_blank" rel="noopener">经典霍夫变换（Hough Transform）</a></li>
 </ul>
 
       
@@ -278,11 +295,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/霍夫变换/">霍夫变换</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/" rel="tag">霍夫变换</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -291,7 +308,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -375,7 +394,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -392,7 +411,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -408,7 +427,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -457,13 +478,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

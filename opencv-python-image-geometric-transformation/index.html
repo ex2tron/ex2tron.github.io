@@ -15,7 +15,7 @@
     
     python+opencv教程7：图像几何变换 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习如何旋转、平移、缩放和翻转图片。">
-<meta name="keywords" content="OpenCV,Python,图像处理,几何变换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程7：图像几何变换">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-image-geometric-transformation/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-image-geometric-transformation/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习如何旋转、平移、缩放和翻转图片。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
-<meta property="og:updated_time" content="2019-05-08T03:19:07.243Z">
+<meta property="article:published_time" content="2017-12-08T06:36:53.000Z">
+<meta property="article:modified_time" content="2019-05-08T03:19:07.243Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="几何变换">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程7：图像几何变换">
-<meta name="twitter:description" content="学习如何旋转、平移、缩放和翻转图片。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" rel="gallery_cjxj6dych001m5w59z658vfeq">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" target="_blank" rel="gallery_ck4mf0p02000jdktn7z8h7767 noopener">
         <img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" itemprop="image">
       </a>
     
@@ -222,16 +233,19 @@ var themeMenus = {};
 <p>图像的几何变换从原理上看主要包括两种：基于2×3矩阵的仿射变换（平移、缩放、旋转和翻转等）、基于3×3矩阵的透视变换，感兴趣的小伙伴可参考<a href="/opencv-python-extra-warpaffine-warpperspective/">番外篇：仿射变换与透视变换</a>。</p>
 </blockquote>
 <h3 id="缩放图片"><a href="#缩放图片" class="headerlink" title="缩放图片"></a>缩放图片</h3><p>缩放就是调整图片的大小，使用<code>cv2.resize()</code>函数实现缩放。可以按照比例缩放，也可以按照指定的大小缩放：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 按照指定的宽度、高度缩放图片</span></div><div class="line">res = cv2.resize(img, (<span class="number">132</span>, <span class="number">150</span>))</div><div class="line"><span class="comment"># 按照比例缩放，如x,y轴均放大一倍</span></div><div class="line">res2 = cv2.resize(img, <span class="keyword">None</span>, fx=<span class="number">2</span>, fy=<span class="number">2</span>, interpolation=cv2.INTER_LINEAR)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shrink'</span>, res), cv2.imshow(<span class="string">'zoom'</span>, res2)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="external">InterpolationFlags</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照指定的宽度、高度缩放图片</span></span><br><span class="line">res = cv2.resize(img, (<span class="number">132</span>, <span class="number">150</span>))</span><br><span class="line"><span class="comment"># 按照比例缩放，如x,y轴均放大一倍</span></span><br><span class="line">res2 = cv2.resize(img, <span class="literal">None</span>, fx=<span class="number">2</span>, fy=<span class="number">2</span>, interpolation=cv2.INTER_LINEAR)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'shrink'</span>, res), cv2.imshow(<span class="string">'zoom'</span>, res2)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>我们也可以指定缩放方法<code>interpolation</code>，更专业点叫插值方法，默认是<code>INTER_LINEAR</code>，全部可以参考：<a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="noopener">InterpolationFlags</a></p>
 <h3 id="翻转图片"><a href="#翻转图片" class="headerlink" title="翻转图片"></a>翻转图片</h3><p>镜像翻转图片，可以用<code>cv2.flip()</code>函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dst = cv2.flip(img, <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst = cv2.flip(img, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
 <p>其中，参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</p>
 <p><img src="http://pic.ex2tron.top/cv2_flip_image_sample.jpg" alt=""></p>
 <h3 id="平移图片"><a href="#平移图片" class="headerlink" title="平移图片"></a>平移图片</h3><p>要平移图片，我们需要定义下面这样一个矩阵，tx,ty是向x和y方向平移的距离：</p>
 <p>$$<br> M = \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; t_x \newline<br>   0 &amp; 1 &amp; t_y<br>  \end{matrix}<br>  \right]<br>$$</p>
 <p>平移是用仿射变换函数<code>cv2.warpAffine()</code>实现的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 平移图片</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 定义平移矩阵，需要是numpy的float32类型</span></div><div class="line"><span class="comment"># x轴平移100，y轴平移50</span></div><div class="line">M = np.float32([[<span class="number">1</span>, <span class="number">0</span>, <span class="number">100</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>]])</div><div class="line"><span class="comment"># 用仿射变换实现平移</span></div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'shift'</span>, dst)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 平移图片</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">rows, cols = img.shape[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义平移矩阵，需要是numpy的float32类型</span></span><br><span class="line"><span class="comment"># x轴平移100，y轴平移50</span></span><br><span class="line">M = np.float32([[<span class="number">1</span>, <span class="number">0</span>, <span class="number">100</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>]])</span><br><span class="line"><span class="comment"># 用仿射变换实现平移</span></span><br><span class="line">dst = cv2.warpAffine(img, M, (cols, rows))</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'shift'</span>, dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_translation_100_50.jpg" alt=""></p>
 <h3 id="旋转图片"><a href="#旋转图片" class="headerlink" title="旋转图片"></a>旋转图片</h3><p>旋转同平移一样，也是用仿射变换实现的，因此也需要定义一个变换矩阵。OpenCV直接提供了 <code>cv2.getRotationMatrix2D()</code>函数来生成这个矩阵，该函数有三个参数：</p>
 <ul>
@@ -239,7 +253,8 @@ var themeMenus = {};
 <li>参数2：旋转角度(正：逆时针，负：顺时针)</li>
 <li>参数3：缩放比例，0.5表示缩小一半</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 45°旋转图片并缩小一半</span></div><div class="line">M = cv2.getRotationMatrix2D((cols / <span class="number">2</span>, rows / <span class="number">2</span>), <span class="number">45</span>, <span class="number">0.5</span>)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'rotation'</span>, dst)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 45°旋转图片并缩小一半</span></span><br><span class="line">M = cv2.getRotationMatrix2D((cols / <span class="number">2</span>, rows / <span class="number">2</span>), <span class="number">45</span>, <span class="number">0.5</span>)</span><br><span class="line">dst = cv2.warpAffine(img, M, (cols, rows))</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'rotation'</span>, dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_rotation_45_degree.jpg" alt="逆时针旋转45°并缩放"></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.resize()</code>缩放图片，可以按指定大小缩放，也可以按比例缩放。</li>
@@ -247,14 +262,14 @@ var themeMenus = {};
 <li>平移/旋转是靠仿射变换<code>cv2.warpAffine()</code>实现的。</li>
 </ul>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d" target="_blank" rel="external">cv2.resize()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gaca7be533e3dac7feb70fc60635adf441" target="_blank" rel="external">cv2.filp()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga0203d9ee5fcd28d40dbc4a1ea4451983" target="_blank" rel="external">cv2.warpAffine()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#gafbbc470ce83812914a70abfb604f4326" target="_blank" rel="external">cv2.getRotationMatrix2D()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d" target="_blank" rel="noopener">cv2.resize()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gaca7be533e3dac7feb70fc60635adf441" target="_blank" rel="noopener">cv2.filp()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga0203d9ee5fcd28d40dbc4a1ea4451983" target="_blank" rel="noopener">cv2.warpAffine()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#gafbbc470ce83812914a70abfb604f4326" target="_blank" rel="noopener">cv2.getRotationMatrix2D()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/07.%20%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html" target="_blank" rel="external">Geometric Transformations of Images</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/07.%20%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html" target="_blank" rel="noopener">Geometric Transformations of Images</a></li>
 </ul>
 
       
@@ -262,11 +277,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/几何变换/">几何变换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" rel="tag">几何变换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -275,7 +290,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -359,7 +376,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -376,7 +393,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -392,7 +409,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -441,13 +460,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

@@ -15,7 +15,7 @@
     
     python+opencv教程10：平滑图像 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -24,22 +24,25 @@
   
   
   
-  <meta name="description" content="学习模糊/平滑图像，消除噪点。">
-<meta name="keywords" content="OpenCV,Python,图像处理,模糊">
+  <meta name="description" content="学习模糊&#x2F;平滑图像，消除噪点。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程10：平滑图像">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-smoothing-images/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
-<meta property="og:description" content="学习模糊/平滑图像，消除噪点。">
-<meta property="og:locale" content="en">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-smoothing-images/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
+<meta property="og:description" content="学习模糊&#x2F;平滑图像，消除噪点。">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
-<meta property="og:updated_time" content="2019-05-11T11:51:01.293Z">
+<meta property="article:published_time" content="2017-12-15T01:44:24.000Z">
+<meta property="article:modified_time" content="2019-05-11T11:51:01.293Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="模糊">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程10：平滑图像">
-<meta name="twitter:description" content="学习模糊/平滑图像，消除噪点。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" rel="gallery_cjxj6dygy00b45w59ozzxnf7t">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" target="_blank" rel="gallery_ck4mf0ozr0006dktngxghbr4g noopener">
         <img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" itemprop="image">
       </a>
     
@@ -228,43 +239,49 @@ var themeMenus = {};
 </ul>
 <p>低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。</p>
 <blockquote>
-<p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="external">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="external">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
+<p>常见噪声有<a href="https://baike.baidu.com/item/%E6%A4%92%E7%9B%90%E5%99%AA%E5%A3%B0/3455958?fr=aladdin" target="_blank" rel="noopener">椒盐噪声</a>和<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0" target="_blank" rel="noopener">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
 </blockquote>
 <h3 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h3><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
 <p>$$<br> kernel = \frac{1}{9}\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>所有的滤波函数都有一个可选参数borderType，这个参数就是<a href="/opencv-python-extra-padding-and-convolution/">番外篇：卷积基础(图片边框)</a>中所说的边框填充方式。</p>
 </blockquote>
 <h3 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h3><p>方框滤波跟均值滤波很像，如3×3的滤波核如下：</p>
 <p>$$<br>k = a\left[<br> \begin{matrix}<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1 \newline<br>   1 &amp; 1 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <p>用<code>cv2.boxFilter()</code>函数实现，当可选参数normalize为True的时候，方框滤波就是均值滤波，上式中的a就等于1/9；normalize为False的时候，a=1，相当于求区域内的像素和。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></div><div class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></span><br><span class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
 <h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小，来，数学时间( ╯□╰ )，还记得标准正态分布的曲线吗？</p>
 <p><img src="http://pic.ex2tron.top/cv2_gaussian_kernel_function_theory.jpg" alt=""></p>
-<p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="external">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（具体原理和卷积核生成方式请参考文末的<a href="#番外小篇：高斯滤波卷积核">番外小篇</a>）：</p>
+<p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="noopener">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（具体原理和卷积核生成方式请参考文末的<a href="#番外小篇：高斯滤波卷积核">番外小篇</a>）：</p>
 <p>$$<br>k = \left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'gaussian_noise.bmp'</span>)</div><div class="line"><span class="comment"># 均值滤波vs高斯滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)  <span class="comment"># 高斯滤波</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'gaussian_noise.bmp'</span>)</span><br><span class="line"><span class="comment"># 均值滤波vs高斯滤波</span></span><br><span class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></span><br><span class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)  <span class="comment"># 高斯滤波</span></span><br></pre></td></tr></table></figure>
+
 <p>参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
 <p><img src="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg" alt=""></p>
-<h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><p><a href="https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC" target="_blank" rel="external">中值</a>又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。</p>
+<h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><p><a href="https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC" target="_blank" rel="noopener">中值</a>又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。</p>
 <p>比如下面这张斑点噪声图，用中值滤波显然更好：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'salt_noise.bmp'</span>, <span class="number">0</span>)</div><div class="line"><span class="comment"># 均值滤波vs中值滤波</span></div><div class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></div><div class="line">median = cv2.medianBlur(img, <span class="number">5</span>)  <span class="comment"># 中值滤波</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'salt_noise.bmp'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment"># 均值滤波vs中值滤波</span></span><br><span class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></span><br><span class="line">median = cv2.medianBlur(img, <span class="number">5</span>)  <span class="comment"># 中值滤波</span></span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_median_vs_average.jpg" alt=""></p>
-<h3 id="双边滤波"><a href="#双边滤波" class="headerlink" title="双边滤波"></a>双边滤波</h3><p>模糊操作基本都会损失掉图像细节信息，尤其前面介绍的线性滤波器，图像的边缘信息很难保留下来。然而，边缘（edge）信息是图像中很重要的一个特征，所以这才有了<a href="https://baike.baidu.com/item/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2" target="_blank" rel="external">双边滤波</a>。用<code>cv2.bilateralFilter()</code>函数实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 双边滤波vs高斯滤波</span></div><div class="line">gau = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></div><div class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></div></pre></td></tr></table></figure>
+<h3 id="双边滤波"><a href="#双边滤波" class="headerlink" title="双边滤波"></a>双边滤波</h3><p>模糊操作基本都会损失掉图像细节信息，尤其前面介绍的线性滤波器，图像的边缘信息很难保留下来。然而，边缘（edge）信息是图像中很重要的一个特征，所以这才有了<a href="https://baike.baidu.com/item/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2" target="_blank" rel="noopener">双边滤波</a>。用<code>cv2.bilateralFilter()</code>函数实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line"><span class="comment"># 双边滤波vs高斯滤波</span></span><br><span class="line">gau = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></span><br><span class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" alt=""></p>
 <p>可以看到，双边滤波明显保留了更多边缘信息。</p>
 <h2 id="番外小篇：高斯滤波卷积核"><a href="#番外小篇：高斯滤波卷积核" class="headerlink" title="番外小篇：高斯滤波卷积核"></a>番外小篇：高斯滤波卷积核</h2><p>要解释高斯滤波卷积核是如何生成的，需要先复习下概率论的知识（What？？又是数学( ╯□╰ )）</p>
 <p>一维的高斯函数/正态分布$ X\sim N(\mu, \sigma^2) $：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})<br>$$<br>当$ \mu=0, \sigma^2=1 $时，称为标准正态分布$ X\sim N(0, 1) $：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2})<br>$$<br>二维X/Y相互独立的高斯函数：<br>$$<br>G(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}exp(-\frac{(x-\mu_x)^2+(y-\mu_y)^2}{2\sigma_x\sigma_y})=G(x)G(y)<br>$$</p>
 <p>由上可知，<strong>二维高斯函数具有可分离性</strong>，所以OpenCV分两步计算二维高斯卷积，先水平再垂直，每个方向上都是一维的卷积。OpenCV中这个一维卷积的计算公式类似于上面的一维高斯函数：<br>$$<br>G(i)=\alpha *exp(-\frac{(i-\frac{ksize-1}{2})^2}{2\sigma^2})<br>$$<br>其中i=0…ksize-1，α是一个常数，也称为缩放因子，它使得\(\sum{G(i)}=1\)</p>
-<p>比如我们可以用<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external"><code>cv2.getGaussianKernel(ksize,sigma)</code></a>来生成一维卷积核：</p>
+<p>比如我们可以用<a href="https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="noopener"><code>cv2.getGaussianKernel(ksize,sigma)</code></a>来生成一维卷积核：</p>
 <ul>
 <li>sigma&lt;=0时，<code>sigma=0.3*((ksize-1)*0.5 - 1) + 0.8</code></li>
 <li>sigma&gt;0时，sigma=sigma</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(cv2.getGaussianKernel(<span class="number">3</span>, <span class="number">0</span>))</div><div class="line"><span class="comment"># 结果：[[0.25][0.5][0.25]]</span></div></pre></td></tr></table></figure>
-<p>生成之后，先进行三次的水平卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]<br>$$<br>然后再进行垂直的三次卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.25 &amp; 0.25 \newline<br>    0.5 &amp; 0.5 &amp; 0.5 \newline<br>   0.25 &amp; 0.25 &amp; 0.25<br>  \end{matrix}<br>  \right] =I×\left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>这就是OpenCV中高斯卷积核的生成方式。其实，OpenCV源码中对小于7×7的核是直接计算好放在数组里面的，这样计算速度会快一点，感兴趣的可以看下源码：<a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/blob/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/cv2_source_code_getGaussianKernel.cpp" target="_blank" rel="external">getGaussianKernel()</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(cv2.getGaussianKernel(<span class="number">3</span>, <span class="number">0</span>))</span><br><span class="line"><span class="comment"># 结果：[[0.25][0.5][0.25]]</span></span><br></pre></td></tr></table></figure>
+
+<p>生成之后，先进行三次的水平卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]<br>$$<br>然后再进行垂直的三次卷积：<br>$$<br>I×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.5 &amp; 0.25 \newline<br>    0.25 &amp; 0.5 &amp; 0.25 \newline<br>   0.25 &amp; 0.5 &amp; 0.25<br>  \end{matrix}<br>  \right]×\left[<br> \begin{matrix}<br>   0.25 &amp; 0.25 &amp; 0.25 \newline<br>    0.5 &amp; 0.5 &amp; 0.5 \newline<br>   0.25 &amp; 0.25 &amp; 0.25<br>  \end{matrix}<br>  \right] =I×\left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>这就是OpenCV中高斯卷积核的生成方式。其实，OpenCV源码中对小于7×7的核是直接计算好放在数组里面的，这样计算速度会快一点，感兴趣的可以看下源码：<a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/blob/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/cv2_source_code_getGaussianKernel.cpp" target="_blank" rel="noopener">getGaussianKernel()</a></p>
 <p>上面矩阵也可以写成：<br>$$<br>\frac{1}{16}\left[<br> \begin{matrix}<br>   1&amp; 2 &amp; 1 \newline<br>   2 &amp; 4 &amp; 2 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>在不知道用什么滤波器好的时候，优先高斯滤波<code>cv2.GaussianBlur()</code>，然后均值滤波<code>cv2.blur()</code>。</li>
@@ -274,17 +291,17 @@ var themeMenus = {};
 <li>非线性滤波方式：中值滤波、双边滤波（速度相对慢）。</li>
 </ul>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37" target="_blank" rel="external">cv2.blur()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gad533230ebf2d42509547d514f7d3fbc3" target="_blank" rel="external">cv2.boxFilter()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1" target="_blank" rel="external">cv2.GaussianBlur()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="external">cv2.getGaussianKernel()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga564869aa33e58769b4469101aac458f9" target="_blank" rel="external">cv2.medianBlur()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed" target="_blank" rel="external">cv2.bilateralFilter()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37" target="_blank" rel="noopener">cv2.blur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gad533230ebf2d42509547d514f7d3fbc3" target="_blank" rel="noopener">cv2.boxFilter()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1" target="_blank" rel="noopener">cv2.GaussianBlur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa" target="_blank" rel="noopener">cv2.getGaussianKernel()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga564869aa33e58769b4469101aac458f9" target="_blank" rel="noopener">cv2.medianBlur()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed" target="_blank" rel="noopener">cv2.bilateralFilter()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html" target="_blank" rel="external">Smoothing Images</a></li>
-<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html" target="_blank" rel="external">图像平滑处理</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html" target="_blank" rel="noopener">Smoothing Images</a></li>
+<li><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html" target="_blank" rel="noopener">图像平滑处理</a></li>
 </ul>
 
       
@@ -292,11 +309,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模糊/">模糊</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E7%B3%8A/" rel="tag">模糊</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -305,7 +322,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -389,7 +408,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -406,7 +425,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -422,7 +441,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -471,13 +492,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

@@ -15,7 +15,7 @@
     
     如何使用windows 10的openssh client和server |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。">
-<meta name="keywords" content="Build,Windows10,SSH,SSH-Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使用Windows 10的OpenSSH Client和Server">
-<meta property="og:url" content="http://ex2tron.wang/how-to-use-ssh-on-windows10/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/how-to-use-ssh-on-windows10/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg">
-<meta property="og:updated_time" content="2019-03-24T06:13:50.747Z">
+<meta property="article:published_time" content="2019-01-02T13:00:54.000Z">
+<meta property="article:modified_time" content="2019-03-24T06:13:50.747Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="Build">
+<meta property="article:tag" content="Windows10">
+<meta property="article:tag" content="SSH">
+<meta property="article:tag" content="SSH-Server">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何使用Windows 10的OpenSSH Client和Server">
-<meta name="twitter:description" content="SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg" rel="gallery_cjxj6dydz003x5w596quarjxo">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg" target="_blank" rel="gallery_ck4mf0p1a001jdktnfhz5d155 noopener">
         <img src="http://pic.ex2tron.top/how-to-use-windows-10-ssh-client-server-cover.jpg" itemprop="image">
       </a>
     
@@ -214,38 +225,47 @@ var themeMenus = {};
       
         <p>SSH目前是Unix和Linux上用于加密连接远程服务器的命令行工具，微软也在最新的Windows10中集成了OpenSSH，下面就来看下怎么开启并使用。<a id="more"></a></p>
 <hr>
-<iframe src="//player.bilibili.com/player.html?aid=39769302&cid=69862435&page=1" width="640" height="480" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=39769302&cid=69862435&page=1" width="640" height="480"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 <h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>新版Windows 10（1803及以上）都已预装了OpenSSH Client，但默认并没有装SSH Server。要测试有没有安装的话，可以打开命令行cmd，输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh -V</div><div class="line"><span class="comment"># OpenSSH_for_Windows_7.6p1, LibreSSL 2.6.4</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -V</span><br><span class="line"><span class="comment"># OpenSSH_for_Windows_7.6p1, LibreSSL 2.6.4</span></span><br></pre></td></tr></table></figure>
+
 <p>如果你的Win10版本较低的话，可能没有预装，也没有关系，下面来看。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Windows 10开始菜单搜索“管理可选功能”，或打开Windows 10的设置，找到应用和功能，并选择“管理可选功能”：</p>
 <p><img src="http://pic.ex2tron.top/win10-ssh-client-app-features.jpg" alt=""></p>
 <p>在管理可选功能页面，点击“添加功能”，找到<code>OpenSSH 客户端</code>和<code>OpenSSH 服务器</code>，客户端没有的话，说明已经安装了：</p>
 <p><img src="http://pic.ex2tron.top/win10-ssh-client-app-features-add-server-client.jpg" alt="lient"></p>
 <p>如果你只是想使用SSH连接服务器，而不是把自己的电脑当作服务器的话，Server是不需要安装的。安装路径是在<code>C:\Windows\System32\OpenSSH\</code>目录下，可以看到除了SSH，Windows 10也自带了scp，sftp等很实用的工具。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dir C:\Windows\System32\OpenSSH</div><div class="line"><span class="comment"># scp.exe</span></div><div class="line"><span class="comment"># sftp.exe</span></div><div class="line"><span class="comment"># ssh-keygen.exe</span></div><div class="line"><span class="comment"># ……</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dir C:\Windows\System32\OpenSSH</span><br><span class="line"><span class="comment"># scp.exe</span></span><br><span class="line"><span class="comment"># sftp.exe</span></span><br><span class="line"><span class="comment"># ssh-keygen.exe</span></span><br><span class="line"><span class="comment"># ……</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="SSH-Client的使用"><a href="#SSH-Client的使用" class="headerlink" title="SSH Client的使用"></a>SSH Client的使用</h2><p>安装好之后，就和正常使用SSH没有区别了，比如局域网内有台服务器IP地址是<code>192.168.1.110</code>，那么在Win10 cmd下输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@192.168.1.110</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@192.168.1.110</span><br></pre></td></tr></table></figure>
+
 <p>客户端的使用跟Linux下SSH的使用一致，就不赘述了。主要来看下Win10上Server的配置。</p>
 <h2 id="SSH-Server的使用"><a href="#SSH-Server的使用" class="headerlink" title="SSH Server的使用"></a>SSH Server的使用</h2><p>安装好<code>OpenSSH Server</code>后，Win10开始菜单搜索服务，打开服务，找到<code>OpenSSH SSH Server</code>，目前它的状态是手动并已停止服务：</p>
 <p><img src="http://pic.ex2tron.top/win10-ssh-sever-services-status.jpg" alt=""></p>
 <p>我们可以右键启动服务，如果你经常用到它的话，可以在属性中设置为自动启动。</p>
 <p>要检测SSH服务有没有运行的话，可以在cmd中输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -a | findstr 22</div><div class="line"><span class="comment"># TCP    0.0.0.0:22             ex2tronSurface:0       LISTENING</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -a | findstr 22</span><br><span class="line"><span class="comment"># TCP    0.0.0.0:22             ex2tronSurface:0       LISTENING</span></span><br></pre></td></tr></table></figure>
+
 <p>确认开启后，本机Win10就可以接收外部SSH连接了。在cmd输入<code>ipconfig</code>，获取现在Win10的IP，比如是<code>192.168.1.199</code>，用另一台任意操作系统的电脑使用SSH便可连接：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@192.168.1.199</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@192.168.1.199</span><br></pre></td></tr></table></figure>
+
 <p>注意此时用户名和密码是你Win10的用户名和密码。</p>
 <h2 id="sshd-配置文件"><a href="#sshd-配置文件" class="headerlink" title="sshd 配置文件"></a>sshd 配置文件</h2><p>SSH服务开启后，默认的配置文件在<code>C:\Windows\System32\OpenSSH\</code>目录下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dir C:\Windows\System32\OpenSSH\</div><div class="line"><span class="comment"># sshd_config_default</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dir C:\Windows\System32\OpenSSH\</span><br><span class="line"><span class="comment"># sshd_config_default</span></span><br></pre></td></tr></table></figure>
+
 <p>但实际运行的配置文件是<code>C:\ProgramData\ssh\sshd_config</code>，熟悉SSH的同学对里面的配置项应该都了解，比如ssh默认启动路径<code>ChrootDirectory</code>。默认情况下，ssh连接后，启动路径是Windows的个人文件夹，如<code>C:\Users\ex2tron</code>，我一般会更改到我的工作路径，如：<code>D:\Surface</code>，就可以这样修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ChrootDirectory D:\Surface</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ChrootDirectory D:\Surface</span><br></pre></td></tr></table></figure>
+
 <p>其他配置项常用的有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">PermitRootLogin # 是否允许root登陆</div><div class="line">PasswordAuthentication # 是否运行使用密码登陆，如果你已经建立好ssh公钥的话，可以设置为no免密登陆，更安全</div><div class="line">PermitEmptyPasswords # 是否允许空密码</div><div class="line">AuthorizedKeysFile # ssh公钥目录</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin # 是否允许root登陆</span><br><span class="line">PasswordAuthentication # 是否运行使用密码登陆，如果你已经建立好ssh公钥的话，可以设置为no免密登陆，更安全</span><br><span class="line">PermitEmptyPasswords # 是否允许空密码</span><br><span class="line">AuthorizedKeysFile # ssh公钥目录</span><br></pre></td></tr></table></figure>
+
 <p>配置完之后一定记得重启<code>ssh server</code>，否则是不会生效的。一种方法是服务里面，右键选择重启：</p>
 <p><img src="http://pic.ex2tron.top/win10-ssh-server-config-reboot-service.jpg" alt=""></p>
 <p>还有一种就是在cmd下直接重启，cmd需以管理员权限打开：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">net stop sshd</div><div class="line">net start sshd</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net stop sshd</span><br><span class="line">net start sshd</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>
@@ -255,11 +275,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Build/">Build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH-Server/">SSH-Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Build/" rel="tag">Build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH-Server/" rel="tag">SSH-Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/" rel="tag">Windows10</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -268,7 +288,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -352,7 +374,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -369,7 +391,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -385,7 +407,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -434,13 +458,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

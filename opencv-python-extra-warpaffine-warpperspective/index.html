@@ -15,7 +15,7 @@
     
     python-opencv教程番外篇5：仿射变换与透视变换 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="常见的2D图像变换从原理上讲主要包括基于2×3矩阵的仿射变换和基于3×3矩阵透视变换。">
-<meta name="keywords" content="OpenCV,Python,图像处理,图像变换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-OpenCV教程番外篇5：仿射变换与透视变换">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-warpaffine-warpperspective/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-extra-warpaffine-warpperspective/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="常见的2D图像变换从原理上讲主要包括基于2×3矩阵的仿射变换和基于3×3矩阵透视变换。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_image_transformation_sample.jpg">
-<meta property="og:updated_time" content="2018-11-26T12:06:04.508Z">
+<meta property="article:published_time" content="2017-12-08T07:36:53.000Z">
+<meta property="article:modified_time" content="2018-11-26T12:06:04.508Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="图像变换">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python-OpenCV教程番外篇5：仿射变换与透视变换">
-<meta name="twitter:description" content="常见的2D图像变换从原理上讲主要包括基于2×3矩阵的仿射变换和基于3×3矩阵透视变换。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_image_transformation_sample.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_transformation_sample.jpg" rel="gallery_cjxj6dyh300b95w59opydgecr">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_transformation_sample.jpg" target="_blank" rel="gallery_ck4mf0p0a000wdktn7r428u4q noopener">
         <img src="http://pic.ex2tron.top/cv2_image_transformation_sample.jpg" itemprop="image">
       </a>
     
@@ -212,13 +223,14 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常见的2D图像变换从原理上讲主要包括基于2×3矩阵的<a href="https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">仿射变换</a>和基于3×3矩阵<a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>。<a id="more"></a></p>
+        <p>常见的2D图像变换从原理上讲主要包括基于2×3矩阵的<a href="https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">仿射变换</a>和基于3×3矩阵<a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">透视变换</a>。<a id="more"></a></p>
 <hr>
 <h2 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h2><p>基本的图像变换就是二维坐标的变换：从一种二维坐标(x,y)到另一种二维坐标(u,v)的线性变换：</p>
 <p>$$<br>\begin{matrix}<br>   u=a_1x+b_1y+c_1 \newline<br>   v=a_2x+b_2y+c_2<br>  \end{matrix}<br>$$<br>如果写成矩阵的形式，就是：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right]<br>$$<br>作如下定义：<br>$$<br>R=\left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right], t=\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right],T=\left[<br> \begin{matrix}<br>   R &amp; t<br>  \end{matrix}<br>  \right]<br>$$<br>矩阵T(2×3)就称为仿射变换的变换矩阵，R为线性变换矩阵，t为平移矩阵，简单来说，仿射变换就是线性变换+平移。变换后直线依然是直线，平行线依然是平行线，直线间的相对位置关系不变，因此<strong>非共线的三个对应点便可确定唯一的一个仿射变换</strong>，线性变换4个自由度+平移2个自由度→<strong>仿射变换自由度为6</strong>。</p>
 <p><img src="http://pic.ex2tron.top/cv2_warp_affine_image_sample_introduction2.jpg" alt=""></p>
 <p>来看下OpenCV中如何实现仿射变换：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</div><div class="line">rows, cols = img.shape[:<span class="number">2</span>]</div><div class="line"></div><div class="line"><span class="comment"># 变换前的三个点</span></div><div class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</div><div class="line"><span class="comment"># 变换后的三个点</span></div><div class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成变换矩阵</span></div><div class="line">M = cv2.getAffineTransform(pts1, pts2)</div><div class="line">dst = cv2.warpAffine(img, M, (cols, rows))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</span><br><span class="line">rows, cols = img.shape[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 变换前的三个点</span></span><br><span class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</span><br><span class="line"><span class="comment"># 变换后的三个点</span></span><br><span class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成变换矩阵</span></span><br><span class="line">M = cv2.getAffineTransform(pts1, pts2)</span><br><span class="line">dst = cv2.warpAffine(img, M, (cols, rows))</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <p>三个点我已经在图中标记了出来。用<code>cv2.getAffineTransform()</code>生成变换矩阵，接下来再用<code>cv2.warpAffine()</code>实现变换。</p>
 <blockquote>
 <p>思考：三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（<a href="#练习">练习</a>）</p>
@@ -246,69 +258,68 @@ var themeMenus = {};
 <blockquote>
 <p>经验之谈：OpenCV中默认按照逆时针旋转噢~</p>
 </blockquote>
-<p>总结一下（<a href="http://pic.ex2tron.top/cv2_transformation_matrix_dof_summary.jpg" target="_blank" rel="external">原图[#计算机视觉：算法与应用p39]</a>）：</p>
+<p>总结一下（<a href="http://pic.ex2tron.top/cv2_transformation_matrix_dof_summary.jpg" target="_blank" rel="noopener">原图[#计算机视觉：算法与应用p39]</a>）：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">变换</th>
-<th style="text-align:center">矩阵</th>
-<th style="text-align:center">自由度</th>
-<th style="text-align:center">保持性质</th>
+<th align="center">变换</th>
+<th align="center">矩阵</th>
+<th align="center">自由度</th>
+<th align="center">保持性质</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">平移</td>
-<td style="text-align:center">[I, t]（2×3）</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">方向/长度/夹角/平行性/直线性</td>
+<tbody><tr>
+<td align="center">平移</td>
+<td align="center">[I, t]（2×3）</td>
+<td align="center">2</td>
+<td align="center">方向/长度/夹角/平行性/直线性</td>
 </tr>
 <tr>
-<td style="text-align:center">刚体</td>
-<td style="text-align:center">[R, t]（2×3）</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">长度/夹角/平行性/直线性</td>
+<td align="center">刚体</td>
+<td align="center">[R, t]（2×3）</td>
+<td align="center">3</td>
+<td align="center">长度/夹角/平行性/直线性</td>
 </tr>
 <tr>
-<td style="text-align:center">相似</td>
-<td style="text-align:center">[sR, t]（2×3）</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">夹角/平行性/直线性</td>
+<td align="center">相似</td>
+<td align="center">[sR, t]（2×3）</td>
+<td align="center">4</td>
+<td align="center">夹角/平行性/直线性</td>
 </tr>
 <tr>
-<td style="text-align:center">仿射</td>
-<td style="text-align:center">[T]（2×3）</td>
-<td style="text-align:center">6</td>
-<td style="text-align:center">平行性/直线性</td>
+<td align="center">仿射</td>
+<td align="center">[T]（2×3）</td>
+<td align="center">6</td>
+<td align="center">平行性/直线性</td>
 </tr>
 <tr>
-<td style="text-align:center">透视</td>
-<td style="text-align:center">[T]（3×3）</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">直线性</td>
+<td align="center">透视</td>
+<td align="center">[T]（3×3）</td>
+<td align="center">8</td>
+<td align="center">直线性</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h2><p>前面仿射变换后依然是平行四边形，并不能做到任意的变换。</p>
 <p><img src="http://pic.ex2tron.top/cv2_warp_perspective_image_sample4.jpg" alt=""></p>
-<p><a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="external">透视变换</a>（Perspective Transformation）是将二维的图片投影到一个三维视平面上，然后再转换到二维坐标下，所以也称为投影映射（Projective Mapping）。简单来说就是二维→三维→二维的一个过程。<br>$$<br>\begin{matrix}<br>   X=a_1 x + b_1 y + c_1 \newline<br>   Y=a_2 x + b_2 y + c_2  \newline<br>   Z=a_3 x + b_3 y + c_3<br>  \end{matrix}<br>$$<br>这次我写成齐次矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   X \newline<br>   Y \newline<br>   Z<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1 &amp; c_1  \newline<br>   a_2 &amp; b_2 &amp; c_2  \newline<br>   a_3 &amp; b_3 &amp; c_3<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y \newline<br>   1<br>  \end{matrix}<br>  \right]<br>$$<br>其中，$ \left[<br> \begin{matrix}<br>   a_1 &amp; b_1   \newline<br>   a_2 &amp; b_2  \newline<br>  \end{matrix}<br>  \right]  $表示线性变换，$ \left[<br> \begin{matrix}<br>   a_3 &amp; b_3<br>  \end{matrix}<br>  \right]  $产生透视变换，其余表示平移变换，因此仿射变换是透视变换的子集。接下来再通过除以Z轴转换成二维坐标：<br>$$<br>x^{’}=\frac{X}{Z}=\frac{a_1x+b_1y+c_1}{a_3x+b_3y+c_3 }<br>$$</p>
+<p><a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">透视变换</a>（Perspective Transformation）是将二维的图片投影到一个三维视平面上，然后再转换到二维坐标下，所以也称为投影映射（Projective Mapping）。简单来说就是二维→三维→二维的一个过程。<br>$$<br>\begin{matrix}<br>   X=a_1 x + b_1 y + c_1 \newline<br>   Y=a_2 x + b_2 y + c_2  \newline<br>   Z=a_3 x + b_3 y + c_3<br>  \end{matrix}<br>$$<br>这次我写成齐次矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   X \newline<br>   Y \newline<br>   Z<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1 &amp; c_1  \newline<br>   a_2 &amp; b_2 &amp; c_2  \newline<br>   a_3 &amp; b_3 &amp; c_3<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y \newline<br>   1<br>  \end{matrix}<br>  \right]<br>$$<br>其中，$ \left[<br> \begin{matrix}<br>   a_1 &amp; b_1   \newline<br>   a_2 &amp; b_2  \newline<br>  \end{matrix}<br>  \right]  $表示线性变换，$ \left[<br> \begin{matrix}<br>   a_3 &amp; b_3<br>  \end{matrix}<br>  \right]  $产生透视变换，其余表示平移变换，因此仿射变换是透视变换的子集。接下来再通过除以Z轴转换成二维坐标：<br>$$<br>x^{’}=\frac{X}{Z}=\frac{a_1x+b_1y+c_1}{a_3x+b_3y+c_3 }<br>$$</p>
 <p>$$<br>y^{’}=\frac{Y}{Z}=\frac{a_2x+b_2y+c_2}{a_3x+b_3y+c_3 }<br>$$</p>
 <p>透视变换相比仿射变换更加灵活，变换后会产生一个新的四边形，但不一定是平行四边形，所以需要<strong>非共线的四个点才能唯一确定</strong>，原图中的直线变换后依然是直线。因为四边形包括了所有的平行四边形，所以透视变换包括了所有的仿射变换。</p>
 <p>OpenCV中首先根据变换前后的四个点用<code>cv2.getPerspectiveTransform()</code>生成3×3的变换矩阵，然后再用<code>cv2.warpPerspective()</code>进行透视变换。实战演练一下：</p>
 <p><img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" alt="矫正一鸣的卡片"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'card.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 原图中卡片的四个角点</span></div><div class="line">pts1 = np.float32([[<span class="number">148</span>, <span class="number">80</span>], [<span class="number">437</span>, <span class="number">114</span>], [<span class="number">94</span>, <span class="number">247</span>], [<span class="number">423</span>, <span class="number">288</span>]])</div><div class="line"><span class="comment"># 变换后分别在左上、右上、左下、右下四个点</span></div><div class="line">pts2 = np.float32([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">320</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">178</span>], [<span class="number">320</span>, <span class="number">178</span>]])</div><div class="line"></div><div class="line"><span class="comment"># 生成透视变换矩阵</span></div><div class="line">M = cv2.getPerspectiveTransform(pts1, pts2)</div><div class="line"><span class="comment"># 进行透视变换，参数3是目标图像大小</span></div><div class="line">dst = cv2.warpPerspective(img, M, (<span class="number">320</span>, <span class="number">178</span>))</div><div class="line"></div><div class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'input'</span>)</div><div class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'output'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'card.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原图中卡片的四个角点</span></span><br><span class="line">pts1 = np.float32([[<span class="number">148</span>, <span class="number">80</span>], [<span class="number">437</span>, <span class="number">114</span>], [<span class="number">94</span>, <span class="number">247</span>], [<span class="number">423</span>, <span class="number">288</span>]])</span><br><span class="line"><span class="comment"># 变换后分别在左上、右上、左下、右下四个点</span></span><br><span class="line">pts2 = np.float32([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">320</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">178</span>], [<span class="number">320</span>, <span class="number">178</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成透视变换矩阵</span></span><br><span class="line">M = cv2.getPerspectiveTransform(pts1, pts2)</span><br><span class="line"><span class="comment"># 进行透视变换，参数3是目标图像大小</span></span><br><span class="line">dst = cv2.warpPerspective(img, M, (<span class="number">320</span>, <span class="number">178</span>))</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'input'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'output'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>代码中有个<code>img[:, :, ::-1]</code>还记得吗？忘记的话，请看<a href="#练习">练习</a>。</p>
 </blockquote>
-<p>当然，我们后面学习了特征提取之后，就可以自动识别角点了。透视变换是一项很酷的功能。比如我们经常会用手机去拍身份证和文件，无论你怎么拍，貌似都拍不正或者有边框。如果你使用过手机上面一些扫描类软件，比如”<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8B" target="_blank" rel="external">扫描全能王</a>“，”<a href="https://baike.baidu.com/item/Office%20Lens" target="_blank" rel="external">Office Lens</a>“，它们能很好地矫正图片，这些软件就是应用透视变换实现的。</p>
+<p>当然，我们后面学习了特征提取之后，就可以自动识别角点了。透视变换是一项很酷的功能。比如我们经常会用手机去拍身份证和文件，无论你怎么拍，貌似都拍不正或者有边框。如果你使用过手机上面一些扫描类软件，比如”<a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8B" target="_blank" rel="noopener">扫描全能王</a>“，”<a href="https://baike.baidu.com/item/Office%20Lens" target="_blank" rel="noopener">Office Lens</a>“，它们能很好地矫正图片，这些软件就是应用透视变换实现的。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>请复习：<a href="/opencv-python-extra-using-matplotlib/">Matplotlib显示图像</a>。</li>
 </ol>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8705.%20%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2%E5%92%8C%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2%E5%8E%9F%E7%90%86" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://pic.ex2tron.top/Computer%20Vision%EF%BC%9AAlgorithms%20and%20Applications.pdf" target="_blank" rel="external">计算机视觉：算法与应用</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="external">维基百科：仿射变换</a></li>
-<li><a href="https://www.zhihu.com/question/20666664" target="_blank" rel="external">如何通俗地讲解「仿射变换」这个概念？</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8705.%20%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2%E5%92%8C%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://pic.ex2tron.top/Computer%20Vision%EF%BC%9AAlgorithms%20and%20Applications.pdf" target="_blank" rel="noopener">计算机视觉：算法与应用</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">维基百科：仿射变换</a></li>
+<li><a href="https://www.zhihu.com/question/20666664" target="_blank" rel="noopener">如何通俗地讲解「仿射变换」这个概念？</a></li>
 </ul>
 
       
@@ -316,11 +327,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像变换/">图像变换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/" rel="tag">图像变换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -329,7 +340,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -413,7 +426,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -430,7 +443,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -446,7 +459,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -495,13 +510,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

@@ -15,7 +15,7 @@
     
     python+opencv教程14：轮廓特征 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
-<meta name="keywords" content="OpenCV,Python,图像处理,轮廓">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程14：轮廓特征">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-contour-features/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-contour-features/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg">
-<meta property="og:updated_time" content="2019-05-11T12:17:02.881Z">
+<meta property="article:published_time" content="2017-12-20T10:46:19.000Z">
+<meta property="article:modified_time" content="2019-05-11T12:17:02.881Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="轮廓">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程14：轮廓特征">
-<meta name="twitter:description" content="学习计算轮廓特征，如面积、周长、最小外接矩形等。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" rel="gallery_cjxj6dybv000s5w5902ancc6p">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" target="_blank" rel="gallery_ck4mf0ozt0009dktn8il5fo0o noopener">
         <img src="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" itemprop="image">
       </a>
     
@@ -220,41 +231,53 @@ var themeMenus = {};
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：</p>
 <p><img src="http://pic.ex2tron.top/cv2_31_handwriting_sample.jpg" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 以数字3的轮廓为例</span></div><div class="line">cnt = contours[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</span><br><span class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以数字3的轮廓为例</span></span><br><span class="line">cnt = contours[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
 <p>为了便于绘制，我们创建出两幅彩色图，并把轮廓画在第一幅图上：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">img_color1 = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</div><div class="line">img_color2 = np.copy(img_color1)</div><div class="line">cv2.drawContours(img_color1, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<h3 id="轮廓面积"><a href="#轮廓面积" class="headerlink" title="轮廓面积"></a>轮廓面积</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">area = cv2.contourArea(cnt)  <span class="comment"># 4386.5</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img_color1 = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</span><br><span class="line">img_color2 = np.copy(img_color1)</span><br><span class="line">cv2.drawContours(img_color1, [cnt], <span class="number">0</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="轮廓面积"><a href="#轮廓面积" class="headerlink" title="轮廓面积"></a>轮廓面积</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">area = cv2.contourArea(cnt)  <span class="comment"># 4386.5</span></span><br></pre></td></tr></table></figure>
+
 <p>注意轮廓特征计算的结果并不等同于像素点的个数，而是根据几何方法算出来的，所以有小数。</p>
 <blockquote>
 <p>如果统计二值图中像素点个数，应尽量避免循环，<strong>可以使用<code>cv2.countNonZero()</code></strong>，更加高效。</p>
 </blockquote>
-<h3 id="轮廓周长"><a href="#轮廓周长" class="headerlink" title="轮廓周长"></a>轮廓周长</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perimeter = cv2.arcLength(cnt, <span class="keyword">True</span>)  <span class="comment"># 585.7</span></div></pre></td></tr></table></figure>
+<h3 id="轮廓周长"><a href="#轮廓周长" class="headerlink" title="轮廓周长"></a>轮廓周长</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perimeter = cv2.arcLength(cnt, <span class="literal">True</span>)  <span class="comment"># 585.7</span></span><br></pre></td></tr></table></figure>
+
 <p>参数2表示轮廓是否封闭，显然我们的轮廓是封闭的，所以是True。</p>
-<h3 id="图像矩"><a href="#图像矩" class="headerlink" title="图像矩"></a>图像矩</h3><p>矩可以理解为图像的各类几何特征，详情请参考：[<a href="http://en.wikipedia.org/wiki/Image_moment" target="_blank" rel="external">Image Moments</a>]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">M = cv2.moments(cnt)</div></pre></td></tr></table></figure>
+<h3 id="图像矩"><a href="#图像矩" class="headerlink" title="图像矩"></a>图像矩</h3><p>矩可以理解为图像的各类几何特征，详情请参考：[<a href="http://en.wikipedia.org/wiki/Image_moment" target="_blank" rel="noopener">Image Moments</a>]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M = cv2.moments(cnt)</span><br></pre></td></tr></table></figure>
+
 <p>M中包含了很多轮廓的特征信息，比如M[‘m00’]表示轮廓面积，与前面<code>cv2.contourArea()</code>计算结果是一样的。质心也可以用它来算：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cx, cy = M[<span class="string">'m10'</span>] / M[<span class="string">'m00'</span>], M[<span class="string">'m01'</span>] / M[<span class="string">'m00'</span>]  <span class="comment"># (205, 281)</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cx, cy = M[<span class="string">'m10'</span>] / M[<span class="string">'m00'</span>], M[<span class="string">'m01'</span>] / M[<span class="string">'m00'</span>]  <span class="comment"># (205, 281)</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="外接矩形"><a href="#外接矩形" class="headerlink" title="外接矩形"></a>外接矩形</h3><p>形状的外接矩形有两种，如下图，绿色的叫外接矩形，表示不考虑旋转并且能包含整个轮廓的矩形。蓝色的叫最小外接矩，考虑了旋转：</p>
 <p><img src="http://pic.ex2tron.top/cv2_min_rect_rect_bounding.jpg" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x, y, w, h = cv2.boundingRect(cnt)  <span class="comment"># 外接矩形</span></div><div class="line">cv2.rectangle(img_color1, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rect = cv2.minAreaRect(cnt)  <span class="comment"># 最小外接矩形</span></div><div class="line">box = np.int0(cv2.boxPoints(rect))  <span class="comment"># 矩形的四个角点取整</span></div><div class="line">cv2.drawContours(img_color1, [box], <span class="number">0</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x, y, w, h = cv2.boundingRect(cnt)  <span class="comment"># 外接矩形</span></span><br><span class="line">cv2.rectangle(img_color1, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rect = cv2.minAreaRect(cnt)  <span class="comment"># 最小外接矩形</span></span><br><span class="line">box = np.int0(cv2.boxPoints(rect))  <span class="comment"># 矩形的四个角点取整</span></span><br><span class="line">cv2.drawContours(img_color1, [box], <span class="number">0</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
 <p>其中np.int0(x)是把x取整的操作，比如377.93就会变成377，也可以用x.astype(np.int)。</p>
 <h3 id="最小外接圆"><a href="#最小外接圆" class="headerlink" title="最小外接圆"></a>最小外接圆</h3><p>外接圆跟外接矩形一样，找到一个能包围物体的最小圆：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(x, y), radius = cv2.minEnclosingCircle(cnt)</div><div class="line">(x, y, radius) = np.int0((x, y, radius))  <span class="comment"># 圆心和半径取整</span></div><div class="line">cv2.circle(img_color2, (x, y), radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(x, y), radius = cv2.minEnclosingCircle(cnt)</span><br><span class="line">(x, y, radius) = np.int0((x, y, radius))  <span class="comment"># 圆心和半径取整</span></span><br><span class="line">cv2.circle(img_color2, (x, y), radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_min_enclosing_circle.jpg" alt=""></p>
 <h3 id="拟合椭圆"><a href="#拟合椭圆" class="headerlink" title="拟合椭圆"></a>拟合椭圆</h3><p>我们可以用得到的轮廓拟合出一个椭圆：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ellipse = cv2.fitEllipse(cnt)</div><div class="line">cv2.ellipse(img_color2, ellipse, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ellipse = cv2.fitEllipse(cnt)</span><br><span class="line">cv2.ellipse(img_color2, ellipse, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_fitting_ellipse.jpg" alt=""></p>
 <h3 id="形状匹配"><a href="#形状匹配" class="headerlink" title="形状匹配"></a>形状匹配</h3><p><code>cv2.matchShapes()</code>可以检测两个形状之间的相似度，返回<strong>值越小，越相似</strong>。先读入下面这张图片：</p>
 <p><img src="http://pic.ex2tron.top/cv2_match_shape_shapes.jpg" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>, <span class="number">0</span>)</div><div class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</div><div class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">img_color = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)  <span class="comment"># 用于绘制的彩色图</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br><span class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">img_color = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)  <span class="comment"># 用于绘制的彩色图</span></span><br></pre></td></tr></table></figure>
+
 <p>图中有3条轮廓，我们用A/B/C表示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cnt_a, cnt_b, cnt_c = contours[<span class="number">0</span>], contours[<span class="number">1</span>], contours[<span class="number">2</span>]</div><div class="line">print(cv2.matchShapes(cnt_b, cnt_b, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.0</span></div><div class="line">print(cv2.matchShapes(cnt_b, cnt_c, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 2.17e-05</span></div><div class="line">print(cv2.matchShapes(cnt_b, cnt_a, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.418</span></div></pre></td></tr></table></figure>
-<p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
-<p>形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，大家如果感兴趣，可以参考：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="external">Hu-Moments</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cnt_a, cnt_b, cnt_c = contours[<span class="number">0</span>], contours[<span class="number">1</span>], contours[<span class="number">2</span>]</span><br><span class="line">print(cv2.matchShapes(cnt_b, cnt_b, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.0</span></span><br><span class="line">print(cv2.matchShapes(cnt_b, cnt_c, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 2.17e-05</span></span><br><span class="line">print(cv2.matchShapes(cnt_b, cnt_a, <span class="number">1</span>, <span class="number">0.0</span>))  <span class="comment"># 0.418</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：<a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="noopener">ShapeMatchModes</a>，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。</p>
+<p>形状匹配是通过图像的Hu矩来实现的(<code>cv2.HuMoments()</code>)，大家如果感兴趣，可以参考：<a href="http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments" target="_blank" rel="noopener">Hu-Moments</a></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>前面我们是对图片中的数字3进行轮廓特征计算的，大家换成数字1看看。</li>
-<li>（选做）用形状匹配比较两个字母或数字（这相当于很简单的一个<a href="https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&amp;fromid=25995&amp;fromtitle=OCR" target="_blank" rel="external">OCR</a>噢）。</li>
+<li>（选做）用形状匹配比较两个字母或数字（这相当于很简单的一个<a href="https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&fromid=25995&fromtitle=OCR" target="_blank" rel="noopener">OCR</a>噢）。</li>
 </ol>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>常用的轮廓特征：</p>
 <ul>
@@ -263,20 +286,20 @@ var themeMenus = {};
 <li><code>cv2.matchShapes()</code>进行形状匹配。</li>
 </ul>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga2c759ed9f497d4a618048a2f56dc97f1" target="_blank" rel="external">cv2.contourArea()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c" target="_blank" rel="external">cv2.arcLength()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga556a180f43cab22649c23ada36a8a139" target="_blank" rel="external">cv2.moments()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga103fcbda2f540f3ef1c042d6a9b35ac7" target="_blank" rel="external">cv2.boundingRect()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9" target="_blank" rel="external">cv2.minAreaRect()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8ce13c24081bbc7151e9326f412190f1" target="_blank" rel="external">cv2.minEnclosingCircle()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf259efaad93098103d6c27b9e4900ffa" target="_blank" rel="external">cv2.fitEllipse()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317" target="_blank" rel="external">cv2.matchShapes()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="external">cv2.ShapeMatchModes</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga2c759ed9f497d4a618048a2f56dc97f1" target="_blank" rel="noopener">cv2.contourArea()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c" target="_blank" rel="noopener">cv2.arcLength()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga556a180f43cab22649c23ada36a8a139" target="_blank" rel="noopener">cv2.moments()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga103fcbda2f540f3ef1c042d6a9b35ac7" target="_blank" rel="noopener">cv2.boundingRect()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9" target="_blank" rel="noopener">cv2.minAreaRect()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8ce13c24081bbc7151e9326f412190f1" target="_blank" rel="noopener">cv2.minEnclosingCircle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf259efaad93098103d6c27b9e4900ffa" target="_blank" rel="noopener">cv2.fitEllipse()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317" target="_blank" rel="noopener">cv2.matchShapes()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f" target="_blank" rel="noopener">cv2.ShapeMatchModes</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/14.%20%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html" target="_blank" rel="external">Contour Features</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html" target="_blank" rel="external">Contours : More Functions</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/14.%20%E8%BD%AE%E5%BB%93%E7%89%B9%E5%BE%81" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html" target="_blank" rel="noopener">Contour Features</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html" target="_blank" rel="noopener">Contours : More Functions</a></li>
 </ul>
 
       
@@ -284,11 +307,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/轮廓/">轮廓</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AE%E5%BB%93/" rel="tag">轮廓</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -297,7 +320,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -381,7 +406,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -398,7 +423,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -414,7 +439,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -463,13 +490,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

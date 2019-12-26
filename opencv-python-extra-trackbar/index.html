@@ -15,7 +15,7 @@
     
     python+opencv教程番外篇3：滑动条 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习使用滑动条动态调整参数。">
-<meta name="keywords" content="OpenCV,Python,图像处理,滑动条">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程番外篇3：滑动条">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-trackbar/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-extra-trackbar/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习使用滑动条动态调整参数。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg">
-<meta property="og:updated_time" content="2019-05-02T15:07:50.631Z">
+<meta property="article:published_time" content="2017-12-06T14:23:11.000Z">
+<meta property="article:modified_time" content="2019-05-02T15:07:50.631Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="滑动条">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程番外篇3：滑动条">
-<meta name="twitter:description" content="学习使用滑动条动态调整参数。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" rel="gallery_cjxj6dycz002a5w5924r1n02i">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" target="_blank" rel="gallery_ck4mf0p0a000xdktn68nvha2t noopener">
         <img src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" itemprop="image">
       </a>
     
@@ -224,18 +235,19 @@ var themeMenus = {};
 </ul>
 <p>创建好之后，可以在回调函数中获取滑动条的值，也可以用：<code>cv2.getTrackbarPos()</code>得到，其中，参数1是滑动条的名称，参数2是窗口的名称。</p>
 <h2 id="RGB调色板"><a href="#RGB调色板" class="headerlink" title="RGB调色板"></a>RGB调色板</h2><p>下面我们实现一个RGB的调色板，理解下滑动条的用法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment"># 回调函数，x表示滑块的位置，本例暂不使用</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nothing</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">img = np.zeros((<span class="number">300</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line">cv2.namedWindow(<span class="string">'image'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建RGB三个滑动条</span></div><div class="line">cv2.createTrackbar(<span class="string">'R'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'G'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line">cv2.createTrackbar(<span class="string">'B'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    cv2.imshow(<span class="string">'image'</span>, img)</div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取滑块的值</span></div><div class="line">    r = cv2.getTrackbarPos(<span class="string">'R'</span>, <span class="string">'image'</span>)</div><div class="line">    g = cv2.getTrackbarPos(<span class="string">'G'</span>, <span class="string">'image'</span>)</div><div class="line">    b = cv2.getTrackbarPos(<span class="string">'B'</span>, <span class="string">'image'</span>)</div><div class="line">    <span class="comment"># 设定img的颜色</span></div><div class="line">    img[:] = [b, g, r]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回调函数，x表示滑块的位置，本例暂不使用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nothing</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">300</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">cv2.namedWindow(<span class="string">'image'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建RGB三个滑动条</span></span><br><span class="line">cv2.createTrackbar(<span class="string">'R'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</span><br><span class="line">cv2.createTrackbar(<span class="string">'G'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</span><br><span class="line">cv2.createTrackbar(<span class="string">'B'</span>, <span class="string">'image'</span>, <span class="number">0</span>, <span class="number">255</span>, nothing)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    cv2.imshow(<span class="string">'image'</span>, img)</span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取滑块的值</span></span><br><span class="line">    r = cv2.getTrackbarPos(<span class="string">'R'</span>, <span class="string">'image'</span>)</span><br><span class="line">    g = cv2.getTrackbarPos(<span class="string">'G'</span>, <span class="string">'image'</span>)</span><br><span class="line">    b = cv2.getTrackbarPos(<span class="string">'B'</span>, <span class="string">'image'</span>)</span><br><span class="line">    <span class="comment"># 设定img的颜色</span></span><br><span class="line">    img[:] = [b, g, r]</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_track_bar_rgb.jpg" alt=""></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.createTrackbar()</code>用来创建滑动条，可以在回调函数中或使用<code>cv2.getTrackbarPos()</code>得到滑块的位置</li>
 </ul>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#gaf78d2155d30b728fc413803745b67a9b" target="_blank" rel="external">cv2.createTrackbar()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga122632e9e91b9ec06943472c55d9cda8" target="_blank" rel="external">cv2.getTrackbarPos()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#gaf78d2155d30b728fc413803745b67a9b" target="_blank" rel="noopener">cv2.createTrackbar()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/dfc/group__highgui.html#ga122632e9e91b9ec06943472c55d9cda8" target="_blank" rel="noopener">cv2.getTrackbarPos()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8703.%20%E6%BB%91%E5%8A%A8%E6%9D%A1" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_trackbar/py_trackbar.html" target="_blank" rel="external">Trackbar as the Color Palette</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8703.%20%E6%BB%91%E5%8A%A8%E6%9D%A1" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_trackbar/py_trackbar.html" target="_blank" rel="noopener">Trackbar as the Color Palette</a></li>
 </ul>
 
       
@@ -243,11 +255,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滑动条/">滑动条</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/" rel="tag">滑动条</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -256,7 +268,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -340,7 +354,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -357,7 +371,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -373,7 +387,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -422,13 +438,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

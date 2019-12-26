@@ -15,7 +15,7 @@
     
     hexo+github pages轻松搭博客(4)：自有服务器部署 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,23 @@
   
   
   <meta name="description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就很一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器，也可以把博客部署在云上。">
-<meta name="keywords" content="Hexo,Github,阿里云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
-<meta property="og:url" content="http://ex2tron.wang/hexo-blog-with-github-pages-4/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/hexo-blog-with-github-pages-4/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就很一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器，也可以把博客部署在云上。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
-<meta property="og:updated_time" content="2019-04-04T13:56:33.391Z">
+<meta property="article:published_time" content="2017-09-13T14:11:12.000Z">
+<meta property="article:modified_time" content="2019-12-26T06:59:46.799Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="阿里云">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo+Github Pages轻松搭博客(4)：自有服务器部署">
-<meta name="twitter:description" content="将博客放在Github上有很多优点，比如免费、易管理、免费xxx.github.io的域名等，但访问速度嘛，就很一般了。对于喜欢折腾的童鞋，如果有一台自己的服务器，也可以把博客部署在云上。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +79,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +96,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +115,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +141,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" rel="gallery_cjxj6dybk000e5w59a3j6g3mx">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" target="_blank" rel="gallery_ck4mf0ozw000cdktn0r5g6zl6 noopener">
         <img src="http://pic.ex2tron.top/hexo_github_pages_blog_build_cover.jpg" itemprop="image">
       </a>
     
@@ -219,56 +229,77 @@ var themeMenus = {};
 <p>说明：以阿里云服务器为例，之前我已经使用apache部署了一个web应用，所以我后面会讲到apache如何配置多个域名。当然你也可以使用nginx，部署流程都类似。</p>
 </blockquote>
 <h2 id="服务器环境配置"><a href="#服务器环境配置" class="headerlink" title="服务器环境配置"></a>服务器环境配置</h2><p>用<code>ssh user@ip</code>连接到服务器后，先更新下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+
 <p>查看git有没有安装：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version # 没安装的话：sudo apt install git</div></pre></td></tr></table></figure>
-<p>这里建议添加一个名为git的新用户，而不是直接使用root，当然直接使用root也木有问题的辣。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">adduser ex2tron sudo # 添加到sudo中</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version # 没安装的话：sudo apt install git</span><br></pre></td></tr></table></figure>
+
+<p>不建议使用root账号，所以这里添加一个名为git的新用户：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser git</span><br><span class="line">adduser git sudo # 添加到sudo中</span><br></pre></td></tr></table></figure>
+
 <p>切换到git用户，并新建用户目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git # 切换git用户</div><div class="line">cd</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su git # 切换git用户</span><br><span class="line">cd</span><br><span class="line">mkdir .ssh &amp;&amp; cd .ssh</span><br></pre></td></tr></table></figure>
+
 <p>然后将本地PC上ssh的<code>id_rsa.pub</code>文件内容复制到该目录的<code>authorized_keys</code>文件中，可以直接使用vim编辑，也可以在本机PC上使用scp命令（新版Windows10都已经自带ssh和scp等工具，可参考：<a href="/how-to-use-ssh-on-windows10/">如何使用Windows 10的OpenSSH Client和Server</a>）：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp .ssh/id_rsa.pub user@ip:/home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp .ssh/id_rsa.pub user@ip:/home/git/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
 <p>这个时候可以退出ssh连接，并使用git用户直接登录了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@ip</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@ip</span><br></pre></td></tr></table></figure>
+
 <h2 id="Git远程仓库及同步"><a href="#Git远程仓库及同步" class="headerlink" title="Git远程仓库及同步"></a>Git远程仓库及同步</h2><blockquote>
 <p>此处可参考我之前的Blog：<a href="/set-up-your-own-git-server/">搭建自己的Github/Git服务器</a></p>
 </blockquote>
 <p>跟GitHub一样，我们需要建一个博客的远程仓库。在git用户的主目录下创建仓库目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /home/git/hexoblog.git</div><div class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</div><div class="line">cd /home/git/hexoblog.git</div><div class="line">git init --bare # 初始化仓库</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/git/hexoblog.git</span><br><span class="line">sudo chown -R git:git hexoblog.git # 不修改权限的话，无法推送</span><br><span class="line">cd /home/git/hexoblog.git</span><br><span class="line">git init --bare # 初始化仓库</span><br></pre></td></tr></table></figure>
+
 <p>接下来需要修改本地Hexo的配置文件<code>_config.yml</code>。首先将<code>url</code>改成你的服务器公网ip或域名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: http://www.ex2tron.top/</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: http:&#x2F;&#x2F;www.ex2tron.top&#x2F;</span><br></pre></td></tr></table></figure>
+
 <p>其次在<code>deploy</code>项这里，如果你将博客推送到多个平台的话，直接新增一条就行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@47.101.xxx.xxx:/home/git/hexoblog.git</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- type: git</span><br><span class="line">  repo: git@47.101.xxx.xxx:&#x2F;home&#x2F;git&#x2F;hexoblog.git</span><br></pre></td></tr></table></figure>
+
 <p>现在可以运行<code>hexo g -d</code>正常push了。</p>
 <p>如果<code>hexo d</code>推送的时候出现如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">remote: fatal: Unable to create temporary file &apos;/home/git/hexoblog.git/./objects/pack/tmp_pack_XXXXXX&apos;: Permission denied</div><div class="line">fatal: sha1 file &apos;&lt;stdout&gt;&apos; write error: Broken pipe</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">remote: fatal: Unable to create temporary file &#39;&#x2F;home&#x2F;git&#x2F;hexoblog.git&#x2F;.&#x2F;objects&#x2F;pack&#x2F;tmp_pack_XXXXXX&#39;: Permission denied</span><br><span class="line">fatal: sha1 file &#39;&lt;stdout&gt;&#39; write error: Broken pipe</span><br></pre></td></tr></table></figure>
+
 <p>说明是git权限的原因，你有可能少执行了这句话噢：<code>sudo chown -R git:git hexoblog.git</code></p>
 <h2 id="apache2配置"><a href="#apache2配置" class="headerlink" title="apache2配置"></a>apache2配置</h2><p>首先自然是安装apache2咯：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install apache2</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2</span><br></pre></td></tr></table></figure>
+
 <p>在<code>/var/www/</code>下面创建网站的根目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/www/html/hexoblog</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /var/www/html/hexoblog</span><br></pre></td></tr></table></figure>
+
 <p>正常来说，这是我们第一次使用apache配置，后面会讲到我的情况。编辑apache2的配置文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apache2/sites-available/000-default.conf</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apache2/sites-available/000-default.conf</span><br></pre></td></tr></table></figure>
+
 <p>找到<code>DocumentRoot</code>项，并做如下更改：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DocumentRoot /var/www/html/hexoblog</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot /var/www/html/hexoblog</span><br></pre></td></tr></table></figure>
+
 <p>最后重启apache生效：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service apache2 restart</span><br></pre></td></tr></table></figure>
+
 <p>前面提到过，我已经在apache2配置过一个web应用和域名了，这个时候可以在conf文件中新增一项配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># 之前的：</div><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">	......</div><div class="line">&lt;/VirtualHost&gt;</div><div class="line"># 新增的：</div><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">        ServerName www.ex2tron.top</div><div class="line">        ServerAlias www.ex2tron.top</div><div class="line">        DocumentRoot /var/www/html/hexoblog/</div><div class="line">        &lt;Directory &quot;/var/www/html/hexoblog/&quot;&gt;</div><div class="line">                Order deny,allow</div><div class="line">                Allow from all</div><div class="line">        &lt;/Directory&gt;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 之前的：</span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	......</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br><span class="line"># 新增的：</span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        ServerName www.ex2tron.top</span><br><span class="line">        ServerAlias www.ex2tron.top</span><br><span class="line">        DocumentRoot &#x2F;var&#x2F;www&#x2F;html&#x2F;hexoblog&#x2F;</span><br><span class="line">        &lt;Directory &quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;hexoblog&#x2F;&quot;&gt;</span><br><span class="line">                Order deny,allow</span><br><span class="line">                Allow from all</span><br><span class="line">        &lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+
 <h2 id="创建Git钩子"><a href="#创建Git钩子" class="headerlink" title="创建Git钩子"></a>创建Git钩子</h2><p>现在远程仓库创建好了，但是需要将Hexo的静态HTML文件传送到<code>/var/www/html/hexoblog</code>下面才行。切换到远程仓库hexoblog.git目录下面：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /home/git/hexoblog.git/hooks/</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/git/hexoblog.git/hooks/</span><br></pre></td></tr></table></figure>
+
 <p>创建并编辑一个新的钩子文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo touch post-receive</div><div class="line">sudo vim post-receive</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo touch post-receive</span><br><span class="line">sudo vim post-receive</span><br></pre></td></tr></table></figure>
+
 <p>在其中加入两行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/var/www/html/hexoblog --git-dir=/home/git/hexoblog.git checkout -f</span><br></pre></td></tr></table></figure>
+
 <p>赋予可执行权限给文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x post-receive</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x post-receive</span><br></pre></td></tr></table></figure>
+
 <p>最后一定要确保git用户有权限操作博客目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown git:git -R /var/www/html</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown git:git -R /var/www/html</span><br></pre></td></tr></table></figure>
+
 <p>这样，每次<code>hexo d</code>的时候就会自动同步文件到<code>/var/www/html/hexoblog/</code>博客目录下。此时，访问<code>www.ex2tron.top</code>便可以浏览你的博客辣，当然别忘了将你的域名解析到服务器IP噢，awesome！</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="/hexo-blog-with-github-pages-3/">Hexo+Github Pages轻松搭博客(3)：绑定独立域名</a></li>
-<li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="external">apache解析多个域名</a></li>
+<li><a href="https://www.cnblogs.com/scarecrowlxb/p/6218678.html" target="_blank" rel="noopener">apache解析多个域名</a></li>
 </ul>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>
@@ -279,11 +310,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阿里云/">阿里云</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -292,7 +323,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -376,7 +409,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -393,7 +426,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -409,7 +442,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -458,13 +493,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

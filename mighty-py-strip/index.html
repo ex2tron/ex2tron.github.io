@@ -15,7 +15,7 @@
     
     【mightypy】(l/r)strip函数的巨坑 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="先来猜下Python中这句话的输出是啥">
-<meta name="keywords" content="Python,strip,lstrip,rstrip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【MightyPy】(l&#x2F;r)strip函数的巨坑">
-<meta property="og:url" content="http://ex2tron.wang/mighty-py-strip/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/mighty-py-strip/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="先来猜下Python中这句话的输出是啥">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/mighty_py_strip.jpg">
-<meta property="og:updated_time" content="2019-06-30T16:35:06.910Z">
+<meta property="article:published_time" content="2019-06-30T14:26:41.000Z">
+<meta property="article:modified_time" content="2019-06-30T16:35:06.910Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="strip">
+<meta property="article:tag" content="lstrip">
+<meta property="article:tag" content="rstrip">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【MightyPy】(l&#x2F;r)strip函数的巨坑">
-<meta name="twitter:description" content="先来猜下Python中这句话的输出是啥">
 <meta name="twitter:image" content="http://pic.ex2tron.top/mighty_py_strip.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/mighty_py_strip.jpg" rel="gallery_cjxj6dydi00325w59lmpcxvgv">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/mighty_py_strip.jpg" target="_blank" rel="gallery_ck4mf0p1b001ldktn5z9x8mou noopener">
         <img src="http://pic.ex2tron.top/mighty_py_strip.jpg" itemprop="image">
       </a>
     
@@ -213,39 +224,46 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p>先来猜下Python中这句话的输出是啥<a id="more"></a>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4.mp4"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename.rstrip(<span class="string">".mp4"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4.mp4"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename.rstrip(<span class="string">".mp4"</span>)</span><br></pre></td></tr></table></figure>
+
 <p>答案是：<code>journey_</code>，那<code>p4</code>去哪了呢？怎么样，有兴趣看下去了吗？↓</p>
 <blockquote>
-<p><em>I Am Iron Man.</em>  ——<a href="https://movie.douban.com/subject/1432146/" target="_blank" rel="external">《钢铁侠》</a><br><em>我就是钢铁侠。</em>——<a href="https://movie.douban.com/subject/1432146/" target="_blank" rel="external">《Iron Man》</a></p>
-<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="external">MovieQuotes</a></strong></p>
+<p><em>I Am Iron Man.</em>  ——<a href="https://movie.douban.com/subject/1432146/" target="_blank" rel="noopener">《钢铁侠》</a><br><em>我就是钢铁侠。</em>——<a href="https://movie.douban.com/subject/1432146/" target="_blank" rel="noopener">《Iron Man》</a></p>
+<p><strong>友情广告：电影台词分享网站：<a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener">MovieQuotes</a></strong></p>
 </blockquote>
 <hr>
 <h2 id="strip-函数"><a href="#strip-函数" class="headerlink" title="strip()函数"></a>strip()函数</h2><p>Python中常用<code>strip()</code>从字符串的开头和结尾移除指定的字符，不指定参数的话，默认移除的是空格、制表符、换行符等。同样<code>lstrip()</code>和<code>rstrip()</code>分别表示单独从开头、结尾移除指定的字符。</p>
 <ul>
-<li>函数原型：<a href="https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip" target="_blank" rel="external">str.strip([chars])</a>、<a href="https://docs.python.org/3/library/stdtypes.html?highlight=lstrip#str.lstrip" target="_blank" rel="external">str.lstrip([chars])</a>、<a href="https://docs.python.org/3/library/stdtypes.html?highlight=rstrip#str.rstrip" target="_blank" rel="external">str.rstrip([chars])</a></li>
+<li>函数原型：<a href="https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip" target="_blank" rel="noopener">str.strip([chars])</a>、<a href="https://docs.python.org/3/library/stdtypes.html?highlight=lstrip#str.lstrip" target="_blank" rel="noopener">str.lstrip([chars])</a>、<a href="https://docs.python.org/3/library/stdtypes.html?highlight=rstrip#str.rstrip" target="_blank" rel="noopener">str.rstrip([chars])</a></li>
 </ul>
 <p>但很多人并不真正了解函数用法，胡乱使用就会导致开头的那种问题，包括之前的我( ╯□╰ )。</p>
-<h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>其实<a href="https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip" target="_blank" rel="external">官方文档</a>上写的很清楚并举了几个例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The chars argument <span class="keyword">is</span> <span class="keyword">not</span> a prefix <span class="keyword">or</span> suffix; rather, all combinations of its values are stripped.</div></pre></td></tr></table></figure>
+<h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>其实<a href="https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip" target="_blank" rel="noopener">官方文档</a>上写的很清楚并举了几个例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The chars argument <span class="keyword">is</span> <span class="keyword">not</span> a prefix <span class="keyword">or</span> suffix; rather, all combinations of its values are stripped.</span><br></pre></td></tr></table></figure>
+
 <p>翻译过来就是：</p>
 <blockquote>
 <p>strip函数的参数并不是指前缀或后缀，而是所有其组合值都会被删除掉！</p>
 </blockquote>
 <p>啥意思呢？以开头问题为例，虽然我们指定了从尾部删除<code>.mp4</code>这个字符串，但它并不会老老实实只删除<code>.mp4</code>，而是包含<code>.mp4</code>所以组合值的字符串都会被删除，比如末尾包含了<code>m/pm/mp/4p/p4/pm4</code>等等都会被删除：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4mmp.mp4"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename.rstrip(<span class="string">".mp4"</span>)	</div><div class="line">journey_</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4mmp.mp4"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename.rstrip(<span class="string">".mp4"</span>)	</span><br><span class="line">journey_</span><br></pre></td></tr></table></figure>
+
 <p>再来看些官方的例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'www.example.com'</span>.strip(<span class="string">'cmowz.'</span>)</div><div class="line">example</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>comment_string = <span class="string">'#....... Section 3.2.1 Issue #32 .......'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>comment_string.strip(<span class="string">'.#! '</span>)</div><div class="line">Section <span class="number">3.2</span><span class="number">.1</span> Issue <span class="comment">#32</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'www.example.com'</span>.strip(<span class="string">'cmowz.'</span>)</span><br><span class="line">example</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>comment_string = <span class="string">'#....... Section 3.2.1 Issue #32 .......'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>comment_string.strip(<span class="string">'.#! '</span>)</span><br><span class="line">Section <span class="number">3.2</span><span class="number">.1</span> Issue <span class="comment">#32</span></span><br></pre></td></tr></table></figure>
+
 <p><code>strip()</code>函数会从开头和结尾开始检索，直到找到不满足要求的第一个字符为止。所以上面的例子从结尾检索时，遇到2不满足要求就结束了。</p>
 <p>综上，<code>strip()/lstrip()/rstrip()</code>要慎用噢。</p>
 <h3 id="去扩展名"><a href="#去扩展名" class="headerlink" title="去扩展名"></a>去扩展名</h3><p>p.s.开头那种去扩展名其实有很多实现方式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4.mp4"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>filename.split(<span class="string">"."</span>)[<span class="number">0</span>]</div><div class="line">journey_p4</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">"journey_p4.mp4"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename.split(<span class="string">"."</span>)[<span class="number">0</span>]</span><br><span class="line">journey_p4</span><br></pre></td></tr></table></figure>
+
 <p>或者用os模块：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(filename)</div><div class="line">(<span class="string">'journey_p4'</span>, <span class="string">'.mp4'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(filename)</span><br><span class="line">(<span class="string">'journey_p4'</span>, <span class="string">'.mp4'</span>)</span><br></pre></td></tr></table></figure>
+
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip" target="_blank" rel="external">str.strip([chars])</a></li>
-<li><a href="https://docs.python.org/3/library/stdtypes.html?highlight=lstrip#str.lstrip" target="_blank" rel="external">str.lstrip([chars])</a></li>
-<li><a href="https://docs.python.org/3/library/stdtypes.html?highlight=rstrip#str.rstrip" target="_blank" rel="external">str.rstrip([chars])</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip" target="_blank" rel="noopener">str.strip([chars])</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html?highlight=lstrip#str.lstrip" target="_blank" rel="noopener">str.lstrip([chars])</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html?highlight=rstrip#str.rstrip" target="_blank" rel="noopener">str.rstrip([chars])</a></li>
 </ul>
 
       
@@ -253,11 +271,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build篇/">Build篇</a>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lstrip/">lstrip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rstrip/">rstrip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/strip/">strip</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lstrip/" rel="tag">lstrip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rstrip/" rel="tag">rstrip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/strip/" rel="tag">strip</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -266,7 +284,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -341,7 +361,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -358,7 +378,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -374,7 +394,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -423,13 +445,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

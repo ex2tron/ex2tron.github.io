@@ -15,7 +15,7 @@
     
     python+opencv教程8：绘图功能 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
-<meta name="keywords" content="OpenCV,Python,图像处理,绘图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程8：绘图功能">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-drawing-function/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-drawing-function/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
-<meta property="og:updated_time" content="2019-05-08T03:34:27.476Z">
+<meta property="article:published_time" content="2017-12-09T03:29:48.000Z">
+<meta property="article:modified_time" content="2019-05-08T03:34:27.476Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="绘图">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程8：绘图功能">
-<meta name="twitter:description" content="学习画线、圆和矩形等多种几何形状，给图片添加文字。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_drawing_functions.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" rel="gallery_cjxj6dycj001p5w59im58ay0k">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_drawing_functions.jpg" target="_blank" rel="gallery_ck4mf0p03000mdktnhc8kbg86 noopener">
         <img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" itemprop="image">
       </a>
     
@@ -229,18 +240,22 @@ var themeMenus = {};
 <li>thickness：线宽，默认为1；<strong>对于矩形/圆之类的封闭形状而言，传入-1表示填充形状</strong></li>
 </ul>
 <p>需要导入的模块和显示图片的通用代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'img'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_drawing_functions.jpg" alt="绘制各种几何形状"></p>
 <p>上图就是本教程绘制的最终效果，下面一步步来看：</p>
 <h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画直线只需指定起点和终点的坐标就行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建一副黑色的图片</span></div><div class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</div><div class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></div><div class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一副黑色的图片</span></span><br><span class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>经验之谈：所有绘图函数均会直接影响原图片，这点要注意。</p>
 </blockquote>
 <h3 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h3><p>画矩形需要知道左上角和右下角的坐标：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个绿色边框的矩形，参数2：左上角坐标，参数3：右下角坐标</span></div><div class="line">cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 画一个绿色边框的矩形，参数2：左上角坐标，参数3：右下角坐标</span></span><br><span class="line">cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
 <h3 id="画圆"><a href="#画圆" class="headerlink" title="画圆"></a>画圆</h3><p>画圆需要指定圆心和半径，注意下面的例子中线宽=-1代表填充：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 画一个填充红色的圆，参数2：圆心坐标，参数3：半径</span></div><div class="line">cv2.circle(img, (<span class="number">447</span>, <span class="number">63</span>), <span class="number">63</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 画一个填充红色的圆，参数2：圆心坐标，参数3：半径</span></span><br><span class="line">cv2.circle(img, (<span class="number">447</span>, <span class="number">63</span>), <span class="number">63</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+
 <h3 id="画椭圆"><a href="#画椭圆" class="headerlink" title="画椭圆"></a>画椭圆</h3><p>画椭圆需要的参数比较多，请对照后面的代码理解这几个参数：</p>
 <ul>
 <li>参数2：椭圆中心(x,y)</li>
@@ -252,15 +267,18 @@ var themeMenus = {};
 <blockquote>
 <p>经验之谈：OpenCV中原点在左上角，所以这里的角度是以顺时针方向计算的。</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在图中心画一个填充的半圆</span></div><div class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在图中心画一个填充的半圆</span></span><br><span class="line">cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+
 <h3 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h3><p>画多边形需要指定一系列多边形的顶点坐标，相当于从第一个点到第二个点画直线，再从第二个点到第三个点画直线….</p>
 <p>OpenCV中需要先将多边形的顶点坐标需要变成顶点数×1×2维的矩阵，再来绘制：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义四个顶点坐标</span></div><div class="line">pts = np.array([[<span class="number">10</span>, <span class="number">5</span>],  [<span class="number">50</span>, <span class="number">10</span>], [<span class="number">70</span>, <span class="number">20</span>], [<span class="number">20</span>, <span class="number">30</span>]], np.int32)</div><div class="line"><span class="comment"># 顶点个数：4，矩阵变成4*1*2维</span></div><div class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">cv2.polylines(img, [pts], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义四个顶点坐标</span></span><br><span class="line">pts = np.array([[<span class="number">10</span>, <span class="number">5</span>],  [<span class="number">50</span>, <span class="number">10</span>], [<span class="number">70</span>, <span class="number">20</span>], [<span class="number">20</span>, <span class="number">30</span>]], np.int32)</span><br><span class="line"><span class="comment"># 顶点个数：4，矩阵变成4*1*2维</span></span><br><span class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">cv2.polylines(img, [pts], <span class="literal">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br></pre></td></tr></table></figure>
+
 <p><code>cv2.polylines()</code>的参数3如果是False的话，多边形就不闭合。</p>
 <blockquote>
 <p>经验之谈：如果需要绘制多条直线，使用cv2.polylines()要比cv2.line()高效很多，例如：</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用cv2.polylines()画多条直线</span></div><div class="line">line1 = np.array([[<span class="number">100</span>, <span class="number">20</span>],  [<span class="number">300</span>, <span class="number">20</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line2 = np.array([[<span class="number">100</span>, <span class="number">60</span>],  [<span class="number">300</span>, <span class="number">60</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">line3 = np.array([[<span class="number">100</span>, <span class="number">100</span>],  [<span class="number">300</span>, <span class="number">100</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</div><div class="line">cv2.polylines(img, [line1, line2, line3], <span class="keyword">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用cv2.polylines()画多条直线</span></span><br><span class="line">line1 = np.array([[<span class="number">100</span>, <span class="number">20</span>],  [<span class="number">300</span>, <span class="number">20</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">line2 = np.array([[<span class="number">100</span>, <span class="number">60</span>],  [<span class="number">300</span>, <span class="number">60</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">line3 = np.array([[<span class="number">100</span>, <span class="number">100</span>],  [<span class="number">300</span>, <span class="number">100</span>]], np.int32).reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">cv2.polylines(img, [line1, line2, line3], <span class="literal">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br></pre></td></tr></table></figure>
+
 <h3 id="添加文字"><a href="#添加文字" class="headerlink" title="添加文字"></a>添加文字</h3><p>使用<code>cv2.putText()</code>添加文字，它的参数也比较多，同样请对照后面的代码理解这几个参数：</p>
 <ul>
 <li>参数2：要添加的文本</li>
@@ -268,8 +286,9 @@ var themeMenus = {};
 <li>参数4：字体</li>
 <li>参数5：文字大小（缩放比例）</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加文字</span></div><div class="line">font = cv2.FONT_HERSHEY_SIMPLEX</div><div class="line">cv2.putText(img, <span class="string">'ex2tron'</span>, (<span class="number">10</span>, <span class="number">500</span>), font,</div><div class="line">            <span class="number">4</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">2</span>, lineType=cv2.LINE_AA)</div></pre></td></tr></table></figure>
-<p>字体可参考：<a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga0f9314ea6e35f99bb23f29567fc16e11" target="_blank" rel="external">HersheyFonts</a>。另外，这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加文字</span></span><br><span class="line">font = cv2.FONT_HERSHEY_SIMPLEX</span><br><span class="line">cv2.putText(img, <span class="string">'ex2tron'</span>, (<span class="number">10</span>, <span class="number">500</span>), font,</span><br><span class="line">            <span class="number">4</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">2</span>, lineType=cv2.LINE_AA)</span><br></pre></td></tr></table></figure>
+
+<p>字体可参考：<a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga0f9314ea6e35f99bb23f29567fc16e11" target="_blank" rel="noopener">HersheyFonts</a>。另外，这里有个线型lineType参数，LINE_AA表示抗锯齿线型，具体可见<a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="noopener">LineTypes</a></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.line()</code>画直线，<code>cv2.circle()</code>画圆，<code>cv2.rectangle()</code>画矩形，<code>cv2.ellipse()</code>画椭圆，<code>cv2.polylines()</code>画多边形，<code>cv2.putText()</code>添加文字。</li>
 <li>画多条直线时，<code>cv2.polylines()</code>要比<code>cv2.line()</code>高效很多。</li>
@@ -279,17 +298,17 @@ var themeMenus = {};
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_draw_opencv_logo.jpg" alt="OpenCV logo"></p>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2" target="_blank" rel="external">cv2.line()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670" target="_blank" rel="external">cv2.circle()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga07d2f74cadcf8e305e810ce8eed13bc9" target="_blank" rel="external">cv2.rectangle()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga28b2267d35786f5f890ca167236cbc69" target="_blank" rel="external">cv2.ellipse()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga5126f47f883d730f633d74f07456c576" target="_blank" rel="external">cv2.putText()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga1ea127ffbbb7e0bfc4fd6fd2eb64263c" target="_blank" rel="external">cv2.polylines()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2" target="_blank" rel="noopener">cv2.line()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670" target="_blank" rel="noopener">cv2.circle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga07d2f74cadcf8e305e810ce8eed13bc9" target="_blank" rel="noopener">cv2.rectangle()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga28b2267d35786f5f890ca167236cbc69" target="_blank" rel="noopener">cv2.ellipse()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga5126f47f883d730f633d74f07456c576" target="_blank" rel="noopener">cv2.putText()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga1ea127ffbbb7e0bfc4fd6fd2eb64263c" target="_blank" rel="noopener">cv2.polylines()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/08.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="external">LineTypes</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_drawing_functions/py_drawing_functions.html" target="_blank" rel="external">Drawing Functions in OpenCV</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/08.%20%E7%BB%98%E5%9B%BE%E5%8A%9F%E8%83%BD" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://docs.opencv.org/3.3.1/d0/de1/group__core.html#gaf076ef45de481ac96e0ab3dc2c29a777" target="_blank" rel="noopener">LineTypes</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_drawing_functions/py_drawing_functions.html" target="_blank" rel="noopener">Drawing Functions in OpenCV</a></li>
 </ul>
 
       
@@ -297,11 +316,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -310,7 +329,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -394,7 +415,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -411,7 +432,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -427,7 +448,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -476,13 +499,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

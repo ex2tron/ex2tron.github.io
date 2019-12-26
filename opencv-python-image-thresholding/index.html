@@ -15,7 +15,7 @@
     
     python+opencv教程6：阈值分割 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习使用不同的阈值方法”二值化”图像。">
-<meta name="keywords" content="OpenCV,Python,图像处理,阈值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程6：阈值分割">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-image-thresholding/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-image-thresholding/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习使用不同的阈值方法”二值化”图像。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg">
-<meta property="og:updated_time" content="2019-05-11T11:45:00.768Z">
+<meta property="article:published_time" content="2017-12-07T13:14:44.000Z">
+<meta property="article:modified_time" content="2019-05-11T11:45:00.768Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="阈值">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程6：阈值分割">
-<meta name="twitter:description" content="学习使用不同的阈值方法”二值化”图像。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg" rel="gallery_cjxj6dycf001j5w598195xmxw">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg" target="_blank" rel="gallery_ck4mf0p01000idktn9llnfdy4 noopener">
         <img src="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg" itemprop="image">
       </a>
     
@@ -220,23 +231,26 @@ var themeMenus = {};
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="固定阈值分割"><a href="#固定阈值分割" class="headerlink" title="固定阈值分割"></a>固定阈值分割</h3><p>固定阈值分割很直接，一句话说就是像素点值大于阈值变成一类值，小于阈值变成另一类值。</p>
 <p><img src="http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 灰度图读入</span></div><div class="line">img = cv2.imread(<span class="string">'gradient.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 阈值分割</span></div><div class="line">ret, th = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">cv2.imshow(<span class="string">'thresh'</span>, th)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 灰度图读入</span></span><br><span class="line">img = cv2.imread(<span class="string">'gradient.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阈值分割</span></span><br><span class="line">ret, th = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line">cv2.imshow(<span class="string">'thresh'</span>, th)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p><code>cv2.threshold()</code>用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：</p>
 <ul>
 <li>参数1：要处理的原图，<strong>一般是灰度图</strong></li>
 <li>参数2：设定的阈值</li>
 <li>参数3：最大阈值，一般为255</li>
-<li>参数4：阈值的方式，主要有5种，详情：<a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">ThresholdTypes</a></li>
+<li>参数4：阈值的方式，主要有5种，详情：<a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="noopener">ThresholdTypes</a></li>
 </ul>
 <p>下面结合代码理解下这5种阈值方式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 应用5种不同的阈值方法</span></div><div class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line">ret, th2 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV)</div><div class="line">ret, th3 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TRUNC)</div><div class="line">ret, th4 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TOZERO)</div><div class="line">ret, th5 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TOZERO_INV)</div><div class="line"></div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'BINARY'</span>, <span class="string">'BINARY_INV'</span>, <span class="string">'TRUNC'</span>, <span class="string">'TOZERO'</span>, <span class="string">'TOZERO_INV'</span>]</div><div class="line">images = [img, th1, th2, th3, th4, th5]</div><div class="line"></div><div class="line"><span class="comment"># 使用Matplotlib显示</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</div><div class="line">    plt.subplot(<span class="number">2</span>, <span class="number">3</span>, i + <span class="number">1</span>)</div><div class="line">    plt.imshow(images[i], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])  <span class="comment"># 隐藏坐标轴</span></div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用5种不同的阈值方法</span></span><br><span class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line">ret, th2 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV)</span><br><span class="line">ret, th3 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TRUNC)</span><br><span class="line">ret, th4 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TOZERO)</span><br><span class="line">ret, th5 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_TOZERO_INV)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'Original'</span>, <span class="string">'BINARY'</span>, <span class="string">'BINARY_INV'</span>, <span class="string">'TRUNC'</span>, <span class="string">'TOZERO'</span>, <span class="string">'TOZERO_INV'</span>]</span><br><span class="line">images = [img, th1, th2, th3, th4, th5]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Matplotlib显示</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">3</span>, i + <span class="number">1</span>)</span><br><span class="line">    plt.imshow(images[i], <span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])  <span class="comment"># 隐藏坐标轴</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_different_threshold_demo.jpg" alt="5种不同的阈值方式结果"></p>
 <blockquote>
-<p>经验之谈：很多人误以为阈值分割就是<a href="https://baike.baidu.com/item/%E4%BA%8C%E5%80%BC%E5%8C%96" target="_blank" rel="external">二值化</a>。从上图中可以发现，两者并不等同，阈值分割结果是两类值，而不是两个值，所以教程开头我把二值化加了引号。</p>
+<p>经验之谈：很多人误以为阈值分割就是<a href="https://baike.baidu.com/item/%E4%BA%8C%E5%80%BC%E5%8C%96" target="_blank" rel="noopener">二值化</a>。从上图中可以发现，两者并不等同，阈值分割结果是两类值，而不是两个值，所以教程开头我把二值化加了引号。</p>
 </blockquote>
 <p><img src="http://pic.ex2tron.top/cv2_different_thresholds_theory.jpg" alt=""></p>
 <h3 id="自适应阈值"><a href="#自适应阈值" class="headerlink" title="自适应阈值"></a>自适应阈值</h3><p>看得出来固定阈值是在整幅图片上应用一个阈值进行分割，<em>它并不适用于明暗分布不均的图片</em>。 <code>cv2.adaptiveThreshold()</code>自适应阈值会每次取图片的一小部分计算阈值，这样图片不同区域的阈值就不尽相同。它有5个参数，其实很好理解，先看下效果：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自适应阈值对比固定阈值</span></div><div class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 固定阈值</span></div><div class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</div><div class="line"><span class="comment"># 自适应阈值</span></div><div class="line">th2 = cv2.adaptiveThreshold(</div><div class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="number">11</span>, <span class="number">4</span>)</div><div class="line">th3 = cv2.adaptiveThreshold(</div><div class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="number">17</span>, <span class="number">6</span>)</div><div class="line"></div><div class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Global(v = 127)'</span>, <span class="string">'Adaptive Mean'</span>, <span class="string">'Adaptive Gaussian'</span>]</div><div class="line">images = [img, th1, th2, th3]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, i + <span class="number">1</span>), plt.imshow(images[i], <span class="string">'gray'</span>)</div><div class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</div><div class="line">    plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自适应阈值对比固定阈值</span></span><br><span class="line">img = cv2.imread(<span class="string">'sudoku.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 固定阈值</span></span><br><span class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line"><span class="comment"># 自适应阈值</span></span><br><span class="line">th2 = cv2.adaptiveThreshold(</span><br><span class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="number">11</span>, <span class="number">4</span>)</span><br><span class="line">th3 = cv2.adaptiveThreshold(</span><br><span class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="number">17</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Global(v = 127)'</span>, <span class="string">'Adaptive Mean'</span>, <span class="string">'Adaptive Gaussian'</span>]</span><br><span class="line">images = [img, th1, th2, th3]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, i + <span class="number">1</span>), plt.imshow(images[i], <span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://pic.ex2tron.top/cv2_adaptive_vs_global_thresholding.jpg" alt="自适应阈值对比固定阈值"></p>
 <ul>
 <li>参数1：要处理的原图</li>
@@ -251,7 +265,7 @@ var themeMenus = {};
 <li>参数6：最终阈值等于小区域计算出的阈值再减去此值</li>
 </ul>
 <p>如果你没看懂上面的参数也不要紧，暂时会用就行，当然我建议你调整下参数看看不同的结果。</p>
-<h3 id="Otsu阈值"><a href="#Otsu阈值" class="headerlink" title="Otsu阈值"></a>Otsu阈值</h3><p>在前面固定阈值中，我们是随便选了一个阈值如127，那如何知道我们选的这个阈值效果好不好呢？答案是：不断尝试，所以这种方法在很多文献中都被称为经验阈值。<a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="external">Otsu阈值法</a>就提供了一种自动高效的二值化方法，不过我们直方图还没学，这里暂时略过。</p>
+<h3 id="Otsu阈值"><a href="#Otsu阈值" class="headerlink" title="Otsu阈值"></a>Otsu阈值</h3><p>在前面固定阈值中，我们是随便选了一个阈值如127，那如何知道我们选的这个阈值效果好不好呢？答案是：不断尝试，所以这种方法在很多文献中都被称为经验阈值。<a href="https://baike.baidu.com/item/otsu/16252828" target="_blank" rel="noopener">Otsu阈值法</a>就提供了一种自动高效的二值化方法，不过我们直方图还没学，这里暂时略过。</p>
 <p>好吧，我知道我激起了你的兴趣，~ o(<em>￣▽￣</em>)o，有能力的童鞋可以看下<a href="#练习">练习题</a>。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.threshold()</code>用来进行固定阈值分割。固定阈值不适用于光线不均匀的图片，所以用 <code>cv2.adaptiveThreshold()</code>进行自适应阈值分割。</li>
@@ -261,13 +275,13 @@ var themeMenus = {};
 <li>Otsu阈值是一种高效的二值化算法，请阅读<a href="/opencv-python-extra-otsu-thresholding/">番外篇：Otsu阈值法</a></li>
 </ol>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57" target="_blank" rel="external">cv2.threshold()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3" target="_blank" rel="external">cv2.adaptiveThreshold()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="external">cv2.ThresholdTypes()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57" target="_blank" rel="noopener">cv2.threshold()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3" target="_blank" rel="noopener">cv2.adaptiveThreshold()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="noopener">cv2.ThresholdTypes()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="external">Image Thresholding</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html" target="_blank" rel="noopener">Image Thresholding</a></li>
 </ul>
 
       
@@ -275,11 +289,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阈值/">阈值</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%88%E5%80%BC/" rel="tag">阈值</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -288,7 +302,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -372,7 +388,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -389,7 +405,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -405,7 +421,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -454,13 +472,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

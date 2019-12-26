@@ -15,7 +15,7 @@
     
     python+opencv教程5：颜色空间转换 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,21 +25,24 @@
   
   
   <meta name="description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
-<meta name="keywords" content="OpenCV,Python,图像处理,HSV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程5：颜色空间转换">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-changing-colorspaces/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-changing-colorspaces/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg">
-<meta property="og:updated_time" content="2019-05-08T03:03:42.330Z">
+<meta property="article:published_time" content="2017-12-07T07:21:19.000Z">
+<meta property="article:modified_time" content="2019-05-08T03:03:42.330Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="HSV">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程5：颜色空间转换">
-<meta name="twitter:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
 <meta name="twitter:image" content="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -77,9 +80,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -90,7 +97,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -107,7 +116,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -133,10 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -179,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" rel="gallery_cjxj6dycd001h5w59t3qp50kt">
+      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" target="_blank" rel="gallery_ck4mf0p08000tdktn75yv56p5 noopener">
         <img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" itemprop="image">
       </a>
     
@@ -219,13 +230,15 @@ var themeMenus = {};
 <li>追踪视频中特定颜色的物体</li>
 <li>OpenCV函数：<code>cv2.cvtColor()</code>, <code>cv2.inRange()</code></li>
 </ul>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</div><div class="line"><span class="comment"># 转换为灰度图</span></div><div class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">cv2.imshow(<span class="string">'img'</span>, img)</div><div class="line">cv2.imshow(<span class="string">'gray'</span>, img_gray)</div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line"><span class="comment"># 转换为灰度图</span></span><br><span class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'img'</span>, img)</span><br><span class="line">cv2.imshow(<span class="string">'gray'</span>, img_gray)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
 <p><code>cv2.cvtColor()</code>用来进行颜色模型转换，参数1是要转换的图片，参数2是转换模式， <code>COLOR_BGR2GRAY</code>表示BGR→Gray，可用下面的代码显示所有的转换模式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">flags = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> i.startswith(<span class="string">'COLOR_'</span>)]</div><div class="line">print(flags)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flags = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> i.startswith(<span class="string">'COLOR_'</span>)]</span><br><span class="line">print(flags)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>经验之谈：颜色转换其实是数学运算，如灰度化最常用的是：<code>gray=R*0.299+G*0.587+B*0.114</code>。</p>
 </blockquote>
-<h3 id="视频中特定颜色物体追踪"><a href="#视频中特定颜色物体追踪" class="headerlink" title="视频中特定颜色物体追踪"></a>视频中特定颜色物体追踪</h3><p><a href="https://baike.baidu.com/item/HSV/547122" target="_blank" rel="external">HSV</a>是一个常用于颜色识别的模型，相比BGR更易区分颜色，转换模式用<code>COLOR_BGR2HSV</code>表示。</p>
+<h3 id="视频中特定颜色物体追踪"><a href="#视频中特定颜色物体追踪" class="headerlink" title="视频中特定颜色物体追踪"></a>视频中特定颜色物体追踪</h3><p><a href="https://baike.baidu.com/item/HSV/547122" target="_blank" rel="noopener">HSV</a>是一个常用于颜色识别的模型，相比BGR更易区分颜色，转换模式用<code>COLOR_BGR2HSV</code>表示。</p>
 <blockquote>
 <p>经验之谈：OpenCV中色调H范围为[0,179]，饱和度S是[0,255]，明度V是[0,255]。虽然H的理论数值是0°~360°，但8位图像像素点的最大值是255，所以OpenCV中除以了2，某些软件可能使用不同的尺度表示，所以同其他软件混用时，记得归一化。</p>
 </blockquote>
@@ -237,12 +250,14 @@ var themeMenus = {};
 <li>只显示蓝色物体</li>
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_blue_object_tracking.jpg" alt="跟踪视频中的蓝色物体"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></div><div class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">110</span>, <span class="number">110</span>])</div><div class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</div><div class="line">    <span class="comment"># 1.捕获视频中的一帧</span></div><div class="line">    ret, frame = capture.read()</div><div class="line"></div><div class="line">    <span class="comment"># 2.从BGR转换到HSV</span></div><div class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</div><div class="line"></div><div class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></div><div class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</div><div class="line"></div><div class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></div><div class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</div><div class="line"></div><div class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</div><div class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</div><div class="line">    cv2.imshow(<span class="string">'res'</span>, res)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</div><div class="line">        <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></span><br><span class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">110</span>, <span class="number">110</span>])</span><br><span class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    <span class="comment"># 1.捕获视频中的一帧</span></span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.从BGR转换到HSV</span></span><br><span class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></span><br><span class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></span><br><span class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</span><br><span class="line"></span><br><span class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</span><br><span class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</span><br><span class="line">    cv2.imshow(<span class="string">'res'</span>, res)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
 <p>其中，<code>bitwise_and()</code>函数暂时不用管，后面会讲到。那蓝色的HSV值的上下限lower和upper范围是怎么得到的呢？其实很简单，我们先把标准蓝色的BGR值用<code>cvtColor()</code>转换下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">blue = np.uint8([[[<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>]]])</div><div class="line">hsv_blue = cv2.cvtColor(blue, cv2.COLOR_BGR2HSV)</div><div class="line">print(hsv_blue)  <span class="comment"># [[[120 255 255]]]</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blue = np.uint8([[[<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>]]])</span><br><span class="line">hsv_blue = cv2.cvtColor(blue, cv2.COLOR_BGR2HSV)</span><br><span class="line">print(hsv_blue)  <span class="comment"># [[[120 255 255]]]</span></span><br></pre></td></tr></table></figure>
+
 <p>结果是[120, 255, 255]，所以，我们把蓝色的范围调整成了上面代码那样。</p>
 <blockquote>
-<p>经验之谈：<a href="https://baike.baidu.com/item/Lab/1514615" target="_blank" rel="external">Lab</a>颜色空间也经常用来做颜色识别，有兴趣的同学可以了解下。</p>
+<p>经验之谈：<a href="https://baike.baidu.com/item/Lab/1514615" target="_blank" rel="noopener">Lab</a>颜色空间也经常用来做颜色识别，有兴趣的同学可以了解下。</p>
 </blockquote>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.cvtColor()</code>函数用来进行颜色空间转换，常用BGR↔Gray，BGR↔HSV。</li>
@@ -253,13 +268,13 @@ var themeMenus = {};
 </ol>
 <p><img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" alt="同时追踪3种颜色"></p>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="external">cv2.cvtColor()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981" target="_blank" rel="external">cv2.inRange()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14" target="_blank" rel="external">cv2.bitwise_and()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="noopener">cv2.cvtColor()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981" target="_blank" rel="noopener">cv2.inRange()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14" target="_blank" rel="noopener">cv2.bitwise_and()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/05.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="external">本节源码</a></li>
-<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="external">Changing Colorspaces</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/05.%20%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html" target="_blank" rel="noopener">Changing Colorspaces</a></li>
 </ul>
 
       
@@ -267,11 +282,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HSV/">HSV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HSV/" rel="tag">HSV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -280,7 +295,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -364,7 +381,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -381,7 +398,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -397,7 +414,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -446,13 +465,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 

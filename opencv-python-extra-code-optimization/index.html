@@ -15,7 +15,7 @@
     
     python+opencv教程番外篇1：代码性能优化 |
     
-    ex2tron&#39;s Tech Blog
+    莫得感情🉐️程序猿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -25,19 +25,21 @@
   
   
   <meta name="description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
-<meta name="keywords" content="OpenCV,Python,图像处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程番外篇1：代码性能优化">
-<meta property="og:url" content="http://ex2tron.wang/opencv-python-extra-code-optimization/index.html">
-<meta property="og:site_name" content="ex2tron&#39;s Tech Blog">
+<meta property="og:url" content="http://www.codec.wang/opencv-python-extra-code-optimization/index.html">
+<meta property="og:site_name" content="莫得感情🉐️程序猿">
 <meta property="og:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-11T11:42:29.351Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-12-06T07:51:52.000Z">
+<meta property="article:modified_time" content="2019-05-11T11:42:29.351Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="OpenCV">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="图像处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+OpenCV教程番外篇1：代码性能优化">
-<meta name="twitter:description" content="学习如何评估和优化代码性能。（本节还没更新完…………）">
   
-  <link rel="alternate" href="/atom.xaml" title="ex2tron&#39;s Tech Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="莫得感情🉐️程序猿" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -75,9 +77,13 @@
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
     type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css">
@@ -88,7 +94,9 @@
   
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
+  
+<link rel="stylesheet" href="/css/my.css">
+
 
   <script>
     (function () {
@@ -105,7 +113,7 @@
     })();
   </script>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 <script>
 var themeMenus = {};
 
@@ -131,10 +139,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="ex2tron&#39;s Tech Blog" rel="home"> ex2tron&#39;s Tech Blog </a>
+              <a href="/" title="莫得感情🉐️程序猿" rel="home"> 莫得感情🉐️程序猿 </a>
             
           </h1>
 
+          
+            <div class="site-description">Codec42，小强本强的情感驿站～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -202,16 +212,19 @@ var themeMenus = {};
       
         <p>学习如何评估和优化代码性能。（本节还没更新完…………）<a id="more"></a></p>
 <p>完成一项任务很重要，高效地完成更重要。图像处理是对矩阵的操作，数据量巨大。如果代码写的不好，性能差距将很大，所以这节我们来了解下如何评估和提升代码性能。</p>
-<h2 id="评估代码运行时间"><a href="#评估代码运行时间" class="headerlink" title="评估代码运行时间"></a>评估代码运行时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">start = cv2.getTickCount()</div><div class="line"><span class="comment"># 这里写测试代码...</span></div><div class="line">end = cv2.getTickCount()</div><div class="line">print((end - start) / cv2.getTickFrequency())</div></pre></td></tr></table></figure>
+<h2 id="评估代码运行时间"><a href="#评估代码运行时间" class="headerlink" title="评估代码运行时间"></a>评估代码运行时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">start = cv2.getTickCount()</span><br><span class="line"><span class="comment"># 这里写测试代码...</span></span><br><span class="line">end = cv2.getTickCount()</span><br><span class="line">print((end - start) / cv2.getTickFrequency())</span><br></pre></td></tr></table></figure>
+
 <p>这段代码就是用来测量程序运行时间的（单位：s），其中<code>cv2.getTickCount()</code>函数得到电脑启动以来的时钟周期数，<code>cv2.getTickFrequency()</code>返回你电脑的主频，前后相减再除以主频就是你代码的运行时间（这样解释并不完全准确，但能理解就行）。另外，也可以用Python中的time模块计时：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">start = time.clock()</div><div class="line"><span class="comment"># 这里写测试代码...</span></div><div class="line">end = time.clock()</div><div class="line">print(end - start)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.clock()</span><br><span class="line"><span class="comment"># 这里写测试代码...</span></span><br><span class="line">end = time.clock()</span><br><span class="line">print(end - start)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>经验之谈：如果你使用的是<a href="https://baike.baidu.com/item/ipython" target="_blank" rel="external">IPython</a>或<a href="https://baike.baidu.com/item/Jupyter" target="_blank" rel="external">Jupyter Notebook</a>开发环境，性能分析将会非常方便，详情请参考：<a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></p>
+<p>经验之谈：如果你使用的是<a href="https://baike.baidu.com/item/ipython" target="_blank" rel="noopener">IPython</a>或<a href="https://baike.baidu.com/item/Jupyter" target="_blank" rel="noopener">Jupyter Notebook</a>开发环境，性能分析将会非常方便，详情请参考：<a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="noopener">Timing and Profiling in IPython</a></p>
 </blockquote>
 <h2 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h2><ul>
 <li>数据元素少时用Python语法，数据元素多时用Numpy：</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10</span></div><div class="line">z = np.uint8([<span class="number">10</span>])</div><div class="line"></div><div class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></div><div class="line">y = x * x * x   <span class="comment"># (1.6410249677846285e-06)</span></div><div class="line">y = x**<span class="number">3</span>        <span class="comment"># (2.461537451676943e-06)</span></div><div class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">10</span></span><br><span class="line">z = np.uint8([<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试比较下面三句话各自的运行时间</span></span><br><span class="line">y = x * x * x   <span class="comment"># (1.6410249677846285e-06)</span></span><br><span class="line">y = x**<span class="number">3</span>        <span class="comment"># (2.461537451676943e-06)</span></span><br><span class="line">y = z * z * z   <span class="comment"># 最慢 (3.1179474387907945e-05)</span></span><br></pre></td></tr></table></figure>
+
 <p>所以Numpy的运行速度并不一定比Python本身语法快，元素数量较少时，请用Python本身格式。</p>
 <ul>
 <li>尽量避免使用循环，尤其嵌套循环，因为极其慢！！！</li>
@@ -220,14 +233,14 @@ var themeMenus = {};
 <li>尽量避免数组的复制操作</li>
 </ul>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
-<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#gae73f58000611a1af25dd36d496bf4487" target="_blank" rel="external">cv2.getTickCount()</a></li>
-<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#ga705441a9ef01f47acdc55d87fbe5090c" target="_blank" rel="external">cv2.getTickFrequency()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#gae73f58000611a1af25dd36d496bf4487" target="_blank" rel="noopener">cv2.getTickCount()</a></li>
+<li><a href="https://docs.opencv.org/4.0.0/db/de0/group__core__utils.html#ga705441a9ef01f47acdc55d87fbe5090c" target="_blank" rel="noopener">cv2.getTickFrequency()</a></li>
 </ul>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8701.%20%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" target="_blank" rel="external">本节源码</a></li>
-<li><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="external">Python Optimization Techniques</a></li>
-<li><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="external">Timing and Profiling in IPython</a></li>
-<li><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="external">Advanced Numpy</a></li>
+<li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E7%95%AA%E5%A4%96%E7%AF%8701.%20%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips" target="_blank" rel="noopener">Python Optimization Techniques</a></li>
+<li><a href="http://pynash.org/2013/03/06/timing-and-profiling/" target="_blank" rel="noopener">Timing and Profiling in IPython</a></li>
+<li><a href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html#advanced-numpy" target="_blank" rel="noopener">Advanced Numpy</a></li>
 </ul>
 
       
@@ -235,11 +248,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/机器视觉/">机器视觉</a>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图像处理/">图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
 
 
       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
@@ -248,7 +261,9 @@ var themeMenus = {};
       
         <div id="donation_div"></div>
 
+
 <script src="/js/vdonate.js"></script>
+
   <script>
     var a = new Donate({
       title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
@@ -332,7 +347,7 @@ var themeMenus = {};
           <div class="site-info">
             &copy;
             <!-- 2019
-              ex2tron&#39;s Tech Blog All Rights Reserved. -->
+              莫得感情🉐️程序猿 All Rights Reserved. -->
               Made by ex2tron | 2019
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
@@ -349,7 +364,7 @@ var themeMenus = {};
           </div> -->
           <div>
             <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" style="font-weight: bold">MovieQuotes</a>
+              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
             </p>
           </div>
         </div>
@@ -365,7 +380,9 @@ var themeMenus = {};
 </script>
 
 <!-- Custome JS -->
+
 <script src="/js/my.js"></script>
+
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -414,13 +431,23 @@ var themeMenus = {};
 </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/scripts.js"></script>
+
+
 <script src="/js/bootstrap.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
 
