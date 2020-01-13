@@ -15,7 +15,7 @@
     
     python+opencv教程番外篇4：otsu阈值法 |
     
-    噢，程序猿
+    Codec42
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -28,21 +28,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程番外篇4：Otsu阈值法">
 <meta property="og:url" content="http://www.codec.wang/opencv-python-extra-otsu-thresholding/index.html">
-<meta property="og:site_name" content="噢，程序猿">
+<meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="大部分图像处理任务都需要先进行二值化操作，阈值的选取很关键，Otsu阈值法会自动计算阈值。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_bimodal_image_two_peaks.jpg">
 <meta property="article:published_time" content="2017-12-08T04:48:05.000Z">
-<meta property="article:modified_time" content="2019-05-11T11:47:00.408Z">
+<meta property="article:modified_time" content="2020-01-13T06:05:39.634Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="阈值">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_bimodal_image_two_peaks.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="噢，程序猿" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -142,12 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="噢，程序猿" rel="home"> 噢，程序猿 </a>
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
             
           </h1>
 
           
-            <div class="site-description">Codec42，生命不息，折腾不止～</div>
+            <div class="site-description">生命不息，折腾不止～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" target="_blank" rel="gallery_ck4ml6x41000y2ztn95idhon9 noopener">
-        <img src="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_bimodal_image_two_peaks.jpg" target="_blank" rel="gallery_ck5c26aau0016tltn8dry3vc0 noopener">
+        <img src="http://blog.codec.wang/cv2_bimodal_image_two_peaks.jpg" itemprop="image">
       </a>
     
   </div>
@@ -230,7 +230,7 @@ var themeMenus = {};
 </blockquote>
 <hr>
 <h2 id="什么是双峰图片？"><a href="#什么是双峰图片？" class="headerlink" title="什么是双峰图片？"></a>什么是双峰图片？</h2><p>双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，后面会详细介绍。</p>
-<p><img src="http://pic.ex2tron.top/cv2_bimodal_image_two_peaks.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_bimodal_image_two_peaks.jpg" alt=""></p>
 <p>Otsu算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，我们先来看下代码，然后详细说明下算法原理。</p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面这段代码对比了使用固定阈值和Otsu阈值后的不同结果：</p>
 <p>另外，对含噪点的图像，先进行滤波操作效果会更好。</p>
@@ -239,7 +239,7 @@ var themeMenus = {};
 <p>下面我们用Matplotlib把原图、直方图和阈值图都显示出来：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">images = [img, <span class="number">0</span>, th1, img, <span class="number">0</span>, th2, blur, <span class="number">0</span>, th3]</span><br><span class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">'Global(v=100)'</span>,</span><br><span class="line">          <span class="string">'Original'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>,</span><br><span class="line">          <span class="string">'Gaussian filtered Image'</span>, <span class="string">'Histogram'</span>, <span class="string">"Otsu's"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    <span class="comment"># 绘制原图</span></span><br><span class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">1</span>)</span><br><span class="line">    plt.imshow(images[i * <span class="number">3</span>], <span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i * <span class="number">3</span>], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制直方图plt.hist，ravel函数将数组降成一维</span></span><br><span class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">2</span>)</span><br><span class="line">    plt.hist(images[i * <span class="number">3</span>].ravel(), <span class="number">256</span>)</span><br><span class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">1</span>], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制阈值图</span></span><br><span class="line">    plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i * <span class="number">3</span> + <span class="number">3</span>)</span><br><span class="line">    plt.imshow(images[i * <span class="number">3</span> + <span class="number">2</span>], <span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i * <span class="number">3</span> + <span class="number">2</span>], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_otsu_vs_simple_thresholding.jpg" alt="固定阈值 vs Otsu阈值"></p>
+<p><img src="http://blog.codec.wang/cv2_otsu_vs_simple_thresholding.jpg" alt="固定阈值 vs Otsu阈值"></p>
 <p>可以看到，Otsu阈值明显优于固定阈值，省去了不断尝试阈值判断效果好坏的过程。其中，绘制直方图时，使用了numpy中的<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html" target="_blank" rel="noopener">ravel()</a>函数，它会将原矩阵压缩成一维数组，便于画直方图。</p>
 <h2 id="Otsu算法详解"><a href="#Otsu算法详解" class="headerlink" title="Otsu算法详解"></a>Otsu算法详解</h2><p>Otsu阈值法将整幅图分为前景（目标）和背景，以下是一些符号规定：</p>
 <ul>
@@ -254,7 +254,7 @@ var themeMenus = {};
 <li>$ rows\times cols $：图像的行数和列数</li>
 </ul>
 <p>结合下图会更容易理解一些，有一副大小为4×4的图片，假设阈值T为1，那么：</p>
-<p><img src="http://pic.ex2tron.top/cv2_otsu_theory_sample.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_otsu_theory_sample.jpg" alt=""></p>
 <p>其实很好理解，$ N_0+N_1 $就是总的像素点个数，也就是行数乘列数：<br>$$<br>N_0+N_1=rows\times cols<br>$$<br>$ \omega_0 $和$ \omega_1 $是前/背景所占的比例，也就是：<br>$$<br>\omega_0=\frac{N_0}{rows\times cols}<br>$$<br>$$<br>\omega_1=\frac{N_1}{rows\times cols}<br>$$<br>$$<br>\omega_0+\omega_1=1 \tag{1}<br>$$<br>整幅图的平均像素值就是：<br>$$<br>\mu=\omega_0\times \mu_0+\omega_1\times \mu_1  \tag{2}<br>$$</p>
 <p>此时，我们定义一个前景$ \mu_0 $与背景$ \mu_1 $的方差$ g $：</p>
 <p>$$<br>g=\omega_0(\mu_0-\mu)^2+\omega_1(\mu_1-\mu)^2  \tag{3}<br>$$</p>
@@ -353,9 +353,9 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            <!-- 2019
-              噢，程序猿 All Rights Reserved. -->
-              Made by ex2tron | 2019
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
                   <!-- <span id="busuanzi_container_site_uv">
@@ -370,8 +370,8 @@ var themeMenus = {};
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
           <div>
-            <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
             </p>
           </div>
         </div>

@@ -15,7 +15,7 @@
     
     python+opencv教程7：图像几何变换 |
     
-    噢，程序猿
+    Codec42
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -28,21 +28,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程7：图像几何变换">
 <meta property="og:url" content="http://www.codec.wang/opencv-python-image-geometric-transformation/index.html">
-<meta property="og:site_name" content="噢，程序猿">
+<meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="学习如何旋转、平移、缩放和翻转图片。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg">
 <meta property="article:published_time" content="2017-12-08T06:36:53.000Z">
-<meta property="article:modified_time" content="2019-05-08T03:19:07.243Z">
+<meta property="article:modified_time" content="2020-01-13T06:05:39.558Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="几何变换">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="噢，程序猿" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -142,12 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="噢，程序猿" rel="home"> 噢，程序猿 </a>
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
             
           </h1>
 
           
-            <div class="site-description">Codec42，生命不息，折腾不止～</div>
+            <div class="site-description">生命不息，折腾不止～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" target="_blank" rel="gallery_ck4ml6x3w000r2ztndgv46mqv noopener">
-        <img src="http://pic.ex2tron.top/cv2_perspective_transformations_inm.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg" target="_blank" rel="gallery_ck5c26aa7000mtltndu4dch1l noopener">
+        <img src="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg" itemprop="image">
       </a>
     
   </div>
@@ -240,13 +240,13 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst = cv2.flip(img, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 <p>其中，参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</p>
-<p><img src="http://pic.ex2tron.top/cv2_flip_image_sample.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_flip_image_sample.jpg" alt=""></p>
 <h3 id="平移图片"><a href="#平移图片" class="headerlink" title="平移图片"></a>平移图片</h3><p>要平移图片，我们需要定义下面这样一个矩阵，tx,ty是向x和y方向平移的距离：</p>
 <p>$$<br> M = \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; t_x \newline<br>   0 &amp; 1 &amp; t_y<br>  \end{matrix}<br>  \right]<br>$$</p>
 <p>平移是用仿射变换函数<code>cv2.warpAffine()</code>实现的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 平移图片</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">rows, cols = img.shape[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义平移矩阵，需要是numpy的float32类型</span></span><br><span class="line"><span class="comment"># x轴平移100，y轴平移50</span></span><br><span class="line">M = np.float32([[<span class="number">1</span>, <span class="number">0</span>, <span class="number">100</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>]])</span><br><span class="line"><span class="comment"># 用仿射变换实现平移</span></span><br><span class="line">dst = cv2.warpAffine(img, M, (cols, rows))</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'shift'</span>, dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_translation_100_50.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_translation_100_50.jpg" alt=""></p>
 <h3 id="旋转图片"><a href="#旋转图片" class="headerlink" title="旋转图片"></a>旋转图片</h3><p>旋转同平移一样，也是用仿射变换实现的，因此也需要定义一个变换矩阵。OpenCV直接提供了 <code>cv2.getRotationMatrix2D()</code>函数来生成这个矩阵，该函数有三个参数：</p>
 <ul>
 <li>参数1：图片的旋转中心</li>
@@ -255,7 +255,7 @@ var themeMenus = {};
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 45°旋转图片并缩小一半</span></span><br><span class="line">M = cv2.getRotationMatrix2D((cols / <span class="number">2</span>, rows / <span class="number">2</span>), <span class="number">45</span>, <span class="number">0.5</span>)</span><br><span class="line">dst = cv2.warpAffine(img, M, (cols, rows))</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'rotation'</span>, dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_rotation_45_degree.jpg" alt="逆时针旋转45°并缩放"></p>
+<p><img src="http://blog.codec.wang/cv2_rotation_45_degree.jpg" alt="逆时针旋转45°并缩放"></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li><code>cv2.resize()</code>缩放图片，可以按指定大小缩放，也可以按比例缩放。</li>
 <li><code>cv2.flip()</code>翻转图片，可以指定水平/垂直/水平垂直翻转三种方式。</li>
@@ -351,9 +351,9 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            <!-- 2019
-              噢，程序猿 All Rights Reserved. -->
-              Made by ex2tron | 2019
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
                   <!-- <span id="busuanzi_container_site_uv">
@@ -368,8 +368,8 @@ var themeMenus = {};
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
           <div>
-            <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
             </p>
           </div>
         </div>

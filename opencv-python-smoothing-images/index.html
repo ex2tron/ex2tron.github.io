@@ -15,7 +15,7 @@
     
     python+opencv教程10：平滑图像 |
     
-    噢，程序猿
+    Codec42
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -28,21 +28,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程10：平滑图像">
 <meta property="og:url" content="http://www.codec.wang/opencv-python-smoothing-images/index.html">
-<meta property="og:site_name" content="噢，程序猿">
+<meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="学习模糊&#x2F;平滑图像，消除噪点。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_bilateral_vs_gaussian.jpg">
 <meta property="article:published_time" content="2017-12-15T01:44:24.000Z">
-<meta property="article:modified_time" content="2019-05-11T11:51:01.293Z">
+<meta property="article:modified_time" content="2020-01-13T06:05:39.640Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="模糊">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_bilateral_vs_gaussian.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="噢，程序猿" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -142,12 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="噢，程序猿" rel="home"> 噢，程序猿 </a>
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
             
           </h1>
 
           
-            <div class="site-description">Codec42，生命不息，折腾不止～</div>
+            <div class="site-description">生命不息，折腾不止～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" target="_blank" rel="gallery_ck4ml6x3l00092ztn7elm8fdd noopener">
-        <img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_bilateral_vs_gaussian.jpg" target="_blank" rel="gallery_ck5c26a9x0008tltnc8g8fsoq noopener">
+        <img src="http://blog.codec.wang/cv2_bilateral_vs_gaussian.jpg" itemprop="image">
       </a>
     
   </div>
@@ -254,22 +254,22 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现：normalize=True</span></span><br><span class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小，来，数学时间( ╯□╰ )，还记得标准正态分布的曲线吗？</p>
-<p><img src="http://pic.ex2tron.top/cv2_gaussian_kernel_function_theory.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_gaussian_kernel_function_theory.jpg" alt=""></p>
 <p>显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="https://en.wikipedia.org/wiki/Gaussian_filter" target="_blank" rel="noopener">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核（具体原理和卷积核生成方式请参考文末的<a href="#番外小篇：高斯滤波卷积核">番外小篇</a>）：</p>
 <p>$$<br>k = \left[<br> \begin{matrix}<br>   0.0625 &amp; 0.125 &amp; 0.0625 \newline<br>   0.125 &amp; 0.25 &amp; 0.125 \newline<br>   0.0625 &amp; 0.125 &amp; 0.0625<br>  \end{matrix}<br>  \right]<br>$$<br>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'gaussian_noise.bmp'</span>)</span><br><span class="line"><span class="comment"># 均值滤波vs高斯滤波</span></span><br><span class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></span><br><span class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)  <span class="comment"># 高斯滤波</span></span><br></pre></td></tr></table></figure>
 
 <p>参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：</p>
-<p><img src="http://pic.ex2tron.top/cv2_gaussian_vs_average.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_gaussian_vs_average.jpg" alt=""></p>
 <h3 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h3><p><a href="https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC" target="_blank" rel="noopener">中值</a>又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。</p>
 <p>比如下面这张斑点噪声图，用中值滤波显然更好：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'salt_noise.bmp'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment"># 均值滤波vs中值滤波</span></span><br><span class="line">blur = cv2.blur(img, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 均值滤波</span></span><br><span class="line">median = cv2.medianBlur(img, <span class="number">5</span>)  <span class="comment"># 中值滤波</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_median_vs_average.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_median_vs_average.jpg" alt=""></p>
 <h3 id="双边滤波"><a href="#双边滤波" class="headerlink" title="双边滤波"></a>双边滤波</h3><p>模糊操作基本都会损失掉图像细节信息，尤其前面介绍的线性滤波器，图像的边缘信息很难保留下来。然而，边缘（edge）信息是图像中很重要的一个特征，所以这才有了<a href="https://baike.baidu.com/item/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2" target="_blank" rel="noopener">双边滤波</a>。用<code>cv2.bilateralFilter()</code>函数实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line"><span class="comment"># 双边滤波vs高斯滤波</span></span><br><span class="line">gau = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></span><br><span class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_bilateral_vs_gaussian.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_bilateral_vs_gaussian.jpg" alt=""></p>
 <p>可以看到，双边滤波明显保留了更多边缘信息。</p>
 <h2 id="番外小篇：高斯滤波卷积核"><a href="#番外小篇：高斯滤波卷积核" class="headerlink" title="番外小篇：高斯滤波卷积核"></a>番外小篇：高斯滤波卷积核</h2><p>要解释高斯滤波卷积核是如何生成的，需要先复习下概率论的知识（What？？又是数学( ╯□╰ )）</p>
 <p>一维的高斯函数/正态分布$ X\sim N(\mu, \sigma^2) $：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})<br>$$<br>当$ \mu=0, \sigma^2=1 $时，称为标准正态分布$ X\sim N(0, 1) $：<br>$$<br>G(x)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2})<br>$$<br>二维X/Y相互独立的高斯函数：<br>$$<br>G(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}exp(-\frac{(x-\mu_x)^2+(y-\mu_y)^2}{2\sigma_x\sigma_y})=G(x)G(y)<br>$$</p>
@@ -383,9 +383,9 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            <!-- 2019
-              噢，程序猿 All Rights Reserved. -->
-              Made by ex2tron | 2019
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
                   <!-- <span id="busuanzi_container_site_uv">
@@ -400,8 +400,8 @@ var themeMenus = {};
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
           <div>
-            <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
             </p>
           </div>
         </div>

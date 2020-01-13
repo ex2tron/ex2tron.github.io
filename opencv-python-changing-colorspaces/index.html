@@ -15,7 +15,7 @@
     
     python+opencv教程5：颜色空间转换 |
     
-    噢，程序猿
+    Codec42
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -28,21 +28,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程5：颜色空间转换">
 <meta property="og:url" content="http://www.codec.wang/opencv-python-changing-colorspaces/index.html">
-<meta property="og:site_name" content="噢，程序猿">
+<meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_exercise_tracking_three_colors.jpg">
 <meta property="article:published_time" content="2017-12-07T07:21:19.000Z">
-<meta property="article:modified_time" content="2019-05-08T03:03:42.330Z">
+<meta property="article:modified_time" content="2020-01-13T06:05:39.561Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="HSV">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_exercise_tracking_three_colors.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="噢，程序猿" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -142,12 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="噢，程序猿" rel="home"> 噢，程序猿 </a>
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
             
           </h1>
 
           
-            <div class="site-description">Codec42，生命不息，折腾不止～</div>
+            <div class="site-description">生命不息，折腾不止～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" target="_blank" rel="gallery_ck4ml6x3u000n2ztn717e85ce noopener">
-        <img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_exercise_tracking_three_colors.jpg" target="_blank" rel="gallery_ck5c26aa7000ntltnf91l8ub0 noopener">
+        <img src="http://blog.codec.wang/cv2_exercise_tracking_three_colors.jpg" itemprop="image">
       </a>
     
   </div>
@@ -249,7 +249,7 @@ var themeMenus = {};
 <li>提取蓝色范围的物体</li>
 <li>只显示蓝色物体</li>
 </ol>
-<p><img src="http://pic.ex2tron.top/cv2_blue_object_tracking.jpg" alt="跟踪视频中的蓝色物体"></p>
+<p><img src="http://blog.codec.wang/cv2_blue_object_tracking.jpg" alt="跟踪视频中的蓝色物体"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></span><br><span class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">110</span>, <span class="number">110</span>])</span><br><span class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    <span class="comment"># 1.捕获视频中的一帧</span></span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.从BGR转换到HSV</span></span><br><span class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></span><br><span class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></span><br><span class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</span><br><span class="line"></span><br><span class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</span><br><span class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</span><br><span class="line">    cv2.imshow(<span class="string">'res'</span>, res)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
 <p>其中，<code>bitwise_and()</code>函数暂时不用管，后面会讲到。那蓝色的HSV值的上下限lower和upper范围是怎么得到的呢？其实很简单，我们先把标准蓝色的BGR值用<code>cvtColor()</code>转换下：</p>
@@ -266,7 +266,7 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>尝试在视频中同时提取红色、蓝色、绿色的物体。（效果如下）</li>
 </ol>
-<p><img src="http://pic.ex2tron.top/cv2_exercise_tracking_three_colors.jpg" alt="同时追踪3种颜色"></p>
+<p><img src="http://blog.codec.wang/cv2_exercise_tracking_three_colors.jpg" alt="同时追踪3种颜色"></p>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
 <li><a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="noopener">cv2.cvtColor()</a></li>
 <li><a href="https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981" target="_blank" rel="noopener">cv2.inRange()</a></li>
@@ -356,9 +356,9 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            <!-- 2019
-              噢，程序猿 All Rights Reserved. -->
-              Made by ex2tron | 2019
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
                   <!-- <span id="busuanzi_container_site_uv">
@@ -373,8 +373,8 @@ var themeMenus = {};
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
           <div>
-            <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
             </p>
           </div>
         </div>

@@ -15,7 +15,7 @@
     
     python+opencv教程9：图像混合 |
     
-    噢，程序猿
+    Codec42
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -28,21 +28,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程9：图像混合">
 <meta property="og:url" content="http://www.codec.wang/opencv-python-image-blending/index.html">
-<meta property="og:site_name" content="噢，程序猿">
+<meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="学习图片间的数学运算，图像混合。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_image_blending_6_4.jpg">
 <meta property="article:published_time" content="2017-12-10T06:13:10.000Z">
-<meta property="article:modified_time" content="2019-05-08T03:39:10.332Z">
+<meta property="article:modified_time" content="2020-01-13T06:05:39.753Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="图像混合">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_image_blending_6_4.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="噢，程序猿" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -142,12 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="噢，程序猿" rel="home"> 噢，程序猿 </a>
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
             
           </h1>
 
           
-            <div class="site-description">Codec42，生命不息，折腾不止～</div>
+            <div class="site-description">生命不息，折腾不止～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" target="_blank" rel="gallery_ck4ml6x3v000p2ztndx8ebyrz noopener">
-        <img src="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_blending_6_4.jpg" target="_blank" rel="gallery_ck5c26aa8000otltn45qafkxb noopener">
+        <img src="http://blog.codec.wang/cv2_image_blending_6_4.jpg" itemprop="image">
       </a>
     
   </div>
@@ -240,14 +240,14 @@ var themeMenus = {};
 <p>$$<br>dst = \alpha\times img1+\beta\times img2 + \gamma<br>$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img1 = cv2.imread(<span class="string">'lena_small.jpg'</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</span><br><span class="line">res = cv2.addWeighted(img1, <span class="number">0.6</span>, img2, <span class="number">0.4</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_image_blending_6_4.jpg" alt="图像混合"></p>
+<p><img src="http://blog.codec.wang/cv2_image_blending_6_4.jpg" alt="图像混合"></p>
 <blockquote>
 <p>经验之谈：α和β都等于1时，就相当于图片相加。</p>
 </blockquote>
 <h3 id="按位操作"><a href="#按位操作" class="headerlink" title="按位操作"></a>按位操作</h3><p>按位操作包括按位与/或/非/异或操作，有什么用途呢？比如说我们要实现下图的效果：</p>
-<p><img src="http://pic.ex2tron.top/cv2_bitwise_operations_demo.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_bitwise_operations_demo.jpg" alt=""></p>
 <p>如果将两幅图片直接相加会改变图片的颜色，如果用图像混合，则会改变图片的透明度，所以我们需要用按位操作。首先来了解一下<a href="https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin" target="_blank" rel="noopener">掩膜</a>（mask）的概念：掩膜是用一副二值化图片对另外一幅图片进行局部的遮挡，看下图就一目了然了：</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_mask.jpg" alt="掩膜概念"></p>
+<p><img src="http://blog.codec.wang/cv2_understand_mask.jpg" alt="掩膜概念"></p>
 <p>所以我们的思路就是把原图中要放logo的区域抠出来，再把logo放进去就行了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">img1 = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把logo放在左上角，所以我们只关心这一块区域</span></span><br><span class="line">rows, cols = img2.shape[:<span class="number">2</span>]</span><br><span class="line">roi = img1[:rows, :cols]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建掩膜</span></span><br><span class="line">img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line">ret, mask = cv2.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line">mask_inv = cv2.bitwise_not(mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保留除logo外的背景</span></span><br><span class="line">img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)</span><br><span class="line">dst = cv2.add(img1_bg, img2)  <span class="comment"># 进行融合</span></span><br><span class="line">img1[:rows, :cols] = dst  <span class="comment"># 融合后放在原图上</span></span><br></pre></td></tr></table></figure>
 
@@ -349,9 +349,9 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            <!-- 2019
-              噢，程序猿 All Rights Reserved. -->
-              Made by ex2tron | 2019
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
                   <!-- <span id="busuanzi_container_site_uv">
@@ -366,8 +366,8 @@ var themeMenus = {};
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
           <div>
-            <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
             </p>
           </div>
         </div>

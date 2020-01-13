@@ -15,7 +15,7 @@
     
     python+opencv教程挑战任务：车道检测 |
     
-    噢，程序猿
+    Codec42
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
@@ -28,21 +28,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+OpenCV教程挑战任务：车道检测">
 <meta property="og:url" content="http://www.codec.wang/opencv-python-lane-road-detection/index.html">
-<meta property="og:site_name" content="噢，程序猿">
+<meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="挑战任务：实际公路的车道线检测。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_lane_detection_result_sample.jpg">
 <meta property="article:published_time" content="2017-12-28T03:38:11.000Z">
-<meta property="article:modified_time" content="2018-12-02T13:11:54.989Z">
+<meta property="article:modified_time" content="2020-01-13T06:05:39.694Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="车道检测">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_lane_detection_result_sample.jpg">
   
-  <link rel="alternate" href="/atom.xaml" title="噢，程序猿" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
   <link rel="icon" href="/img/bookshelf.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
@@ -142,12 +142,12 @@ var themeMenus = {};
 
           <h1 class="site-title">
             
-              <a href="/" title="噢，程序猿" rel="home"> 噢，程序猿 </a>
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
             
           </h1>
 
           
-            <div class="site-description">Codec42，生命不息，折腾不止～</div>
+            <div class="site-description">生命不息，折腾不止～</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" target="_blank" rel="gallery_ck4ml6x3y000u2ztnesfofsx6 noopener">
-        <img src="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_lane_detection_result_sample.jpg" target="_blank" rel="gallery_ck5c26aak000vtltn7lgv7kpy noopener">
+        <img src="http://blog.codec.wang/cv2_lane_detection_result_sample.jpg" itemprop="image">
       </a>
     
   </div>
@@ -228,15 +228,15 @@ var themeMenus = {};
 <h2 id="挑战内容"><a href="#挑战内容" class="headerlink" title="挑战内容"></a>挑战内容</h2><blockquote>
 <p><strong>1. 在所提供的公路图片上检测出车道线并标记：</strong></p>
 </blockquote>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_result_sample.jpg" alt=""></p>
 <blockquote>
 <p><strong>2. 在所提供的公路视频上检测出车道线并标记：</strong></p>
 </blockquote>
-<p>&lt;video id=”video” controls=””  <source id="mp4" src="http://pic.ex2tron.top/cv2_white_lane_green_mark.mp4" type="video/mp4"><br></video><br>本次挑战内容来自Udacity自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。</p>
+<p>&lt;video id=”video” controls=””  <source id="mp4" src="http://blog.codec.wang/cv2_white_lane_green_mark.mp4" type="video/mp4"><br></video><br>本次挑战内容来自Udacity自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。</p>
 <p><strong>挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，</strong>不然…我也没办法(￣▽￣)”</p>
 <hr>
 <h2 id="挑战解答"><a href="#挑战解答" class="headerlink" title="挑战解答"></a>挑战解答</h2><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>要检测出当前车道，就是要检测出左右两条车道直线。由于无人车一直保持在当前车道，那么无人车上的相机拍摄的视频中，车道线的位置应该基本固定在某一个范围内：</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_roi_sample.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_roi_sample.jpg" alt=""></p>
 <p>如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可将所有的线分为两组，每组再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：</p>
 <ol>
 <li>灰度化</li>
@@ -248,26 +248,26 @@ var themeMenus = {};
 </ol>
 <p>对于视频来说，只要一幅图能检查出来，合成下就可以了，问题不大。</p>
 <h3 id="图像预处理"><a href="#图像预处理" class="headerlink" title="图像预处理"></a>图像预处理</h3><p>灰度化和滤波操作是大部分图像处理的必要步骤。灰度化不必多说，因为不是基于色彩信息识别的任务，所以没有必要用彩色图，可以大大减少计算量。而滤波会削弱图像噪点，排除干扰信息。另外，根据前面学习的知识，边缘提取是基于图像梯度的，梯度对噪声很敏感，所以平滑滤波操作必不可少。</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_gray_blur_result.jpg" alt="原图 vs 灰度滤波图"></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_gray_blur_result.jpg" alt="原图 vs 灰度滤波图"></p>
 <p>这次的代码我们分模块来写，规范一点。其中<code>process_an_image()</code>是主要的图像处理流程：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 高斯滤波核大小</span></span><br><span class="line">blur_ksize = <span class="number">5</span></span><br><span class="line"><span class="comment"># Canny边缘检测高低阈值</span></span><br><span class="line">canny_lth = <span class="number">50</span></span><br><span class="line">canny_hth = <span class="number">150</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></span><br><span class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></span><br><span class="line">    gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)</span><br><span class="line">    blur_gray = cv2.GaussianBlur(gray, (blur_ksize, blur_ksize), <span class="number">1</span>)</span><br><span class="line">    edges = cv2.Canny(blur_gray, canny_lth, canny_hth)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    img = cv2.imread(<span class="string">'test_pictures/lane.jpg'</span>)</span><br><span class="line">    result = process_an_image(img)</span><br><span class="line">    cv2.imshow(<span class="string">"lane"</span>, np.hstack((img, result)))</span><br><span class="line">    cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_canny_result.jpg" alt="边缘检测结果图"></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_canny_result.jpg" alt="边缘检测结果图"></p>
 <h3 id="ROI截取"><a href="#ROI截取" class="headerlink" title="ROI截取"></a>ROI截取</h3><p>按照前面描述的方案，只需保留边缘图中的红线部分区域用于后续的霍夫直线检测，其余都是无用的信息：</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_canny_roi_reserve.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_canny_roi_reserve.jpg" alt=""></p>
 <p>如何实现呢？还记得图像混合中的这张图吗？</p>
-<p><img src="http://pic.ex2tron.top/cv2_understand_mask.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_understand_mask.jpg" alt=""></p>
 <p> 我们可以创建一个梯形的mask掩膜，然后与边缘检测结果图混合运算，掩膜中白色的部分保留，黑色的部分舍弃。梯形的四个坐标需要手动标记：</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_mask_sample.jpg" alt="掩膜mask"></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_mask_sample.jpg" alt="掩膜mask"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></span><br><span class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 标记四个坐标点用于ROI截取</span></span><br><span class="line">    rows, cols = edges.shape</span><br><span class="line">    points = np.array([[(<span class="number">0</span>, rows), (<span class="number">460</span>, <span class="number">325</span>), (<span class="number">520</span>, <span class="number">325</span>), (cols, rows)]])</span><br><span class="line">    <span class="comment"># [[[0 540], [460 325], [520 325], [960 540]]]</span></span><br><span class="line">    roi_edges = roi_mask(edges, points)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">roi_mask</span><span class="params">(img, corner_points)</span>:</span></span><br><span class="line">    <span class="comment"># 创建掩膜</span></span><br><span class="line">    mask = np.zeros_like(img)</span><br><span class="line">    cv2.fillPoly(mask, corner_points, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line">    masked_img = cv2.bitwise_and(img, mask)</span><br><span class="line">    <span class="keyword">return</span> masked_img</span><br></pre></td></tr></table></figure>
 
 <p>这样，结果图”roi_edges”应该是：</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_masked_roi_edges.jpg" alt="只保留关键区域的边缘检测图"></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_masked_roi_edges.jpg" alt="只保留关键区域的边缘检测图"></p>
 <h3 id="霍夫直线提取"><a href="#霍夫直线提取" class="headerlink" title="霍夫直线提取"></a>霍夫直线提取</h3><p>为了方便后续计算直线的斜率，我们使用统计概率霍夫直线变换（因为它能直接得到直线的起点和终点坐标）。霍夫变换的参数比较多，可以放在代码开头，便于修改：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 霍夫变换参数</span></span><br><span class="line">rho = <span class="number">1</span></span><br><span class="line">theta = np.pi / <span class="number">180</span></span><br><span class="line">threshold = <span class="number">15</span></span><br><span class="line">min_line_len = <span class="number">40</span></span><br><span class="line">max_line_gap = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></span><br><span class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 标记四个坐标点用于ROI截取</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 霍夫直线提取</span></span><br><span class="line">    drawing, lines = hough_lines(roi_edges, rho, theta, threshold, min_line_len, max_line_gap)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hough_lines</span><span class="params">(img, rho, theta, threshold, min_line_len, max_line_gap)</span>:</span></span><br><span class="line">    <span class="comment"># 统计概率霍夫直线变换</span></span><br><span class="line">    lines = cv2.HoughLinesP(img, rho, theta, threshold, minLineLength=min_line_len, maxLineGap=max_line_gap)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新建一副空白画布</span></span><br><span class="line">    drawing = np.zeros((img.shape[<span class="number">0</span>], img.shape[<span class="number">1</span>], <span class="number">3</span>), dtype=np.uint8)</span><br><span class="line">    <span class="comment"># draw_lines(drawing, lines)     # 画出直线检测结果</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> drawing, lines</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_lines</span><span class="params">(img, lines, color=[<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>], thickness=<span class="number">1</span>)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line:</span><br><span class="line">            cv2.line(img, (x1, y1), (x2, y2), color, thickness)</span><br></pre></td></tr></table></figure>
 
 <p><code>draw_lines()</code>是用来画直线检测的结果，后面我们会接着处理直线，所以这里注释掉了，可以取消注释看下效果：</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_hough_lines_direct_result.jpg" alt="霍夫变换结果图"></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_hough_lines_direct_result.jpg" alt="霍夫变换结果图"></p>
 <p>对本例的这张测试图来说，如果打印出直线的条数<code>print(len(lines))</code>，应该是有16条。</p>
 <h3 id="车道计算"><a href="#车道计算" class="headerlink" title="车道计算"></a>车道计算</h3><p>这部分应该算是本次挑战任务的核心内容了：前面通过霍夫变换得到了多条直线的起点和终点，我们的目的是通过某种算法只得到左右两条车道线。</p>
 <p><strong>第一步、根据斜率正负划分某条线是左车道还是右车道。</strong><br>$$<br>斜率=\frac{y_2-y_1}{x_2-x_1}(\leq0:左,&gt;0:右)<br>$$</p>
@@ -283,7 +283,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_an_image</span><span class="params">(img)</span>:</span></span><br><span class="line">    <span class="comment"># 1. 灰度化、滤波和Canny</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 标记四个坐标点用于ROI截取</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 霍夫直线提取</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. 车道拟合计算</span></span><br><span class="line">    draw_lanes(drawing, lines)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 5. 最终将结果合在原图上</span></span><br><span class="line">    result = cv2.addWeighted(img, <span class="number">0.9</span>, drawing, <span class="number">0.2</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_lanes</span><span class="params">(img, lines, color=[<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>], thickness=<span class="number">8</span>)</span>:</span></span><br><span class="line">    <span class="comment"># a. 划分左右车道</span></span><br><span class="line">    left_lines, right_lines = [], []</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line:</span><br><span class="line">            k = (y2 - y1) / (x2 - x1)</span><br><span class="line">            <span class="keyword">if</span> k &lt; <span class="number">0</span>:</span><br><span class="line">                left_lines.append(line)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right_lines.append(line)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (len(left_lines) &lt;= <span class="number">0</span> <span class="keyword">or</span> len(right_lines) &lt;= <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># b. 清理异常数据</span></span><br><span class="line">    clean_lines(left_lines, <span class="number">0.1</span>)</span><br><span class="line">    clean_lines(right_lines, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># c. 得到左右车道线点的集合，拟合直线</span></span><br><span class="line">    left_points = [(x1, y1) <span class="keyword">for</span> line <span class="keyword">in</span> left_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</span><br><span class="line">    left_points = left_points + [(x2, y2) <span class="keyword">for</span> line <span class="keyword">in</span> left_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</span><br><span class="line">    right_points = [(x1, y1) <span class="keyword">for</span> line <span class="keyword">in</span> right_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</span><br><span class="line">    right_points = right_points + [(x2, y2) <span class="keyword">for</span> line <span class="keyword">in</span> right_lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</span><br><span class="line"></span><br><span class="line">    left_results = least_squares_fit(left_points, <span class="number">325</span>, img.shape[<span class="number">0</span>])</span><br><span class="line">    right_results = least_squares_fit(right_points, <span class="number">325</span>, img.shape[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 注意这里点的顺序</span></span><br><span class="line">    vtxs = np.array([[left_results[<span class="number">1</span>], left_results[<span class="number">0</span>], right_results[<span class="number">0</span>], right_results[<span class="number">1</span>]]])</span><br><span class="line">    <span class="comment"># d. 填充车道区域</span></span><br><span class="line">    cv2.fillPoly(img, vtxs, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 或者只画车道线</span></span><br><span class="line">    <span class="comment"># cv2.line(img, left_results[0], left_results[1], (0, 255, 0), thickness)</span></span><br><span class="line">    <span class="comment"># cv2.line(img, right_results[0], right_results[1], (0, 255, 0), thickness)</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_lines</span><span class="params">(lines, threshold)</span>:</span></span><br><span class="line">    <span class="comment"># 迭代计算斜率均值，排除掉与差值差异较大的数据</span></span><br><span class="line">    slope = [(y2 - y1) / (x2 - x1) <span class="keyword">for</span> line <span class="keyword">in</span> lines <span class="keyword">for</span> x1, y1, x2, y2 <span class="keyword">in</span> line]</span><br><span class="line">    <span class="keyword">while</span> len(lines) &gt; <span class="number">0</span>:</span><br><span class="line">        mean = np.mean(slope)</span><br><span class="line">        diff = [abs(s - mean) <span class="keyword">for</span> s <span class="keyword">in</span> slope]</span><br><span class="line">        idx = np.argmax(diff)</span><br><span class="line">        <span class="keyword">if</span> diff[idx] &gt; threshold:</span><br><span class="line">            slope.pop(idx)</span><br><span class="line">            lines.pop(idx)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">            </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">least_squares_fit</span><span class="params">(point_list, ymin, ymax)</span>:</span></span><br><span class="line">    <span class="comment"># 最小二乘法拟合</span></span><br><span class="line">    x = [p[<span class="number">0</span>] <span class="keyword">for</span> p <span class="keyword">in</span> point_list]</span><br><span class="line">    y = [p[<span class="number">1</span>] <span class="keyword">for</span> p <span class="keyword">in</span> point_list]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># polyfit第三个参数为拟合多项式的阶数，所以1代表线性</span></span><br><span class="line">    fit = np.polyfit(y, x, <span class="number">1</span>)</span><br><span class="line">    fit_fn = np.poly1d(fit)  <span class="comment"># 获取拟合的结果</span></span><br><span class="line"></span><br><span class="line">    xmin = int(fit_fn(ymin))</span><br><span class="line">    xmax = int(fit_fn(ymax))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [(xmin, ymin), (xmax, ymax)]</span><br></pre></td></tr></table></figure>
 
 <p>这段代码比较多，请每个步骤单独来看。最后得到的是左右两条车道线的起点和终点坐标，可以选择画出车道线，这里我直接填充了整个区域：</p>
-<p><img src="http://pic.ex2tron.top/cv2_lane_detection_result_sample.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_lane_detection_result_sample.jpg" alt=""></p>
 <h3 id="视频处理"><a href="#视频处理" class="headerlink" title="视频处理"></a>视频处理</h3><p>搞定了一张图，视频也就没什么问题了，关键就是视频帧的提取和合成，为此，我们要用到Python的视频编辑包<a href="https://pypi.org/project/moviepy/#files" target="_blank" rel="noopener">moviepy</a>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install moviepy</span><br></pre></td></tr></table></figure>
 
@@ -293,7 +293,7 @@ var themeMenus = {};
 
 <p>本文实现了车道检测的基础版本，如果你感兴趣的话，可以自行搜索或参考引用部分了解更多。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="http://pic.ex2tron.top/cv2_lane_detection_material.zip" target="_blank" rel="noopener">图片和视频素材</a></li>
+<li><a href="http://blog.codec.wang/cv2_lane_detection_material.zip" target="_blank" rel="noopener">图片和视频素材</a></li>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/%E6%8C%91%E6%88%98%E4%BB%BB%E5%8A%A13%EF%BC%9A%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B" target="_blank" rel="noopener">本节源码</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/25354571" target="_blank" rel="noopener">从零开始学习无人驾驶技术 — 车道检测</a></li>
 <li><a href="https://blog.csdn.net/u010665216/article/details/80152458" target="_blank" rel="noopener">无人驾驶之高级车道线检测</a></li>
@@ -378,9 +378,9 @@ var themeMenus = {};
         <div class="clearfix container">
           <div class="site-info">
             &copy;
-            <!-- 2019
-              噢，程序猿 All Rights Reserved. -->
-              Made by ex2tron | 2019
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
                 <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
                 <!--  -->
                   <!-- <span id="busuanzi_container_site_uv">
@@ -395,8 +395,8 @@ var themeMenus = {};
               <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
           </div> -->
           <div>
-            <p>&nbsp | 电影台词分享：
-              <a href="http://moviequotes.ex2tron.wang/" target="_blank" rel="noopener" style="font-weight: bold">MovieQuotes</a>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
             </p>
           </div>
         </div>
