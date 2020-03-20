@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    小程序h5问卷开发1：方案 |
+    
+    Codec42
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="最近在做个需求：用户在使用小程序前先要填写一个问卷，三个要求：  问卷内容不会经常变动，但需要可配 问卷提交结果数据直接记录现有的数据库上 题型：单选&#x2F;多选&#x2F;输入框">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序H5问卷开发1：方案">
+<meta property="og:url" content="http://www.codec.wang/wechat-h5-questionnaire/index.html">
+<meta property="og:site_name" content="Codec42">
+<meta property="og:description" content="最近在做个需求：用户在使用小程序前先要填写一个问卷，三个要求：  问卷内容不会经常变动，但需要可配 问卷提交结果数据直接记录现有的数据库上 题型：单选&#x2F;多选&#x2F;输入框">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/wechat-h5-questionnaire.jpg">
+<meta property="article:published_time" content="2020-03-19T09:27:08.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:13:10.974Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="微信">
+<meta property="article:tag" content="小程序">
+<meta property="article:tag" content="问卷">
+<meta property="article:tag" content="H5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/wechat-h5-questionnaire.jpg">
+  
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
+            
+          </h1>
+
+          
+            <div class="site-description">生命不息，折腾不止～</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-小程序H5问卷开发1：方案" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire.jpg" target="_blank" rel="gallery_ck7zwp90b001jautnfr7scyhp noopener">
+        <img src="http://blog.codec.wang/wechat-h5-questionnaire.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      小程序H5问卷开发1：方案
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/wechat-h5-questionnaire/" class="article-date">
+	  <time datetime="2020-03-19T09:27:08.000Z" itemprop="datePublished">March 19, 2020</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做个需求：用户在使用小程序前先要填写一个问卷，三个要求：</p>
+<ol>
+<li>问卷内容不会经常变动，但需要可配</li>
+<li>问卷提交结果数据直接记录现有的数据库上</li>
+<li>题型：单选/多选/输入框<a id="more"></a></li>
+</ol>
+<p><img src="http://blog.codec.wang/h5-questionnaire-sketch-design.png" alt="最终UI/UX设计图"></p>
+<ul>
+<li><a href="https://developers.weixin.qq.com/s/cNn5uZmd75f0" target="_blank" rel="noopener">在微信开发者工具中预览效果</a></li>
+<li><a href="http://codec.wang/h5-questionnaire" target="_blank" rel="noopener">问卷网页版Demo体验</a></li>
+</ul>
+<hr>
+<p>从需求来看，问题的关键在于后端问卷数据库存储和前端的页面设计。</p>
+<p>显然，数据库搞成固定字段，实在太捉急了，总不能配一次问卷就换一张表吧。所以最简单的方案就是用JSON数据库，如：</p>
+<table>
+<thead>
+<tr>
+<th>问卷ID</th>
+<th>UserID</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>005</td>
+<td>{1: ‘wang’, 2: 0, 3: [1, 2] }</td>
+</tr>
+</tbody></table>
+<p>接下来，就是问卷的界面设计。先来说下我调查过的一些方案。</p>
+<h2 id="方案调查"><a href="#方案调查" class="headerlink" title="方案调查"></a>方案调查</h2><h3 id="第三方问卷系统"><a href="#第三方问卷系统" class="headerlink" title="第三方问卷系统"></a>第三方问卷系统</h3><p>这是我最先想到的：直接使用腾讯问卷之类的第三方系统。经过调查，常用问卷系统都可以使用：</p>
+<ul>
+<li><a href="https://wj.qq.com/article/single-348.html" target="_blank" rel="noopener">小程序跳转腾讯问卷指引</a></li>
+<li><a href="https://www.wjx.cn/help/help.aspx?helpid=430" target="_blank" rel="noopener">问卷星：在自己小程序中打开问卷或考试（小程序跳转）</a></li>
+<li><a href="https://www.wjx.cn/help/help.aspx?helpid=399" target="_blank" rel="noopener">问卷星：在自己小程序中打开问卷或考试（跳转H5页面）</a></li>
+</ul>
+<p>一般是自己的小程序跳转到相关问卷的小程序中，或者像问卷星一样，在自己的小程序中调用H5问卷网页。嗯，看上去不错……</p>
+<p>等等，我们的需求是提交时直接记录在自己的数据库中。那么这些问卷系统有开放API吗？</p>
+<p>目前而言，腾讯问卷官方没开放API，问卷星有：<a href="https://www.wjx.cn/help/help.aspx?helpid=407" target="_blank" rel="noopener">数据推送API</a></p>
+<p><img src="http://blog.codec.wang/wenjuanxing-push-api.png" alt=""></p>
+<p>但，尊享版服务？查了下：</p>
+<p><img src="http://blog.codec.wang/wenjuanxing-vip-service.png" alt=""></p>
+<p>好吧，再见👋</p>
+<h3 id="小程序Native实现"><a href="#小程序Native实现" class="headerlink" title="小程序Native实现"></a>小程序Native实现</h3><p>如果用小程序组件原生实现，需求基本是可以满足的，但开发量比较大且限制比较多。流程上：首先后端需要设计获取问卷的接口，小程序访问此接口，得到所有的题目和题型，然后动态生成UI。相当于开发一个简单的问卷系统了，且这种方式生成的界面也只能在小程序上用。</p>
+<h2 id="自建H5方案"><a href="#自建H5方案" class="headerlink" title="自建H5方案"></a>自建H5方案</h2><p>自建H5的话没有问卷系统那么复杂，也能保证足够的灵活度。所以还是自己动手，丰衣足食啊，方案如下：</p>
+<p><img src="http://blog.codec.wang/custom-h5-design.jpg" alt=""></p>
+<ul>
+<li>虽然问卷内容要求可配，但因为不经常改动，所以不用做配置界面，改动时用脚本生成即可</li>
+<li>H5网页是自己编写的，且部署在自己的服务器上，自然可以直接用自己的API</li>
+<li>最后小程序直接调用H5进行交互即可</li>
+</ul>
+<p>这种方式后端只需要设计一个接口，即提交问卷结果的接口。因为是网页，所以也不仅限于小程序使用，任何浏览器上都可以使用，大大提升灵活性。那么开发量主要集中在：</p>
+<ol>
+<li>HTML模版和H5脚本编写</li>
+<li>小程序与H5交互（鉴权、数据交互和页面跳转）</li>
+</ol>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>为便于理解和走通方案流程，首先编写一个简单的index.html，在小程序上显示并交互：<a href="https://github.com/ex2tron/BlogCode/tree/master/WeChat-H5-Questionnaire/demo1" target="_blank" rel="noopener">本节源码</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我用的编辑器是VSCode，使用<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank" rel="noopener">Live Server</a>插件可以快速启动一个本地Web服务：<a href="http://127.0.0.1:5500/index.html" target="_blank" rel="noopener">http://127.0.0.1:5500/index.html</a></p>
+<p><img src="http://blog.codec.wang/vscode-live-server.png" alt=""></p>
+<h3 id="小程序web-view"><a href="#小程序web-view" class="headerlink" title="小程序web-view"></a>小程序web-view</h3><p>小程序承载网页的容器是<a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html" target="_blank" rel="noopener">web-view</a>组件，组件本身很简单，src指定要跳转的网页地址即可。</p>
+<p><img src="http://blog.codec.wang/wechat-web-view-src.jpg" alt=""></p>
+<p>好，赶紧跳转个百度看看🙃……No，不行，自定义网页的域名需要在小程序<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">管理后台配置</a></p>
+<p><img src="http://blog.codec.wang/wechat-business-domain.jpg" alt=""></p>
+<p>不过为开发方便，本地开发时勾选<strong>不校验合法域名、web-view（业务域名）、TLS版本以及HTTPS证书</strong>。这样就不会校验，可以随便跳转。</p>
+<p><img src="http://blog.codec.wang/donot-check-https-domain.png" alt=""></p>
+<h3 id="小程序与H5交互"><a href="#小程序与H5交互" class="headerlink" title="小程序与H5交互"></a>小程序与H5交互</h3><ul>
+<li>小程序传参给H5网页</li>
+</ul>
+<p>这个很简单，参数拼接在地址上就行。如将小程序的登陆信息和用户信息传递给H5，相当于给网页鉴权：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">src</span>=<span class="string">"http://127.0.0.1:5500/index.html?userid=xxx&amp;cookie=xxx/"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>H5传参及导航到小程序</li>
+</ul>
+<p>首先在H5页面引入微信JSSDK才可以使用小程序相关接口：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">src</span>=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后网页可以通过<code>wx.miniProgram.postMessage()</code> 接口发送信息，最后web-view组件设置<code>bindmessage</code>事件接收数据。</p>
+<p><img src="http://blog.codec.wang/web-view-bindmessage-limit.png" alt=""></p>
+<p>但这里有个坑：这个消息只有在特定时机才能收到，如小程序后退、组件销毁、分享。也就是说，如果在网页中只使用<code>wx.miniProgram.postMessage()</code>接口发送消息，但没有调用小程序后退/分享等接口的话，小程序是收不到消息的，举例：</p>
+<p>我在网页中加了一个按钮，用来向小程序发送消息：</p>
+<ul>
+<li>H5代码：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"SendMsg()"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/qn.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>H5 JS代码：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SendMsg</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 下面这句话触发小程序后退事件</span></span><br><span class="line">    <span class="comment">// 这句话不加，则后面两句发送的消息小程序接收不到</span></span><br><span class="line">    wx.miniProgram.navigateBack();</span><br><span class="line">  </span><br><span class="line">    wx.miniProgram.postMessage(&#123; <span class="attr">data</span>: <span class="string">'tencent'</span> &#125;);</span><br><span class="line">    wx.miniProgram.postMessage(&#123; <span class="attr">data</span>: &#123;<span class="attr">name</span>: <span class="string">'wang'</span>&#125; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是，发送消息的数据结构必须在data中，否则小程序接收不到。</p>
+<p>然后在小程序中接收消息，接收到的数据以数组形式记录：</p>
+<ul>
+<li>小程序wxml代码：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">src</span>=<span class="string">"http://127.0.0.1:5501/"</span></span></span><br><span class="line"><span class="tag">	  <span class="attr">bindmessage</span>=<span class="string">"handleMsg"</span>&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>小程序js代码：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleMsg: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"message: "</span>, e.detail.data);</span><br><span class="line">  <span class="comment">// message:  ['tencent', &#123;name: "wang"&#125;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="环境判断"><a href="#环境判断" class="headerlink" title="环境判断"></a>环境判断</h3><p>H5还可以使用更多的小程序接口，具体请参考：<a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html" target="_blank" rel="noopener">web-view</a></p>
+<p>比较常用的一个是判断当前是否是小程序环境的接口<code>getEnv()</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wx.miniProgram.getEnv(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123; <span class="built_in">console</span>.log(res) &#125;);</span><br><span class="line"><span class="comment">// &#123;miniprogram: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>不过实际中，区分环境最好的实践方式是通过URL参数来区分。</p>
+<h3 id="H5页面调试"><a href="#H5页面调试" class="headerlink" title="H5页面调试"></a>H5页面调试</h3><p>在微信开发者工具上，跳转H5网页后，可以在任意地方右键，打开网页调试面板：</p>
+<p><img src="http://blog.codec.wang/wechat-devtools-h5-debug.png" alt=""></p>
+<p>这样使用<code>debugger</code>或<code>console.log()</code>之类的调试方法就很方便。</p>
+<p>在真机上，目前没有比较好的方法，比较粗暴的就是alert()大法了。</p>
+<p>Okay，本文主要分享了我这两天做小程序H5问卷时一些方案，下一节开始Coding H5代码。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://developers.weixin.qq.com/s/zTlHfZmw7nfD" target="_blank" rel="noopener">在微信开发者工具中预览</a></li>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/WeChat-H5-Questionnaire/demo1" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html" target="_blank" rel="noopener">小程序web-view组件</a></li>
+<li><a href="https://imweb.io/topic/5c0aa26f611a25cc7bf1d7ea" target="_blank" rel="noopener">微信小程序 web-view 开发踩坑大全</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5/" rel="tag">H5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E5%8D%B7/" rel="tag">问卷</a></li></ul>
+
+
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/mighty-py-strip/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【MightyPy】(l/r)strip函数的巨坑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案调查"><span class="nav-number">1.</span> <span class="nav-text">方案调查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方问卷系统"><span class="nav-number">1.1.</span> <span class="nav-text">第三方问卷系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序Native实现"><span class="nav-number">1.2.</span> <span class="nav-text">小程序Native实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自建H5方案"><span class="nav-number">2.</span> <span class="nav-text">自建H5方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World"><span class="nav-number">2.1.</span> <span class="nav-text">Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序web-view"><span class="nav-number">2.2.</span> <span class="nav-text">小程序web-view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序与H5交互"><span class="nav-number">2.3.</span> <span class="nav-text">小程序与H5交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境判断"><span class="nav-number">2.4.</span> <span class="nav-text">环境判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H5页面调试"><span class="nav-number">2.5.</span> <span class="nav-text">H5页面调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              Made by ex2tron | 2020
+                <!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+                <!--  -->
+                  <!-- <span id="busuanzi_container_site_uv">
+                    本站访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 本站总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span> -->
+                  <!--  -->
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号-1</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
