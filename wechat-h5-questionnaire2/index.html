@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/wechat-h5-questionnaire2.png">
 <meta property="article:published_time" content="2020-03-20T08:29:15.000Z">
-<meta property="article:modified_time" content="2020-03-21T13:36:29.709Z">
+<meta property="article:modified_time" content="2020-03-24T08:44:12.987Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="微信">
 <meta property="article:tag" content="小程序">
@@ -147,7 +147,7 @@ var themeMenus = {};
           </h1>
 
           
-            <div class="site-description">生命不息，折腾不止～</div>
+            <div class="site-description">保持对技术的热爱！</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -190,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire2.png" target="_blank" rel="gallery_ck85n9ywu001jiqtn3lk3ejyq noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire2.png" target="_blank" rel="gallery_ck8odvgi3001kwntnhfvg9hlf noopener">
         <img src="http://blog.codec.wang/wechat-h5-questionnaire2.png" itemprop="image">
       </a>
     
@@ -297,7 +297,7 @@ var themeMenus = {};
 </ol>
 <p>两种方式各有优劣。第一种好处是保证小程序所有的接口只有小程序本身能请求，H5只起到记录结果的作用。第二种好处是在网页内部请求，更通用，以后移植到其他Web系统上，也很便捷。</p>
 <p>我这里用第二种，关键代码在于HTTP请求和导航退出：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Submit</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">    <span class="comment">// HTTP POST Demo</span></span><br><span class="line">    <span class="keyword">const</span> data = &#123;&#125;;</span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">'http://api.test.com/'</span></span><br><span class="line">    <span class="keyword">const</span> httpRequest = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    httpRequest.open(<span class="string">'POST'</span>, url, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">// 设置请求头</span></span><br><span class="line">    httpRequest.setRequestHeader(<span class="string">"Content-type"</span>, <span class="string">"application/json"</span>);</span><br><span class="line">    httpRequest.send(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">  </span><br><span class="line">    httpRequest.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (httpRequest.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(httpRequest.responseText);</span><br><span class="line">            wx.miniProgram.navigateBack();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* HTTP POST Demo */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Submit</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">    <span class="keyword">const</span> data = &#123;&#125;;</span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">'http://api.test.com/'</span></span><br><span class="line">    <span class="keyword">const</span> httpRequest = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    httpRequest.open(<span class="string">'POST'</span>, url, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">// 设置请求头</span></span><br><span class="line">    httpRequest.setRequestHeader(<span class="string">"Content-type"</span>, <span class="string">"application/json"</span>);</span><br><span class="line">    httpRequest.send(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">  </span><br><span class="line">    httpRequest.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (httpRequest.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(httpRequest.responseText);</span><br><span class="line">            wx.miniProgram.navigateBack();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其中，评测结果data是在每次点击下一步的时候记录的：</p>
 <ul>
@@ -351,6 +351,15 @@ var themeMenus = {};
   
     
 <nav id="article-nav">
+  
+    <a href="/video-compassion-slider/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          我开源了一个视频滑动对比组件
+        
+      </div>
+    </a>
   
   
     <a href="/wechat-h5-questionnaire/" id="article-nav-older" class="article-nav-link-wrap">

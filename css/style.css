@@ -528,7 +528,7 @@ a.article-title:hover {
 }
 .article-entry img,
 .article-entry video {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
   margin: auto;
@@ -915,7 +915,7 @@ a.article-title:hover {
 }
 .article-gallery-img img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
 }
 .toc-article {
