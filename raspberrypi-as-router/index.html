@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/raspberry_as_router_cover.gif">
 <meta property="article:published_time" content="2019-04-03T03:16:34.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.693Z">
+<meta property="article:modified_time" content="2020-04-07T04:48:38.999Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="树莓派">
 <meta property="article:tag" content="OpenWrt">
@@ -188,7 +188,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/raspberry_as_router_cover.gif" target="_blank" rel="gallery_ck8ofh7jb001gt1tn4igbc390 noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/raspberry_as_router_cover.gif" target="_blank" rel="gallery_ck8pfyq23001ej0tnhk9j8qdq noopener">
         <img src="http://blog.codec.wang/raspberry_as_router_cover.gif" itemprop="image">
       </a>
     
@@ -240,7 +240,7 @@ var themeMenus = {};
 <li><a href="https://baike.baidu.com/item/wan" target="_blank" rel="noopener">WAN</a>：<code>Wide Area Network</code>广域网</li>
 <li><a href="https://baike.baidu.com/item/wlan" target="_blank" rel="noopener">WLAN</a>：<code>Wireless Local Area Networks</code>无线局域网</li>
 </ul>
-<p><img src="http://blog.codec.wang/raspberry_as_router_understand_wan_lan_wlan.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_understand_wan_lan_wlan.jpg_webp" alt=""></p>
 <p>简单来说，LAN就是用来组建有线局域网，而WLAN是用来组建无线局域网的。要使局域网内的设备访问外网，就需要WAN口接入网络运营商或者上层网络。感兴趣的可参考<a href="#引用">引用</a>。</p>
 <h2 id="安装配置OpenWrt"><a href="#安装配置OpenWrt" class="headerlink" title="安装配置OpenWrt"></a>安装配置OpenWrt</h2><p>OpenWrt官网提供了树莓派系列的相关资料和最新固件下载：</p>
 <ul>
@@ -263,26 +263,26 @@ var themeMenus = {};
 </tr>
 </tbody></table>
 <p>首先明确下我们要做的事情：将树莓派的有线网口作为新路由器的WAN口，由于2/2B不带无线网卡，所以将USB无线网卡作为WLAN产生WIFI。</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_purpose.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_purpose.jpg_webp" alt=""></p>
 <h3 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h3><p>安装固件和升级固件任意下载一个即可：</p>
 <ul>
 <li>安装固件：<a href="http://downloads.openwrt.org/releases/18.06.2/targets/brcm2708/bcm2709/openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-factory.img.gz" target="_blank" rel="noopener">openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-factory.img.gz</a></li>
 <li>升级固件：<a href="http://downloads.openwrt.org/releases/18.06.2/targets/brcm2708/bcm2709/openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-sysupgrade.img.gz" target="_blank" rel="noopener">openwrt-18.06.2-brcm2708-bcm2709-rpi-2-ext4-sysupgrade.img.gz</a></li>
 </ul>
 <h3 id="固件烧写"><a href="#固件烧写" class="headerlink" title="固件烧写"></a>固件烧写</h3><p>Windows系统的话，可以使用<a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">Win32DiskImager</a>或<a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">Etcher</a>，操作都很简单，选择固件和TF卡，点击烧写就可以了。后者的颜值更高一些，我喜欢(●ˇ∀ˇ●)</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_etcher.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_etcher.jpg_webp" alt=""></p>
 <h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><p>现在跟玩传统树莓派一样，接上电源、显示屏和键盘后，正常开机，都是终端界面，不需要鼠标。</p>
 <p>启动后，根据提示，按下回车，就可以进入终端界面：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Please press Enter to activate this console.</span><br><span class="line"></span><br><span class="line"> _______                     ________        __      </span><br><span class="line"> |       |.-----.-----.-----.|  |  |  |.----.|  |_    </span><br><span class="line"> |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|   </span><br><span class="line"> |_______||   __|_____|__|__||________||__|  |____|   </span><br><span class="line">          |__| W I R E L E S S   F R E E D O M        </span><br><span class="line"> -----------------------------------------------------</span><br><span class="line"> OpenWrt 18.06.2, r7676-cddd7b4c77                   </span><br><span class="line"> -----------------------------------------------------</span><br><span class="line">=== WARNING! =====================================    </span><br><span class="line">There is no root password defined on this device!     </span><br><span class="line">Use the "passwd" command to set up a new password     </span><br><span class="line">in order to prevent unauthorized SSH logins.          </span><br><span class="line">--------------------------------------------------    </span><br><span class="line">root@OpenWrt:~#</span><br></pre></td></tr></table></figure>
 
 <h3 id="进入路由器后台"><a href="#进入路由器后台" class="headerlink" title="进入路由器后台"></a>进入路由器后台</h3><p>进入后台有多种方式，我归纳为两种：网线直连的方式和终端操作的方式。推荐终端操作，虽然看上去复杂了点，但其实更快捷。</p>
 <h4 id="方法1：网线直连"><a href="#方法1：网线直连" class="headerlink" title="方法1：网线直连"></a>方法1：网线直连</h4><p>将网线的一端插入树莓派，另一端插入电脑，断开电脑的其他有线或无线连接。待网络成功识别后，浏览器中访问<code>192.168.1.1</code>便可进入后台。</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_direct_connect.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_direct_connect.jpg_webp" alt=""></p>
 <p>默认没有密码直接登录，进入之后，需要让树莓派连接到已有的网络中：点击 ‘Network’ - ‘Interface’ - ‘Add new interface’，这里我让树莓派接入家里路由器LAN口分出的有线网络，所以协议选择 ‘DHCP client’，点击 ‘Submit’提交。</p>
 <p>如果你打算将树莓派接入网络运营商设备，可能需要输入宽带账号密码，协议选择’PPPoE’。</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_add_wan_interface.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_add_wan_interface.jpg_webp" alt=""></p>
 <p>点击’Submit’提交之后再点击’Save &amp; Apply’，会弹出30s的配置应用时间。</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_configure_waiting_time.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_configure_waiting_time.jpg_webp" alt=""></p>
 <p>此时拔掉树莓派与电脑的直连网线，插入有线网。编辑<code>/etc/config/network</code>网络配置文件，将lan配置的ifname一行注释掉：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/config/network</span><br></pre></td></tr></table></figure>
 
@@ -299,9 +299,9 @@ var themeMenus = {};
 
 <p>添加完之后，使用<code>/etc/init.d/network restart</code>重启网络服务，使用ifconfig查看ip地址：如<code>192.168.1.112</code>，然后在局域网内的其他设备上输入此IP便可以访问OpenWrt 的后台了。</p>
 <p>如果访问有问题，可以关闭防火墙试下：<code>/etc/init.d/firewall stop</code></p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_terminal_configure.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_terminal_configure.jpg_webp" alt=""></p>
 <p>不论使用哪种方法，进入之后，默认都是没有密码的。为安全起见，这里先设置个密码，点击 ‘Go to password configuration…’，输入密码后，直接点击 ‘Save &amp; Apply’，其他不用管。</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_change_password.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_change_password.jpg_webp" alt=""></p>
 <h3 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h3><p>树莓派成功联网后，需要下载一些插件。一方面官方的源亲测是不包含USB网卡驱动和中文插件的，不知道什么原因，另一方面国内的源速度会快很多，所以这里统一换成中科大的源。</p>
 <ul>
 <li>中国科学技术大学开源镜像站 LEDE：<a href="http://mirrors.ustc.edu.cn/help/lede.html" target="_blank" rel="noopener">使用帮助</a></li>
@@ -311,7 +311,7 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">src/gz openwrt_core http://mirrors.ustc.edu.cn/lede/releases/18.06.2/targets/brcm2708/bcm2709/packages</span><br><span class="line">src/gz openwrt_base http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/base</span><br><span class="line">src/gz openwrt_luci http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/luci</span><br><span class="line">src/gz openwrt_packages http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/packages</span><br><span class="line">src/gz openwrt_routing http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/routing</span><br><span class="line">src/gz openwrt_telephony http://mirrors.ustc.edu.cn/lede/releases/18.06.2/packages/arm_cortex-a7_neon-vfpv4/telephony</span><br></pre></td></tr></table></figure>
 
 <p>然后切换到 ‘Actions’标签下，点击 ‘Update lists’便可以获取所有可用的ipk包：</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_achieve_all_aviable_pkgs.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_achieve_all_aviable_pkgs.jpg_webp" alt=""></p>
 <h4 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h4><p>首先将原有的源配置文件备份：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.bak</span><br></pre></td></tr></table></figure>
 
@@ -330,17 +330,17 @@ var themeMenus = {};
 <li>USB无线网卡驱动：<code>kmod-rtl8192cu</code></li>
 <li>无线配置工具：<code>wireless-tools</code></li>
 </ul>
-<p><img src="http://blog.codec.wang/raspberry_as_router_chinese_language_pkg.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_chinese_language_pkg.jpg_webp" alt=""></p>
 <h3 id="配置无线"><a href="#配置无线" class="headerlink" title="配置无线"></a>配置无线</h3><p>安装中文包后，后台自动变成了中文。此时菜单栏’网络’中会多出个’无线’，点击进入：</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_wireless_interface.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_wireless_interface.jpg_webp" alt=""></p>
 <p>默认情况下，无线并没有启用，只需点击启用就可以了：</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_wireless_enable.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_wireless_enable.jpg_webp" alt=""></p>
 <p>不过还有点小问题，首先这个WiFi没密码，其次也没网。点击’编辑’，将网络来源选择为WAN：</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_network_source.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_network_source.jpg_webp" alt=""></p>
 <p>其次在’无线安全’这里给WiFi设置个密码，最后保存就可以了：</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_wireless_password.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_wireless_password.jpg_webp" alt=""></p>
 <p>现在手机或电脑可以连接上试试辣：</p>
-<p><img src="http://blog.codec.wang/raspberry_as_router_phone_connect.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_as_router_phone_connect.jpg_webp" alt=""></p>
 <h3 id="万能路由器"><a href="#万能路由器" class="headerlink" title="万能路由器"></a>万能路由器</h3><p>之所以称之为’万能路由器’，是因为OpenWrt不仅完全开源，可玩性很高，而且第三方插件非常丰富，比如可以科学上网的shadowsocks，安装配置之后，全天24h出国旅游不成问题呀（有空写篇( $ _ $ )）。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://jingyan.baidu.com/article/3c343ff7e862850d3679637b.html" target="_blank" rel="noopener">LAN、WAN、WLAN的区别</a></li>
@@ -389,11 +389,11 @@ var themeMenus = {};
     
 <nav id="article-nav">
   
-    <a href="/mighty-py-base64/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/mighty-py-command-line-arguments/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【MightyPy】Base64
+          MightyPy：处理命令行参数和选项的几种方式
         
       </div>
     </a>

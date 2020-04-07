@@ -31,9 +31,9 @@
 <meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="了解图像梯度和边缘检测的相关概念。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp">
 <meta property="article:published_time" content="2017-12-18T02:51:43.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.694Z">
+<meta property="article:modified_time" content="2020-04-07T04:52:40.918Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="梯度">
 <meta property="article:tag" content="Sobel">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp">
   
   <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
@@ -191,8 +191,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg" target="_blank" rel="gallery_ck8ofh7jb001it1tn2f4t36wl noopener">
-        <img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" target="_blank" rel="gallery_ck8pfyq1z0015j0tn28an9qrk noopener">
+        <img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" itemprop="image">
       </a>
     
   </div>
@@ -232,10 +232,10 @@ var themeMenus = {};
 <h3 id="垂直边缘提取"><a href="#垂直边缘提取" class="headerlink" title="垂直边缘提取"></a>垂直边缘提取</h3><p>滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面这个卷积核：</p>
 <p>$$<br>k1 = \left[<br> \begin{matrix}<br>   -1 &amp; 0 &amp; 1 \newline<br>   -2 &amp; 0 &amp; 2 \newline<br>   -1 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <p>这个核是用来提取图片中的垂直边缘的，怎么做到的呢？看下图：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_sobel_edge_detection.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_understand_sobel_edge_detection.jpg_webp" alt=""></p>
 <p>当前列左右两侧的元素进行差分，由于边缘的值明显小于（或大于）周边像素，所以边缘的差分结果会明显不同，这样就提取出了垂直边缘。同理，把上面那个矩阵转置一下，就是提取水平边缘。这种差分操作就称为图像的梯度计算：</p>
 <p>$$<br>k2 = \left[<br> \begin{matrix}<br>   -1 &amp; -2 &amp; -1 \newline<br>   0 &amp; 0 &amp; 0 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
-<p><img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg" alt="垂直和水平边缘提取"></p>
+<p><img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" alt="垂直和水平边缘提取"></p>
 <blockquote>
 <p>还记得滤波函数<code>cv2.filter2D()</code>吗？（<a href="/opencv-python-extra-padding-and-convolution/">番外篇：卷积基础</a>）我们来手动实现上面的功能：</p>
 </blockquote>
@@ -268,7 +268,7 @@ var themeMenus = {};
 <p>OpenCV中直接使用<code>cv2.Laplacian()</code>函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">laplacian = cv2.Laplacian(img, <span class="number">-1</span>)  <span class="comment"># 使用Laplacian算子</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_laplacian.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_laplacian.jpg_webp" alt=""></p>
 <p>Laplacian算子是二阶边缘检测的典型代表，一/二阶边缘检测各有优缺点，大家可自行了解。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>（选做）同志们有空补补高数<del>姿势</del>（知识）呗！(✿◕‿◕✿)</li>

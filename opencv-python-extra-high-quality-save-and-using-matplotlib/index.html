@@ -31,16 +31,16 @@
 <meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="了解常用图片格式和OpenCV高质量保存图片的方式，学习如何使用Matplotlib显示OpenCV图像。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg_webp">
 <meta property="article:published_time" content="2017-12-06T07:55:15.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.558Z">
+<meta property="article:modified_time" content="2020-04-07T04:55:18.324Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="Matplotlib">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg_webp">
   
   <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
@@ -190,8 +190,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg" target="_blank" rel="gallery_ck8ofh7j0000vt1tngbw1c6e6 noopener">
-        <img src="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg_webp" target="_blank" rel="gallery_ck8pfyq1v000yj0tn8v6t9jng noopener">
+        <img src="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg_webp" itemprop="image">
       </a>
     
   </div>
@@ -247,7 +247,7 @@ var themeMenus = {};
 </li>
 </ul>
 <p>简单来说，同一个文件保存成不同的格式后，文件大小上bmp肯定是最大的，而png和jpg，不同的压缩比结果会有所不同。可以用画图工具新建一副100×100的图像，分别保存成这三种格式来验证：</p>
-<p><img src="http://blog.codec.wang/cv2_high_save_mspaint_format.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_high_save_mspaint_format.jpg_webp" alt=""></p>
 <h3 id="高质量保存"><a href="#高质量保存" class="headerlink" title="高质量保存"></a>高质量保存</h3><p>用cv2.imwrite()保存图片时，可以传入第三个参数（请参考<a href="#接口文档">接口文档</a>），用于控制保存质量：</p>
 <ul>
 <li><code>cv2.IMWRITE_JPEG_QUALITY</code>：jpg质量控制，取值0~100，值越大，质量越好，默认为95</li>
@@ -271,7 +271,7 @@ var themeMenus = {};
 <h3 id="显示灰度图"><a href="#显示灰度图" class="headerlink" title="显示灰度图"></a>显示灰度图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 灰度图显示，cmap(color map)设置为gray</span></span><br><span class="line">plt.imshow(img, cmap=<span class="string">'gray'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<p><img src="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_matplotlib_show_gray_image.jpg_webp" alt=""></p>
 <h3 id="显示彩色图"><a href="#显示彩色图" class="headerlink" title="显示彩色图"></a>显示彩色图</h3><p><strong>OpenCV中的图像是以BGR的通道顺序存储的</strong>，但Matplotlib是以RGB模式显示的，所以直接在Matplotlib中显示OpenCV图像会出现问题，因此需要转换一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">img2 = img[:, :, ::<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 或使用</span></span><br><span class="line"><span class="comment"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示不正确的图</span></span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示正确的图</span></span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([]) <span class="comment"># 隐藏x和y轴</span></span><br><span class="line">plt.imshow(img2)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
@@ -283,7 +283,7 @@ var themeMenus = {};
 
 <p>而图片是有三个通道，相当于一个长度为3的字符串，所以通道翻转与图片复制组合起来便是<code>img[:,:,::-1]</code>。</p>
 <p>结果如下：</p>
-<p><img src="http://blog.codec.wang/cv2_matplotlib_show_color_image.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_matplotlib_show_color_image.jpg_webp" alt=""></p>
 <h3 id="加载和保存图片"><a href="#加载和保存图片" class="headerlink" title="加载和保存图片"></a>加载和保存图片</h3><p>不使用OpenCV，Matplotlib也可以加载和保存图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> pli</span><br><span class="line"></span><br><span class="line">img = pli.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">plt.imshow(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存图片，需放在show()函数之前</span></span><br><span class="line">plt.savefig(<span class="string">'lena2.jpg'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 

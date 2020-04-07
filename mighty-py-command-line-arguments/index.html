@@ -13,7 +13,7 @@
   
   <title>
     
-    【mightypy】处理命令行参数和选项的几种方式 |
+    mightypy：处理命令行参数和选项的几种方式 |
     
     Codec42
   </title>
@@ -26,20 +26,20 @@
   
   <meta name="description" content="设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：从外部获取配置参量，而不是直接修改代码。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：click。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【MightyPy】处理命令行参数和选项的几种方式">
+<meta property="og:title" content="MightyPy：处理命令行参数和选项的几种方式">
 <meta property="og:url" content="http://www.codec.wang/mighty-py-command-line-arguments/index.html">
 <meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：从外部获取配置参量，而不是直接修改代码。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：click。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.codec.wang/depth_python_argparse_cover.jpg">
+<meta property="og:image" content="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp">
 <meta property="article:published_time" content="2019-05-03T02:30:18.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.694Z">
+<meta property="article:modified_time" content="2020-04-07T03:44:47.855Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="argv">
 <meta property="article:tag" content="命令行参数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.codec.wang/depth_python_argparse_cover.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp">
   
   <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
@@ -183,14 +183,14 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【MightyPy】处理命令行参数和选项的几种方式" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-MightyPy：处理命令行参数和选项的几种方式" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_argparse_cover.jpg" target="_blank" rel="gallery_ck8ofh7j50016t1tngz0fbmeq noopener">
-        <img src="http://blog.codec.wang/depth_python_argparse_cover.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp" target="_blank" rel="gallery_ck8pfyq1e0009j0tngrng8i9q noopener">
+        <img src="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp" itemprop="image">
       </a>
     
   </div>
@@ -201,7 +201,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      【MightyPy】处理命令行参数和选项的几种方式
+      MightyPy：处理命令行参数和选项的几种方式
     </h1>
   
 
@@ -291,7 +291,7 @@ var themeMenus = {};
 <ul>
 <li><strong>ArgumentParser()</strong></li>
 </ul>
-<p><img src="http://blog.codec.wang/depth_python_argparse_argumentparser_method.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/depth_python_argparse_argumentparser_method.jpg_webp" alt=""></p>
 <p>其中最常用的是<code>description</code>项，在脚本帮助文档中起说明作用，如前面代码更改为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Basic Operations of an Integer.'</span>)</span><br></pre></td></tr></table></figure>
 
@@ -301,7 +301,7 @@ var themeMenus = {};
 <ul>
 <li><strong>add_argument()</strong></li>
 </ul>
-<p><img src="http://blog.codec.wang/depth_python_argparse_add_argument_method.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/depth_python_argparse_add_argument_method.jpg_webp" alt=""></p>
 <p>其中参量类型<code>type</code>和帮助信息<code>help</code>不用多讲，其他几个常用的说明一下：</p>
 <ol>
 <li><code>name of flags</code>，想让脚本同一个可选参数既支持短选项<code>-</code>又支持长选项<code>--</code>，可以：</li>
@@ -339,7 +339,7 @@ var themeMenus = {};
 <ul>
 <li><strong>parse_args()</strong></li>
 </ul>
-<p><img src="http://blog.codec.wang/depth_python_argparse_parse_args_method.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/depth_python_argparse_parse_args_method.jpg_webp" alt=""></p>
 <p>这个方法没啥好讲的，主要是第一个参数args，默认是从sys.argv取值，调试时也可以把命令行参数加上去，这样就不用在命令行中设置了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</span><br><span class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</span><br><span class="line"><span class="comment"># 直接在代码中传入命令行参数</span></span><br><span class="line">args = parser.parse_args([<span class="string">'100'</span>,<span class="string">'-f'</span>,<span class="string">'p1'</span>])</span><br></pre></td></tr></table></figure>
 
@@ -395,15 +395,15 @@ var themeMenus = {};
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【MightyPy】(l/r)strip函数的巨坑
+          MightyPy：(l/r)strip函数的巨坑
         
       </div>
     </a>
   
   
-    <a href="/mighty-py-base64/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/raspberrypi-as-router/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【MightyPy】Base64</div>
+      <div class="article-nav-title">【树莓派】变身全能无线路由器(2/2B)</div>
     </a>
   
 </nav>

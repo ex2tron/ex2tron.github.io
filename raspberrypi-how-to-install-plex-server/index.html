@@ -31,14 +31,14 @@
 <meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="电脑下载了部电影，晚上想在手机上看，老婆也想看（啥？！），拷贝？想在手机上看以前的电影或者硬盘里存的视频&#x2F;照片，拷贝？使用云盘存储呢？速度、容量、播放码率、重复占用本地容量都是问题。如果有一块存放资源的硬盘，家人都可以高速访问它，何乐而不为呢？我说的不是NAS噢~">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg">
+<meta property="og:image" content="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg_webp">
 <meta property="article:published_time" content="2019-03-27T14:43:35.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.640Z">
+<meta property="article:modified_time" content="2020-04-07T03:53:27.982Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="树莓派">
 <meta property="article:tag" content="Plex">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg_webp">
   
   <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
@@ -188,8 +188,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg" target="_blank" rel="gallery_ck8ofh7j9001dt1tndfq83enw noopener">
-        <img src="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg_webp" target="_blank" rel="gallery_ck8pfyq24001fj0tn9bwybmmi noopener">
+        <img src="http://blog.codec.wang/raspberry_pi_plex_install_cover2.jpg_webp" itemprop="image">
       </a>
     
   </div>
@@ -235,7 +235,7 @@ var themeMenus = {};
 <li>移动硬盘：1TB</li>
 </ul>
 <h2 id="什么是Plex"><a href="#什么是Plex" class="headerlink" title="什么是Plex"></a>什么是Plex</h2><p>Plex主打流媒体传输服务，简单来说，有一台放满资料的设备，通过安装 <code>PMS(Plex Media Server)</code>，就可以打通Windows/Linux/Mac电脑、电视TV、Android/IOS手机、PS/XBOX游戏主机等等设备。Plex是在服务端解码，然后实现串流，所以在树莓派上安装Plex服务的话，受性能限制，720P以下的感觉还行，流畅播放，再高就有点吃不消了。</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_what_is_plex.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_what_is_plex.jpg_webp" alt=""></p>
 <p>相比<a href="https://www.zhihu.com/question/30096498" target="_blank" rel="noopener">Kodi</a>，Plex的界面美观简单、交互优秀、服务完整，配置起来对新手也友好。p.s想了解更多Plex的东西可以看下<a href="#引用">引用</a>，这篇我主要分享下树莓派上的安装和挂载U盘等技术问题。</p>
 <h2 id="安装PMS"><a href="#安装PMS" class="headerlink" title="安装PMS"></a>安装PMS</h2><p><strong>官网已经有了基于armhf/ARMv7并支持树莓派的安装包了，非常方便！</strong></p>
 <p>之所以强调上面这句话，是因为网上大部分资料都是基于<a href="https://dev2day.de/plex-media-server-arm/" target="_blank" rel="noopener">dev2day.de</a>的版本，装起来略微麻烦一点，就连这个包的<a href="https://github.com/uglymagoo/" target="_blank" rel="noopener">作者</a>都表示：</p>
@@ -251,7 +251,7 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://downloads.plex.tv/plex-media-server-new/1.15.2.793-782228f99/debian/plexmediaserver_1.15.2.793-782228f99_armhf.deb</span><br></pre></td></tr></table></figure>
 
 <p>下载慢的话，可以到官网下载离线版：<a href="https://www.plex.tv/media-server-downloads/" target="_blank" rel="noopener">https://www.plex.tv/media-server-downloads/</a>，注意选择ARMv7版本（armhf与ARMv7、ARMv8等区别可参考<a href="#引用">引用</a>）。</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_download_plex.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_download_plex.jpg_webp" alt=""></p>
 <p>deb的包安装大家应该很熟悉了，一句话：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i plexmediaserver_1.15.2.793-782228f99_armhf.deb</span><br></pre></td></tr></table></figure>
 
@@ -262,15 +262,15 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">● plexmediaserver.service - Plex Media Server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/plexmediaserver.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Wed 2019-03-27 17:30:23 CST; 2h 51min ago</span><br></pre></td></tr></table></figure>
 
 <p>此时可以在菜单里面启动，或者直接在浏览器中输入：<a href="http://localhost:32400/web/" target="_blank" rel="noopener">http://localhost:32400/web/</a></p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_start_from_gui2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_start_from_gui2.jpg_webp" alt=""></p>
 <p>首次启动需要你登录Plex账号：</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_login_in_plex2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_login_in_plex2.jpg_webp" alt=""></p>
 <p>设置服务器的名称：</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_name_your_server2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_name_your_server2.jpg_webp" alt=""></p>
 <p>在添加资料库这里，默认是不支持树莓派上挂载的U盘和移动硬盘（what？我的pian都在硬盘里啊），别担心，我们后续解决。现在先不添加，直接下一步：</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_add_your_lib2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_add_your_lib2.jpg_webp" alt=""></p>
 <p>点击完成就进入Plex的控制面板了，局域网内的任何设备在浏览器中访问<a href="https://app.plex.tv/" target="_blank" rel="noopener">https://app.plex.tv</a>也可以。</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_config_complete2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_config_complete2.jpg_webp" alt=""></p>
 <h2 id="外挂U盘或移动硬盘"><a href="#外挂U盘或移动硬盘" class="headerlink" title="外挂U盘或移动硬盘"></a>外挂U盘或移动硬盘</h2><p> 现在总不能把电影、资料啥的都存在树莓派的TF卡里吧。解决方法也很简单：使用分区的唯一标识码（<a href="https://baike.baidu.com/item/UUID" target="_blank" rel="noopener">Universally Unique Identifier/UUID</a>）在fstab文件中自动挂载分区。</p>
 <p>首先在树莓派上插入移动硬盘，打印出其状态信息，比如我的设备地址是<code>/dev/sda1</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /proc/mounts</span><br><span class="line"><span class="meta">#</span><span class="bash"> /dev/sda1 /media/pi/ex2tronMovie fuseblk rw,nosuid,nodev,relatime,user_id=0,group_id=0,default_permissions,allow_other,blksize=4096 0 0</span></span><br></pre></td></tr></table></figure>
@@ -295,15 +295,15 @@ var themeMenus = {};
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /dev/sda1</span><br><span class="line">sudo mount -a</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
 
 <h2 id="添加资源库"><a href="#添加资源库" class="headerlink" title="添加资源库"></a>添加资源库</h2><p>重启后，打开Plex网页面板，在左侧点击”添加资源库”，选择usb1，哇啦，出来咯：</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_add_libraries.png" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_add_libraries.png_webp" alt=""></p>
 <p>我里面放了几部电影，添加后，Plex会自动解码并检索影片的相关信息，比如影片封面/资料等：</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_my_movies2.jpg" alt=""></p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_my_movies_detail2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_my_movies2.jpg_webp" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_my_movies_detail2.jpg_webp" alt=""></p>
 <p><strong>一个字：爽~！</strong></p>
 <p>最后，我测试了下在局域网内其他设备上的播放速度表现，如预期，720P 2G以下的流畅播放，表现不错。其他的嘛，”要什么自行车！！！”</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_actual_running2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_actual_running2.jpg_webp" alt=""></p>
 <p>关于Plex设置远程访问和更多配置玩法，大家自行探索啊，不是本文的重点，有时间我也会分享下我的经验。p.s.看看我这个”电影达人”的片(●ˇ∀ˇ●)：</p>
-<p><img src="http://blog.codec.wang/raspberry_pi_plex_all_movies2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/raspberry_pi_plex_all_movies2.jpg_webp" alt=""></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
 <li><a href="https://forums.plex.tv/t/read-me-first-about-server-armv7-and-armv8-ubuntu-debian/226567" target="_blank" rel="noopener">About Server ARMv7 and ARMv8 Ubuntu / Debian</a></li>
 <li><a href="https://dev2day.de/plex-media-server-arm/" target="_blank" rel="noopener">Plex Media Server on Debian armhf</a></li>

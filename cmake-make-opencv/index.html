@@ -31,15 +31,15 @@
 <meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="最近，需要在Windows下搭建一个Qt和OpenCV的环境，可惜官方OpenCV3.2的build里面并不是针对Qt平台的。所以，需要用CMake编译OpenCV的源码。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg">
+<meta property="og:image" content="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp">
 <meta property="article:published_time" content="2017-07-26T14:25:29.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.693Z">
+<meta property="article:modified_time" content="2020-04-07T04:39:01.936Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="CMake">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp">
   
   <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
@@ -189,8 +189,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg" target="_blank" rel="gallery_ck8ofh7ie0001t1tn17g3faln noopener">
-        <img src="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp" target="_blank" rel="gallery_ck8pfyq1a0003j0tn96269j2v noopener">
+        <img src="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp" itemprop="image">
       </a>
     
   </div>
@@ -234,26 +234,26 @@ var themeMenus = {};
 <p><em>All grown-ups were once children… but only few of them remember it.</em>《<a href="https://movie.douban.com/subject/20645098/" target="_blank" rel="noopener">小王子</a>》</p>
 </blockquote>
 <h2 id="编译步骤"><a href="#编译步骤" class="headerlink" title="编译步骤"></a>编译步骤</h2><p>安装完CMake后，打开cmake-gui，如下图所示：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo1.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo1.jpg_webp" alt=""></p>
 <ol>
 <li>选择OpenCV3.2源码所在位置，我的是在：<code>D:\ProgramFiles\OpenCV3\sources</code></li>
 <li>选择编译生成的目录</li>
 <li>最后点击”Configure”，如下图所示：</li>
 </ol>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo2.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo2.jpg_webp" alt=""></p>
 <p>选择“MinGW Makefiles”并勾选“Specify native compilers”，点击“Next”：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo3.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo3.jpg_webp" alt=""></p>
 <p>这里分别选择Qt安装目录下gcc和g++的路径，点击“Finish”，等待配置完成。</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo4.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo4.jpg_webp" alt=""></p>
 <p>配置完成后，勾选“WITH_OPENGL”和“WITH_QT”，点击“Generate”就可以了。如果发生错误：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo5.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo5.jpg_webp" alt=""></p>
 <p><strong>将Qt的相关路径配置如下：</strong></p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo6.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo6.jpg_webp" alt=""></p>
 <p><strong>先点击“Configure”，再次点击“Generate”就可以生成了。</strong>然后在cmd下切换到生成的目录，我的是<code>D:\OpenCVBuild</code>，执行命令：<code>mingw32-make</code>开始编译（25分钟左右）：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo7.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo7.jpg_webp" alt=""></p>
 <p>编译好之后，再执行<code>mingw32-make install</code>就完成了。</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo8.jpg" alt=""></p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo9.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo8.jpg_webp" alt=""></p>
+<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo9.jpg_webp" alt=""></p>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>

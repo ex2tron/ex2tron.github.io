@@ -31,9 +31,9 @@
 <meta property="og:site_name" content="Codec42">
 <meta property="og:description" content="学习常用形态学操作：腐蚀膨胀，开运算和闭运算。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.codec.wang/cv2_understand_morphological.jpg">
+<meta property="og:image" content="http://blog.codec.wang/cv2_understand_morphological.jpg_webp">
 <meta property="article:published_time" content="2017-12-19T12:52:23.000Z">
-<meta property="article:modified_time" content="2020-01-13T06:05:39.694Z">
+<meta property="article:modified_time" content="2020-04-07T04:57:33.752Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="OpenCV">
 <meta property="article:tag" content="Python">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="膨胀">
 <meta property="article:tag" content="形态学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.codec.wang/cv2_understand_morphological.jpg">
+<meta name="twitter:image" content="http://blog.codec.wang/cv2_understand_morphological.jpg_webp">
   
   <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
   
@@ -192,8 +192,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_morphological.jpg" target="_blank" rel="gallery_ck8ofh7ij0006t1tnaac645kl noopener">
-        <img src="http://blog.codec.wang/cv2_understand_morphological.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_morphological.jpg_webp" target="_blank" rel="gallery_ck8pfyq1i000dj0tnc5ojhva8 noopener">
+        <img src="http://blog.codec.wang/cv2_understand_morphological.jpg_webp" itemprop="image">
       </a>
     
   </div>
@@ -233,12 +233,12 @@ var themeMenus = {};
 <li>OpenCV函数：<code>cv2.erode()</code>, <code>cv2.dilate()</code>, <code>cv2.morphologyEx()</code></li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫形态学操作"><a href="#啥叫形态学操作" class="headerlink" title="啥叫形态学操作"></a>啥叫形态学操作</h3><p>形态学操作其实就是<strong>改变物体的形状</strong>，比如腐蚀就是”变瘦”，膨胀就是”变胖”，看下图就明白了：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_morphological.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_understand_morphological.jpg_webp" alt=""></p>
 <blockquote>
 <p>经验之谈：形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。<strong>腐蚀和膨胀是针对图片中的白色部分！</strong></p>
 </blockquote>
 <h3 id="腐蚀"><a href="#腐蚀" class="headerlink" title="腐蚀"></a>腐蚀</h3><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有0和255，所以小区域内有一个是0该像素点就为0：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_erosion.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_understand_erosion.jpg_webp" alt=""></p>
 <p>这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利(●ˇ∀ˇ●)）</p>
 <p>OpenCV中用<code>cv2.erode()</code>函数进行腐蚀，只需要指定核的大小就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'j.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">kernel = np.ones((<span class="number">5</span>, <span class="number">5</span>), np.uint8)</span><br><span class="line">erosion = cv2.erode(img, kernel)  <span class="comment"># 腐蚀</span></span><br></pre></td></tr></table></figure>
@@ -248,7 +248,7 @@ var themeMenus = {};
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 矩形结构</span></span><br><span class="line">kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 椭圆结构</span></span><br><span class="line">kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 十字形结构</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_morphological_struct_element.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_morphological_struct_element.jpg_webp" alt=""></p>
 <h3 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h3><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dilation = cv2.dilate(img, kernel)  <span class="comment"># 膨胀</span></span><br></pre></td></tr></table></figure>
 
@@ -258,7 +258,7 @@ var themeMenus = {};
 <p>闭运算则相反：先膨胀后腐蚀（先膨胀会使白色的部分扩张，以至于消除/“闭合”物体里面的小黑洞，所以叫闭运算）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'j_noise_in.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="comment"># 闭运算</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_morphological_opening_closing.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_morphological_opening_closing.jpg_webp" alt=""></p>
 <blockquote>
 <p>经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混◑﹏◐），但看上图↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉。</p>
 </blockquote>
@@ -268,7 +268,7 @@ var themeMenus = {};
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'school.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_morphological_gradient.jpg" alt=""></p>
+<p><img src="http://blog.codec.wang/cv2_morphological_gradient.jpg_webp" alt=""></p>
 <ul>
 <li>顶帽：原图减去开运算后的图：<code>src - opening</code></li>
 </ul>
