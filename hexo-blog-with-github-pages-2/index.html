@@ -184,13 +184,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Hexo-Github-Pages轻松搭博客-2：在Github上部署" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/hexo_github_pages_blog_build_cover.jpg_webp" target="_blank" rel="gallery_ck8pfyq1b0005j0tn461kebyb noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/hexo_github_pages_blog_build_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrgw0005watn1rmz3a9d noopener">
         <img src="http://blog.codec.wang/hexo_github_pages_blog_build_cover.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/hexo_github_pages_blog_build_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrgw0005watn1rmz3a9d noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/hexo_github_pages_blog_build_cover.jpg_webp">
+        <img src="http://blog.codec.wang/hexo_github_pages_blog_build_cover.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -227,7 +244,7 @@ var themeMenus = {};
 <blockquote>
 <p>如果你是git新用户的话，推荐看：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="noopener">廖雪峰的Git教程-远程仓库</a></p>
 </blockquote>
-<p><img src="http://blog.codec.wang/create_github_pages_repository.png_webp" alt="新建Github Pages仓库"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/create_github_pages_repository.png_webp"><img class="image" src="http://blog.codec.wang/create_github_pages_repository.png" alt="新建Github Pages仓库"></picture></p>
 <p>接下来打开博客目录下的_config.yml配置文件，定位到最后的deploy选项，修改如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">git@github.com:ex2tron/ex2tron.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 

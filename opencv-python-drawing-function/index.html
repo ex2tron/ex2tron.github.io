@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程8：绘图功能" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_drawing_functions.jpg_webp" target="_blank" rel="gallery_ck8pfyq1p000qj0tn9pir84is noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_drawing_functions.jpg_webp" target="_blank" rel="gallery_ck8pmnrha000qwatn2pdo3k7w noopener">
         <img src="http://blog.codec.wang/cv2_drawing_functions.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_drawing_functions.jpg_webp" target="_blank" rel="gallery_ck8pmnrha000qwatn2pdo3k7w noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_drawing_functions.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_drawing_functions.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -242,7 +259,7 @@ var themeMenus = {};
 <p>需要导入的模块和显示图片的通用代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'img'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_drawing_functions.jpg_webp" alt="绘制各种几何形状"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_drawing_functions.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_drawing_functions.jpg" alt="绘制各种几何形状"></picture></p>
 <p>上图就是本教程绘制的最终效果，下面一步步来看：</p>
 <h3 id="画线"><a href="#画线" class="headerlink" title="画线"></a>画线</h3><p>画直线只需指定起点和终点的坐标就行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一副黑色的图片</span></span><br><span class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line"><span class="comment"># 画一条线宽为5的蓝色直线，参数2：起点，参数3：终点</span></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">512</span>, <span class="number">512</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
@@ -296,7 +313,7 @@ var themeMenus = {};
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>你能用已学的绘图功能画出OpenCV的logo吗？(提示：椭圆和圆)</li>
 </ol>
-<p><img src="http://blog.codec.wang/cv2_draw_opencv_logo.jpg_webp" alt="OpenCV logo"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_draw_opencv_logo.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_draw_opencv_logo.jpg" alt="OpenCV logo"></picture></p>
 <h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><ul>
 <li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2" target="_blank" rel="noopener">cv2.line()</a></li>
 <li><a href="https://docs.opencv.org/4.0.0/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670" target="_blank" rel="noopener">cv2.circle()</a></li>

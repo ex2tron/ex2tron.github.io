@@ -185,13 +185,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程2：基本元素-图片" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp" target="_blank" rel="gallery_ck8pfyq1m000kj0tn846oawkb noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp" target="_blank" rel="gallery_ck8pmnrh7000kwatn39x30lzi noopener">
         <img src="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp" target="_blank" rel="gallery_ck8pmnrh7000kwatn39x30lzi noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_image_coordinate_channels.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -230,7 +247,7 @@ var themeMenus = {};
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>大部分人可能都知道电脑上的彩色图是以RGB(红-绿-蓝，Red-Green-Blue)颜色模式显示的，但OpenCV中彩色图是以B-G-R通道顺序存储的，灰度图只有一个通道。</p>
 <p>图像坐标的起始点是在左上角，所以行对应的是y，列对应的是x：</p>
-<p><img src="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_image_coordinate_channels.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_image_coordinate_channels.jpg" alt=""></picture></p>
 <h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>使用<code>cv2.imread()</code>来读入一张图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载灰度图</span></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
@@ -256,7 +273,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv2.imshow(<span class="string">'lena'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>参数1是窗口的名字，参数2是要显示的图片。不同窗口之间用窗口名区分，所以窗口名相同就表示是同一个窗口，显示结果如下：</p>
-<p><img src="http://blog.codec.wang/cv2_show_lena_gray.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_show_lena_gray.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_show_lena_gray.jpg" alt=""></picture></p>
 <p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code>（<a href="#练习">练习1</a>）。</p>
 <p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先定义窗口，后显示图片</span></span><br><span class="line">cv2.namedWindow(<span class="string">'lena2'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.imshow(<span class="string">'lena2'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>

@@ -185,13 +185,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-MightyPy：处理命令行参数和选项的几种方式" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp" target="_blank" rel="gallery_ck8pfyq1e0009j0tngrng8i9q noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrgy0009watnb2e123ft noopener">
         <img src="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrgy0009watnb2e123ft noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp">
+        <img src="http://blog.codec.wang/depth_python_argparse_cover.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -291,7 +308,7 @@ var themeMenus = {};
 <ul>
 <li><strong>ArgumentParser()</strong></li>
 </ul>
-<p><img src="http://blog.codec.wang/depth_python_argparse_argumentparser_method.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/depth_python_argparse_argumentparser_method.jpg_webp"><img class="image" src="http://blog.codec.wang/depth_python_argparse_argumentparser_method.jpg" alt=""></picture></p>
 <p>其中最常用的是<code>description</code>项，在脚本帮助文档中起说明作用，如前面代码更改为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Basic Operations of an Integer.'</span>)</span><br></pre></td></tr></table></figure>
 
@@ -301,7 +318,7 @@ var themeMenus = {};
 <ul>
 <li><strong>add_argument()</strong></li>
 </ul>
-<p><img src="http://blog.codec.wang/depth_python_argparse_add_argument_method.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/depth_python_argparse_add_argument_method.jpg_webp"><img class="image" src="http://blog.codec.wang/depth_python_argparse_add_argument_method.jpg" alt=""></picture></p>
 <p>其中参量类型<code>type</code>和帮助信息<code>help</code>不用多讲，其他几个常用的说明一下：</p>
 <ol>
 <li><code>name of flags</code>，想让脚本同一个可选参数既支持短选项<code>-</code>又支持长选项<code>--</code>，可以：</li>
@@ -339,7 +356,7 @@ var themeMenus = {};
 <ul>
 <li><strong>parse_args()</strong></li>
 </ul>
-<p><img src="http://blog.codec.wang/depth_python_argparse_parse_args_method.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/depth_python_argparse_parse_args_method.jpg_webp"><img class="image" src="http://blog.codec.wang/depth_python_argparse_parse_args_method.jpg" alt=""></picture></p>
 <p>这个方法没啥好讲的，主要是第一个参数args，默认是从sys.argv取值，调试时也可以把命令行参数加上去，这样就不用在命令行中设置了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--foo'</span>,<span class="string">'-f'</span>,choices=[<span class="string">'p1'</span>,<span class="string">'p2'</span>,<span class="string">'p3'</span>])</span><br><span class="line">parser.add_argument(<span class="string">'integer'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'0'</span>)</span><br><span class="line"><span class="comment"># 直接在代码中传入命令行参数</span></span><br><span class="line">args = parser.parse_args([<span class="string">'100'</span>,<span class="string">'-f'</span>,<span class="string">'p1'</span>])</span><br></pre></td></tr></table></figure>
 

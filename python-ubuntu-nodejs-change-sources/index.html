@@ -188,13 +188,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-速度UP！PythonUbuntuNodeJS树莓派等更换国内源汇总" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/python_ubuntu_node_change_source_cover3.jpg_webp" target="_blank" rel="gallery_ck8pfyq27001mj0tn2b7b9tte noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/python_ubuntu_node_change_source_cover3.jpg_webp" target="_blank" rel="gallery_ck8pmnrhr001mwatn3iui2zh3 noopener">
         <img src="http://blog.codec.wang/python_ubuntu_node_change_source_cover3.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/python_ubuntu_node_change_source_cover3.jpg_webp" target="_blank" rel="gallery_ck8pmnrhr001mwatn3iui2zh3 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/python_ubuntu_node_change_source_cover3.jpg_webp">
+        <img src="http://blog.codec.wang/python_ubuntu_node_change_source_cover3.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -233,8 +250,8 @@ var themeMenus = {};
 <hr>
 <p>有时真的是很捉急呀，所以学会更改安装源还是很有必要滴……Python默认源：<a href="https://pypi.org/" target="_blank" rel="noopener">https://pypi.org/</a>，Ubuntu默认源：<a href="http://mirrors.ubuntu.com/" target="_blank" rel="noopener">http://mirrors.ubuntu.com/</a>，Node默认源：<a href="http://registry.npmjs.org" target="_blank" rel="noopener">http://registry.npmjs.org</a>。</p>
 <h2 id="Python-pip更换源"><a href="#Python-pip更换源" class="headerlink" title="Python/pip更换源"></a>Python/pip更换源</h2><h3 id="更换前后速度对比"><a href="#更换前后速度对比" class="headerlink" title="更换前后速度对比"></a>更换前后速度对比</h3><p>具体速度提升跟网络也有关系，不过一般来说，提升还是相当明显的：</p>
-<p><img src="http://blog.codec.wang/python_ubuntu_node_before_change.jpg_webp" alt="默认源，这速度够我出去旅游一趟了(。﹏。)"></p>
-<p><img src="http://blog.codec.wang/python_ubuntu_node_after_change.jpg_webp" alt="清华大学源"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/python_ubuntu_node_before_change.jpg_webp"><img class="image" src="http://blog.codec.wang/python_ubuntu_node_before_change.jpg" alt="默认源，这速度够我出去旅游一趟了(。﹏。)"></picture></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/python_ubuntu_node_after_change.jpg_webp"><img class="image" src="http://blog.codec.wang/python_ubuntu_node_after_change.jpg" alt="清华大学源"></picture></p>
 <h3 id="常用国内源"><a href="#常用国内源" class="headerlink" title="常用国内源"></a>常用国内源</h3><ul>
 <li>清华大学：<a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a> | <a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/" target="_blank" rel="noopener">pypi镜像使用帮助</a></li>
 <li>阿里巴巴：<a href="https://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">https://mirrors.aliyun.com/pypi/simple/</a> </li>
@@ -253,9 +270,9 @@ var themeMenus = {};
 
 <p>配置文件也可以直接建在用户目录下，如Windows：<code>C:\Users\ex2tron\pip\pip.ini</code>，Linux：<code>/home/ex2tron/.pip/pip.conf</code>。保存后，照常<code>pip install pkg</code>即可。</p>
 <h2 id="Ubuntu-apt更换源"><a href="#Ubuntu-apt更换源" class="headerlink" title="Ubuntu/apt更换源"></a>Ubuntu/apt更换源</h2><h3 id="图形界面配置（新手推荐）"><a href="#图形界面配置（新手推荐）" class="headerlink" title="图形界面配置（新手推荐）"></a>图形界面配置（新手推荐）</h3><p>如果使用的是Ubuntu的Desktop版本，更换起来就比较容易了：打开’软件和更新’，’下载自’这里选择’其他站点’：</p>
-<p><img src="http://blog.codec.wang/python_ubuntu_node_change_ubuntu_source.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/python_ubuntu_node_change_ubuntu_source.png_webp"><img class="image" src="http://blog.codec.wang/python_ubuntu_node_change_ubuntu_source.png" alt=""></picture></p>
 <p>然后在弹出的界面中选择你要更换的服务器，比如这里更换为阿里云：</p>
-<p><img src="http://blog.codec.wang/python_ubuntu_node_ubuntu_china_source.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/python_ubuntu_node_ubuntu_china_source.png_webp"><img class="image" src="http://blog.codec.wang/python_ubuntu_node_ubuntu_china_source.png" alt=""></picture></p>
 <p>点击’选择服务器’后需要验证密码，执行更新操作就可以了。</p>
 <h3 id="手动配置"><a href="#手动配置" class="headerlink" title="手动配置"></a>手动配置</h3><p>如果是不带GUI的Ubuntu服务器，或是想装X，那么可以手动更换。更换源时跟Ubuntu系统的版本也有关系，这里我以Ubuntu 18.04和清华镜像为例，后面我写了个小脚本，方便不同版本的童鞋使用。</p>
 <p>首先需要知道的是，Linux把源列表存在<code>/etc/apt/sources.list</code>里面，有兴趣可以看下其中内容：</p>
@@ -268,7 +285,7 @@ var themeMenus = {};
 <li><a href="https://opsx.alibaba.com/mirror?lang=zh-CN" target="_blank" rel="noopener">阿里云Ubuntu镜像使用帮助 点Ubuntu项右侧的帮助</a></li>
 <li><a href="http://mirrors.163.com/.help/ubuntu.html" target="_blank" rel="noopener">网易Ubuntu镜像使用帮助</a></li>
 </ul>
-<p><img src="http://blog.codec.wang/python_ubuntu_node_tuna_tsinghua_help.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/python_ubuntu_node_tuna_tsinghua_help.jpg_webp"><img class="image" src="http://blog.codec.wang/python_ubuntu_node_tuna_tsinghua_help.jpg" alt=""></picture></p>
 <p>第一步：先将原有的备份：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
 

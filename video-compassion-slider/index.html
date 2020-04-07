@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp">
 <meta property="article:published_time" content="2020-04-06T09:19:36.000Z">
-<meta property="article:modified_time" content="2020-04-07T03:36:50.100Z">
+<meta property="article:modified_time" content="2020-04-07T08:14:08.183Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="图像对比">
 <meta property="article:tag" content="视频对比">
@@ -184,13 +184,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-我开源了一个视频滑动对比组件" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp" target="_blank" rel="gallery_ck8pfyq26001lj0tnc654fppx noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp" target="_blank" rel="gallery_ck8pmnrhq001kwatn81mx522s noopener">
         <img src="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp" target="_blank" rel="gallery_ck8pmnrhq001kwatn81mx522s noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp">
+        <img src="http://blog.codec.wang/video-comparsion-slider-cover.gif" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -228,17 +245,17 @@ var themeMenus = {};
 <li>同窗对比：AB左右同时展示，效果更优。但视觉上还是要左右跳转，对于动态的视频而言，人眼在左右跳转时很难同步到同一帧</li>
 <li>滑动对比：AB叠加同时展示，通过滑块控制显示的部分，效果最佳</li>
 </ul>
-<p><img src="http://blog.codec.wang/vsc-compare-method.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/vsc-compare-method.png_webp"><img class="image" src="http://blog.codec.wang/vsc-compare-method.png" alt=""></picture></p>
 <hr>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>好了，正文开始：要在H5中实现序列和左右同窗较为简单。但滑动要怎么做呢？</p>
 <p>简单理下思路：把AB叠在一起，B放下面，A放上面。滑动条滑动时，B不变，A隐藏掉部分。</p>
 <p>那么怎么隐藏掉部分呢？🤔难道滑动的时候要实时裁切视频吗？这肯定是不行滴～～</p>
 <p>这时候就得翻开我们的CSS大全了，我发现有这么一个属性：<strong>overflow</strong></p>
 <p>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow</a></p>
-<p><img src="http://blog.codec.wang/vcs-understand-css-overflow.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/vcs-understand-css-overflow.png_webp"><img class="image" src="http://blog.codec.wang/vcs-understand-css-overflow.png" alt=""></picture></p>
 <p>由上图可见，<code>overflow</code>表示元素里面的内容太大以至于无法容纳时应该做什么。<code>visible</code>说：”老子就直接显示出来，难看就难看(直男⚠️)”，而优雅的’<code>hidden</code>说：”超出的部分给我消失(隐藏)”😗</p>
 <p>这不就完美解决我们的问题了嘛：在上层video的外面包一层div，默认宽度与视频一致。然后我们只需要控制div的宽度，超出div的video部分会被自动隐藏掉。Perfect，开干！</p>
-<p><img src="http://blog.codec.wang/vcs-understand-slider-compare.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/vcs-understand-slider-compare.png_webp"><img class="image" src="http://blog.codec.wang/vcs-understand-slider-compare.png" alt=""></picture></p>
 <blockquote>
 <p>知道原理就会发现很简单。然而知道原理之前却很难，你如果认真攻破了这个难点，即使这个难点是“如此简单”，你的成长和解决问题的能力是别人比不了的，这也将会是你的核心竞争力。</p>
 <p>The easy way is the hard way.</p>
@@ -254,7 +271,7 @@ var themeMenus = {};
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.video-container</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">960px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">448px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.video-a</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.video-b</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">video</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">960px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">448px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/vcs-start-image-compare.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/vcs-start-image-compare.png_webp"><img class="image" src="http://blog.codec.wang/vcs-start-image-compare.png" alt=""></picture></p>
 <p>这样效果就出来了，so easy。由于要把两个video叠加在一起，所以父容器用<code>relative</code>定位，视频div用<code>absolute</code>定位。然后将上层的视频<code>video-a</code>设置宽度为一半，最关键的<code>overflow</code>为<code>hidden</code>。</p>
 <h2 id="滑动交互"><a href="#滑动交互" class="headerlink" title="滑动交互"></a>滑动交互</h2><p>接下来就是滑动条的实现，以及滑动的交互了。这部分我暂时不写，感兴趣的可以直接看源码，大家⛽️！</p>
 <blockquote>

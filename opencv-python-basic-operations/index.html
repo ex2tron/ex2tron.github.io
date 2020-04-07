@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程4：图像基本操作" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp" target="_blank" rel="gallery_ck8pfyq1n000mj0tnel532cbc noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp" target="_blank" rel="gallery_ck8pmnrh8000mwatnfzjj5k9u noopener">
         <img src="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp" target="_blank" rel="gallery_ck8pmnrh8000mwatnfzjj5k9u noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -258,7 +275,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(img.size)  <span class="comment"># 263*247*3=194883</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="ROI"><a href="#ROI" class="headerlink" title="ROI"></a>ROI</h3><p><a href="https://baike.baidu.com/item/ROI/1125333#viewPageContent" target="_blank" rel="noopener">ROI</a>：Region of Interest，感兴趣区域。什么意思呢？比如我们要检测眼睛，因为眼睛肯定在脸上，所以我们感兴趣的只有脸这部分，其他都不care，所以可以单独把脸截取出来，这样就可以大大节省计算量，提高运行速度。</p>
-<p><img src="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp" alt="只关心脸( ╯□╰ )"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_lena_face_roi_crop.jpg" alt="只关心脸( ╯□╰ )"></picture></p>
 <p>截取ROI非常简单，指定图片的范围即可（后面我们学了特征后，就可以自动截取辣，(ง •_•)ง）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 截取脸部ROI</span></span><br><span class="line">face = img[<span class="number">100</span>:<span class="number">200</span>, <span class="number">115</span>:<span class="number">188</span>]</span><br><span class="line">cv2.imshow(<span class="string">'face'</span>, face)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 

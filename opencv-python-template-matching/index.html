@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程16：模板匹配" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp" target="_blank" rel="gallery_ck8pfyq1k000hj0tncs9r1op1 noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp" target="_blank" rel="gallery_ck8pmnrh5000hwatnfep34m8e noopener">
         <img src="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp" target="_blank" rel="gallery_ck8pmnrh5000hwatnfep34m8e noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_understand_template_matching.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -230,14 +247,14 @@ var themeMenus = {};
 <li>OpenCV函数：<code>cv2.matchTemplate()</code>, <code>cv2.minMaxLoc()</code></li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="模板匹配"><a href="#模板匹配" class="headerlink" title="模板匹配"></a>模板匹配</h3><p><a href="https://baike.baidu.com/item/模板匹配" target="_blank" rel="noopener">模板匹配</a>就是用来在大图中找小图，也就是说在一副图像中寻找另外一张模板图像的位置：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_template_matching.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_template_matching.jpg" alt=""></picture></p>
 <p>用<code>cv2.matchTemplate()</code>实现模板匹配。首先我们来读入图片和模板：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">template = cv2.imread(<span class="string">'face.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">h, w = template.shape[:<span class="number">2</span>]  <span class="comment"># rows-&gt;h, cols-&gt;w</span></span><br></pre></td></tr></table></figure>
 
 <p>匹配函数返回的是一副灰度图，最白的地方表示最大的匹配。使用<code>cv2.minMaxLoc()</code>函数可以得到最大匹配值的坐标，以这个点为左上角角点，模板的宽和高画矩形就是匹配的位置了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 相关系数匹配方法：cv2.TM_CCOEFF</span></span><br><span class="line">res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF)</span><br><span class="line">min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)</span><br><span class="line"></span><br><span class="line">left_top = max_loc  <span class="comment"># 左上角</span></span><br><span class="line">right_bottom = (left_top[<span class="number">0</span>] + w, left_top[<span class="number">1</span>] + h)  <span class="comment"># 右下角</span></span><br><span class="line">cv2.rectangle(img, left_top, right_bottom, <span class="number">255</span>, <span class="number">2</span>)  <span class="comment"># 画出矩形位置</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_ccoeff_matching_template.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_ccoeff_matching_template.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_ccoeff_matching_template.jpg" alt=""></picture></p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><blockquote>
 <p>这部分可看可不看，不太理解也没关系，还记得前面的方法吗？不懂得就划掉(✿◕‿◕✿)</p>
 </blockquote>
@@ -254,14 +271,14 @@ var themeMenus = {};
 <h3 id="匹配多个物体"><a href="#匹配多个物体" class="headerlink" title="匹配多个物体"></a>匹配多个物体</h3><p>前面我们是找最大匹配的点，所以只能匹配一次。我们可以设定一个匹配阈值来匹配多次：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.读入原图和模板</span></span><br><span class="line">img_rgb = cv2.imread(<span class="string">'mario.jpg'</span>)</span><br><span class="line">img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)</span><br><span class="line">template = cv2.imread(<span class="string">'mario_coin.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">h, w = template.shape[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.标准相关模板匹配</span></span><br><span class="line">res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)</span><br><span class="line">threshold = <span class="number">0.8</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.这边是Python/Numpy的知识，后面解释</span></span><br><span class="line">loc = np.where(res &gt;= threshold)  <span class="comment"># 匹配程度大于%80的坐标y,x</span></span><br><span class="line"><span class="keyword">for</span> pt <span class="keyword">in</span> zip(*loc[::<span class="number">-1</span>]):  <span class="comment"># *号表示可选参数</span></span><br><span class="line">    right_bottom = (pt[<span class="number">0</span>] + w, pt[<span class="number">1</span>] + h)</span><br><span class="line">    cv2.rectangle(img_rgb, pt, right_bottom, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_template_matching_multi.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_template_matching_multi.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_template_matching_multi.jpg" alt=""></picture></p>
 <p>第3步有几个Python/Numpy的重要知识，来大致看下：</p>
 <ul>
 <li><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html" target="_blank" rel="noopener">np.where()</a>在这里返回res中值大于0.8的所有坐标，如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">9.</span>).reshape(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line">print(np.where(x &gt; <span class="number">5</span>))</span><br><span class="line"><span class="comment"># 结果(先y坐标，再x坐标)：(array([2, 2, 2]), array([0, 1, 2]))</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_np_where_function.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_np_where_function.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_np_where_function.jpg" alt=""></picture></p>
 <ul>
 <li><a href="https://docs.python.org/3/library/functions.html#zip" target="_blank" rel="noopener">zip()</a>函数，功能强大到难以解释，举个简单例子就知道了：</li>
 </ul>

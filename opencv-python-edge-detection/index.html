@@ -187,13 +187,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程11：边缘检测" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp" target="_blank" rel="gallery_ck8pfyq1g000bj0tnd2ks9dj0 noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp" target="_blank" rel="gallery_ck8pmnrh2000dwatnbm9nd695 noopener">
         <img src="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp" target="_blank" rel="gallery_ck8pmnrh2000dwatnbm9nd695 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -236,7 +253,7 @@ var themeMenus = {};
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>Canny边缘检测方法常被誉为边缘检测的最优方法，废话不多说，先看个例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">edges = cv2.Canny(img, <span class="number">30</span>, <span class="number">70</span>)  <span class="comment"># canny边缘检测</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'canny'</span>, np.hstack((img, edges)))</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_canny_edge_detection.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_canny_edge_detection.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_canny_edge_detection.jpg" alt=""></picture></p>
 <p><code>cv2.Canny()</code>进行边缘检测，参数2、3表示最低、高阈值，下面来解释下具体原理。</p>
 <blockquote>
 <p>经验之谈：之前我们用低通滤波的方式模糊了图片，那反过来，想得到物体的边缘，就需要用到高通滤波。推荐先阅读：<a href="/opencv-python-extra-image-gradients/">番外篇：图像梯度</a>。</p>
@@ -247,11 +264,11 @@ var themeMenus = {};
 <p>首先使用Sobel算子计算两个方向上的梯度$ G_x $和$ G_y $，然后算出梯度的方向：<br>$$<br>\theta=\arctan(\frac{G_y}{G_x})<br>$$<br>保留这四个方向的梯度：0°/45°/90°/135°，有什么用呢？我们接着看。</p>
 <p>3，取局部极大值：</p>
 <p>梯度其实已经表示了轮廓，但为了进一步筛选，可以在上面的四个角度方向上再取局部极大值：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_canny_direction.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_canny_direction.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_canny_direction.jpg" alt=""></picture></p>
 <p>比如，A点在45°方向上大于B/C点，那就保留它，把B/C设置为0。</p>
 <p>4，滞后阈值：</p>
 <p>经过前面三步，就只剩下0和可能的边缘梯度值了，为了最终确定下来，需要设定高低阈值：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_canny_max_min_val.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_canny_max_min_val.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_canny_max_min_val.jpg" alt=""></picture></p>
 <ul>
 <li>像素点的值大于最高阈值，那肯定是边缘（上图A）</li>
 <li>同理像素值小于最低阈值，那肯定不是边缘</li>
@@ -262,7 +279,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br><span class="line">edges = cv2.Canny(thresh, <span class="number">30</span>, <span class="number">70</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'canny'</span>, np.hstack((img, thresh, edges)))</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>代码中我用了<a href="/opencv-python-extra-otsu-thresholding/">番外篇：Otsu阈值法</a>中的自动阈值分割，如果你不太了解，大可以使用传统的方法，不过如果是下面这种图片，推荐用Otsu阈值法。另外Python中某个值不用的话，就写个下划线’_’。</p>
-<p><img src="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_canny_edge_detection_threshold.jpg" alt=""></picture></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>（选做）如果你不太理解高低阈值的效果，创建两个滑动条来调节它们的值看看：</li>
 </ol>

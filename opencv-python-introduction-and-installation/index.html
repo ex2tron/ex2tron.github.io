@@ -185,13 +185,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程1：简介与安装" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_install_opencv-python.jpg_webp" target="_blank" rel="gallery_ck8pfyq1l000jj0tng5sp9u50 noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_install_opencv-python.jpg_webp" target="_blank" rel="gallery_ck8pmnrh6000jwatnaecd71f7 noopener">
         <img src="http://blog.codec.wang/cv2_install_opencv-python.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_install_opencv-python.jpg_webp" target="_blank" rel="gallery_ck8pmnrh6000jwatnaecd71f7 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_install_opencv-python.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_install_opencv-python.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -229,10 +246,10 @@ var themeMenus = {};
 <hr>
 <h2 id="Python照样快！"><a href="#Python照样快！" class="headerlink" title="Python照样快！"></a>Python照样快！</h2><p>众所周知，虽然Python语法简洁，编写高效，但相比C/C++运行慢很多。然而Python还有个重要的特性：它是一门胶水语言！Python可以很容易地扩展C/C++。<strong>OpenCV-Python</strong>就是用Python包装了C++的实现，背后实际就是C++的代码在跑，所以代码的运行速度跟原生C/C++速度一样快。</p>
 <p>我举两个简单的例子就一目了然了：一个是读入图片，另一个是调整图片的对比度和亮度：</p>
-<p><img src="http://blog.codec.wang/cv2_python_vs_cplus_speed.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_python_vs_cplus_speed.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_python_vs_cplus_speed.jpg" alt=""></picture></p>
 <p><strong>可以看到某些情况下Python的运行速度甚至好于C++，代码行数也直接少一半多！</strong>另外，图像是矩阵数据，OpenCV-Python原生支持<a href="https://baike.baidu.com/item/numpy" target="_blank" rel="noopener">Numpy</a>，相当于Python中的Matlab，为矩阵运算、科学计算提供了极大的便利性。</p>
 <h2 id="人工智能浪潮"><a href="#人工智能浪潮" class="headerlink" title="人工智能浪潮"></a>人工智能浪潮</h2><p>近些年，人工智能相关技术的快速发展大家有目共睹，不必多说。在编程语言方面，更多人希望的是具备高效开发效率、跨平台、高度扩展性的语言，尤其是一些AI巨头优先推出支持Python语言的深度学习框架，如Facebook的<a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch</a>、Google的<a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">Tensorflow</a>等，可以说Python是名副其实的“网红语言”了。</p>
-<p><img src="http://blog.codec.wang/cv2_ai_ml_dl2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_ai_ml_dl2.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_ai_ml_dl2.jpg" alt=""></picture></p>
 <p>从<a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="noopener">TIOBE编程语言排行榜</a>也可以看到，Python发展迅猛，已经逼近C++的份额。这个排行榜每月更新，我就不截图了，编写时TOP5：Java/C/C++/Python/C#。</p>
 <h2 id="人生苦短，我用Python"><a href="#人生苦短，我用Python" class="headerlink" title="人生苦短，我用Python"></a>人生苦短，我用Python</h2><ul>
 <li>如果你搞科研用，果断放弃C++（Matlab？出门左拐）</li>
@@ -268,7 +285,7 @@ var themeMenus = {};
 <li>下载速度很慢：可<a href="https://pypi.org/search/?q=opencv-python" target="_blank" rel="noopener">到此处</a>下载离线版。下载完成后，cmd切换到下载目录，输入 <code>pip install 文件名</code>安装。</li>
 </ol>
 <h2 id="学习软件"><a href="#学习软件" class="headerlink" title="学习软件"></a>学习软件</h2><p>为了便于学习OpenCV，我写了一个教学款软件<a href="https://github.com/ex2tron/LearnOpenCVEdu" target="_blank" rel="noopener">LearnOpenCVEdu</a>，目前只开发了一部分功能，有兴趣的童鞋可以支持一下噢😊</p>
-<p><img src="http://blog.codec.wang/cv2_learn_opencv_edu_soft_screenshot.jpg_webp" alt="大家随手点个Star吧(●ˇ∀ˇ●)"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_learn_opencv_edu_soft_screenshot.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_learn_opencv_edu_soft_screenshot.jpg" alt="大家随手点个Star吧(●ˇ∀ˇ●)"></picture></p>
 <blockquote>
 <p>经验之谈：虽然从一开始我就推荐大家使用OpenCV-Python进行图像处理，但<em>想要深入理解OpenCV</em>，C++还是必须的，尤其是<strong>OpenCV源码</strong>！</p>
 </blockquote>

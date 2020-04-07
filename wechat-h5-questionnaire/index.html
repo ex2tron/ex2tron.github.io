@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-小程序H5问卷开发1：方案" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire.jpg_webp" target="_blank" rel="gallery_ck8pfyq26001jj0tn6npp3ioe noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire.jpg_webp" target="_blank" rel="gallery_ck8pmnrhq001jwatn8kv8eves noopener">
         <img src="http://blog.codec.wang/wechat-h5-questionnaire.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire.jpg_webp" target="_blank" rel="gallery_ck8pmnrhq001jwatn8kv8eves noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/wechat-h5-questionnaire.jpg_webp">
+        <img src="http://blog.codec.wang/wechat-h5-questionnaire.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -229,7 +246,7 @@ var themeMenus = {};
 <li>问卷提交结果数据直接记录现有的数据库上</li>
 <li>题型：单选/多选/输入框<a id="more"></a></li>
 </ol>
-<p><img src="http://blog.codec.wang/h5-questionnaire-sketch-design.png_webp" alt="最终UI/UX设计图"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/h5-questionnaire-sketch-design.png_webp"><img class="image" src="http://blog.codec.wang/h5-questionnaire-sketch-design.png" alt="最终UI/UX设计图"></picture></p>
 <ul>
 <li><a href="http://codec.wang/h5-questionnaire" target="_blank" rel="noopener">问卷网页版Demo体验</a></li>
 <li><a href="https://developers.weixin.qq.com/s/cNn5uZmd75f0" target="_blank" rel="noopener">在微信开发者工具中预览</a></li>
@@ -261,13 +278,13 @@ var themeMenus = {};
 <p>一般是自己的小程序跳转到相关问卷的小程序中，或者像问卷星一样，在自己的小程序中调用H5问卷网页。嗯，看上去不错……</p>
 <p>等等，我们的需求是提交时直接记录在自己的数据库中。那么这些问卷系统有开放API吗？</p>
 <p>目前而言，腾讯问卷官方没开放API，问卷星有：<a href="https://www.wjx.cn/help/help.aspx?helpid=407" target="_blank" rel="noopener">数据推送API</a></p>
-<p><img src="http://blog.codec.wang/wenjuanxing-push-api.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/wenjuanxing-push-api.png_webp"><img class="image" src="http://blog.codec.wang/wenjuanxing-push-api.png" alt=""></picture></p>
 <p>但，尊享版服务？查了下：</p>
-<p><img src="http://blog.codec.wang/wenjuanxing-vip-service.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/wenjuanxing-vip-service.png_webp"><img class="image" src="http://blog.codec.wang/wenjuanxing-vip-service.png" alt=""></picture></p>
 <p>好吧，再见👋</p>
 <h3 id="小程序Native实现"><a href="#小程序Native实现" class="headerlink" title="小程序Native实现"></a>小程序Native实现</h3><p>如果用小程序组件原生实现，需求基本是可以满足的，但开发量比较大且限制比较多。流程上：首先后端需要设计获取问卷的接口，小程序访问此接口，得到所有的题目和题型，然后动态生成UI。相当于开发一个简单的问卷系统了，且这种方式生成的界面也只能在小程序上用。</p>
 <h2 id="自建H5方案"><a href="#自建H5方案" class="headerlink" title="自建H5方案"></a>自建H5方案</h2><p>自建H5的话没有问卷系统那么复杂，也能保证足够的灵活度。所以还是自己动手，丰衣足食啊，方案如下：</p>
-<p><img src="http://blog.codec.wang/custom-h5-design.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/custom-h5-design.jpg_webp"><img class="image" src="http://blog.codec.wang/custom-h5-design.jpg" alt=""></picture></p>
 <ul>
 <li>虽然问卷内容要求可配，但因为不经常改动，所以不用做配置界面，改动时用脚本生成即可</li>
 <li>H5网页是自己编写的，且部署在自己的服务器上，自然可以直接用自己的API</li>
@@ -282,13 +299,13 @@ var themeMenus = {};
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>我用的编辑器是VSCode，使用<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank" rel="noopener">Live Server</a>插件可以快速启动一个本地Web服务：<a href="http://127.0.0.1:5500/index.html" target="_blank" rel="noopener">http://127.0.0.1:5500/index.html</a></p>
-<p><img src="http://blog.codec.wang/vscode-live-server.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/vscode-live-server.png_webp"><img class="image" src="http://blog.codec.wang/vscode-live-server.png" alt=""></picture></p>
 <h3 id="小程序web-view"><a href="#小程序web-view" class="headerlink" title="小程序web-view"></a>小程序web-view</h3><p>小程序承载网页的容器是<a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html" target="_blank" rel="noopener">web-view</a>组件，组件本身很简单，src指定要跳转的网页地址即可。</p>
-<p><img src="http://blog.codec.wang/wechat-web-view-src.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/wechat-web-view-src.jpg_webp"><img class="image" src="http://blog.codec.wang/wechat-web-view-src.jpg" alt=""></picture></p>
 <p>好，赶紧跳转个百度看看🙃……No，不行，自定义网页的域名需要在小程序<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">管理后台配置</a></p>
-<p><img src="http://blog.codec.wang/wechat-business-domain.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/wechat-business-domain.jpg_webp"><img class="image" src="http://blog.codec.wang/wechat-business-domain.jpg" alt=""></picture></p>
 <p>不过为开发方便，本地开发时勾选<strong>不校验合法域名、web-view（业务域名）、TLS版本以及HTTPS证书</strong>。这样就不会校验，可以随便跳转。</p>
-<p><img src="http://blog.codec.wang/donot-check-https-domain.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/donot-check-https-domain.png_webp"><img class="image" src="http://blog.codec.wang/donot-check-https-domain.png" alt=""></picture></p>
 <h3 id="小程序与H5交互"><a href="#小程序与H5交互" class="headerlink" title="小程序与H5交互"></a>小程序与H5交互</h3><ul>
 <li>小程序传参给H5网页</li>
 </ul>
@@ -302,7 +319,7 @@ var themeMenus = {};
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">src</span>=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>然后网页可以通过<code>wx.miniProgram.postMessage()</code> 接口发送信息，最后web-view组件设置<code>bindmessage</code>事件接收数据。</p>
-<p><img src="http://blog.codec.wang/web-view-bindmessage-limit.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/web-view-bindmessage-limit.png_webp"><img class="image" src="http://blog.codec.wang/web-view-bindmessage-limit.png" alt=""></picture></p>
 <p>但这里有个坑：这个消息只有在特定时机才能收到，如小程序后退、组件销毁、分享。也就是说，如果在网页中只使用<code>wx.miniProgram.postMessage()</code>接口发送消息，但没有调用小程序后退/分享等接口的话，小程序是收不到消息的，举例：</p>
 <p>我在网页中加了一个按钮，用来向小程序发送消息：</p>
 <ul>
@@ -333,7 +350,7 @@ var themeMenus = {};
 
 <p>不过实际中，区分环境最好的实践方式是通过URL参数来区分。</p>
 <h3 id="H5页面调试"><a href="#H5页面调试" class="headerlink" title="H5页面调试"></a>H5页面调试</h3><p>在微信开发者工具上，跳转H5网页后，可以在任意地方右键，打开网页调试面板：</p>
-<p><img src="http://blog.codec.wang/wechat-devtools-h5-debug.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/wechat-devtools-h5-debug.png_webp"><img class="image" src="http://blog.codec.wang/wechat-devtools-h5-debug.png" alt=""></picture></p>
 <p>这样使用<code>debugger</code>或<code>console.log()</code>之类的调试方法就很方便。</p>
 <p>在真机上，目前没有比较好的方法，比较粗暴的就是alert()大法了。</p>
 <p>Okay，本文主要分享了我这两天做小程序H5问卷时一些方案，下一节开始Coding H5代码。</p>

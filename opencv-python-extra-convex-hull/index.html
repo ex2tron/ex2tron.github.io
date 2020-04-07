@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程番外篇11：凸包及更多轮廓特征" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_convex.jpg_webp" target="_blank" rel="gallery_ck8pfyq1v000xj0tneh2dfl8d noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_convex.jpg_webp" target="_blank" rel="gallery_ck8pmnrhe000wwatn6r7c18yt noopener">
         <img src="http://blog.codec.wang/cv2_understand_convex.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_convex.jpg_webp" target="_blank" rel="gallery_ck8pmnrhe000wwatn6r7c18yt noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_convex.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_understand_convex.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -229,12 +246,12 @@ var themeMenus = {};
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.先找到轮廓</span></span><br><span class="line">img = cv2.imread(<span class="string">'unregular.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br><span class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">cnt = contours[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.进行多边形逼近，得到多边形的角点</span></span><br><span class="line">approx = cv2.approxPolyDP(cnt, <span class="number">3</span>, <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.画出多边形</span></span><br><span class="line">image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</span><br><span class="line">cv2.polylines(image, [approx], <span class="literal">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>cv2.approxPolyDP()</code>的参数2(epsilon)是一个距离值，表示多边形的轮廓接近实际轮廓的程度，值越小，越精确；参数3表示是否闭合。</p>
-<p><img src="http://blog.codec.wang/cv2_understand_approxpoly.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_approxpoly.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_approxpoly.jpg" alt=""></picture></p>
 <h2 id="凸包"><a href="#凸包" class="headerlink" title="凸包"></a>凸包</h2><p><a href="https://baike.baidu.com/item/%E5%87%B8%E5%8C%85/179150?fr=aladdin" target="_blank" rel="noopener">凸包</a>跟多边形逼近很像，只不过它是物体最外层的”凸”多边形：集合A内连接任意两个点的直线都在A的内部，则称集合A是凸形的。如下图，红色的部分为手掌的凸包，双箭头部分表示凸缺陷(Convexity Defects)，凸缺陷常用来进行手势识别等：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_convex.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_convex.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_convex.jpg" alt=""></picture></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.先找到轮廓</span></span><br><span class="line">img = cv2.imread(<span class="string">'convex.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br><span class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">cnt = contours[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.寻找凸包，得到凸包的角点</span></span><br><span class="line">hull = cv2.convexHull(cnt)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.绘制凸包</span></span><br><span class="line">image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)</span><br><span class="line">cv2.polylines(image, [hull], <span class="literal">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_convex_hull.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_convex_hull.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_convex_hull.jpg" alt=""></picture></p>
 <p>其中函数<code>cv2.convexHull()</code>有个可选参数returnPoints，默认是True，代表返回角点的x/y坐标；如果为False的话，表示返回轮廓中是凸包角点的索引，比如说：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(hull[<span class="number">0</span>])  <span class="comment"># [[362 184]]（坐标）</span></span><br><span class="line">hull2 = cv2.convexHull(cnt, returnPoints=<span class="literal">False</span>)</span><br><span class="line">print(hull2[<span class="number">0</span>])  <span class="comment"># [510]（cnt中的索引）</span></span><br><span class="line">print(cnt[<span class="number">510</span>])  <span class="comment"># [[362 184]]</span></span><br></pre></td></tr></table></figure>
 

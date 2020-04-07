@@ -185,13 +185,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-使用环境变量避免在代码中写明密码和密钥等重要信息" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/hiding_info_cover.jpg_webp" target="_blank" rel="gallery_ck8pfyq25001hj0tn1yv05nuz noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/hiding_info_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrhp001hwatn60r10ort noopener">
         <img src="http://blog.codec.wang/hiding_info_cover.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/hiding_info_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrhp001hwatn60r10ort noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/hiding_info_cover.jpg_webp">
+        <img src="http://blog.codec.wang/hiding_info_cover.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -242,11 +259,11 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">db_user = os.environ.get(<span class="string">"DB_USER"</span>)</span><br><span class="line">db_passwd = os.environ.get(<span class="string">"DB_PASSWD"</span>)</span><br><span class="line"></span><br><span class="line">print(db_user, db_passwd)</span><br></pre></td></tr></table></figure>
 
 <h2 id="Windows下隐藏方式"><a href="#Windows下隐藏方式" class="headerlink" title="Windows下隐藏方式"></a>Windows下隐藏方式</h2><p>熟悉Windows配置软件的童鞋应该经常用到Path环境变量，同样，我们也可以建两个自己的环境变量。在开始菜单搜索环境变量，打开系统属性窗口并点击“环境变量”：</p>
-<p><img src="http://blog.codec.wang/hiding_info_open_environment_variables.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/hiding_info_open_environment_variables.jpg_webp"><img class="image" src="http://blog.codec.wang/hiding_info_open_environment_variables.jpg" alt=""></picture></p>
 <p>在环境变量界面，可以在用户环境变量下点击新建，新建两个变量用来存储数据库用户名和密码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DB_USER			ex2tron</span><br><span class="line">DB_PASSWD		ex2tron12345</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/hiding_info_add_new_variable.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/hiding_info_add_new_variable.jpg_webp"><img class="image" src="http://blog.codec.wang/hiding_info_add_new_variable.jpg" alt=""></picture></p>
 <p>编辑好之后，代码跟前面的修改方式一样。如果打印出来为空，说明环境变量没有生效，可以重启你的IDE。</p>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>

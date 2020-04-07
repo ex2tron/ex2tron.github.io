@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-小程序H5问卷开发2：模版-脚本" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire2.png_webp" target="_blank" rel="gallery_ck8pfyq26001kj0tn1jlkh2fh noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire2.png_webp" target="_blank" rel="gallery_ck8pmnrhr001lwatnd0pe5w4v noopener">
         <img src="http://blog.codec.wang/wechat-h5-questionnaire2.png_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/wechat-h5-questionnaire2.png_webp" target="_blank" rel="gallery_ck8pmnrhr001lwatnd0pe5w4v noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/wechat-h5-questionnaire2.png_webp">
+        <img src="http://blog.codec.wang/wechat-h5-questionnaire2.png" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -239,7 +256,7 @@ var themeMenus = {};
 <p>分别表示：问卷ID、问卷标题、提示、问题。其中type表示问题的类型，有单选框radio、多选框checkbox和输入框input等。</p>
 <h2 id="模版引擎"><a href="#模版引擎" class="headerlink" title="模版引擎"></a>模版引擎</h2><p>要动态生成文本文件，最简单的方式就是字符串拼接。但显然这种方式对HTML这种标记语言来说太不现实了，于是就有了模版。</p>
 <p>首先，编写一个HTML文件，这个文件内容除了常规的HTML标记外，主要是嵌入了一些变量和指令。我们称这个文件为模版。然后根据传入的数据执行替换操作，生成最终的HTML文件。</p>
-<p><img src="http://blog.codec.wang/templates-sample.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/templates-sample.png_webp"><img class="image" src="http://blog.codec.wang/templates-sample.png" alt=""></picture></p>
 <p>不同的模版引擎的语法和性能有所不同，常用的有<a href="https://ejs.bootcss.com/" target="_blank" rel="noopener">ejs</a>、<a href="https://docs.djangoproject.com/zh-hans/3.0/topics/templates/" target="_blank" rel="noopener">Django模版</a>、<a href="http://docs.jinkan.org/docs/jinja2/" target="_blank" rel="noopener">jinja2</a>、<a href="https://www.makotemplates.org/" target="_blank" rel="noopener">mako</a>、<a href="https://genshi.edgewall.org/" target="_blank" rel="noopener">genshi</a>等，其中jinja2是一个仿Django模版的模版引擎，轻量简单，我用起来熟悉点。</p>
 <p>编写之前，可以去<a href="http://docs.jinkan.org/docs/jinja2/" target="_blank" rel="noopener">官网</a>学习下基本的语法，常用的循环、条件判断等都比较简单。</p>
 <p>当然模版引擎是很强大的，这里举几个我遇到的操作：</p>
@@ -284,7 +301,7 @@ var themeMenus = {};
 <li><a href="https://github.com/Tencent/weui/blob/master/README_cn.md" target="_blank" rel="noopener">WeUI Github</a></li>
 </ul>
 <p>在自己的H5页面链接<a href="https://github.com/Tencent/weui/wiki" target="_blank" rel="noopener">CSS样式文件</a>，组件使用参考官方Github的<a href="https://github.com/Tencent/weui/tree/master/src/example" target="_blank" rel="noopener">源码示例</a>即可。</p>
-<p><img src="http://blog.codec.wang/question-all-types-design.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/question-all-types-design.png_webp"><img class="image" src="http://blog.codec.wang/question-all-types-design.png" alt=""></picture></p>
 <h2 id="前端交互"><a href="#前端交互" class="headerlink" title="前端交互"></a>前端交互</h2><p>网页虽然是个静态文本，但还是需要加入一些交互代码，如问卷问题的切换，结果的提交等。</p>
 <p>这里就很简单粗暴了，我只使用了原生JavaScript：首先生成所有的题目，默认全部隐藏。点击开始评测后，显示第一道题，然后点击下一步的时候隐藏上一题同时显示下一题……</p>
 <p>显示和隐藏可通过<code>display</code>或<code>visibility</code>来控制，如：</p>

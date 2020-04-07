@@ -185,13 +185,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-CMake编译OpenCV3-2（Qt平台）" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp" target="_blank" rel="gallery_ck8pfyq1a0003j0tn96269j2v noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp" target="_blank" rel="gallery_ck8pmnrgv0004watnarpncpv0 noopener">
         <img src="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp" target="_blank" rel="gallery_ck8pmnrgv0004watnarpncpv0 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg_webp">
+        <img src="http://blog.codec.wang/qt_opencv_cmake_windows_setup.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -234,26 +251,26 @@ var themeMenus = {};
 <p><em>All grown-ups were once children… but only few of them remember it.</em>《<a href="https://movie.douban.com/subject/20645098/" target="_blank" rel="noopener">小王子</a>》</p>
 </blockquote>
 <h2 id="编译步骤"><a href="#编译步骤" class="headerlink" title="编译步骤"></a>编译步骤</h2><p>安装完CMake后，打开cmake-gui，如下图所示：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo1.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo1.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo1.jpg" alt=""></picture></p>
 <ol>
 <li>选择OpenCV3.2源码所在位置，我的是在：<code>D:\ProgramFiles\OpenCV3\sources</code></li>
 <li>选择编译生成的目录</li>
 <li>最后点击”Configure”，如下图所示：</li>
 </ol>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo2.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo2.jpg" alt=""></picture></p>
 <p>选择“MinGW Makefiles”并勾选“Specify native compilers”，点击“Next”：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo3.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo3.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo3.jpg" alt=""></picture></p>
 <p>这里分别选择Qt安装目录下gcc和g++的路径，点击“Finish”，等待配置完成。</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo4.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo4.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo4.jpg" alt=""></picture></p>
 <p>配置完成后，勾选“WITH_OPENGL”和“WITH_QT”，点击“Generate”就可以了。如果发生错误：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo5.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo5.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo5.jpg" alt=""></picture></p>
 <p><strong>将Qt的相关路径配置如下：</strong></p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo6.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo6.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo6.jpg" alt=""></picture></p>
 <p><strong>先点击“Configure”，再次点击“Generate”就可以生成了。</strong>然后在cmd下切换到生成的目录，我的是<code>D:\OpenCVBuild</code>，执行命令：<code>mingw32-make</code>开始编译（25分钟左右）：</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo7.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo7.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo7.jpg" alt=""></picture></p>
 <p>编译好之后，再执行<code>mingw32-make install</code>就完成了。</p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo8.jpg_webp" alt=""></p>
-<p><img src="http://blog.codec.wang/cmake_opencv_qt_demo9.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo8.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo8.jpg" alt=""></picture></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cmake_opencv_qt_demo9.jpg_webp"><img class="image" src="http://blog.codec.wang/cmake_opencv_qt_demo9.jpg" alt=""></picture></p>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>
 </blockquote>

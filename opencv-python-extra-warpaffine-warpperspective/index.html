@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程番外篇5：仿射变换与透视变换" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp" target="_blank" rel="gallery_ck8pfyq1x0011j0tnbsmabw9x noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp" target="_blank" rel="gallery_ck8pmnrhg0010watncld67puc noopener">
         <img src="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp" target="_blank" rel="gallery_ck8pmnrhg0010watncld67puc noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_image_transformation_sample.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -227,7 +244,7 @@ var themeMenus = {};
 <hr>
 <h2 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h2><p>基本的图像变换就是二维坐标的变换：从一种二维坐标(x,y)到另一种二维坐标(u,v)的线性变换：</p>
 <p>$$<br>\begin{matrix}<br>   u=a_1x+b_1y+c_1 \newline<br>   v=a_2x+b_2y+c_2<br>  \end{matrix}<br>$$<br>如果写成矩阵的形式，就是：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right]<br>$$<br>作如下定义：<br>$$<br>R=\left[<br> \begin{matrix}<br>   a_1 &amp; b_1  \newline<br>   a_2 &amp; b_2<br>  \end{matrix}<br>  \right], t=\left[<br> \begin{matrix}<br>   c_1 \newline<br>   c_2<br>  \end{matrix}<br>  \right],T=\left[<br> \begin{matrix}<br>   R &amp; t<br>  \end{matrix}<br>  \right]<br>$$<br>矩阵T(2×3)就称为仿射变换的变换矩阵，R为线性变换矩阵，t为平移矩阵，简单来说，仿射变换就是线性变换+平移。变换后直线依然是直线，平行线依然是平行线，直线间的相对位置关系不变，因此<strong>非共线的三个对应点便可确定唯一的一个仿射变换</strong>，线性变换4个自由度+平移2个自由度→<strong>仿射变换自由度为6</strong>。</p>
-<p><img src="http://blog.codec.wang/cv2_warp_affine_image_sample_introduction2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_warp_affine_image_sample_introduction2.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_warp_affine_image_sample_introduction2.jpg" alt=""></picture></p>
 <p>来看下OpenCV中如何实现仿射变换：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'drawing.jpg'</span>)</span><br><span class="line">rows, cols = img.shape[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 变换前的三个点</span></span><br><span class="line">pts1 = np.float32([[<span class="number">50</span>, <span class="number">65</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">210</span>, <span class="number">210</span>]])</span><br><span class="line"><span class="comment"># 变换后的三个点</span></span><br><span class="line">pts2 = np.float32([[<span class="number">50</span>, <span class="number">100</span>], [<span class="number">150</span>, <span class="number">65</span>], [<span class="number">100</span>, <span class="number">250</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成变换矩阵</span></span><br><span class="line">M = cv2.getAffineTransform(pts1, pts2)</span><br><span class="line">dst = cv2.warpAffine(img, M, (cols, rows))</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img), plt.title(<span class="string">'input'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst), plt.title(<span class="string">'output'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
@@ -235,12 +252,12 @@ var themeMenus = {};
 <blockquote>
 <p>思考：三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（<a href="#练习">练习</a>）</p>
 </blockquote>
-<p><img src="http://blog.codec.wang/cv2_affine_transformation_drawing.jpg_webp" alt="仿射变换前后对比图"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_affine_transformation_drawing.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_affine_transformation_drawing.jpg" alt="仿射变换前后对比图"></picture></p>
 <p>其实平移、旋转、缩放和翻转等变换就是对应了不同的仿射变换矩阵，下面分别来看下。</p>
-<p><img src="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp" alt=""></p>
-<h3 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h3><p><img src="http://blog.codec.wang/cv2_warp_affine_shift_sample.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_image_transformation_sample.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_image_transformation_sample.jpg" alt=""></picture></p>
+<h3 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h3><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_warp_affine_shift_sample.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_warp_affine_shift_sample.jpg" alt=""></picture></p>
 <p>平移就是x和y方向上的直接移动，可以上下/左右移动，自由度为2，变换矩阵可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   1 &amp; 0  \newline<br>   0 &amp; 1<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   t_x \newline<br>   t_y<br>  \end{matrix}<br>  \right]<br>$$</p>
-<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p><img src="http://blog.codec.wang/cv2_warp_affine_rotation_sample.jpg_webp" alt=""></p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_warp_affine_rotation_sample.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_warp_affine_rotation_sample.jpg" alt=""></picture></p>
 <p>旋转是坐标轴方向饶原点旋转一定的角度θ，自由度为1，不包含平移，如顺时针旋转可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \cos \theta &amp; -\sin \theta \newline<br>   \sin \theta &amp; \cos \theta<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
 <blockquote>
 <p>思考：如果不是绕原点，而是可变点，自由度是多少呢？（请看下文刚体变换）</p>
@@ -249,7 +266,7 @@ var themeMenus = {};
 <h3 id="刚体变换"><a href="#刚体变换" class="headerlink" title="刚体变换"></a>刚体变换</h3><p>旋转+平移也称刚体变换（Rigid Transform），就是说如果<strong>图像变换前后两点间的距离仍然保持不变</strong>，那么这种变化就称为刚体变换。刚体变换包括了平移、旋转和翻转，自由度为3。变换矩阵可以表示为：</p>
 <p>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   \cos \theta &amp; -\sin \theta \newline<br>   \sin \theta &amp; \cos \theta<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   t_x  \newline<br>   t_y<br>  \end{matrix}<br>  \right]<br>$$</p>
 <p>由于只是旋转和平移，刚体变换保持了直线间的长度不变，所以也称欧式变换（变化前后保持欧氏距离）。</p>
-<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p><img src="http://blog.codec.wang/cv2_warp_affine_scale_sampel.jpg_webp" alt=""></p>
+<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_warp_affine_scale_sampel.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_warp_affine_scale_sampel.jpg" alt=""></picture></p>
 <p>缩放是x和y方向的尺度（倍数）变换，在有些资料上非等比例的缩放也称为拉伸/挤压，等比例缩放自由度为1，非等比例缩放自由度为2，矩阵可以表示为：<br>$$<br>\left[<br> \begin{matrix}<br>   u \newline<br>   v<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   s_x &amp; 0 \newline<br>   0 &amp; s_y<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y<br>  \end{matrix}<br>  \right]+\left[<br> \begin{matrix}<br>   0 \newline<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
 <h3 id="相似变换"><a href="#相似变换" class="headerlink" title="相似变换"></a>相似变换</h3><p>相似变换又称缩放旋转，相似变换包含了旋转、等比例缩放和平移等变换，自由度为4。在OpenCV中，旋转就是用相似变换实现的：</p>
 <p>若缩放比例为scale，旋转角度为θ，旋转中心是$ (center_x,center_y) $，则仿射变换可以表示为：</p>
@@ -300,12 +317,12 @@ var themeMenus = {};
 </tr>
 </tbody></table>
 <h2 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h2><p>前面仿射变换后依然是平行四边形，并不能做到任意的变换。</p>
-<p><img src="http://blog.codec.wang/cv2_warp_perspective_image_sample4.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_warp_perspective_image_sample4.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_warp_perspective_image_sample4.jpg" alt=""></picture></p>
 <p><a href="https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2" target="_blank" rel="noopener">透视变换</a>（Perspective Transformation）是将二维的图片投影到一个三维视平面上，然后再转换到二维坐标下，所以也称为投影映射（Projective Mapping）。简单来说就是二维→三维→二维的一个过程。<br>$$<br>\begin{matrix}<br>   X=a_1 x + b_1 y + c_1 \newline<br>   Y=a_2 x + b_2 y + c_2  \newline<br>   Z=a_3 x + b_3 y + c_3<br>  \end{matrix}<br>$$<br>这次我写成齐次矩阵的形式：<br>$$<br>\left[<br> \begin{matrix}<br>   X \newline<br>   Y \newline<br>   Z<br>  \end{matrix}<br>  \right]  = \left[<br> \begin{matrix}<br>   a_1 &amp; b_1 &amp; c_1  \newline<br>   a_2 &amp; b_2 &amp; c_2  \newline<br>   a_3 &amp; b_3 &amp; c_3<br>  \end{matrix}<br>  \right] \left[<br> \begin{matrix}<br>   x \newline<br>   y \newline<br>   1<br>  \end{matrix}<br>  \right]<br>$$<br>其中，$ \left[<br> \begin{matrix}<br>   a_1 &amp; b_1   \newline<br>   a_2 &amp; b_2  \newline<br>  \end{matrix}<br>  \right]  $表示线性变换，$ \left[<br> \begin{matrix}<br>   a_3 &amp; b_3<br>  \end{matrix}<br>  \right]  $产生透视变换，其余表示平移变换，因此仿射变换是透视变换的子集。接下来再通过除以Z轴转换成二维坐标：<br>$$<br>x^{’}=\frac{X}{Z}=\frac{a_1x+b_1y+c_1}{a_3x+b_3y+c_3 }<br>$$</p>
 <p>$$<br>y^{’}=\frac{Y}{Z}=\frac{a_2x+b_2y+c_2}{a_3x+b_3y+c_3 }<br>$$</p>
 <p>透视变换相比仿射变换更加灵活，变换后会产生一个新的四边形，但不一定是平行四边形，所以需要<strong>非共线的四个点才能唯一确定</strong>，原图中的直线变换后依然是直线。因为四边形包括了所有的平行四边形，所以透视变换包括了所有的仿射变换。</p>
 <p>OpenCV中首先根据变换前后的四个点用<code>cv2.getPerspectiveTransform()</code>生成3×3的变换矩阵，然后再用<code>cv2.warpPerspective()</code>进行透视变换。实战演练一下：</p>
-<p><img src="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg_webp" alt="矫正一鸣的卡片"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_perspective_transformations_inm.jpg" alt="矫正一鸣的卡片"></picture></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'card.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原图中卡片的四个角点</span></span><br><span class="line">pts1 = np.float32([[<span class="number">148</span>, <span class="number">80</span>], [<span class="number">437</span>, <span class="number">114</span>], [<span class="number">94</span>, <span class="number">247</span>], [<span class="number">423</span>, <span class="number">288</span>]])</span><br><span class="line"><span class="comment"># 变换后分别在左上、右上、左下、右下四个点</span></span><br><span class="line">pts2 = np.float32([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">320</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">178</span>], [<span class="number">320</span>, <span class="number">178</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成透视变换矩阵</span></span><br><span class="line">M = cv2.getPerspectiveTransform(pts1, pts2)</span><br><span class="line"><span class="comment"># 进行透视变换，参数3是目标图像大小</span></span><br><span class="line">dst = cv2.warpPerspective(img, M, (<span class="number">320</span>, <span class="number">178</span>))</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'input'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>), plt.imshow(dst[:, :, ::<span class="number">-1</span>]), plt.title(<span class="string">'output'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <blockquote>

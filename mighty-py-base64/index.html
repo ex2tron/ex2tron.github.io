@@ -184,13 +184,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-MightyPy：理解Base64" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_base64_cover.jpg_webp" target="_blank" rel="gallery_ck8pfyq1f000aj0tn735kh4ow noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_base64_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrgz000awatn0wl33jct noopener">
         <img src="http://blog.codec.wang/depth_python_base64_cover.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/depth_python_base64_cover.jpg_webp" target="_blank" rel="gallery_ck8pmnrgz000awatn0wl33jct noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/depth_python_base64_cover.jpg_webp">
+        <img src="http://blog.codec.wang/depth_python_base64_cover.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -234,11 +251,11 @@ var themeMenus = {};
 <p>标准的Base64编码是由26个大写字母、26个小写字母、[0-9]10个数字、’+’、’/‘共64个字符组成的。你也可以自定义这些字符来实现自己的Base64编码。</p>
 <p>将原二进制数据每3个字节为一组进行划分，一共3×8=24bit，划分成4组，也就是每组6bit，6bit可表示的长度为2^6=64，这就是Base64名称的由来。然后将每组6bit对应的值作为索引，在前面定义的数组中查表，就得到了编码后对应的4个字符。</p>
 <p>比如，把”Man”进行Base64编码：</p>
-<p><img src="http://blog.codec.wang/depth_python_base64_sample2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/depth_python_base64_sample2.jpg_webp"><img class="image" src="http://blog.codec.wang/depth_python_base64_sample2.jpg" alt=""></picture></p>
 <p>Python中可以直接用内置的<a href="#接口文档">base64</a>模块：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">print(base64.b64encode(<span class="string">b'Man'</span>))  <span class="comment"># 'TWFu'</span></span><br><span class="line"><span class="comment"># 或：base64.b64encode(b'\x4D\x61\x6E')</span></span><br><span class="line">print(base64.b64decode(<span class="string">'TWFu'</span>))  <span class="comment"># 'man'</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/depth_python_base64_index_table.jpg_webp" alt="@维基百科 Base64"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/depth_python_base64_index_table.jpg_webp"><img class="image" src="http://blog.codec.wang/depth_python_base64_index_table.jpg" alt="@维基百科 Base64"></picture></p>
 <h3 id="不是3的倍数"><a href="#不是3的倍数" class="headerlink" title="不是3的倍数"></a>不是3的倍数</h3><p>Base64是每3个字节编码的，遇到不足3个字节的情况时，会在末尾补0，再在末尾加个1个或2个 ‘=’号表示补了多少个字节，解码时再将’=’去掉。</p>
 <p>比如参考前面的’Man’，对’M’单独进行编码：第一组还是原有的6bit，结果是字符’T’；第二组只剩下’01’，补充4个0，即’010000’，索引值为16，对应的字符是’Q’；第三和第四组都是0了，所以再加两个’=’，最终结果是’TQ==’。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(base64.b64encode(<span class="string">b'M'</span>))  <span class="comment"># 'TQ=='</span></span><br></pre></td></tr></table></figure>

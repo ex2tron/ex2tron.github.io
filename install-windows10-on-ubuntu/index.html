@@ -185,13 +185,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Ubuntu上安装Windows10双系统步骤及常见问题" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/ubuntu_windows_cover_image.jpg_webp" target="_blank" rel="gallery_ck8pfyq200018j0tnhdz03utl noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/ubuntu_windows_cover_image.jpg_webp" target="_blank" rel="gallery_ck8pmnrhl0018watn1c7r1qii noopener">
         <img src="http://blog.codec.wang/ubuntu_windows_cover_image.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/ubuntu_windows_cover_image.jpg_webp" target="_blank" rel="gallery_ck8pmnrhl0018watn1c7r1qii noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_cover_image.jpg_webp">
+        <img src="http://blog.codec.wang/ubuntu_windows_cover_image.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -242,39 +259,39 @@ var themeMenus = {};
 </ol>
 <p><strong>简单的分区方式（简单的不行可以看后面复杂的）</strong></p>
 <p>Ubuntu上安装<code>gparted</code>图形化分区工具：<code>sudo apt install gparted</code>。打开之后，选择要分区的区域，比如我要从<code>/dev/sda1</code>中分区，然后点击菜单栏的调整分区大小按钮：</p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_install_gparted.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_install_gparted.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_install_gparted.jpg" alt=""></picture></p>
 <p>如果出来的界面某些项是灰色的（就像上图这样），说明不可以用这种方式分区。</p>
 <p><strong>略微复杂的方式</strong></p>
 <p>需要一个Ubuntu的U盘镜像（不必跟你原来的Ubuntu系统同版本），以普通的装机方式进入安装程序后，到安装类型这一步，千万不要乱选，一定要选<strong>其他选项</strong>：</p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu.jpg" alt=""></picture></p>
 <p>然后选择你要分区的区域，点击下方的更改：</p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu2.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu2.jpg" alt=""></picture></p>
 <p>在弹出的更改区域大小中，输入新分区的大小，点击OK，成功之后，<strong>就退出安装</strong>，不要再安装一个Ubuntu了：</p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu3.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu3.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_disk_part_with_install_ubuntu3.jpg" alt=""></picture></p>
 <p>前面就实现了分区，但Windows的分区格式跟Ubuntu不一样，所以需要回到Ubuntu系统，打开gparted，将分区转换成ntfs格式，用于安装Windows：</p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_convert_ntfs2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_convert_ntfs2.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_convert_ntfs2.jpg" alt=""></picture></p>
 <h3 id="安装Windows"><a href="#安装Windows" class="headerlink" title="安装Windows"></a>安装Windows</h3><p>这一步就是正常的Windows安装流程（不赘述，安装的时候记得选择我们刚分好的区）</p>
 <h3 id="引导项修复"><a href="#引导项修复" class="headerlink" title="引导项修复"></a>引导项修复</h3><p>安装完Windows后，Ubuntu的引导项就不见了。最简单的方法是在Windows上安装使用<a href="https://neosmart.net/EasyBCD/" target="_blank" rel="noopener">EasyBCD</a>引导Ubuntu：</p>
 <p><strong>首先添加引导项，一定记得选Swap交换分区</strong></p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_boot_grub_add.jpg_webp" alt=""></p>
-<p><strong><img src="http://blog.codec.wang/ubuntu_windows_boot_grub_add2.jpg_webp" alt=""></strong></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_boot_grub_add.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_boot_grub_add.jpg" alt=""></picture></p>
+<p><strong><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_boot_grub_add2.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_boot_grub_add2.jpg" alt=""></picture></strong></p>
 <p><strong>然后点击“编辑引导菜单”并保存设置</strong></p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_boot_grub_add3.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_boot_grub_add3.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_boot_grub_add3.jpg" alt=""></picture></p>
 <p>这样就完成了全部安装流程。</p>
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>问题1：如果开机选择Ubuntu系统时出现：</strong></p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_cannot_bootin_ubuntu.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_cannot_bootin_ubuntu.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_cannot_bootin_ubuntu.jpg" alt=""></picture></p>
 <p>解决方案：进入Windows系统，使用EasyBCD重新引导即可，具体步骤：</p>
 <ul>
 <li>先将原有的Ubuntu引导项删除</li>
 </ul>
-<p><img src="http://blog.codec.wang/ubuntu_windows_delete_boot_option.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_delete_boot_option.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_delete_boot_option.jpg" alt=""></picture></p>
 <ul>
 <li>然后重复之前添加引导项的步骤即可。</li>
 </ul>
 <p><strong>问题2：使用刻录的Ubuntu U盘镜像安装系统时出现：</strong></p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_install_ubuntu_problem.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_install_ubuntu_problem.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_install_ubuntu_problem.jpg" alt=""></picture></p>
 <p>解决方案：按下<strong>tab键</strong>，会弹出如下提示：</p>
-<p><img src="http://blog.codec.wang/ubuntu_windows_install_ubuntu_problem2.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/ubuntu_windows_install_ubuntu_problem2.jpg_webp"><img class="image" src="http://blog.codec.wang/ubuntu_windows_install_ubuntu_problem2.jpg" alt=""></picture></p>
 <p>按照提示，输入<code>live live-install</code>回车即可。</p>
 <blockquote>
 <p><em>生命不息，折腾不止，Excelsior!</em></p>

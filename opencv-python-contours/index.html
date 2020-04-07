@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程13：轮廓" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_contours.jpg_webp" target="_blank" rel="gallery_ck8pfyq1i000ej0tn8agngvvt noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_contours.jpg_webp" target="_blank" rel="gallery_ck8pmnrh4000fwatn86bs649m noopener">
         <img src="http://blog.codec.wang/cv2_understand_contours.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_understand_contours.jpg_webp" target="_blank" rel="gallery_ck8pmnrh4000fwatn86bs649m noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_contours.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_understand_contours.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -232,7 +249,7 @@ var themeMenus = {};
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="啥叫轮廓"><a href="#啥叫轮廓" class="headerlink" title="啥叫轮廓"></a>啥叫轮廓</h3><p>轮廓是一系列相连的点组成的曲线，代表了物体的基本外形。</p>
 <p>谈起轮廓不免想到边缘，它们确实很像。简单的说，<strong>轮廓是连续的，边缘并不全都连续</strong>（下图）。其实边缘主要是作为图像的特征使用，比如可以用边缘特征可以区分脸和手，而轮廓主要用来分析物体的形态，比如物体的周长和面积等，可以说边缘包括轮廓。</p>
-<p><img src="http://blog.codec.wang/cv2_understand_contours.jpg_webp" alt="边缘和轮廓的区别"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_contours.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_contours.jpg" alt="边缘和轮廓的区别"></picture></p>
 <p>寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或Canny边缘检测先得到二值图。</p>
 <blockquote>
 <p>经验之谈：<strong>寻找轮廓是针对白色物体的</strong>，一定要保证物体是白色，而背景是黑色，<strong>不然很多人在寻找轮廓时会找到图片最外面的一个框</strong>。</p>
@@ -246,7 +263,7 @@ var themeMenus = {};
 <li>简便起见，这两个参数也可以直接用真值3和2表示。</li>
 </ul>
 <p>函数有3个返回值，image还是原来的二值化图片，hierarchy是轮廓间的层级关系（<a href="/opencv-python-extra-contours-hierarchy/">番外篇：轮廓层级</a>），这两个暂时不用理会。我们主要看contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标(x,y)。</p>
-<p><img src="http://blog.codec.wang/cv2_find_contours_contours.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_find_contours_contours.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_find_contours_contours.jpg" alt=""></picture></p>
 <h3 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h3><p>轮廓找出来后，为了方便观看，可以像前面图中那样用红色画出来：<code>cv2.drawContours()</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.drawContours(img, contours, <span class="number">-1</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 

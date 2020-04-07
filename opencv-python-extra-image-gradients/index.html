@@ -187,13 +187,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程番外篇9：图像梯度" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" target="_blank" rel="gallery_ck8pfyq1z0015j0tn28an9qrk noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" target="_blank" rel="gallery_ck8pmnrhj0015watn761a7ik2 noopener">
         <img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" target="_blank" rel="gallery_ck8pmnrhj0015watn761a7ik2 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -232,10 +249,10 @@ var themeMenus = {};
 <h3 id="垂直边缘提取"><a href="#垂直边缘提取" class="headerlink" title="垂直边缘提取"></a>垂直边缘提取</h3><p>滤波是应用卷积来实现的，卷积的关键就是卷积核，我们来考察下面这个卷积核：</p>
 <p>$$<br>k1 = \left[<br> \begin{matrix}<br>   -1 &amp; 0 &amp; 1 \newline<br>   -2 &amp; 0 &amp; 2 \newline<br>   -1 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
 <p>这个核是用来提取图片中的垂直边缘的，怎么做到的呢？看下图：</p>
-<p><img src="http://blog.codec.wang/cv2_understand_sobel_edge_detection.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_sobel_edge_detection.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_understand_sobel_edge_detection.jpg" alt=""></picture></p>
 <p>当前列左右两侧的元素进行差分，由于边缘的值明显小于（或大于）周边像素，所以边缘的差分结果会明显不同，这样就提取出了垂直边缘。同理，把上面那个矩阵转置一下，就是提取水平边缘。这种差分操作就称为图像的梯度计算：</p>
 <p>$$<br>k2 = \left[<br> \begin{matrix}<br>   -1 &amp; -2 &amp; -1 \newline<br>   0 &amp; 0 &amp; 0 \newline<br>   1 &amp; 2 &amp; 1<br>  \end{matrix}<br>  \right]<br>$$</p>
-<p><img src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp" alt="垂直和水平边缘提取"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_horizen_vertical_edge_detection.jpg" alt="垂直和水平边缘提取"></picture></p>
 <blockquote>
 <p>还记得滤波函数<code>cv2.filter2D()</code>吗？（<a href="/opencv-python-extra-padding-and-convolution/">番外篇：卷积基础</a>）我们来手动实现上面的功能：</p>
 </blockquote>
@@ -268,7 +285,7 @@ var themeMenus = {};
 <p>OpenCV中直接使用<code>cv2.Laplacian()</code>函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">laplacian = cv2.Laplacian(img, <span class="number">-1</span>)  <span class="comment"># 使用Laplacian算子</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_laplacian.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_laplacian.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_laplacian.jpg" alt=""></picture></p>
 <p>Laplacian算子是二阶边缘检测的典型代表，一/二阶边缘检测各有优缺点，大家可自行了解。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ol>
 <li>（选做）同志们有空补补高数<del>姿势</del>（知识）呗！(✿◕‿◕✿)</li>

@@ -186,13 +186,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-Python-OpenCV教程14：轮廓特征" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp" target="_blank" rel="gallery_ck8pfyq1j000fj0tng5ap81c3 noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp" target="_blank" rel="gallery_ck8pmnrh3000ewatncednhjyo noopener">
         <img src="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp" target="_blank" rel="gallery_ck8pmnrh3000ewatncednhjyo noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp">
+        <img src="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -230,7 +247,7 @@ var themeMenus = {};
 <li>OpenCV函数：<code>cv2.contourArea()</code>, <code>cv2.arcLength()</code>, <code>cv2.approxPolyDP()</code> 等</li>
 </ul>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：</p>
-<p><img src="http://blog.codec.wang/cv2_31_handwriting_sample.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_31_handwriting_sample.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_31_handwriting_sample.jpg" alt=""></picture></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'handwriting.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)</span><br><span class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以数字3的轮廓为例</span></span><br><span class="line">cnt = contours[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
 <p>为了便于绘制，我们创建出两幅彩色图，并把轮廓画在第一幅图上：</p>
@@ -252,7 +269,7 @@ var themeMenus = {};
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cx, cy = M[<span class="string">'m10'</span>] / M[<span class="string">'m00'</span>], M[<span class="string">'m01'</span>] / M[<span class="string">'m00'</span>]  <span class="comment"># (205, 281)</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="外接矩形"><a href="#外接矩形" class="headerlink" title="外接矩形"></a>外接矩形</h3><p>形状的外接矩形有两种，如下图，绿色的叫外接矩形，表示不考虑旋转并且能包含整个轮廓的矩形。蓝色的叫最小外接矩，考虑了旋转：</p>
-<p><img src="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_min_rect_rect_bounding.jpg" alt=""></picture></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x, y, w, h = cv2.boundingRect(cnt)  <span class="comment"># 外接矩形</span></span><br><span class="line">cv2.rectangle(img_color1, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rect = cv2.minAreaRect(cnt)  <span class="comment"># 最小外接矩形</span></span><br><span class="line">box = np.int0(cv2.boxPoints(rect))  <span class="comment"># 矩形的四个角点取整</span></span><br><span class="line">cv2.drawContours(img_color1, [box], <span class="number">0</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
@@ -261,13 +278,13 @@ var themeMenus = {};
 <h3 id="最小外接圆"><a href="#最小外接圆" class="headerlink" title="最小外接圆"></a>最小外接圆</h3><p>外接圆跟外接矩形一样，找到一个能包围物体的最小圆：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(x, y), radius = cv2.minEnclosingCircle(cnt)</span><br><span class="line">(x, y, radius) = np.int0((x, y, radius))  <span class="comment"># 圆心和半径取整</span></span><br><span class="line">cv2.circle(img_color2, (x, y), radius, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_min_enclosing_circle.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_min_enclosing_circle.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_min_enclosing_circle.jpg" alt=""></picture></p>
 <h3 id="拟合椭圆"><a href="#拟合椭圆" class="headerlink" title="拟合椭圆"></a>拟合椭圆</h3><p>我们可以用得到的轮廓拟合出一个椭圆：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ellipse = cv2.fitEllipse(cnt)</span><br><span class="line">cv2.ellipse(img_color2, ellipse, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://blog.codec.wang/cv2_fitting_ellipse.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_fitting_ellipse.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_fitting_ellipse.jpg" alt=""></picture></p>
 <h3 id="形状匹配"><a href="#形状匹配" class="headerlink" title="形状匹配"></a>形状匹配</h3><p><code>cv2.matchShapes()</code>可以检测两个形状之间的相似度，返回<strong>值越小，越相似</strong>。先读入下面这张图片：</p>
-<p><img src="http://blog.codec.wang/cv2_match_shape_shapes.jpg_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cv2_match_shape_shapes.jpg_webp"><img class="image" src="http://blog.codec.wang/cv2_match_shape_shapes.jpg" alt=""></picture></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'shapes.jpg'</span>, <span class="number">0</span>)</span><br><span class="line">_, thresh = cv2.threshold(img, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br><span class="line">image, contours, hierarchy = cv2.findContours(thresh, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">img_color = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)  <span class="comment"># 用于绘制的彩色图</span></span><br></pre></td></tr></table></figure>
 
 <p>图中有3条轮廓，我们用A/B/C表示：</p>

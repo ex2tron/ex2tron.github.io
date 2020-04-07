@@ -184,13 +184,30 @@ var themeMenus = {};
         
           <section id="main" style="float:none;"><article id="post-【利器】GitKraken：酷炫的Git GUI客户端" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
+    <!-- 
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/gitkraken_main_ui.png_webp" target="_blank" rel="gallery_ck8pfyq21001aj0tn4z3h6gsb noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/gitkraken_main_ui.png_webp" target="_blank" rel="gallery_ck8pmnrhm001awatn7uiu2chy noopener">
         <img src="http://blog.codec.wang/gitkraken_main_ui.png_webp" itemprop="image">
       </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/gitkraken_main_ui.png_webp" target="_blank" rel="gallery_ck8pmnrhm001awatn7uiu2chy noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/gitkraken_main_ui.png_webp">
+        <img src="http://blog.codec.wang/gitkraken_main_ui.png" itemprop="image">
+      </picture>
+    <!-- </a> -->
     
   </div>
 </div>
@@ -231,16 +248,16 @@ var themeMenus = {};
 <li>官网/下载：<a href="https://www.gitkraken.com/" target="_blank" rel="noopener">GitKraken</a></li>
 </ul>
 <p>GitKraken对Windows/Linux/Mac三大主流平台都支持，其方便之处在于，它不需要安装配置，双击打开就可以了。打开之后，可以选择用Github账号登陆，需要Github授权：</p>
-<p><img src="http://blog.codec.wang/gitkraken_sign_in_with_github.png_webp" alt="使用Github授权登录"></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/gitkraken_sign_in_with_github.png_webp"><img class="image" src="http://blog.codec.wang/gitkraken_sign_in_with_github.png" alt="使用Github授权登录"></picture></p>
 <h2 id="打开-克隆-初始化"><a href="#打开-克隆-初始化" class="headerlink" title="打开/克隆/初始化"></a>打开/克隆/初始化</h2><p>GitKranken支持打开本地仓库，从指定的URL或Github、Gitlab、Bitbucket等上面直接克隆。前面我们已经用Github直接登陆了，所以，从Github克隆时，会直接列出你当前的所有仓库项目，非常方便。当然，也可以连接到Gitlab/Bitbucket平台：</p>
-<p><img src="http://blog.codec.wang/gitkraken_clone_from_github.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/gitkraken_clone_from_github.png_webp"><img class="image" src="http://blog.codec.wang/gitkraken_clone_from_github.png" alt=""></picture></p>
 <p>初始化/新建项目也非常方便，在Init选项中，可以选择初始化一个本地仓库或类似Github之类的远程仓库。GitKraken初始化时还提供了.gitignore的文件的相关模板：</p>
-<p><img src="http://blog.codec.wang/gitkraken_init_github_repo.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/gitkraken_init_github_repo.png_webp"><img class="image" src="http://blog.codec.wang/gitkraken_init_github_repo.png" alt=""></picture></p>
 <h2 id="界面-功能"><a href="#界面-功能" class="headerlink" title="界面/功能"></a>界面/功能</h2><p>打开一个仓库后，主界面如下图，酷炫简洁，顶部提供了常用的Git功能，就不细说了。我主要提及一下，如何进行版本差分：</p>
-<p><img src="http://blog.codec.wang/gitkraken_main_ui.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/gitkraken_main_ui.png_webp"><img class="image" src="http://blog.codec.wang/gitkraken_main_ui.png" alt=""></picture></p>
 <p>在提交日志的主界面，如果要比较任意两个版本之间的差分，按住Ctrl键，选择要比较的版本，右边会自动列出两个版本之间所修改的文件，点击文件就可以看到diff了：</p>
-<p><img src="http://blog.codec.wang/gitkraken_view_commits_diff.png_webp" alt=""></p>
-<p><img src="http://blog.codec.wang/gitkraken_view_file_diff.png_webp" alt=""></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/gitkraken_view_commits_diff.png_webp"><img class="image" src="http://blog.codec.wang/gitkraken_view_commits_diff.png" alt=""></picture></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/gitkraken_view_file_diff.png_webp"><img class="image" src="http://blog.codec.wang/gitkraken_view_file_diff.png" alt=""></picture></p>
 <p>当然，最新版本（本文使用的是3.1版本）的GitKraken提供了Merge和Diff工具的自定义（File-Preferences-General中设置），比如说我最常用的Merge工具是WinMerge，就可以在这里配置。</p>
 <p>抛砖引玉，大致介绍了一下，其实熟悉Git的话，这个工具使用起来还是蛮简单的~ o(<em>￣▽￣</em>)o</p>
 <p><em>2019年3月19日更新：最近我一直用VSCode，集成的git功能再加上gitlens这款插件，体验也很棒。</em></p>
