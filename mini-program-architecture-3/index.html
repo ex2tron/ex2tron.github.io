@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp">
 <meta property="article:published_time" content="2020-04-13T06:19:30.000Z">
-<meta property="article:modified_time" content="2020-04-14T11:57:51.392Z">
+<meta property="article:modified_time" content="2020-04-15T02:35:07.530Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="小程序">
 <meta property="article:tag" content="工程架构">
@@ -188,7 +188,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp" target="_blank" rel="gallery_ck8zusacm001fyitn0tek5kge noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp" target="_blank" rel="gallery_ck9436vgt001l80tneckx99jk noopener">
         <img src="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp" itemprop="image">
       </a>
     
@@ -202,7 +202,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp" target="_blank" rel="gallery_ck8zusacm001fyitn0tek5kge noopener"> -->
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp" target="_blank" rel="gallery_ck9436vgt001l80tneckx99jk noopener"> -->
       <picture class="article-gallery-img">
         <source type="image/webp" srcset="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp">
         <img src="http://blog.codec.wang/my-mini-program-architecture-3-cover.png" itemprop="image">
@@ -276,7 +276,7 @@ var themeMenus = {};
 <p>综上，我们需要把<code>wx.request</code>封装一层，将接口成功或失败时的通用处理写在这层中。然后把所有的接口调用写在一个文件<code>api.js</code>中。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── api		<span class="comment"># 接口层</span></span><br><span class="line">│   ├── api.js		<span class="comment"># 所有接口调用</span></span><br><span class="line">│   └── request.js	<span class="comment"># HTTP请求封装</span></span><br><span class="line">├── config	<span class="comment"># 配置层</span></span><br><span class="line">│   └── config.js</span><br><span class="line">└── home	<span class="comment"># 页面</span></span><br><span class="line">    ├── home.js</span><br><span class="line">    └── home.wxml</span><br></pre></td></tr></table></figure>
 
-<p>  要封装一层小程序的HTTP请求，需要用到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">Promise</a>。</p>
+<p>  要封装一层小程序的HTTP请求，需要用到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">Promise</a>。此处逻辑其实也比较简单，但需要对Promise有所了解：</p>
 <ul>
 <li>request.js</li>
 </ul>
@@ -286,7 +286,7 @@ var themeMenus = {};
 <ul>
 <li>api.js</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统一接口定义</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author: codec.wang</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;Request&#125; <span class="keyword">from</span> <span class="string">'request'</span>;</span><br><span class="line"><span class="keyword">const</span> CONFIG = <span class="built_in">require</span>(<span class="string">'../config/config'</span>);</span><br><span class="line"><span class="keyword">const</span> REQUEST = <span class="keyword">new</span> Request(&#123;<span class="attr">baseUrl</span>: CONFIG.GetEnv(), <span class="attr">enableBaseUrl</span>: <span class="literal">true</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> API = &#123;</span><br><span class="line">    Login(data) &#123; <span class="comment">/* 登陆 */</span></span><br><span class="line">      <span class="keyword">return</span> REQUEST.get(<span class="string">'/v1/login/'</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">  </span><br><span class="line">    GetNews(data) &#123; <span class="comment">/* 获取新闻列表 */</span></span><br><span class="line">      <span class="keyword">return</span> REQUEST.get(<span class="string">'/v1/getNews'</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> API;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统一接口定义</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Author: codec.wang</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;Request&#125; <span class="keyword">from</span> <span class="string">'request'</span>;</span><br><span class="line"><span class="keyword">const</span> CONFIG = <span class="built_in">require</span>(<span class="string">'../config/config'</span>);</span><br><span class="line"><span class="keyword">const</span> REQUEST = <span class="keyword">new</span> Request(&#123;<span class="attr">baseUrl</span>: CONFIG.GetEnv().domain, <span class="attr">enableBaseUrl</span>: <span class="literal">true</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> API = &#123;</span><br><span class="line">    Login(data) &#123; <span class="comment">/* 登陆 */</span></span><br><span class="line">      <span class="keyword">return</span> REQUEST.get(<span class="string">'/v1/login/'</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">  </span><br><span class="line">    GetNews(data) &#123; <span class="comment">/* 获取新闻列表 */</span></span><br><span class="line">      <span class="keyword">return</span> REQUEST.get(<span class="string">'/v1/getNews'</span>, data);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> API;</span><br></pre></td></tr></table></figure>
 
 <p>不过有可爱的小伙伴要问了，你这代码咋越写越多呢，感觉更复杂了啊。</p>
 <p>这样提问的童鞋一定是没做过较为复杂的工程项目。抽离分隔的目的是使每个模块各司其职，提升逻辑架构，使页面只关心自己的数据结构和算法逻辑。举例来说，经过上述的重构，home页面的接口调用就很简单了：</p>
@@ -368,7 +368,7 @@ var themeMenus = {};
   
     <a href="/video-compassion-slider/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">我开源了一个视频滑动对比组件</div>
+      <div class="article-nav-title">视频&amp;图片滑动对比组件</div>
     </a>
   
 </nav>
