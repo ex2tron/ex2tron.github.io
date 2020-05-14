@@ -90,9 +90,9 @@
       <category term="Build篇" scheme="http://www.codec.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="小程序" scheme="http://www.codec.wang/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
       <category term="微信" scheme="http://www.codec.wang/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="小程序" scheme="http://www.codec.wang/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
       <category term="问卷" scheme="http://www.codec.wang/tags/%E9%97%AE%E5%8D%B7/"/>
     
@@ -123,9 +123,9 @@
       <category term="Build篇" scheme="http://www.codec.wang/categories/Build%E7%AF%87/"/>
     
     
-      <category term="小程序" scheme="http://www.codec.wang/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
       <category term="微信" scheme="http://www.codec.wang/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="小程序" scheme="http://www.codec.wang/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
       <category term="问卷" scheme="http://www.codec.wang/tags/%E9%97%AE%E5%8D%B7/"/>
     
@@ -1586,9 +1586,9 @@
       <category term="利器篇" scheme="http://www.codec.wang/categories/%E5%88%A9%E5%99%A8%E7%AF%87/"/>
     
     
-      <category term="MySQL" scheme="http://www.codec.wang/tags/MySQL/"/>
-    
       <category term="MyCLI" scheme="http://www.codec.wang/tags/MyCLI/"/>
+    
+      <category term="MySQL" scheme="http://www.codec.wang/tags/MySQL/"/>
     
   </entry>
   
@@ -1721,6 +1721,29 @@
     
     
       <category term="命名" scheme="http://www.codec.wang/tags/%E5%91%BD%E5%90%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CR与LF(操作系统“下一行”的不同)</title>
+    <link href="http://www.codec.wang/cr-lf/"/>
+    <id>http://www.codec.wang/cr-lf/</id>
+    <published>2014-10-23T15:31:24.000Z</published>
+    <updated>2020-05-14T09:32:13.464Z</updated>
+    
+    <content type="html"><![CDATA[<p>在最初的电报通讯时代，文本每读取到一行的末尾，便需要跳转至下一行（换行），并回到开头（回车）两个动作。<a id="more"></a>因此ASCII字符中便有了<code>LF：Line Feed(0x0A)</code>，<code>CR：Carriage Return(0x0D)</code>。</p><p>当然，并不需要两个字符来表示下一行。因此在设计操作系统OS时就产生了分歧。为节省资源，有的设计者选择用一个字符表示。因为这个选择的不同，导致了不同OS的下一行表示符的不同。</p><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-os-logo.jpg_webp"><img class="image" src="http://blog.codec.wang/cr-lf-os-logo.jpg" alt=""></picture></p><p>如下图，参考<a href="https://en.wikipedia.org/wiki/Newline#Representations" target="_blank" rel="noopener">维基百科</a>，Mac OS 2001年之前采用的是CR，之后用的是LF，Unix/Linux采用LF，而Windows采用的是CRLF。</p><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-wikipedia.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-wikipedia.png" alt=""></picture></p><h2 id="CR-Carriage-Return"><a href="#CR-Carriage-Return" class="headerlink" title="CR: Carriage Return"></a>CR: Carriage Return</h2><p>在ASCII码中代表回车，符号：\r（return），十六进制码：0x0D（十进制码13，二进制码0000 1101）。一个字节来表示下一行。</p><h2 id="LF-Line-Feed"><a href="#LF-Line-Feed" class="headerlink" title="LF: Line Feed"></a>LF: Line Feed</h2><p>在ASCII码中代表换行符，符号：\n（newline），十六进制码：0x0A（十进制码10，二进制码0000 1010）。一个字节来表示下一行。</p><h2 id="CRLF"><a href="#CRLF" class="headerlink" title="CRLF"></a>CRLF</h2><p>Windows和Dos系统采用回车+换行两个字节来表示下一行。</p><h2 id="互相转换"><a href="#互相转换" class="headerlink" title="互相转换"></a>互相转换</h2><p>那在程序编写中，有什么用呢？通常在编写跨平台的应用程序时，一个平台使用另外一个平台的文本文件，有可能会出现一些问题。一些文本/代码编辑器会自带转换操作，例如优秀的跨平台编辑器Notepad++，可以通过菜单栏“视图”-&gt;“显示行尾符”来查看一行末尾的字符：</p><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-1.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-1.png" alt=""></picture></p><p>打开后结果如下，因为是在Windows平台下，所以行末是CRLF：</p><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-2.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-2.png" alt=""></picture></p><p>我们可以通过“编辑”-&gt;“档案格式转换”来进行三种平台的换行符格式切换：</p><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-3.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-3.png" alt=""></picture></p><p>例如转换为UNIX格式后，行末尾显示为LF：</p><p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-4.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-4.png" alt=""></picture></p><p>Linux系统也有自己的转换命令，有兴趣者可以自行查阅资料。</p><p>仅为个人总结，如有问题建议，请反馈与我，谢谢！</p><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul><li><a href="https://en.wikipedia.org/wiki/Newline" target="_blank" rel="noopener">wikipedia newline</a></li><li><a href="https://zh.wikipedia.org/wiki/%E5%9B%9E%E8%BB%8A%E9%8D%B5" target="_blank" rel="noopener">wikipedia cr</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在最初的电报通讯时代，文本每读取到一行的末尾，便需要跳转至下一行（换行），并回到开头（回车）两个动作。
+    
+    </summary>
+    
+    
+      <category term="Build篇" scheme="http://www.codec.wang/categories/Build%E7%AF%87/"/>
+    
+    
+      <category term="换行符;回车;换行" scheme="http://www.codec.wang/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6-%E5%9B%9E%E8%BD%A6-%E6%8D%A2%E8%A1%8C/"/>
     
   </entry>
   
