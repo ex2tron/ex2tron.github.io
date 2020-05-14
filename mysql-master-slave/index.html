@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【mysql】主从服务器同步 |
+    
+    Codec42
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="在进入正题之前，先来看下理论知识：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【MySQL】主从服务器同步">
+<meta property="og:url" content="http://www.codec.wang/mysql-master-slave/index.html">
+<meta property="og:site_name" content="Codec42">
+<meta property="og:description" content="在进入正题之前，先来看下理论知识：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/mysql-ms-cover.jpg_webp">
+<meta property="article:published_time" content="2017-07-29T08:20:15.000Z">
+<meta property="article:modified_time" content="2020-05-14T07:58:03.307Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/mysql-ms-cover.jpg_webp">
+  
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
+            
+          </h1>
+
+          
+            <div class="site-description">保持对技术的热爱！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【MySQL】主从服务器同步" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/mysql-ms-cover.jpg_webp" target="_blank" rel="gallery_cka6hdxgt0017hgtn9tlf3e66 noopener">
+        <img src="http://blog.codec.wang/mysql-ms-cover.jpg_webp" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/mysql-ms-cover.jpg_webp" target="_blank" rel="gallery_cka6hdxgt0017hgtn9tlf3e66 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-cover.jpg_webp">
+        <img src="http://blog.codec.wang/mysql-ms-cover.jpg" itemprop="image">
+      </picture>
+    <!-- </a> -->
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【MySQL】主从服务器同步
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/mysql-master-slave/" class="article-date">
+	  <time datetime="2017-07-29T08:20:15.000Z" itemprop="datePublished">July 29, 2017</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在进入正题之前，先来看下理论知识：<a id="more"></a></p>
+<p>多台服务器之间进行数据同步，是构建大型应用程序的基础。这样做有着很多优势，比如：</p>
+<ul>
+<li>在从服务器上进行数据备份，确保数据安全；</li>
+<li>主服务器出现问题时，切换到从服务器；</li>
+<li>在从服务器上执行查询操作，降低主服务器的压力等等。</li>
+</ul>
+<h2 id="主从同步简要原理"><a href="#主从同步简要原理" class="headerlink" title="主从同步简要原理"></a>主从同步简要原理</h2><p>MySQL主从同步是通过二进制日志来实现的。具体来说，主机会将数据更改操作都记录在二进制日志中 。然后，从机 会每隔一定时间检测这个主机二进制文件的变化，如有更新，从机就会更新日志中最新的一条。</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/understand-mysql-master-slave.jpg_webp"><img class="image" src="http://blog.codec.wang/understand-mysql-master-slave.jpg" alt=""></picture></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>我两台电脑的系统配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主机/master：</span></span><br><span class="line">Windows 10/WAMP 3.0.6/MySQL 5.7.14/IP：192.168.1.102</span><br><span class="line"><span class="comment"># 从机/slave：</span></span><br><span class="line">Ubuntu 16.04/LAMP/MySQL 5.7.19/IP：192.168.1.112</span><br></pre></td></tr></table></figure>
+
+<p>主从机的MySQL版本和系统时间要尽量保持一致，不一致的话，主机版本要低于从机版本。</p>
+<h3 id="主机配置"><a href="#主机配置" class="headerlink" title="主机配置"></a>主机配置</h3><p>创建一个同步账号，并赋予<code>replication slave</code>的权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grant replication slave on *.* to <span class="string">'rep_slave'</span>@<span class="string">'192.168.1.%'</span> identified by <span class="string">'repslavepwd'</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>更改主机<code>my.ini</code>配置文件：</p>
+<p>因为我的主机是Windows系统+WAMP环境，所以需要修改<code>my.ini</code>配置文件，我的路径是：<code>D:\wamp64\bin\mysql\mysql5.7.14\my.ini</code>。打开配置文件，找到<code>[mysqld]</code>配置节点，添加如下两项配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">; 数据库唯一ID，主从机不能重复</span><br><span class="line">server-id = 1</span><br><span class="line">; 指定二进制日志存放路径，只有文件名的话，默认存放在mysql的data目录下</span><br><span class="line"><span class="built_in">log</span>-bin = mysql-bin</span><br></pre></td></tr></table></figure>
+
+<p>除去上面两必备项之外，还有一些拓展可选配置，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">; 以下为可选配置项</span><br><span class="line">; 需要同步的数据库名，如果有多个，按此格式多写几行即可，不指定的话，默认全部同步</span><br><span class="line">; binlog-do-db = database</span><br><span class="line">; 不需要备份的数据库名</span><br><span class="line">; binlog-ignore-db = database</span><br></pre></td></tr></table></figure>
+
+<p>重启MySQL服务：</p>
+<p>对于WAMP，可以在右下角左键单击，选择MySQL重启：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-master-slave-lamp-restart.jpg_webp"><img class="image" src="http://blog.codec.wang/mysql-master-slave-lamp-restart.jpg" alt=""></picture></p>
+<p>也可以用命令行重启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; net stop wampmysqld64</span><br><span class="line">&gt; net start wampmysqld64</span><br></pre></td></tr></table></figure>
+
+<p>查看主机状态：</p>
+<p>得到log-bin日志的文件名和偏移量，这两个值在后面从机配置中会用到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; show master status;</span><br></pre></td></tr></table></figure>
+
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-show-master-status.jpg_webp"><img class="image" src="http://blog.codec.wang/mysql-ms-show-master-status.jpg" alt=""></picture></p>
+<h3 id="从机配置"><a href="#从机配置" class="headerlink" title="从机配置"></a>从机配置</h3><p>修改<code>my.cnf</code>配置文件。我的从机是Ubuntu系统+LAMP环境，默认的完整配置文件是: <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>，并且是只读文件，所以可以将这个文件拷贝一份，然后修改此文件。同样找到<code>[mysqld]</code>配置节点，添加<code>server-id</code>的配置项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="comment"># 数据库唯一ID，主从机不能重复</span></span><br><span class="line">server-id = 2</span><br></pre></td></tr></table></figure>
+
+<p>然后，将此文件拷贝到<code>/etc/mysql</code>下，并命名为<code>my.cnf</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cp /home/ex2tron/Desktop/mysqld.cnf /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p>重启mysql服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service mysql restart</span><br></pre></td></tr></table></figure>
+
+<p>配置同步信息：</p>
+<p>这里需要主机的相关信息，用户名和密码就是之前主机上授权的那个用户名密码，log_file和log_pos是之前的日志名和偏移量。记得配置之前先stop slave：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; stop slave;</span><br><span class="line">&gt; change master to master_host = <span class="string">'192.168.1.102'</span>,</span><br><span class="line">	master_user = <span class="string">'rep_slave'</span>,</span><br><span class="line">	master_password = <span class="string">'repslavepwd'</span>,</span><br><span class="line">	master_log_file = <span class="string">'mysql-bin.000002'</span>,</span><br><span class="line">	master_log_pos = 3046;</span><br><span class="line">&gt; start slave;</span><br></pre></td></tr></table></figure>
+
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-config-slave.png_webp"><img class="image" src="http://blog.codec.wang/mysql-ms-config-slave.png" alt=""></picture></p>
+<p>显示从机状态：</p>
+<p>上述配置完成后，输入<code>show slave status\G；</code>，如果出现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+
+<p>则说明一切正常，配置完成。</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-show-slave-status.png_webp"><img class="image" src="http://blog.codec.wang/mysql-ms-show-slave-status.png" alt=""></picture></p>
+<p>但如果出现类似下图这种情况，则说明存在问题：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-slave-connecting.png_webp"><img class="image" src="http://blog.codec.wang/mysql-ms-slave-connecting.png" alt=""></picture></p>
+<p>这个时候，需要一步步从以下几个方面检查：</p>
+<ol>
+<li>防火墙是否开放3306端口？</li>
+<li>配置时密码是否正确？</li>
+<li>配置时偏移量log_pos是否正确？</li>
+<li>网络是否可以ping通？</li>
+</ol>
+<p>一般都会在这里出现问题，我是因为防火墙的原因。按照这几条检查下来，应该都能解决。</p>
+<p>配置没问题的话，可以在主机上输入<code>show processlist\G;</code>来查看主从机连接：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-show-processlist.jpg_webp"><img class="image" src="http://blog.codec.wang/mysql-ms-show-processlist.jpg" alt=""></picture></p>
+<h3 id="同步测试"><a href="#同步测试" class="headerlink" title="同步测试"></a>同步测试</h3><ol>
+<li>在主机上通过<code>create database testsync;</code>创建一个数据库</li>
+<li>从机上<code>show databases;</code>查看，如果出现<code>testsync</code>则测试通过：</li>
+</ol>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/mysql-ms-slave-connected.png_webp"><img class="image" src="http://blog.codec.wang/mysql-ms-slave-connected.png" alt=""></picture></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li>源码：<a href="https://github.com/ex2tron/BlogCode/blob/master/mysql_master_slave_sync.sh" target="_blank" rel="noopener">mysql_master_slave_sync.sh</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/tools-mycli/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【利器】MyCLI：自动补全和语法高亮的MySQL命令行工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/qt-opencv-installation-guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Qt+OpenCV环境搭建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主从同步简要原理"><span class="nav-number">1.</span> <span class="nav-text">主从同步简要原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">2.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主机配置"><span class="nav-number">2.1.</span> <span class="nav-text">主机配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从机配置"><span class="nav-number">2.2.</span> <span class="nav-text">从机配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步测试"><span class="nav-number">2.3.</span> <span class="nav-text">同步测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              <!-- 个人技术文章分享 | 2020 -->
+              个人技术文章分享 | 自2020.1.1起统计: 
+                 
+                   <span id="busuanzi_container_site_uv">
+                    访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                    
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
