@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    编程命名法 |
+    
+    Codec42
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="我们都知道编程过程中，需要遵守一定的编程规范。对于变量的命名规范，有些是编程语言本身的规则，如C#中变量名中不能包含空格、小数点等等；有些则是开发人员或企业的编程风格或制约。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程命名法">
+<meta property="og:url" content="http://www.codec.wang/naming-convention/index.html">
+<meta property="og:site_name" content="Codec42">
+<meta property="og:description" content="我们都知道编程过程中，需要遵守一定的编程规范。对于变量的命名规范，有些是编程语言本身的规则，如C#中变量名中不能包含空格、小数点等等；有些则是开发人员或企业的编程风格或制约。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/naming-method-cover.png_webp">
+<meta property="article:published_time" content="2015-03-31T08:20:15.000Z">
+<meta property="article:modified_time" content="2020-05-14T08:13:08.006Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="命名">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/naming-method-cover.png_webp">
+  
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
+            
+          </h1>
+
+          
+            <div class="site-description">保持对技术的热爱！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-编程命名法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/naming-method-cover.png_webp" target="_blank" rel="gallery_cka6hy27l001puwtn2nnv86od noopener">
+        <img src="http://blog.codec.wang/naming-method-cover.png_webp" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/naming-method-cover.png_webp" target="_blank" rel="gallery_cka6hy27l001puwtn2nnv86od noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/naming-method-cover.png_webp">
+        <img src="http://blog.codec.wang/naming-method-cover.png" itemprop="image">
+      </picture>
+    <!-- </a> -->
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      编程命名法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/naming-convention/" class="article-date">
+	  <time datetime="2015-03-31T08:20:15.000Z" itemprop="datePublished">March 31, 2015</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们都知道编程过程中，需要遵守一定的编程规范。对于变量的命名规范，有些是编程语言本身的规则，如C#中变量名中不能包含空格、小数点等等；有些则是开发人员或企业的编程风格或制约。<a id="more"></a></p>
+<p>目前形成的最为常用的变量命名规约主要有三种：</p>
+<ul>
+<li>驼峰式大小写/小驼峰命名法: Lower Camel Case</li>
+<li>Pascal命名法/大驼峰命名法: Pascal Case /Upper Camel Case</li>
+<li>匈牙利命名法: Hungarian</li>
+</ul>
+<h2 id="驼峰命名法-Camel-Case"><a href="#驼峰命名法-Camel-Case" class="headerlink" title="驼峰命名法(Camel Case)"></a>驼峰命名法(Camel Case)</h2><p>驼峰式大小写来自Perl语言。<strong>组成变量名的第一个单词以小写字母开头，其余单词都以大写字母开头，单词之间不以空格分隔或连接号（-）下划线（_）连接。</strong>如: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gender</span><br><span class="line">myName</span><br><span class="line">studentInfoNumber</span><br></pre></td></tr></table></figure>
+
+<p>因为这些高低起伏的字符很像骆驼的侧影，所以称为小驼峰命名法。</p>
+<p>以前的命名规约常使用下划线作为变量名中各个单词之间的分隔符。如<code>input_student_name()</code>、<code>employee_counter</code>。这种形式目前在嵌入式/Unix等C编程环境下，还较为普遍。但现在已经淘汰。</p>
+<h2 id="Pascal命名法-Pascal-Case"><a href="#Pascal命名法-Pascal-Case" class="headerlink" title="Pascal命名法(Pascal Case)"></a><strong>Pascal命名法(Pascal Case)</strong></h2><p>又称大驼峰式命名法，源自于Pascal语言的命名惯例。<strong>与驼峰命名法类似，只不过组成变量名的所有单词首字母都大写。</strong>如: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Gender</span><br><span class="line">MyName</span><br><span class="line">StudentInfoNumber</span><br></pre></td></tr></table></figure>
+<p>这样开发人员可以很明确的看出变量的字母组合。</p>
+<h2 id="三、匈牙利命名法-Hungarian"><a href="#三、匈牙利命名法-Hungarian" class="headerlink" title="三、匈牙利命名法(Hungarian)"></a>三、<strong>匈牙利命名法(Hungarian)</strong></h2><p>这种方法要求在每个变量名的前面加上表示变量数据类型或用途的小写字母。</p>
+<p>当然，这种方法在OOP面向对象编程中基本不被采用，因为类似<code>C#/Java</code>中有上百种类型，很容易混淆。但可以了解一下，它包括系统匈牙利命名法和匈牙利应用命名法：</p>
+<ul>
+<li>系统匈牙利命名法中，前缀字母说明变量的数据类型。如<code>iGender</code>、<code>strMyName</code>，i代表int型，str代表string型。</li>
+<li>匈牙利应用命名法中，前缀说明变量用途。如<code>pCircleSize</code>，p代表指针。</li>
+</ul>
+<h2 id="四、C-推荐命名法"><a href="#四、C-推荐命名法" class="headerlink" title="四、C#推荐命名法"></a>四、<strong>C#推荐命名法</strong></h2><ul>
+<li>类名、类的属性和方法采用Pascal命名法</li>
+<li>变量、对象采用驼峰命名法</li>
+</ul>
+<p>仅为个人总结，如有问题建议，请反馈与我，谢谢！</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%BD%E5%90%8D/" rel="tag">命名</a></li></ul>
+
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/set-up-your-own-git-server/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【云服务】搭建自己的Github/Git服务器
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#驼峰命名法-Camel-Case"><span class="nav-number">1.</span> <span class="nav-text">驼峰命名法(Camel Case)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pascal命名法-Pascal-Case"><span class="nav-number">2.</span> <span class="nav-text">Pascal命名法(Pascal Case)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、匈牙利命名法-Hungarian"><span class="nav-number">3.</span> <span class="nav-text">三、匈牙利命名法(Hungarian)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、C-推荐命名法"><span class="nav-number">4.</span> <span class="nav-text">四、C#推荐命名法</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              <!-- 个人技术文章分享 | 2020 -->
+              个人技术文章分享 | 自2020.1.1起统计: 
+                 
+                   <span id="busuanzi_container_site_uv">
+                    访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                    
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
