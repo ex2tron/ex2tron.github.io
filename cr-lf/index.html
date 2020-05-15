@@ -24,16 +24,16 @@
   
   
   
-  <meta name="description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。">
+  <meta name="description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。下面这个图还是挺形象的：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CR与LF(操作系统“下一行”的不同)">
 <meta property="og:url" content="http://www.codec.wang/cr-lf/index.html">
 <meta property="og:site_name" content="Codec42">
-<meta property="og:description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。">
+<meta property="og:description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。下面这个图还是挺形象的：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/cr-lf-cover.png_webp">
 <meta property="article:published_time" content="2014-10-23T15:31:24.000Z">
-<meta property="article:modified_time" content="2020-05-15T11:37:22.458Z">
+<meta property="article:modified_time" content="2020-05-15T11:46:46.638Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="换行符">
 <meta property="article:tag" content="回车">
@@ -189,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka84st2y0001xatn1kgua3zy noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka855bvc0003l0tn9sdjf9mx noopener">
         <img src="http://blog.codec.wang/cr-lf-cover.png_webp" itemprop="image">
       </a>
     
@@ -203,7 +203,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka84st2y0001xatn1kgua3zy noopener"> -->
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka855bvc0003l0tn9sdjf9mx noopener"> -->
       <picture class="article-gallery-img">
         <source type="image/webp" srcset="http://blog.codec.wang/cr-lf-cover.png_webp">
         <img src="http://blog.codec.wang/cr-lf-cover.png" itemprop="image">
@@ -239,9 +239,9 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。<a id="more"></a></p>
+        <p>在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。下面这个图还是挺形象的：<a id="more"></a></p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-typewriter.gif_webp"><img class="image" src="http://blog.codec.wang/cr-lf-typewriter.gif" alt=""></picture></p>
-<p>因此ASCII字符中便有了<code>LF：Line Feed(0x0A)</code>，<code>CR：Carriage Return(0x0D)</code>。但现代计算机并不需要两个字符来表示下一行，因此设计者在设计操作系统OS时就产生了分歧。为节省资源，有的设计者选择用一个字符表示。因为这个选择的不同，导致了不同OS的下一行表示符的不同。</p>
+<p>因此ASCII字符中便有了LF：<code>Line Feed(0x0A)</code>，CR：<code>Carriage Return(0x0D)</code>。但现代计算机并不需要两个字符来表示下一行，因此在设计操作系统时大家就产生了分歧。为节省资源，有的设计者选择用一个字符表示。因为这个选择的不同，导致了不同OS的换行符的不同。</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-os-logo.jpg_webp"><img class="image" src="http://blog.codec.wang/cr-lf-os-logo.jpg" alt=""></picture></p>
 <p>如下图，参考<a href="https://en.wikipedia.org/wiki/Newline#Representations" target="_blank" rel="noopener">维基百科</a>，Mac OS 2001年之前采用的是CR，之后用的是LF，Unix/Linux采用LF，而Windows采用的是CRLF。</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-wikipedia.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-wikipedia.png" alt=""></picture></p>
