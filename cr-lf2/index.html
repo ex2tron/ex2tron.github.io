@@ -24,16 +24,16 @@
   
   
   
-  <meta name="description" content="14年写过一篇CR与LF(操作系统“下一行”的不同)，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题。解决之余纪录一下。">
+  <meta name="description" content="14年写过一篇CR与LF(操作系统“下一行”的不同)，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题，解决之余纪录一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="再谈CR&amp;LF：Git工程配置">
 <meta property="og:url" content="http://www.codec.wang/cr-lf2/index.html">
 <meta property="og:site_name" content="Codec42">
-<meta property="og:description" content="14年写过一篇CR与LF(操作系统“下一行”的不同)，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题。解决之余纪录一下。">
+<meta property="og:description" content="14年写过一篇CR与LF(操作系统“下一行”的不同)，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题，解决之余纪录一下。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/cr-lf-typewriter.gif_webp">
 <meta property="article:published_time" content="2020-05-14T11:58:28.000Z">
-<meta property="article:modified_time" content="2020-05-15T11:54:39.664Z">
+<meta property="article:modified_time" content="2020-05-15T11:59:24.717Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="换行符">
 <meta property="article:tag" content="回车">
@@ -189,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-typewriter.gif_webp" target="_blank" rel="gallery_cka859qcd001ovhtndego8me7 noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-typewriter.gif_webp" target="_blank" rel="gallery_cka85gnoh001k95tn7f4p0gto noopener">
         <img src="http://blog.codec.wang/cr-lf-typewriter.gif_webp" itemprop="image">
       </a>
     
@@ -203,7 +203,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-typewriter.gif_webp" target="_blank" rel="gallery_cka859qcd001ovhtndego8me7 noopener"> -->
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-typewriter.gif_webp" target="_blank" rel="gallery_cka85gnoh001k95tn7f4p0gto noopener"> -->
       <picture class="article-gallery-img">
         <source type="image/webp" srcset="http://blog.codec.wang/cr-lf-typewriter.gif_webp">
         <img src="http://blog.codec.wang/cr-lf-typewriter.gif" itemprop="image">
@@ -239,8 +239,8 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>14年写过一篇<a href="http://codec.wang/cr-lf/" target="_blank" rel="noopener">CR与LF(操作系统“下一行”的不同)</a>，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题。解决之余纪录一下。<a id="more"></a></p>
-<h2 id="Git默认策略"><a href="#Git默认策略" class="headerlink" title="Git默认策略"></a>Git默认策略</h2><p>默认情况下，git版本库本身采用LF，为了解决换行符问题，git检出代码时会按照操作系统自动适配：MAC/Linux就是LF，Windows会自动转为CRLF，从暂存区提交到版本库时，再统一转为LF。</p>
+        <p>14年写过一篇<a href="http://codec.wang/cr-lf/" target="_blank" rel="noopener">CR与LF(操作系统“下一行”的不同)</a>，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题，解决之余纪录一下。<a id="more"></a></p>
+<h2 id="Git默认策略"><a href="#Git默认策略" class="headerlink" title="Git默认策略"></a>Git默认策略</h2><p>默认情况下，git版本库本身采用LF，为了解决换行符问题，git检出代码时会按照操作系统自动适配：MAC/Linux就是LF，Windows会自动转为CRLF，从暂存区提交到分支时，再统一转为LF。</p>
 <p>所以同一个文件在不同OS上大小也会不同，比如:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.txt文件有一个换行符</span></span><br><span class="line"><span class="comment"># Mac: 6 bytes</span></span><br><span class="line">-rw-r--r-- 1 ex2tron 108570 6  5 15 09:59 test.txt</span><br><span class="line"><span class="comment"># Windows: 7 bytes</span></span><br><span class="line">-rw-r--r-- 1 ex2tron 197609 7  5月 15 09:58 test.txt</span><br></pre></td></tr></table></figure>
 
