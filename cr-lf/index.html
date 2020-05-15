@@ -24,16 +24,16 @@
   
   
   
-  <meta name="description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要跳转至下一行（换行），并回到开头（回车）两个动作。">
+  <meta name="description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CR与LF(操作系统“下一行”的不同)">
 <meta property="og:url" content="http://www.codec.wang/cr-lf/index.html">
 <meta property="og:site_name" content="Codec42">
-<meta property="og:description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要跳转至下一行（换行），并回到开头（回车）两个动作。">
+<meta property="og:description" content="在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/cr-lf-cover.png_webp">
 <meta property="article:published_time" content="2014-10-23T15:31:24.000Z">
-<meta property="article:modified_time" content="2020-05-14T09:33:41.307Z">
+<meta property="article:modified_time" content="2020-05-15T11:37:22.458Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="换行符">
 <meta property="article:tag" content="回车">
@@ -189,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka6ksn5a00042ytn7semcvut noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka84st2y0001xatn1kgua3zy noopener">
         <img src="http://blog.codec.wang/cr-lf-cover.png_webp" itemprop="image">
       </a>
     
@@ -203,7 +203,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka6ksn5a00042ytn7semcvut noopener"> -->
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-cover.png_webp" target="_blank" rel="gallery_cka84st2y0001xatn1kgua3zy noopener"> -->
       <picture class="article-gallery-img">
         <source type="image/webp" srcset="http://blog.codec.wang/cr-lf-cover.png_webp">
         <img src="http://blog.codec.wang/cr-lf-cover.png" itemprop="image">
@@ -239,8 +239,9 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在最初的电报通讯时代，文本每读取到一行的末尾，便需要跳转至下一行（换行），并回到开头（回车）两个动作。<a id="more"></a>因此ASCII字符中便有了<code>LF：Line Feed(0x0A)</code>，<code>CR：Carriage Return(0x0D)</code>。</p>
-<p>当然，并不需要两个字符来表示下一行。因此在设计操作系统OS时就产生了分歧。为节省资源，有的设计者选择用一个字符表示。因为这个选择的不同，导致了不同OS的下一行表示符的不同。</p>
+        <p>在最初的电报通讯时代，文本每读取到一行的末尾，便需要将纸张向下滚动一行（换行），并将打印头从最右边回到左边开头（回车）。<a id="more"></a></p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-typewriter.gif_webp"><img class="image" src="http://blog.codec.wang/cr-lf-typewriter.gif" alt=""></picture></p>
+<p>因此ASCII字符中便有了<code>LF：Line Feed(0x0A)</code>，<code>CR：Carriage Return(0x0D)</code>。但现代计算机并不需要两个字符来表示下一行，因此设计者在设计操作系统OS时就产生了分歧。为节省资源，有的设计者选择用一个字符表示。因为这个选择的不同，导致了不同OS的下一行表示符的不同。</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-os-logo.jpg_webp"><img class="image" src="http://blog.codec.wang/cr-lf-os-logo.jpg" alt=""></picture></p>
 <p>如下图，参考<a href="https://en.wikipedia.org/wiki/Newline#Representations" target="_blank" rel="noopener">维基百科</a>，Mac OS 2001年之前采用的是CR，之后用的是LF，Unix/Linux采用LF，而Windows采用的是CRLF。</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-wikipedia.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-wikipedia.png" alt=""></picture></p>
@@ -249,7 +250,7 @@ var themeMenus = {};
 <h2 id="CRLF"><a href="#CRLF" class="headerlink" title="CRLF"></a>CRLF</h2><p>Windows和Dos系统采用回车+换行两个字节来表示下一行。</p>
 <h2 id="互相转换"><a href="#互相转换" class="headerlink" title="互相转换"></a>互相转换</h2><p>那在程序编写中，有什么用呢？通常在编写跨平台的应用程序时，一个平台使用另外一个平台的文本文件，有可能会出现一些问题。一些文本/代码编辑器会自带转换操作，例如优秀的跨平台编辑器Notepad++，可以通过菜单栏“视图”-&gt;“显示行尾符”来查看一行末尾的字符：</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-1.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-1.png" alt=""></picture></p>
-<p>打开后结果如下，因为是在Windows平台下，所以行末是CRLF：</p>
+<p>打开后结果如下，因 为是在Windows平台下，所以行末是CRLF：</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-2.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-2.png" alt=""></picture></p>
 <p>我们可以通过“编辑”-&gt;“档案格式转换”来进行三种平台的换行符格式切换：</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf-notepad%2B%2B-3.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf-notepad%2B%2B-3.png" alt=""></picture></p>
@@ -258,8 +259,9 @@ var themeMenus = {};
 <p>Linux系统也有自己的转换命令，有兴趣者可以自行查阅资料。</p>
 <p>仅为个人总结，如有问题建议，请反馈与我，谢谢！</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Newline" target="_blank" rel="noopener">wikipedia newline</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/%E5%9B%9E%E8%BB%8A%E9%8D%B5" target="_blank" rel="noopener">wikipedia cr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Newline" target="_blank" rel="noopener">newline</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%9B%9E%E8%BB%8A%E9%8D%B5" target="_blank" rel="noopener">cr</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%8F%9B%E8%A1%8C" target="_blank" rel="noopener">换行</a></li>
 </ul>
 
       

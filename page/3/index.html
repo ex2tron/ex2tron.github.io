@@ -176,6 +176,85 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-OpenCV教程15：直方图"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!--  -->
+
+<!-- TODO by codec.wang -->
+
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/opencv-python-histograms/">Python+OpenCV教程15：直方图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/opencv-python-histograms/" class="article-date">
+	  <time datetime="2017-12-23T09:48:30.000Z" itemprop="datePublished">December 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <!-- TODO by codec.wang -->
+            <a href="/opencv-python-histograms/">
+              <picture>
+                <source type="image/webp" srcset="http://blog.codec.wang/cv2_understand_histogram.jpg_webp">
+                <img src="http://blog.codec.wang/cv2_understand_histogram.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
+              </picture>
+            </a>
+          </div>
+          <div class="entry-summary">
+          学习计算并绘制直方图，直方图均衡化等。图片等可到源码处下载。
+
+目标
+计算并绘制直方图
+（自适应）直方图均衡化
+OpenCV函数：cv2.calcHist(), cv2.equalizeHist()
+
+教程啥叫直方图直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的有多少个……直方图是一种分析图片的手段：
+
+在计算直方图之前，有几个术语先来了解一下：
+...
+
+        
+          <p class="article-more-link">
+            <a href="/opencv-python-histograms/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/" rel="tag">直方图</a></li></ul>
+
+
+      
+                  
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python-OpenCV教程14：轮廓特征"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     <!--  -->
@@ -855,84 +934,6 @@ OpenCV函数：cv2.blur(), cv2.GaussianBlur(), cv2.medianBlur(), cv2.bilateralFi
 <!-- Table of Contents -->
 
   
-    <article id="post-Python-OpenCV教程9：图像混合"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    <!--  -->
-
-<!-- TODO by codec.wang -->
-
-
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/opencv-python-image-blending/">Python+OpenCV教程9：图像混合</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/opencv-python-image-blending/" class="article-date">
-	  <time datetime="2017-12-10T06:13:10.000Z" itemprop="datePublished">December 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <!-- TODO by codec.wang -->
-            <a href="/opencv-python-image-blending/">
-              <picture>
-                <source type="image/webp" srcset="http://blog.codec.wang/cv2_image_blending_6_4.jpg_webp">
-                <img src="http://blog.codec.wang/cv2_image_blending_6_4.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
-              </picture>
-            </a>
-          </div>
-          <div class="entry-summary">
-          学习图片间的数学运算，图像混合。图片等可到源码处下载。
-
-目标
-图片间的数学运算，如相加、按位运算等
-OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
-
-教程
-首先恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油(ง •_•)ง
-
-图片相加要叠加两张图片，可以用cv2.add()函数，相加两幅图片的...
-
-        
-          <p class="article-more-link">
-            <a href="/opencv-python-image-blending/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/" rel="tag">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/" rel="tag">图像混合</a></li></ul>
-
-
-      
-                  
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -1042,6 +1043,27 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
 
             
               <div class="widget-entry-thumbnail">
+                <a href="/cr-lf2/" title="">
+                  <!-- TODO by codec.wang -->
+                  <picture>
+                    <source type="image/webp" srcset="http://blog.codec.wang/cr-lf-typewriter.gif_webp">
+                    <img width="50" height="50" src="http://blog.codec.wang/cr-lf-typewriter.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
+                  </picture>
+                </a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/cr-lf2/">再谈CR&amp;LF</a></h6>
+              <span>May 14, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
                 <a href="/mini-program-architecture-3/" title="">
                   <!-- TODO by codec.wang -->
                   <picture>
@@ -1143,27 +1165,6 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/mighty-py-command-line-arguments/" title="">
-                  <!-- TODO by codec.wang -->
-                  <picture>
-                    <source type="image/webp" srcset="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp">
-                    <img width="50" height="50" src="http://blog.codec.wang/depth_python_argparse_cover.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
-                  </picture>
-                </a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/mighty-py-command-line-arguments/">MightyPy：处理命令行参数和选项的几种方式</a></h6>
-              <span>May 3, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1173,7 +1174,7 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build%E7%AF%87/">Build篇</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%A9%E5%99%A8%E7%AF%87/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a><span class="category-list-count">32</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build%E7%AF%87/">Build篇</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%A9%E5%99%A8%E7%AF%87/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a><span class="category-list-count">32</span></li></ul>
     </div>
   </div>
 
@@ -1183,7 +1184,7 @@ OpenCV函数：cv2.add(), cv2.addWeighted(), cv2.bitwise_and()
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15.71px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.43px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15.71px;">Github</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 11.43px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 18.57px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.43px;">PyQt</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.43px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.43px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/argv/" style="font-size: 10px;">argv</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/lstrip/" style="font-size: 10px;">lstrip</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/rstrip/" style="font-size: 10px;">rstrip</a> <a href="/tags/strip/" style="font-size: 10px;">strip</a> <a href="/tags/%E4%B8%83%E7%89%9B/" style="font-size: 10px;">七牛</a> <a href="/tags/%E4%B8%B2%E5%8F%A3/" style="font-size: 10px;">串口</a> <a href="/tags/%E4%BA%AE%E5%BA%A6/" style="font-size: 10px;">亮度</a> <a href="/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">几何变换</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 10px;">凸包</a> <a href="/tags/%E5%8D%B7%E7%A7%AF/" style="font-size: 10px;">卷积</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" style="font-size: 10px;">命令行参数</a> <a href="/tags/%E5%91%BD%E5%90%8D/" style="font-size: 10px;">命名</a> <a href="/tags/%E5%93%81%E7%89%8C%E6%BC%86/" style="font-size: 10px;">品牌漆</a> <a href="/tags/%E5%9B%9E%E8%BD%A6/" style="font-size: 10px;">回车</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">图像变换</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 17.14px;">图像处理</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">图像对比</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/" style="font-size: 10px;">图像混合</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 10px;">图床</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/" style="font-size: 10px;">对比度</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 12.86px;">小程序</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">工程架构</a> <a href="/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/" style="font-size: 10px;">形态学</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 11.43px;">微信</a> <a href="/tags/%E6%8D%A2%E8%A1%8C/" style="font-size: 10px;">换行</a> <a href="/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" style="font-size: 10px;">换行符</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 11.43px;">树莓派</a> <a href="/tags/%E6%A2%AF%E5%BA%A6/" style="font-size: 10px;">梯度</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" style="font-size: 10px;">模板匹配</a> <a href="/tags/%E6%A8%A1%E7%B3%8A/" style="font-size: 10px;">模糊</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/" style="font-size: 10px;">滑动条</a> <a href="/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/" style="font-size: 10px;">电影台词</a> <a href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/" style="font-size: 10px;">直方图</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 11.43px;">绘图</a> <a href="/tags/%E8%85%90%E8%9A%80/" style="font-size: 10px;">腐蚀</a> <a href="/tags/%E8%86%A8%E8%83%80/" style="font-size: 10px;">膨胀</a> <a href="/tags/%E8%A7%86%E9%A2%91%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">视频对比</a> <a href="/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道检测</a> <a href="/tags/%E8%BD%AE%E5%BB%93/" style="font-size: 11.43px;">轮廓</a> <a href="/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/%E8%BE%B9%E7%BC%98/" style="font-size: 10px;">边缘</a> <a href="/tags/%E9%97%AE%E5%8D%B7/" style="font-size: 11.43px;">问卷</a> <a href="/tags/%E9%98%88%E5%80%BC/" style="font-size: 11.43px;">阈值</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">霍夫变换</a>
+      <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15.71px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.43px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15.71px;">Github</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 11.43px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 18.57px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.43px;">PyQt</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.43px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.43px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/argv/" style="font-size: 10px;">argv</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/lstrip/" style="font-size: 10px;">lstrip</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/rstrip/" style="font-size: 10px;">rstrip</a> <a href="/tags/strip/" style="font-size: 10px;">strip</a> <a href="/tags/%E4%B8%83%E7%89%9B/" style="font-size: 10px;">七牛</a> <a href="/tags/%E4%B8%B2%E5%8F%A3/" style="font-size: 10px;">串口</a> <a href="/tags/%E4%BA%AE%E5%BA%A6/" style="font-size: 10px;">亮度</a> <a href="/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">几何变换</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 10px;">凸包</a> <a href="/tags/%E5%8D%B7%E7%A7%AF/" style="font-size: 10px;">卷积</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" style="font-size: 10px;">命令行参数</a> <a href="/tags/%E5%91%BD%E5%90%8D/" style="font-size: 10px;">命名</a> <a href="/tags/%E5%93%81%E7%89%8C%E6%BC%86/" style="font-size: 10px;">品牌漆</a> <a href="/tags/%E5%9B%9E%E8%BD%A6/" style="font-size: 11.43px;">回车</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">图像变换</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 17.14px;">图像处理</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">图像对比</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/" style="font-size: 10px;">图像混合</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 10px;">图床</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/" style="font-size: 10px;">对比度</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 12.86px;">小程序</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">工程架构</a> <a href="/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/" style="font-size: 10px;">形态学</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 11.43px;">微信</a> <a href="/tags/%E6%8D%A2%E8%A1%8C/" style="font-size: 11.43px;">换行</a> <a href="/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" style="font-size: 11.43px;">换行符</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 11.43px;">树莓派</a> <a href="/tags/%E6%A2%AF%E5%BA%A6/" style="font-size: 10px;">梯度</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" style="font-size: 10px;">模板匹配</a> <a href="/tags/%E6%A8%A1%E7%B3%8A/" style="font-size: 10px;">模糊</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/" style="font-size: 10px;">滑动条</a> <a href="/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/" style="font-size: 10px;">电影台词</a> <a href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/" style="font-size: 10px;">直方图</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 11.43px;">绘图</a> <a href="/tags/%E8%85%90%E8%9A%80/" style="font-size: 10px;">腐蚀</a> <a href="/tags/%E8%86%A8%E8%83%80/" style="font-size: 10px;">膨胀</a> <a href="/tags/%E8%A7%86%E9%A2%91%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">视频对比</a> <a href="/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道检测</a> <a href="/tags/%E8%BD%AE%E5%BB%93/" style="font-size: 11.43px;">轮廓</a> <a href="/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/%E8%BE%B9%E7%BC%98/" style="font-size: 10px;">边缘</a> <a href="/tags/%E9%97%AE%E5%8D%B7/" style="font-size: 11.43px;">问卷</a> <a href="/tags/%E9%98%88%E5%80%BC/" style="font-size: 11.43px;">阈值</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">霍夫变换</a>
     </div>
   </div>
 
