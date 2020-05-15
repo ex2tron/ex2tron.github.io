@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    再谈cr&amp;lf：git工程配置 |
+    
+    Codec42
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="14年写过一篇CR与LF(操作系统“下一行”的不同)，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题。解决之余纪录一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再谈CR&amp;LF：Git工程配置">
+<meta property="og:url" content="http://www.codec.wang/cr-lf2/index.html">
+<meta property="og:site_name" content="Codec42">
+<meta property="og:description" content="14年写过一篇CR与LF(操作系统“下一行”的不同)，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题。解决之余纪录一下。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/cr-lf-typewriter.gif_webp">
+<meta property="article:published_time" content="2020-05-14T11:58:28.000Z">
+<meta property="article:modified_time" content="2020-05-15T11:54:39.664Z">
+<meta property="article:author" content="小强本强">
+<meta property="article:tag" content="换行符">
+<meta property="article:tag" content="回车">
+<meta property="article:tag" content="换行">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/cr-lf-typewriter.gif_webp">
+  
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
+            
+          </h1>
+
+          
+            <div class="site-description">保持对技术的热爱！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-再谈CR-LF" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-typewriter.gif_webp" target="_blank" rel="gallery_cka859qcd001ovhtndego8me7 noopener">
+        <img src="http://blog.codec.wang/cr-lf-typewriter.gif_webp" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/cr-lf-typewriter.gif_webp" target="_blank" rel="gallery_cka859qcd001ovhtndego8me7 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/cr-lf-typewriter.gif_webp">
+        <img src="http://blog.codec.wang/cr-lf-typewriter.gif" itemprop="image">
+      </picture>
+    <!-- </a> -->
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      再谈CR&amp;LF：Git工程配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/cr-lf2/" class="article-date">
+	  <time datetime="2020-05-14T11:58:28.000Z" itemprop="datePublished">May 14, 2020</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>14年写过一篇<a href="http://codec.wang/cr-lf/" target="_blank" rel="noopener">CR与LF(操作系统“下一行”的不同)</a>，理解了不同操作系统为什么会是不同的换行符，当时没详细了解git的工程配置。前段时间同事接手一个前端项目时恰好碰到换行符报错的问题。解决之余纪录一下。<a id="more"></a></p>
+<h2 id="Git默认策略"><a href="#Git默认策略" class="headerlink" title="Git默认策略"></a>Git默认策略</h2><p>默认情况下，git版本库本身采用LF，为了解决换行符问题，git检出代码时会按照操作系统自动适配：MAC/Linux就是LF，Windows会自动转为CRLF，从暂存区提交到版本库时，再统一转为LF。</p>
+<p>所以同一个文件在不同OS上大小也会不同，比如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.txt文件有一个换行符</span></span><br><span class="line"><span class="comment"># Mac: 6 bytes</span></span><br><span class="line">-rw-r--r-- 1 ex2tron 108570 6  5 15 09:59 test.txt</span><br><span class="line"><span class="comment"># Windows: 7 bytes</span></span><br><span class="line">-rw-r--r-- 1 ex2tron 197609 7  5月 15 09:58 test.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="可能的问题"><a href="#可能的问题" class="headerlink" title="可能的问题"></a>可能的问题</h2><p>看上去Git的解决方案很perfect，但在某些特定场景下自动转换会出问题。比如我们新建一个.sh的脚本文件<code>crlf.sh</code>，记得要包含一个换行符：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'crlf testing'</span></span><br></pre></td></tr></table></figure>
+
+<p>可以用vim或VSCode来编辑并设置不同的换行符格式，设置方式后面讲。LF时运行这个文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./crlf.sh</span><br><span class="line">crlf testing</span><br></pre></td></tr></table></figure>
+
+<p>没什么问题，但改成CRLF后再运行一次就会报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./crlf.sh</span><br><span class="line">: <span class="built_in">command</span> not found</span><br><span class="line">crlf testing</span><br></pre></td></tr></table></figure>
+
+<p>这种情况在一些跨平台项目的脚手架命令行工具中经常碰到。我同事就是因为他用的Windows，git检出时会自动配置为CRLF，然后<code>npm run server</code>的时候就gg了🙃</p>
+<p>那怎么灵活配置git的这种转换策略呢？先来看下有关git的几个概念：</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>了解git原理的同学应该知道工作区、暂存区和分支的概念(不熟悉的话，可参考<a href="https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576" target="_blank" rel="noopener">工作区和暂存区</a>)</p>
+<p>简单来说：</p>
+<ul>
+<li>工作区就是电脑上看到的目录</li>
+<li>执行<code>git add</code>其实是将文件放到暂存区</li>
+<li>执行<code>git commit</code>是将文件从暂存区提交到当前分支</li>
+</ul>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf2-git-folder.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf2-git-folder.png" alt=""></picture></p>
+<p>从暂存区到分支的操作成为提交commit，从暂存区或分支到工作区的操作称为检出checkout。</p>
+<h2 id="CRLF参数"><a href="#CRLF参数" class="headerlink" title="CRLF参数"></a>CRLF参数</h2><p>git有三个跟换行符相关的参数，参考<a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreeol" target="_blank" rel="noopener">官方文档</a>：</p>
+<ul>
+<li><strong>core.autocrlf</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Win: 提交时转为LF，检出时转为CRLF(工作区为CRLF)</span></span><br><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交检出时均不转换</span></span><br><span class="line"><span class="comment"># Win: 以默认CRLF初始并开发的项目，工作区和版本库均为CRLF</span></span><br><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Win: 提交时转换为LF，检出时不转换(工作区为LF)</span></span><br><span class="line">git config --global core.autocrlf input</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>core.safecrlf</strong>: 工作区出现不同换行符时的操作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不允许包含不同换行符</span></span><br><span class="line">git config --global core.safecrlf <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许有不同换行符</span></span><br><span class="line">git config --global core.safecrlf <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认，允许有不同换行符但会发出警告</span></span><br><span class="line">git config --global core.safecrlf warn</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果设置为true，则<code>git add</code>时会直接拒绝掉：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">fatal: LF would be replaced by CRLF <span class="keyword">in</span> test.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果设置为warn，则<code>git add</code>时会根据工作区的格式弹出警告：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 工作区为CRLF</span></span><br><span class="line">$ git add .</span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> test.txt.</span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working directory</span><br><span class="line"><span class="comment"># 注意第二句话：工作目录的文件将会使用其原始的换行符</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作区为LF</span></span><br><span class="line">$ git add .</span><br><span class="line">warning: CRLF will be replaced by LF <span class="keyword">in</span> test.txt.</span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working directory</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>core.eol</strong>: 设置工作区所使用的换行符<ul>
+<li>可选值为native、lf、crlf，默认为native，即使用操作系统换行符</li>
+<li>core.autocrlf的设置会覆盖core.eol</li>
+</ul>
+</li>
+</ul>
+<p>这三个参数互相之间有影响，我也搞了大半天才搞懂，推荐大家一个个参数分别试下。</p>
+<p>综上，严格起见，跨平台的开发项目初期可以做如下配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统一工作区为LF</span></span><br><span class="line">git config --global core.eol lf</span><br><span class="line"><span class="comment"># 关闭自动转换</span></span><br><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br><span class="line"><span class="comment"># 禁止混用两种换行符</span></span><br><span class="line">git config --global core.safecrlf <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="gitattributes"><a href="#gitattributes" class="headerlink" title=".gitattributes"></a>.gitattributes</h2><p>上面这种全局的方式不一定能保证在团队每个人的开发机上配置，更优的方案是在项目根目录下添加<code>.gitattributes</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 所有文本文件均采用LF</span></span><br><span class="line">* text eol=lf</span><br></pre></td></tr></table></figure>
+
+<p>该文件更详细的设置请参考<a href="#引用">引用</a>。</p>
+<h2 id="显示并转换"><a href="#显示并转换" class="headerlink" title="显示并转换"></a>显示并转换</h2><h3 id="命令转换"><a href="#命令转换" class="headerlink" title="命令转换"></a>命令转换</h3><p>使用<code>dos2unix</code>和<code>unix2dos</code>：MAC可以用brew安装，Windows可以在<a href="http://dos2unix.sourceforge.net/" target="_blank" rel="noopener">此处</a>下载。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install dos2unix</span><br><span class="line"></span><br><span class="line">dos2unix test.txt</span><br><span class="line">unix2dos test.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><p>vim命令模式下可以设置并转换文件的换行符格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> ff? <span class="comment"># 显示当前的fileformat，如fileformat=unix</span></span><br><span class="line"><span class="built_in">set</span> ff=unix <span class="comment"># 设置成unix即LF</span></span><br><span class="line"><span class="built_in">set</span> ff=dos <span class="comment"># 设置成dos即CRLF</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h3><p>VSCode打开文件后，会在右下角<code>status bar</code>显示当前换行符格式，点击就可以切换：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf2-vscode.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf2-vscode.png" alt=""></picture></p>
+<h3 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h3><p>JetBrains出品的系列IDE都可以在设置中配置：Perferences - Editor - Code Style - Line separator。</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf2-IDEA.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf2-IDEA.png" alt=""></picture></p>
+<h3 id="notepad"><a href="#notepad" class="headerlink" title="notepad++"></a>notepad++</h3><p><a href="http://codec.wang/cr-lf/" target="_blank" rel="noopener">CR与LF(操作系统“下一行”的不同)</a>中有讲到，这里就不重复了。</p>
+<h3 id="Win10记事本"><a href="#Win10记事本" class="headerlink" title="Win10记事本"></a>Win10记事本</h3><p>Win10的记事本也支持了unix文件的显示，并会在右下角提示：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/cr-lf2-windows-notepad.png_webp"><img class="image" src="http://blog.codec.wang/cr-lf2-windows-notepad.png" alt=""></picture></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://help.github.com/en/github/using-git/configuring-git-to-handle-line-endings" target="_blank" rel="noopener">Configuring Git to handle line endings</a></li>
+<li><a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreeol" target="_blank" rel="noopener">git config crlf</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Newline" target="_blank" rel="noopener">newline</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%9B%9E%E8%BB%8A%E9%8D%B5" target="_blank" rel="noopener">cr</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%8F%9B%E8%A1%8C" target="_blank" rel="noopener">换行</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576" target="_blank" rel="noopener">工作区和暂存区</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E8%BD%A6/" rel="tag">回车</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8D%A2%E8%A1%8C/" rel="tag">换行</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" rel="tag">换行符</a></li></ul>
+
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/mini-program-architecture-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">实例：我的小程序工程架构3.0</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git默认策略"><span class="nav-number">1.</span> <span class="nav-text">Git默认策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能的问题"><span class="nav-number">2.</span> <span class="nav-text">可能的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CRLF参数"><span class="nav-number">4.</span> <span class="nav-text">CRLF参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitattributes"><span class="nav-number">5.</span> <span class="nav-text">.gitattributes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示并转换"><span class="nav-number">6.</span> <span class="nav-text">显示并转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令转换"><span class="nav-number">6.1.</span> <span class="nav-text">命令转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim"><span class="nav-number">6.2.</span> <span class="nav-text">vim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VSCode"><span class="nav-number">6.3.</span> <span class="nav-text">VSCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA"><span class="nav-number">6.4.</span> <span class="nav-text">IDEA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notepad"><span class="nav-number">6.5.</span> <span class="nav-text">notepad++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Win10记事本"><span class="nav-number">6.6.</span> <span class="nav-text">Win10记事本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">7.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              <!-- 个人技术文章分享 | 2020 -->
+              个人技术文章分享 | 自2020.1.1起统计: 
+                 
+                   <span id="busuanzi_container_site_uv">
+                    访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                    
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
