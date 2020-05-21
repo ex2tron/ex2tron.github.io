@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/google_fire_cli_cover.png_webp">
 <meta property="article:published_time" content="2020-05-21T02:23:28.000Z">
-<meta property="article:modified_time" content="2020-05-21T03:18:30.716Z">
+<meta property="article:modified_time" content="2020-05-21T03:34:34.277Z">
 <meta property="article:author" content="小强本强">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="命令行参数">
@@ -189,7 +189,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/google_fire_cli_cover.png_webp" target="_blank" rel="gallery_ckag7hiw9001c5wtn5u6bf4oj noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/google_fire_cli_cover.png_webp" target="_blank" rel="gallery_ckag81ums0018rrtn389p0qc8 noopener">
         <img src="http://blog.codec.wang/google_fire_cli_cover.png_webp" itemprop="image">
       </a>
     
@@ -203,7 +203,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/google_fire_cli_cover.png_webp" target="_blank" rel="gallery_ckag7hiw9001c5wtn5u6bf4oj noopener"> -->
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/google_fire_cli_cover.png_webp" target="_blank" rel="gallery_ckag81ums0018rrtn389p0qc8 noopener"> -->
       <picture class="article-gallery-img">
         <source type="image/webp" srcset="http://blog.codec.wang/google_fire_cli_cover.png_webp">
         <img src="http://blog.codec.wang/google_fire_cli_cover.png" itemprop="image">
@@ -246,10 +246,10 @@ var themeMenus = {};
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install fire</span><br></pre></td></tr></table></figure>
 
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>大家回想下，我们之前是如何给Python代码添加CLI交互的？我之前也写过一篇<a href="http://codec.wang/mighty-py-command-line-arguments/" target="_blank" rel="noopener">【MightPy】处理命令行参数和选项的几种方式</a>，虽然也不难，但是麻烦呀🙃。而fire只要一句话就可以给已有项目添加CLI。</p>
-<p>以下是一个官方的示例，</p>
+<p>以下是一个官方的示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> fire</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(name=<span class="string">"World"</span>)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">"Hello %s!"</span> % name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  fire.Fire(hello)</span><br></pre></td></tr></table></figure>
 
-<p>引入fire库后，只要发射(这名字?…)你想要交互的代码块就OK啦，fire会自动生成参数和帮助文档:</p>
+<p>引入fire库后，只要发射(这名字?…)你想要交互的代码块就好了，fire会自动生成参数和帮助文档:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python app.py  <span class="comment"># Hello World!</span></span><br><span class="line">python app.py --name=Wang  <span class="comment"># Hello Wang!</span></span><br><span class="line">python app.py --help</span><br></pre></td></tr></table></figure>
 
 <p>CLI的好处不必多说，它让开发调试、模块间的集成等更加简单高效。而fire进一步加速了这个流程。</p>
@@ -257,9 +257,9 @@ var themeMenus = {};
 <h3 id="列表或元组"><a href="#列表或元组" class="headerlink" title="列表或元组"></a>列表或元组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fire.Fire([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
 
 <p>这样CLI中就可以通过索引来访问列表结果，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python app.py <span class="comment"># 1 2 3</span></span><br><span class="line">python app.py 2 <span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python app.py <span class="comment"># 1 2 3</span></span><br><span class="line">python app.py 2 <span class="comment"># 3</span></span><br><span class="line">python app.py -h</span><br></pre></td></tr></table></figure>
 
-<p>查看帮助<code>python app.py -h</code>，我们也可以使用排序sort/插入insert等命令，如</p>
+<p>查看帮助，我们也可以使用排序sort/插入insert/弹出pop等命令，如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python app.py pop 2 <span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fire.Fire(&#123;<span class="string">'name'</span>: <span class="string">'wang'</span>, <span class="string">'age'</span>: <span class="number">18</span>&#125;)</span><br></pre></td></tr></table></figure>
@@ -269,7 +269,7 @@ var themeMenus = {};
 
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub</span><span class="params">(n1, n2)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> n1 - n2</span><br><span class="line"></span><br><span class="line">fire.Fire(sub)</span><br></pre></td></tr></table></figure>
 
-<p>函数的话，CLI中可以通过位置参数(positional arguments)直接调用：</p>
+<p>函数的话CLI中可以通过位置参数(positional arguments)直接调用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python app.py 20 5 <span class="comment"># 15</span></span><br></pre></td></tr></table></figure>
 
 <p>也可以通过命名参数(amed arguments)调用：</p>
@@ -277,7 +277,14 @@ var themeMenus = {};
 
 <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">welcome</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Hello %s'</span> % self.name</span><br><span class="line"></span><br><span class="line">fire.Fire(Student)</span><br></pre></td></tr></table></figure>
 
-<p>类的话参数是<strong>init</strong>里面的参数</p>
+<p>类的话CLI中可以通过flag指定<code>__init__</code>中的参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python app.py --name=Wang welcome</span><br><span class="line"><span class="comment"># Hello wang</span></span><br></pre></td></tr></table></figure>
+
+<p>更多的使用场景和功能大家可以去看Github的使用文档，确实方便了很多。总之谷歌大大牛逼🚀</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/blob/master/google_python_fire.py" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://github.com/google/python-fire" target="_blank" rel="noopener">google/python-fire</a></li>
+</ul>
 
       
     </div>
@@ -333,7 +340,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">2.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各类型使用"><span class="nav-number">3.</span> <span class="nav-text">各类型使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表或元组"><span class="nav-number">3.1.</span> <span class="nav-text">列表或元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">3.2.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-number">3.4.</span> <span class="nav-text">类</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">2.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各类型使用"><span class="nav-number">3.</span> <span class="nav-text">各类型使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表或元组"><span class="nav-number">3.1.</span> <span class="nav-text">列表或元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">3.2.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-number">3.4.</span> <span class="nav-text">类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
     
     </div>
   </aside>
