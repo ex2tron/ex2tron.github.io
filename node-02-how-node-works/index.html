@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/node-how-it-works00.png_webp">
 <meta property="article:published_time" content="2020-05-28T08:35:29.000Z">
-<meta property="article:modified_time" content="2020-05-30T16:57:05.592Z">
+<meta property="article:modified_time" content="2020-05-30T16:59:20.746Z">
 <meta property="article:author" content="ex2tron">
 <meta property="article:tag" content="全栈">
 <meta property="article:tag" content="Node">
@@ -190,7 +190,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-how-it-works00.png_webp" target="_blank" rel="gallery_ckatv1rt3000gxktn3cze4atl noopener">
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-how-it-works00.png_webp" target="_blank" rel="gallery_ckatvxor5000hh8tnd4i3br71 noopener">
         <img src="http://blog.codec.wang/node-how-it-works00.png_webp" itemprop="image">
       </a>
     
@@ -204,7 +204,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-how-it-works00.png_webp" target="_blank" rel="gallery_ckatv1rt3000gxktn3cze4atl noopener"> -->
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-how-it-works00.png_webp" target="_blank" rel="gallery_ckatvxor5000hh8tnd4i3br71 noopener"> -->
       <picture class="article-gallery-img">
         <source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works00.png_webp">
         <img src="http://blog.codec.wang/node-how-it-works00.png" itemprop="image">
@@ -262,7 +262,7 @@ var themeMenus = {};
 <li><a href="https://zh.wikipedia.org/wiki/%E5%A2%9E%E5%88%AA%E6%9F%A5%E6%94%B9" target="_blank" rel="noopener">CRUD</a>: 创建Create、读取Read、更新Update、删除Delete</li>
 </ul>
 <p>餐厅就是Node的进程，每个进程只有一个主线程也就是服务员。当有网络请求时，主线程会把请求的操作(如数据库的增删改查)放到事件队列里面，而不是立马执行它。这样第二个请求来的时候程序就不会阻塞。这种方式就称为<strong>异步非阻塞</strong>(Asynchronous Non-blocking)。</p>
-<p>当主线程没其他事干了，就按照顺序取队列里面的第一个事件让底层去执行，然后再取第二个……底层每执行完一个事件就会通知主线程返回结果，如此循环。这个操作也叫<strong>事件循环机制</strong>。</p>
+<p>当主线程没其他事干了，就按照顺序取队列里面的第一个事件让底层去执行，然后再取第二个……底层每执行完一个事件就会通知主线程返回结果，如此循环。这个操作也叫<strong>事件循环机制</strong>(Event Loop)。</p>
 <p>现在大家应该能明白Node的工作原理了吧，这也是Node实现高并发的精髓所在：</p>
 <blockquote>
 <p>Node是一个单线程、异步非阻塞IO、事件驱动的JavaScript运行环境。</p>
@@ -318,7 +318,7 @@ var themeMenus = {};
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【Mater Node】03. 安装并编写你的第一行代码
+          【Mater Node】03. 安装并编写第一行代码
         
       </div>
     </a>
