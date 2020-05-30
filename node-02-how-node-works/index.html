@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【mater node】02. node的工作原理 |
+    
+    Codec42
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="Goal 为什么JS能与操作系统打交道并编写后端API？ 什么是异步非阻塞IO和事件驱动？ Node单线程怎么实现高并发？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Mater Node】02. Node的工作原理">
+<meta property="og:url" content="http://www.codec.wang/node-02-how-node-works/index.html">
+<meta property="og:site_name" content="Codec42">
+<meta property="og:description" content="Goal 为什么JS能与操作系统打交道并编写后端API？ 什么是异步非阻塞IO和事件驱动？ Node单线程怎么实现高并发？">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/node-how-it-works00.png_webp">
+<meta property="article:published_time" content="2020-05-28T08:35:29.000Z">
+<meta property="article:modified_time" content="2020-05-30T15:03:17.966Z">
+<meta property="article:author" content="ex2tron">
+<meta property="article:tag" content="全栈">
+<meta property="article:tag" content="Node">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/node-how-it-works00.png_webp">
+  
+  <link rel="alternate" href="/atom.xaml" title="Codec42" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Codec42" rel="home"> Codec42 </a>
+            
+          </h1>
+
+          
+            <div class="site-description">小强的程序猿生活 | 保持对技术的热爱！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Node-02-Node的工作原理" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-how-it-works00.png_webp" target="_blank" rel="gallery_ckatu8iqu000glmtng88ze9n4 noopener">
+        <img src="http://blog.codec.wang/node-how-it-works00.png_webp" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-how-it-works00.png_webp" target="_blank" rel="gallery_ckatu8iqu000glmtng88ze9n4 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works00.png_webp">
+        <img src="http://blog.codec.wang/node-how-it-works00.png" itemprop="image">
+      </picture>
+    <!-- </a> -->
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Mater Node】02. Node的工作原理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/node-02-how-node-works/" class="article-date">
+	  <time datetime="2020-05-28T08:35:29.000Z" itemprop="datePublished">May 28, 2020</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><ul>
+<li>为什么JS能与操作系统打交道并编写后端API？</li>
+<li>什么是异步非阻塞IO和事件驱动？</li>
+<li>Node单线程怎么实现高并发？<a id="more"></a></li>
+</ul>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><p>大家如果去网上看Node的介绍，最常出现的应该是下面这几个词了：</p>
+<blockquote>
+<p>单线程、异步非阻塞IO、事件驱动、V8、运行时</p>
+</blockquote>
+<p>上节我们知道了Node是一个基于Chrome V8引擎的Javascript运行时。由于Node本身是C/C++编写的，所以我们可以与操作系统交互并编写后端服务。简单来说就是你表面上写的是JavaScript，但实际执行的是C/C++。</p>
+<p>至于异步和事件驱动等概念，就要讲到Node的工作原理，这是个很庞杂的话题，也不是这个课程的重点，所以我通过一个例子来进行简单通俗的解释。</p>
+<h3 id="餐厅"><a href="#餐厅" class="headerlink" title="餐厅"></a>餐厅</h3><p>假设有一家餐厅，只有一个服务员，现在来了两位顾客。第一位人说他要吃宫保鸡丁，服务员就打个单子记录了下来：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works01.png_webp"><img class="image" src="http://blog.codec.wang/node-how-it-works01.png" alt=""></picture></p>
+<p>这个时候服务员是不会实际去做宫保鸡丁的，而是会问第二个人要吃什么。也就是说服务员同时服务于两位顾客，第二个人不用等待第一个人的宫保鸡丁做好再点餐。OK，第二个人点了红烧狮子头，服务员同样纪录下来。</p>
+<p>此时，由于没有其他顾客了，服务员就把清单交给厨房。厨房按顺序做这两道菜，做好一道通知服务员上一道。</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works00.png_webp"><img class="image" src="http://blog.codec.wang/node-how-it-works00.png" alt=""></picture></p>
+<h3 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h3><p>上面这个例子大家应该都能理解吧，Node就是类似的工作原理。我们把角色替换一下：</p>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works04.png_webp"><img class="image" src="http://blog.codec.wang/node-how-it-works04.png" alt=""></picture></p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%A2%9E%E5%88%AA%E6%9F%A5%E6%94%B9" target="_blank" rel="noopener">CRUD</a>: 创建Create、读取Read、更新Update、删除Delete</p>
+</blockquote>
+<p>餐厅就是Node的进程，每个进程只有一个主线程也就是服务员。当有网络请求发生时，主线程会把请求的操作(数据库的增删改查)放到事件队列里面去，而不是立马执行它。这样第二个请求来的时候程序就不会阻塞。这种方式就称为<strong>异步非阻塞</strong>(Asynchronous Non-blocking)。</p>
+<p>最后，主线程没其他事干了，就按顺序取队列里面的第一个事件让底层去执行，然后再取出第二个……底层每执行完一个事件就会通知主线程返回结果，如此循环。这个操作也叫<strong>事件循环机制</strong>。</p>
+<p>现在大家应该能明白Node的工作原理了吧，这也是Node实现高并发的精髓所在：</p>
+<blockquote>
+<p>Node是一个单线程、异步非阻塞IO、事件驱动的JavaScript运行环境。</p>
+</blockquote>
+<p>这里说的单线程指的是主线程，Node底层依然是由线程池来实现。另外，Node不会死锁，因为单程序没有锁的概念。</p>
+<h3 id="IO-vs-CPU密集型"><a href="#IO-vs-CPU密集型" class="headerlink" title="IO vs CPU密集型"></a>IO vs CPU密集型</h3><p>正是由于Node这样的设计架构，所以Node非常适合一些I/O密集型任务(I/O bound)，如网络请求、数据读写等。Node的优点也是它的缺点，由于它是单线程的，不能充分利用服务器的多核CPU，所以Node不适合做一些CPU密集型的任务(CPU bound)，比如说矩阵运算、视频编码等等。</p>
+<p>当然也有办法弥补CPU单线程的这一“缺点”，从而更好的利用服务器性能，大家可自行了解。</p>
+<p>OK，概念讲的差不多了，下节开始安装Node并编写我们的第一行代码！</p>
+<h2 id="Quote"><a href="#Quote" class="headerlink" title="Quote"></a>Quote</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000014926921" target="_blank" rel="noopener">NodeJS真的是单线程吗？</a></li>
+<li><a href="https://stackoverflow.com/questions/868568/what-do-the-terms-cpu-bound-and-i-o-bound-mean" target="_blank" rel="noopener">What do the terms “CPU bound” and “I/O bound” mean?</a></li>
+<li><a href="https://www.sitepoint.com/node-js-is-the-new-black/" target="_blank" rel="noopener">Node.js is the New Black</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%A0%88/" rel="tag">全栈</a></li></ul>
+
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/node-03-install-node/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【Mater Node】03. 安装并编写你的第一行代码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/node-01-what-is-node/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【Mater Node】01. Node.js是什么？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goal"><span class="nav-number">1.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main"><span class="nav-number">2.</span> <span class="nav-text">Main</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#餐厅"><span class="nav-number">2.1.</span> <span class="nav-text">餐厅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node"><span class="nav-number">2.2.</span> <span class="nav-text">Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO-vs-CPU密集型"><span class="nav-number">2.3.</span> <span class="nav-text">IO vs CPU密集型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quote"><span class="nav-number">3.</span> <span class="nav-text">Quote</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              Codec42 All Rights Reserved. -->
+              <!-- 个人技术文章分享 | 2020 -->
+              个人技术文章分享 | 自2020.1.1起统计: 
+                 
+                   <span id="busuanzi_container_site_uv">
+                    访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                    
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
