@@ -24,16 +24,16 @@
   
   
   
-  <meta name="description" content="Goal 为什么JS能与操作系统打交道并编写后端API？ 什么是异步非阻塞IO和事件驱动？ Node单线程怎么实现高并发？">
+  <meta name="description" content="Goal 为什么JS能与操作系统交互并编写后端API？ 什么是异步非阻塞IO和事件驱动？ Node单线程怎么实现高并发？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Mater Node】02. Node的工作原理">
 <meta property="og:url" content="http://www.codec.wang/node-02-how-node-works/index.html">
 <meta property="og:site_name" content="Codec42">
-<meta property="og:description" content="Goal 为什么JS能与操作系统打交道并编写后端API？ 什么是异步非阻塞IO和事件驱动？ Node单线程怎么实现高并发？">
+<meta property="og:description" content="Goal 为什么JS能与操作系统交互并编写后端API？ 什么是异步非阻塞IO和事件驱动？ Node单线程怎么实现高并发？">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.codec.wang/node-how-it-works00.png_webp">
 <meta property="article:published_time" content="2020-05-28T08:35:29.000Z">
-<meta property="article:modified_time" content="2020-05-30T15:03:17.966Z">
+<meta property="article:modified_time" content="2020-05-30T16:57:05.592Z">
 <meta property="article:author" content="ex2tron">
 <meta property="article:tag" content="全栈">
 <meta property="article:tag" content="Node">
@@ -241,36 +241,36 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><ul>
-<li>为什么JS能与操作系统打交道并编写后端API？</li>
+<li>为什么JS能与操作系统交互并编写后端API？</li>
 <li>什么是异步非阻塞IO和事件驱动？</li>
 <li>Node单线程怎么实现高并发？<a id="more"></a></li>
 </ul>
-<h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><p>大家如果去网上看Node的介绍，最常出现的应该是下面这几个词了：</p>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><p>大家如果去网上看Node的资料，最常出现的应该是下面这几个词了：</p>
 <blockquote>
-<p>单线程、异步非阻塞IO、事件驱动、V8、运行时</p>
+<p>单线程、异步、非阻塞IO、事件驱动、V8、运行时</p>
 </blockquote>
-<p>上节我们知道了Node是一个基于Chrome V8引擎的Javascript运行时。由于Node本身是C/C++编写的，所以我们可以与操作系统交互并编写后端服务。简单来说就是你表面上写的是JavaScript，但实际执行的是C/C++。</p>
+<p>上节我们知道了Node是一个基于Chrome V8引擎的Javascript运行时(个人认为叫运行环境更易理解)。由于Node本身是C/C++编写的，所以Node可以与操作系统交互并编写后端服务。简单来说就是你表面上写的是JavaScript，但实际执行的是C/C++。</p>
 <p>至于异步和事件驱动等概念，就要讲到Node的工作原理，这是个很庞杂的话题，也不是这个课程的重点，所以我通过一个例子来进行简单通俗的解释。</p>
-<h3 id="餐厅"><a href="#餐厅" class="headerlink" title="餐厅"></a>餐厅</h3><p>假设有一家餐厅，只有一个服务员，现在来了两位顾客。第一位人说他要吃宫保鸡丁，服务员就打个单子记录了下来：</p>
+<h3 id="餐厅"><a href="#餐厅" class="headerlink" title="餐厅"></a>餐厅</h3><p>假设有一家餐厅，只有一个服务员，现在来了两位顾客。第一个人说他要吃宫保鸡丁，服务员就打个单子记了下来：</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works01.png_webp"><img class="image" src="http://blog.codec.wang/node-how-it-works01.png" alt=""></picture></p>
-<p>这个时候服务员是不会实际去做宫保鸡丁的，而是会问第二个人要吃什么。也就是说服务员同时服务于两位顾客，第二个人不用等待第一个人的宫保鸡丁做好再点餐。OK，第二个人点了红烧狮子头，服务员同样纪录下来。</p>
-<p>此时，由于没有其他顾客了，服务员就把清单交给厨房。厨房按顺序做这两道菜，做好一道通知服务员上一道。</p>
+<p>此时服务员是不会去厨房做宫保鸡丁的，而是会问第二个人要吃什么。也就是说服务员同时服务于两位顾客，第二个人不用等第一个人的宫保鸡丁做好了再点餐。OK，第二个人点了红烧狮子头，服务员同样纪录下来。</p>
+<p>这个时候，由于没有其他顾客了，服务员就把单子交给厨房。厨房按照顺序做这两道菜，做好一道通知服务员上一道。</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works00.png_webp"><img class="image" src="http://blog.codec.wang/node-how-it-works00.png" alt=""></picture></p>
 <h3 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h3><p>上面这个例子大家应该都能理解吧，Node就是类似的工作原理。我们把角色替换一下：</p>
 <p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/node-how-it-works04.png_webp"><img class="image" src="http://blog.codec.wang/node-how-it-works04.png" alt=""></picture></p>
-<blockquote>
-<p><a href="https://zh.wikipedia.org/wiki/%E5%A2%9E%E5%88%AA%E6%9F%A5%E6%94%B9" target="_blank" rel="noopener">CRUD</a>: 创建Create、读取Read、更新Update、删除Delete</p>
-</blockquote>
-<p>餐厅就是Node的进程，每个进程只有一个主线程也就是服务员。当有网络请求发生时，主线程会把请求的操作(数据库的增删改查)放到事件队列里面去，而不是立马执行它。这样第二个请求来的时候程序就不会阻塞。这种方式就称为<strong>异步非阻塞</strong>(Asynchronous Non-blocking)。</p>
-<p>最后，主线程没其他事干了，就按顺序取队列里面的第一个事件让底层去执行，然后再取出第二个……底层每执行完一个事件就会通知主线程返回结果，如此循环。这个操作也叫<strong>事件循环机制</strong>。</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%A2%9E%E5%88%AA%E6%9F%A5%E6%94%B9" target="_blank" rel="noopener">CRUD</a>: 创建Create、读取Read、更新Update、删除Delete</li>
+</ul>
+<p>餐厅就是Node的进程，每个进程只有一个主线程也就是服务员。当有网络请求时，主线程会把请求的操作(如数据库的增删改查)放到事件队列里面，而不是立马执行它。这样第二个请求来的时候程序就不会阻塞。这种方式就称为<strong>异步非阻塞</strong>(Asynchronous Non-blocking)。</p>
+<p>当主线程没其他事干了，就按照顺序取队列里面的第一个事件让底层去执行，然后再取第二个……底层每执行完一个事件就会通知主线程返回结果，如此循环。这个操作也叫<strong>事件循环机制</strong>。</p>
 <p>现在大家应该能明白Node的工作原理了吧，这也是Node实现高并发的精髓所在：</p>
 <blockquote>
 <p>Node是一个单线程、异步非阻塞IO、事件驱动的JavaScript运行环境。</p>
 </blockquote>
-<p>这里说的单线程指的是主线程，Node底层依然是由线程池来实现。另外，Node不会死锁，因为单程序没有锁的概念。</p>
-<h3 id="IO-vs-CPU密集型"><a href="#IO-vs-CPU密集型" class="headerlink" title="IO vs CPU密集型"></a>IO vs CPU密集型</h3><p>正是由于Node这样的设计架构，所以Node非常适合一些I/O密集型任务(I/O bound)，如网络请求、数据读写等。Node的优点也是它的缺点，由于它是单线程的，不能充分利用服务器的多核CPU，所以Node不适合做一些CPU密集型的任务(CPU bound)，比如说矩阵运算、视频编码等等。</p>
+<p>这里说的单线程是指主线程，Node底层依然是由线程池来实现的。另外，Node不会死锁，因为单程序没有锁的概念。</p>
+<h3 id="IO-vs-CPU密集型"><a href="#IO-vs-CPU密集型" class="headerlink" title="IO vs CPU密集型"></a>IO vs CPU密集型</h3><p>正是由于Node这样的设计架构，所以Node非常适合一些I/O密集型任务(I/O bound)，如网络请求、数据读写等。但Node的优点也是它的缺点，由于它是单线程的，不能充分利用服务器的多核CPU，所以Node不适合做一些CPU密集型的任务(CPU bound)，比如说矩阵运算、视频编码等等。</p>
 <p>当然也有办法弥补CPU单线程的这一“缺点”，从而更好的利用服务器性能，大家可自行了解。</p>
-<p>OK，概念讲的差不多了，下节开始安装Node并编写我们的第一行代码！</p>
+<p>OK，概念讲的差不多了，下一节我们就开始安装Node并编写第一行代码！</p>
 <h2 id="Quote"><a href="#Quote" class="headerlink" title="Quote"></a>Quote</h2><ul>
 <li><a href="https://segmentfault.com/a/1190000014926921" target="_blank" rel="noopener">NodeJS真的是单线程吗？</a></li>
 <li><a href="https://stackoverflow.com/questions/868568/what-do-the-terms-cpu-bound-and-i-o-bound-mean" target="_blank" rel="noopener">What do the terms “CPU bound” and “I/O bound” mean?</a></li>
