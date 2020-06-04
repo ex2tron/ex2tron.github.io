@@ -323,241 +323,6 @@ var themeMenus = {};
 <!-- Table of Contents -->
 
   
-    <article id="post-Node-07-常用内置模块"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    <!--  -->
-
-<!-- TODO by codec.wang -->
-
-
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/node-07-built-in-modules/">【Mater Node】07. 常用内建模块</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/node-07-built-in-modules/" class="article-date">
-	  <time datetime="2020-06-03T11:46:18.000Z" itemprop="datePublished">June 3, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <!-- TODO by codec.wang -->
-            <a href="/node-07-built-in-modules/">
-              <picture>
-                <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
-                <img src="http://blog.codec.wang/node-05-modularity.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
-              </picture>
-            </a>
-          </div>
-          <div class="entry-summary">
-          Goal
-学习内建模块：os/fs/path的使用方式
-
-Mainos本节我们新建两个文件：
-12├── app.js└── logger.js
-
-app为程序的主入口，logger是日志模块。日志在实际的项目中很常用，一般日志处理是直接打印、写入文件、写入数据库和发送到远程等。这里只是为了演示模块的使用，所以直接打印出来：
-
-logger.js
-
-12345const remote = "...
-
-        
-          <p class="article-more-link">
-            <a href="/node-07-built-in-modules/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%A0%88/" rel="tag">全栈</a></li></ul>
-
-
-      
-                  
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Node-06-导出和导入模块"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    <!--  -->
-
-<!-- TODO by codec.wang -->
-
-
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/node-06-exports-and-require/">【Mater Node】06. 导出和导入</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/node-06-exports-and-require/" class="article-date">
-	  <time datetime="2020-06-01T14:27:17.000Z" itemprop="datePublished">June 1, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <!-- TODO by codec.wang -->
-            <a href="/node-06-exports-and-require/">
-              <picture>
-                <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
-                <img src="http://blog.codec.wang/node-05-modularity.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
-              </picture>
-            </a>
-          </div>
-          <div class="entry-summary">
-          Goal
-如何导出和导入模块
-
-Main日志模块本节我们新建两个文件：
-12├── app.js└── logger.js
-
-app为程序的主入口，logger是日志模块。日志在实际的项目中很常用，一般日志处理是直接打印、写入文件、写入数据库和发送到远程等。这里只是为了演示模块的使用，所以直接打印出来：
-
-logger.js
-
-12345const remote = "http://api....
-
-        
-          <p class="article-more-link">
-            <a href="/node-06-exports-and-require/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%A0%88/" rel="tag">全栈</a></li></ul>
-
-
-      
-                  
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Node-05-模块化"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    <!--  -->
-
-<!-- TODO by codec.wang -->
-
-
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/node-01-modularity/">【Mater Node】05. 模块化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/node-01-modularity/" class="article-date">
-	  <time datetime="2020-06-01T03:16:35.000Z" itemprop="datePublished">June 1, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <!-- TODO by codec.wang -->
-            <a href="/node-01-modularity/">
-              <picture>
-                <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
-                <img src="http://blog.codec.wang/node-05-modularity.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
-              </picture>
-            </a>
-          </div>
-          <div class="entry-summary">
-          Goal
-为什么需要模块化？
-
-Main全局污染上一节我们知道Node中用var定义的变量和函数并不会添加到global中，那Node为什么这样设计呢？
-比如项目中有两个文件file1.js、file2.js，在file1中定义name和sum函数：
-
-file1.js
-
-12var name = 'tony';function sum(n1, n2) &#123; return n1 + ...
-
-        
-          <p class="article-more-link">
-            <a href="/node-01-modularity/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%A0%88/" rel="tag">全栈</a></li></ul>
-
-
-      
-                  
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-MightyPy：Google出品的命令行界面生成工具Fire体验"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     <!--  -->
@@ -928,6 +693,235 @@ JSON配置这一块没啥好说的，按照需求定义好字段就行，比如�
 <!-- Table of Contents -->
 
   
+    <article id="post-小程序H5问卷开发1：方案"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!--  -->
+
+<!-- TODO by codec.wang -->
+
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/wechat-h5-questionnaire/">小程序H5问卷开发1：方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/wechat-h5-questionnaire/" class="article-date">
+	  <time datetime="2020-03-19T09:27:08.000Z" itemprop="datePublished">March 19, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <!-- TODO by codec.wang -->
+            <a href="/wechat-h5-questionnaire/">
+              <picture>
+                <source type="image/webp" srcset="http://blog.codec.wang/wechat-h5-questionnaire.jpg_webp">
+                <img src="http://blog.codec.wang/wechat-h5-questionnaire.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
+              </picture>
+            </a>
+          </div>
+          <div class="entry-summary">
+          最近在做个需求：用户在使用小程序前先要填写一个问卷，三个要求：
+
+问卷内容不会经常变动，但需要可配
+问卷提交结果数据直接记录现有的数据库上
+题型：单选/多选/输入框
+
+
+
+问卷网页版Demo体验
+在微信开发者工具中预览
+
+
+从需求来看，问题的关键在于后端问卷数据库存储和前端的页面设计。
+显然，数据库搞成固定字段，实在太捉急了，总不能配一次问卷就换一张表吧。所以最简单的方案就是用JSON数据库...
+
+        
+          <p class="article-more-link">
+            <a href="/wechat-h5-questionnaire/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5/" rel="tag">H5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E5%8D%B7/" rel="tag">问卷</a></li></ul>
+
+
+      
+                  
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-MightyPy：-l-r-strip函数的巨坑"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!--  -->
+
+<!-- TODO by codec.wang -->
+
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/mighty-py-strip/">【MightyPy】(l/r)strip函数的巨坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/mighty-py-strip/" class="article-date">
+	  <time datetime="2019-06-30T14:26:41.000Z" itemprop="datePublished">June 30, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <!-- TODO by codec.wang -->
+            <a href="/mighty-py-strip/">
+              <picture>
+                <source type="image/webp" srcset="http://blog.codec.wang/mighty_py_strip.jpg_webp">
+                <img src="http://blog.codec.wang/mighty_py_strip.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
+              </picture>
+            </a>
+          </div>
+          <div class="entry-summary">
+          先来猜下Python中这句话的输出是啥：
+12&gt;&gt;&gt; filename = "journey_p4.mp4"&gt;&gt;&gt; filename.rstrip(".mp4")
+
+答案是：journey_，那p4去哪了呢？怎么样，有兴趣看下去了吗？↓
+
+I Am Iron Man.  ——《钢铁侠》我就是钢铁侠。——《Iron Man》
+友情广告：电影台词分享网站：Mo...
+
+        
+          <p class="article-more-link">
+            <a href="/mighty-py-strip/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lstrip/" rel="tag">lstrip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rstrip/" rel="tag">rstrip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/strip/" rel="tag">strip</a></li></ul>
+
+
+      
+                  
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-MightyPy：处理命令行参数和选项的几种方式"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!--  -->
+
+<!-- TODO by codec.wang -->
+
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/mighty-py-command-line-arguments/">【MightyPy】处理命令行参数和选项的几种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/mighty-py-command-line-arguments/" class="article-date">
+	  <time datetime="2019-05-03T02:30:18.000Z" itemprop="datePublished">May 3, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <!-- TODO by codec.wang -->
+            <a href="/mighty-py-command-line-arguments/">
+              <picture>
+                <source type="image/webp" srcset="http://blog.codec.wang/depth_python_argparse_cover.jpg_webp">
+                <img src="http://blog.codec.wang/depth_python_argparse_cover.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
+              </picture>
+            </a>
+          </div>
+          <div class="entry-summary">
+          设计Python模块功能时，命令行参数是一个非常灵活且便捷的方法：从外部获取配置参量，而不是直接修改代码。Python内置几种命令行参数和选项的处理方式，当然也有更加强大的第三方的模块，如：click。
+一般来说内置就够用了，所以本节主要看下内置的三种方式。
+
+Louis, I think this is the beginning of a beautiful friendship.  —...
+
+        
+          <p class="article-more-link">
+            <a href="/mighty-py-command-line-arguments/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/argv/" rel="tag">argv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" rel="tag">命令行参数</a></li></ul>
+
+
+      
+                  
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
 
 
   <nav id="page-nav">
@@ -1058,69 +1052,6 @@ JSON配置这一块没啥好说的，按照需求定义好字段就行，比如�
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/node-07-built-in-modules/" title="">
-                  <!-- TODO by codec.wang -->
-                  <picture>
-                    <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
-                    <img width="50" height="50" src="http://blog.codec.wang/node-05-modularity.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
-                  </picture>
-                </a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/node-07-built-in-modules/">【Mater Node】07. 常用内建模块</a></h6>
-              <span>June 3, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/node-06-exports-and-require/" title="">
-                  <!-- TODO by codec.wang -->
-                  <picture>
-                    <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
-                    <img width="50" height="50" src="http://blog.codec.wang/node-05-modularity.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
-                  </picture>
-                </a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/node-06-exports-and-require/">【Mater Node】06. 导出和导入</a></h6>
-              <span>June 1, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/node-01-modularity/" title="">
-                  <!-- TODO by codec.wang -->
-                  <picture>
-                    <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
-                    <img width="50" height="50" src="http://blog.codec.wang/node-05-modularity.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
-                  </picture>
-                </a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/node-01-modularity/">【Mater Node】05. 模块化</a></h6>
-              <span>June 1, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
                 <a href="/mighty-py-google-python-fire/" title="">
                   <!-- TODO by codec.wang -->
                   <picture>
@@ -1159,6 +1090,69 @@ JSON配置这一块没啥好说的，按照需求定义好字段就行，比如�
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/mini-program-architecture-3/" title="">
+                  <!-- TODO by codec.wang -->
+                  <picture>
+                    <source type="image/webp" srcset="http://blog.codec.wang/my-mini-program-architecture-3-cover.png_webp">
+                    <img width="50" height="50" src="http://blog.codec.wang/my-mini-program-architecture-3-cover.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
+                  </picture>
+                </a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/mini-program-architecture-3/">实例：我的小程序工程架构3.0</a></h6>
+              <span>April 13, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/video-compassion-slider/" title="">
+                  <!-- TODO by codec.wang -->
+                  <picture>
+                    <source type="image/webp" srcset="http://blog.codec.wang/video-comparsion-slider-cover.gif_webp">
+                    <img width="50" height="50" src="http://blog.codec.wang/video-comparsion-slider-cover.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
+                  </picture>
+                </a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/video-compassion-slider/">视频&amp;图片滑动对比组件</a></h6>
+              <span>April 6, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/wechat-h5-questionnaire2/" title="">
+                  <!-- TODO by codec.wang -->
+                  <picture>
+                    <source type="image/webp" srcset="http://blog.codec.wang/wechat-h5-questionnaire2.png_webp">
+                    <img width="50" height="50" src="http://blog.codec.wang/wechat-h5-questionnaire2.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title="">
+                  </picture>
+                </a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/wechat-h5-questionnaire2/">小程序H5问卷开发2：模版&amp;脚本</a></h6>
+              <span>March 20, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -1168,7 +1162,7 @@ JSON配置这一块没啥好说的，按照需求定义好字段就行，比如�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build%E7%AF%87/">Build篇</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%A9%E5%99%A8%E7%AF%87/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a><span class="category-list-count">32</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Build%E7%AF%87/">Build篇</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%A9%E5%99%A8%E7%AF%87/">利器篇</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a><span class="category-list-count">32</span></li></ul>
     </div>
   </div>
 
@@ -1178,7 +1172,7 @@ JSON配置这一块没啥好说的，按照需求定义好字段就行，比如�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/API/" style="font-size: 12.86px;">API</a> <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15.71px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.43px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Content-Disposition/" style="font-size: 10px;">Content-Disposition</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15.71px;">Github</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 12.86px;">JavaScript</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 11.43px;">MySQL</a> <a href="/tags/Node/" style="font-size: 12.86px;">Node</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 18.57px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.43px;">PyQt</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.43px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.43px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/a/" style="font-size: 10px;">a</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/argv/" style="font-size: 10px;">argv</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/lstrip/" style="font-size: 10px;">lstrip</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/rstrip/" style="font-size: 10px;">rstrip</a> <a href="/tags/strip/" style="font-size: 10px;">strip</a> <a href="/tags/%E4%B8%83%E7%89%9B/" style="font-size: 10px;">七牛</a> <a href="/tags/%E4%B8%B2%E5%8F%A3/" style="font-size: 10px;">串口</a> <a href="/tags/%E4%BA%AE%E5%BA%A6/" style="font-size: 10px;">亮度</a> <a href="/tags/%E5%85%A8%E6%A0%88/" style="font-size: 12.86px;">全栈</a> <a href="/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">几何变换</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 10px;">凸包</a> <a href="/tags/%E5%8D%B7%E7%A7%AF/" style="font-size: 10px;">卷积</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" style="font-size: 11.43px;">命令行参数</a> <a href="/tags/%E5%91%BD%E5%90%8D/" style="font-size: 10px;">命名</a> <a href="/tags/%E5%93%81%E7%89%8C%E6%BC%86/" style="font-size: 10px;">品牌漆</a> <a href="/tags/%E5%9B%9E%E8%BD%A6/" style="font-size: 11.43px;">回车</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">图像变换</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 17.14px;">图像处理</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">图像对比</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/" style="font-size: 10px;">图像混合</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 10px;">图床</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/" style="font-size: 10px;">对比度</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 12.86px;">小程序</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">工程架构</a> <a href="/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/" style="font-size: 10px;">形态学</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 11.43px;">微信</a> <a href="/tags/%E6%8D%A2%E8%A1%8C/" style="font-size: 11.43px;">换行</a> <a href="/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" style="font-size: 11.43px;">换行符</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 11.43px;">树莓派</a> <a href="/tags/%E6%A2%AF%E5%BA%A6/" style="font-size: 10px;">梯度</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" style="font-size: 10px;">模板匹配</a> <a href="/tags/%E6%A8%A1%E7%B3%8A/" style="font-size: 10px;">模糊</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/" style="font-size: 10px;">滑动条</a> <a href="/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/" style="font-size: 10px;">电影台词</a> <a href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/" style="font-size: 10px;">直方图</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 11.43px;">绘图</a> <a href="/tags/%E8%85%90%E8%9A%80/" style="font-size: 10px;">腐蚀</a> <a href="/tags/%E8%86%A8%E8%83%80/" style="font-size: 10px;">膨胀</a> <a href="/tags/%E8%A7%86%E9%A2%91%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">视频对比</a> <a href="/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道检测</a> <a href="/tags/%E8%BD%AE%E5%BB%93/" style="font-size: 11.43px;">轮廓</a> <a href="/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/%E8%BE%B9%E7%BC%98/" style="font-size: 10px;">边缘</a> <a href="/tags/%E9%97%AE%E5%8D%B7/" style="font-size: 11.43px;">问卷</a> <a href="/tags/%E9%98%88%E5%80%BC/" style="font-size: 11.43px;">阈值</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">霍夫变换</a>
+      <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Brand7/" style="font-size: 10px;">Brand7</a> <a href="/tags/Build/" style="font-size: 15.71px;">Build</a> <a href="/tags/CMake/" style="font-size: 11.43px;">CMake</a> <a href="/tags/Canny/" style="font-size: 10px;">Canny</a> <a href="/tags/Content-Disposition/" style="font-size: 10px;">Content-Disposition</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Git-Sever/" style="font-size: 10px;">Git Sever</a> <a href="/tags/GitKraken/" style="font-size: 10px;">GitKraken</a> <a href="/tags/Github/" style="font-size: 15.71px;">Github</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HSV/" style="font-size: 10px;">HSV</a> <a href="/tags/Hexo/" style="font-size: 14.29px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/MyCLI/" style="font-size: 10px;">MyCLI</a> <a href="/tags/MySQL/" style="font-size: 11.43px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/OpenCV/" style="font-size: 18.57px;">OpenCV</a> <a href="/tags/OpenWrt/" style="font-size: 10px;">OpenWrt</a> <a href="/tags/Plex/" style="font-size: 10px;">Plex</a> <a href="/tags/PyQt/" style="font-size: 11.43px;">PyQt</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Qt/" style="font-size: 11.43px;">Qt</a> <a href="/tags/ROI/" style="font-size: 10px;">ROI</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Server/" style="font-size: 10px;">SSH-Server</a> <a href="/tags/Sobel/" style="font-size: 10px;">Sobel</a> <a href="/tags/Ubuntu/" style="font-size: 11.43px;">Ubuntu</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Windows10/" style="font-size: 10px;">Windows10</a> <a href="/tags/a/" style="font-size: 10px;">a</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/argv/" style="font-size: 10px;">argv</a> <a href="/tags/environment-variables/" style="font-size: 10px;">environment-variables</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hiding-info/" style="font-size: 10px;">hiding-info</a> <a href="/tags/lstrip/" style="font-size: 10px;">lstrip</a> <a href="/tags/nmp/" style="font-size: 10px;">nmp</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/rstrip/" style="font-size: 10px;">rstrip</a> <a href="/tags/strip/" style="font-size: 10px;">strip</a> <a href="/tags/%E4%B8%83%E7%89%9B/" style="font-size: 10px;">七牛</a> <a href="/tags/%E4%B8%B2%E5%8F%A3/" style="font-size: 10px;">串口</a> <a href="/tags/%E4%BA%AE%E5%BA%A6/" style="font-size: 10px;">亮度</a> <a href="/tags/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">几何变换</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 10px;">凸包</a> <a href="/tags/%E5%8D%B7%E7%A7%AF/" style="font-size: 10px;">卷积</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" style="font-size: 11.43px;">命令行参数</a> <a href="/tags/%E5%91%BD%E5%90%8D/" style="font-size: 10px;">命名</a> <a href="/tags/%E5%93%81%E7%89%8C%E6%BC%86/" style="font-size: 10px;">品牌漆</a> <a href="/tags/%E5%9B%9E%E8%BD%A6/" style="font-size: 11.43px;">回车</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">图像变换</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 17.14px;">图像处理</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">图像对比</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E6%B7%B7%E5%90%88/" style="font-size: 10px;">图像混合</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 10px;">图床</a> <a href="/tags/%E5%AF%B9%E6%AF%94%E5%BA%A6/" style="font-size: 10px;">对比度</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 12.86px;">小程序</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">工程架构</a> <a href="/tags/%E5%BD%A2%E6%80%81%E5%AD%A6/" style="font-size: 10px;">形态学</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 11.43px;">微信</a> <a href="/tags/%E6%8D%A2%E8%A1%8C/" style="font-size: 11.43px;">换行</a> <a href="/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6/" style="font-size: 11.43px;">换行符</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 11.43px;">树莓派</a> <a href="/tags/%E6%A2%AF%E5%BA%A6/" style="font-size: 10px;">梯度</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" style="font-size: 10px;">模板匹配</a> <a href="/tags/%E6%A8%A1%E7%B3%8A/" style="font-size: 10px;">模糊</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E6%9D%A1/" style="font-size: 10px;">滑动条</a> <a href="/tags/%E7%94%B5%E5%BD%B1%E5%8F%B0%E8%AF%8D/" style="font-size: 10px;">电影台词</a> <a href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/" style="font-size: 10px;">直方图</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 11.43px;">绘图</a> <a href="/tags/%E8%85%90%E8%9A%80/" style="font-size: 10px;">腐蚀</a> <a href="/tags/%E8%86%A8%E8%83%80/" style="font-size: 10px;">膨胀</a> <a href="/tags/%E8%A7%86%E9%A2%91%E5%AF%B9%E6%AF%94/" style="font-size: 10px;">视频对比</a> <a href="/tags/%E8%BD%A6%E9%81%93%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道检测</a> <a href="/tags/%E8%BD%AE%E5%BB%93/" style="font-size: 11.43px;">轮廓</a> <a href="/tags/%E8%BD%AE%E5%BB%93%E5%B1%82%E7%BA%A7/" style="font-size: 10px;">轮廓层级</a> <a href="/tags/%E8%BE%B9%E7%BC%98/" style="font-size: 10px;">边缘</a> <a href="/tags/%E9%97%AE%E5%8D%B7/" style="font-size: 11.43px;">问卷</a> <a href="/tags/%E9%98%88%E5%80%BC/" style="font-size: 11.43px;">阈值</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">霍夫变换</a>
     </div>
   </div>
 
