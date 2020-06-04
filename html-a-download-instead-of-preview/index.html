@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    html下载而非打开预览文件 |
+    
+    ex2tron
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="今天前端小伙伴遇到这么一个问题：a标签指向非同源的一个文件，点击后会在浏览器中打开并预览该文件而不是下载它。嗯…很有意思，纪录于此。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML下载而非打开预览文件">
+<meta property="og:url" content="http://www.codec.wang/html-a-download-instead-of-preview/index.html">
+<meta property="og:site_name" content="ex2tron">
+<meta property="og:description" content="今天前端小伙伴遇到这么一个问题：a标签指向非同源的一个文件，点击后会在浏览器中打开并预览该文件而不是下载它。嗯…很有意思，纪录于此。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/download-instead-preview-cover.png_webp">
+<meta property="article:published_time" content="2020-06-04T11:50:49.000Z">
+<meta property="article:modified_time" content="2020-06-04T15:06:32.320Z">
+<meta property="article:author" content="ex2tron">
+<meta property="article:tag" content="h5">
+<meta property="article:tag" content="a">
+<meta property="article:tag" content="Content-Disposition">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/download-instead-preview-cover.png_webp">
+  
+  <link rel="alternate" href="/atom.xaml" title="ex2tron" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron" rel="home"> ex2tron </a>
+            
+          </h1>
+
+          
+            <div class="site-description">保持对技术的热爱！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-HTML下载文件而非预览" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/download-instead-preview-cover.png_webp" target="_blank" rel="gallery_ckb0wy0cm00053ttna3191e39 noopener">
+        <img src="http://blog.codec.wang/download-instead-preview-cover.png_webp" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/download-instead-preview-cover.png_webp" target="_blank" rel="gallery_ckb0wy0cm00053ttna3191e39 noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/download-instead-preview-cover.png_webp">
+        <img src="http://blog.codec.wang/download-instead-preview-cover.png" itemprop="image">
+      </picture>
+    <!-- </a> -->
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      HTML下载而非打开预览文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/html-a-download-instead-of-preview/" class="article-date">
+	  <time datetime="2020-06-04T11:50:49.000Z" itemprop="datePublished">June 4, 2020</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天前端小伙伴遇到这么一个问题：a标签指向非同源的一个文件，点击后会在浏览器中打开并预览该文件而不是下载它。嗯…很有意思，纪录于此。<a id="more"></a></p>
+<h2 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h2><p>你可能跟我一样，网上搜索的大部分解决方案是给a标签添加download属性，但其实并非所有场景都适用的。先来了解下HTML5 a标签的downlaod属性。</p>
+<p>参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#download" target="_blank" rel="noopener">MDN</a>，该属性表示让浏览器下载URL而不是导航到它。比如项目中有两个文件(<a href="https://github.com/ex2tron/BlogCode/tree/master/Download-InsteadOf-Open" target="_blank" rel="noopener">本节源码</a>)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── index.html</span><br><span class="line">└── config.json</span><br></pre></td></tr></table></figure>
+
+<p>index中我写了两个anchor标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"config.json"</span>&gt;</span>不加download<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"config.json"</span> <span class="attr">download</span>&gt;</span>加了download<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后启动web服务。如果你用VSCode的话，可以安装一个插件<code>Live Server</code>。安装好之后，右键index.html，选择Open with Live Server，它会自动启动浏览器并访问<code>http://127.0.0.1:5500/index.html</code>，很方便。</p>
+<blockquote>
+<p>不要直接打开index.html，因为这样使用的是文件ftp协议，不是http协议。</p>
+</blockquote>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/download-instead-preview-live-server.png_webp"><img class="image" src="http://blog.codec.wang/download-instead-preview-live-server.png" alt=""></picture></p>
+<p>分别点击两个a标签，你会发现不加download的会在浏览器中预览config.json文件，而加了download就会下载。另外，也可以给download属性赋值，表示下载后保存的文件名，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"config.json"</span> <span class="attr">download</span>=<span class="string">'imcute.json'</span>&gt;</span>加了download并重命名<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>OK，so far so good。但并没有解决我们的问题，因为很多人忽略了同源这一点。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#download" target="_blank" rel="noopener">MDN</a>上也写的很明确：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">此属性仅适用于同源URL</span><br><span class="line">download only works for same-origin URLs.</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，网站资源就是放在网站服务器上，源相同，所以加上download属性没毛病。但我们的文件放在腾讯云对象存储系统COS上，显然与网站不同源。</p>
+<h2 id="不同源"><a href="#不同源" class="headerlink" title="不同源"></a>不同源</h2><p>不同源时就只能通过JS来下载了，这就有很多种方法了，非本节的讨论点，大家可自行Google。</p>
+<p>那有没有即使不同源，a标签照样点击下载的方法呢？有：配置服务端文件的HTTP Headers。因为a标签点击时也是发送了HTTP请求，所以可通过设置响应头方式实现。</p>
+<p>首先了解下Content-Disposition，参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition" target="_blank" rel="noopener">MDN</a>，它表示响应的内容以何种形式展示。如果值是inline，表示是网页的一部分；值为attachment，表示以附件的形式下载文件。</p>
+<p>比如下面两个链接文件内容完全一致，都放在我的对象存储COS上面。第二个设置了Content-Disposition为attachment。（腾讯云COS请求头的设置方式请参考：<a href="https://cloud.tencent.com/document/product/436/30740" target="_blank" rel="noopener">上传和下载</a>）</p>
+<ul>
+<li>index.html</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/download-instead-preview.json"</span>&gt;</span>没设置请求头<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/download-instead-preview-attachment.json"</span>&gt;</span>设置了请求头<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行后分别点击这两个a标签。第一个还是预览，第二个就直接下载了。搞定！</p>
+<p>配置成attachment时，也可以添加文件名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: attachment; filename&#x3D;&quot;imcute.json&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时，如果a标签也加了download=’config.json’的属性，将优先使用请求头中配置的，即imcute.json</p>
+<h2 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h2><p>对于pdf文件，Chrome和基于Chromium的Edge浏览器在设置中提供了一个是否始终外部打开的选项。打开后，无论服务端有没有设置Content-Disposition，文件都会下载。</p>
+<ul>
+<li>打开浏览器设置，搜索pdf：</li>
+</ul>
+<p><picture class="picture"><source type="image/webp" srcset="http://blog.codec.wang/download-instead-preview-chrome-pdf.png_webp"><img class="image" src="http://blog.codec.wang/download-instead-preview-chrome-pdf.png" alt=""></picture></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://github.com/ex2tron/BlogCode/tree/master/Download-InsteadOf-Open" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">浏览器的同源策略</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#download" target="_blank" rel="noopener">a标签</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition" target="_blank" rel="noopener">Content-Disposition</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Content-Disposition/" rel="tag">Content-Disposition</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/a/" rel="tag">a</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/h5/" rel="tag">h5</a></li></ul>
+
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/node-07-built-in-modules/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【Mater Node】07. 常用内建模块</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同源"><span class="nav-number">1.</span> <span class="nav-text">同源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同源"><span class="nav-number">2.</span> <span class="nav-text">不同源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF"><span class="nav-number">3.</span> <span class="nav-text">PDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              ex2tron All Rights Reserved. -->
+              <!-- 个人技术文章分享 | 2020 -->
+              个人技术文章分享 | 自2020.1.1起统计: 
+                 
+                   <span id="busuanzi_container_site_uv">
+                    访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                    
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

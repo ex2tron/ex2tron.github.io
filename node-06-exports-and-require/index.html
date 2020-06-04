@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>
+    
+    【mater node】06. 导出和导入 |
+    
+    ex2tron
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="ex2tron,opencv,tensorflow" />
+  
+  
+  
+  
+  <meta name="description" content="Goal 如何导出和导入模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Mater Node】06. 导出和导入">
+<meta property="og:url" content="http://www.codec.wang/node-06-exports-and-require/index.html">
+<meta property="og:site_name" content="ex2tron">
+<meta property="og:description" content="Goal 如何导出和导入模块">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.codec.wang/node-05-modularity.png_webp">
+<meta property="article:published_time" content="2020-06-01T14:27:17.000Z">
+<meta property="article:modified_time" content="2020-06-02T15:31:37.341Z">
+<meta property="article:author" content="ex2tron">
+<meta property="article:tag" content="全栈">
+<meta property="article:tag" content="Node">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.codec.wang/node-05-modularity.png_webp">
+  
+  <link rel="alternate" href="/atom.xaml" title="ex2tron" type="application/atom+xml">
+  
+  <link rel="icon" href="/img/bookshelf.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+      font-weight: lighter;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
+  </style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1"
+    type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+  <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="ex2tron" rel="home"> ex2tron </a>
+            
+          </h1>
+
+          
+            <div class="site-description">保持对技术的热爱！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Node-06-导出和导入模块" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-05-modularity.png_webp" target="_blank" rel="gallery_ckb0wy0cv000h3ttnh92d6smn noopener">
+        <img src="http://blog.codec.wang/node-05-modularity.png_webp" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+ -->
+
+<!-- TODO by codec.wang -->
+
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    <!-- <a class="article-gallery-img fancybox" href="http://blog.codec.wang/node-05-modularity.png_webp" target="_blank" rel="gallery_ckb0wy0cv000h3ttnh92d6smn noopener"> -->
+      <picture class="article-gallery-img">
+        <source type="image/webp" srcset="http://blog.codec.wang/node-05-modularity.png_webp">
+        <img src="http://blog.codec.wang/node-05-modularity.png" itemprop="image">
+      </picture>
+    <!-- </a> -->
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Mater Node】06. 导出和导入
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/node-06-exports-and-require/" class="article-date">
+	  <time datetime="2020-06-01T14:27:17.000Z" itemprop="datePublished">June 1, 2020</time>
+	</a>
+
+      
+	<!-- TODO: ex2tron.wang 启用但暂时不显示访问量 2019年3月20日 -->
+	<!-- <span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span> -->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><ul>
+<li>如何导出和导入模块<a id="more"></a></li>
+</ul>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><h3 id="日志模块"><a href="#日志模块" class="headerlink" title="日志模块"></a>日志模块</h3><p>本节我们新建两个文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── app.js</span><br><span class="line">└── logger.js</span><br></pre></td></tr></table></figure>
+
+<p>app为程序的主入口，logger是日志模块。日志在实际的项目中很常用，一般日志处理是直接打印、写入文件、写入数据库和发送到远程等。这里只是为了演示模块的使用，所以直接打印出来：</p>
+<ul>
+<li>logger.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> remote = <span class="string">"http://api.logger.io"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`logged on <span class="subst">$&#123;remote&#125;</span>, message: <span class="subst">$&#123;msg&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第4行使用了ES6的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="noopener">模版字符串</a>。Tips：本课程不涉及JS和ES6的语法。</p>
+</blockquote>
+<h3 id="导出模块"><a href="#导出模块" class="headerlink" title="导出模块"></a>导出模块</h3><p>定义好之后，如果需要在app中使用log函数的话，就得先把它导出。上节我们知道，module的<a href="http://nodejs.cn/api/modules.html#modules_module_exports" target="_blank" rel="noopener">exports</a>属性就是对外暴露的接口。所以把log函数添加到exports中就行了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.log = log;</span><br></pre></td></tr></table></figure>
+
+<p>这里其实就是给exports空对象赋值，所以写法很多：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 写法1: 比如可以重命名接口</span></span><br><span class="line"><span class="built_in">module</span>.exports.myLog = log;</span><br><span class="line"><span class="comment">// 写法2: 也可以</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123; <span class="attr">log</span>: log &#125;;</span><br><span class="line"><span class="comment">// 上面key和value名称一样，可以按ES6语法进一步简写</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123; log &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果app还想知道日志的remote地址，那么也可以把remote导出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按写法1:</span></span><br><span class="line"><span class="built_in">module</span>.exports.log = log;</span><br><span class="line"><span class="built_in">module</span>.exports.logUrl = remote; <span class="comment">// 把remote重命名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 按写法2:</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  log,</span><br><span class="line">  logUrl: remote	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果模块只需要导出一个接口的话，直接把这个接口赋值给exports就行。比如日志模块最终只需要导出log这个函数，那么logger最终就是这个样子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> remote = <span class="string">"http://api.logger.io"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`logged on <span class="subst">$&#123;remote&#125;</span>, message: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><p>OK，既然已经编写好logger模块并导出了，接下来就可以在app中导入使用了。导入需要用<a href="http://nodejs.cn/api/modules.html#modules_require_id" target="_blank" rel="noopener">require()</a>，传入模块的路径，返回模块导出的东西。比如：</p>
+<ul>
+<li>app.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> log = <span class="built_in">require</span>(<span class="string">"./logger"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(log); <span class="comment">// [Function]</span></span><br><span class="line"></span><br><span class="line">log(<span class="string">"error happened."</span>); </span><br><span class="line"><span class="comment">// logged on http://api.logger.io, message: error happened.</span></span><br></pre></td></tr></table></figure>
+
+<p>因为我们前面导出的是一个函数，所以log是个函数，可以直接调用。如果按照像<code>module.exports = { log }</code>这种导出方式，那么导出的是一个对象，app中就可以这样用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> logger = <span class="built_in">require</span>(<span class="string">"./logger"</span>);</span><br><span class="line">logger.log(<span class="string">"error happened."</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注意上面导入时，并没有加.js的后缀。可以加也可以不加，不加的话，Node会去给定的路径下找名为logger的模块，可能是logger.js、logger.json或其他。习惯上.js会省略，其他模块类型会加上后缀。</p>
+<p>以上就是模块导出和导入的用法，下节我们来大致看下Node的内建模块。</p>
+<h2 id="Quote"><a href="#Quote" class="headerlink" title="Quote"></a>Quote</h2><ul>
+<li><a href="https://github.com/ex2tron/Master-JS-Full-Stack/tree/master/01.Node.js/05.Modularity" target="_blank" rel="noopener">本节源码</a></li>
+<li><a href="https://nodejs.org/dist/latest-v12.x/docs/api/modules.html#modules_the_module_object" target="_blank" rel="noopener">module</a></li>
+<li>[JavaScript 模块化方案总结](</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Build%E7%AF%87/">Build篇</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%A0%88/" rel="tag">全栈</a></li></ul>
+
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+  <script>
+    var a = new Donate({
+      title: '谢谢支持，我会更加✊~', // 可选参数，打赏标题
+      // btnText: 'Donate', // 可选参数，打赏按钮文字
+      btnText: '赏', // 可选参数，打赏按钮文字
+      el: document.getElementById('donation_div'),
+      wechatImage: '/img/wechat.jpg',
+      alipayImage: '/img/alipay.jpg'
+    });
+  </script>
+      
+                  
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/node-07-built-in-modules/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【Mater Node】07. 常用内建模块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/node-01-modularity/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【Mater Node】05. 模块化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goal"><span class="nav-number">1.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main"><span class="nav-number">2.</span> <span class="nav-text">Main</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日志模块"><span class="nav-number">2.1.</span> <span class="nav-text">日志模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出模块"><span class="nav-number">2.2.</span> <span class="nav-text">导出模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入模块"><span class="nav-number">2.3.</span> <span class="nav-text">导入模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quote"><span class="nav-number">3.</span> <span class="nav-text">Quote</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+        <div class="clearfix container">
+          <div class="site-info">
+            &copy;
+            <!-- 2020
+              ex2tron All Rights Reserved. -->
+              <!-- 个人技术文章分享 | 2020 -->
+              个人技术文章分享 | 自2020.1.1起统计: 
+                 
+                   <span id="busuanzi_container_site_uv">
+                    访客数
+                    <span id="busuanzi_value_site_uv"></span>人次 总访问量
+                    <span id="busuanzi_value_site_pv"></span>次
+                  </span>
+                    
+          </div>
+          <!-- <div class="site-credit">
+            Theme by
+              <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+          </div> -->
+          <div>
+            <p>&nbsp
+              <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener" style="font-weight: bold">粤ICP备20002165号</a>
+            </p>
+          </div>
+        </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+  var contentdiv = document.getElementById("content");
+
+  contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
